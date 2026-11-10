@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and loca
 
 Graphlets. Entries grouped here: Graphlet basis and projection.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (igraph graphlet basis and projection), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Graphlet basis and projection {#graphlets}
 

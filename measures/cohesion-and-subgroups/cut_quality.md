@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Relaxed cliques and sub
 
 Cut quality (conductance, expansion, boundary). Entries grouped here: Cut quality (conductance, expansion, boundary).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworKit and NetworkX conductance, expansion and boundary), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Cut quality (conductance, expansion, boundary) {#cut_quality}
 

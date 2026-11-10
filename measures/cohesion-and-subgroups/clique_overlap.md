@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Cliques. Concept id: `c
 
 Clique co-membership and overlap. Entries grouped here: Clique co-membership and overlap matrices.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (UCINET clique co-membership and overlap matrices), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Clique co-membership and overlap matrices {#clique_overlap}
 

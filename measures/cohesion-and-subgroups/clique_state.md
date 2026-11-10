@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Cliques. Concept id: `c
 
 Clique decomposition state. Entries grouped here: Clique State.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (graph-tool clique decomposition state), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Clique State {#cat_clique_state}
 
