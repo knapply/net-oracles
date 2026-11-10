@@ -1,0 +1,19 @@
+/* Search overlay: keep the home hero's layers inside the hero so they never
+   paint over the results, and give the input and results the page palette. */
+.hero { isolation: isolate; z-index: 0; }
+.search, .search-results, .search-overlay { z-index: 1000; }
+.search-input,
+.search-active .search-input,
+.search-input:focus {
+  background-color: var(--surface) !important;
+  color: var(--ink) !important;
+  caret-color: var(--ink);
+}
+.search-input::placeholder { color: var(--muted) !important; opacity: 1; }
+.search-results { background-color: var(--surface) !important; }
+.search-result { border-bottom: 1px solid var(--line-soft); }
+.search-result-title { font-weight: 600; }
+.search-result-rel-url { font-size: .75rem; opacity: .8; }
+.search-result-previews { border-left: 2px solid var(--line); }
+.search-result-preview { margin-bottom: .35rem; line-height: 1.4; }
+.search-result-highlight { background: transparent; color: var(--ink); font-weight: 700; text-decoration: underline; text-decoration-color: var(--accent, currentColor); }
