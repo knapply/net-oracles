@@ -12,11 +12,21 @@ nav_exclude: true
 
 Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id: `model_aic`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(k\)</td><td>number of free parameters</td></tr><tr><td>\(\hat\ell\)</td><td>maximized log-likelihood</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 AIC. Entries grouped here: Aic.
 
-*Definition not yet written.*
+*Definition partly written:* The standard formula is given without a citation because the primary paper is not in the bibliography and could not be verified.
+
+<div class="formula-block"><p class="formula-name"><strong>Akaike information criterion</strong> <span class="applies">applies to: any</span></p><div class="formula">\[\mathrm{AIC}=2k-2\hat\ell\]</div><p class="formula-where">Lower is better; defined for models with a likelihood.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_aic">Aic</a></td><td><code>cat_aic</code></td><td>1</td><td>AIC of a fitted model; the UCINET function is documented by name only.</td></tr></tbody></table></div>
 
 ## Aic {#cat_aic}
 

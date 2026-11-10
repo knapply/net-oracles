@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Structural equivalence effect. Entries grouped here: In Struct Eq.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## In Struct Eq {#cat_eq_struct}
 

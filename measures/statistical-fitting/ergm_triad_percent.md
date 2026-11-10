@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `e
 
 Triad percentage term. Entries grouped here: Tripercent.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Tripercent {#cat_tripercent}
 

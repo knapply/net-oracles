@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Popularity effects. Entries grouped here: Av Alt Pop; Av In Sim Pop Alt; Av Sim Pop Ego; Diff XIn Pop; In Pop; In Pop c; and 16 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

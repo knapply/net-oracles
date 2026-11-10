@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Prediction and classificat
 
 Node classification. Entries grouped here: Diffusion Classifier; GNNClassifier; NNClassifier; Page Rank Classifier; Propagation; Rank Classifier.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

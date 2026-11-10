@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Marginal and latent graph 
 
 Block edge gradient. Entries grouped here: Get block edge gradient.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Get block edge gradient {#cat_block_edge_gradient}
 

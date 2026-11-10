@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id:
 
 Conditional edge prediction (GERGM). Entries grouped here: Conditional edge prediction.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Conditional edge prediction {#cat_conditional_edge_prediction}
 

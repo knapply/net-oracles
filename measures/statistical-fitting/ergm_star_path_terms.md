@@ -12,15 +12,23 @@ nav_exclude: true
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_star_path_terms`. 6 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(y\)</td><td>the network as a matrix of tie indicators \(y_{ij}\in\{0,1\}\) (simple graph, no loops); \(y^{ij+}\) and \(y^{ij-}\) have the tie \((i,j)\) set to 1 and 0</td></tr><tr><td>\(n\)</td><td>number of nodes</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Star and path terms. Entries grouped here: Altkstar; M2star; Mutual L; Threetrail; Twopath; Twostar L.
 
-*Definition not yet written.*
+*Definition partly written:* Only twopath and the alternating k-star are written; M2star, three-trail and the L-suffixed forms are named only.
+
+<div class="formula-block"><p class="formula-name"><strong>Two-path (Morris et al. 2008)</strong> <span class="applies">applies to: directed, simple</span></p><div class="formula">\[\text{twopath}(y)=\sum_{(i,j,h)}y_{ij}y_{jh}\quad(i,j,h\text{ distinct})\]</div><p class="formula-where">Ordered pairs of consecutive ties through a middle node.</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Alternating k-star (Snijders et al. 2006)</strong> <span class="applies">applies to: undirected, simple</span></p><div class="formula">\[\text{altkstar}_\lambda=\sum_{k=2}^{n-1}(-1)^{k}\frac{S_k}{\lambda^{k-2}}\]</div><p class="formula-where">Weights the \(k\)-star counts \(S_k\) alternately; for \(\lambda&gt;1\) it is a curved-exponential-family form of the degree distribution (related to gwdegree).</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_altkstar">Altkstar</a></td><td><code>cat_altkstar</code></td><td>1</td></tr><tr><td><a href="#cat_m2star">M2star</a></td><td><code>cat_m2star</code></td><td>1</td></tr><tr><td><a href="#cat_l_mutual">Mutual L</a></td><td><code>cat_l_mutual</code></td><td>1</td></tr><tr><td><a href="#cat_threetrail">Threetrail</a></td><td><code>cat_threetrail</code></td><td>1</td></tr><tr><td><a href="#cat_twopath">Twopath</a></td><td><code>cat_twopath</code></td><td>1</td></tr><tr><td><a href="#cat_l_twostar">Twostar L</a></td><td><code>cat_l_twostar</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_altkstar">Altkstar</a></td><td><code>cat_altkstar</code></td><td>1</td><td>Alternating k-star statistic with decay \(\lambda\).</td></tr><tr><td><a href="#cat_twopath">Twopath</a></td><td><code>cat_twopath</code></td><td>1</td><td>Directed two-path count above.</td></tr></tbody></table></div>
 
 ## Altkstar {#cat_altkstar}
 

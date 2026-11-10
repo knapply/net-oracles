@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id:
 
 SBM for partially observed networks. Entries grouped here: Stochastic block models for partially observed networks.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Stochastic block models for partially observed networks {#sbm_missing}
 

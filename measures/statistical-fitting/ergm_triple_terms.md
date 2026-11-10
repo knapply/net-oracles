@@ -12,15 +12,21 @@ nav_exclude: true
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_triple_terms`. 7 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(y\)</td><td>the network as a matrix of tie indicators \(y_{ij}\in\{0,1\}\) (simple graph, no loops); \(y^{ij+}\) and \(y^{ij-}\) have the tie \((i,j)\) set to 1 and 0</td></tr><tr><td>\(n\)</td><td>number of nodes</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Triple, cycle and Simmelian terms. Entries grouped here: Ctriple; Cyclicalties; Cyclicalweights; Localtriangle; Nearsimmelian; Simmelianties; and 1 more.
 
-*Definition not yet written.*
+*Definition partly written:* Only ttriple and ctriple are written; local triangles, Simmelian and cyclical-ties terms are named only.
+
+<div class="formula-block"><p class="formula-name"><strong>Transitive and cyclic triples (Morris et al. 2008)</strong> <span class="applies">applies to: directed, simple</span></p><div class="formula">\[\text{ttriple}=\sum_{(i,j,h)}y_{ij}y_{jh}y_{ih},\qquad \text{ctriple}=\tfrac13\sum_{(i,j,h)}y_{ij}y_{jh}y_{hi}\]</div><p class="formula-where">Ordered triples of distinct nodes; each cyclic triple appears three times in the ordered sum, hence the factor \(\tfrac13\).</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_ctriple">Ctriple</a></td><td><code>cat_ctriple</code></td><td>1</td></tr><tr><td><a href="#cat_cyclicalties">Cyclicalties</a></td><td><code>cat_cyclicalties</code></td><td>1</td></tr><tr><td><a href="#cat_cyclicalweights">Cyclicalweights</a></td><td><code>cat_cyclicalweights</code></td><td>1</td></tr><tr><td><a href="#cat_localtriangle">Localtriangle</a></td><td><code>cat_localtriangle</code></td><td>1</td></tr><tr><td><a href="#cat_nearsimmelian">Nearsimmelian</a></td><td><code>cat_nearsimmelian</code></td><td>1</td></tr><tr><td><a href="#cat_simmelianties">Simmelianties</a></td><td><code>cat_simmelianties</code></td><td>1</td></tr><tr><td><a href="#cat_ttriple">Ttriple</a></td><td><code>cat_ttriple</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_ctriple">Ctriple</a></td><td><code>cat_ctriple</code></td><td>1</td><td>Cyclic triple count.</td></tr><tr><td><a href="#cat_ttriple">Ttriple</a></td><td><code>cat_ttriple</code></td><td>1</td><td>Transitive triple count.</td></tr></tbody></table></div>
 
 ## Ctriple {#cat_ctriple}
 

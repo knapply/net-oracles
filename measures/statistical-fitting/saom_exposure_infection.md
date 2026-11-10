@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Exposure, infection and susceptibility effects. Entries grouped here: Av Exposure; Infect Covar; Infect In; Infect Out; Suscept Av Covar; Suscept Av In; and 1 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 
