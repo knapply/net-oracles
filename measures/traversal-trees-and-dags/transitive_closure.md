@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Transitive closure {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: DAGs and topological order. Concept id: `transitive_closure`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Geodesic distances {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Shortest paths. Concept id: `geodesic_distances`. 6 measures.

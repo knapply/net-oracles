@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Union maximum spanning forest {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Spanning trees and branchings. Concept id: `maximum_spanning_forest`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Spectral segregation index {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homophily indices. Concept id: `spectral_segregation_index`. 1 measure.

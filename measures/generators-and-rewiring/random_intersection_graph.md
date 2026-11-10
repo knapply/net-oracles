@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Random intersection graph {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs. Concept id: `random_intersection_graph`. 1 measure.

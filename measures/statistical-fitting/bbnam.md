@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Bayesian network accuracy model (BBNAM) {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id: `bbnam`. 2 measures.

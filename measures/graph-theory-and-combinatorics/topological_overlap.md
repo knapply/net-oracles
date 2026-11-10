@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Generalized topological overlap {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Similarity and link prediction. Concept id: `topological_overlap`. 1 measure.

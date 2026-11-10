@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # K-center and Gon heuristic {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Independent sets and approximation. Concept id: `k_center`. 2 measures.

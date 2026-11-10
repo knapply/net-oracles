@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Attribute-to-matrix construction {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Matrix and tie transformations. Concept id: `attribute_matrix`. 1 measure.

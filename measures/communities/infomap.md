@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Infomap {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `infomap`. 1 measure.

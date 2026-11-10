@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Resource-constrained shortest path {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Shortest paths. Concept id: `resource_constrained_shortest_path`. 1 measure.

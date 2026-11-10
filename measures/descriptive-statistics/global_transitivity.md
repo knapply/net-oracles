@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Global transitivity {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Clustering and transitivity. Concept id: `global_transitivity`. 2 measures.

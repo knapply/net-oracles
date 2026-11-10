@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Path counting in DAGs {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Path enumeration and counting. Concept id: `dag_path_count`. 1 measure.

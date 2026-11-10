@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Community-based centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `community_centrality`. 1 measure.

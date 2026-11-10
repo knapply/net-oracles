@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Entropy centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `entropy_centrality`. 1 measure.

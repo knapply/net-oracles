@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Connected dominating set {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Covers and dominating sets. Concept id: `connected_dominating_set`. 1 measure.

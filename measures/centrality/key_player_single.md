@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Key player single-node scores (KPP) {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Key players. Concept id: `key_player_single`. 4 measures.

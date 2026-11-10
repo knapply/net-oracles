@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # CD index {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: DAGs and topological order. Concept id: `cd_index`. 1 measure.

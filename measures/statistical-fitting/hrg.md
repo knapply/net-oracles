@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Hierarchical random graph {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id: `hrg`. 1 measure.

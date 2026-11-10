@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Open triad term {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_open_triad`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Block states for dynamics inference {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Block model states. Concept id: `sbm_dynamics_state`. 11 measures.

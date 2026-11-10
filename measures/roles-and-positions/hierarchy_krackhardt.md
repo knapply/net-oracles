@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Hierarchy {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Structural holes and brokerage. Concept id: `hierarchy_krackhardt`. 1 measure.

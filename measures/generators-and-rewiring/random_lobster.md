@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Random lobster {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Random trees and forests. Concept id: `random_lobster`. 1 measure.

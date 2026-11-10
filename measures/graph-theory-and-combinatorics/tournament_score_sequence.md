@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Tournament score sequence {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Degree sequences and predicates. Concept id: `tournament_score_sequence`. 1 measure.

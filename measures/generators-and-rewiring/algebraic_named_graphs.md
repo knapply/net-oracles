@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Algebraic and combinatorial named graphs (Kneser, Paley, Kautz, De Bruijn, LCF, Sudoku) {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Named and deterministic graphs. Concept id: `algebraic_named_graphs`. 6 measures.

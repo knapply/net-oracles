@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Latent multigraph inference {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Marginal and latent graph distributions. Concept id: `latent_multigraph`. 2 measures.

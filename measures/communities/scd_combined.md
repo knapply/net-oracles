@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Combined SCD {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `scd_combined`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # MCMC annealing and equilibration {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id: `mcmc_anneal_equilibrate`. 2 measures.

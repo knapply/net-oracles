@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Modularity maximization (Louvain, Leiden, greedy, spectral, exact) {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Modularity-based detection. Concept id: `modularity_maximization`. 13 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Continuous dynamics states (Kuramoto, linear, normal, Lotka-Volterra) {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Dynamics states. Concept id: `continuous_dynamics_state`. 5 measures.

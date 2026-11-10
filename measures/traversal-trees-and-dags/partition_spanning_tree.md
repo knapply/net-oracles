@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Partition spanning tree {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Spanning trees and branchings. Concept id: `partition_spanning_tree`. 1 measure.

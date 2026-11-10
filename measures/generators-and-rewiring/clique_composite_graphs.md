@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Clique composites (barbell, lollipop, tadpole, windmill, caveman, ring of cliques) {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Named and deterministic graphs. Concept id: `clique_composite_graphs`. 10 measures.

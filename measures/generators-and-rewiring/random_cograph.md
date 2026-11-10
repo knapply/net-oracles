@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Random cograph {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs. Concept id: `random_cograph`. 1 measure.

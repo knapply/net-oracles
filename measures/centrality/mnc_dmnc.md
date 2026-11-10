@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # MNC and DMNC {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `mnc_dmnc`. 2 measures.

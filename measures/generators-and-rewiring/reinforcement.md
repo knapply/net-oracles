@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Reinforcement {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomization. Concept id: `reinforcement`. 1 measure.

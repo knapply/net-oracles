@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Triangle listing {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Triangles and local counts. Concept id: `triangle_list`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Information centrality (current-flow closeness) {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Resistance and information. Concept id: `information_centrality`. 2 measures.

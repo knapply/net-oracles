@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Statistics over time (ergm, sna) {#concept-top}
 
 Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Concept id: `temporal_statistic_series`. 2 measures.

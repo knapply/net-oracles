@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Cocitation and bibliographic coupling {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and local structure. Concept id: `cocitation_coupling`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Voronoi communities {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `voronoi_communities`. 3 measures.

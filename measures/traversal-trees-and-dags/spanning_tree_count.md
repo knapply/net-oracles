@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Number of spanning trees {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Spanning trees and branchings. Concept id: `spanning_tree_count`. 1 measure.

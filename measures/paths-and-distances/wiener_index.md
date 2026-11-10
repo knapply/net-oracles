@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Wiener index {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concept id: `wiener_index`. 1 measure.

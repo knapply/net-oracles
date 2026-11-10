@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Triangulation {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice and geometric models. Concept id: `delaunay_triangulation`. 1 measure.

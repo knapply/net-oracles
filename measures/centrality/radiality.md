@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Radiality and integration {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Distance-based. Concept id: `radiality`. 2 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Spectral ordering {#concept-top}
 
 Family: [Matrices and spectra](index.html). Subfamily: Spectra. Concept id: `spectral_ordering`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Density {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Density and degree distribution. Concept id: `density`. 2 measures.

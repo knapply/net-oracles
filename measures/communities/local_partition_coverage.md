@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Local partition coverage {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition and cover quality. Concept id: `local_partition_coverage`. 1 measure.

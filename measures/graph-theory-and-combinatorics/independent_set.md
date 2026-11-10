@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Maximal independent set {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Independent sets and approximation. Concept id: `independent_set`. 3 measures.

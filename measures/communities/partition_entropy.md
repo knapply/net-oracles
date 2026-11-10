@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Partition entropy {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition and cover quality. Concept id: `partition_entropy`. 1 measure.

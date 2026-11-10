@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Moral graph {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: DAGs and topological order. Concept id: `moral_graph`. 1 measure.

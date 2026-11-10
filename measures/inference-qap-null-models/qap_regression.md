@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # MR-QAP regression {#concept-top}
 
 Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutation tests. Concept id: `qap_regression`. 1 measure.

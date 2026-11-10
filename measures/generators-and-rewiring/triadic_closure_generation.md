@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Triadic closure generation {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomization. Concept id: `triadic_closure_generation`. 1 measure.

@@ -8,6 +8,7 @@ permalink: /measures/statistical-fitting/
 ---
 
 {% raw %}
+
 # Statistical fitting
 
 505 measures in 80 concepts and 8 subfamilies. Each concept page has a section per measure (variant); the anchor of a section is the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens).

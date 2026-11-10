@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Cross-clique centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `cross_clique_centrality`. 1 measure.

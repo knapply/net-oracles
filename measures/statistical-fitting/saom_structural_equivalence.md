@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Structural equivalence effect {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: `saom_structural_equivalence`. 1 measure.

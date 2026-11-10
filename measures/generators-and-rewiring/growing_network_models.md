@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Growing network models (GN, citation, Callaway, establishment) {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment models. Concept id: `growing_network_models`. 7 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Group betweenness centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Betweenness, load and flow. Concept id: `group_betweenness`. 1 measure.

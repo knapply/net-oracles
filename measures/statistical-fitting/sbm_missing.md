@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # SBM for partially observed networks {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id: `sbm_missing`. 1 measure.

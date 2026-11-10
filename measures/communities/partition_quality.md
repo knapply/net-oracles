@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Partition quality (coverage, performance) {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition and cover quality. Concept id: `partition_quality`. 1 measure.

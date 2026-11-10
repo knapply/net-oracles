@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Loop and multi-edge detection {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Degree sequences and predicates. Concept id: `multi_loop_detection`. 1 measure.

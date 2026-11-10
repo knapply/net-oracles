@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # BTER replicator {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment models. Concept id: `bter`. 1 measure.

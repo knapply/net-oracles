@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Aperiodicity {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: DAGs and topological order. Concept id: `aperiodic`. 2 measures.

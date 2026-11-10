@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Rank intervals {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Partial rankings (netrankr). Concept id: `rank_intervals`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Primary setting effect {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: `saom_primary_setting`. 1 measure.

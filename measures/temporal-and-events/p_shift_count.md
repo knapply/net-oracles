@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # P-shift count {#concept-top}
 
 Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Concept id: `p_shift_count`. 1 measure.

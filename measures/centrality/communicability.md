@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Communicability {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Spectral and walk-based. Concept id: `communicability`. 1 measure.

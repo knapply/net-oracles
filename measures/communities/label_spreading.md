@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Label spreading {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `label_spreading`. 1 measure.

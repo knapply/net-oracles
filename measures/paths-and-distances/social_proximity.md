@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Social proximity {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concept id: `social_proximity`. 1 measure.

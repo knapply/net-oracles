@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Direct blockmodel search {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `blockmodel_search`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Ego network density {#concept-top}
 
 Family: [Ego networks](index.html). Subfamily: Ego measures. Concept id: `ego_density`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Isolates {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Degree sequences and predicates. Concept id: `isolates`. 2 measures.

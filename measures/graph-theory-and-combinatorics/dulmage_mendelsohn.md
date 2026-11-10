@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Dulmage-Mendelsohn decomposition {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Matching. Concept id: `dulmage_mendelsohn`. 1 measure.

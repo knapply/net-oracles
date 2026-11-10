@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # N-clans {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Relaxed cliques and subgroups. Concept id: `n_clans`. 1 measure.

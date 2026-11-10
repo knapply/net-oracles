@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Approximate node connectivity {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Connectivity numbers. Concept id: `node_connectivity`. 1 measure.

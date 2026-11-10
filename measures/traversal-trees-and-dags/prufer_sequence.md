@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Prufer sequences {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and enumeration. Concept id: `prufer_sequence`. 2 measures.

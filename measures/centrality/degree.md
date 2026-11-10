@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Degree {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Degree and strength. Concept id: `degree`. 3 measures.

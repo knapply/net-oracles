@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Edge average {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Density and degree distribution. Concept id: `edge_average`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Condensation of strong components {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Connected components. Concept id: `condensation`. 1 measure.

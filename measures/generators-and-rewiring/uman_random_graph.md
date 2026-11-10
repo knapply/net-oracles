@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Random graph with uniform MAN distribution {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs. Concept id: `uman_random_graph`. 1 measure.

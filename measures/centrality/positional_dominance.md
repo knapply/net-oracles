@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Positional dominance {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Partial rankings (netrankr). Concept id: `positional_dominance`. 1 measure.

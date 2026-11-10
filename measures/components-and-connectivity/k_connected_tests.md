@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # K-connectivity tests {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Connected components. Concept id: `k_connected_tests`. 2 measures.

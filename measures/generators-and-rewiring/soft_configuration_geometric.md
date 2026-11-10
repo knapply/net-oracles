@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Geometric soft configuration model {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models. Concept id: `soft_configuration_geometric`. 1 measure.

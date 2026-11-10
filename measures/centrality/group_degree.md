@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Group degree centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Degree and strength. Concept id: `group_degree`. 2 measures.

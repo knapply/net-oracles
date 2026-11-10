@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # KL-connected subgraph {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Robustness and percolation. Concept id: `kl_connected_subgraph`. 1 measure.

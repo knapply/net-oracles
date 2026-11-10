@@ -8,6 +8,7 @@ permalink: /measures/traversal-trees-and-dags/
 ---
 
 {% raw %}
+
 # Traversal, trees and DAGs
 
 82 measures in 46 concepts and 4 subfamilies. Each concept page has a section per measure (variant); the anchor of a section is the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens).

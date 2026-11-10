@@ -6,7 +6,8 @@ permalink: /
 ---
 
 {% raw %}
-# net-oracles
+
+<section class="hero" aria-labelledby="hero-title"><canvas id="hero-graph" class="hero-graph" aria-hidden="true"></canvas><div class="hero-body"><h1 id="hero-title">net-oracles</h1><p class="hero-lead">Which network-analysis tool implements which measure, and where their answers differ.</p><ul class="hero-counts"><li><b>47</b>tools</li><li><b>1635</b>measures</li><li><b>702</b>concepts</li><li><b>90</b>findings</li><li><b>1228</b>benchmark rows</li></ul></div></section>
 
 A neutral, citable survey of network-analysis software: which tool implements which measure, how their conventions differ, which bugs and disagreements were found, and how the tools were benchmarked. Every claim carries a citation key; every table on these pages is generated from the machine-readable files in [`data/`](https://github.com/knapply/net-oracles/tree/main/data).
 
@@ -14,15 +15,7 @@ A neutral, citable survey of network-analysis software: which tool implements wh
 
 ## Where to go
 
-| Page | What it holds |
-|---|---|
-| [Capability matrix](matrix.html) | Measure by tool, grouped by family, subfamily and concept, with the state of each entry. |
-| [Measures](measures/) | Families, subfamilies and one page per concept; each concept page has a section per measure (variant) with implementations, convention differences, tolerances, findings, citations. |
-| [Tools](tools/) | One page per tool: version tested, license, how it was run, coverage, findings. |
-| [Findings](findings.html) | Bugs, disagreements and limitations found in other tools, with reproductions where recorded. |
-| [Benchmarks](benchmarks.html) | Method and timing summaries for the other tools; raw rows are in `data/benchmarks/`. |
-| [References](references.html) | Every cited package and paper. |
-| [Data and schemas](data.html) | File formats, joins and the state vocabulary. |
+<nav class="cards" aria-label="Sections"><a class="card" href="measures/"><strong>Families</strong><span>21 families, 702 concepts and 1635 measures.</span></a><a class="card" href="tools/"><strong>Tools</strong><span>47 tools, 34 run and compared.</span></a><a class="card" href="matrix.html"><strong>Capability matrix</strong><span>Measure by tool, with the state of each entry.</span></a><a class="card" href="findings.html"><strong>Findings</strong><span>90 bugs, disagreements and limitations.</span></a><a class="card" href="benchmarks.html"><strong>Benchmarks</strong><span>Method and 1228 timing rows.</span></a><a class="card" href="references.html"><strong>References</strong><span>Every cited package and paper.</span></a><a class="card" href="data.html"><strong>Data and schemas</strong><span>File formats, joins and the state vocabulary.</span></a><a class="card" href="llms.txt"><strong>llms.txt</strong><span>Every data file, its schema and how the files join, as plain text.</span></a></nav>
 
 ## How entries are labelled
 
@@ -30,11 +23,11 @@ Each tool-by-measure entry has one state:
 
 | State | Meaning |
 |---|---|
-| `checked-agrees` | checked, agrees (✓) |
-| `checked-convention` | checked, differs by convention (≠) |
-| `checked-defect` | checked, defect (✗) |
-| `checked-no-value` | checked, no value on some inputs (∅) |
-| `reported-in-docs` | reported in docs (·) |
+| `checked-agrees` | <span class="st st-g st-ok" role="img" aria-label="checked, agrees" title="checked, agrees">✓</span> checked, agrees |
+| `checked-convention` | <span class="st st-g st-conv" role="img" aria-label="checked, differs by convention" title="checked, differs by convention">≠</span> checked, differs by convention |
+| `checked-defect` | <span class="st st-g st-defect" role="img" aria-label="checked, defect" title="checked, defect">✗</span> checked, defect |
+| `checked-no-value` | <span class="st st-g st-nov" role="img" aria-label="checked, no value on some inputs" title="checked, no value on some inputs">∅</span> checked, no value on some inputs |
+| `reported-in-docs` | <span class="st st-g st-docs" role="img" aria-label="reported in docs" title="reported in docs">·</span> reported in docs |
 
 The definitions are in `data/schema/capabilities.schema.json`. A tool marked *documented-only* was never run: its entries come from its documentation and are always `reported-in-docs`.
 

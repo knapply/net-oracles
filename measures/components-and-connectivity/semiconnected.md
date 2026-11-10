@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Semiconnected graphs {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Connected components. Concept id: `semiconnected`. 2 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Class matrix {#concept-top}
 
 Family: [Matrices and spectra](index.html). Subfamily: Graph matrices. Concept id: `class_matrix`. 1 measure.

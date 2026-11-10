@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Burt constraint {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Structural holes and brokerage. Concept id: `burt_constraint`. 1 measure.

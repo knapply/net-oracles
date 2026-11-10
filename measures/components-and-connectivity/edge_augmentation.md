@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # K-edge augmentation {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Cuts and separators. Concept id: `edge_augmentation`. 1 measure.

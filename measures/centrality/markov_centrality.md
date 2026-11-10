@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Markov centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Spectral and walk-based. Concept id: `markov_centrality`. 1 measure.

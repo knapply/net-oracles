@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Random power-law trees {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and enumeration. Concept id: `random_powerlaw_tree`. 2 measures.

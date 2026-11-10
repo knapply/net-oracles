@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Freeman segregation index {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homophily indices. Concept id: `freeman_segregation`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # BiRank {#concept-top}
 
 Family: [Two-mode and bipartite](index.html). Subfamily: Bipartite structure. Concept id: `birank`. 1 measure.

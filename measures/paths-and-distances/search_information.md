@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Search information {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concept id: `search_information`. 1 measure.

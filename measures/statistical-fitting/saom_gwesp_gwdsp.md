@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Geometrically weighted shared-partner effects {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: `saom_gwesp_gwdsp`. 11 measures.

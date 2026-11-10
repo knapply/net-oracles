@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Fragmentation {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Connected components. Concept id: `fragmentation`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # SAOM simulated mean statistics {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: `saom_simulated_mean`. 1 measure.

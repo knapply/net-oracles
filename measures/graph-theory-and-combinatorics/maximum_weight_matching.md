@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Maximum-weight matching {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Matching. Concept id: `maximum_weight_matching`. 3 measures.

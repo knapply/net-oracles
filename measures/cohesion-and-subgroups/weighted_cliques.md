@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Weighted cliques {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Cliques. Concept id: `weighted_cliques`. 1 measure.

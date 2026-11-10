@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Sfigality {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified procedures. Concept id: `sfigality`. 1 measure.

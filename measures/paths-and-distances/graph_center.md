@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Graph center {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concept id: `graph_center`. 1 measure.

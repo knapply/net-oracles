@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Regular equivalence (REGE, CATREGE) {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Equivalence and clustering. Concept id: `regular_equivalence`. 2 measures.

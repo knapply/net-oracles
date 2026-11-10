@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Local node connectivity {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Connectivity numbers. Concept id: `local_node_connectivity`. 4 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Dominators and dominance frontiers {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Dominators. Concept id: `dominators`. 3 measures.

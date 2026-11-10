@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Relational event statistics {#concept-top}
 
 Family: [Temporal and events](index.html). Subfamily: Relational event models. Concept id: `rem_statistic`. 1 measure.

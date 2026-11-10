@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Time-respecting graph matching {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Isomorphism and subgraph matching. Concept id: `isomorphism_time_respecting`. 2 measures.

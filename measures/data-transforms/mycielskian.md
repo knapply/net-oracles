@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Mycielskian {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Graph operators. Concept id: `mycielskian`. 2 measures.

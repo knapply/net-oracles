@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Dasgupta cost and score {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `dasgupta_cost`. 2 measures.

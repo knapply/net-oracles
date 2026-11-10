@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Louvain embedding {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Embeddings. Concept id: `louvain_embedding`. 1 measure.

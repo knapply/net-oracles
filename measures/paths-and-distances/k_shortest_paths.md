@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # K shortest paths {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Shortest paths. Concept id: `k_shortest_paths`. 1 measure.

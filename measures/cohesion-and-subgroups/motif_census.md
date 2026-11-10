@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Motif census {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and local structure. Concept id: `motif_census`. 1 measure.

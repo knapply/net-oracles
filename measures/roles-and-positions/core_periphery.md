@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Core-periphery (discrete) {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Core-periphery. Concept id: `core_periphery`. 2 measures.

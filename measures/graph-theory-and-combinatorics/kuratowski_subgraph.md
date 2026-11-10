@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Kuratowski subgraph and counterexample {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Planarity. Concept id: `kuratowski_subgraph`. 2 measures.

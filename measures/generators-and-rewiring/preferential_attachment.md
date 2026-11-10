@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Preferential attachment {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment models. Concept id: `preferential_attachment`. 4 measures.

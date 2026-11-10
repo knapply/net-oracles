@@ -5,6 +5,7 @@ parent: Tools
 ---
 
 {% raw %}
+
 # nx-parallel
 
 | Field | Value |

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Rank comparison and ordering {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Partial rankings (netrankr). Concept id: `rank_comparison`. 7 measures.

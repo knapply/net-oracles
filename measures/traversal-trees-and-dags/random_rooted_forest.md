@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Random rooted forests {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and enumeration. Concept id: `random_rooted_forest`. 2 measures.

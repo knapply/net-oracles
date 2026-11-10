@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Consensus tree {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and enumeration. Concept id: `consensus_tree`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Simple path test {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Degree sequences and predicates. Concept id: `simple_path_test`. 1 measure.

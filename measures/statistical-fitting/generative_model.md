@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Generative network models (fit and evaluate) {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id: `generative_model`. 2 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Minimum cycle basis {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Cycles. Concept id: `minimum_cycle_basis`. 3 measures.

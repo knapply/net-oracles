@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Mean first passage time {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concept id: `mean_first_passage_time`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Graph union {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Graph operators. Concept id: `graph_union`. 1 measure.

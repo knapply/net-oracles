@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Girvan-Newman edge removal {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `girvan_newman`. 5 measures.

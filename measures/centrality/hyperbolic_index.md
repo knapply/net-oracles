@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Hyperbolic index {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Partial rankings (netrankr). Concept id: `hyperbolic_index`. 1 measure.

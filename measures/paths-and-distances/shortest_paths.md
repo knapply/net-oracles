@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Shortest paths (Dijkstra, Bellman-Ford, A\*, bidirectional) {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Shortest paths. Concept id: `shortest_paths`. 12 measures.

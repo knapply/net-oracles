@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Approximate clique and independent set (Ramsey, clique removal) {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Independent sets and approximation. Concept id: `approx_clique_independent_set`. 3 measures.

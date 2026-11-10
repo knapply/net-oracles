@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Distances between graphs (Hamming, structural) {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Distances between graphs. Concept id: `graph_distance`. 3 measures.

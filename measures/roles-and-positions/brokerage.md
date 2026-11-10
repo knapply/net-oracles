@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Brokerage {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Structural holes and brokerage. Concept id: `brokerage`. 1 measure.

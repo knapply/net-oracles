@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Cut clustering {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `cut_clustering`. 1 measure.

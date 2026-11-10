@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Maximum branching {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Spanning trees and branchings. Concept id: `maximum_branching`. 4 measures.

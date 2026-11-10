@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Random reference graph {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomization. Concept id: `random_reference`. 1 measure.

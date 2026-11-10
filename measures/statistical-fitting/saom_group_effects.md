@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Group effects {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: `saom_group_effects`. 2 measures.

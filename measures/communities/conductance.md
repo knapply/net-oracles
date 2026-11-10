@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Conductance {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition and cover quality. Concept id: `conductance`. 2 measures.

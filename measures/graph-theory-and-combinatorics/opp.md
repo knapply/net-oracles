@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # OPP {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified procedures. Concept id: `opp`. 1 measure.

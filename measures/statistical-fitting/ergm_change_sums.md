@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # ERGM change statistics {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id: `ergm_change_sums`. 1 measure.

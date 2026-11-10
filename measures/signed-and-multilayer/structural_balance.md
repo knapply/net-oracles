@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Structural balance and frustration {#concept-top}
 
 Family: [Signed and multilayer](index.html). Subfamily: Signed networks. Concept id: `structural_balance`. 1 measure.

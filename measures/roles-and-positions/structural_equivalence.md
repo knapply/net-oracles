@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Structural equivalence {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Equivalence and clustering. Concept id: `structural_equivalence`. 3 measures.

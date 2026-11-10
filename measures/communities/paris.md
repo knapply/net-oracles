@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Paris hierarchical clustering {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `paris`. 1 measure.

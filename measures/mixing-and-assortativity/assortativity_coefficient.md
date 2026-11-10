@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Assortativity coefficient {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Assortativity. Concept id: `assortativity_coefficient`. 4 measures.

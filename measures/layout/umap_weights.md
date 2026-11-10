@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # UMAP weights and layout {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Embeddings. Concept id: `umap_weights`. 2 measures.

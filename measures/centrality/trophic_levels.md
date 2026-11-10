@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Trophic levels and incoherence {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `trophic_levels`. 1 measure.

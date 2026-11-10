@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Local clustering coefficient {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Clustering and transitivity. Concept id: `local_clustering`. 4 measures.

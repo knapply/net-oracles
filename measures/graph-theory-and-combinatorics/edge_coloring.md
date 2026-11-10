@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Edge coloring {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Coloring. Concept id: `edge_coloring`. 3 measures.

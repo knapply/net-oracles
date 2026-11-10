@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Inverse line graph {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Graph operators. Concept id: `inverse_line_graph`. 1 measure.

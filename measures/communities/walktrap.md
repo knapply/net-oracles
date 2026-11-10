@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Walktrap {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `walktrap`. 1 measure.

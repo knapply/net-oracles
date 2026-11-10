@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Belief propagation states {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Dynamics states. Concept id: `belief_propagation_state`. 3 measures.

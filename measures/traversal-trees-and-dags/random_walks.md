@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Random walks {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Traversal and orderings. Concept id: `random_walks`. 2 measures.

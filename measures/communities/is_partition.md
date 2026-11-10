@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Partition test {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition comparison and operations. Concept id: `is_partition`. 1 measure.

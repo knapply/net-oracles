@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Matching index {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Similarity and link prediction. Concept id: `matching_index`. 1 measure.

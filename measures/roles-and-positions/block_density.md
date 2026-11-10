@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Block density {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `block_density`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Lattice-preserving rewiring {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomization. Concept id: `rewire_lattice`. 1 measure.

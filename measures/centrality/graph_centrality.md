@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Graph centrality (inverse eccentricity) {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Distance-based. Concept id: `graph_centrality`. 1 measure.

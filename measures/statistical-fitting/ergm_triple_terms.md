@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Triple, cycle and Simmelian terms {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_triple_terms`. 7 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Node2vec {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Embeddings. Concept id: `node2vec`. 1 measure.

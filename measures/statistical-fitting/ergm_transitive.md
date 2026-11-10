@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Transitive and intransitive triple terms {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_transitive`. 4 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Negative cycle detection {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Shortest paths. Concept id: `negative_cycle`. 1 measure.

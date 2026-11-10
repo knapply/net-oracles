@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Hyperbolic random graph {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice and geometric models. Concept id: `hyperbolic_graph`. 1 measure.

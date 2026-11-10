@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Spectral bipartivity {#concept-top}
 
 Family: [Two-mode and bipartite](index.html). Subfamily: Bipartite structure. Concept id: `spectral_bipartivity`. 1 measure.

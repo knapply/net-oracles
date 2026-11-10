@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Decay centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Distance-based. Concept id: `decay_centrality`. 1 measure.

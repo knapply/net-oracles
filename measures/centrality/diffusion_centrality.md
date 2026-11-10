@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Diffusion centrality and diffusion degree {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `diffusion_centrality`. 3 measures.

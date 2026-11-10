@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Krackhardt graph-theoretic dimensions {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Efficiency, compactness and hierarchy. Concept id: `krackhardt_dimensions`. 1 measure.

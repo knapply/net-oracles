@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Power-law degree sequence {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models. Concept id: `powerlaw_degree_sequence`. 1 measure.

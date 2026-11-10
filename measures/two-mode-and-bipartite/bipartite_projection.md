@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Bipartite projection {#concept-top}
 
 Family: [Two-mode and bipartite](index.html). Subfamily: Projection. Concept id: `bipartite_projection`. 3 measures.

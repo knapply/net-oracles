@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Edge swap and contract {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomization. Concept id: `swap_contract`. 1 measure.

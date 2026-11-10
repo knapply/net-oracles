@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Weisfeiler-Lehman graph and subgraph hash {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Isomorphism and subgraph matching. Concept id: `isomorphism_hash`. 2 measures.

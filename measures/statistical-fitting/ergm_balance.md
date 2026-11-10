@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Balance term {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_balance`. 1 measure.

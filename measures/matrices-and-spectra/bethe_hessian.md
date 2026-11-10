@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Bethe Hessian {#concept-top}
 
 Family: [Matrices and spectra](index.html). Subfamily: Graph matrices. Concept id: `bethe_hessian`. 1 measure.

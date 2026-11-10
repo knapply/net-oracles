@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Ising and Potts dynamics states {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Dynamics states. Concept id: `spin_dynamics_state`. 6 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # QAP correlation {#concept-top}
 
 Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutation tests. Concept id: `qap_correlation`. 1 measure.

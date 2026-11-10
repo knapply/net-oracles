@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Partition and cover file formats {#concept-top}
 
 Family: [Input and output](index.html). Subfamily: Partition and cover formats. Concept id: `partition_cover_io`. 5 measures.

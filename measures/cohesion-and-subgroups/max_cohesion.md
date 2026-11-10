@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Maximum cohesion {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Cliques. Concept id: `max_cohesion`. 1 measure.

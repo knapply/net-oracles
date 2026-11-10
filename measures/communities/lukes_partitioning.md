@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Lukes tree partitioning {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Graph bisection and partitioning. Concept id: `lukes_partitioning`. 1 measure.

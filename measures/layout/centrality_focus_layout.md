@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Backbone, focus and centrality layouts {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `centrality_focus_layout`. 6 measures.

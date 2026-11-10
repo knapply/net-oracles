@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Scan statistic {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Triangles and local counts. Concept id: `scan_statistic`. 2 measures.

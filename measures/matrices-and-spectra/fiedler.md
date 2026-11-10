@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Fiedler value and vector {#concept-top}
 
 Family: [Matrices and spectra](index.html). Subfamily: Spectra. Concept id: `fiedler`. 1 measure.

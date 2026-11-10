@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Structural holes (Burt) {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Structural holes and brokerage. Concept id: `structural_holes`. 2 measures.

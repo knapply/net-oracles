@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Edge-list and adjacency-list text formats {#concept-top}
 
 Family: [Input and output](index.html). Subfamily: Edge-list and adjacency-list formats. Concept id: `text_edge_list_io`. 9 measures.

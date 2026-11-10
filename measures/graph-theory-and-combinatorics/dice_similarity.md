@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Dice similarity {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Similarity and link prediction. Concept id: `dice_similarity`. 1 measure.

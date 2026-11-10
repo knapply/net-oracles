@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Congru {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified procedures. Concept id: `congru`. 1 measure.

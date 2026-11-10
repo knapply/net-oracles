@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Relational event model fit {#concept-top}
 
 Family: [Temporal and events](index.html). Subfamily: Relational event models. Concept id: `rem_fit`. 1 measure.

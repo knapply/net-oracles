@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Participation coefficient {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Module-based roles. Concept id: `participation_coefficient`. 2 measures.

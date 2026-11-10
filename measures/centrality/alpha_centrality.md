@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Alpha centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `alpha_centrality`. 1 measure.

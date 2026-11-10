@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Lattice graphs {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice and geometric models. Concept id: `lattice_graphs`. 9 measures.

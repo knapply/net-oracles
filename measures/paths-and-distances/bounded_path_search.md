@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Bounded path and walk search {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Path enumeration and counting. Concept id: `bounded_path_search`. 2 measures.

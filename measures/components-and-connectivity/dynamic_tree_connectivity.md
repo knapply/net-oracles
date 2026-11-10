@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Dynamic tree connectivity {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Connectivity numbers. Concept id: `dynamic_tree_connectivity`. 1 measure.

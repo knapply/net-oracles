@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Positive-negative centrality {#concept-top}
 
 Family: [Signed and multilayer](index.html). Subfamily: Signed networks. Concept id: `pn_centrality`. 1 measure.

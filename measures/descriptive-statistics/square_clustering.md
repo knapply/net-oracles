@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Square clustering {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Clustering and transitivity. Concept id: `square_clustering`. 2 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Expander graphs {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Named and deterministic graphs. Concept id: `expander_graphs`. 3 measures.

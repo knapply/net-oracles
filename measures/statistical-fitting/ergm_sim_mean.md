@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # ERGM simulated mean statistics {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id: `ergm_sim_mean`. 1 measure.

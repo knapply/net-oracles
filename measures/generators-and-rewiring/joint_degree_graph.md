@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Joint degree graph {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models. Concept id: `joint_degree_graph`. 2 measures.

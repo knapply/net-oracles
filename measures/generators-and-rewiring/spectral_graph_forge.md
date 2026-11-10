@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Spectral graph forge {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice and geometric models. Concept id: `spectral_graph_forge`. 1 measure.

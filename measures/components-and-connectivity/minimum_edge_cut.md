@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Minimum edge cut {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Cuts and separators. Concept id: `minimum_edge_cut`. 2 measures.

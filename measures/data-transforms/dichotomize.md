@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Dichotomize {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Matrix and tie transformations. Concept id: `dichotomize`. 2 measures.

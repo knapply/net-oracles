@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # G(n, m) random graph {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs. Concept id: `gnm_random_graph`. 2 measures.

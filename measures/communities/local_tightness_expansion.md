@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Local tightness expansion {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition and cover quality. Concept id: `local_tightness_expansion`. 1 measure.

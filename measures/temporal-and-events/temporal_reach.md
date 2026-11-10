@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Temporal reach {#concept-top}
 
 Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Concept id: `temporal_reach`. 1 measure.

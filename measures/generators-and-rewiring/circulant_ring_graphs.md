@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Circulant and ring graphs (ladder, chordal, Petersen, Harary) {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Named and deterministic graphs. Concept id: `circulant_ring_graphs`. 9 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Constant Potts model {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `constant_potts_model`. 1 measure.

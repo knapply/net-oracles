@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Random spanning tree {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Spanning trees and branchings. Concept id: `random_spanning_tree`. 3 measures.

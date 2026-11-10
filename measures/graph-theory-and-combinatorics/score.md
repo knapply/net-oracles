@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Score {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified procedures. Concept id: `score`. 1 measure.

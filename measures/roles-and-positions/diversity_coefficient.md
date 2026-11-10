@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Diversity coefficient {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Module-based roles. Concept id: `diversity_coefficient`. 1 measure.

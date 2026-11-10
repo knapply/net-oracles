@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Bipartite terms {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_bipartite_terms`. 35 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Connected components {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Connected components. Concept id: `connected_components`. 5 measures.

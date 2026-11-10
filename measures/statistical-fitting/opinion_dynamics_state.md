@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Voter, Kirman and Axelrod dynamics states {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Dynamics states. Concept id: `opinion_dynamics_state`. 4 measures.

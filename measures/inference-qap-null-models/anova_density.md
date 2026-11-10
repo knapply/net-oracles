@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # ANOVA density models {#concept-top}
 
 Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutation tests. Concept id: `anova_density`. 1 measure.

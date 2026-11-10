@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Load centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Betweenness, load and flow. Concept id: `load_centrality`. 2 measures.

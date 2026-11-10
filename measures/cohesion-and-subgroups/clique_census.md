@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Clique census {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Cliques. Concept id: `clique_census`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # SPSP {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified procedures. Concept id: `spsp`. 1 measure.

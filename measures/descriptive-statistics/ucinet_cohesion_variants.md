@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Normalized reciprocity, DKS transitivity and cyclicity {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Clustering and transitivity. Concept id: `ucinet_cohesion_variants`. 1 measure.

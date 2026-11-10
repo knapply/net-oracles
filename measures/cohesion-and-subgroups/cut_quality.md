@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Cut quality (conductance, expansion, boundary) {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Relaxed cliques and subgroups. Concept id: `cut_quality`. 1 measure.

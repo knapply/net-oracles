@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Link communities {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `link_communities`. 1 measure.

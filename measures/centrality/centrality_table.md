@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Centrality table (raw and normalized) {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Centralization and tables. Concept id: `centrality_table`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Tree decomposition and treewidth {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Tree decomposition. Concept id: `tree_decomposition`. 2 measures.

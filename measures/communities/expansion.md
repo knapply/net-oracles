@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Expansion {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition and cover quality. Concept id: `expansion`. 1 measure.

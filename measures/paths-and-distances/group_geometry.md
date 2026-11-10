@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Group geometry {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Geometry. Concept id: `group_geometry`. 1 measure.

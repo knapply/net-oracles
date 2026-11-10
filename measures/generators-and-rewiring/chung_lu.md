@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Chung-Lu expected-degree model {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models. Concept id: `chung_lu`. 1 measure.

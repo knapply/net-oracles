@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Deterministic degree-sequence realization {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models. Concept id: `degree_sequence_realization`. 3 measures.

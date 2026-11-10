@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Complete and complete multipartite graphs {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Named and deterministic graphs. Concept id: `complete_multipartite_graphs`. 6 measures.

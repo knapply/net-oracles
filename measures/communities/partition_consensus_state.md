@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Partition mode and centroid state {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition comparison and operations. Concept id: `partition_consensus_state`. 2 measures.

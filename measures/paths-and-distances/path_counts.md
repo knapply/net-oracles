@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Path counts {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Path enumeration and counting. Concept id: `path_counts`. 1 measure.

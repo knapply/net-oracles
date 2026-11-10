@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Triad enumeration {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and local structure. Concept id: `triad_enumeration`. 2 measures.

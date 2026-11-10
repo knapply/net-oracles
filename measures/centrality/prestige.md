@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Prestige {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `prestige`. 1 measure.

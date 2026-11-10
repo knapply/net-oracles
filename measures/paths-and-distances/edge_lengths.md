@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Edge lengths (geometry) {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Geometry. Concept id: `edge_lengths`. 1 measure.

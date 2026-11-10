@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Group-level permutation tests {#concept-top}
 
 Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutation tests. Concept id: `node_permutation_tests`. 1 measure.

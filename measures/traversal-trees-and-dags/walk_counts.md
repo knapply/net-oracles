@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Walk counts {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Traversal and orderings. Concept id: `walk_counts`. 1 measure.

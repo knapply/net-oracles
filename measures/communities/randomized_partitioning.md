@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Randomized partitioning {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Graph bisection and partitioning. Concept id: `randomized_partitioning`. 1 measure.

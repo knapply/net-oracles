@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Spectral gap {#concept-top}
 
 Family: [Matrices and spectra](index.html). Subfamily: Spectra. Concept id: `spectral_gap`. 1 measure.

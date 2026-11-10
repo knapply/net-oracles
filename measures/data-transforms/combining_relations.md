@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Combining similar relations {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Matrix and tie transformations. Concept id: `combining_relations`. 1 measure.

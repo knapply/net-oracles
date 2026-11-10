@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Local assortativity {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Assortativity. Concept id: `local_assortativity`. 1 measure.

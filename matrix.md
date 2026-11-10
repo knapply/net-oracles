@@ -5,9 +5,10 @@ nav_order: 2
 ---
 
 {% raw %}
+
 # Capability matrix
 
-✓ checked, agrees; ≠ checked, differs by a documented convention; ✗ checked, defect found; ∅ checked, no value on the compared inputs; · reported in the tool's documentation (not run); blank: not known to implement it.
+<div class="legend" role="group" aria-label="State legend"><span><span class="st st-g st-ok" role="img" aria-label="checked, agrees" title="checked, agrees">✓</span> checked, agrees</span><span><span class="st st-g st-conv" role="img" aria-label="checked, differs by convention" title="checked, differs by convention">≠</span> checked, differs by convention</span><span><span class="st st-g st-defect" role="img" aria-label="checked, defect" title="checked, defect">✗</span> checked, defect</span><span><span class="st st-g st-nov" role="img" aria-label="checked, no value on some inputs" title="checked, no value on some inputs">∅</span> checked, no value on some inputs</span><span><span class="st st-g st-docs" role="img" aria-label="reported in docs" title="reported in docs">·</span> reported in docs</span><span class="blank">blank: not known to implement it</span></div>
 
 Columns are tool identifiers (see [Tools](tools/)). Rows are measures, grouped by family, subfamily and concept; the concept name links to its page and each variant links to its section.
 

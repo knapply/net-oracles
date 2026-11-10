@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # VoteRank {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `voterank`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Communicability betweenness {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Betweenness, load and flow. Concept id: `communicability_betweenness`. 1 measure.

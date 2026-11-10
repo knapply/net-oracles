@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Degree and property correlation histograms {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Assortativity. Concept id: `correlation_histograms`. 1 measure.

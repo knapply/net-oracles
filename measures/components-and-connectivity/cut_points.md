@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Cut points (articulation points) {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Articulation points, bridges and biconnected components. Concept id: `cut_points`. 1 measure.

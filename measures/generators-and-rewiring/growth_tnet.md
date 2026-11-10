@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Growth (tnet) {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment models. Concept id: `growth_tnet`. 1 measure.

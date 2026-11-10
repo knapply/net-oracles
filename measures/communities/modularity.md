@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Modularity {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition and cover quality. Concept id: `modularity`. 3 measures.

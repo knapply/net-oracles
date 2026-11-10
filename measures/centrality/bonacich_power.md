@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Bonacich power centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Spectral and walk-based. Concept id: `bonacich_power`. 1 measure.

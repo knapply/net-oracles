@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Edge cover {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Covers and dominating sets. Concept id: `edge_cover`. 2 measures.

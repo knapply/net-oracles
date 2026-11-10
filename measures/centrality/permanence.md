@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Permanence {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `permanence`. 1 measure.

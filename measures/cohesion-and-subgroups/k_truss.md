@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # K-truss {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Cores, trusses and cohesive blocks. Concept id: `k_truss`. 2 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Guttman scaling, K-means and quick clustering {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Scaling and clustering. Concept id: `guttman_kmeans`. 1 measure.

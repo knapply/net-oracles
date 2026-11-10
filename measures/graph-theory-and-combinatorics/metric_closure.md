@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Metric closure {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Independent sets and approximation. Concept id: `metric_closure`. 1 measure.

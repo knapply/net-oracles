@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Topological coefficient {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `topological_coefficient`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Dynamic layout {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `dynamic_layout`. 1 measure.

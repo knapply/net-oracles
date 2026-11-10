@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Partition overlap {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition comparison and operations. Concept id: `partition_overlap`. 2 measures.

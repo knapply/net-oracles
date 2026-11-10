@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Disjoint paths {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Connectivity numbers. Concept id: `disjoint_paths`. 2 measures.

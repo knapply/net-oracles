@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Module degree z-score {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Module-based roles. Concept id: `module_degree_zscore`. 1 measure.

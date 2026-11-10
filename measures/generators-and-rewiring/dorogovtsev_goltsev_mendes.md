@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Dorogovtsev-Goltsev-Mendes graph {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment models. Concept id: `dorogovtsev_goltsev_mendes`. 2 measures.

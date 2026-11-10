@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Estrada index {#concept-top}
 
 Family: [Matrices and spectra](index.html). Subfamily: Spectra. Concept id: `estrada_index`. 1 measure.

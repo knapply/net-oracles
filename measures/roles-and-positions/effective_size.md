@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Effective size {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Structural holes and brokerage. Concept id: `effective_size`. 1 measure.

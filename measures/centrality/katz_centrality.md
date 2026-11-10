@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Katz centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Spectral and walk-based. Concept id: `katz_centrality`. 2 measures.

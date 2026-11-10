@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Trust transitivity {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Clustering and transitivity. Concept id: `trust_transitivity`. 1 measure.

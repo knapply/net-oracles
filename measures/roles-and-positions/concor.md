@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # CONCOR {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `concor`. 1 measure.

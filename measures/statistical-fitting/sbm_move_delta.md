@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # SBM move delta {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id: `sbm_move_delta`. 1 measure.

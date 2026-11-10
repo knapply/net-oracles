@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # K-factor {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Covers and dominating sets. Concept id: `k_factor`. 2 measures.

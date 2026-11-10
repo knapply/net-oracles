@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Ego network ties {#concept-top}
 
 Family: [Ego networks](index.html). Subfamily: Ego measures. Concept id: `ego_ties`. 1 measure.

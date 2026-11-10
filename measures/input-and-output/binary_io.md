@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Binary and serialization formats {#concept-top}
 
 Family: [Input and output](index.html). Subfamily: Binary and serialization formats. Concept id: `binary_io`. 4 measures.

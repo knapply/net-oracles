@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Planar embedding {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Planarity. Concept id: `planar_embedding`. 2 measures.

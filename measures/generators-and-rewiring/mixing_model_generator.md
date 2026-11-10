@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Random graph with mixing (rgnmix) {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs. Concept id: `mixing_model_generator`. 1 measure.

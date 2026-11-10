@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Vertex cover {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Covers and dominating sets. Concept id: `vertex_cover`. 2 measures.

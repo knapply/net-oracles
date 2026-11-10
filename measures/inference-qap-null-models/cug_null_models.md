@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Conditional uniform graph tests and null models {#concept-top}
 
 Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutation tests. Concept id: `cug_null_models`. 1 measure.

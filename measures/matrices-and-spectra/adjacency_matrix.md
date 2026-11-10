@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Adjacency matrix {#concept-top}
 
 Family: [Matrices and spectra](index.html). Subfamily: Graph matrices. Concept id: `adjacency_matrix`. 1 measure.

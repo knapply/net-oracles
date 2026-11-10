@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Group closeness centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Distance-based. Concept id: `group_closeness`. 1 measure.

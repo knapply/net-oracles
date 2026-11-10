@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Breadth-first search {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Traversal and orderings. Concept id: `breadth_first_search`. 8 measures.

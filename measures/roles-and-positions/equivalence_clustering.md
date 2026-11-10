@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Equivalence clustering {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Equivalence and clustering. Concept id: `equivalence_clustering`. 2 measures.

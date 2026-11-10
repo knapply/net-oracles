@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # LFR benchmark generator {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment models. Concept id: `lfr_benchmark`. 1 measure.

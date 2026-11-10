@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Epidemic simulation (SIR, SEIR) {#concept-top}
 
 Family: [Temporal and events](index.html). Subfamily: Diffusion simulation. Concept id: `epidemic_simulation`. 2 measures.

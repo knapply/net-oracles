@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Second-order centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `second_order_centrality`. 1 measure.

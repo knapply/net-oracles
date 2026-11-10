@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Bipartite coloring and test {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Coloring. Concept id: `bipartite_coloring`. 3 measures.

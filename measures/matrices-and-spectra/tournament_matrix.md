@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Tournament matrix {#concept-top}
 
 Family: [Matrices and spectra](index.html). Subfamily: Graph matrices. Concept id: `tournament_matrix`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Block edge gradient {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Marginal and latent graph distributions. Concept id: `block_edge_gradient`. 1 measure.

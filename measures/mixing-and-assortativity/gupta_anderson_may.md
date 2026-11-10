@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Gupta-Anderson-May mixing coefficient {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homophily indices. Concept id: `gupta_anderson_may`. 1 measure.

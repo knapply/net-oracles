@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Pivot MDS layout {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `pivot_mds_layout`. 2 measures.

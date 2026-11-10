@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Centralization {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Centralization and tables. Concept id: `centralization`. 6 measures.

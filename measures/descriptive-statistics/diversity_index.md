@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Diversity index {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Density and degree distribution. Concept id: `diversity_index`. 1 measure.

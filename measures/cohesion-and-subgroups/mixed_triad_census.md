@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Mixed triad census {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and local structure. Concept id: `mixed_triad_census`. 1 measure.

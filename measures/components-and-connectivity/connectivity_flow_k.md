@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # K-connectivity by flow {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Connectivity numbers. Concept id: `connectivity_flow_k`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Latapy clustering {#concept-top}
 
 Family: [Two-mode and bipartite](index.html). Subfamily: Bipartite structure. Concept id: `latapy_clustering`. 1 measure.

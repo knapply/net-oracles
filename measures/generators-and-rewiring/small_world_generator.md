@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Small-world generator {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice and geometric models. Concept id: `small_world_generator`. 1 measure.

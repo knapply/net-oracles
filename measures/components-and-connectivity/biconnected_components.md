@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Biconnected components {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Articulation points, bridges and biconnected components. Concept id: `biconnected_components`. 2 measures.

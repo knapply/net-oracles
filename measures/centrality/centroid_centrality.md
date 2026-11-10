@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Centroid centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Distance-based. Concept id: `centroid_centrality`. 1 measure.

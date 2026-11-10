@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Normalize ties {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Matrix and tie transformations. Concept id: `normalize_ties`. 1 measure.

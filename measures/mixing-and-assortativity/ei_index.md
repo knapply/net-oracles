@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # E-I index {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homophily indices. Concept id: `ei_index`. 1 measure.

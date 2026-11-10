@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Spinglass {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Modularity-based detection. Concept id: `spinglass`. 1 measure.

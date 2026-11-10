@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Average distance centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Distance-based. Concept id: `average_distance_centrality`. 2 measures.

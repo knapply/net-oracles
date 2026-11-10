@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Stress-based layouts {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `stress_layout`. 8 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # LeaderRank {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Spectral and walk-based. Concept id: `leaderrank`. 1 measure.

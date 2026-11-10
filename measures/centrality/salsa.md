@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # SALSA {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Spectral and walk-based. Concept id: `salsa`. 1 measure.

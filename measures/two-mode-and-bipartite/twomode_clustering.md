@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Two-mode clustering coefficients (six-cycle) {#concept-top}
 
 Family: [Two-mode and bipartite](index.html). Subfamily: Bipartite structure. Concept id: `twomode_clustering`. 1 measure.

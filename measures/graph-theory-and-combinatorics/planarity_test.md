@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Planarity test {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Planarity. Concept id: `planarity_test`. 2 measures.

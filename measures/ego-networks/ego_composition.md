@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Ego composition and heterogeneity {#concept-top}
 
 Family: [Ego networks](index.html). Subfamily: Ego measures. Concept id: `ego_composition`. 1 measure.

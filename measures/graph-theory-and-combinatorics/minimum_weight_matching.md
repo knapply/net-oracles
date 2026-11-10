@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Minimum-weight matching {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Matching. Concept id: `minimum_weight_matching`. 2 measures.

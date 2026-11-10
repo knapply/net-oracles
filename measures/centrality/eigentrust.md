@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # EigenTrust {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Spectral and walk-based. Concept id: `eigentrust`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Average neighbor degree and degree connectivity {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Assortativity. Concept id: `average_neighbor_degree`. 3 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Spectral modularity bipartition {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Graph bisection and partitioning. Concept id: `spectral_modularity_bipartition`. 1 measure.

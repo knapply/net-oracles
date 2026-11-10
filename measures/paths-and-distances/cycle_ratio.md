@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Minimum and maximum cycle ratio {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Path enumeration and counting. Concept id: `cycle_ratio`. 1 measure.

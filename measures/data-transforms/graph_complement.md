@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Graph complement {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Graph operators. Concept id: `graph_complement`. 2 measures.

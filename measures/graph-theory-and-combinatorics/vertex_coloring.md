@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Vertex coloring {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Coloring. Concept id: `vertex_coloring`. 2 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Boolean and threshold dynamics states {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Dynamics states. Concept id: `threshold_dynamics_state`. 3 measures.

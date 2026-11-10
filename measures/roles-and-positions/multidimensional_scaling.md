@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Multidimensional scaling {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Scaling and clustering. Concept id: `multidimensional_scaling`. 2 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Current-flow betweenness {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Betweenness, load and flow. Concept id: `current_flow_betweenness`. 3 measures.

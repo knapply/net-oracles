@@ -8,6 +8,7 @@ permalink: /measures/communities/
 ---
 
 {% raw %}
+
 # Communities
 
 89 measures in 45 concepts and 5 subfamilies. Each concept page has a section per measure (variant); the anchor of a section is the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens).

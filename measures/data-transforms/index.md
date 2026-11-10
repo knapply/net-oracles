@@ -8,6 +8,7 @@ permalink: /measures/data-transforms/
 ---
 
 {% raw %}
+
 # Data transforms
 
 53 measures in 23 concepts and 4 subfamilies. Each concept page has a section per measure (variant); the anchor of a section is the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens).

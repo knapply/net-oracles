@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Harmonic centrality {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Distance-based. Concept id: `harmonic_centrality`. 1 measure.

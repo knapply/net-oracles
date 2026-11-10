@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Local bridges {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Articulation points, bridges and biconnected components. Concept id: `local_bridges`. 1 measure.

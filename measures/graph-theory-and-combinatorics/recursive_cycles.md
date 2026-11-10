@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Recursive cycles {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Cycles. Concept id: `recursive_cycles`. 1 measure.

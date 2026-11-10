@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # One-exchange approximation {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Independent sets and approximation. Concept id: `max_cut_approximation`. 1 measure.

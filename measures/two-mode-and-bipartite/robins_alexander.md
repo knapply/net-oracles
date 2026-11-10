@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Robins-Alexander clustering {#concept-top}
 
 Family: [Two-mode and bipartite](index.html). Subfamily: Bipartite structure. Concept id: `robins_alexander`. 1 measure.

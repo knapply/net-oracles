@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Lobby index {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `lobby_index`. 1 measure.

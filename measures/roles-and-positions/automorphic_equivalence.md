@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Automorphic equivalence {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Equivalence and clustering. Concept id: `automorphic_equivalence`. 1 measure.

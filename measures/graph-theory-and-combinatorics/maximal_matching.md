@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Maximal matching {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Matching. Concept id: `maximal_matching`. 2 measures.

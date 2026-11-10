@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Rich club {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Rich club. Concept id: `rich_club`. 3 measures.

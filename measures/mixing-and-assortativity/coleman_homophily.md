@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Coleman homophily index {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homophily indices. Concept id: `coleman_homophily`. 1 measure.

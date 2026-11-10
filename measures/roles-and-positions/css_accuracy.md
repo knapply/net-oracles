@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Cognitive social structures with accuracy {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Scaling and clustering. Concept id: `css_accuracy`. 1 measure.

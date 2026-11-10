@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Betweenness {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Betweenness, load and flow. Concept id: `betweenness`. 5 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Minimum-cost flow {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Flows and flow trees. Concept id: `min_cost_flow`. 4 measures.

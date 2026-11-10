@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Edge formation and dissolution {#concept-top}
 
 Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Concept id: `edge_formation_dissolution`. 2 measures.

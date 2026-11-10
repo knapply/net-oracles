@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Nested blockmodel description length {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `blockmodel_description_length`. 1 measure.

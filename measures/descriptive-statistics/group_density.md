@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Group density {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Density and degree distribution. Concept id: `group_density`. 1 measure.

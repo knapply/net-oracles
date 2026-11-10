@@ -210,7 +210,7 @@ def table(head, rows):
 
 def page(front, body):
     fm = "---\n" + "\n".join("%s: %s" % (k, v) for k, v in front.items()) + "\n---\n\n"
-    return fm + "{% raw %}\n" + body.strip() + "\n{% endraw %}\n"
+    return fm + "{% raw %}\n\n" + body.strip() + "\n{% endraw %}\n"
 
 
 def yq(s): return json.dumps(s, ensure_ascii=False)
@@ -220,6 +220,18 @@ STATE_SYM = {"checked-agrees": "✓", "checked-convention": "≠", "checked-defe
 STATE_TXT = {"checked-agrees": "checked, agrees", "checked-convention": "checked, differs by convention", "checked-defect": "checked, defect",
              "checked-no-value": "checked, no value on some inputs", "reported-in-docs": "reported in docs"}
 LEGEND = "✓ checked, agrees; ≠ checked, differs by a documented convention; ✗ checked, defect found; ∅ checked, no value on the compared inputs; · reported in the tool's documentation (not run); blank: not known to implement it."
+
+
+STATE_CLS = {"checked-agrees": "ok", "checked-convention": "conv", "checked-defect": "defect", "checked-no-value": "nov", "reported-in-docs": "docs"}
+
+
+def state_badge(k):
+    return '<span class="st st-g st-%s" role="img" aria-label="%s" title="%s">%s</span>' % (STATE_CLS[k], STATE_TXT[k], STATE_TXT[k], STATE_SYM[k])
+
+
+def legend_html():
+    items = "".join("<span>%s %s</span>" % (state_badge(k), STATE_TXT[k]) for k in STATE_SYM)
+    return '<div class="legend" role="group" aria-label="State legend">' + items + '<span class="blank">blank: not known to implement it</span></div>'
 
 
 def harness_links(conv_rows, tool_ids, rel="../"):
@@ -265,7 +277,23 @@ def build(d):
 
     # index
     ncheck_t = sum(1 for t in tools if t["role"] == "checked")
-    body = f"""# net-oracles
+    ntools = len(tools) - 1
+    counts = [(ntools, "tools"), (len(meas), "measures"), (len(concepts), "concepts"), (len(d["findings"]), "findings"), (len(d["results"]), "benchmark rows")]
+    hero = ('<section class="hero" aria-labelledby="hero-title">'
+            '<canvas id="hero-graph" class="hero-graph" aria-hidden="true"></canvas>'
+            '<div class="hero-body"><h1 id="hero-title">net-oracles</h1>'
+            '<p class="hero-lead">Which network-analysis tool implements which measure, and where their answers differ.</p>'
+            '<ul class="hero-counts">' + "".join("<li><b>%d</b>%s</li>" % c for c in counts) + '</ul></div></section>')
+    cards = [("measures/", "Families", "%d families, %d concepts and %d measures." % (len(families), len(concepts), len(meas))),
+             ("tools/", "Tools", "%d tools, %d run and compared." % (ntools, ncheck_t)),
+             ("matrix.html", "Capability matrix", "Measure by tool, with the state of each entry."),
+             ("findings.html", "Findings", "%d bugs, disagreements and limitations." % len(d["findings"])),
+             ("benchmarks.html", "Benchmarks", "Method and %d timing rows." % len(d["results"])),
+             ("references.html", "References", "Every cited package and paper."),
+             ("data.html", "Data and schemas", "File formats, joins and the state vocabulary."),
+             ("llms.txt", "llms.txt", "Every data file, its schema and how the files join, as plain text.")]
+    cards_html = '<nav class="cards" aria-label="Sections">' + "".join('<a class="card" href="%s"><strong>%s</strong><span>%s</span></a>' % c for c in cards) + "</nav>"
+    body = f"""{hero}
 
 A neutral, citable survey of network-analysis software: which tool implements which measure, how their conventions differ, which bugs and disagreements were found, and how the tools were benchmarked. Every claim carries a citation key; every table on these pages is generated from the machine-readable files in [`data/`](https://github.com/knapply/net-oracles/tree/main/data).
 
@@ -273,20 +301,13 @@ A neutral, citable survey of network-analysis software: which tool implements wh
 
 ## Where to go
 
-{table(['Page', 'What it holds'], [
- ['[Capability matrix](matrix.html)', 'Measure by tool, grouped by family, subfamily and concept, with the state of each entry.'],
- ['[Measures](measures/)', 'Families, subfamilies and one page per concept; each concept page has a section per measure (variant) with implementations, convention differences, tolerances, findings, citations.'],
- ['[Tools](tools/)', 'One page per tool: version tested, license, how it was run, coverage, findings.'],
- ['[Findings](findings.html)', 'Bugs, disagreements and limitations found in other tools, with reproductions where recorded.'],
- ['[Benchmarks](benchmarks.html)', 'Method and timing summaries for the other tools; raw rows are in `data/benchmarks/`.'],
- ['[References](references.html)', 'Every cited package and paper.'],
- ['[Data and schemas](data.html)', 'File formats, joins and the state vocabulary.']])}
+{cards_html}
 
 ## How entries are labelled
 
 Each tool-by-measure entry has one state:
 
-{table(['State', 'Meaning'], [[code(k), STATE_TXT[k] + ' (' + STATE_SYM[k] + ')'] for k in STATE_SYM])}
+{table(['State', 'Meaning'], [[code(k), state_badge(k) + ' ' + STATE_TXT[k]] for k in STATE_SYM])}
 
 The definitions are in `data/schema/capabilities.schema.json`. A tool marked *documented-only* was never run: its entries come from its documentation and are always `reported-in-docs`.
 
@@ -407,7 +428,7 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
         files["measures/%s/%s.md" % (fam_slug(c["family"]), c["id"])] = page({"title": yq(c["name"]), "layout": "default", "parent": yq(c["family"]), "grand_parent": "Measures", "nav_exclude": "true"}, body)
 
     # matrix
-    body = "# Capability matrix\n\n" + LEGEND + "\n\nColumns are tool identifiers (see [Tools](tools/)). Rows are measures, grouped by family, subfamily and concept; the concept name links to its page and each variant links to its section.\n"
+    body = "# Capability matrix\n\n" + legend_html() + "\n\nColumns are tool identifiers (see [Tools](tools/)). Rows are measures, grouped by family, subfamily and concept; the concept name links to its page and each variant links to its section.\n"
     cap = {(r["measure"], r["tool"]): r["state"] for r in d["capabilities"]}
     for f, cs in fam_concepts.items():
         body += "\n## %s\n\n%d measures in %d concepts.\n" % (esc(f), sum(len(mem[c["id"]]) for c in cs), len(cs))

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Normalized cut state {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Cuts and separators. Concept id: `normalized_cut_state`. 1 measure.

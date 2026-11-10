@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # SimRank {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Similarity and link prediction. Concept id: `simrank`. 1 measure.

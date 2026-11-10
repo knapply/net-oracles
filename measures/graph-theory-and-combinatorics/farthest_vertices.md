@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Farthest vertices {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Geometry. Concept id: `farthest_vertices`. 2 measures.

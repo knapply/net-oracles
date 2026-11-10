@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # S-metric {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Degree sequences and predicates. Concept id: `s_metric`. 1 measure.

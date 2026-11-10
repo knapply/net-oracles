@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Partition counts {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Graph bisection and partitioning. Concept id: `partition_counts`. 1 measure.

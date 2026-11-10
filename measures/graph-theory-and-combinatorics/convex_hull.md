@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Convex hull {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Geometry. Concept id: `convex_hull`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Edge percolation {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Robustness and percolation. Concept id: `edge_percolation`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Marginal graph distribution (sample, probability, entropy) {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Marginal and latent graph distributions. Concept id: `marginal_graph_distribution`. 8 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Minimum odd cutset (Padberg-Rao) {#concept-top}
 
 Family: [Components and connectivity](index.html). Subfamily: Cuts and separators. Concept id: `odd_min_cutset`. 1 measure.

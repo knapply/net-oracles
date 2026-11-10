@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Feedback arc and vertex sets {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Cycles. Concept id: `feedback_sets`. 2 measures.

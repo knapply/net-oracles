@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Hub dominance {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition and cover quality. Concept id: `hub_dominance`. 3 measures.

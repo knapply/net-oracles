@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Proximity {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Geometry. Concept id: `proximity`. 1 measure.

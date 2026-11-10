@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Eigenvectors of graph matrices {#concept-top}
 
 Family: [Matrices and spectra](index.html). Subfamily: Spectra. Concept id: `eigenvectors_matrix`. 1 measure.

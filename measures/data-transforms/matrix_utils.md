@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Congruence, rotation, IPF and state transitions {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Matrix and tie transformations. Concept id: `matrix_utils`. 1 measure.

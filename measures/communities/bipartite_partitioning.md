@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Bipartite partitioning {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Graph bisection and partitioning. Concept id: `bipartite_partitioning`. 1 measure.

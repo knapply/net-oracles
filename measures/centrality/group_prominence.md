@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Prominent group {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Group centrality. Concept id: `group_prominence`. 1 measure.

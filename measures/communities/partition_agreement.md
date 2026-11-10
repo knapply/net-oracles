@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Agreement and consensus of partitions {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Partition comparison and operations. Concept id: `partition_agreement`. 3 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Resistance distance and effective resistance {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Resistance and spectral distances. Concept id: `resistance_distance`. 3 measures.

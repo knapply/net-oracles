@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Stochastic block model states {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Block model states. Concept id: `sbm_block_state`. 19 measures.

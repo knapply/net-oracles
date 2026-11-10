@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # K-spanning-tree clustering {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `k_spanning_tree_clustering`. 1 measure.

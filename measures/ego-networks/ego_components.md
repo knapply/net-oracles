@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Ego network components {#concept-top}
 
 Family: [Ego networks](index.html). Subfamily: Ego measures. Concept id: `ego_components`. 1 measure.

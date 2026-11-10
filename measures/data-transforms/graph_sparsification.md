@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Graph sparsification (score-based edge filtering) {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Sparsification and backbones. Concept id: `graph_sparsification`. 16 measures.

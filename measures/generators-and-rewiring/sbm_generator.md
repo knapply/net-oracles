@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Stochastic block model generator {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Block models. Concept id: `sbm_generator`. 2 measures.

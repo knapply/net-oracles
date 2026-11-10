@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Metro-map layout {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `metromap_layout`. 1 measure.

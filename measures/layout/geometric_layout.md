@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Grid, random, circle and sphere layouts {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `geometric_layout`. 4 measures.

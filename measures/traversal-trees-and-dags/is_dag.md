@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # DAG test {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: DAGs and topological order. Concept id: `is_dag`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Maximal extendability {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Matching. Concept id: `matching_extendability`. 1 measure.

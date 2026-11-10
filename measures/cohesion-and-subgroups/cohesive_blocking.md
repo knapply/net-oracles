@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Cohesive blocking (Moody-White) {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Cores, trusses and cohesive blocks. Concept id: `cohesive_blocking`. 2 measures.

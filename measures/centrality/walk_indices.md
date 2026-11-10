@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Walk-based index components {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Walk-based and distance-based indices (netrankr). Concept id: `walk_indices`. 6 measures.

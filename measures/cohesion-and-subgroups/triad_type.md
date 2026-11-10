@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Triad type classification {#concept-top}
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and local structure. Concept id: `triad_type`. 2 measures.

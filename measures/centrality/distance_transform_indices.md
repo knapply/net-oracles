@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Distance transformations for indices {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Walk-based and distance-based indices (netrankr). Concept id: `distance_transform_indices`. 5 measures.

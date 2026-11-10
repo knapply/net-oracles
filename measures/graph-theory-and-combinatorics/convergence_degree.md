@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Convergence degree and field size {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Triangles and local counts. Concept id: `convergence_degree`. 2 measures.

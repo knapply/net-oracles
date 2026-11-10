@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # K-core community detection {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `core_community_detection`. 1 measure.

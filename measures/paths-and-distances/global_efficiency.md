@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Global and local efficiency {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Efficiency and reachability. Concept id: `global_efficiency`. 2 measures.

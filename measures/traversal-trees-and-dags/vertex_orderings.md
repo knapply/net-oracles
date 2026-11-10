@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Vertex orderings (max cardinality, degeneracy) {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Traversal and orderings. Concept id: `vertex_orderings`. 2 measures.

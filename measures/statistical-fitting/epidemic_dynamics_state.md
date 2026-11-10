@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Epidemic dynamics states (SI, SIS, SIR, SIRS) {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Dynamics states. Concept id: `epidemic_dynamics_state`. 4 measures.

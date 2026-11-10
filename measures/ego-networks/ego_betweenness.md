@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Ego betweenness {#concept-top}
 
 Family: [Ego networks](index.html). Subfamily: Ego measures. Concept id: `ego_betweenness`. 1 measure.

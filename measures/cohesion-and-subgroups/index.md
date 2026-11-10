@@ -8,6 +8,7 @@ permalink: /measures/cohesion-and-subgroups/
 ---
 
 {% raw %}
+
 # Cohesion and subgroups
 
 41 measures in 29 concepts and 4 subfamilies. Each concept page has a section per measure (variant); the anchor of a section is the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens).

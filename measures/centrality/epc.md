@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Edge percolated component {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `epc`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Dominating set {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Covers and dominating sets. Concept id: `dominating_set`. 3 measures.

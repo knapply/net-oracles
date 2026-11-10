@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Longest simple path {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Path enumeration and counting. Concept id: `longest_simple_path`. 1 measure.

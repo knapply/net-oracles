@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Alpha-tuned degree and closeness {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Degree and strength. Concept id: `weighted_degree_alpha`. 1 measure.

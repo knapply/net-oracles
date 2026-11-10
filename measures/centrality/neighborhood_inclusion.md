@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Neighborhood inclusion {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Partial rankings (netrankr). Concept id: `neighborhood_inclusion`. 2 measures.

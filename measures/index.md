@@ -7,6 +7,7 @@ permalink: /measures/
 ---
 
 {% raw %}
+
 # Measures
 
 Measures are grouped into concepts (the same quantity, an alternative algorithm, a normalization, direction or weighting option, or one tool's function for it), concepts into subfamilies, and subfamilies into families. Each concept has one page with a section per measure (variant). The [capability matrix](../matrix.html) shows the same measures against all tools; `data/aliases.csv` maps every measure id to its concept page and anchor.

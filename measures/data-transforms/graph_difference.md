@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Graph difference {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Graph operators. Concept id: `graph_difference`. 1 measure.

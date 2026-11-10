@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # CPA {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified procedures. Concept id: `cpa`. 1 measure.

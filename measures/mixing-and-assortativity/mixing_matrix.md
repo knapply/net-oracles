@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Mixing matrices {#concept-top}
 
 Family: [Mixing and assortativity](index.html). Subfamily: Mixing matrices. Concept id: `mixing_matrix`. 3 measures.

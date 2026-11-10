@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Dyad census {#concept-top}
 
 Family: [Descriptive statistics](index.html). Subfamily: Reciprocity, dyad and triad census. Concept id: `dyad_census`. 1 measure.

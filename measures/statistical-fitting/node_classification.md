@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Node classification {#concept-top}
 
 Family: [Statistical fitting](index.html). Subfamily: Prediction and classification. Concept id: `node_classification`. 6 measures.

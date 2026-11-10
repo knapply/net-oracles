@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Spectral embedding and clustering {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Embeddings. Concept id: `spectral_embedding`. 1 measure.

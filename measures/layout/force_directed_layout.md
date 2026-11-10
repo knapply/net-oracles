@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Force-directed layouts {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `force_directed_layout`. 10 measures.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Graph reversal {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Graph operators. Concept id: `graph_reverse`. 1 measure.

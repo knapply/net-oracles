@@ -8,6 +8,7 @@ permalink: /measures/inference-qap-null-models/
 ---
 
 {% raw %}
+
 # Inference (QAP, null models)
 
 7 measures in 7 concepts and 1 subfamilies. Each concept page has a section per measure (variant); the anchor of a section is the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens).

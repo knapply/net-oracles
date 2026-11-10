@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Concentration {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `concentration`. 1 measure.

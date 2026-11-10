@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Kemeny constant {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Resistance and spectral distances. Concept id: `kemeny_constant`. 1 measure.

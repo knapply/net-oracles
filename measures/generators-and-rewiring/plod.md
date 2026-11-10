@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # PLOD generator {#concept-top}
 
 Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment models. Concept id: `plod`. 2 measures.

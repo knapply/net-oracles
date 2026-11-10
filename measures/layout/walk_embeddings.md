@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Walk corpora and skip-gram embeddings (DeepWalk) {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Embeddings. Concept id: `walk_embeddings`. 8 measures.

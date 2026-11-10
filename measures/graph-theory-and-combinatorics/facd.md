@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # FACD {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified procedures. Concept id: `facd`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Bridging coefficient {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Local and structural scores. Concept id: `bridging_coefficient`. 1 measure.

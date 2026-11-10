@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Iterative proportional fitting {#concept-top}
 
 Family: [Data transforms](index.html). Subfamily: Sparsification and backbones. Concept id: `ipf`. 1 measure.

@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # McGregor common subgraphs {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Isomorphism and subgraph matching. Concept id: `common_subgraphs`. 1 measure.

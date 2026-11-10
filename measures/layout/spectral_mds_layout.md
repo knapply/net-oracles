@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Spectral and MDS layouts {#concept-top}
 
 Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `spectral_mds_layout`. 2 measures.

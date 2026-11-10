@@ -8,6 +8,7 @@ permalink: /measures/temporal-and-events/
 ---
 
 {% raw %}
+
 # Temporal and events
 
 20 measures in 14 concepts and 3 subfamilies. Each concept page has a section per measure (variant); the anchor of a section is the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens).

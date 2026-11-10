@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Many-to-many and hierarchy-based shortest paths {#concept-top}
 
 Family: [Paths and distances](index.html). Subfamily: Shortest paths. Concept id: `hierarchical_shortest_paths`. 1 measure.

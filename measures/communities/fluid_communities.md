@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Fluid communities {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `fluid_communities`. 1 measure.

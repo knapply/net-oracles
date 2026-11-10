@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Closeness {#concept-top}
 
 Family: [Centrality](index.html). Subfamily: Distance-based. Concept id: `closeness`. 8 measures.

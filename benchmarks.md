@@ -5,6 +5,7 @@ nav_order: 6
 ---
 
 {% raw %}
+
 # Benchmarks
 
 Timings and memory of other tools only. Raw rows: `data/benchmarks/results.csv`. Method:

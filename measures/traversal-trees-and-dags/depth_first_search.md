@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Depth-first search {#concept-top}
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Traversal and orderings. Concept id: `depth_first_search`. 3 measures.

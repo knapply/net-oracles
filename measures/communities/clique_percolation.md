@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Clique percolation communities {#concept-top}
 
 Family: [Communities](index.html). Subfamily: Other detection algorithms. Concept id: `clique_percolation`. 2 measures.

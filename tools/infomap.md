@@ -5,6 +5,7 @@ parent: Tools
 ---
 
 {% raw %}
+
 # Infomap
 
 | Field | Value |

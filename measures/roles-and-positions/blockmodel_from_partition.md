@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Blockmodel from a partition {#concept-top}
 
 Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `blockmodel_from_partition`. 1 measure.

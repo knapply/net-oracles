@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Girth {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Cycles. Concept id: `girth`. 1 measure.

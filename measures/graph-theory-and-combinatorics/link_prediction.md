@@ -7,6 +7,7 @@ nav_exclude: true
 ---
 
 {% raw %}
+
 # Link prediction scores {#concept-top}
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Similarity and link prediction. Concept id: `link_prediction`. 1 measure.
