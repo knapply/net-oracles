@@ -16,7 +16,7 @@ Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `
 
 Direct blockmodel search. Entries grouped here: Direct blockmodel search (structural, regular, generalised block types).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (blockmodeling, UCINET), never run. Direct blockmodel search minimizes an inconsistency criterion over partitions for ideal block types (Doreian, Batagelj and Ferligoj 2005; Ziberna 2007); the criterion functions of the individual block types are not recorded in the sources checked.
 
 ## Direct blockmodel search (structural, regular, generalised block types) {#blockmodel_search}
 

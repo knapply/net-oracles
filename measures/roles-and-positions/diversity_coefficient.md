@@ -16,7 +16,7 @@ Family: [Roles and positions](index.html). Subfamily: Module-based roles. Concep
 
 Diversity coefficient. Entries grouped here: Diversity coef.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT coef\_diversity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Diversity coef {#cat_coef_diversity}
 

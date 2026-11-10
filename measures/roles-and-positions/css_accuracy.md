@@ -16,7 +16,7 @@ Family: [Roles and positions](index.html). Subfamily: Scaling and clustering. Co
 
 Cognitive social structures with accuracy. Entries grouped here: Cognitive social structures with accuracy measures.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (sna and UCINET cognitive social structures accuracy), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Cognitive social structures with accuracy measures {#css_accuracy}
 

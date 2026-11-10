@@ -16,7 +16,7 @@ Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `
 
 Nested blockmodel description length. Entries grouped here: Minimize nested blockmodel dl.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (graph-tool nested blockmodel description length minimization), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Minimize nested blockmodel dl {#cat_blockmodel_dl_minimize_nested}
 

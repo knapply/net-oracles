@@ -16,7 +16,7 @@ Family: [Roles and positions](index.html). Subfamily: Equivalence and clustering
 
 Equivalence clustering. Entries grouped here: Equiv clust; Hiclus.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (sna equiv.clust, UCINET Hiclus), never run: the sources give the names of hierarchical clustering procedures on equivalence distances, without the linkage rules and options used; hierarchical clustering itself is due to Johnson 1967, but its parameters here are not recorded.
 
 ## Variants {#concept-variants}
 

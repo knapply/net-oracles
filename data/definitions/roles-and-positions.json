@@ -1,0 +1,1227 @@
+{
+ "family": "Roles and positions",
+ "concepts": {
+  "block_density": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target"
+    },
+    {
+     "symbol": "x_{ij}",
+     "meaning": "tie value from \\(i\\) to \\(j\\): 1 or 0, or a weight for valued data"
+    },
+    {
+     "symbol": "B_r",
+     "meaning": "block (position) \\(r\\): the set of nodes assigned to it by a partition; \\(n_r=|B_r|\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Block density (White, Boorman and Breiger 1976)",
+     "latex": "d_{rs}=\\frac{\\sum_{i\\in B_r}\\sum_{j\\in B_s,\\,j\\ne i}x_{ij}}{n_rn_s-\\mathbb 1[r=s]\\,n_r}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Mean tie value from block \\(r\\) to block \\(s\\) over the possible pairs of distinct nodes (a binary \\(x\\) gives the proportion of present ties). Defined when the block pair has at least one possible pair: not for a block of one node on the diagonal (\\(n_r^2-n_r=0\\))."
+    },
+    {
+     "name": "Block density counting loops",
+     "latex": "d^{\\circ}_{rr}=\\frac{\\sum_{i,j\\in B_r}x_{ij}}{n_r^2}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "When loops are possible ties the diagonal pairs are included; defined for \\(n_r\\ge1\\)."
+    }
+   ],
+   "variants": {
+    "block_density": "The matrix \\((d_{rs})\\) of block densities for a given partition: ties over possible pairs per ordered pair of blocks, diagonal excluded (loop-inclusive and valued forms use the second formula or the mean tie value)."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "A single node is one block of size 1: its diagonal block has no possible pair, so \\(d_{11}\\) is 0/0: not defined."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "A partition into more blocks than nodes allow leaves empty blocks: undefined cells (0/0)."
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "An empty block has \\(n_r=0\\): every cell involving it is 0/0; a block with one node has an undefined diagonal."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Excluded from the first formula (\\(j\\ne i\\)); included in the second."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "With a binary \\(x\\) parallel edges count once; with a valued \\(x\\) the weight is the total."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "\\(d_{rs}\\) and \\(d_{sr}\\) differ for directed data; undirected data give a symmetric matrix."
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Valued ties give the mean tie value instead of the proportion."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Every cell is 1 (diagonal cells of single-node blocks excepted)."
+    }
+   ],
+   "references": [
+    "white1976social",
+    "wasserman1994social"
+   ]
+  },
+  "blockmodel_criterion": {
+   "status": "name_only",
+   "note": "Documented only (blockmodeling crit.fun.c), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "blockmodel_from_partition": {
+   "status": "name_only",
+   "note": "Documented only (UCINET Block), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "concor": {
+   "status": "partial",
+   "note": "Documented only (UCINET), never run; the stopping rule, the treatment of the diagonal and the handling of several relations in its implementation are not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target"
+    },
+    {
+     "symbol": "M^{(0)}",
+     "meaning": "matrix of correlations between the tie profiles (rows) of the nodes"
+    },
+    {
+     "symbol": "M^{(t+1)}=\\mathrm{corr}(M^{(t)})",
+     "meaning": "the matrix of Pearson correlations between the columns of the previous matrix"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "CONCOR (Breiger, Boorman and Arabie 1975)",
+     "latex": "M^{(t+1)}_{ij}=\\frac{\\sum_k\\bigl(M^{(t)}_{ki}-\\bar M^{(t)}_i\\bigr)\\bigl(M^{(t)}_{kj}-\\bar M^{(t)}_j\\bigr)}{\\sqrt{\\sum_k\\bigl(M^{(t)}_{ki}-\\bar M^{(t)}_i\\bigr)^2\\sum_k\\bigl(M^{(t)}_{kj}-\\bar M^{(t)}_j\\bigr)^2}}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Iterated correlation converges to a matrix of entries \\(\\pm1\\); the nodes are split into two blocks by the sign pattern, and each block is split again by repeating the procedure on its submatrix. A column with zero variance makes the correlation 0/0."
+    }
+   ],
+   "variants": {
+    "concor": "Blocks obtained by repeated splitting by iterated correlation, numbered from 1; the formula above is the iteration step."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "With fewer than three nodes a correlation between profiles over the remaining entries is 0/0."
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "A node with no ties (and a profile of constant entries) has zero variance: its correlations are 0/0."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Entries that are exactly 0 after convergence have no sign: which side they belong to is not fixed by the definition."
+    }
+   ],
+   "references": [
+    "breiger1975algorithm",
+    "burt1976positions"
+   ]
+  },
+  "blockmodel_search": {
+   "status": "name_only",
+   "note": "Documented only (blockmodeling, UCINET), never run. Direct blockmodel search minimizes an inconsistency criterion over partitions for ideal block types (Doreian, Batagelj and Ferligoj 2005; Ziberna 2007); the criterion functions of the individual block types are not recorded in the sources checked."
+  },
+  "blockmodel_description_length": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool nested blockmodel description length minimization), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "core_periphery_continuous": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target"
+    },
+    {
+     "symbol": "a_{ij}",
+     "meaning": "1 if there is a tie between \\(i\\) and \\(j\\), else 0 (symmetric)"
+    },
+    {
+     "symbol": "c_i\\in[0,1]",
+     "meaning": "coreness of node \\(i\\)"
+    },
+    {
+     "symbol": "\\delta_{ij}=c_ic_j",
+     "meaning": "the ideal tie pattern for the coreness vector"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Continuous core-periphery fit (Borgatti and Everett 1999)",
+     "latex": "\\rho(c)=\\mathrm{corr}\\bigl((a_{ij})_{i<j},(c_ic_j)_{i<j}\\bigr),\\qquad c^\\star=\\arg\\max_{c}\\rho(c)",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Coreness is chosen to maximize the Pearson correlation between observed ties and the pattern \\(c_ic_j\\) over distinct pairs. The correlation is 0/0 when the ties or the pattern are constant (an empty or complete graph, or constant \\(c\\))."
+    },
+    {
+     "name": "MINRES coreness (Comrey 1962; Boyd, Fitzgerald and Beck 2010)",
+     "latex": "c^\\star=\\arg\\min_{c}\\sum_{i<j}\\bigl(a_{ij}-c_ic_j\\bigr)^2",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Least-squares fit of the rank-one pattern to the off-diagonal adjacency entries; unique up to sign, with the sign fixed by non-negativity."
+    }
+   ],
+   "variants": {
+    "core_periphery_continuous": "A coreness score per node, by the MINRES fit or by maximum correlation with the pattern \\(c_ic_j\\); the score is up to the scaling of \\(c\\) fixed by the solver."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "Constant ties: the correlation is 0/0 and MINRES gives \\(c=0\\).",
+     "tools": {
+      "cpnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "Fewer than three nodes: fewer than three pairs to fit.",
+     "tools": {
+      "cpnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Constant ties: correlation 0/0; the least-squares solution is \\(c_i=1\\).",
+     "tools": {
+      "cpnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal coreness values are possible; the optimum is not unique when the matrix has a repeated leading eigenvalue (symmetric structures).",
+     "tools": {
+      "cpnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "borgatti1999models",
+    "comrey1962minimum",
+    "boyd2010computing"
+   ]
+  },
+  "core_periphery": {
+   "status": "partial",
+   "note": "core_periphery_en (the Estevez-Nordlund variant) is documented only (UCINET), never run, and its definition is not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target"
+    },
+    {
+     "symbol": "a_{ij}",
+     "meaning": "1 if there is a tie between \\(i\\) and \\(j\\), else 0"
+    },
+    {
+     "symbol": "c_i\\in\\{0,1\\}",
+     "meaning": "core (1) or periphery (0) membership"
+    },
+    {
+     "symbol": "\\delta_{ij}=c_ic_j",
+     "meaning": "ideal pattern: ties exactly between pairs of core nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Discrete core-periphery fit (Borgatti and Everett 1999)",
+     "latex": "\\rho(c)=\\mathrm{corr}\\bigl((a_{ij})_{i<j},(c_ic_j)_{i<j}\\bigr),\\qquad c^\\star=\\arg\\max_{c\\in\\{0,1\\}^n}\\rho(c)",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "The membership vector with the best match to the ideal pattern, found by a heuristic search (tabu search, Glover 1989, from random starts), so the optimum is not guaranteed and tied optima depend on the starts. The correlation is 0/0 when ties or pattern are constant."
+    }
+   ],
+   "variants": {
+    "core_periphery": "The discrete membership vector that best matches the ideal pattern, found by tabu search from random starts, together with its fit \\(\\rho\\).",
+    "core_periphery_en": "Documented as the Estevez-Nordlund variant (UCINET); the definition is not recorded in the sources."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "Constant ties: the correlation is 0/0.",
+     "tools": {
+      "cpnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "With fewer than three nodes there are too few pairs to distinguish a core.",
+     "tools": {
+      "cpnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Constant ties: correlation 0/0; every node can be core.",
+     "tools": {
+      "cpnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several memberships can attain the same fit, and a swap of the labels core and periphery changes the pattern; heuristic search returns one of them.",
+     "tools": {
+      "cpnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "The number of starts and the stopping rule of the search are parameters of the procedure, not of the definition."
+    }
+   ],
+   "references": [
+    "borgatti1999models",
+    "glover1989tabu"
+   ]
+  },
+  "automorphic_equivalence": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target"
+    },
+    {
+     "symbol": "\\varphi",
+     "meaning": "a permutation of \\(V\\)"
+    },
+    {
+     "symbol": "a_{ij}",
+     "meaning": "number of ties from \\(i\\) to \\(j\\) (multiplicity respected)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Automorphic equivalence",
+     "latex": "i\\simeq j\\iff\\exists\\,\\varphi\\in\\mathrm{Aut}(G):\\varphi(i)=j,\\qquad \\mathrm{Aut}(G)=\\{\\varphi: a_{\\varphi(u)\\varphi(v)}=a_{uv}\\ \\forall u,v\\}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Two nodes are equivalent when some automorphism (tie-preserving permutation) maps one to the other; the classes are the orbits of the automorphism group. Orbit computation by canonical labelling is due to McKay and Piperno 2014. Every orbit is a union of structural-equivalence classes and lies inside a regular-equivalence class."
+    }
+   ],
+   "variants": {
+    "automorphic_equivalence": "The orbit label of each node under the automorphism group of the binary (or multiplicity-valued) ties."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: no orbits."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "All nodes are interchangeable: one orbit."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One orbit of one node."
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "All isolates map to each other: they share one orbit."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is preserved by an automorphism: nodes with and without loops are in different orbits."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Multiplicities are part of the structure: \\(a_{\\varphi(u)\\varphi(v)}=a_{uv}\\).",
+     "tools": {
+      "nauty": {
+       "status": "no_value",
+       "behaviour": "nauty graphs are simple: parallel edges (edge multiplicities, which the reference and the definition oracle respect) cannot be represented.",
+       "source": "conventions.json automorphic_equivalence / automorphic_equivalence"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "For directed graphs \\(a_{ij}\\) is not symmetric, so fewer permutations are automorphisms."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Every permutation is an automorphism: one orbit."
+    },
+    {
+     "case": "star",
+     "definition_gives": "Two orbits: the centre and the leaves."
+    }
+   ],
+   "references": [
+    "mckay2014practical",
+    "everett1985role"
+   ]
+  },
+  "equivalence_clustering": {
+   "status": "name_only",
+   "note": "Documented only (sna equiv.clust, UCINET Hiclus), never run: the sources give the names of hierarchical clustering procedures on equivalence distances, without the linkage rules and options used; hierarchical clustering itself is due to Johnson 1967, but its parameters here are not recorded."
+  },
+  "regular_equivalence": {
+   "status": "partial",
+   "note": "The UCINET REGE and CATREGE similarity iterations (Borgatti and Everett 1993) and Max Sim are documented only and never run; their update formulas are not recorded in the sources, so only the White-Reitz definition is written.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target"
+    },
+    {
+     "symbol": "a_{ij}",
+     "meaning": "tie from \\(i\\) to \\(j\\) (0 or 1)"
+    },
+    {
+     "symbol": "\\equiv",
+     "meaning": "an equivalence relation on \\(V\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Regular equivalence (White and Reitz 1983)",
+     "latex": "i\\equiv j\\Rightarrow\\begin{cases}\\forall k:\\,a_{ik}=1\\Rightarrow\\exists l:\\,a_{jl}=1,\\ l\\equiv k\\\\ \\forall k:\\,a_{ki}=1\\Rightarrow\\exists l:\\,a_{lj}=1,\\ l\\equiv k\\end{cases}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "An equivalence relation is regular when equivalent nodes have ties to and from equivalent nodes. The relation is not unique: the coarsest (all nodes) is always regular, so a procedure fixes the one it reports (for example the maximal regular relation refining a seed partition, as the CATREGE iteration yields)."
+    }
+   ],
+   "variants": {
+    "regular_equivalence": "The classes of the regular equivalence found by the tool (sna: classes at distance 0 of the CATREGE dissimilarity, optionally from a seed partition).",
+    "cat_automorphic_catrege_equivalence_max_rege_regular_sim": "Documented as the UCINET REGE and CATREGE regular-equivalence similarity procedures and Max Sim for automorphic equivalence; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: no relation."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Every node has no ties: all nodes are regularly equivalent (one class)."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One class of one node."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a tie to a node equivalent to itself and is part of the profile."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Binary ties: multiplicity is ignored."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Both the out-condition and the in-condition apply; undirected ties satisfy them together."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "The relation found is one of several regular relations (the definition does not fix a unique one)."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All nodes equivalent."
+    },
+    {
+     "case": "star",
+     "definition_gives": "Centre and leaves form two classes."
+    }
+   ],
+   "references": [
+    "white1983graph",
+    "everett1994regular",
+    "borgatti1993two"
+   ]
+  },
+  "structural_equivalence": {
+   "status": "partial",
+   "note": "cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming_jaccard_manhattan_matches_measures_options_profile_row_similarities_structural and equivalence_extra (UCINET: profile similarities and distances such as Jaccard, matches, Manhattan, overlaps, cross-products and coverage) are documented only and never run; their formulas are not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target"
+    },
+    {
+     "symbol": "x_{ik}",
+     "meaning": "tie value from \\(i\\) to \\(k\\)"
+    },
+    {
+     "symbol": "K_{ij}=V\\setminus\\{i,j\\}",
+     "meaning": "the other nodes: the entries for \\(i\\) and \\(j\\) themselves are left out"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Structural equivalence (Lorrain and White 1971)",
+     "latex": "i\\sim j\\iff x_{ik}=x_{jk}\\ \\text{and}\\ x_{ki}=x_{kj}\\ \\ \\forall k\\in K_{ij}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Two nodes are structurally equivalent when they have identical ties to every other node (and, for directed ties, identical incoming ties)."
+    },
+    {
+     "name": "Euclidean distance between profiles",
+     "latex": "d_{ij}=\\sqrt{\\sum_{k\\in K_{ij}}\\bigl[(x_{ik}-x_{jk})^2+(x_{ki}-x_{kj})^2\\bigr]}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "0 exactly for structurally equivalent nodes; row and column profiles are both used for directed data."
+    },
+    {
+     "name": "Correlation of profiles (Burt 1976)",
+     "latex": "r_{ij}=\\mathrm{corr}\\bigl((x_{ik},x_{ki})_{k\\in K_{ij}},(x_{jk},x_{kj})_{k\\in K_{ij}}\\bigr)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Pearson correlation between the stacked row and column profiles; 0/0 when a profile is constant."
+    },
+    {
+     "name": "Hamming distance",
+     "latex": "h_{ij}=\\sum_{k\\in K_{ij}}\\bigl[\\mathbb 1(x_{ik}\\ne x_{jk})+\\mathbb 1(x_{ki}\\ne x_{kj})\\bigr]",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Number of disagreeing entries."
+    }
+   ],
+   "variants": {
+    "structural_equivalence": "The pairwise dissimilarity or similarity of all node pairs (Euclidean, correlation or Hamming) over the profiles with the two nodes' own entries excluded.",
+    "cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming_jaccard_manhattan_matches_measures_options_profile_row_similarities_structural": "UCINET's structural equivalence menu: profile correlation and Euclidean distance, similarity and distance measures (Jaccard, matches, Hamming, Manhattan) and diagonal options; documented only.",
+    "equivalence_extra": "UCINET's matches, positive matches, overlaps, cross-products and coverage measures between profiles; documented only."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "No pair: no distance."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "With two nodes \\(K_{ij}=\\emptyset\\): the Euclidean and Hamming distances are 0 and the correlation is 0/0."
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "\\(K_{ij}\\) is empty: distance 0, correlation 0/0."
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Two isolates have identical (all-zero) profiles: distance 0, correlation 0/0."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The diagonal entries \\(x_{ii},x_{jj},x_{ij},x_{ji}\\) are outside \\(K_{ij}\\) in the definition above; loops therefore do not enter."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Row and column profiles are both used, so the distance of asymmetric data differs from that of a symmetric reading; symmetric data double the same terms.",
+     "tools": {
+      "blockmodeling": {
+       "status": "differs",
+       "behaviour": "On a symmetric matrix (every undirected fixture and complete5_dir) blockmodeling::sedist agrees with the reference.",
+       "source": "conventions.json structural_equivalence / structural_equivalence_euclidean",
+       "measure": "structural_equivalence",
+       "finding": "F084"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Valued data enter through the squared differences or the correlation."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All profiles are equal off the diagonal: distance 0."
+    }
+   ],
+   "references": [
+    "lorrain1971structural",
+    "burt1976positions",
+    "breiger1975algorithm"
+   ]
+  },
+  "diversity_coefficient": {
+   "status": "name_only",
+   "note": "Documented only (BCT coef_diversity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "gateway_coefficient": {
+   "status": "name_only",
+   "note": "Documented only (BCT coef_gateway), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "module_degree_zscore": {
+   "status": "name_only",
+   "note": "Documented only (BCT degree_module_zscore), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "participation_coefficient": {
+   "status": "name_only",
+   "note": "Documented only (BCT coef_participation and its sparse version), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "css_accuracy": {
+   "status": "name_only",
+   "note": "Documented only (sna and UCINET cognitive social structures accuracy), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "guttman_kmeans": {
+   "status": "name_only",
+   "note": "Documented only (UCINET Guttman scaling, K-means and quick clustering), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "multidimensional_scaling": {
+   "status": "complete",
+   "note": "Both measures are documented only (UCINET) and were never run; the formulas are those of the original papers, not a record of UCINET's options.",
+   "notation": [
+    {
+     "symbol": "D=(d_{ij})",
+     "meaning": "matrix of dissimilarities between \\(n\\) objects"
+    },
+    {
+     "symbol": "J=I-\\tfrac1n\\mathbf 1\\mathbf 1^{\\mathsf T}",
+     "meaning": "centering matrix"
+    },
+    {
+     "symbol": "B=-\\tfrac12JD^{(2)}J",
+     "meaning": "double-centred matrix of squared dissimilarities"
+    },
+    {
+     "symbol": "X",
+     "meaning": "configuration of \\(n\\) points in \\(p\\) dimensions, with distances \\(\\hat d_{ij}\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Classical scaling (Torgerson 1952)",
+     "latex": "X=E_p\\,\\Lambda_p^{1/2},\\qquad B=E\\Lambda E^{\\mathsf T}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The first \\(p\\) eigenvectors scaled by the square roots of the \\(p\\) largest positive eigenvalues of \\(B\\). The configuration is unique up to rotation, reflection and sign, and is not determined when leading eigenvalues coincide."
+    },
+    {
+     "name": "Kruskal stress-1 (Kruskal 1964)",
+     "latex": "S_1=\\sqrt{\\frac{\\sum_{i<j}(\\hat d_{ij}-f(d_{ij}))^2}{\\sum_{i<j}\\hat d_{ij}^2}}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Non-metric scaling chooses \\(X\\) to minimize stress, where \\(f\\) is a monotone transformation of the dissimilarities; iterative, so the result depends on the start and may be a local minimum."
+    }
+   ],
+   "variants": {
+    "classical_mds": "Classical (Torgerson) scaling: eigendecomposition of the double-centred squared distance matrix.",
+    "mds_nonmetric": "Non-metric scaling that minimizes Kruskal's stress-1 over configurations and monotone transformations."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "With fewer than \\(p+1\\) points the configuration has fewer than \\(p\\) dimensions of positive eigenvalue."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Repeated eigenvalues leave the configuration determined only up to a rotation within the eigenspace; sign of each axis is arbitrary."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Negative eigenvalues of \\(B\\) (non-Euclidean dissimilarities) cannot be represented and are dropped."
+    }
+   ],
+   "references": [
+    "torgerson1952multidimensional",
+    "kruskal1964multidimensional"
+   ]
+  },
+  "brokerage": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target"
+    },
+    {
+     "symbol": "g(v)",
+     "meaning": "group (class) label of node \\(v\\)"
+    },
+    {
+     "symbol": "T_j",
+     "meaning": "the set of ordered triples \\((i,j,k)\\) of distinct nodes with a tie from \\(i\\) to \\(j\\), a tie from \\(j\\) to \\(k\\) and no tie from \\(i\\) to \\(k\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Brokerage roles (Gould and Fernandez 1989)",
+     "latex": "w_{R}(j)=\\bigl|\\{(i,j,k)\\in T_j: \\text{labels of }(g(i),g(j),g(k))\\text{ match role }R\\}\\bigr|",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "The broker \\(j\\) mediates a tie from \\(i\\) to \\(k\\) that has no direct tie. Roles: coordinator (\\(g(i)=g(j)=g(k)\\)), itinerant broker (\\(g(i)=g(k)\\ne g(j)\\)), gatekeeper (\\(g(j)=g(k)\\ne g(i)\\)), representative (\\(g(i)=g(j)\\ne g(k)\\)), liaison (all three different); the total is \\(\\sum_R w_R(j)=|T_j|\\). Counts are defined for every node and are 0 when no two-path exists."
+    }
+   ],
+   "variants": {
+    "brokerage": "The raw count of each brokerage role per node (the five role counts and their total) for a directed graph and a group labelling; undirected data read each edge both ways."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "Fewer than three nodes have no triple: all counts 0.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No triple: 0.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "No two-paths through an isolate: 0.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Triples need distinct nodes: loops do not count.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Ties are present or absent: parallel edges count once.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Two-paths follow \\(i\\to j\\to k\\) and only the direct tie \\(i\\to k\\) must be absent; a tie \\(k\\to i\\) does not exclude the triple.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Every pair is tied, so no triple lacks the tie \\(i\\to k\\): all counts 0.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "With ties in both directions every ordered pair of distinct leaves is a brokered triple through the centre: \\((n-1)(n-2)\\) triples, whose roles follow the labels.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "With one group every brokered triple is a coordinator triple."
+    }
+   ],
+   "references": [
+    "gould1989structures"
+   ]
+  },
+  "burt_constraint": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target"
+    },
+    {
+     "symbol": "z_{ij}",
+     "meaning": "strength of the tie between \\(i\\) and \\(j\\): 1 for a binary tie, a weight for valued data, the sum over parallel edges"
+    },
+    {
+     "symbol": "p_{ij}=\\frac{z_{ij}+z_{ji}}{\\sum_{k\\ne i}(z_{ik}+z_{ki})}",
+     "meaning": "share of \\(i\\)'s total tie volume invested in \\(j\\) (loops excluded)"
+    },
+    {
+     "symbol": "N(i)",
+     "meaning": "contacts of \\(i\\): nodes \\(j\\ne i\\) with \\(p_{ij}>0\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Dyadic constraint (Burt 1992)",
+     "latex": "c_{ij}=\\Bigl(p_{ij}+\\sum_{q\\ne i,j}p_{iq}p_{qj}\\Bigr)^2",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Constraint exerted on \\(i\\) by contact \\(j\\) directly and through shared contacts."
+    },
+    {
+     "name": "Aggregate constraint (Burt 1992)",
+     "latex": "C_i=\\sum_{j\\in N(i)}c_{ij}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Sum over the contacts of \\(i\\). Defined for nodes with at least one contact; for a node without contacts the sum is empty and \\(p_{ij}\\) has a 0 denominator, so it is not defined. For a binary graph, with one contact the value is 1."
+    }
+   ],
+   "variants": {
+    "constraint": "The aggregate constraint \\(C_i\\) per node, from binary ties or from valued ties (strengths), with loops excluded as ties to others."
+   },
+   "edge_cases": [
+    {
+     "case": "isolates",
+     "definition_gives": "No contacts: \\(\\sum_k(z_{ik}+z_{ki})=0\\), so the shares \\(p_{ij}\\) are undefined: not defined.",
+     "tools": {
+      "manynet": {
+       "status": "differs",
+       "behaviour": "A node without ties to other nodes (one whose only tie is a self-loop) has undefined constraint for the reference and the definition oracle; manynet reports 0.",
+       "source": "conventions.json constraint / constraint"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No contacts: not defined."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The sums run over \\(k\\ne i\\): a loop is not a tie to another node. A node whose only tie is a loop has no contacts: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "NetworkX keeps self-loops in the adjacency matrix, so a loop adds to the node's total tie volume and lowers every p_ij. this reference and igraph ignore loops.",
+       "source": "conventions.json constraint / constraint",
+       "measure": "constraint"
+      },
+      "igraph": {
+       "status": "differs",
+       "behaviour": "A node whose only tie is a self-loop has no neighbours, so Burt's constraint is undefined for the reference and the definition oracle;",
+       "source": "conventions.json constraint / constraint"
+      },
+      "pyigraph": {
+       "status": "differs",
+       "behaviour": "A node whose only tie is a self-loop has no neighbours, so Burt's constraint is undefined for the reference and the definition oracle;",
+       "source": "conventions.json constraint / constraint"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to \\(z_{ij}\\), so they raise the share of that contact."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "\\(p_{ij}\\) uses both \\(z_{ij}\\) and \\(z_{ji}\\): direction is merged into the tie volume."
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights enter as \\(z_{ij}\\); with unit weights the binary form results."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Each node has \\(n-1\\) contacts with equal shares \\(p=1/(n-1)\\): \\(C_i=(2n-3)^2/(n-1)^3\\)."
+    },
+    {
+     "case": "star",
+     "definition_gives": "The centre's contacts are not tied to each other: \\(c_{ij}=p_{ij}^2\\), \\(C=1/(n-1)\\); a leaf has one contact: \\(C=1\\)."
+    }
+   ],
+   "references": [
+    "burt1992structural"
+   ]
+  },
+  "effective_size": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target"
+    },
+    {
+     "symbol": "p_{iq}",
+     "meaning": "share of the tie volume of \\(i\\) invested in \\(q\\), as in Burt's constraint"
+    },
+    {
+     "symbol": "m_{jq}=z_{jq}/\\max_k z_{jk}",
+     "meaning": "marginal strength of the tie between \\(j\\) and \\(q\\): its strength relative to \\(j\\)'s strongest tie"
+    },
+    {
+     "symbol": "t_i",
+     "meaning": "number of ties among the contacts of \\(i\\)"
+    },
+    {
+     "symbol": "d_i",
+     "meaning": "number of contacts"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Effective size (Burt 1992)",
+     "latex": "\\mathrm{ES}_i=\\sum_{j\\in N(i)}\\Bigl(1-\\sum_{q\\in N(i)\\setminus\\{j\\}}p_{iq}\\,m_{jq}\\Bigr)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Contacts minus the redundancy among them, in the weighted form; defined for nodes with at least one contact."
+    },
+    {
+     "name": "Effective size of a binary undirected graph (Borgatti 1997)",
+     "latex": "\\mathrm{ES}_i=d_i-\\frac{2t_i}{d_i}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "The special case of the formula above: the number of contacts minus the average degree of the contacts within the ego network (counting only their ties to other contacts)."
+    }
+   ],
+   "variants": {
+    "effective_size": "\\(\\mathrm{ES}_i\\) per node, binary (the closed form) or with valued ties (the weighted form, with loops excluded as ties to others)."
+   },
+   "edge_cases": [
+    {
+     "case": "isolates",
+     "definition_gives": "No contacts: the sum is empty, so \\(\\mathrm{ES}=0\\) in the formula; the shares \\(p\\) are not needed."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No contacts: empty sum."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is not a tie to another node and is excluded from \\(p_{iq}\\) and \\(m_{jq}\\).",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "NetworkX keeps self-loops in the adjacency matrix, so a loop adds to the node's tie volume and can be its strongest tie. This reference ignores loops.",
+       "source": "conventions.json effective_size / effective_size",
+       "measure": "effective_size",
+       "finding": "F025"
+      },
+      "manynet": {
+       "status": "differs",
+       "behaviour": "manynet (netrics) returns a different value from the reference on directed networks, on multigraphs with loops, and on the two-node network (about half the reference value's on a directed cycle and on directed random graphs);",
+       "source": "conventions.json effective_size / effective_size",
+       "measure": "effective_size",
+       "finding": "F082"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to \\(z\\) in the weighted form.",
+     "tools": {
+      "manynet": {
+       "status": "differs",
+       "behaviour": "manynet (netrics) returns a different value from the reference on directed networks, on multigraphs with loops, and on the two-node network (about half the reference value's on a directed cycle and on directed random graphs);",
+       "source": "conventions.json effective_size / effective_size",
+       "measure": "effective_size",
+       "finding": "F082"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "\\(p\\) merges both directions of a tie, as for constraint.",
+     "tools": {
+      "manynet": {
+       "status": "differs",
+       "behaviour": "manynet (netrics) returns a different value from the reference on directed networks, on multigraphs with loops, and on the two-node network (about half the reference value's on a directed cycle and on directed random graphs); Simple undirected networks agree.",
+       "source": "conventions.json effective_size / effective_size",
+       "measure": "effective_size",
+       "finding": "F082"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "The weighted form uses \\(m_{jq}\\) relative to the strongest tie of each contact."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(\\mathrm{ES}=d_i-2t_i/d_i=1\\) for \\(n\\ge2\\) since \\(t_i=d_i(d_i-1)/2\\)."
+    },
+    {
+     "case": "star",
+     "definition_gives": "The centre's effective size is \\(n-1\\) (its contacts are unconnected); a leaf has 1."
+    }
+   ],
+   "references": [
+    "burt1992structural",
+    "borgatti1997structural"
+   ]
+  },
+  "burt_efficiency": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "\\mathrm{ES}_i",
+     "meaning": "effective size of \\(i\\)"
+    },
+    {
+     "symbol": "d_i",
+     "meaning": "number of contacts of \\(i\\), other than itself"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Efficiency (Burt 1992)",
+     "latex": "\\mathrm{Eff}_i=\\frac{\\mathrm{ES}_i}{d_i}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Effective size per contact, between 0 and 1. Defined for \\(d_i\\ge1\\); for a node without contacts the denominator is 0."
+    }
+   ],
+   "variants": {
+    "efficiency": "The effective size divided by the number of distinct contacts, per node."
+   },
+   "edge_cases": [
+    {
+     "case": "isolates",
+     "definition_gives": "\\(d_i=0\\): 0/0, not defined."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Not defined (no contacts)."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are not contacts, so \\(d_i\\) and \\(\\mathrm{ES}_i\\) exclude them.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "NetworkX keeps self-loops in the effective size (see effective_size).",
+       "source": "conventions.json efficiency / efficiency",
+       "measure": "efficiency"
+      },
+      "manynet": {
+       "status": "differs",
+       "behaviour": "manynet (netrics) returns a different value from the reference on directed networks, on multigraphs with loops, and on the two-node network (about half the reference value's on a directed cycle and on directed random graphs);",
+       "source": "conventions.json efficiency / efficiency",
+       "measure": "efficiency"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "\\(d_i\\) counts distinct contacts; parallel edges only change the shares in \\(\\mathrm{ES}\\).",
+     "tools": {
+      "manynet": {
+       "status": "differs",
+       "behaviour": "manynet (netrics) returns a different value from the reference on directed networks, on multigraphs with loops, and on the two-node network (about half the reference value's on a directed cycle and on directed random graphs);",
+       "source": "conventions.json efficiency / efficiency",
+       "measure": "efficiency"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Contacts are nodes tied in either direction.",
+     "tools": {
+      "manynet": {
+       "status": "differs",
+       "behaviour": "manynet (netrics) returns a different value from the reference on directed networks, on multigraphs with loops, and on the two-node network (about half the reference value's on a directed cycle and on directed random graphs); Simple undirected networks agree.",
+       "source": "conventions.json efficiency / efficiency",
+       "measure": "efficiency"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(\\mathrm{Eff}=1/(n-1)\\)."
+    },
+    {
+     "case": "star",
+     "definition_gives": "Centre: 1; leaf: 1."
+    }
+   ],
+   "references": [
+    "burt1992structural"
+   ]
+  },
+  "node_redundancy": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "N(v)",
+     "meaning": "neighbours of \\(v\\) in a bipartite graph"
+    },
+    {
+     "symbol": "RC(v)",
+     "meaning": "redundancy coefficient"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Redundancy coefficient (Latapy, Magnien and Del Vecchio 2008)",
+     "latex": "RC(v)=\\frac{\\bigl|\\{\\{u,w\\}\\subseteq N(v):\\exists\\,v'\\ne v,\\ v'\\in N(u)\\cap N(w)\\}\\bigr|}{\\binom{|N(v)|}{2}}",
+     "applies_to": [
+      "bipartite"
+     ],
+     "where": "Fraction of pairs of neighbours of \\(v\\) that have another common neighbour besides \\(v\\) (so \\(v\\) could be removed without separating them locally). Defined for \\(|N(v)|\\ge2\\); the denominator is 0 below two neighbours."
+    }
+   ],
+   "variants": {
+    "node_redundancy": "\\(RC(v)\\) for every node of a bipartite graph (defined for two-mode data; NetworkX applies it to nodes with at least two neighbours)."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "Fewer than two neighbours: the denominator is 0: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "No neighbours: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "Defined for bipartite graphs; neighbours of \\(v\\) share their common neighbours on \\(v\\)'s side.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "The leaves of a star have only the centre as a common neighbour: \\(RC=0\\) for the centre.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "latapy2008basic"
+   ]
+  },
+  "hierarchy_krackhardt": {
+   "status": "name_only",
+   "note": "Documented only (igraph, sna, UCINET), never run. The sources give the name 'hierarchy', which is used both for Krackhardt's graph-theoretic hierarchy and for Burt's Coleman-Theil hierarchy index of the constraint terms; which definition each tool implements is not recorded."
+  },
+  "structural_holes": {
+   "status": "partial",
+   "note": "Both measures are documented only (UCINET) and never run: dyadic constraint (Dyconst) and the Structural holes suite (effective size, efficiency, constraint, hierarchy, dyadic redundancy, 'corrected constraint'). Their implementation options are not recorded; the formulas of Burt's own indices are under Burt constraint, effective size and efficiency.",
+   "notation": [
+    {
+     "symbol": "p_{ij}",
+     "meaning": "share of the tie volume of \\(i\\) invested in \\(j\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Dyadic constraint (Burt 1992)",
+     "latex": "c_{ij}=\\Bigl(p_{ij}+\\sum_{q\\ne i,j}p_{iq}p_{qj}\\Bigr)^2",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Constraint on \\(i\\) from the single contact \\(j\\); its sum over contacts is the aggregate constraint. Not defined for a node without ties (the shares \\(p\\) have a 0 denominator)."
+    }
+   ],
+   "variants": {
+    "cat_dyconst": "The dyadic constraint \\(c_{ij}\\) for each ordered pair, as in the formula above.",
+    "cat_6_798_burt_constraint_corrected_dyadic_dyadicconstraint_effective_efficiency_fa_hierarchy_holes_redundancy_size_structural": "The UCINET structural holes suite: effective size, efficiency, constraint, hierarchy, dyadic redundancy and constraint, and a 'corrected constraint'; documented only and not recorded in detail."
+   },
+   "references": [
+    "burt1992structural"
+   ]
+  }
+ }
+}

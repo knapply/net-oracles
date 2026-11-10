@@ -16,7 +16,7 @@ Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `
 
 Blockmodel criterion function. Entries grouped here: Crit Fun C.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (blockmodeling crit.fun.c), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Crit Fun C {#cat_c_crit_fun}
 
