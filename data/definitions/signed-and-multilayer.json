@@ -1,0 +1,181 @@
+{
+ "family": "Signed and multilayer",
+ "concepts": {
+  "multilayer": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "L",
+     "meaning": "set of layers (aspects), \\(L=L_1\\times\\cdots\\times L_d\\)"
+    },
+    {
+     "symbol": "V_M\\subseteq V\\times L",
+     "meaning": "node-layers: a node \\(v\\) present in layer \\(\\alpha\\)"
+    },
+    {
+     "symbol": "A^{(\\alpha)}",
+     "meaning": "adjacency matrix of the intra-layer edges of layer \\(\\alpha\\)"
+    },
+    {
+     "symbol": "C^{(\\alpha\\beta)}",
+     "meaning": "coupling matrix of the inter-layer edges between layers \\(\\alpha\\) and \\(\\beta\\)"
+    },
+    {
+     "symbol": "\\mathcal A",
+     "meaning": "supra-adjacency matrix, of size \\(n\\,|L|\\times n\\,|L|\\) when every node is present in every layer"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Multilayer network (Kivela et al. 2014)",
+     "latex": "M=(V_M,E_M,V,L),\\qquad E_M\\subseteq V_M\\times V_M",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Node-layers \\(V_M\\) joined by edges \\(E_M\\); edges within one layer are intra-layer, edges between layers are inter-layer. A multiplex network is the case in which the inter-layer edges join only the copies of the same node."
+    },
+    {
+     "name": "Supra-adjacency matrix (De Domenico et al. 2013)",
+     "latex": "\\mathcal A=\\begin{pmatrix}A^{(1)}&C^{(12)}&\\cdots\\\\C^{(21)}&A^{(2)}&\\cdots\\\\\\vdots&\\vdots&\\ddots\\end{pmatrix},\\qquad C^{(\\alpha\\beta)}=\\omega\\,I\\ \\text{for multiplex coupling}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Block matrix of the layers on the diagonal and the couplings off the diagonal; the scalar \\(\\omega\\) is the coupling weight of a multiplex network and is not fixed by the definition."
+    }
+   ],
+   "variants": {
+    "multilayer": "The structure and its supra-adjacency matrix; the coupling weight and which inter-layer edges exist are parameters of the model, not of the definition."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "With no node-layers \\(\\mathcal A\\) is the 0\\(\\times\\)0 matrix; the definition allows it.",
+     "tools": {}
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "A node-layer with no intra- or inter-layer edge gives a zero row and column of \\(\\mathcal A\\).",
+     "tools": {}
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "The coupling weight \\(\\omega\\) is a free real parameter; the definition imposes no range, and measures built on \\(\\mathcal A\\) may need \\(\\omega\\ge 0\\).",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "kivela2014multilayer",
+    "dedomenico2013mathematical"
+   ]
+  },
+  "pn_centrality": {
+   "status": "name_only",
+   "note": "The sources name the procedure (positive-negative centrality of signed ties) and list it in the documentation of a documented-only tool, but record no formula and no checkable primary source for it."
+  },
+  "structural_balance": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\sigma:E\\to\\{+1,-1\\}",
+     "meaning": "sign of each edge"
+    },
+    {
+     "symbol": "(X,V\\setminus X)",
+     "meaning": "a split of the nodes into two sets"
+    },
+    {
+     "symbol": "\\ell(G)",
+     "meaning": "frustration index"
+    },
+    {
+     "symbol": "C=\\{C_1,\\dots,C_k\\}",
+     "meaning": "partition of the nodes into \\(k\\) clusters"
+    },
+    {
+     "symbol": "\\alpha",
+     "meaning": "weight in \\([0,1]\\) between the two kinds of inconsistent edge"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Balance (Harary 1953; Cartwright and Harary 1956)",
+     "latex": "\\prod_{e\\in\\text{cycle}}\\sigma(e)=+1\\ \\text{for every cycle}\\iff\\exists X\\subseteq V:\\ \\sigma(uv)=+1\\text{ exactly when }u,v\\text{ lie on the same side}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "A signed graph is balanced when every cycle has an even number of negative edges; equivalently, the nodes split into two sets with positive edges inside and negative edges between."
+    },
+    {
+     "name": "Frustration index",
+     "latex": "\\ell(G)=\\min_{X\\subseteq V}\\Bigl(\\bigl|\\{uv\\in E^-:\\ u,v\\in X\\text{ or }u,v\\notin X\\}\\bigr|+\\bigl|\\{uv\\in E^+:\\ |\\{u,v\\}\\cap X|=1\\}\\bigr|\\Bigr)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Least number of edges whose sign must change (or that must be deleted) to reach balance; 0 exactly when the graph is balanced. The minimum is over all \\(2^n\\) splits. This is the two-group form of the partitioning criterion below."
+    },
+    {
+     "name": "Partitioning criterion (Doreian and Mrvar 1996)",
+     "latex": "P_\\alpha(C)=\\alpha\\,\\bigl|\\{uv\\in E^-:\\ u,v\\text{ in the same cluster}\\}\\bigr|+(1-\\alpha)\\,\\bigl|\\{uv\\in E^+:\\ u,v\\text{ in different clusters}\\}\\bigr|",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Weighted count of negative ties inside clusters and positive ties between clusters, minimized over partitions into \\(k\\) clusters; \\(k=2\\) and \\(\\alpha=\\tfrac12\\) gives half the frustration objective."
+    }
+   ],
+   "variants": {
+    "signed_balance": "Three objects scored: the balance test (yes or no), the frustration index (a count of inconsistent edges, minimum over two-group splits) and the \\(k\\)-cluster partitioning criterion with weight \\(\\alpha\\); a signed blockmodel is the partition that minimizes the criterion."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "No cycle exists and no edge is inconsistent: balanced, frustration 0.",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A positive loop is a balanced cycle of length 1; a negative loop is an unbalanced cycle that no split can repair, so the cycle form of the definition gives unbalanced while the split form ignores loops.",
+     "tools": {}
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "An edge of sign 0 has no sign in \\(\\{+1,-1\\}\\): the definition covers only signed edges, so such edges must be removed or assigned a sign first.",
+     "tools": {}
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(\\alpha\\) outside \\([0,1]\\) or \\(k<1\\) is outside the definition of the criterion.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "harary1953notion",
+    "cartwright1956structural",
+    "doreian1996partitioning"
+   ]
+  }
+ }
+}

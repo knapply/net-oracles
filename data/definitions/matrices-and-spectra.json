@@ -1,0 +1,1210 @@
+{
+ "family": "Matrices and spectra",
+ "concepts": {
+  "adjacency_matrix": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "w(e)",
+     "meaning": "weight of edge \\(e\\) (1 when unweighted)"
+    },
+    {
+     "symbol": "s(e),t(e)",
+     "meaning": "source and target of edge \\(e\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Adjacency matrix (Harary 1969; Biggs 1974)",
+     "latex": "a_{uv}=\\sum_{e:\\,s(e)=u,\\ t(e)=v}w(e)\\qquad\\text{and, if undirected, also }a_{vu}=a_{uv}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Entry \\((u,v)\\) counts the edges from \\(u\\) to \\(v\\) (sums their weights). An undirected edge fills both \\((u,v)\\) and \\((v,u)\\); the convention for an undirected self-loop is that it adds its weight once to \\(a_{uu}\\) (a loop contributes 1 to the degree under the convention \\(d_u=\\sum_v a_{uv}\\); the other convention adds 2)."
+    }
+   ],
+   "variants": {
+    "gm_adjacency": "Dense or sparse matrix of the edge counts or weights; weights replace counts, directed edges fill one entry, undirected edges two, and an undirected loop one entry (or two under the doubling convention)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): the 0\\(\\times\\)0 matrix.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "All entries are 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The loop contributes to the diagonal entry \\(a_{uu}\\); once or twice depending on the undirected-loop convention above.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add: \\(a_{uv}\\) is the number of edges (or their total weight), not 0/1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Symmetric for undirected input, not symmetric in general for directed input.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Entries carry the weight; with several parallel weighted edges the entry is their sum under the formula above.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "A zero-weight edge gives entry 0, so a stored matrix cannot tell it from a non-edge.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "harary1969graph",
+    "biggs1993algebraic"
+   ]
+  },
+  "bethe_hessian": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "A=(a_{uv})",
+     "meaning": "adjacency matrix: \\(a_{uv}\\) is the number of edges from \\(u\\) to \\(v\\) (the sum of their weights when weighted)"
+    },
+    {
+     "symbol": "D=\\operatorname{diag}(d_1,\\dots,d_n)",
+     "meaning": "degree matrix, \\(d_u=\\sum_v a_{uv}\\) (row sums of \\(A\\))"
+    },
+    {
+     "symbol": "r",
+     "meaning": "regularizer; \\(r_c=\\sqrt{\\rho(B)}\\) with \\(\\rho(B)\\) the spectral radius of the non-backtracking matrix, estimated for sparse graphs by \\(\\sum_ud_u^2/\\sum_ud_u-1\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Bethe Hessian (Saade et al. 2014)",
+     "latex": "H(r)=(r^2-1)I-rA+D",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Symmetric matrix defined for any real \\(r\\); the negative eigenvalues of \\(H(r_c)\\) count the communities in the spectral method of the paper. \\(r_c\\) depends on the degree sequence."
+    }
+   ],
+   "variants": {
+    "gm_bethe_hessian": "The matrix \\(H(r)\\) at the default \\(r\\) of the tool or a chosen \\(r\\); weights enter through \\(A\\) and the strength in \\(D\\)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): the 0\\(\\times\\)0 matrix, but \\(r_c\\) is undefined (empty sums).",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(\\sum d=0\\), so the estimate of \\(r_c\\) is 0/0; the matrix for a given \\(r\\) is \\((r^2-1)I\\).",
+     "tools": {}
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to \\(A\\) and \\(D\\); the paper defines the matrix for simple graphs.",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "NetworkX does not implement the Bethe Hessian for multigraphs.",
+       "source": "conventions.json gm_bethe_hessian / gm_bethe_hessian"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for undirected graphs only.",
+     "tools": {}
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Any real \\(r\\) gives a matrix; \\(r_c\\) is real only when \\(\\sum d^2/\\sum d\\ge 1\\).",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "saade2014spectral"
+   ]
+  },
+  "class_matrix": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "c(v)",
+     "meaning": "class of node \\(v\\), from a node attribute"
+    },
+    {
+     "symbol": "K",
+     "meaning": "set of classes"
+    },
+    {
+     "symbol": "M=(M_{ab})",
+     "meaning": "class (image) matrix, \\(a,b\\in K\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Class matrix (blockmodel count matrix; Wasserman and Faust 1994)",
+     "latex": "M_{ab}=\\sum_{e:\\ c(s(e))=a,\\ c(t(e))=b}w(e)",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Total edge weight (count) from class \\(a\\) to class \\(b\\). For an undirected edge between different classes both \\(M_{ab}\\) and \\(M_{ba}\\) receive it; an undirected edge inside one class is counted once in \\(M_{aa}\\)."
+    }
+   ],
+   "variants": {
+    "gm_class_matrix": "Edge counts (or weights) between classes defined by a node attribute, with the classes in a given row and column order."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "With no nodes the class set is empty and \\(M\\) is 0\\(\\times\\)0.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "All entries are 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop lies inside its node's class and adds to \\(M_{aa}\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed input fills \\(M_{ab}\\) and \\(M_{ba}\\) separately, so \\(M\\) is not symmetric; undirected input gives a symmetric \\(M\\) except that the diagonal counts each edge once.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "wasserman1994social"
+   ]
+  },
+  "matrix_operators": {
+   "status": "partial",
+   "note": "One entry of a documented-only tool lists four operators together; which of them each tool exposes, and with which conventions, is not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "A=(a_{uv})",
+     "meaning": "adjacency matrix: \\(a_{uv}\\) is the number of edges from \\(u\\) to \\(v\\) (the sum of their weights when weighted)"
+    },
+    {
+     "symbol": "D=\\operatorname{diag}(d_1,\\dots,d_n)",
+     "meaning": "degree matrix, \\(d_u=\\sum_v a_{uv}\\) (row sums of \\(A\\))"
+    },
+    {
+     "symbol": "\\vec E",
+     "meaning": "set of directed edges (each undirected edge as two directed ones)"
+    },
+    {
+     "symbol": "B_H",
+     "meaning": "Hashimoto (non-backtracking) matrix, indexed by directed edges"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Hashimoto non-backtracking matrix (Hashimoto 1989)",
+     "latex": "(B_H)_{(u\\to v),(x\\to y)}=\\begin{cases}1&v=x\\ \\text{and}\\ y\\neq u\\\\0&\\text{otherwise}\\end{cases}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "A \\(2m\\times 2m\\) matrix (for undirected input) on directed edges: edge \\(u\\to v\\) leads to every edge out of \\(v\\) except the one returning to \\(u\\)."
+    }
+   ],
+   "variants": {
+    "matrix_operators": "Collective entry of a documented tool for the adjacency, Laplacian, Hashimoto and incidence operators; the adjacency, Laplacian and incidence forms are written on their own concept pages (adjacency_matrix, laplacian_matrix, incidence_matrix) and the Hashimoto form above."
+   },
+   "references": [
+    "hashimoto1989zeta"
+   ]
+  },
+  "incidence_matrix": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "B=(b_{ve})",
+     "meaning": "\\(n\\times m\\) incidence matrix, rows nodes, columns edges"
+    },
+    {
+     "symbol": "P,Q",
+     "meaning": "the two node classes of a bipartite graph"
+    },
+    {
+     "symbol": "M=(m_{pq})",
+     "meaning": "biadjacency matrix, rows \\(P\\), columns \\(Q\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Unoriented incidence matrix (Bondy and Murty 2008)",
+     "latex": "b_{ve}=\\begin{cases}1&v\\text{ is an end of }e\\\\0&\\text{otherwise}\\end{cases}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "One column per edge, with 1 at both ends; a self-loop is a column with no entry in the convention that loops are empty (the other convention puts 2 at the loop's node)."
+    },
+    {
+     "name": "Oriented incidence matrix",
+     "latex": "b_{ve}=\\begin{cases}-1&v=s(e)\\\\+1&v=t(e)\\\\0&\\text{otherwise}\\end{cases}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "\\(-1\\) at the source and \\(+1\\) at the target of each edge; \\(BB^{\\top}=D-A_{\\text{sym}}\\) is the combinatorial Laplacian of the underlying undirected graph."
+    },
+    {
+     "name": "Biadjacency matrix",
+     "latex": "m_{pq}=\\text{number (or total weight) of edges between }p\\in P\\text{ and }q\\in Q",
+     "applies_to": [
+      "bipartite"
+     ],
+     "where": "The part of the adjacency matrix of a bipartite graph that joins the two classes; it has \\(|P|\\) rows and \\(|Q|\\) columns, so it is not square in general."
+    }
+   ],
+   "variants": {
+    "gm_incidence": "Node-by-edge matrix: unoriented 0/1 for undirected input, signed for directed input; the biadjacency variant is node-class by node-class for two-mode input. Columns follow the order of the edge list."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): a matrix with no rows.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(n\\times 0\\): no columns.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolated node is a row of zeros.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop has one column: empty, or 2 at its node, by the convention chosen.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Each parallel edge has its own column, so the matrix has \\(m\\) columns.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Entries are unsigned for undirected edges and \\(\\pm1\\) for directed edges.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "The biadjacency form applies; on a one-mode graph it is not defined, because there is no class split.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "bondy2008graph"
+   ]
+  },
+  "laplacian_matrix": {
+   "status": "partial",
+   "note": "The magnetic Laplacian (cat_laplacian_magnetic_matrix) is known by name only, and the directed Laplacian of Chung (2005) is not among the checked sources, so only the undirected forms and the out-degree form are written.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "A=(a_{uv})",
+     "meaning": "adjacency matrix: \\(a_{uv}\\) is the number of edges from \\(u\\) to \\(v\\) (the sum of their weights when weighted)"
+    },
+    {
+     "symbol": "D=\\operatorname{diag}(d_1,\\dots,d_n)",
+     "meaning": "degree matrix, \\(d_u=\\sum_v a_{uv}\\) (row sums of \\(A\\))"
+    },
+    {
+     "symbol": "L",
+     "meaning": "combinatorial Laplacian"
+    },
+    {
+     "symbol": "\\mathcal L",
+     "meaning": "normalized Laplacian"
+    },
+    {
+     "symbol": "D_{\\text{out}}",
+     "meaning": "diagonal matrix of out-degrees (row sums)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Combinatorial Laplacian (Biggs 1974; Chung 1997)",
+     "latex": "L=D-A",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Symmetric, positive semidefinite for undirected input with non-negative weights; row sums are 0. For directed input \\(L=D_{\\text{out}}-A\\) is the usual extension (out-degree Laplacian); it is not symmetric."
+    },
+    {
+     "name": "Normalized Laplacian (Chung 1997)",
+     "latex": "\\mathcal L=I-D^{-1/2}AD^{-1/2},\\qquad \\mathcal L(u,u)=0\\ \\text{if }d_u=0",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Entries \\(1\\) on the diagonal, \\(-1/\\sqrt{d_ud_v}\\) for adjacent nodes. Chung sets the diagonal entry to 0 for a node of degree 0, which makes the formula defined with isolated nodes."
+    },
+    {
+     "name": "Random-walk Laplacian",
+     "latex": "L_{\\mathrm{rw}}=I-D^{-1}A",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Defined only when every degree (out-degree) is positive; rows sum to 0."
+    }
+   ],
+   "variants": {
+    "gm_laplacian": "The Laplacian family: combinatorial \\(D-A\\), normalized \\(I-D^{-1/2}AD^{-1/2}\\) and random-walk \\(I-D^{-1}A\\) forms, each with unit or edge weights in \\(A\\); for directed input the degree is the out-degree (row sum) in the combinatorial form, and other directed normalizations (symmetrized by the stationary distribution) are different matrices.",
+    "cat_laplacian_magnetic_matrix": "Magnetic Laplacian of a directed graph. The sources know it by name only (a documented-only tool entry) and give no formula."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): the 0\\(\\times\\)0 matrix.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(L=0\\); \\(\\mathcal L\\) is 0 on the diagonal by Chung's convention (all nodes isolated).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "\\(L\\) has a zero row and column; \\(\\mathcal L\\) needs the \\(d_u=0\\) convention, since \\(D^{-1/2}\\) does not exist.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop adds to \\(a_{uu}\\) and to \\(d_u\\) equally, so it cancels in \\(D-A\\) when counted once in both, and does not cancel in \\(\\mathcal L\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add in \\(A\\) and in \\(D\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "\\(D-A\\) is symmetric for undirected input; for directed input the matrix depends on the in- or out-degree used in \\(D\\) and on the normalization chosen, so two tools can return different matrices for the same digraph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graspologic": {
+       "status": "differs",
+       "behaviour": "Undirected fixtures agree.",
+       "source": "conventions.json gm_laplacian / gm_normalized_laplacian",
+       "measure": "gm_laplacian",
+       "finding": "F072"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights enter \\(A\\) and \\(D\\) (strength in place of degree).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "biggs1993algebraic",
+    "chung1997spectral"
+   ]
+  },
+  "modularity_matrix": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "A=(a_{uv})",
+     "meaning": "adjacency matrix: \\(a_{uv}\\) is the number of edges from \\(u\\) to \\(v\\) (the sum of their weights when weighted)"
+    },
+    {
+     "symbol": "k_u",
+     "meaning": "degree of \\(u\\); \\(k_u^{\\text{out}},k_u^{\\text{in}}\\) out- and in-degree"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges (total weight)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Modularity matrix (Newman 2006)",
+     "latex": "B_{uv}=a_{uv}-\\frac{k_uk_v}{2m}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Observed minus expected tie weight under the configuration null model; needs \\(m>0\\)."
+    },
+    {
+     "name": "Directed modularity matrix (Leicht and Newman 2008)",
+     "latex": "B_{uv}=a_{uv}-\\frac{k_u^{\\text{out}}k_v^{\\text{in}}}{m}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Out-degree of the source times in-degree of the target, divided by \\(m\\)."
+    }
+   ],
+   "variants": {
+    "gm_modularity": "Undirected form with \\(k_uk_v/2m\\) or directed form with \\(k^{\\text{out}}_uk^{\\text{in}}_v/m\\); weighted input replaces degrees by strengths and \\(m\\) by the total weight."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): the 0\\(\\times\\)0 matrix; there is no \\(m\\) to divide by, but there are no entries either.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(m=0\\): the expected term \\(k_uk_v/2m\\) is 0/0, so the matrix is not defined.",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop adds to \\(a_{uu}\\) and to \\(k_u\\) (by 1 or 2 per the adjacency convention); the formula does not decide the convention.",
+     "tools": {}
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to \\(a_{uv}\\), \\(k\\) and \\(m\\).",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "NetworkX does not implement the modularity matrices for multigraphs.",
+       "source": "conventions.json gm_modularity / gm_modularity"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The undirected and directed forms are different matrices; the directed form is not symmetric.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "newman2006modularity",
+    "leicht2008community"
+   ]
+  },
+  "matrix_bandwidth": {
+   "status": "partial",
+   "note": "The wavefront measure and the particular orderings of each tool are known by name only; only the bandwidth is defined.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\pi",
+     "meaning": "ordering of the nodes, a bijection \\(V\\to\\{1,\\dots,n\\}\\)"
+    },
+    {
+     "symbol": "\\beta_\\pi",
+     "meaning": "bandwidth of \\(A\\) under \\(\\pi\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Bandwidth (Cuthill and McKee 1969)",
+     "latex": "\\beta_\\pi(G)=\\max_{uv\\in E}\\,|\\pi(u)-\\pi(v)|",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Largest distance from the diagonal of a non-zero entry of \\(A\\) when rows and columns are ordered by \\(\\pi\\); orderings such as reverse Cuthill-McKee try to make it small. Minimizing it over all \\(\\pi\\) is hard, so tools return a heuristic ordering."
+    }
+   ],
+   "variants": {
+    "matrix_bandwidth": "Collective entry for sparse-matrix orderings and their bandwidth and wavefront; the bandwidth is written above."
+   },
+   "references": [
+    "cuthill1969reducing"
+   ]
+  },
+  "stochastic_matrix": {
+   "status": "partial",
+   "note": "The tool function is known by name only; the normalization it applies and its handling of sinks are not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "A=(a_{uv})",
+     "meaning": "adjacency matrix: \\(a_{uv}\\) is the number of edges from \\(u\\) to \\(v\\) (the sum of their weights when weighted)"
+    },
+    {
+     "symbol": "d^{\\text{out}}_u",
+     "meaning": "out-strength \\(\\sum_v a_{uv}\\)"
+    },
+    {
+     "symbol": "P",
+     "meaning": "row-stochastic transition matrix"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Transition matrix of the random walk (Kemeny and Snell 1960)",
+     "latex": "P_{uv}=\\frac{a_{uv}}{d^{\\text{out}}_u}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Each row sums to 1; defined when \\(d^{\\text{out}}_u>0\\) for every node."
+    }
+   ],
+   "variants": {
+    "cat_matrix_stochastic": "The row-normalized adjacency matrix; the treatment of rows with no out-edges is a convention the formula does not fix."
+   },
+   "edge_cases": [
+    {
+     "case": "isolates",
+     "definition_gives": "A node with \\(d^{\\text{out}}_u=0\\) gives \\(0/0\\): the row is not defined by the formula (conventions set it to 0, or to a self-loop, or to uniform).",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Every row is 0/0; the matrix is not defined.",
+     "tools": {}
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Strength replaces degree; negative weights can give negative entries, so the result is stochastic only for non-negative weights.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "kemeny1960finite"
+   ]
+  },
+  "tournament_matrix": {
+   "status": "partial",
+   "note": "The tool function is known by name only; its input requirements and output convention are not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "T=(t_{uv})",
+     "meaning": "tournament matrix of a tournament: \\(t_{uv}=1\\) if \\(u\\) beats \\(v\\), else 0"
+    },
+    {
+     "symbol": "s_u",
+     "meaning": "score of \\(u\\), the number of nodes it beats"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Tournament matrix and scores (Harary, Norman and Cartwright 1965)",
+     "latex": "t_{uv}+t_{vu}=1\\ (u\\neq v),\\quad t_{uu}=0,\\quad s_u=\\sum_vt_{uv}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Exactly one arc between every pair of nodes; the score vector is the row sums."
+    }
+   ],
+   "variants": {
+    "cat_matrix_tournament": "Tournament matrix as above; the tool entry is known by name only."
+   },
+   "references": [
+    "harary1965structural"
+   ]
+  },
+  "eigenvectors_matrix": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "M",
+     "meaning": "a graph matrix: adjacency, Laplacian, normalized Laplacian, modularity or other"
+    },
+    {
+     "symbol": "\\lambda_i,\\ x_i",
+     "meaning": "eigenvalue and eigenvector, \\(Mx_i=\\lambda_ix_i\\), \\(\\|x_i\\|_2=1\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Eigenpairs of a symmetric matrix (Golub and Van Loan 2013)",
+     "latex": "Mx_i=\\lambda_ix_i,\\qquad x_i^{\\top}x_j=\\delta_{ij}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "A real symmetric \\(M\\) has real eigenvalues and an orthonormal set of eigenvectors; each \\(x_i\\) is determined up to sign, and up to rotation within an eigenspace when \\(\\lambda_i\\) is repeated. A non-symmetric \\(M\\) (directed input) can have complex eigenpairs."
+    }
+   ],
+   "variants": {
+    "eigenvectors_matrix": "Eigenvectors of any of the graph matrices; which matrix, how many vectors, the ordering of eigenvalues and the sign rule are properties of the tool."
+   },
+   "edge_cases": [
+    {
+     "case": "ties",
+     "definition_gives": "Repeated eigenvalues make the eigenvectors non-unique (any orthonormal basis of the eigenspace); a sign flip is always allowed, so two correct results can differ by sign.",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "A non-symmetric matrix has right and left eigenvectors that differ, and possibly complex ones.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "golub2013matrix"
+   ]
+  },
+  "estrada_index": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\lambda_1\\ge\\cdots\\ge\\lambda_n",
+     "meaning": "eigenvalues of \\(A\\)"
+    },
+    {
+     "symbol": "x_i(u)",
+     "meaning": "component of the \\(i\\)-th unit eigenvector at \\(u\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Estrada index (sum of subgraph centralities; Estrada and Rodriguez-Velazquez 2005)",
+     "latex": "EE(G)=\\sum_{i=1}^{n}e^{\\lambda_i}=\\operatorname{tr}\\,e^{A}=\\sum_{u\\in V}\\sum_{i=1}^{n}x_i(u)^2e^{\\lambda_i}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Weighted count of closed walks of every length (\\(\\operatorname{tr}\\,A^k/k!\\) summed over \\(k\\)); always defined, since the series converges for every finite \\(A\\). Subgraph centrality of \\(u\\) is \\((e^{A})_{uu}\\)."
+    }
+   ],
+   "variants": {
+    "estrada_index": "The sum \\(\\operatorname{tr}\\,e^{A}\\) of the exponentials of the adjacency eigenvalues; a variant over another matrix (Laplacian) is a different index."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): empty sum, 0 (and \\(\\operatorname{tr}\\,e^{A}=0\\) for the 0\\(\\times\\)0 matrix).",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(A=0\\), all \\(\\lambda_i=0\\): \\(EE=n\\).",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops put entries on the diagonal of \\(A\\) and change the spectrum; the definition does not exclude them.",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The eigenvalue form needs a symmetric \\(A\\); \\(\\operatorname{tr}\\,e^{A}\\) is defined for directed input too (real part when eigenvalues are complex).",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "estrada2005subgraph"
+   ]
+  },
+  "fiedler": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "L",
+     "meaning": "Laplacian matrix (combinatorial or normalized)"
+    },
+    {
+     "symbol": "0=\\mu_1\\le\\mu_2\\le\\cdots\\le\\mu_n",
+     "meaning": "eigenvalues of \\(L\\)"
+    },
+    {
+     "symbol": "f",
+     "meaning": "Fiedler vector: an eigenvector of \\(\\mu_2\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Algebraic connectivity (Fiedler 1973)",
+     "latex": "a(G)=\\mu_2(L),\\qquad Lf=\\mu_2f,\\ \\ f\\perp\\mathbf 1",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "The second-smallest Laplacian eigenvalue; positive exactly when the graph is connected (\\(n\\ge 2\\)). The Fiedler vector is orthogonal to the constant vector and is unique up to sign when \\(\\mu_2\\) is simple."
+    },
+    {
+     "name": "Normalized form",
+     "latex": "\\mu_2(\\mathcal L),\\qquad \\mathcal L=I-D^{-1/2}AD^{-1/2}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Same definition with the normalized Laplacian; the eigenvector then lives on the \\(D^{1/2}\\)-scaled space."
+    }
+   ],
+   "variants": {
+    "gm_fiedler": "Value \\(\\mu_2\\) (algebraic connectivity) or the vector \\(f\\); combinatorial or normalized Laplacian; the spectral bisection splits nodes by the sign of \\(f\\)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): no eigenvalues; not defined.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(n=1\\): there is no second eigenvalue; not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "\\(L\\) has eigenvalues 0 and \\(2w\\); \\(f\\propto(1,-1)\\), unique up to sign, so a sign rule decides the reported vector.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "For two nodes NetworkX returns [1, -1] without solving;",
+       "source": "conventions.json gm_fiedler / gm_fiedler_vector",
+       "measure": "gm_fiedler"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "\\(\\mu_2=0\\) with multiplicity at least 2, so \\(f\\) is not unique (any vector of the null space orthogonal to \\(\\mathbf 1\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "A repeated \\(\\mu_2\\) makes \\(f\\) non-unique; the sign of \\(f\\) is arbitrary even when \\(\\mu_2\\) is simple.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights enter \\(A\\) and \\(D\\); negative weights break positive semidefiniteness and the connectivity reading.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to \\(A\\) and \\(D\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "fiedler1973algebraic",
+    "chung1997spectral"
+   ]
+  },
+  "graph_spectrum": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "M",
+     "meaning": "a graph matrix (adjacency, Laplacian, normalized Laplacian)"
+    },
+    {
+     "symbol": "\\lambda_1\\ge\\cdots\\ge\\lambda_n",
+     "meaning": "eigenvalues of \\(M\\) with multiplicity"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Spectrum of a graph (Biggs 1974; Chung 1997)",
+     "latex": "\\operatorname{spec}(G)=\\{\\lambda:\\ \\det(M-\\lambda I)=0\\}\\ \\text{with multiplicities},\\quad \\sum_i\\lambda_i=\\operatorname{tr}M",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "The multiset of eigenvalues of the chosen matrix; real for a symmetric \\(M\\). Which matrix is meant (adjacency spectrum, Laplacian spectrum, normalized-Laplacian spectrum) changes the result completely."
+    }
+   ],
+   "variants": {
+    "graph_spectrum": "Eigenvalues of the adjacency, Laplacian or normalized Laplacian matrix, sorted ascending or descending; which one is returned is a property of the tool and its options."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): the empty multiset.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Adjacency and Laplacian spectra are all 0; the normalized Laplacian spectrum is all 0 by Chung's convention.",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "A non-symmetric matrix can have complex eigenvalues; the real spectral theory holds for undirected input.",
+     "tools": {}
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Multiplicities matter: the spectrum is a multiset, and repeated eigenvalues are expected (for example, a complete graph has one large eigenvalue and \\(n-1\\) equal ones).",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "biggs1993algebraic",
+    "chung1997spectral"
+   ]
+  },
+  "spectral_gap": {
+   "status": "partial",
+   "note": "The tool function is known by name only; which matrix it uses is not recorded, so both published forms are given.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\lambda_1\\ge\\lambda_2\\ge\\cdots",
+     "meaning": "eigenvalues of the adjacency matrix"
+    },
+    {
+     "symbol": "\\mu_2",
+     "meaning": "second-smallest Laplacian eigenvalue"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Spectral gap of a regular graph (Hoory, Linial and Wigderson 2006)",
+     "latex": "\\mathrm{gap}(G)=d-\\lambda_2",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "For a \\(d\\)-regular graph the difference between the largest adjacency eigenvalue \\(\\lambda_1=d\\) and the second; equal to \\(\\mu_2\\) of the Laplacian \\(dI-A\\), so it coincides with the algebraic connectivity."
+    },
+    {
+     "name": "Laplacian gap",
+     "latex": "\\mathrm{gap}_L(G)=\\mu_2",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "For non-regular graphs the gap is usually taken as the algebraic connectivity \\(\\mu_2\\) of the Laplacian; the adjacency form \\(\\lambda_1-\\lambda_2\\) is a different number."
+    }
+   ],
+   "variants": {
+    "cat_gap_spectral": "The gap between the first two eigenvalues; whether the tool uses the adjacency, Laplacian or normalized Laplacian is not recorded."
+   },
+   "edge_cases": [
+    {
+     "case": "disconnected",
+     "definition_gives": "\\(\\mu_2=0\\): the Laplacian gap is 0; the adjacency gap \\(\\lambda_1-\\lambda_2\\) is 0 when two components share the largest eigenvalue.",
+     "tools": {}
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "\\(n<2\\): there is no second eigenvalue; not defined.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "hoory2006expander",
+    "fiedler1973algebraic"
+   ]
+  },
+  "spectral_ordering": {
+   "status": "name_only",
+   "note": "The sources list the procedure (a spectral ordering of nodes) in a documented-only tool and record no formula; the primary source for spectral sequencing is not among the sources checked."
+  }
+ }
+}
