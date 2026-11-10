@@ -16,7 +16,7 @@ Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homop
 
 Odds ratio of within-group ties. Entries grouped here: Odds ratio of within-group ties (ORWG).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (odds ratio of within-group ties (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available.
 
 ## Odds ratio of within-group ties (ORWG) {#seg_orwg}
 

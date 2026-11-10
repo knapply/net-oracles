@@ -16,7 +16,7 @@ Family: [Mixing and assortativity](index.html). Subfamily: Assortativity. Concep
 
 Degree and property correlation histograms. Entries grouped here: Degree and property correlation histograms.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (graph-tool): the sources give a function name for two-dimensional histograms of degree or property correlations of edge ends; no formula is recorded and the tool was not run.
 
 ## Degree and property correlation histograms {#correlation_histograms}
 

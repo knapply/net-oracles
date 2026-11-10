@@ -1,0 +1,728 @@
+{
+ "family": "Mixing and assortativity",
+ "concepts": {
+  "assortativity_coefficient": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "e_{ij}",
+     "meaning": "fraction of edges that join a node of class \\(i\\) (source) to a node of class \\(j\\) (target); sums to 1. For an undirected graph each edge is counted in both orders, so \\(e\\) is symmetric"
+    },
+    {
+     "symbol": "a_i=\\sum_j e_{ij},\\; b_j=\\sum_i e_{ij}",
+     "meaning": "fractions of edge ends at the source and at the target side in class \\(i\\), respectively \\(j\\)"
+    },
+    {
+     "symbol": "x_i,\\,y_j",
+     "meaning": "values (a node property such as degree) at the source of an edge and at the target of an edge"
+    },
+    {
+     "symbol": "\\sigma_a,\\sigma_b",
+     "meaning": "standard deviations of \\(a_i\\) and \\(b_j\\) as distributions over the property values: \\(\\sigma_a^2=\\sum_i a_i x_i^2-(\\sum_i a_i x_i)^2\\)"
+    },
+    {
+     "symbol": "\\mathrm{Tr}\\,e",
+     "meaning": "trace of \\(e\\): \\(\\sum_i e_{ii}\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Assortativity by a scalar property (Newman 2002, 2003)",
+     "latex": "r=\\frac{\\sum_{jk} jk\\,(e_{jk}-a_j b_k)}{\\sigma_a\\sigma_b}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Pearson correlation between the values at the two ends of an edge; with \\(j,k\\) the property values (degree measured as remaining degree in Newman 2002, equivalently the degree itself, since the correlation is shift-invariant). Defined when \\(\\sigma_a\\sigma_b>0\\); a regular graph has zero variance, so r is not defined."
+    },
+    {
+     "name": "Assortativity by a categorical attribute (Newman 2003)",
+     "latex": "r=\\frac{\\sum_i e_{ii}-\\sum_i a_i b_i}{1-\\sum_i a_i b_i}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Compares the fraction of edges inside a class with the fraction expected if ends were paired at random with the same marginals; 1 for perfect within-class mixing. The denominator is 0 when all edge ends are in one class (\\(\\sum_i a_i b_i=1\\)): not defined. Defined only when there is at least one edge, since the \\(e_{ij}\\) are fractions of edges."
+    },
+    {
+     "name": "Directed degree assortativity",
+     "latex": "r=\\frac{\\sum_{jk} jk\\,(e_{jk}-a_j b_k)}{\\sigma_a\\sigma_b}\\quad(j=\\text{degree at source},\\,k=\\text{degree at target})",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Same formula over the arcs, with the source value taken from one degree type (in or out) and the target value from another, giving the four in/out choices."
+    },
+    {
+     "name": "Weighted version",
+     "latex": "e_{jk}=\\frac{\\sum_{(u,v)}w_{uv}\\,[x_u=j][y_v=k]}{\\sum_{(u,v)}w_{uv}}",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "Each edge counts with its weight in the mixing fractions (and the degree values are strengths when strength assortativity is scored); weights non-negative and not all 0."
+    }
+   ],
+   "variants": {
+    "assort": "The scalar-property coefficient of Newman 2002 (degree) computed on a generic assortativity entry point (the binary or weighted adjacency matrix in BCT, with direction flags); the formula is the Pearson form above.",
+    "assortativity_degree": "The Pearson formula with the property fixed to node degree (out-degree at the source, in-degree at the target for directed graphs, or the degree itself for undirected ones), optionally with direction ignored.",
+    "assortativity_nominal": "The categorical formula: \\(r=(\\mathrm{Tr}\\,e-\\sum a_ib_i)/(1-\\sum a_ib_i)\\) over a vertex partition or attribute, with optional directedness and edge weights.",
+    "assortativity_values": "The Pearson formula for any numeric vertex property (not only degree), optionally weighted and directed; the correlation is taken over edge ends of the values."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "No edges: the fractions \\(e_{ij}\\) divide by 0 (an empty mixing matrix): not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "A single node has no edge ends (unless it has a loop): not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "With one edge or all nodes having the same value \\(\\sigma_a\\sigma_b=0\\) and the nominal denominator is 0: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "Without edges the mixing matrix is empty and the coefficient is 0 / 0;",
+       "source": "conventions.json assortativity_nominal / assortativity_nominal_networkx",
+       "measure": "assortativity_nominal"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Isolated nodes carry no edge ends and do not enter \\(e_{ij}\\), so they do not change r.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is an edge whose two ends belong to the same node: it contributes to the diagonal \\(e_{ii}\\) and enters both marginals; the definition counts it as an edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Each parallel edge is a separate edge in \\(e_{ij}\\) (the fractions are over edges), and degrees counted with multiplicity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "differs",
+       "behaviour": "BCT works on the binary matrix, so parallel edges collapse and degrees count distinct neighbours;",
+       "source": "conventions.json assort / assort_degree",
+       "measure": "assort"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Undirected graphs count each edge in both orders (symmetric \\(e\\)); directed graphs use source and target values, so the result depends on the chosen degree types.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "no_value",
+       "behaviour": "assortativity_bin(flag = 0) is the undirected coefficient; directed fixtures are left to the definition and NetworkX oracles.",
+       "source": "conventions.json assort / assort_degree",
+       "measure": "assort"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Edge weights replace the unit edge count in \\(e_{ij}\\); zero-weight edges contribute nothing.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Every node has the same degree: \\(\\sigma_a=0\\) so the degree coefficient is not defined (0/0).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "The centre meets only leaves: \\(r=-1\\) for degree assortativity (perfectly disassortative).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "Degree assortativity on a bipartite graph is defined as for any graph; nominal assortativity with the sides as classes is \\(-1\\) (no edge inside a class).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "newman2002assortative",
+    "newman2003mixing"
+   ]
+  },
+  "average_neighbor_degree": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "k_i",
+     "meaning": "degree of node \\(i\\) (out-degree or in-degree for directed graphs, with multiplicity for parallel edges)"
+    },
+    {
+     "symbol": "a_{ij}",
+     "meaning": "number of edges from \\(i\\) to \\(j\\)"
+    },
+    {
+     "symbol": "s_i=\\sum_j w_{ij}",
+     "meaning": "strength of \\(i\\)"
+    },
+    {
+     "symbol": "w_{ij}",
+     "meaning": "weight of the edge from \\(i\\) to \\(j\\)"
+    },
+    {
+     "symbol": "V_k",
+     "meaning": "set of nodes of degree \\(k\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Average nearest-neighbour degree (Pastor-Satorras, Vazquez and Vespignani 2001)",
+     "latex": "k_{nn,i}=\\frac{1}{k_i}\\sum_{j}a_{ij}k_j",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Mean degree of the neighbours of \\(i\\), each edge counted once. Defined for \\(k_i>0\\); for an isolate the sum is empty and the divisor is 0, so not defined."
+    },
+    {
+     "name": "Degree connectivity",
+     "latex": "k_{nn}(k)=\\frac{1}{|V_k|}\\sum_{i\\in V_k}k_{nn,i}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Average of the nearest-neighbour degree over all nodes of degree \\(k\\); an increasing function signals assortative mixing."
+    },
+    {
+     "name": "Weighted average nearest-neighbour degree (Barrat et al. 2004)",
+     "latex": "k^{w}_{nn,i}=\\frac{1}{s_i}\\sum_j w_{ij}k_j",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "Neighbour degrees weighted by tie weight and divided by the strength; defined for \\(s_i>0\\)."
+    }
+   ],
+   "variants": {
+    "cat_knn": "The degree connectivity or per-node average neighbour degree \\(k_{nn,i}\\) as documented for igraph and python-igraph (the source's description does not state whether the function returns the per-node or per-degree value, and the tool was not run).",
+    "avg_deg_conn": "The degree connectivity \\(k_{nn}(k)\\): the mean of \\(k_{nn,i}\\) over nodes of each degree \\(k\\).",
+    "avg_nbr_deg": "The per-node \\(k_{nn,i}\\) (weighted version \\(k^w_{nn,i}\\) when weights are given; directed versions with source and target degree types chosen separately)."
+   },
+   "edge_cases": [
+    {
+     "case": "isolates",
+     "definition_gives": "An isolate has \\(k_i=0\\): the sum is empty and the divisor is 0: not defined."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One node with no edge: \\(k_i=0\\): not defined."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop makes the node its own neighbour, so it contributes its own degree \\(k_i\\) to the sum."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "\\(a_{ij}>1\\) for parallel edges: every parallel edge counts once in the sum and in the degree \\(k_i\\).",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.",
+       "source": "conventions.json avg_deg_conn / avg_deg_conn",
+       "measure": "avg_deg_conn"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed graphs need a choice of degree type for the node and for its neighbours (in, out) and of the neighbour direction."
+    },
+    {
+     "case": "weights",
+     "definition_gives": "The weighted form divides by strength \\(s_i\\) and weights each neighbour by \\(w_{ij}\\)."
+    },
+    {
+     "case": "star",
+     "definition_gives": "The centre has mean neighbour degree 1; each leaf has the centre's degree \\(n-1\\)."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All nodes have the same degree: \\(k_{nn,i}=n-1\\) for all \\(i\\)."
+    }
+   ],
+   "references": [
+    "pastorsatorras2001dynamical",
+    "barrat2004architecture"
+   ]
+  },
+  "correlation_histograms": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool): the sources give a function name for two-dimensional histograms of degree or property correlations of edge ends; no formula is recorded and the tool was not run."
+  },
+  "local_assortativity": {
+   "status": "name_only",
+   "note": "Documented only (BCT): the sources give the name of a node-level assortativity function; the definition (local assortativity, e.g. Piraveenan et al. 2008) is not in the sources checked and no verified bibliography entry is available."
+  },
+  "mixing_matrix": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "c(u)",
+     "meaning": "class of node \\(u\\) (an attribute value, or a degree value for the degree mixing matrix)"
+    },
+    {
+     "symbol": "M_{ij}",
+     "meaning": "number of edges from a node of class \\(i\\) to a node of class \\(j\\)"
+    },
+    {
+     "symbol": "e_{ij}=M_{ij}/\\sum_{kl}M_{kl}",
+     "meaning": "normalized mixing matrix (Newman 2003)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Mixing matrix (Newman 2003)",
+     "latex": "M_{ij}=\\bigl|\\{(u,v)\\in E: c(u)=i,\\;c(v)=j\\}\\bigr|",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Counts of edges between classes. For an undirected graph each edge (u,v) is counted in both orders (so \\(M\\) is symmetric and a within-class edge adds 2 to \\(M_{ii}\\)); for a directed graph each arc once, from source class to target class. Defined for any graph; \\(e=M/\\sum M\\) is defined only with at least one edge."
+    },
+    {
+     "name": "Degree mixing matrix",
+     "latex": "c(u)=k_u",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The classes are degree values (out at the source, in at the target for directed graphs); the matrix is indexed by degree."
+    }
+   ],
+   "variants": {
+    "cat_attribute_matrix_mixing": "The mixing matrix \\(M\\) with classes given by a node attribute, as documented for NetworkX (not run).",
+    "cat_degree_matrix_mixing": "The mixing matrix \\(M\\) with classes given by node degree, as documented for NetworkX (not run).",
+    "mixing": "The attribute or degree mixing matrix \\(M\\) as produced by a generic mixing function; the counting of edges in both orders for undirected graphs follows the formula above."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "No edges: \\(M=0\\); the normalized \\(e_{ij}\\) is 0/0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is an edge from a node to itself: it adds to \\(M_{c,c}\\) on the diagonal.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Each parallel edge counts: \\(M\\) counts edges, not distinct pairs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed graphs give an asymmetric \\(M\\) by source and target class; undirected graphs a symmetric one with each edge in both orders.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "With weights, each edge adds its weight instead of 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "newman2003mixing"
+   ]
+  },
+  "rich_club": {
+   "status": "partial",
+   "note": "The two weighted variants are documented only (tnet), with no formula in the sources checked.",
+   "notation": [
+    {
+     "symbol": "k_i",
+     "meaning": "degree of node \\(i\\)"
+    },
+    {
+     "symbol": "V_{>k}=\\{i:k_i>k\\}",
+     "meaning": "the nodes richer than \\(k\\)"
+    },
+    {
+     "symbol": "N_{>k}=|V_{>k}|",
+     "meaning": "their number"
+    },
+    {
+     "symbol": "E_{>k}",
+     "meaning": "number of edges among the nodes of \\(V_{>k}\\)"
+    },
+    {
+     "symbol": "\\phi_{\\mathrm{rand}}(k)",
+     "meaning": "average rich-club coefficient of degree-preserving randomizations of the graph (Maslov and Sneppen 2002 rewiring)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Rich-club coefficient (Zhou and Mondragon 2004)",
+     "latex": "\\phi(k)=\\frac{2E_{>k}}{N_{>k}(N_{>k}-1)}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Density of the subgraph induced by nodes of degree greater than \\(k\\). Defined only when \\(N_{>k}\\ge2\\); undirected simple graphs."
+    },
+    {
+     "name": "Normalized rich-club coefficient (Colizza et al. 2006)",
+     "latex": "\\rho(k)=\\frac{\\phi(k)}{\\phi_{\\mathrm{rand}}(k)}",
+     "applies_to": [
+      "undirected",
+      "simple",
+      "normalized"
+     ],
+     "where": "Ratio to the value in a null model with the same degrees; \\(\\rho>1\\) indicates rich-club ordering. Depends on the randomization (number of rewired graphs and the random draws)."
+    }
+   ],
+   "variants": {
+    "rich_club": "The coefficient \\(\\phi(k)\\) for every degree \\(k\\), optionally normalized to \\(\\rho(k)\\) by averaging randomizations (the normalized form is stochastic).",
+    "cat_local_richclub_weighted": "Weighted local rich-club coefficient as documented for the R package tnet (not run); its definition is not recorded in the sources.",
+    "cat_richclub_weighted": "Weighted rich-club coefficient as documented for tnet (not run); the weighted definition is not recorded in the sources."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "For \\(k\\) such that fewer than two nodes have degree above \\(k\\), the denominator is 0: not defined."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No node has degree above any \\(k\\ge0\\) except none: \\(N_{>k}=0\\): not defined for every \\(k\\)."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The definition is for simple graphs; loops are not edges between two distinct rich nodes."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The definition is for simple graphs; parallel edges are not part of \\(E_{>k}\\)."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(\\phi(k)=1\\) whenever \\(N_{>k}\\ge2\\); for the complete graph \\(N_{>k}=0\\) for \\(k\\ge n-1\\)."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Many nodes share a degree; \\(V_{>k}\\) is a strict inequality, so ties at the threshold fall outside the club."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "The normalized form needs a null-model ensemble; with too few randomizations or an unrewirable graph \\(\\phi_{\\mathrm{rand}}\\) can be 0."
+    }
+   ],
+   "references": [
+    "zhou2004rich",
+    "colizza2006detecting",
+    "maslov2002specificity"
+   ]
+  },
+  "ei_index": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "E_v",
+     "meaning": "number of ties of ego \\(v\\) to nodes of a different group (external)"
+    },
+    {
+     "symbol": "I_v",
+     "meaning": "number of ties of \\(v\\) to nodes of the same group (internal)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "E-I index (Krackhardt and Stern 1988)",
+     "latex": "\\mathrm{EI}=\\frac{E-I}{E+I}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Ranges from \\(-1\\) (all ties internal) to \\(+1\\) (all external); for a node, \\(E,I\\) count its ties, for a group or whole graph the ties of its members. Not defined when \\(E+I=0\\) (no ties)."
+    }
+   ],
+   "variants": {
+    "ei_index": "Node-level (ego) E-I index \\((E_v-I_v)/(E_v+I_v)\\) from the counts of ties to other and same groups, as computed by egor's comp_ei() from alters; the group and whole-network forms use the totals."
+   },
+   "edge_cases": [
+    {
+     "case": "isolates",
+     "definition_gives": "An ego without ties has \\(E+I=0\\): not defined.",
+     "tools": {
+      "egor": {
+       "status": "differs",
+       "behaviour": "egor's comp_ei() counts alters, each neighbour once whatever the number or direction of the ties to it, and no self-loop; the reference value's node E-I index counts ties (each edge, in either direction, separately, a self-loop as an internal tie), and an ego without alters has no value in egor where the reference reports undefined (-1). Undirected fixtures without parallel edges or loops agree.",
+       "source": "conventions.json ei_index / ei_index_node",
+       "measure": "ei_index",
+       "finding": "F073"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No ties: not defined."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A self-loop is a tie to a node of the same group: counted in \\(I\\) when loops are counted as ties.",
+     "tools": {
+      "egor": {
+       "status": "differs",
+       "behaviour": "egor's comp_ei() counts alters, each neighbour once whatever the number or direction of the ties to it, and no self-loop; the reference value's node E-I index counts ties (each edge, in either direction, separately, a self-loop as an internal tie), and an ego without alters has no value in egor where the reference reports undefined (-1).",
+       "source": "conventions.json ei_index / ei_index_node",
+       "measure": "ei_index",
+       "finding": "F073"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Each parallel tie counts when ties are counted; counts of alters count each neighbour once.",
+     "tools": {
+      "egor": {
+       "status": "differs",
+       "behaviour": "Undirected fixtures without parallel edges or loops agree.",
+       "source": "conventions.json ei_index / ei_index_node",
+       "measure": "ei_index",
+       "finding": "F073"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Whether in-, out- or all ties are counted is a choice of the analysis; ties in either direction are counted separately when ties are counted per edge.",
+     "tools": {
+      "egor": {
+       "status": "differs",
+       "behaviour": "egor's comp_ei() counts alters, each neighbour once whatever the number or direction of the ties to it, and no self-loop; the reference value's node E-I index counts ties (each edge, in either direction, separately, a self-loop as an internal tie), and an ego without alters has no value in egor where the reference reports undefined (-1).",
+       "source": "conventions.json ei_index / ei_index_node",
+       "measure": "ei_index",
+       "finding": "F073"
+      }
+     }
+    }
+   ],
+   "references": [
+    "krackhardt1988informal"
+   ]
+  },
+  "coleman_homophily": {
+   "status": "name_only",
+   "note": "Documented only (Coleman's homophily index (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available."
+  },
+  "freeman_segregation": {
+   "status": "name_only",
+   "note": "Documented only (Freeman's segregation index (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available."
+  },
+  "gupta_anderson_may": {
+   "status": "name_only",
+   "note": "Documented only (Gupta-Anderson-May mixing coefficient (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available."
+  },
+  "orwg": {
+   "status": "name_only",
+   "note": "Documented only (odds ratio of within-group ties (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available."
+  },
+  "segregation_matrix_index": {
+   "status": "name_only",
+   "note": "Documented only (segregation matrix index (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available."
+  },
+  "spectral_segregation_index": {
+   "status": "name_only",
+   "note": "Documented only (spectral segregation index (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available."
+  }
+ }
+}

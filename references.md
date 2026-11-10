@@ -190,6 +190,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="korn2009lobby"></a>`korn2009lobby` Korn, A.; Schubert, A.; Telcs, A. (2009) Lobby Index in Networks. \*Physica A: Statistical Mechanics and its Applications\*, 388(11), 2221–2226.
 - <a id="koschutzki2005centrality"></a>`koschutzki2005centrality` Koschützki, D.; Lehmann, K.A.; Peeters, L.; Richter, S.; Tenfelde-Podehl, D.; Zlotowski, O. (2005) Centrality Indices. \*Network Analysis: Methodological Foundations\*, 3418, 16–61. doi:10.1007/978-3-540-31955-9\_3
 - <a id="kosowski2004classical"></a>`kosowski2004classical` Kosowski, A.; Manuszewski, K. (2004) Classical Coloring of Graphs. \*Graph Colorings\*, 352.
+- <a id="krackhardt1988informal"></a>`krackhardt1988informal` Krackhardt, D.; Stern, R.N. (1988) Informal Networks and Organizational Crises: An Experimental Simulation. \*Social Psychology Quarterly\*, 51(2), 123–140. doi:10.2307/2786835
 - <a id="krackhardt1990assessing"></a>`krackhardt1990assessing` Krackhardt, D. (1990) Assessing the Political Landscape: Structure, Cognition, and Power in Organizations. \*Administrative Science Quarterly\*, 35(2), 342–369. doi:10.2307/2393394
 - <a id="krivitsky2008fitting"></a>`krivitsky2008fitting` Krivitsky, P.N.; Handcock, M.S. (2008) Fitting Position Latent Cluster Models for Social Networks with latentnet. \*Journal of Statistical Software\*, 24(5), 1–23. doi:10.18637/jss.v024.i05
 - <a id="kruskal1956shortest"></a>`kruskal1956shortest` Kruskal, J.B. (1956) On the Shortest Spanning Subtree of a Graph and the Traveling Salesman Problem. \*Proceedings of the American Mathematical Society\*, 7(1), 48–50. doi:10.1090/S0002-9939-1956-0078686-7
@@ -226,6 +227,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="moon1968topics"></a>`moon1968topics` Moon, J.W. (1968) Topics on Tournaments.
 - <a id="newman2001scientific"></a>`newman2001scientific` Newman, M.E.J. (2001) Scientific Collaboration Networks. II. Shortest Paths, Weighted Networks, and Centrality. \*Physical Review E\*, 64(1), 016132. doi:10.1103/PhysRevE.64.016132
 - <a id="newman2002assortative"></a>`newman2002assortative` Newman, M.E.J. (2002) Assortative Mixing in Networks. \*Physical Review Letters\*, 89(20), 208701. doi:10.1103/PhysRevLett.89.208701
+- <a id="newman2003mixing"></a>`newman2003mixing` Newman, M.E.J. (2003) Mixing Patterns in Networks. \*Physical Review E\*, 67(2), 026126. doi:10.1103/PhysRevE.67.026126
 - <a id="newman2004analysis"></a>`newman2004analysis` Newman, M.E.J. (2004) Analysis of Weighted Networks. \*Physical Review E\*, 70(5), 056131. doi:10.1103/PhysRevE.70.056131
 - <a id="newman2004finding"></a>`newman2004finding` Newman, M.E.J.; Girvan, M. (2004) Finding and Evaluating Community Structure in Networks. \*Physical Review E\*, 69(2), 026113. doi:10.1103/PhysRevE.69.026113
 - <a id="newman2005measure"></a>`newman2005measure` Newman, M.E.J. (2005) A Measure of Betweenness Centrality Based on Random Walks. \*Social Networks\*, 27(1), 39–54. doi:10.1016/j.socnet.2004.11.009
@@ -238,6 +240,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="padgett1993robust"></a>`padgett1993robust` Padgett, J.F.; Ansell, C.K. (1993) Robust Action and the Rise of the Medici, 1400–1434. \*American Journal of Sociology\*, 98(6), 1259–1319. doi:10.1086/230190
 - <a id="pal2014centrality"></a>`pal2014centrality` Pal, S.K.; Kundu, S.; Murthy, C.A. (2014) Centrality Measures, Upper Bound, and Influence Maximization in Large Scale Directed Social Networks. \*Fundamenta Informaticae\*, 130(3), 317–342.
 - <a id="pares2018fluid"></a>`pares2018fluid` Parés, F.; Garcia-Gasulla, D.; Vilalta, A.; Moreno, J.; Ayguadé, E.; Labarta, J. et al. (2018) Fluid Communities: A Competitive, Scalable and Diverse Community Detection Algorithm. \*Complex Networks & Their Applications VI (COMPLEX NETWORKS 2017)\*, 689, 229–240. doi:10.1007/978-3-319-72150-7\_19
+- <a id="pastorsatorras2001dynamical"></a>`pastorsatorras2001dynamical` Pastor-Satorras, R.; Vázquez, A.; Vespignani, A. (2001) Dynamical and Correlation Properties of the Internet. \*Physical Review Letters\*, 87(25), 258701. doi:10.1103/PhysRevLett.87.258701
 - <a id="pebesma2018sf"></a>`pebesma2018sf` Pebesma, E. (2018) Simple Features for R: Standardized Support for Spatial Vector Data. \*The R Journal\*, 10(1), 439–446. doi:10.32614/RJ-2018-009
 - <a id="peixoto2014graphtool"></a>`peixoto2014graphtool` Peixoto, T.P. (2014) The graph-tool python library. doi:10.6084/m9.figshare.1164194
 - <a id="perry2018egocentric"></a>`perry2018egocentric` Perry, B.L.; Pescosolido, B.A.; Borgatti, S.P. (2018) Egocentric Network Analysis: Foundations, Methods, and Models. doi:10.1017/9781316443255
