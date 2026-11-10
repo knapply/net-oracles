@@ -16,7 +16,7 @@ Family: [Two-mode and bipartite](index.html). Subfamily: Bipartite structure. Co
 
 Two-mode clustering coefficients (six-cycle). Entries grouped here: Two-mode clustering coefficients (six-cycle).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only: the sources give the measure by name (six-cycle based two-mode clustering coefficients) without a formula; the primary paper was not checked.
 
 ## Two-mode clustering coefficients (six-cycle) {#twomode_cc}
 
