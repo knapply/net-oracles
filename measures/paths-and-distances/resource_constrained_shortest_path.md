@@ -16,7 +16,7 @@ Family: [Paths and distances](index.html). Subfamily: Shortest paths. Concept id
 
 Resource-constrained shortest path. Entries grouped here: R c shortest paths.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (Boost resource-constrained shortest paths), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## R c shortest paths {#cat_c_path_r_shortest}
 

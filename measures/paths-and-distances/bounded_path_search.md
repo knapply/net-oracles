@@ -16,7 +16,7 @@ Family: [Paths and distances](index.html). Subfamily: Path enumeration and count
 
 Bounded path and walk search. Entries grouped here: Findpaths; Findwalks.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT findpaths and findwalks), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Variants {#concept-variants}
 

@@ -16,7 +16,7 @@ Family: [Paths and distances](index.html). Subfamily: Path enumeration and count
 
 Longest simple path. Entries grouped here: Longest simple path.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (rustworkx longest simple path), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Longest simple path {#paths_longest_simple}
 

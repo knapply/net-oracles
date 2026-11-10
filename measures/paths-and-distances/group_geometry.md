@@ -12,11 +12,29 @@ nav_exclude: true
 
 Family: [Paths and distances](index.html). Subfamily: Geometry. Concept id: `group_geometry`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(S\)</td><td>a group of \(m\) located nodes</td></tr><tr><td>\(c\)</td><td>centroid of the group: the mean coordinate (planar) or the geographic midpoint, the normalized mean of the unit vectors (longitude and latitude)</td></tr><tr><td>\(\ell(i,c)\)</td><td>distance from node \(i\) to the centroid: Euclidean or great-circle</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Group geometry. Entries grouped here: Group geometry.
 
-*Definition not yet written.*
+*Definition partly written:* No primary publication defines these summaries; the definitions follow the description of the compared outputs (size, centroid, mean and root-mean-square distance from the centroid per group).
+
+<div class="formula-block"><p class="formula-name"><strong>Group geometry</strong> <span class="applies">applies to: any</span></p><div class="formula">\[\bar\ell=\frac1m\sum_{i\in S}\ell(i,c),\qquad \ell_{\mathrm{rms}}=\sqrt{\frac1m\sum_{i\in S}\ell(i,c)^2}\]</div><p class="formula-where">Size \(m\), centroid, mean distance and root-mean-square distance from the centroid. Defined for \(m\ge1\); for a geographic group the mean unit vector can be 0 (antipodal points), when the midpoint is not defined.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#group_geometry">Group geometry</a></td><td><code>group_geometry</code></td><td>2</td><td>Per group: size, centroid, mean distance and root-mean-square distance of the members from the centroid.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/s2.html">s2 (sphere geometry)</a></th><th><a href="../../tools/sf.html">sf (planar geometry)</a></th></tr></thead><tbody><tr><td title="A group, source set, target set or sample that is empty, a single node, or the whole node set."><strong>Degenerate group or subset input</strong></td><td class="def">An empty group has no centroid; a single node has distance 0 to its own centroid.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Degenerate group or subset input</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Group geometry {#group_geometry}
 

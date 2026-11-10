@@ -16,7 +16,7 @@ Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concep
 
 Mean first passage time. Entries grouped here: Mean first passage time.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT mean first passage time), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Mean first passage time {#cat_first_mean_passage_time}
 

@@ -16,7 +16,7 @@ Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concep
 
 Neighborhood function and effective diameter. Entries grouped here: Neighborhood function, hop plot, effective diameter.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworKit neighborhood function, hop plot and effective diameter), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Neighborhood function, hop plot, effective diameter {#neighborhood_function}
 

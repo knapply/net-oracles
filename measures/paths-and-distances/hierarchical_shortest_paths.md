@@ -16,7 +16,7 @@ Family: [Paths and distances](index.html). Subfamily: Shortest paths. Concept id
 
 Many-to-many and hierarchy-based shortest paths. Entries grouped here: Many-to-many and hierarchy-based shortest paths.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (JGraphT many-to-many and hierarchy-based shortest paths), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Many-to-many and hierarchy-based shortest paths {#paths_hierarchy}
 
