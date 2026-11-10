@@ -1,0 +1,1328 @@
+{
+ "family": "Data transforms",
+ "concepts": {
+  "graph_complement": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\overline G",
+     "meaning": "complement of \\(G\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Complement (Harary 1969)",
+     "latex": "V(\\overline G)=V,\\qquad E(\\overline G)=\\{uv:\\ u\\neq v,\\ uv\\notin E\\}",
+     "applies_to": [
+      "simple"
+     ],
+     "where": "Two distinct nodes are adjacent in \\(\\overline G\\) exactly when they are not adjacent in \\(G\\). For a digraph the pair is ordered: \\((u,v)\\in E(\\overline G)\\) exactly when \\((u,v)\\notin E\\), \\(u\\neq v\\). Defined for simple graphs; edge multiplicity and weights have no complement."
+    }
+   ],
+   "variants": {
+    "graph_complement": "The complement operation as listed by one set of tools; same formula.",
+    "op_complement": "The complement operation as listed by another set of tools; same formula. The convention for self-loops (excluded above, or included for nodes without a loop) is not fixed by the definition."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The complement of the null graph is the null graph.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "The complement of an edgeless graph on \\(n\\) nodes is the complete graph \\(K_n\\).",
+     "tools": {}
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "The complement of \\(K_n\\) is edgeless.",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The definition for simple graphs has no loops in either graph; whether a missing loop becomes a loop in \\(\\overline G\\) is not decided by it.",
+     "tools": {}
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Multiplicities are not defined for the complement: the pair is either adjacent or not.",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Applied to ordered pairs for digraphs; \\(\\overline{\\overline G}=G\\) holds in both cases.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "graph_composition": {
+   "status": "partial",
+   "note": "Tools use the word 'compose' for at least two different operations (relational composition of edge sets, and the lexicographic product also called composition); the sources do not say which operation each documented entry performs, and a third reading (union with attribute override) is not defined in the sources checked. The relational form is given without a cited source.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "H=(V_H,E_H)",
+     "meaning": "second graph, with the same edge conventions as \\(G\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Composition (lexicographic product) G[H] (Harary 1969)",
+     "latex": "V(G[H])=V\\times V_H,\\qquad (u,x)(v,y)\\in E\\iff uv\\in E\\ \\text{or}\\ (u=v\\ \\text{and}\\ xy\\in E_H)",
+     "applies_to": [
+      "simple"
+     ],
+     "where": "Replace every node of \\(G\\) by a copy of \\(H\\); all edges between the copies of adjacent nodes of \\(G\\)."
+    },
+    {
+     "name": "Relational composition of edge sets",
+     "latex": "E(G\\circ H)=\\{(u,w):\\ \\exists v,\\ (u,v)\\in E,\\ (v,w)\\in E_H\\}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Path of length 2 whose first edge is in \\(G\\) and second in \\(H\\), on a common node set; the order of the operands matters."
+    }
+   ],
+   "variants": {
+    "op_compose": "Either of the two operations above, depending on the tool; the entries of documented-only tools are not specified further in the sources."
+   },
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "graph_difference": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "H=(V_H,E_H)",
+     "meaning": "second graph, with the same edge conventions as \\(G\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Difference",
+     "latex": "V(G-H)=V,\\qquad E(G-H)=E\\setminus E_H",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Edges of \\(G\\) that are not edges of \\(H\\), on the node set of \\(G\\); both graphs must be on the same node set for the formula to compare edges of the same nodes. For an undirected graph the edge \\(uv\\) equals \\(vu\\)."
+    },
+    {
+     "name": "Symmetric difference",
+     "latex": "E(G\\,\\triangle\\,H)=(E\\setminus E_H)\\cup(E_H\\setminus E)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Edges in exactly one of the two graphs."
+    }
+   ],
+   "variants": {
+    "op_difference": "Edges of the first graph not in the second; the symmetric difference is the same set operation applied both ways (concept graph_symmetric_difference)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Both graphs null: the result is null.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(G-H\\) with \\(E=\\emptyset\\) is edgeless; \\(G-H=G\\) when \\(E_H=\\emptyset\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is an edge \\((u,u)\\) and is removed when \\(H\\) has the same loop.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Set difference does not subtract multiplicities; a multiset reading (subtract counts) is a different operation not given by this definition.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The ordered pair \\((u,v)\\) is compared for digraphs; \\(uv\\) and \\(vu\\) are the same edge for undirected graphs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "The set definition ignores weights; which weight a surviving edge keeps is a convention of the implementation.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "graph_intersection": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "H=(V_H,E_H)",
+     "meaning": "second graph, with the same edge conventions as \\(G\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Intersection",
+     "latex": "V(G\\cap H)=V\\cap V_H,\\qquad E(G\\cap H)=E\\cap E_H",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Nodes and edges present in both graphs; with a common node set it is the graph of the common edges."
+    }
+   ],
+   "variants": {
+    "op_intersection": "Intersection of the edge sets (and node sets) of the graphs; the all-graphs form intersects several graphs in turn."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Intersection with the null graph is null.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Intersection with an edgeless graph is edgeless.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is in the intersection when both graphs have it.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The set definition has no multiplicity; a multiset reading (the minimum of the counts) is a different operation.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The ordered pair is compared for digraphs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "The set definition ignores weights; which weight a common edge keeps is a convention of the implementation.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "graph_power": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "d(u,v)",
+     "meaning": "number of edges of a shortest path; \\(\\infty\\) if none"
+    },
+    {
+     "symbol": "k",
+     "meaning": "power, a positive integer"
+    },
+    {
+     "symbol": "G^k",
+     "meaning": "\\(k\\)-th power of \\(G\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Graph power (Bondy and Murty 2008)",
+     "latex": "V(G^k)=V,\\qquad uv\\in E(G^k)\\iff 1\\le d_G(u,v)\\le k",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Nodes within distance \\(k\\) are joined; \\(G^1=G\\) (as a simple graph). For a digraph use the directed distance \\(d(u,v)\\)."
+    }
+   ],
+   "variants": {
+    "cat_power": "The \\(k\\)-th power; the entry is documented only and not run."
+   },
+   "edge_cases": [
+    {
+     "case": "disconnected",
+     "definition_gives": "Nodes in different components have \\(d=\\infty\\) and are never joined, whatever \\(k\\).",
+     "tools": {}
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Pairs not reachable along edge directions have \\(d=\\infty\\) and are not joined.",
+     "tools": {}
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(k\\ge1\\) is needed; \\(k=0\\) joins nothing (the condition \\(1\\le d\\le 0\\) is empty) and large \\(k\\) gives the complete graph on each component.",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "\\(d(u,u)=0\\) is excluded by \\(1\\le d\\), so a power has no loops even when \\(G\\) has them.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "bondy2008graph"
+   ]
+  },
+  "graph_products": {
+   "status": "partial",
+   "note": "The sources list one collective entry of documented tools; the four products are defined, but which of them each tool computes is not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "H=(V_H,E_H)",
+     "meaning": "second graph, with the same edge conventions as \\(G\\)"
+    },
+    {
+     "symbol": "(u,x)",
+     "meaning": "node of a product, \\(u\\in V\\), \\(x\\in V_H\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Cartesian product",
+     "latex": "(u,x)(v,y)\\in E\\iff (u=v\\ \\wedge\\ xy\\in E_H)\\ \\vee\\ (uv\\in E\\ \\wedge\\ x=y)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "One factor moves while the other stays."
+    },
+    {
+     "name": "Tensor (direct, categorical) product",
+     "latex": "(u,x)(v,y)\\in E\\iff uv\\in E\\ \\wedge\\ xy\\in E_H",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Both factors move at once."
+    },
+    {
+     "name": "Strong product",
+     "latex": "E_{\\boxtimes}=E_{\\square}\\cup E_{\\times}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The union of the Cartesian and the tensor product edge sets."
+    },
+    {
+     "name": "Lexicographic product (composition)",
+     "latex": "(u,x)(v,y)\\in E\\iff uv\\in E\\ \\vee\\ (u=v\\ \\wedge\\ xy\\in E_H)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The first factor decides unless it stays; not commutative."
+    }
+   ],
+   "variants": {
+    "op_graph_product": "Collective entry for the graph products of documented tools: Cartesian, tensor, strong and lexicographic products have the formulas above; which products a tool offers is not recorded."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "A product with a null graph has no nodes.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "The product of an edgeless factor is edgeless for the tensor product, and a union of copies of the other factor for the Cartesian product.",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop in a factor adds edges between a node's copies and others, by the formulas; loop-free input gives a loop-free product except where the formula places loops (the tensor product of two looped nodes).",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "For digraphs the pairs are ordered in each coordinate.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "graph_reverse": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "G^{R}",
+     "meaning": "reverse graph"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Reverse (converse) digraph (Harary, Norman and Cartwright 1965)",
+     "latex": "V(G^{R})=V,\\qquad (u,v)\\in E(G^{R})\\iff (v,u)\\in E",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Every arc is turned around; the adjacency matrix is transposed, \\(A(G^R)=A(G)^{\\top}\\). For an undirected graph the operation is the identity."
+    }
+   ],
+   "variants": {
+    "cat_reverse": "Arc reversal; documented only and not run."
+   },
+   "edge_cases": [
+    {
+     "case": "direction",
+     "definition_gives": "On an undirected graph the reverse equals the graph; on a digraph out-degree and in-degree swap.",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop \\((u,u)\\) is its own reverse.",
+     "tools": {}
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights stay on their arcs.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "harary1965structural"
+   ]
+  },
+  "graph_symmetric_difference": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "H=(V_H,E_H)",
+     "meaning": "second graph, with the same edge conventions as \\(G\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Symmetric difference (ring sum)",
+     "latex": "E(G\\,\\triangle\\,H)=(E\\setminus E_H)\\cup(E_H\\setminus E)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Edges in exactly one of the two graphs, on a common node set; also called the ring sum."
+    }
+   ],
+   "variants": {
+    "cat_difference_sym": "Edges in exactly one graph; the tool entry is documented only and not run."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "Symmetric difference with an edgeless graph is the other graph's edge set.",
+     "tools": {}
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The set definition has no multiplicity.",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Ordered pairs for digraphs.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "graph_union": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "H=(V_H,E_H)",
+     "meaning": "second graph, with the same edge conventions as \\(G\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Union (Harary 1969)",
+     "latex": "V(G\\cup H)=V\\cup V_H,\\qquad E(G\\cup H)=E\\cup E_H",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Nodes and edges present in at least one of the graphs; common nodes are identified."
+    },
+    {
+     "name": "Disjoint union",
+     "latex": "G+H:\\quad V=V\\sqcup V_H,\\qquad E=E\\sqcup E_H",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The two node sets are taken as disjoint (relabelled if needed), so no node or edge is shared and the number of nodes is \\(|V|+|V_H|\\)."
+    }
+   ],
+   "variants": {
+    "op_union": "Either the union (common nodes identified) or the disjoint union (nodes relabelled apart), and the all-graphs forms that fold several graphs; which of the two a function computes is part of its definition."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The union with the null graph is the other graph.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "The union with an edgeless graph adds only nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are edges \\((u,u)\\) and are united like any other edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The set definition has no multiplicity; a multiset union (sum or maximum of counts) is a different operation.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Ordered pairs are united for digraphs; mixing a directed and an undirected graph is outside the definition.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "The set definition ignores weights; which weight a shared edge keeps is a convention of the implementation.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "inverse_line_graph": {
+   "status": "partial",
+   "note": "The sources give only the name of the documented entry; the algorithm and its handling of non-line graphs and of non-unique roots are not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "L(R)",
+     "meaning": "line graph of \\(R\\)"
+    },
+    {
+     "symbol": "R",
+     "meaning": "a root graph of \\(H\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Inverse line graph (root graph)",
+     "latex": "R\\ \\text{is a root graph of}\\ H\\iff L(R)\\cong H",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Given \\(H\\), find a graph \\(R\\) whose line graph is isomorphic to \\(H\\); defined only when \\(H\\) is a line graph, and then \\(R\\) is not always unique (\\(K_3\\) is the line graph of both \\(K_3\\) and \\(K_{1,3}\\)). See the concept line_graph for \\(L\\)."
+    }
+   ],
+   "variants": {
+    "cat_inverse_line": "The root graph of a line graph; documented only and not run."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The null graph is the line graph of the null graph or of any edgeless graph, so the root is not unique.",
+     "tools": {}
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "A graph that is not a line graph has no root: the operation is not defined for it.",
+     "tools": {}
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(K_n\\) is the line graph of the star \\(K_{1,n}\\) (and \\(K_3\\) also of \\(K_3\\)).",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "line_graph": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "L(G)",
+     "meaning": "line graph of \\(G\\)"
+    },
+    {
+     "symbol": "s(e),t(e)",
+     "meaning": "source and target of edge \\(e\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Line graph (Harary 1969)",
+     "latex": "V(L(G))=E,\\qquad ef\\in E(L(G))\\iff e\\neq f\\ \\text{and}\\ e,f\\ \\text{share an end}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "One node per edge of \\(G\\); two are adjacent when the edges meet at a node. \\(|V(L(G))|=m\\), and node \\(e=uv\\) has degree \\(d_u+d_v-2\\) in a simple graph."
+    },
+    {
+     "name": "Directed line graph",
+     "latex": "(e,f)\\in E(L(G))\\iff t(e)=s(f)",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Arc \\(e\\) leads to arc \\(f\\) when the target of \\(e\\) is the source of \\(f\\); a walk in \\(L(G)\\) is a walk of arcs of \\(G\\)."
+    }
+   ],
+   "variants": {
+    "line_graph": "The undirected line graph for undirected input and the directed line graph for directed input; the nodes of the result are the edges of the input."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(m=0\\): the null graph.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No edges, so no nodes in \\(L(G)\\): the null graph, whatever \\(n\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolated node has no incident edge and disappears.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "A single node with no loop has \\(L(G)\\) null; with a loop it has one node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is an edge and so a node of \\(L(G)\\); in the directed form a loop \\((u,u)\\) satisfies \\(t(e)=s(e)\\), so it is adjacent to itself, while the undirected form needs a choice of whether a loop meets itself.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges are distinct edges of \\(G\\), so they are distinct nodes of \\(L(G)\\) and share both ends: they are joined (once in a simple \\(L(G)\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The undirected rule (share an end) and the directed rule (\\(t(e)=s(f)\\)) give different graphs; the directed one has arcs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "\\(L(K_{1,k})=K_k\\): all edges meet at the centre.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(L(K_n)\\) has \\(\\binom n2\\) nodes (the triangular graph).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "mycielskian": {
+   "status": "partial",
+   "note": "The construction is given from its standard description without a cited primary source (Mycielski 1955 is not among the checked bibliography); the two documented entries are not specified further in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "v_i,u_i,w",
+     "meaning": "the original node \\(v_i\\), its copy \\(u_i\\) and the new apex node \\(w\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Mycielskian \\(M(G)\\)",
+     "latex": "V(M(G))=\\{v_i\\}\\cup\\{u_i\\}\\cup\\{w\\},\\quad E=\\{v_iv_j,\\ v_iu_j,\\ u_iv_j:\\ v_iv_j\\in E(G)\\}\\cup\\{u_iw\\}_{i}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Adds a copy \\(u_i\\) of each node joined to the neighbours of \\(v_i\\), and an apex \\(w\\) joined to all copies: \\(2n+1\\) nodes and \\(3m+n\\) edges, triangle-free when \\(G\\) is, and one more colour needed than for \\(G\\)."
+    }
+   ],
+   "variants": {
+    "cat_mycielski": "Mycielski graph as listed by one documented tool; same construction.",
+    "cat_mycielskian": "Mycielskian of a graph as listed by another documented tool; same construction, possibly iterated."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The construction gives the single node \\(w\\) (\\(2\\cdot0+1\\) nodes).",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One node gives \\(M(K_1)=K_2\\).",
+     "tools": {}
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "\\(M(K_2)=C_5\\).",
+     "tools": {}
+    }
+   ]
+  },
+  "attribute_matrix": {
+   "status": "partial",
+   "note": "The four forms are written from the names in the documented entry; whether 'difference' is signed or absolute, and what the diagonal holds, are not recorded in the sources, and no primary source is cited.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "x_u",
+     "meaning": "value of a node attribute at \\(u\\)"
+    },
+    {
+     "symbol": "M=(m_{uv})",
+     "meaning": "matrix built from the attribute"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Same",
+     "latex": "m_{uv}=\\mathbb 1[x_u=x_v]",
+     "applies_to": [
+      "any"
+     ],
+     "where": "1 when both nodes have the same attribute value."
+    },
+    {
+     "name": "Difference",
+     "latex": "m_{uv}=|x_u-x_v|",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Absolute (or signed \\(x_u-x_v\\)) difference of numeric values."
+    },
+    {
+     "name": "Sender",
+     "latex": "m_{uv}=x_u",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The attribute of the node in the row."
+    },
+    {
+     "name": "Receiver",
+     "latex": "m_{uv}=x_v",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The attribute of the node in the column."
+    }
+   ],
+   "variants": {
+    "attribute_matrix": "Collective entry for the four constructions; each is a different matrix from the same attribute vector."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "With no nodes the matrix is 0\\(\\times\\)0.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "A single node gives the 1\\(\\times\\)1 matrix of the diagonal entry (1 for 'same', 0 for 'difference').",
+     "tools": {}
+    }
+   ]
+  },
+  "combining_relations": {
+   "status": "name_only",
+   "note": "The sources name the procedure (combining similar relations) in a documented-only tool and give neither a formula nor a source."
+  },
+  "matrix_utils": {
+   "status": "partial",
+   "note": "One entry of a documented tool bundles four utilities; only the congruence coefficient is defined here, from its standard form without a cited source. Factor rotation, iterative proportional fitting (see ipf) and state transitions are not specified in the sources.",
+   "notation": [
+    {
+     "symbol": "x,y",
+     "meaning": "two vectors (for example columns of two factor matrices)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Tucker congruence coefficient",
+     "latex": "\\varphi(x,y)=\\frac{x^{\\top}y}{\\sqrt{(x^{\\top}x)(y^{\\top}y)}}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Cosine of the angle between \\(x\\) and \\(y\\) without centring; not defined when either vector is zero."
+    }
+   ],
+   "variants": {
+    "matrix_utils": "Collective entry (congruence, factor rotation, iterative proportional fitting, state transitions); only the congruence coefficient is defined above."
+   }
+  },
+  "dichotomize": {
+   "status": "partial",
+   "note": "The tool entries are documented only; the default cutoff and comparison of each tool are not recorded.",
+   "notation": [
+    {
+     "symbol": "X=(x_{uv})",
+     "meaning": "valued relation"
+    },
+    {
+     "symbol": "B=(b_{uv})",
+     "meaning": "binary relation"
+    },
+    {
+     "symbol": "c",
+     "meaning": "cutoff"
+    },
+    {
+     "symbol": "\\mathrm{op}",
+     "meaning": "comparison: \\(\\ge,>,\\le,<,=\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Dichotomization of a valued relation (Wasserman and Faust 1994)",
+     "latex": "b_{uv}=\\begin{cases}1&x_{uv}\\ \\mathrm{op}\\ c\\\\0&\\text{otherwise}\\end{cases}",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "A valued tie is kept as a 1 when it passes the cutoff and dropped otherwise; the choice of \\(c\\) and of \\(\\mathrm{op}\\) changes the network and is a modelling decision."
+    }
+   ],
+   "variants": {
+    "cat_dichotomise": "Threshold rule \\(b_{uv}=\\mathbb 1[x_{uv}\\ \\mathrm{op}\\ c]\\) applied entry by entry; the comparison and the cutoff \\(c\\) are parameters. This is the British spelling of the procedure in a documented tool.",
+    "cat_dichotomize": "Threshold rule \\(b_{uv}=\\mathbb 1[x_{uv}\\ \\mathrm{op}\\ c]\\) applied entry by entry; the comparison and the cutoff \\(c\\) are parameters. This is the American spelling of the procedure in a documented tool."
+   },
+   "edge_cases": [
+    {
+     "case": "zero_weights",
+     "definition_gives": "A zero value passes the cutoff only when \\(c\\) and \\(\\mathrm{op}\\) allow it, such as \\(x\\ge0\\).",
+     "tools": {}
+    },
+    {
+     "case": "negative_weights",
+     "definition_gives": "Negative values pass \\(x\\le c\\) or \\(x<c\\) but not \\(x>0\\); the rule has no special case.",
+     "tools": {}
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Any real \\(c\\) is allowed; a \\(c\\) beyond the range of the data gives an empty or a complete relation.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "wasserman1994social"
+   ]
+  },
+  "multiplex_coding": {
+   "status": "name_only",
+   "note": "The sources name the procedure (multiplex coding of several relations into one matrix) in a documented-only tool and give neither a formula nor a source; the coding scheme is not stated."
+  },
+  "normalize_ties": {
+   "status": "partial",
+   "note": "Formulas are written from the method names in the documented entry without a cited source; the standard-deviation convention of the z-score (population or sample) and the treatment of a zero normalizer are not stated in the sources. Iterative proportional fitting is on the concept ipf.",
+   "notation": [
+    {
+     "symbol": "X=(x_{uv})",
+     "meaning": "valued matrix"
+    },
+    {
+     "symbol": "S",
+     "meaning": "the set of entries normalized together: a row, a column, or the whole matrix"
+    },
+    {
+     "symbol": "\\bar x_S,\\ s_S",
+     "meaning": "mean and standard deviation of the entries of \\(S\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Sum",
+     "latex": "x'_{uv}=\\frac{x_{uv}}{\\sum_{S}x}",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "Entries of \\(S\\) sum to 1; not defined when the sum is 0."
+    },
+    {
+     "name": "Mean",
+     "latex": "x'_{uv}=\\frac{x_{uv}}{\\bar x_S}",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "Entries have mean 1; not defined when the mean is 0."
+    },
+    {
+     "name": "Maximum",
+     "latex": "x'_{uv}=\\frac{x_{uv}}{\\max_Sx}",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "The largest entry becomes 1; not defined when the maximum is 0."
+    },
+    {
+     "name": "Z-score",
+     "latex": "x'_{uv}=\\frac{x_{uv}-\\bar x_S}{s_S}",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "Mean 0 and standard deviation 1; \\(s_S\\) uses \\(n\\) or \\(n-1\\) in the denominator by convention, and is 0 for a constant set."
+    },
+    {
+     "name": "Euclidean",
+     "latex": "x'_{uv}=\\frac{x_{uv}}{\\sqrt{\\sum_{S}x^2}}",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "Unit Euclidean length of \\(S\\); not defined for an all-zero \\(S\\)."
+    }
+   ],
+   "variants": {
+    "normalize_ties": "Collective entry: the five scalings above applied by row, by column, or by matrix; iterative proportional fitting is a sixth method (concept ipf)."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "An all-zero row, column or matrix makes the sum, mean, maximum and Euclidean normalizers 0, so the result is 0/0: not defined.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "A single entry has \\(s_S=0\\) (or \\(n-1=0\\)): the z-score is not defined.",
+     "tools": {}
+    },
+    {
+     "case": "negative_weights",
+     "definition_gives": "Negative entries are allowed by the formulas; the sum can then be 0 or negative, and normalization by sum no longer gives proportions.",
+     "tools": {}
+    }
+   ]
+  },
+  "symmetrize": {
+   "status": "partial",
+   "note": "Methods are written from the names in the documented entries without a cited source; which methods each tool offers, and the default, are not recorded.",
+   "notation": [
+    {
+     "symbol": "X=(x_{uv})",
+     "meaning": "square matrix, possibly asymmetric"
+    },
+    {
+     "symbol": "Y=(y_{uv})",
+     "meaning": "symmetrized matrix, \\(y_{uv}=y_{vu}\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Maximum (union, 'or')",
+     "latex": "y_{uv}=\\max(x_{uv},x_{vu})",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Keeps a tie if present in either direction."
+    },
+    {
+     "name": "Minimum (intersection, 'and', strong)",
+     "latex": "y_{uv}=\\min(x_{uv},x_{vu})",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Keeps a tie only if reciprocated."
+    },
+    {
+     "name": "Sum",
+     "latex": "y_{uv}=x_{uv}+x_{vu}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Adds the two directions."
+    },
+    {
+     "name": "Mean",
+     "latex": "y_{uv}=\\tfrac12(x_{uv}+x_{vu})",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Averages the two directions."
+    },
+    {
+     "name": "Upper or lower triangle",
+     "latex": "y_{uv}=x_{\\min(u,v),\\max(u,v)}\\ \\text{or}\\ x_{\\max(u,v),\\min(u,v)}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Copies one triangle onto the other; depends on the node order."
+    }
+   ],
+   "variants": {
+    "symmetrize_methods": "Collective entry for the full method set of a documented tool, with dichotomization by density.",
+    "cat_symmetrise": "Symmetrization as listed by another documented tool; method not specified in the sources."
+   },
+   "edge_cases": [
+    {
+     "case": "self_loops",
+     "definition_gives": "The diagonal satisfies \\(y_{uu}=x_{uu}\\) for max, min and mean, and \\(2x_{uu}\\) for the sum.",
+     "tools": {}
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Max, min, sum and mean differ on valued data; on 0/1 data max is 'or' and min is 'and'.",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Only asymmetric input is changed; a symmetric matrix is unchanged by max, min and mean.",
+     "tools": {}
+    }
+   ]
+  },
+  "impute_missing": {
+   "status": "partial",
+   "note": "The rule is written from the name of the documented entry; no source or tool behaviour beyond the name is recorded.",
+   "notation": [
+    {
+     "symbol": "X=(x_{uv})",
+     "meaning": "relation with missing entries"
+    },
+    {
+     "symbol": "U",
+     "meaning": "nodes whose whole row is missing"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Row imputation from the column",
+     "latex": "x_{u\\cdot}:=x_{\\cdot u}^{\\top}\\quad(u\\in U)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "For an undirected (symmetric) relation a missing row is replaced by the same node's column; for a directed relation the entries are taken from the opposite-direction relation as the entry says."
+    }
+   ],
+   "variants": {
+    "cat_column_directed_direction_from_impute_level_missing_opposite_or_relation_row_undirected": "Node-level imputation of missing rows from the column or the opposite-direction relation; documented only."
+   }
+  },
+  "graph_sparsification": {
+   "status": "name_only",
+   "note": "The sources list sixteen score-based edge-filtering procedures and L-Spar (Local Degree, Forest Fire, SCAN, Simmelian, Jaccard, algebraic distance, global threshold and others) as documented-only entries by name; none of the original papers is among the checked sources, so no formula is written."
+  },
+  "ipf": {
+   "status": "partial",
+   "note": "The scaling steps are written in their standard form without a cited source; convergence conditions and stopping rules of the documented entry are not recorded.",
+   "notation": [
+    {
+     "symbol": "X^{(0)}",
+     "meaning": "seed matrix with non-negative entries"
+    },
+    {
+     "symbol": "r_u,\\ c_v",
+     "meaning": "target row and column sums"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Iterative proportional fitting",
+     "latex": "x^{(2t+1)}_{uv}=x^{(2t)}_{uv}\\,\\frac{r_u}{\\sum_{v'}x^{(2t)}_{uv'}},\\qquad x^{(2t+2)}_{uv}=x^{(2t+1)}_{uv}\\,\\frac{c_v}{\\sum_{u'}x^{(2t+1)}_{u'v}}",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "Alternately rescale rows to the targets \\(r\\) and columns to \\(c\\) until both hold; it converges to a matrix with those margins when one exists (equal totals, compatible zero pattern), and is not defined for a zero row with a positive target."
+    }
+   ],
+   "variants": {
+    "cat_ipf": "Alternate row and column rescaling to given margins; documented only."
+   },
+   "edge_cases": [
+    {
+     "case": "zero_weights",
+     "definition_gives": "A zero entry stays 0 under multiplicative scaling, so the zero pattern of the seed is kept.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "An all-zero seed row with positive target has no rescaling: not defined.",
+     "tools": {}
+    }
+   ]
+  },
+  "statistical_backbone": {
+   "status": "name_only",
+   "note": "The sources list thirteen backbone-extraction procedures (SDSM, FDSM, BiCM, fixed row/column/fill, disparity filter, LANS, MLF, fastball) as documented-only entries by name; none of the original papers is among the checked sources, so no formula is written."
+  }
+ }
+}
