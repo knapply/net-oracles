@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Articulation point
 
 Bridge components. Entries grouped here: Bridge components (connectivity).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworkX), never run; the sources give the function name. A bridge-connected component is a class of nodes joined after all bridges are removed, which coincides with the 2-edge-connected components of the k-edge-connected components entry (k = 2); the tool's own definition and ordering are not recorded.
 
 ## Bridge components (connectivity) {#cat_bridge_component-connectivity}
 

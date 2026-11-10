@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Connected componen
 
 K-connectivity tests. Entries grouped here: Is kl connected; Is locally k edge connected (connectivity).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworkX tests of local k-edge connectivity and kl-connectivity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Variants {#concept-variants}
 

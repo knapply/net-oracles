@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Flows and flow tre
 
 Flow coefficient. Entries grouped here: Flow coef.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT flow coefficient), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Flow coef {#cat_coef_flow}
 

@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Robustness and per
 
 KL-connected subgraph. Entries grouped here: Kl.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworkX kl-connected subgraph), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Kl {#st_kl}
 

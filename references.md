@@ -148,6 +148,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="goni2014resting"></a>`goni2014resting` Goni, J.; van den Heuvel, M.P.; Avena-Koenigsberger, A.; others (2014) Resting-Brain Functional Connectivity Predicted by Analytic Measures of Network Communication. \*Proceedings of the National Academy of Sciences\*, 111(2), 833–838. doi:10.1073/pnas.1315529111
 - <a id="gould1989structures"></a>`gould1989structures` Gould, R.V.; Fernandez, R.M. (1989) Structures of Mediation: A Formal Approach to Brokerage in Transaction Networks. \*Sociological Methodology\*, 19, 89–126. doi:10.2307/270949
 - <a id="grabler2012centilib"></a>`grabler2012centilib` Gräbler, J.; Koschuetzki, D.; Schreiber, F. (2012) CentiLib: Comprehensive Analysis and Exploration of Network Centralities. \*Bioinformatics\*, 28(8), 1178–1179.
+- <a id="granovetter1973strength"></a>`granovetter1973strength` Granovetter, M.S. (1973) The Strength of Weak Ties. \*American Journal of Sociology\*, 78(6), 1360–1380. doi:10.1086/225469
 - <a id="grigoriadis1986efficient"></a>`grigoriadis1986efficient` Grigoriadis, M.D. (1986) An Efficient Implementation of the Network Simplex Method. \*Netflow at Pisa\*, 26, 83–111. doi:10.1007/BFb0121089
 - <a id="grover2016node2vec"></a>`grover2016node2vec` Grover, A.; Leskovec, J. (2016) node2vec: Scalable Feature Learning for Networks. \*Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining\*, 855–864. doi:10.1145/2939672.2939754
 - <a id="gupta2021finding"></a>`gupta2021finding` Gupta, A.; Suzumura, T. (2021) Finding All Bounded-Length Simple Cycles in a Directed Graph. doi:10.48550/arXiv.2105.10094
@@ -157,6 +158,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="hage1995eccentricity"></a>`hage1995eccentricity` Hage, P.; Harary, F. (1995) Eccentricity and Centrality in Networks. \*Social Networks\*, 17(1), 57–63. doi:10.1016/0378-8733(94)00248-9
 - <a id="handcock2008statnet"></a>`handcock2008statnet` Handcock, M.S.; Hunter, D.R.; Butts, C.T.; Goodreau, S.M.; Morris, M. (2008) statnet: Software Tools for the Representation, Visualization, Analysis and Simulation of Network Data. \*Journal of Statistical Software\*, 24(1), 1–11. doi:10.18637/jss.v024.i01
 - <a id="hanneman2005introduction"></a>`hanneman2005introduction` Hanneman, R.A.; Riddle, M. (2005) Introduction to Social Network Methods. University of California, Riverside; https://faculty.ucr.edu/~hanneman/nettext/
+- <a id="harary1965structural"></a>`harary1965structural` Harary, F.; Norman, R.Z.; Cartwright, D. (1965) Structural Models: An Introduction to the Theory of Directed Graphs.
 - <a id="harary1969graph"></a>`harary1969graph` Harary, F. (1969) Graph Theory.
 - <a id="hart1968formal"></a>`hart1968formal` Hart, P.E.; Nilsson, N.J.; Raphael, B. (1968) A Formal Basis for the Heuristic Determination of Minimum Cost Paths. \*IEEE Transactions on Systems Science and Cybernetics\*, 4(2), 100–107. doi:10.1109/TSSC.1968.300136
 - <a id="haynes1998fundamentals"></a>`haynes1998fundamentals` Haynes, T.W.; Hedetniemi, S.T.; Slater, P.J. (1998) Fundamentals of Domination in Graphs. doi:10.1201/9781482246582
@@ -188,6 +190,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="kalinka2011linkcomm"></a>`kalinka2011linkcomm` Kalinka, A.T.; Tomancak, P. (2011) linkcomm: An R Package for the Generation, Visualization, and Analysis of Link Communities in Networks of Arbitrary Size and Type. \*Bioinformatics\*, 27(14).
 - <a id="kamada1989algorithm"></a>`kamada1989algorithm` Kamada, T.; Kawai, S. (1989) An Algorithm for Drawing General Undirected Graphs. \*Information Processing Letters\*, 31(1), 7–15. doi:10.1016/0020-0190(89)90102-6
 - <a id="kamvar2003eigentrust"></a>`kamvar2003eigentrust` Kamvar, S.D.; Schlosser, M.T.; Garcia-Molina, H. (2003) The EigenTrust Algorithm for Reputation Management in P2P Networks. \*Proceedings of the 12th International Conference on World Wide Web\*, 640–651. doi:10.1145/775152.775242
+- <a id="kannan2004clusterings"></a>`kannan2004clusterings` Kannan, R.; Vempala, S.; Vetta, A. (2004) On Clusterings: Good, Bad and Spectral. \*Journal of the ACM\*, 51(3), 497–515. doi:10.1145/990308.990313
 - <a id="katz1953new"></a>`katz1953new` Katz, L. (1953) A New Status Index Derived from Sociometric Analysis. \*Psychometrika\*, 18(1), 39–43. doi:10.1007/BF02289026
 - <a id="kavitha2009cycle"></a>`kavitha2009cycle` Kavitha, T.; Liebchen, C.; Mehlhorn, K.; Michail, D.; Rizzi, R.; Ueckerdt, T. et al. (2009) Cycle Bases in Graphs: Characterization, Algorithms, Complexity, and Applications. \*Computer Science Review\*, 3(4), 199–243. doi:10.1016/j.cosrev.2009.08.001
 - <a id="kemeny1960finite"></a>`kemeny1960finite` Kemeny, J.G.; Snell, J.L. (1960) Finite Markov Chains.
@@ -258,6 +261,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="pal2014centrality"></a>`pal2014centrality` Pal, S.K.; Kundu, S.; Murthy, C.A. (2014) Centrality Measures, Upper Bound, and Influence Maximization in Large Scale Directed Social Networks. \*Fundamenta Informaticae\*, 130(3), 317–342.
 - <a id="pares2018fluid"></a>`pares2018fluid` Parés, F.; Garcia-Gasulla, D.; Vilalta, A.; Moreno, J.; Ayguadé, E.; Labarta, J. et al. (2018) Fluid Communities: A Competitive, Scalable and Diverse Community Detection Algorithm. \*Complex Networks & Their Applications VI (COMPLEX NETWORKS 2017)\*, 689, 229–240. doi:10.1007/978-3-319-72150-7\_19
 - <a id="pastorsatorras2001dynamical"></a>`pastorsatorras2001dynamical` Pastor-Satorras, R.; Vázquez, A.; Vespignani, A. (2001) Dynamical and Correlation Properties of the Internet. \*Physical Review Letters\*, 87(25), 258701. doi:10.1103/PhysRevLett.87.258701
+- <a id="pearl1988probabilistic"></a>`pearl1988probabilistic` Pearl, J. (1988) Probabilistic Reasoning in Intelligent Systems: Networks of Plausible Inference. doi:10.1016/C2009-0-27609-4
 - <a id="pebesma2018sf"></a>`pebesma2018sf` Pebesma, E. (2018) Simple Features for R: Standardized Support for Spatial Vector Data. \*The R Journal\*, 10(1), 439–446. doi:10.32614/RJ-2018-009
 - <a id="peixoto2014graphtool"></a>`peixoto2014graphtool` Peixoto, T.P. (2014) The graph-tool python library. doi:10.6084/m9.figshare.1164194
 - <a id="perry2018egocentric"></a>`perry2018egocentric` Perry, B.L.; Pescosolido, B.A.; Borgatti, S.P. (2018) Egocentric Network Analysis: Foundations, Methods, and Models. doi:10.1017/9781316443255
@@ -283,6 +287,8 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="schultz1989topological"></a>`schultz1989topological` Schultz, H.P. (1989) Topological Organic Chemistry. 1. Graph Theory and Topological Indices of Alkanes. \*Journal of Chemical Information and Computer Sciences\*, 29(3), 227–228. doi:10.1021/ci00063a012
 - <a id="seidman1978graph"></a>`seidman1978graph` Seidman, S.B.; Foster, B.L. (1978) A Graph-Theoretic Generalization of the Clique Concept. \*Journal of Mathematical Sociology\*, 6(1), 139–154. doi:10.1080/0022250X.1978.9989883
 - <a id="seidman1983network"></a>`seidman1983network` Seidman, S.B. (1983) Network Structure and Minimum Degree. \*Social Networks\*, 5(3), 269–287. doi:10.1016/0378-8733(83)90028-X
+- <a id="sharir1981strong"></a>`sharir1981strong` Sharir, M. (1981) A Strong-Connectivity Algorithm and Its Applications in Data Flow Analysis. \*Computers & Mathematics with Applications\*, 7(1), 67–72. doi:10.1016/0898-1221(81)90008-0
+- <a id="shi2000normalized"></a>`shi2000normalized` Shi, J.; Malik, J. (2000) Normalized Cuts and Image Segmentation. \*IEEE Transactions on Pattern Analysis and Machine Intelligence\*, 22(8), 888–905. doi:10.1109/34.868688
 - <a id="shimbel1953structural"></a>`shimbel1953structural` Shimbel, A. (1953) Structural Parameters of Communication Networks. \*The Bulletin of Mathematical Biophysics\*, 15(4), 501–507. doi:10.1007/BF02476438
 - <a id="siek2002boost"></a>`siek2002boost` Siek, J.G.; Lee, L.Q.; Lumsdaine, A. (2002) The Boost Graph Library: User Guide and Reference Manual.
 - <a id="sinclair2007centralization"></a>`sinclair2007centralization` Sinclair, P.A. (2007) Network Centralization with the Gil Schmidt Power Centrality Index. \*Social Networks\*, 29(1), 81–92.
@@ -292,6 +298,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="staudt2016networkit"></a>`staudt2016networkit` Staudt, C.L.; Sazonovs, A.; Meyerhenke, H. (2016) NetworKit: A Tool Suite for Large-Scale Complex Network Analysis. \*Network Science\*, 4(4), 508–530. doi:10.1017/nws.2016.20
 - <a id="stephenson1989rethinking"></a>`stephenson1989rethinking` Stephenson, K.; Zelen, M. (1989) Rethinking centrality: Methods and examples. \*Social Networks\*, 11(1), 1–37. doi:10.1016/0378-8733(89)90016-6
 - <a id="stewart2002krylov"></a>`stewart2002krylov` Stewart, G.W. (2002) A Krylov–Schur Algorithm for Large Eigenproblems. \*SIAM Journal on Matrix Analysis and Applications\*, 23(3), 601–614. doi:10.1137/S0895479800371529
+- <a id="stoer1997simple"></a>`stoer1997simple` Stoer, M.; Wagner, F. (1997) A Simple Min-Cut Algorithm. \*Journal of the ACM\*, 44(4), 585–591. doi:10.1145/263867.263872
 - <a id="tarjan1972depth"></a>`tarjan1972depth` Tarjan, R. (1972) Depth-First Search and Linear Graph Algorithms. \*SIAM Journal on Computing\*, 1(2), 146–160. doi:10.1137/0201010
 - <a id="tarjan1975efficiency"></a>`tarjan1975efficiency` Tarjan, R.E. (1975) Efficiency of a Good But Not Linear Set Union Algorithm. \*Journal of the ACM\*, 22(2), 215–225.
 - <a id="telesford2011ubiquity"></a>`telesford2011ubiquity` Telesford, Q.K.; Joyce, K.E.; Hayasaka, S.; Burdette, J.H.; Laurienti, P.J. (2011) The Ubiquity of Small-World Networks. \*Brain Connectivity\*, 1(5), 367–375. doi:10.1089/brain.2011.0038
@@ -330,6 +337,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="vose1991linear"></a>`vose1991linear` Vose, M.D. (1991) A Linear Algorithm for Generating Random Numbers with a Given Distribution. \*IEEE Transactions on Software Engineering\*, 17(9), 972–975. doi:10.1109/32.92917
 - <a id="walker1977new"></a>`walker1977new` Walker, A.J. (1977) An Efficient Method for Generating Discrete Random Variables with General Distributions. \*ACM Transactions on Mathematical Software\*, 3(3), 253–256. doi:10.1145/355744.355749
 - <a id="wang2012truss"></a>`wang2012truss` Wang, J.; Cheng, J. (2012) Truss Decomposition in Massive Networks. \*Proceedings of the VLDB Endowment\*, 5(9), 812–823. doi:10.14778/2311906.2311909
+- <a id="wang2015simple"></a>`wang2015simple` Wang, T.; Zhang, Y.; Chin, F.Y.L.; Ting, H.F.; Tsin, Y.H.; Poon, S.H. (2015) A Simple Algorithm for Finding All $k$-Edge-Connected Components. \*PLOS ONE\*, 10(9), e0136264. doi:10.1371/journal.pone.0136264
 - <a id="wasserman1994social"></a>`wasserman1994social` Wasserman, S.; Faust, K. (1994) Social Network Analysis: Methods and Applications. doi:10.1017/CBO9780511815478
 - <a id="watts1998collective"></a>`watts1998collective` Watts, D.J.; Strogatz, S.H. (1998) Collective Dynamics of Small-World' Networks. \*Nature\*, 393(6684), 440–442. doi:10.1038/30918
 - <a id="welsh1967upper"></a>`welsh1967upper` Welsh, D.J.A.; Powell, M.B. (1967) An Upper Bound for the Chromatic Number of a Graph and Its Application to Timetabling Problems. \*The Computer Journal\*, 10(1), 85–86. doi:10.1093/comjnl/10.1.85
@@ -337,6 +345,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="white1983graph"></a>`white1983graph` White, D.R.; Reitz, K.P. (1983) Graph and semigroup homomorphisms on networks of relations. \*Social Networks\*, 5(2), 193–234. doi:10.1016/0378-8733(83)90025-4
 - <a id="white2001fast"></a>`white2001fast` White, D.R.; Newman, M.E.J. (2001) Fast Approximation Algorithms for Finding Node-Independent Paths in Networks. \*Santa Fe Institute Working Papers\*(01-07-035).
 - <a id="white2003algorithms"></a>`white2003algorithms` White, S.; Smyth, P. (2003) Algorithms for Estimating Relative Importance in Networks. \*Proceedings of the Ninth ACM SIGKDD International Conference on Knowledge Discovery and Data Mining\*, 266–275.
+- <a id="whitney1932congruent"></a>`whitney1932congruent` Whitney, H. (1932) Congruent Graphs and the Connectivity of Graphs. \*American Journal of Mathematics\*, 54(1), 150–168. doi:10.2307/2371086
 - <a id="wiener1947structural"></a>`wiener1947structural` Wiener, H. (1947) Structural Determination of Paraffin Boiling Points. \*Journal of the American Chemical Society\*, 69(1), 17–20. doi:10.1021/ja01193a005
 - <a id="wilson1996generating"></a>`wilson1996generating` Wilson, D.B. (1996) Generating Random Spanning Trees More Quickly than the Cover Time. \*Proceedings of the Twenty-Eighth Annual ACM Symposium on Theory of Computing\*, 296–303. doi:10.1145/237814.237880
 - <a id="wu2000thick"></a>`wu2000thick` Wu, K.; Simon, H. (2000) Thick-Restart Lanczos Method for Large Symmetric Eigenvalue Problems. \*SIAM Journal on Matrix Analysis and Applications\*, 22(2), 602–616. doi:10.1137/S0895479898334605
@@ -348,6 +357,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="zhang2016identifying"></a>`zhang2016identifying` Zhang, J.X.; Chen, D.B.; Dong, Q.; Zhao, Z.D. (2016) Identifying a Set of Influential Spreaders in Complex Networks. \*Scientific Reports\*, 6, 27823. doi:10.1038/srep27823
 - <a id="zhou2004rich"></a>`zhou2004rich` Zhou, S.; Mondragón, R.J. (2004) The Rich-Club Phenomenon in the Internet Topology. \*IEEE Communications Letters\*, 8(3), 180–182. doi:10.1109/LCOMM.2004.823426
 - <a id="zhou2009predicting"></a>`zhou2009predicting` Zhou, T.; Lü, L.; Zhang, Y.C. (2009) Predicting Missing Links via Local Information. \*The European Physical Journal B\*, 71(4), 623–630. doi:10.1140/epjb/e2009-00335-8
+- <a id="zhou2012finding"></a>`zhou2012finding` Zhou, R.; Liu, C.; Yu, J.X.; Liang, W.; Chen, B.; Li, J. (2012) Finding Maximal k-Edge-Connected Subgraphs from a Large Graph. \*Proceedings of the 15th International Conference on Extending Database Technology\*, 480–491. doi:10.1145/2247596.2247652
 - <a id="ziberna2007generalized"></a>`ziberna2007generalized` Žiberna, A.s. (2007) Generalized Blockmodeling of Valued Networks. \*Social Networks\*, 29(1), 105–126. doi:10.1016/j.socnet.2006.04.002
 - <a id="zlatic2012networks"></a>`zlatic2012networks` Zlatić, V.; Garlaschelli, D.; Caldarelli, G. (2012) Networks with Arbitrary Edge Multiplicities. \*EPL (Europhysics Letters)\*, 97(2), 28005. doi:10.1209/0295-5075/97/28005
 {% endraw %}

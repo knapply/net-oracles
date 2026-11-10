@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Cuts and separator
 
 K-edge augmentation. Entries grouped here: K edge augmentation (connectivity).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworkX k-edge augmentation), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## K edge augmentation (connectivity) {#cat_augmentation_edge_k-connectivity}
 

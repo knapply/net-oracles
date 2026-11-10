@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Connectivity numbe
 
 K-connectivity by flow. Entries grouped here: KConnectivity Flow Algorithm.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (JGraphT k-connectivity by flow), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## KConnectivity Flow Algorithm {#cat_connectivity_flow_k}
 

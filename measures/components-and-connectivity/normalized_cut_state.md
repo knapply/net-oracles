@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Cuts and separator
 
 Normalized cut state. Entries grouped here: Norm Cut State.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (graph-tool normalized cut state), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Norm Cut State {#cat_cut_norm_state}
 

@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Flows and flow tre
 
 Experience flows. Entries grouped here: Experienceflows.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (UCINET experience flows), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Experienceflows {#cat_experienceflows}
 

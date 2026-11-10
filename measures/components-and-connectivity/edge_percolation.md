@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Robustness and per
 
 Edge percolation. Entries grouped here: Edge percolation.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (graph-tool edge percolation), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Edge percolation {#cat_edge_percolation}
 

@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Cuts and separator
 
 Minimum odd cutset (Padberg-Rao). Entries grouped here: Padberg Rao Odd Minimum Cutset.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (JGraphT Padberg-Rao minimum odd cutset), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Padberg Rao Odd Minimum Cutset {#cat_cutset_minimum_odd_padberg_rao}
 

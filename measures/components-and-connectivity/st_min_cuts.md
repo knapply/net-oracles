@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Cuts and separator
 
 All minimum s-t cuts. Entries grouped here: St Mincuts.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (igraph all minimum s-t cuts), never run; the sources give the name and the tool's function, not a formula.
 
 ## St Mincuts {#cat_mincuts_st}
 
