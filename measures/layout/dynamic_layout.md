@@ -16,7 +16,7 @@ Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `dynamic
 
 Dynamic layout. Entries grouped here: Layout dynamic.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Layout dynamic {#cat_dynamic_layout}
 

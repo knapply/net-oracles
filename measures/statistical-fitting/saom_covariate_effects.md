@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Covariate main and interaction effects. Entries grouped here: Abs Diff X; Cy WWX; Diff Sq X; Diff X; Dyadic Cov; In WWX; and 9 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

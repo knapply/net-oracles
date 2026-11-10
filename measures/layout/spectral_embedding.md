@@ -16,7 +16,7 @@ Family: [Layout](index.html). Subfamily: Embeddings. Concept id: `spectral_embed
 
 Spectral embedding and clustering. Entries grouped here: Spectral.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Spectral {#cat_spectral}
 

@@ -1,0 +1,1128 @@
+{
+ "family": "Generators and rewiring",
+ "concepts": {
+  "sbm_generator": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "b_i",
+     "meaning": "block of node \\(i\\)"
+    },
+    {
+     "symbol": "\\omega_{rs}",
+     "meaning": "edge probability (or expected edge count) between blocks \\(r\\) and \\(s\\)"
+    },
+    {
+     "symbol": "\\theta_i",
+     "meaning": "degree-correction parameter of node \\(i\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Stochastic block model (Holland, Laskey and Leinhardt 1983)",
+     "latex": "\\Pr(A_{ij}=1)=\\omega_{b_ib_j}\\ \\text{independently for each pair}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Pairs are independent given the block assignment. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    },
+    {
+     "name": "Degree-corrected block model (Karrer and Newman 2011)",
+     "latex": "A_{ij}\\sim\\mathrm{Poisson}\\bigl(\\theta_i\\theta_j\\,\\omega_{b_ib_j}\\bigr)",
+     "applies_to": [
+      "any",
+      "multigraph"
+     ],
+     "where": "Parallel edges and loops are allowed in this multigraph form; \\(\\theta\\) is normalized within each block."
+    }
+   ],
+   "variants": {
+    "cat_random_sbm": "Block model with block probabilities \\(\\omega\\) as in the first formula (the degree-corrected form is the second formula). Which options this function offers is not recorded (documented by name only).",
+    "gen_sbm": "Block model with block probabilities \\(\\omega\\) as in the first formula (the degree-corrected form is the second formula). Which options this function offers is not recorded (documented by name only)."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Each \\(\\omega_{rs}\\) must lie in \\([0,1]\\) in the Bernoulli form."
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "One block gives G(n,p); a block of one node has no internal pairs."
+    }
+   ],
+   "references": [
+    "holland1983stochastic",
+    "karrer2011stochastic"
+   ]
+  },
+  "gnm_random_graph": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "N",
+     "meaning": "number of node pairs: \\(\\binom n2\\) (undirected), \\(n(n-1)\\) (directed), plus \\(n\\) if loops are allowed"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "p",
+     "meaning": "edge probability"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "G(n,m) (Erdos and Renyi 1959)",
+     "latex": "\\Pr(G)=\\binom{N}{m}^{-1}\\ \\text{for every graph with }m\\text{ edges},\\qquad 0\\le m\\le N",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Uniform distribution over all graphs with exactly \\(m\\) edges. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "cat_gnm": "Uniform choice among graphs with \\(m\\) edges as in the formula. Which options this function offers is not recorded (documented by name only).",
+    "gen_gnm": "Uniform choice among graphs with \\(m\\) edges as in the formula. Which options this function offers is not recorded (documented by name only)."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Not defined for \\(m>N\\) or \\(m<0\\)."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(m=0\\): the single edgeless graph."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(m=N\\): the single complete graph."
+    },
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): \\(N=0\\), only \\(m=0\\) is valid."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The model is for simple graphs; parallel edges are outside it."
+    }
+   ],
+   "references": [
+    "erdos1959random"
+   ]
+  },
+  "gnp_random_graph": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "N",
+     "meaning": "number of node pairs: \\(\\binom n2\\) (undirected), \\(n(n-1)\\) (directed), plus \\(n\\) if loops are allowed"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "p",
+     "meaning": "edge probability"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "G(n,p) (Gilbert 1959; Erdos and Renyi 1959)",
+     "latex": "\\Pr(G)=p^{m(G)}(1-p)^{N-m(G)},\\qquad 0\\le p\\le1",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Each of the \\(N\\) possible edges is present independently with probability \\(p\\). A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "cat_gnp": "Independent edges with probability \\(p\\) as in the formula. Which options this function offers is not recorded (documented by name only).",
+    "gen_gnp": "Independent edges with probability \\(p\\) as in the formula. Which options this function offers is not recorded (documented by name only)."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Not defined for \\(p<0\\) or \\(p>1\\)."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(p=0\\) gives the edgeless graph with probability 1."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(p=1\\) gives the complete graph with probability 1."
+    },
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): the only graph is the empty graph."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "With no loops \\(N=0\\) and the graph has no edges."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are possible only if the model is stated over the \\(n\\) additional pairs; the original model has none."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The directed form has \\(N=n(n-1)\\) independent arcs."
+    }
+   ],
+   "references": [
+    "gilbert1959random",
+    "erdos1959random"
+   ]
+  },
+  "random_bipartite_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "clustered_random_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "random_cograph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "mixing_model_generator": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "uman_random_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "random_intersection_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "random_k_out_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "random_kernel_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "random_regular_graph": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "d",
+     "meaning": "degree of every node"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Random regular graph (Steger and Wormald 1999; Bollobas 1980)",
+     "latex": "\\Pr(G)=\\Bigl|\\{\\text{simple graphs on }n\\text{ labelled nodes, all degrees }d\\}\\Bigr|^{-1}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Uniform distribution over labelled \\(d\\)-regular graphs, which exist exactly when \\(nd\\) is even and \\(d<n\\). A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "gen_regular": "Uniform \\(d\\)-regular simple graph. Which options this function offers is not recorded (documented by name only)."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Not defined if \\(nd\\) is odd or \\(d\\ge n\\)."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(d=n-1\\) gives the complete graph."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(d=0\\) gives the edgeless graph."
+    }
+   ],
+   "references": [
+    "steger1999generating",
+    "bollobas1980probabilistic"
+   ]
+  },
+  "random_tournament": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "chung_lu": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "w_i",
+     "meaning": "expected degree of node \\(i\\)"
+    },
+    {
+     "symbol": "\\rho",
+     "meaning": "\\(1/\\sum_iw_i\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Chung-Lu expected-degree model (Chung and Lu 2002)",
+     "latex": "\\Pr(i\\sim j)=p_{ij}=\\rho\\,w_iw_j\\ \\text{independently},\\qquad \\max_iw_i^2\\le\\sum_jw_j",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "With loops allowed, \\(\\sum_jp_{ij}=w_i\\): node \\(i\\) has expected degree \\(w_i\\). The condition keeps every \\(p_{ij}\\le1\\). A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "gen_chung_lu": "Independent edges with probability \\(\\rho w_iw_j\\). Which options this function offers is not recorded (documented by name only)."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "If \\(w_iw_j\\rho>1\\) the model is not a probability; a tool must cap it (the cap changes the expected degrees)."
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "A node with \\(w_i=0\\) is isolated with probability 1."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "\\(p_{ii}=\\rho w_i^2\\) in the original model; with loops removed the expected degree is below \\(w_i\\)."
+    }
+   ],
+   "references": [
+    "chung2002average"
+   ]
+  },
+  "configuration_model": {
+   "status": "partial",
+   "note": "The stub-matching model is written. The options of the tools (rewiring to remove loops, other degseq methods) are named but not recorded, so only the model itself is defined.",
+   "notation": [
+    {
+     "symbol": "k_i",
+     "meaning": "prescribed degree of node \\(i\\)"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges, \\(m=\\tfrac12\\sum_ik_i\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Configuration model (Bollobas 1980; Molloy and Reed 1995; Newman, Strogatz and Watts 2001)",
+     "latex": "\\Pr(\\text{pairing})=\\frac{1}{(2m-1)!!},\\qquad \\mathbb E[A_{ij}]=\\frac{k_ik_j}{2m-1}\\ (i\\ne j)",
+     "applies_to": [
+      "undirected",
+      "multigraph"
+     ],
+     "where": "Give node \\(i\\) \\(k_i\\) stubs and pair all \\(2m\\) stubs uniformly at random. The result may contain loops and parallel edges; \\(\\sum k_i\\) must be even. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "gen_configuration": "The stub-matching model above, as a multigraph unless the tool states a simple-graph option (not recorded)."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Not defined if \\(\\sum_ik_i\\) is odd."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Expected loops at \\(i\\): \\(\\binom{k_i}{2}/(2m-1)\\); loops occur with positive probability."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges occur with positive probability in the pairing model."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "All \\(k_i=0\\): the edgeless graph."
+    }
+   ],
+   "references": [
+    "bollobas1980probabilistic",
+    "molloy1995critical",
+    "newman2001random"
+   ]
+  },
+  "degree_sequence_realization": {
+   "status": "partial",
+   "note": "Havel-Hakimi and the Erdos-Gallai test are written. The bipartite realization (a Gale-Ryser type condition) and the igraph method options are named only.",
+   "notation": [
+    {
+     "symbol": "d_1\\ge\\dots\\ge d_n",
+     "meaning": "a non-increasing degree sequence"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Graphical test (Erdos and Gallai 1960)",
+     "latex": "\\sum_{i=1}^{k}d_i\\le k(k-1)+\\sum_{i=k+1}^{n}\\min(d_i,k)\\ \\ (k=1..n),\\qquad \\sum_id_i\\ \\text{even}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "A sequence is the degree sequence of a simple graph exactly when it satisfies this."
+    },
+    {
+     "name": "Havel-Hakimi step (Havel 1955; Hakimi 1962)",
+     "latex": "(d_1,\\dots,d_n)\\ \\text{graphical}\\iff(d_2-1,\\dots,d_{d_1+1}-1,d_{d_1+2},\\dots,d_n)\\ \\text{graphical}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Connect the node of largest degree to the next \\(d_1\\) largest and recurse; the realization is deterministic once the tie order among equal degrees is fixed."
+    }
+   ],
+   "variants": {
+    "cat_generator_hakimi_havel": "Realization by the Havel-Hakimi recursion above.",
+    "gen_degree_realization": "Realization of a degree sequence; the choice of which node to connect first (the tool's method option) changes the graph and is not recorded here."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Not defined (no simple graph) for a sequence that violates the Erdos-Gallai condition or has odd sum."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Among equal degrees the realized graph depends on the order used by the algorithm."
+    }
+   ],
+   "references": [
+    "havel1955remark",
+    "hakimi1962realizability",
+    "erdos1960graphs"
+   ]
+  },
+  "soft_configuration_geometric": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "joint_degree_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "powerlaw_degree_sequence": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "sample_sequence": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "static_fitness": {
+   "status": "partial",
+   "note": "The static model is written from the paper; the static power-law form of the tool (fitness \\(i^{-\\alpha}\\)) is named only.",
+   "notation": [
+    {
+     "symbol": "f_i",
+     "meaning": "fitness of node \\(i\\)"
+    },
+    {
+     "symbol": "L",
+     "meaning": "number of edges to add"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Static model (Goh, Kahng and Kim 2001)",
+     "latex": "P_i=\\frac{f_i}{\\sum_jf_j},\\quad f_i=i^{-\\mu}\\ \\ (0\\le\\mu<1);\\ \\ \\text{repeat }L\\text{ times: pick }i\\ne j\\text{ with probabilities }P_i,P_j\\text{, add the edge if absent}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Node fitness fixed in advance gives a power-law degree tail of exponent \\(1+1/\\mu\\). A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "gen_static_fitness": "Fitness-weighted edge placement; with fitness \\(i^{-\\mu}\\) it is the static power-law model."
+   },
+   "references": [
+    "goh2001universal"
+   ]
+  },
+  "degree_sequence_tree": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "bter": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "dorogovtsev_goltsev_mendes": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "duplication_divergence": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "dynamic_path_generator": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "forest_fire": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "growing_network_models": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "growth_tnet": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "lfr_benchmark": {
+   "status": "partial",
+   "note": "Only the main parameters of the benchmark are written; the construction of the degree and community-size sequences is not given here.",
+   "notation": [
+    {
+     "symbol": "\\tau_1,\\tau_2",
+     "meaning": "exponents of the power laws for degrees and community sizes"
+    },
+    {
+     "symbol": "\\mu",
+     "meaning": "mixing parameter"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "LFR benchmark (Lancichinetti, Fortunato and Radicchi 2008)",
+     "latex": "\\text{each node has a fraction }1-\\mu\\text{ of its edges inside its community and }\\mu\\text{ outside; }P(k)\\propto k^{-\\tau_1},\\ P(s)\\propto s^{-\\tau_2}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Degrees and community sizes follow power laws; \\(\\mu\\) controls how well communities are separated. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "cat_generator_lfr": "The LFR benchmark with the parameters above."
+   },
+   "references": [
+    "lancichinetti2008benchmark"
+   ]
+  },
+  "mocnik": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "plod": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "powerlaw_cluster": {
+   "status": "partial",
+   "note": "The model is written from the paper; the tool function was recorded by name only.",
+   "notation": [
+    {
+     "symbol": "m",
+     "meaning": "edges per new node"
+    },
+    {
+     "symbol": "p",
+     "meaning": "probability of a triad-formation step"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Power-law cluster model (Holme and Kim 2002)",
+     "latex": "\\text{first edge by preferential attachment; each further edge: with probability }p\\text{ to a random neighbour of the last target, otherwise preferential attachment}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Adding triad formation to linear attachment raises clustering while keeping the power-law degree tail. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "cat_cluster_powerlaw": "The Holme-Kim model above."
+   },
+   "references": [
+    "holme2002growing"
+   ]
+  },
+  "preference_types": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "preferential_attachment": {
+   "status": "partial",
+   "note": "The linear preferential attachment model is written. Age-dependent (pa_age), bipartite and other options of the tool functions are named only.",
+   "notation": [
+    {
+     "symbol": "k_i(t)",
+     "meaning": "degree of node \\(i\\) at step \\(t\\)"
+    },
+    {
+     "symbol": "m_0",
+     "meaning": "size of the initial network"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges added with each new node"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Barabasi-Albert growth (Barabasi and Albert 1999)",
+     "latex": "\\Pi(i)=\\frac{k_i}{\\sum_jk_j}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "At each step a new node is added with \\(m\\le m_0\\) edges to distinct existing nodes chosen with probability \\(\\Pi(i)\\). The result depends on the initial graph and the random generator. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "gen_preferential": "Linear attachment by degree as in the formula; direction, initial graph and exponent options are not recorded.",
+    "cat_pa": "Preferential attachment; the options are not recorded.",
+    "cat_age_pa": "Attachment with an age term in addition to degree; the age function is not recorded here."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Needs \\(m\\le m_0\\) so that \\(m\\) distinct targets exist."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "A starting single node has degree 0, so \\(\\Pi\\) is 0/0; implementations must give initial nodes an offset or a seed graph."
+    }
+   ],
+   "references": [
+    "barabasi1999emergence"
+   ]
+  },
+  "pub_web": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "rmat": {
+   "status": "partial",
+   "note": "The recursive quadrant rule is written; the tool options (noise, edge factor) are named only.",
+   "notation": [
+    {
+     "symbol": "a,b,c,d",
+     "meaning": "quadrant probabilities with \\(a+b+c+d=1\\)"
+    },
+    {
+     "symbol": "n",
+     "meaning": "a power of 2: nodes \\(2^{s}\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "R-MAT (Chakrabarti, Zhan and Faloutsos 2004)",
+     "latex": "\\Pr\\bigl(\\text{edge in quadrant }q\\bigr)=a,b,c,d\\ \\text{ for top-left, top-right, bottom-left, bottom-right; recurse }s\\text{ times}",
+     "applies_to": [
+      "directed",
+      "multigraph"
+     ],
+     "where": "Each edge is placed by choosing a quadrant of the adjacency matrix with these probabilities and recursing into it until a single cell remains; repeated cells give parallel edges. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "gen_rmat": "Recursive quadrant model above."
+   },
+   "references": [
+    "chakrabarti2004rmat"
+   ]
+  },
+  "internet_as_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "ssca": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "algebraic_named_graphs": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "circulant_ring_graphs": {
+   "status": "partial",
+   "note": "No primary paper was checked for the circulant, chordal ring, Harary and generalized Petersen definitions; formulas are not written. NetworkX was run on small cases but the comparison records no counts, so no tool value is stated.",
+   "notation": [
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "S",
+     "meaning": "set of offsets"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Circulant graph",
+     "latex": "i\\sim j\\iff (i-j)\\bmod n\\in S\\cup(-S)",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Nodes on a cycle, an edge joins nodes whose cyclic distance is in the offset set; \\(S\\subseteq\\{1,\\dots,\\lfloor n/2\\rfloor\\}\\). Standard definition; no primary paper was checked."
+    }
+   ],
+   "variants": {
+    "gen_circulant": "The circulant graph with offset set \\(S\\) above."
+   },
+   "edge_cases": [
+    {
+     "case": "two_nodes",
+     "definition_gives": "Cyclic offsets of a 2-cycle coincide; whether the single edge is doubled is not fixed by the definition.",
+     "tools": {
+      "networkx": {
+       "status": "not_recorded",
+       "behaviour": "NetworkX 3.7 was run on the pair fixture but the comparison records no counts, so the outcome is not stated.",
+       "source": "reasons.json circulant_ring_graphs",
+       "measure": "implicit_family"
+      }
+     }
+    }
+   ]
+  },
+  "clique_composite_graphs": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "misc_generators": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "complete_multipartite_graphs": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "contingency_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "deterministic_generators": {
+   "status": "partial",
+   "note": "Standard graph definitions are written from the textbook (Harary 1969). The measure lists the generators of the comparison (complete, empty, path, cycle, star, wheel, ladder, grid, balanced tree, hypercube, complete bipartite) as one entry, so the variants key covers them together.",
+   "notation": [
+    {
+     "symbol": "n",
+     "meaning": "number of nodes (or parameter)"
+    },
+    {
+     "symbol": "Q_d",
+     "meaning": "the \\(d\\)-dimensional hypercube"
+    },
+    {
+     "symbol": "r,h",
+     "meaning": "branching factor and height of a balanced tree"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Named graphs (Harary 1969)",
+     "latex": "K_n:\\ i\\sim j\\ \\forall i\\ne j;\\ \\ P_n:\\ i\\sim i{+}1;\\ \\ C_n:\\ P_n\\ \\text{plus}\\ (n{-}1)\\sim0;\\ \\ S_n:\\ 0\\sim i\\ (i\\ge1);\\ \\ W_n:\\ C_{n-1}\\ \\text{plus a hub};\\ \\ Q_d:\\ \\{0,1\\}^d,\\ x\\sim y\\iff\\text{they differ in one bit}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Complete, path, cycle, star, wheel and hypercube. \\(Q_0\\) has \\(2^0=1\\) node. The ladder is \\(P_n\\times K_2\\), the grid \\(P_a\\times P_b\\), the balanced tree has \\(\\sum_{i=0}^h r^i\\) nodes, the complete bipartite graph \\(K_{a,b}\\) joins every node of one part to every node of the other."
+    }
+   ],
+   "variants": {
+    "deterministic_generators": "All generators above, with the node numbering of the tool; the numbering of grids, hypercubes and trees follows each tool's convention."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(K_0\\), \\(P_0\\), \\(S_0\\) have no nodes; \\(Q_0=K_1\\) has one node, since \\(2^0=1\\).",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "nx.hypercube_graph(0) returns the null graph, while the reference and the definition give Q_0 = K_1 (one node). Convention, on the null graph only.",
+       "source": "conventions.json deterministic_generators"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(K_1\\), \\(P_1\\), \\(C_1\\) (a single node, a loop only if loops are admitted) and \\(S_1\\) are one node."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "\\(C_n\\) needs \\(n\\ge3\\) to be simple; \\(W_n\\) needs \\(n\\ge4\\)."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed versions orient path and cycle edges along increasing index; the complete digraph has all \\(n(n-1)\\) arcs."
+    }
+   ],
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "dominance_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "expander_graphs": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "game_tree": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "graph_atlas": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "linearized_chord_diagram": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "make_connected": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "stochastic_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "random_lobster": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "random_shell": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "random_tree": {
+   "status": "partial",
+   "note": "The uniform labelled tree is written; the tool functions are named only and which sampler they use is not recorded.",
+   "notation": [
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Uniform random labelled tree (Prufer 1918)",
+     "latex": "\\Pr(T)=n^{-(n-2)}\\quad\\text{for each of the }n^{n-2}\\text{ labelled trees}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "A Prufer sequence of \\(n-2\\) uniform labels corresponds one-to-one to a labelled tree. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "gen_random_tree": "A tree on \\(n\\) nodes; whether it is uniform among labelled trees is not recorded."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "For \\(n=1\\) there is one tree (no edges); for \\(n=2\\) one tree; the Prufer sequence has length \\(n-2\\)."
+    },
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): no tree."
+    }
+   ],
+   "references": [
+    "prufer1918neuer"
+   ]
+  },
+  "swap_contract": {
+   "status": "partial",
+   "note": "Only the degree-preserving double edge swap is written (Maslov and Sneppen 2002). The windowed connected swap of NetworkX and the directed three-edge swap are named in the sources and their rules are not written here; the checked contract is stated as a property of the result.",
+   "notation": [
+    {
+     "symbol": "E",
+     "meaning": "edge set"
+    },
+    {
+     "symbol": "\\deg_E(v)",
+     "meaning": "degree of node \\(v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Double edge swap (Maslov and Sneppen 2002)",
+     "latex": "\\{(a,b),(c,d)\\}\\ \\to\\ \\{(a,d),(c,b)\\}\\quad\\text{if }a,b,c,d\\text{ are distinct and }(a,d),(c,b)\\notin E",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Two edges are chosen at random and their endpoints exchanged; every degree is unchanged. Repeated swaps sample graphs with the same degree sequence. A swap that would create a loop or a duplicate edge is rejected. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    },
+    {
+     "name": "Contract of a result",
+     "latex": "\\deg_{E'}(v)=\\deg_E(v)\\ \\forall v,\\qquad |E'|=|E|,\\qquad E'\\ \\text{simple}\\ (\\text{and connected for the connected variant})",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Properties every rewired edge list \\(E'\\) must satisfy; two tools can be compared through this contract, not draw by draw, because their random generators differ."
+    }
+   ],
+   "variants": {
+    "swap_contract": "Rewired edge list and number of swaps kept, for the double swap, the connectivity-preserving swap, or the directed swap; the contract above holds for each."
+   },
+   "edge_cases": [
+    {
+     "case": "star",
+     "definition_gives": "Every double swap on a star creates a loop or duplicate, so no swap is possible; a procedure that keeps drawing never stops unless it has a limit.",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "lattice_reference and random_reference (seed 7) on a star: every draw is rejected and NetworkX redraws forever; the reference stops each round after 100(m+1) rejected draws.",
+       "source": "conventions.json swap_contract"
+      }
+     }
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "Fewer than four nodes or two edges: no swap exists."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "The connectivity-preserving swap is not defined for a disconnected input."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The simple-graph definition has no parallel edges; the result must not have any."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Swaps creating loops are rejected; the input is a simple graph."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "For directed graphs the swap keeps in- and out-degrees (the directed three-edge swap is not written here)."
+    }
+   ],
+   "references": [
+    "maslov2002specificity",
+    "erdos2010simple",
+    "hagberg2008exploring"
+   ]
+  },
+  "rewire_lattice": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "random_edge_edit": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "bct_random_matrix": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "random_reference": {
+   "status": "partial",
+   "note": "Only the degree-preserving rewiring is written (Maslov and Sneppen 2002, as used by Sporns and Zwi 2004); the number of rewiring rounds and the lattice-reference variant are not written.",
+   "notation": [
+    {
+     "symbol": "E",
+     "meaning": "edge set"
+    },
+    {
+     "symbol": "\\deg_E(v)",
+     "meaning": "degree of node \\(v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Random reference by degree-preserving rewiring (Maslov and Sneppen 2002; Sporns and Zwi 2004)",
+     "latex": "\\text{repeat the double edge swap }\\{(a,b),(c,d)\\}\\to\\{(a,d),(c,b)\\}\\ \\text{ about }\\text{niter}\\cdot|E|\\ \\text{times}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "The graph is randomized while all degrees stay fixed. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "cat_random_reference": "Rewiring above, in rounds proportional to the number of edges; the round count is a parameter."
+   },
+   "references": [
+    "maslov2002specificity",
+    "sporns2004small"
+   ]
+  },
+  "randomize_network": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "reinforcement": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "triadic_closure_generation": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "weighted_reshuffling": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "grid_communities": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "hyperbolic_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "interval_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "knn_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "latent_space_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "lattice_graphs": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "navigable_small_world": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "geometric_graph": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "x_i",
+     "meaning": "position of node \\(i\\) in a metric space (usually uniform in the unit square or torus)"
+    },
+    {
+     "symbol": "r",
+     "meaning": "connection radius"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Random geometric graph (Penrose 2003)",
+     "latex": "i\\sim j\\iff\\|x_i-x_j\\|\\le r",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Nodes are random points, an edge joins points within distance \\(r\\). A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "gen_geometric": "Connect points within radius \\(r\\); the norm and the boundary (torus or not) are options not recorded. Which options this function offers is not recorded (documented by name only)."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Not defined for \\(r<0\\)."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(r\\) below the smallest distance gives no edges."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(r\\) at least the largest distance gives the complete graph."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Pairs at distance exactly \\(r\\) are included (non-strict inequality in the definition)."
+    }
+   ],
+   "references": [
+    "penrose2003random"
+   ]
+  },
+  "small_world_generator": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "k",
+     "meaning": "each node joined to its \\(k\\) nearest ring neighbours (\\(k\\) even)"
+    },
+    {
+     "symbol": "p",
+     "meaning": "rewiring probability"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Watts-Strogatz model (Watts and Strogatz 1998)",
+     "latex": "\\text{ring lattice }C_n^{k};\\ \\ \\text{each edge }(i,i{+}j),\\,j\\le k/2,\\ \\text{is rewired with probability }p\\text{ to a uniformly chosen new target}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Targets that would create a loop or a duplicate edge are not allowed; \\(p=0\\) leaves the lattice, \\(p=1\\) is close to a random graph. Defined for even \\(k<n\\). A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators."
+    }
+   ],
+   "variants": {
+    "gen_small_world": "Ring lattice with rewiring probability \\(p\\) (Watts-Strogatz). Which options this function offers is not recorded (documented by name only)."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Needs even \\(k\\) with \\(k<n\\) and \\(0\\le p\\le1\\)."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(k=0\\) gives no edges."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(k=n-1\\) leaves no room to rewire: the complete graph."
+    }
+   ],
+   "references": [
+    "watts1998collective"
+   ]
+  },
+  "spectral_graph_forge": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "delaunay_triangulation": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "visibility_graph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  }
+ }
+}

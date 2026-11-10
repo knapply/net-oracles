@@ -16,7 +16,7 @@ Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Con
 
 Incremental maintenance on a changing graph. Entries grouped here: Incremental maintenance on a changing graph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Incremental maintenance on a changing graph {#dynamic_update}
 

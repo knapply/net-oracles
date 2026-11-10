@@ -12,11 +12,21 @@ nav_exclude: true
 
 Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id: `dynam`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(\lambda_i\)</td><td>rate at which actor \(i\) acts</td></tr><tr><td>\(s_{ij}\)</td><td>statistic vector of the choice of \(j\) by \(i\)</td></tr><tr><td>\(\alpha,\beta\)</td><td>rate and choice coefficients</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Actor-oriented event models (DyNAM). Entries grouped here: Actor-oriented event models (DyNAM).
 
-*Definition not yet written.*
+*Definition partly written:* The rate and choice structure is written from the DyNAM paper; the tool's options (effects, estimation) were not recorded.
+
+<div class="formula-block"><p class="formula-name"><strong>Dynamic network actor model (Stadtfeld and Block 2017)</strong> <span class="applies">applies to: directed</span></p><div class="formula">\[\lambda_i=\exp(\alpha^{\top}r_i),\qquad \Pr(j\mid i)=\frac{\exp(\beta^{\top}s_{ij})}{\sum_{h\ne i}\exp(\beta^{\top}s_{ih})}\]</div><p class="formula-where">Each event is a pair of an actor who acts (chosen by the rate) and the target they choose (multinomial logit); likelihood is the product over observed events.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#dynam">Actor-oriented event models (DyNAM)</a></td><td><code>dynam</code></td><td>1</td><td>Rate and choice sub-models of the formula; estimation by maximum likelihood.</td></tr></tbody></table></div>
 
 ## Actor-oriented event models (DyNAM) {#dynam}
 

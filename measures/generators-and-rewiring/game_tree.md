@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Named and deterministi
 
 Game tree. Entries grouped here: Tree Game.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Tree Game {#cat_game_tree}
 

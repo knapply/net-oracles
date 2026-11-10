@@ -1,0 +1,466 @@
+{
+ "family": "Temporal and events",
+ "concepts": {
+  "epidemic_simulation": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "rem_fit": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "e=(s_e,r_e,t_e)",
+     "meaning": "an event: sender \\(s_e\\), receiver \\(r_e\\), time \\(t_e\\) (events are ordered; the history before time \\(t\\) is \\(H_t\\))"
+    },
+    {
+     "symbol": "R_t",
+     "meaning": "risk set at time \\(t\\): all ordered pairs \\((s,r)\\) of distinct actors"
+    },
+    {
+     "symbol": "x(s,r,t)",
+     "meaning": "statistic vector of the dyad \\((s,r)\\) computed from \\(H_t\\)"
+    },
+    {
+     "symbol": "\\theta",
+     "meaning": "coefficient vector"
+    },
+    {
+     "symbol": "c_{sr}(t)",
+     "meaning": "weighted count of past events \\(s\\to r\\) (with memory weights, below)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Ordinal relational event likelihood (Butts 2008; Perry and Wolfe 2013)",
+     "latex": "L(\\theta)=\\prod_{e}\\frac{\\exp\\{\\theta^{\\top}x(s_e,r_e,t_e)\\}}{\\sum_{(s,r)\\in R_{t_e}}\\exp\\{\\theta^{\\top}x(s,r,t_e)\\}}",
+     "applies_to": [
+      "any",
+      "directed"
+     ],
+     "where": "The partial likelihood of the observed order of events: at each event the observed dyad competes with every dyad of the risk set. Only the order of events enters, not the time gaps."
+    },
+    {
+     "name": "Score and Newton step",
+     "latex": "\\nabla\\ell(\\theta)=\\sum_e\\Bigl(x_e-\\mathbb E_{\\theta,e}[x]\\Bigr),\\qquad \\theta\\leftarrow\\theta+\\mathcal I(\\theta)^{-1}\\nabla\\ell(\\theta),\\quad \\mathcal I(\\theta)=\\sum_e\\operatorname{Cov}_{\\theta,e}(x)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The log partial likelihood \\(\\ell=\\log L\\) is concave in \\(\\theta\\); \\(\\mathbb E_{\\theta,e}\\) and \\(\\operatorname{Cov}_{\\theta,e}\\) are the mean and covariance of \\(x\\) over \\(R_{t_e}\\) with probabilities \\(\\propto e^{\\theta^{\\top}x}\\). Standard errors are the square roots of the diagonal of \\(\\mathcal I(\\hat\\theta)^{-1}\\). A finite maximizer exists only if the likelihood is not monotone."
+    }
+   ],
+   "variants": {
+    "rem_fit": "Coefficients and standard errors of the model above for a chosen statistic list; the statistics (and their memory) are those of rem_statistic. Which optimizer converges is not part of the definition."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "With one event there is nothing to estimate from: the risk-set sums have a single factor and the likelihood is monotone.",
+     "tools": {
+      "remstats": {
+       "status": "no_value",
+       "behaviour": "remify rejects a stream this short (one edge).",
+       "source": "conventions.json rem_fit",
+       "measure": "rem_fit"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "If the log partial likelihood is monotone in some direction (for example no event repeats a dyad when inertia is a statistic) the maximizer does not exist and no finite coefficient is defined.",
+     "tools": {
+      "remstats": {
+       "status": "no_value",
+       "behaviour": "remstimate returns its last iterate; the definition has no finite estimate (reference value reported as -999).",
+       "source": "reasons.json rem_fit remstats",
+       "measure": "rem_fit"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Where a maximizer exists it is unique (the log likelihood is concave), so differences are due to the optimizer, not the definition.",
+     "tools": {
+      "remstats": {
+       "status": "differs",
+       "behaviour": "remstimate's coefficients differ by up to a few percent on complete5_dir and gnp_dir_dense, while the reference agrees with an independent Newton iteration to 1e-11 there; the difference is in remstimate's optimizer.",
+       "source": "reasons.json rem_fit remstats",
+       "measure": "rem_fit"
+      }
+     }
+    }
+   ],
+   "references": [
+    "butts2008relational",
+    "perry2013point",
+    "brandes2009networks",
+    "arena2026remstats"
+   ]
+  },
+  "rem_statistic": {
+   "status": "partial",
+   "note": "Recency statistics (rank-based) and the event-type and weighted variants are named in the sources but their formulas are not written here. The count definitions follow the statistic names of the remstats manual; the original paper formulas were not checked for every statistic.",
+   "notation": [
+    {
+     "symbol": "e=(s_e,r_e,t_e)",
+     "meaning": "an event: sender \\(s_e\\), receiver \\(r_e\\), time \\(t_e\\) (events are ordered; the history before time \\(t\\) is \\(H_t\\))"
+    },
+    {
+     "symbol": "R_t",
+     "meaning": "risk set at time \\(t\\): all ordered pairs \\((s,r)\\) of distinct actors"
+    },
+    {
+     "symbol": "x(s,r,t)",
+     "meaning": "statistic vector of the dyad \\((s,r)\\) computed from \\(H_t\\)"
+    },
+    {
+     "symbol": "\\theta",
+     "meaning": "coefficient vector"
+    },
+    {
+     "symbol": "c_{sr}(t)",
+     "meaning": "weighted count of past events \\(s\\to r\\) (with memory weights, below)"
+    },
+    {
+     "symbol": "h",
+     "meaning": "a third actor (partner)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Memory weights (Butts 2008; Brandes et al. 2009)",
+     "latex": "c_{sr}(t)=\\sum_{e\\in H_t:\\,s_e=s,\\,r_e=r}g(t-t_e),\\qquad g_{\\mathrm{full}}=1,\\ \\ g_{\\mathrm{window}}(\\Delta)=\\mathbf 1[\\Delta\\le T],\\ \\ g_{\\mathrm{decay}}(\\Delta)=\\frac{\\ln2}{T}e^{-\\Delta\\ln2/T}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Past events count fully, only inside a window of width \\(T\\), or with an exponential weight of half-life \\(T\\) (the factor \\(\\ln2/T\\) is that of Brandes et al. 2009; other tools may omit it)."
+    },
+    {
+     "name": "Dyad statistics from counts (Butts 2008; Perry and Wolfe 2013; Arena et al. 2026)",
+     "latex": "\\begin{aligned}\\text{inertia}&=c_{sr},&\\text{reciprocity}&=c_{rs},\\\\ \\text{outdegree sender}&=\\sum_h c_{sh},&\\text{indegree sender}&=\\sum_h c_{hs},\\\\ \\text{outdegree receiver}&=\\sum_h c_{rh},&\\text{indegree receiver}&=\\sum_h c_{hr}\\end{aligned}",
+     "applies_to": [
+      "any",
+      "directed"
+     ],
+     "where": "Counts of past events involving the sender and receiver of the dyad, over \\(h\\ne\\) the dyad's own actors as stated by each tool; computed at time \\(t\\) from the history only."
+    },
+    {
+     "name": "Triadic statistics",
+     "latex": "\\text{otp}=\\sum_h\\phi\\bigl(c_{sh},c_{hr}\\bigr),\\ \\ \\text{itp}=\\sum_h\\phi\\bigl(c_{rh},c_{hs}\\bigr),\\ \\ \\text{osp}=\\sum_h\\phi\\bigl(c_{sh},c_{rh}\\bigr),\\ \\ \\text{isp}=\\sum_h\\phi\\bigl(c_{hs},c_{hr}\\bigr)",
+     "applies_to": [
+      "any",
+      "directed"
+     ],
+     "where": "Two-path (outgoing/incoming) and shared-partner statistics; \\(\\phi\\) combines the two counts of a partner: the minimum, the product, or an indicator that both are positive."
+    }
+   ],
+   "variants": {
+    "rem_statistic": "One statistic per call: the dyad statistic of every event's own dyad and its sum over the risk set; the memory weights \\(g\\) and the combination \\(\\phi\\) change the value. remstats: the first event has an empty history."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "No events: there is no history and no statistic row."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Not in the risk set \\(R_t\\) (distinct actors only); loops in the data are dropped before counting."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "With one event the history before it is empty and every count is 0 by the formula.",
+     "tools": {
+      "remstats": {
+       "status": "no_value",
+       "behaviour": "remify rejects a stream this short (one edge).",
+       "source": "conventions.json rem_statistic"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Event weights are not part of the count formulas above; counting weighted events is a different definition."
+    }
+   ],
+   "references": [
+    "butts2008relational",
+    "perry2013point",
+    "brandes2009networks",
+    "arena2026remstats"
+   ]
+  },
+  "dynamic_clustering": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "edge_formation_dissolution": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "dynamic_update": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "p_shift_count": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "temporal_statistic_series": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "temporal_degree": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "temporal_edge_density": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "temporal_paths": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "(u,v,t)",
+     "meaning": "a contact: an edge from source \\(u\\) to target \\(v\\) (or between \\(u\\) and \\(v\\) if undirected) active at time \\(t\\)"
+    },
+    {
+     "symbol": "t_0,t_1",
+     "meaning": "start and end of the observation window; only contacts with \\(t_0\\le t\\le t_1\\) are used"
+    },
+    {
+     "symbol": "A(s,v)",
+     "meaning": "earliest arrival time at \\(v\\) over time-respecting paths from \\(s\\); \\(\\infty\\) if there is none"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Time-respecting path and earliest arrival (Kempe et al. 2002; Holme and Saramaki 2012)",
+     "latex": "A(s,v)=\\min\\Bigl\\{t_k:\\ (s{=}v_0,v_1,t_1),\\dots,(v_{k-1},v_k{=}v,t_k)\\text{ contacts},\\ t_0\\le t_1\\le\\dots\\le t_k\\le t_1^{\\mathrm{end}}\\Bigr\\},\\qquad A(s,s)=t_0",
+     "applies_to": [
+      "any",
+      "directed",
+      "undirected"
+     ],
+     "where": "A path may wait at a node and may use several contacts with the same time (traversal time 0, non-strict ordering \\(t_i\\le t_{i+1}\\)). \\(t_1^{\\mathrm{end}}\\) is the end of the window. Unreachable nodes have \\(A=\\infty\\). Strict ordering \\(t_i<t_{i+1}\\) would give a different value on simultaneous contacts."
+    }
+   ],
+   "variants": {
+    "temporal_paths": "Earliest-arrival time from a source to every node (as arrival time, i.e. the start plus the elapsed time); other criteria (latest departure, fastest, shortest) change the minimized quantity and are not covered."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "\\(A(s,s)=t_0\\) and no other node exists.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No contacts: \\(A(s,v)=\\infty\\) for every \\(v\\ne s\\).",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "A node without contacts is never reached: \\(A=\\infty\\).",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "If no time-respecting path along source to target exists, \\(A=\\infty\\); reachability is not symmetric.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "For undirected contacts both orientations are usable; for directed contacts only source to target.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Contacts with equal times can be chained when the ordering is non-strict, as in the formula above.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Repeated contacts only add candidate times; the minimum in \\(A\\) is unchanged by duplicates of the same time.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "kempe2002connectivity",
+    "holme2012temporal"
+   ]
+  },
+  "temporal_reach": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "(u,v,t)",
+     "meaning": "a contact: an edge from source \\(u\\) to target \\(v\\) (or between \\(u\\) and \\(v\\) if undirected) active at time \\(t\\)"
+    },
+    {
+     "symbol": "t_0,t_1",
+     "meaning": "start and end of the observation window; only contacts with \\(t_0\\le t\\le t_1\\) are used"
+    },
+    {
+     "symbol": "A(s,v)",
+     "meaning": "earliest arrival time at \\(v\\) over time-respecting paths from \\(s\\); \\(\\infty\\) if there is none"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Time-respecting path and earliest arrival (Kempe et al. 2002; Holme and Saramaki 2012)",
+     "latex": "A(s,v)=\\min\\Bigl\\{t_k:\\ (s{=}v_0,v_1,t_1),\\dots,(v_{k-1},v_k{=}v,t_k)\\text{ contacts},\\ t_0\\le t_1\\le\\dots\\le t_k\\le t_1^{\\mathrm{end}}\\Bigr\\},\\qquad A(s,s)=t_0",
+     "applies_to": [
+      "any",
+      "directed",
+      "undirected"
+     ],
+     "where": "A path may wait at a node and may use several contacts with the same time (traversal time 0, non-strict ordering \\(t_i\\le t_{i+1}\\)). \\(t_1^{\\mathrm{end}}\\) is the end of the window. Unreachable nodes have \\(A=\\infty\\). Strict ordering \\(t_i<t_{i+1}\\) would give a different value on simultaneous contacts."
+    },
+    {
+     "name": "Forward reachable set size",
+     "latex": "R(s)=\\bigl|\\{v\\ne s:\\ A(s,v)<\\infty\\}\\bigr|",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The number of other nodes reachable from \\(s\\) by a time-respecting path in the window; subtracting the source removes the trivial path to itself."
+    }
+   ],
+   "variants": {
+    "temporal_reach": "Count of nodes with finite earliest arrival time from the source, excluding the source."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "\\(R(s)=0\\): no other node.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(R(s)=0\\) for every node.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolate reaches nobody and is reached by nobody: 0.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Counts only nodes reachable along source to target.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "For undirected contacts both orientations are usable; for directed contacts only source to target.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Contacts with equal times can be chained when the ordering is non-strict, as in the formula above.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Repeated contacts only add candidate times; the minimum in \\(A\\) is unchanged by duplicates of the same time.",
+     "tools": {
+      "tsna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "kempe2002connectivity",
+    "holme2012temporal"
+   ]
+  },
+  "time_projected_network": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "activity_duration": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  }
+ }
+}

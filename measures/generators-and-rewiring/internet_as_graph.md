@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment 
 
 Random Internet AS graph. Entries grouped here: Random internet as graph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Random internet as graph {#cat_as_internet_random}
 

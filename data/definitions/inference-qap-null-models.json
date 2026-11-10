@@ -1,0 +1,320 @@
+{
+ "family": "Inference (QAP, null models)",
+ "concepts": {
+  "anova_density": {
+   "status": "name_only",
+   "note": "Documented by name only: ANOVA density models (constant and variable homophily, structural blockmodel) are named in the sources only; the formulas were not checked against a primary paper."
+  },
+  "cug_null_models": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "g",
+     "meaning": "the observed graph"
+    },
+    {
+     "symbol": "T",
+     "meaning": "a graph-level statistic (density, centralization, ...)"
+    },
+    {
+     "symbol": "U(n),U(n,m),U(n,M,A,N)",
+     "meaning": "uniform distributions over graphs of order \\(n\\), of order \\(n\\) with \\(m\\) edges, and of order \\(n\\) with a given dyad census (\\(M\\) mutual, \\(A\\) asymmetric, \\(N\\) null dyads)"
+    },
+    {
+     "symbol": "B",
+     "meaning": "number of simulated graphs"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Conditional uniform graph test (Anderson, Butts and Carley 1999)",
+     "latex": "p_{\\ge}=\\Pr_{G\\sim U(\\cdot)}\\bigl(T(G)\\ge T(g)\\bigr),\\qquad p_{\\le}=\\Pr_{G\\sim U(\\cdot)}\\bigl(T(G)\\le T(g)\\bigr)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The observed statistic is compared with its distribution among graphs drawn uniformly from the class fixed by the conditioning: size only, size and number of edges, or size and dyad census. For classes too large to enumerate the probabilities are estimated from \\(B\\) random draws, so the value depends on the random generator and seed."
+    },
+    {
+     "name": "Uniform distribution on graphs with given order and size",
+     "latex": "U(n,m):\\ \\ \\Pr(G)=\\binom{n(n-1)/2}{m}^{-1}\\ (\\text{undirected, simple})",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Each simple undirected graph with \\(m\\) edges is equally likely; the number of such graphs is the binomial coefficient."
+    }
+   ],
+   "variants": {
+    "cug_null_models": "Choice of the conditioning class (size, edges, dyad census) and of the tail decides the null distribution; the statistic \\(T\\) is any graph-level index."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "The class \\(U(n,0)\\) contains one graph; the distribution of \\(T\\) is a point mass and \\(p_{\\ge}=p_{\\le}=1\\)."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "The class \\(U(n,m)\\) with \\(m\\) the maximum contains one graph: both p-values are 1."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "For tiny \\(n\\) the classes can be enumerated, giving exact p-values instead of Monte Carlo ones."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Draws with a statistic equal to the observed one count in both tails."
+    }
+   ],
+   "references": [
+    "anderson1999interaction"
+   ]
+  },
+  "node_permutation_tests": {
+   "status": "name_only",
+   "note": "Documented by name only: the group-level permutation tests are named in the sources only; no primary paper or formula was checked."
+  },
+  "logistic_qap": {
+   "status": "partial",
+   "note": "The logistic likelihood is the standard one; no primary paper for logistic MR-QAP was checked, so the permutation scheme is stated only by analogy with MR-QAP and has no citation of its own.",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "vectorized dependent matrix"
+    },
+    {
+     "symbol": "x_1,\\dots,x_p",
+     "meaning": "vectorized independent matrices"
+    },
+    {
+     "symbol": "\\beta",
+     "meaning": "coefficients"
+    },
+    {
+     "symbol": "\\pi",
+     "meaning": "node permutation, applied to rows and columns of a matrix together"
+    },
+    {
+     "symbol": "p_{ij}",
+     "meaning": "modelled probability of a tie from \\(i\\) to \\(j\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Logistic model of the dyads (as in logistic regression)",
+     "latex": "\\operatorname{logit}p_{ij}=\\beta_0+\\sum_{k=1}^p\\beta_kx_{k,ij},\\qquad \\ell(\\beta)=\\sum_{i\\ne j}\\bigl[y_{ij}\\log p_{ij}+(1-y_{ij})\\log(1-p_{ij})\\bigr]",
+     "applies_to": [
+      "any"
+     ],
+     "where": "For a binary dependent matrix; the maximum likelihood estimate does not exist when the tie indicator is perfectly separated by the independent matrices. Significance is judged against node permutations, as for MR-QAP."
+    }
+   ],
+   "variants": {
+    "lr_qap": "Binary-dependent version of the MR-QAP regression: logistic likelihood above, permutation p-values."
+   },
+   "edge_cases": [
+    {
+     "case": "zero_weights",
+     "definition_gives": "A dependent matrix with no ties (or all ties) has no finite maximum likelihood estimate: the likelihood is monotone."
+    }
+   ]
+  },
+  "qap_regression": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "vectorized dependent matrix"
+    },
+    {
+     "symbol": "x_1,\\dots,x_p",
+     "meaning": "vectorized independent matrices"
+    },
+    {
+     "symbol": "\\beta",
+     "meaning": "coefficients"
+    },
+    {
+     "symbol": "\\pi",
+     "meaning": "node permutation, applied to rows and columns of a matrix together"
+    },
+    {
+     "symbol": "\\tilde x_k",
+     "meaning": "residual of \\(x_k\\) after regression on the other independent matrices"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Multiple regression on dyads (Krackhardt 1988)",
+     "latex": "y=\\beta_0+\\sum_{k=1}^p\\beta_kx_k+\\varepsilon,\\qquad \\hat\\beta=(Z^{\\top}Z)^{-1}Z^{\\top}y,\\ \\ Z=[\\mathbf 1,x_1,\\dots,x_p]",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Ordinary least squares on the off-diagonal dyads; the usual standard errors are not valid because dyads are dependent, so inference uses permutations. Defined when \\(Z^{\\top}Z\\) is invertible (no exact collinearity)."
+    },
+    {
+     "name": "Y-permutation test (Krackhardt 1988)",
+     "latex": "p_k=\\Pr_\\pi\\bigl(|\\hat\\beta_k(y^{\\pi})|\\ge|\\hat\\beta_k(y)|\\bigr)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The dependent matrix is permuted (rows and columns together) and the model refit; \\(p_k\\) is the share of permutations with an equal or larger coefficient."
+    },
+    {
+     "name": "Double semi-partialling (Dekker, Krackhardt and Snijders 2007)",
+     "latex": "p_k=\\Pr_\\pi\\bigl(|\\hat\\beta_k(y,\\ \\tilde x_k^{\\pi})|\\ge|\\hat\\beta_k(y,\\tilde x_k)|\\bigr)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Only the residual \\(\\tilde x_k\\) of the tested matrix is permuted, which is less sensitive to collinearity among the independent matrices than permuting \\(y\\)."
+    }
+   ],
+   "variants": {
+    "qap_regression": "Coefficients from the least-squares formula; the p-values come from permuting the dependent matrix (Y-permutation) or the partialled independent matrix (double semi-partialling). Monte Carlo draws depend on the random seed."
+   },
+   "edge_cases": [
+    {
+     "case": "self_loops",
+     "definition_gives": "Diagonal entries are excluded from the dyad vectors."
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "A constant dependent or independent matrix gives a singular or null design: \\(\\hat\\beta\\) is not defined."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "There are \\(n!\\) permutations, so for small \\(n\\) the p-values take few distinct values."
+    }
+   ],
+   "references": [
+    "krackhardt1988predicting",
+    "dekker2007sensitivity"
+   ]
+  },
+  "network_autocorrelation": {
+   "status": "partial",
+   "note": "The lag and error models are written (Anselin 1988). The Moran and Geary indices that the sources also list are named only; their formulas are not written here.",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "vector of node outcomes"
+    },
+    {
+     "symbol": "W",
+     "meaning": "\\(n\\times n\\) weight matrix of the network (row-normalized in the usual formulation)"
+    },
+    {
+     "symbol": "\\rho,\\lambda",
+     "meaning": "autocorrelation parameters"
+    },
+    {
+     "symbol": "X,\\beta",
+     "meaning": "covariates and coefficients"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Network effects (lag) model (Anselin 1988)",
+     "latex": "y=\\rho Wy+X\\beta+\\varepsilon,\\qquad \\varepsilon\\sim N(0,\\sigma^2I)",
+     "applies_to": [
+      "any",
+      "weighted"
+     ],
+     "where": "The outcome of a node depends on the weighted outcomes of its neighbours. The reduced form \\(y=(I-\\rho W)^{-1}(X\\beta+\\varepsilon)\\) requires \\(I-\\rho W\\) to be invertible, i.e. \\(1/\\rho\\) is not an eigenvalue of \\(W\\)."
+    },
+    {
+     "name": "Network disturbances (error) model (Anselin 1988)",
+     "latex": "y=X\\beta+u,\\qquad u=\\lambda Wu+\\varepsilon",
+     "applies_to": [
+      "any",
+      "weighted"
+     ],
+     "where": "The dependence sits in the error term instead of the outcome."
+    }
+   ],
+   "variants": {
+    "network_autocorrelation": "Lag or error model estimated by maximum likelihood; the Moran and Geary indices are not covered."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "The model is defined only for \\(\\rho\\) (or \\(\\lambda\\)) with \\(I-\\rho W\\) non-singular; for a row-normalized \\(W\\) this holds for \\(|\\rho|<1\\)."
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "A node with no ties has a zero row in \\(W\\); row normalization is then 0/0 and a convention is needed."
+    }
+   ],
+   "references": [
+    "anselin1988spatial"
+   ]
+  },
+  "qap_correlation": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "X,Y",
+     "meaning": "two \\(n\\times n\\) matrices over the same node set"
+    },
+    {
+     "symbol": "x,y",
+     "meaning": "their vectorized off-diagonal entries (for undirected data the upper triangle only)"
+    },
+    {
+     "symbol": "\\pi",
+     "meaning": "a permutation of the nodes; \\(Y^{\\pi}\\) has rows and columns permuted by \\(\\pi\\) simultaneously"
+    },
+    {
+     "symbol": "r(X,Y)",
+     "meaning": "Pearson correlation of \\(x\\) and \\(y\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Matrix correlation (Hubert and Schultz 1976)",
+     "latex": "r(X,Y)=\\frac{\\sum_{(i,j)}(x_{ij}-\\bar x)(y_{ij}-\\bar y)}{\\sqrt{\\sum_{(i,j)}(x_{ij}-\\bar x)^2\\sum_{(i,j)}(y_{ij}-\\bar y)^2}},\\quad i\\ne j",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The product-moment correlation over dyads, diagonal excluded. Defined when both matrices are non-constant (otherwise a variance is 0)."
+    },
+    {
+     "name": "QAP permutation p-value (Hubert and Schultz 1976; Krackhardt 1987)",
+     "latex": "p_{\\ge}=\\frac{\\#\\{\\pi:\\ r(X,Y^{\\pi})\\ge r(X,Y)\\}}{n!},\\qquad p_{\\le}=\\frac{\\#\\{\\pi:\\ r(X,Y^{\\pi})\\le r(X,Y)\\}}{n!}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The reference distribution is all \\(n!\\) simultaneous row-and-column permutations of one matrix, which keeps the dependence among dyads of the same node. For large \\(n\\) it is estimated from a random sample of \\(B\\) permutations, so the p-value then depends on the random generator and seed."
+    }
+   ],
+   "variants": {
+    "qap_correlation": "Observed correlation and permutation p-values (Y-permutation); exact enumeration or Monte Carlo sampling of permutations changes only how the p-value is computed."
+   },
+   "edge_cases": [
+    {
+     "case": "self_loops",
+     "definition_gives": "The diagonal is not part of the dyad vectors; loops do not enter \\(r\\)."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "For directed data all \\(n(n-1)\\) off-diagonal entries are used; for undirected data the \\(n(n-1)/2\\) upper-triangle entries."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "With \\(n\\le2\\) there are at most two permutations, so the permutation p-value can take only a few values; with a single dyad the correlation is not defined."
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "A constant matrix (for example an empty one) has zero variance: the correlation is not defined (0/0)."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Permutations giving a correlation equal to the observed one count in both tails \\(p_{\\ge}\\) and \\(p_{\\le}\\)."
+    }
+   ],
+   "references": [
+    "hubert1976quadratic",
+    "krackhardt1987qap"
+   ]
+  }
+ }
+}

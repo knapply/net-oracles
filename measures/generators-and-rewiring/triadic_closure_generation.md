@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomiza
 
 Triadic closure generation. Entries grouped here: Generate triadic closure.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Generate triadic closure {#cat_closure_generate_triadic}
 

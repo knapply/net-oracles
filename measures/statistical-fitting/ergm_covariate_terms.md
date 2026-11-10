@@ -12,15 +12,21 @@ nav_exclude: true
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_covariate_terms`. 20 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(y\)</td><td>the network as a matrix of tie indicators \(y_{ij}\in\{0,1\}\) (simple graph, no loops); \(y^{ij+}\) and \(y^{ij-}\) have the tie \((i,j)\) set to 1 and 0</td></tr><tr><td>\(n\)</td><td>number of nodes</td></tr><tr><td>\(x_i\)</td><td>a nodal attribute</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Nodal and dyadic covariate terms. Entries grouped here: Absdiff; Absdiffcat; Attrcov; Dyadcov; Edgecov; Nodecovar; and 14 more.
 
-*Definition not yet written.*
+*Definition partly written:* Only the listed terms are written; the mixing, range, distinct-factor, variance and similar variants are named only.
+
+<div class="formula-block"><p class="formula-name"><strong>Covariate terms (Morris et al. 2008)</strong> <span class="applies">applies to: any, simple</span></p><div class="formula">\[\text{absdiff}=\sum y_{ij}|x_i-x_j|,\qquad \text{edgecov}=\sum y_{ij}z_{ij},\qquad \text{nodeicov}=\sum y_{ij}x_j,\qquad \text{nodeocov}=\sum y_{ij}x_i\]</div><p class="formula-where">\(z_{ij}\) is a dyadic covariate. Sums over ties. nodecov, nodematch and nodefactor are given in ergm_statistics.</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_absdiff">Absdiff</a></td><td><code>cat_absdiff</code></td><td>1</td></tr><tr><td><a href="#cat_absdiffcat">Absdiffcat</a></td><td><code>cat_absdiffcat</code></td><td>1</td></tr><tr><td><a href="#cat_attrcov">Attrcov</a></td><td><code>cat_attrcov</code></td><td>1</td></tr><tr><td><a href="#cat_dyadcov">Dyadcov</a></td><td><code>cat_dyadcov</code></td><td>1</td></tr><tr><td><a href="#cat_edgecov">Edgecov</a></td><td><code>cat_edgecov</code></td><td>1</td></tr><tr><td><a href="#cat_nodecovar">Nodecovar</a></td><td><code>cat_nodecovar</code></td><td>1</td></tr><tr><td><a href="#cat_nodecovrange">Nodecovrange</a></td><td><code>cat_nodecovrange</code></td><td>1</td></tr><tr><td><a href="#cat_nodefactordistinct">Nodefactordistinct</a></td><td><code>cat_nodefactordistinct</code></td><td>1</td></tr><tr><td><a href="#cat_nodeicov">Nodeicov</a></td><td><code>cat_nodeicov</code></td><td>1</td></tr><tr><td><a href="#cat_nodeicovar">Nodeicovar</a></td><td><code>cat_nodeicovar</code></td><td>1</td></tr><tr><td><a href="#cat_nodeicovrange">Nodeicovrange</a></td><td><code>cat_nodeicovrange</code></td><td>1</td></tr><tr><td><a href="#cat_nodeifactor">Nodeifactor</a></td><td><code>cat_nodeifactor</code></td><td>1</td></tr><tr><td><a href="#cat_nodeifactordistinct">Nodeifactordistinct</a></td><td><code>cat_nodeifactordistinct</code></td><td>1</td></tr><tr><td><a href="#cat_nodemix">Nodemix</a></td><td><code>cat_nodemix</code></td><td>1</td></tr><tr><td><a href="#cat_nodeocov">Nodeocov</a></td><td><code>cat_nodeocov</code></td><td>1</td></tr><tr><td><a href="#cat_nodeocovar">Nodeocovar</a></td><td><code>cat_nodeocovar</code></td><td>1</td></tr><tr><td><a href="#cat_nodeocovrange">Nodeocovrange</a></td><td><code>cat_nodeocovrange</code></td><td>1</td></tr><tr><td><a href="#cat_nodeofactor">Nodeofactor</a></td><td><code>cat_nodeofactor</code></td><td>1</td></tr><tr><td><a href="#cat_nodeofactordistinct">Nodeofactordistinct</a></td><td><code>cat_nodeofactordistinct</code></td><td>1</td></tr><tr><td><a href="#cat_smalldiff">Smalldiff</a></td><td><code>cat_smalldiff</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_absdiff">Absdiff</a></td><td><code>cat_absdiff</code></td><td>1</td><td>Sum over ties of the absolute attribute difference.</td></tr><tr><td><a href="#cat_edgecov">Edgecov</a></td><td><code>cat_edgecov</code></td><td>1</td><td>Sum over ties of a dyadic covariate.</td></tr><tr><td><a href="#cat_nodeicov">Nodeicov</a></td><td><code>cat_nodeicov</code></td><td>1</td><td>Sum over ties of the attribute of the target.</td></tr><tr><td><a href="#cat_nodeocov">Nodeocov</a></td><td><code>cat_nodeocov</code></td><td>1</td><td>Sum over ties of the attribute of the source.</td></tr></tbody></table></div>
 
 ## Absdiff {#cat_absdiff}
 

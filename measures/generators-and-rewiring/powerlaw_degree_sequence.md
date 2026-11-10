@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models
 
 Power-law degree sequence. Entries grouped here: Powerlaw Degree Sequence.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Powerlaw Degree Sequence {#cat_degree_powerlaw_sequence}
 

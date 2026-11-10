@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Marginal and latent graph 
 
 Marginal graph distribution (sample, probability, entropy). Entries grouped here: Bethe entropy; Marginal graph lprob; Marginal graph sample; Marginal multigraph entropy; Marginal multigraph lprob; Marginal multigraph sample; and 2 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

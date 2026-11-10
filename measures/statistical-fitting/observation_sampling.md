@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Missing data and observati
 
 Observation sampling designs (missing data). Entries grouped here: Block Dyad Sampler; Block Node Sampler; Degree Sampler; Double Standard Sampler; Dyad Sampler; Node Sampler; and 3 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

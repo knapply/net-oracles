@@ -16,7 +16,7 @@ Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutati
 
 ANOVA density models. Entries grouped here: ANOVA density models (constant/variable homophily, structural blockmodel).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only: ANOVA density models (constant and variable homophily, structural blockmodel) are named in the sources only; the formulas were not checked against a primary paper.
 
 ## ANOVA density models (constant/variable homophily, structural blockmodel) {#anova_density}
 

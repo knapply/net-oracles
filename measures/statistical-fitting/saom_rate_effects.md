@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Rate effects (inverse, log, covariate). Entries grouped here: In Rate; In Rate Inv; In Rate Log; Out Inv; Out Rate; Out Rate Inv; and 6 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

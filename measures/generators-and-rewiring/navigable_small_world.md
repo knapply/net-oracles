@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice a
 
 Navigable small-world graph. Entries grouped here: Navigable small world graph; Navigable small-world generator.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

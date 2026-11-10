@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs.
 
 Random bipartite graph. Entries grouped here: Correlated and bipartite random graph generators; Random bipartite graph generator.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

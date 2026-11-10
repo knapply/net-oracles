@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice a
 
 Interval graph. Entries grouped here: Interval graph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Interval graph {#cat_interval}
 

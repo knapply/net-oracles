@@ -12,11 +12,33 @@ nav_exclude: true
 
 Family: [Temporal and events](index.html). Subfamily: Relational event models. Concept id: `rem_statistic`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(e=(s_e,r_e,t_e)\)</td><td>an event: sender \(s_e\), receiver \(r_e\), time \(t_e\) (events are ordered; the history before time \(t\) is \(H_t\))</td></tr><tr><td>\(R_t\)</td><td>risk set at time \(t\): all ordered pairs \((s,r)\) of distinct actors</td></tr><tr><td>\(x(s,r,t)\)</td><td>statistic vector of the dyad \((s,r)\) computed from \(H_t\)</td></tr><tr><td>\(\theta\)</td><td>coefficient vector</td></tr><tr><td>\(c_{sr}(t)\)</td><td>weighted count of past events \(s\to r\) (with memory weights, below)</td></tr><tr><td>\(h\)</td><td>a third actor (partner)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Relational event statistics. Entries grouped here: Rem statistic.
 
-*Definition not yet written.*
+*Definition partly written:* Recency statistics (rank-based) and the event-type and weighted variants are named in the sources but their formulas are not written here. The count definitions follow the statistic names of the remstats manual; the original paper formulas were not checked for every statistic.
+
+<div class="formula-block"><p class="formula-name"><strong>Memory weights (Butts 2008; Brandes et al. 2009)</strong> <span class="applies">applies to: any</span></p><div class="formula">\[c_{sr}(t)=\sum_{e\in H_t:\,s_e=s,\,r_e=r}g(t-t_e),\qquad g_{\mathrm{full}}=1,\ \ g_{\mathrm{window}}(\Delta)=\mathbf 1[\Delta\le T],\ \ g_{\mathrm{decay}}(\Delta)=\frac{\ln2}{T}e^{-\Delta\ln2/T}\]</div><p class="formula-where">Past events count fully, only inside a window of width \(T\), or with an exponential weight of half-life \(T\) (the factor \(\ln2/T\) is that of Brandes et al. 2009; other tools may omit it).</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Dyad statistics from counts (Butts 2008; Perry and Wolfe 2013; Arena et al. 2026)</strong> <span class="applies">applies to: any, directed</span></p><div class="formula">\[\begin{aligned}\text{inertia}&amp;=c_{sr},&amp;\text{reciprocity}&amp;=c_{rs},\\ \text{outdegree sender}&amp;=\sum_h c_{sh},&amp;\text{indegree sender}&amp;=\sum_h c_{hs},\\ \text{outdegree receiver}&amp;=\sum_h c_{rh},&amp;\text{indegree receiver}&amp;=\sum_h c_{hr}\end{aligned}\]</div><p class="formula-where">Counts of past events involving the sender and receiver of the dyad, over \(h\ne\) the dyad's own actors as stated by each tool; computed at time \(t\) from the history only.</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Triadic statistics</strong> <span class="applies">applies to: any, directed</span></p><div class="formula">\[\text{otp}=\sum_h\phi\bigl(c_{sh},c_{hr}\bigr),\ \ \text{itp}=\sum_h\phi\bigl(c_{rh},c_{hs}\bigr),\ \ \text{osp}=\sum_h\phi\bigl(c_{sh},c_{rh}\bigr),\ \ \text{isp}=\sum_h\phi\bigl(c_{hs},c_{hr}\bigr)\]</div><p class="formula-where">Two-path (outgoing/incoming) and shared-partner statistics; \(\phi\) combines the two counts of a partner: the minimum, the product, or an indicator that both are positive.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#rem_statistic">Rem statistic</a></td><td><code>rem_statistic</code></td><td>1</td><td>One statistic per call: the dyad statistic of every event's own dyad and its sum over the risk set; the memory weights \(g\) and the combination \(\phi\) change the value. remstats: the first event has an empty history.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/remstats.html">remstats / remify</a></th></tr></thead><tbody><tr><td title="The graph has nodes but no edges (m = 0)."><strong>Edgeless graph</strong></td><td class="def">No events: there is no history and no statistic row.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="An edge whose source and target are the same node."><strong>Self-loops</strong></td><td class="def">Not in the risk set \(R_t\) (distinct actors only); loops in the data are dropped before counting.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="The graph has fewer nodes than a normalizing constant or a term of the formula needs (for example n &lt; 3 when dividing by (n-1)(n-2)), so a division by zero or an empty sum arises."><strong>Too few nodes for the formula</strong></td><td class="def">With one event the history before it is empty and every count is 0 by the formula.</td><td><span class="st st-w st-nov" title="remify rejects a stream this short (one edge).">no value</span></td></tr><tr><td title="How edge weights enter: as lengths (costs) in path measures, as strengths (capacities, tie intensities) in degree, flow and spectral measures, or ignored."><strong>Edge weights</strong></td><td class="def">Event weights are not part of the count formulas above; counting weighted events is a different definition.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Edgeless graph</summary><ul><li>No tool entries.</li></ul></details><details><summary>Self-loops</summary><ul><li>No tool entries.</li></ul></details><details><summary>Too few nodes for the formula</summary><ul><li><strong>remstats / remify</strong>: no value. remify rejects a stream this short (one edge). <em>(conventions.json rem_statistic)</em></li></ul></details><details><summary>Edge weights</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Rem statistic {#rem_statistic}
 

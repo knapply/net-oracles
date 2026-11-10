@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Block model states. Concep
 
 Stochastic block model states. Entries grouped here: Draw Block State; EMBlock State; Latent Closure Block State; Latent Mask Block State; Latent Multigraph Block State; Layered Block State; and 13 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

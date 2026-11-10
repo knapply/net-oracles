@@ -12,15 +12,29 @@ nav_exclude: true
 
 Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `spectral_mds_layout`. 2 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(D^{(2)}\)</td><td>matrix of squared graph distances \(d_{ij}^2\)</td></tr><tr><td>\(J\)</td><td>centering matrix \(I-\tfrac1n\mathbf 1\mathbf 1^{\top}\)</td></tr><tr><td>\(B\)</td><td>double-centered matrix</td></tr><tr><td>\(\lambda_k,v_k\)</td><td>the largest eigenvalues of \(B\) and their unit eigenvectors</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Spectral and MDS layouts. Entries grouped here: Layout spectral; Multidimensional scaling layout.
 
-*Definition not yet written.*
+*Definition partly written:* Classical multidimensional scaling is written (Torgerson 1952). The Laplacian-eigenvector (spectral) layout is named by the sources and its formula is not given here, so it has no variant entry.
+
+<div class="formula-block"><p class="formula-name"><strong>Classical scaling (Torgerson 1952)</strong> <span class="applies">applies to: any, connected</span></p><div class="formula">\[B=-\tfrac12\,J\,D^{(2)}J,\qquad x_i=\bigl(\sqrt{\lambda_1}\,v_1(i),\ \sqrt{\lambda_2}\,v_2(i)\bigr)\]</div><p class="formula-where">Coordinates are the leading eigenvector components of the double-centered squared distances, scaled by the square roots of the eigenvalues. Defined for connected graphs; negative or missing eigenvalues are dropped.</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_layout_spectral">Layout spectral</a></td><td><code>cat_layout_spectral</code></td><td>1</td></tr><tr><td><a href="#layout_mds">Multidimensional scaling layout</a></td><td><code>layout_mds</code></td><td>2</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#layout_mds">Multidimensional scaling layout</a></td><td><code>layout_mds</code></td><td>2</td><td>Classical scaling of the graph distance matrix into two dimensions, as above.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/igraph.html">igraph (R)</a></th><th><a href="../../tools/pyigraph.html">igraph (Python)</a></th><th><a href="../../tools/graphlayouts.html">graphlayouts</a></th></tr></thead><tbody><tr><td title="An undirected graph with more than one connected component, or a directed graph that is not weakly connected: some pairs of nodes have no path."><strong>Disconnected graph</strong></td><td class="def">Not defined: \(d_{ij}=\infty\) for pairs in different components.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Disconnected graph</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Layout spectral {#cat_layout_spectral}
 

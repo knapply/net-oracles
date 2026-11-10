@@ -16,7 +16,7 @@ Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `metroma
 
 Metro-map layout. Entries grouped here: Layout as metromap.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Layout as metromap {#cat_as_layout_metromap}
 

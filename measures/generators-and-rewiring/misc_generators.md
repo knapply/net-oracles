@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Named and deterministi
 
 Clique, regular, bow-tie and all-graphs generators. Entries grouped here: Clique, regular and bow-tie generators; all graphs of size n; Allgraphs; Makebowtie.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

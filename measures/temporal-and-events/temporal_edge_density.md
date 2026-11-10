@@ -16,7 +16,7 @@ Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Con
 
 Temporal edge density. Entries grouped here: T Edge Density.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## T Edge Density {#cat_density_edge_t}
 

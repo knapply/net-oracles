@@ -1,0 +1,1685 @@
+{
+ "family": "Statistical fitting",
+ "concepts": {
+  "sbm_dynamics_state": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "sbm_block_state": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "belief_propagation_state": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "threshold_dynamics_state": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "continuous_dynamics_state": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "epidemic_dynamics_state": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "spin_dynamics_state": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "opinion_dynamics_state": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "ergm_balance": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "ergm_bipartite_terms": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "ergm_degree_terms": {
+   "status": "partial",
+   "note": "Only degree, idegree and odegree are written; the range, concurrency, correlation, cross-product, distribution and degree^1.5 terms are named in the sources only.",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "D_d",
+     "meaning": "number of nodes with degree \\(d\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Degree counts (Morris et al. 2008)",
+     "latex": "\\text{degree}(d)=D_d=\\#\\{i:\\deg i=d\\},\\qquad \\text{idegree}(d)=\\#\\{i:\\deg^{\\mathrm{in}}i=d\\},\\qquad \\text{odegree}(d)=\\#\\{i:\\deg^{\\mathrm{out}}i=d\\}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Number of nodes with a given (in, out) degree; a range of degrees or a shared tie counts (degrange, concurrent) is a sum of such counts."
+    }
+   ],
+   "variants": {
+    "cat_idegree": "In-degree count \\(\\#\\{i:\\deg^{in}i=d\\}\\).",
+    "cat_odegree": "Out-degree count \\(\\#\\{i:\\deg^{out}i=d\\}\\)."
+   },
+   "references": [
+    "morris2008specification"
+   ]
+  },
+  "ergm_distance_terms": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "ergm_edge_terms": {
+   "status": "partial",
+   "note": "Only the edge count is written; mean degree and isolated-edges terms are named in the sources but their definitions were not checked against a primary paper.",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Edge count (Frank and Strauss 1986; Morris et al. 2008)",
+     "latex": "\\text{edges}(y)=\\sum_{i<j}y_{ij}\\ \\text{(undirected)},\\qquad \\sum_{i\\ne j}y_{ij}\\ \\text{(directed)}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Its coefficient is the baseline log-odds of a tie."
+    }
+   ],
+   "variants": {
+    "cat_edge": "The edge count above."
+   },
+   "references": [
+    "frank1986markov",
+    "morris2008specification"
+   ]
+  },
+  "ergm_duration_terms": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "ergm_covariate_terms": {
+   "status": "partial",
+   "note": "Only the listed terms are written; the mixing, range, distinct-factor, variance and similar variants are named only.",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "x_i",
+     "meaning": "a nodal attribute"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Covariate terms (Morris et al. 2008)",
+     "latex": "\\text{absdiff}=\\sum y_{ij}|x_i-x_j|,\\qquad \\text{edgecov}=\\sum y_{ij}z_{ij},\\qquad \\text{nodeicov}=\\sum y_{ij}x_j,\\qquad \\text{nodeocov}=\\sum y_{ij}x_i",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "\\(z_{ij}\\) is a dyadic covariate. Sums over ties. nodecov, nodematch and nodefactor are given in ergm_statistics."
+    }
+   ],
+   "variants": {
+    "cat_absdiff": "Sum over ties of the absolute attribute difference.",
+    "cat_edgecov": "Sum over ties of a dyadic covariate.",
+    "cat_nodeicov": "Sum over ties of the attribute of the target.",
+    "cat_nodeocov": "Sum over ties of the attribute of the source."
+   },
+   "references": [
+    "morris2008specification"
+   ]
+  },
+  "ergm_open_triad": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "ergm_sender_receiver_terms": {
+   "status": "partial",
+   "note": "The node-wise definitions are written; which node is the baseline is a tool convention not stated in the sources.",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Sender, receiver and sociality (Morris et al. 2008)",
+     "latex": "\\text{sender}_v=\\sum_jy_{vj},\\qquad \\text{receiver}_v=\\sum_iy_{iv},\\qquad \\text{sociality}_v=\\sum_jy_{vj}\\ (\\text{undirected})",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "One statistic per node: its out-degree, in-degree or degree. One node serves as the baseline and is dropped, otherwise the statistics add up to the edge count."
+    }
+   ],
+   "variants": {
+    "cat_sender": "Out-degree of each non-baseline node.",
+    "cat_receiver": "In-degree of each non-baseline node.",
+    "cat_sociality": "Degree of each non-baseline node in an undirected network."
+   },
+   "references": [
+    "morris2008specification"
+   ]
+  },
+  "ergm_shared_partner_terms": {
+   "status": "partial",
+   "note": "The geometrically weighted forms are written. The edgewise, dyadwise and non-edgewise shared-partner counts (esp, dsp, nsp) and the directed (d-prefixed) and L-suffixed forms are named in the sources only; variants are not given.",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Geometrically weighted terms (Hunter 2007)",
+     "latex": "\\text{gwesp}_\\alpha=e^{\\alpha}\\sum_{k=1}^{n-2}\\bigl\\{1-(1-e^{-\\alpha})^{k}\\bigr\\}\\,\\mathrm{ESP}_k,\\qquad \\text{gwdsp}_\\alpha=e^{\\alpha}\\sum_{k=1}^{n-2}\\bigl\\{1-(1-e^{-\\alpha})^{k}\\bigr\\}\\,\\mathrm{DSP}_k,\\qquad \\text{gwdegree}_\\alpha=e^{\\alpha}\\sum_{k=1}^{n-1}\\bigl\\{1-(1-e^{-\\alpha})^{k}\\bigr\\}\\,D_k",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "\\(\\mathrm{ESP}_k\\): number of tied pairs with exactly \\(k\\) shared partners; \\(\\mathrm{DSP}_k\\): number of node pairs (tied or not) with \\(k\\) shared partners; \\(D_k\\): number of nodes of degree \\(k\\). With the decay \\(\\alpha\\) fixed they are ordinary statistics; with \\(\\alpha\\) estimated the model is a curved exponential family. Software truncates the counts at a cutoff; a cutoff above \\(n\\) loses nothing. In directed networks the direction of the shared-partner two-path (and of the degree) has to be chosen, giving gwidegree and gwodegree for in- and out-degrees."
+    }
+   ],
+   "references": [
+    "hunter2007curved"
+   ]
+  },
+  "ergm_star_path_terms": {
+   "status": "partial",
+   "note": "Only twopath and the alternating k-star are written; M2star, three-trail and the L-suffixed forms are named only.",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Two-path (Morris et al. 2008)",
+     "latex": "\\text{twopath}(y)=\\sum_{(i,j,h)}y_{ij}y_{jh}\\quad(i,j,h\\text{ distinct})",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "Ordered pairs of consecutive ties through a middle node."
+    },
+    {
+     "name": "Alternating k-star (Snijders et al. 2006)",
+     "latex": "\\text{altkstar}_\\lambda=\\sum_{k=2}^{n-1}(-1)^{k}\\frac{S_k}{\\lambda^{k-2}}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Weights the \\(k\\)-star counts \\(S_k\\) alternately; for \\(\\lambda>1\\) it is a curved-exponential-family form of the degree distribution (related to gwdegree)."
+    }
+   ],
+   "variants": {
+    "cat_twopath": "Directed two-path count above.",
+    "cat_altkstar": "Alternating k-star statistic with decay \\(\\lambda\\)."
+   },
+   "references": [
+    "morris2008specification",
+    "snijders2006new"
+   ]
+  },
+  "ergm_transitive": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "ergm_triad_percent": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "ergm_triple_terms": {
+   "status": "partial",
+   "note": "Only ttriple and ctriple are written; local triangles, Simmelian and cyclical-ties terms are named only.",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Transitive and cyclic triples (Morris et al. 2008)",
+     "latex": "\\text{ttriple}=\\sum_{(i,j,h)}y_{ij}y_{jh}y_{ih},\\qquad \\text{ctriple}=\\tfrac13\\sum_{(i,j,h)}y_{ij}y_{jh}y_{hi}",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "Ordered triples of distinct nodes; each cyclic triple appears three times in the ordered sum, hence the factor \\(\\tfrac13\\)."
+    }
+   ],
+   "variants": {
+    "cat_ttriple": "Transitive triple count.",
+    "cat_ctriple": "Cyclic triple count."
+   },
+   "references": [
+    "morris2008specification"
+   ]
+  },
+  "block_edge_gradient": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "latent_multigraph": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "marginal_graph_distribution": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "observation_sampling": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "dynam": {
+   "status": "partial",
+   "note": "The rate and choice structure is written from the DyNAM paper; the tool's options (effects, estimation) were not recorded.",
+   "notation": [
+    {
+     "symbol": "\\lambda_i",
+     "meaning": "rate at which actor \\(i\\) acts"
+    },
+    {
+     "symbol": "s_{ij}",
+     "meaning": "statistic vector of the choice of \\(j\\) by \\(i\\)"
+    },
+    {
+     "symbol": "\\alpha,\\beta",
+     "meaning": "rate and choice coefficients"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Dynamic network actor model (Stadtfeld and Block 2017)",
+     "latex": "\\lambda_i=\\exp(\\alpha^{\\top}r_i),\\qquad \\Pr(j\\mid i)=\\frac{\\exp(\\beta^{\\top}s_{ij})}{\\sum_{h\\ne i}\\exp(\\beta^{\\top}s_{ih})}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Each event is a pair of an actor who acts (chosen by the rate) and the target they choose (multinomial logit); likelihood is the product over observed events."
+    }
+   ],
+   "variants": {
+    "dynam": "Rate and choice sub-models of the formula; estimation by maximum likelihood."
+   },
+   "references": [
+    "stadtfeld2017interactions"
+   ]
+  },
+  "model_aic": {
+   "status": "partial",
+   "note": "The standard formula is given without a citation because the primary paper is not in the bibliography and could not be verified.",
+   "notation": [
+    {
+     "symbol": "k",
+     "meaning": "number of free parameters"
+    },
+    {
+     "symbol": "\\hat\\ell",
+     "meaning": "maximized log-likelihood"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Akaike information criterion",
+     "latex": "\\mathrm{AIC}=2k-2\\hat\\ell",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Lower is better; defined for models with a likelihood."
+    }
+   ],
+   "variants": {
+    "cat_aic": "AIC of a fitted model; the UCINET function is documented by name only."
+   }
+  },
+  "bbnam": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "biased_net_model": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "conditional_edge_prediction": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "dirichlet": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "ergm_change_sums": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "g(y)",
+     "meaning": "vector of network statistics"
+    },
+    {
+     "symbol": "\\theta",
+     "meaning": "coefficient vector"
+    },
+    {
+     "symbol": "\\delta_{ij}(y)",
+     "meaning": "change statistic \\(g(y^{ij+})-g(y^{ij-})\\)"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "x_i",
+     "meaning": "a nodal attribute"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Exponential random graph model (Frank and Strauss 1986; Holland and Leinhardt 1981)",
+     "latex": "\\Pr_\\theta(Y=y)=\\frac{\\exp\\{\\theta^{\\top}g(y)\\}}{\\kappa(\\theta)},\\qquad \\kappa(\\theta)=\\sum_{y'}\\exp\\{\\theta^{\\top}g(y')\\}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "An exponential family on networks with sufficient statistics \\(g\\). The normalizing constant sums over all networks of the node set, so it is not computable except for tiny \\(n\\). Defined for simple graphs; the tool networks used in the comparison hold the simple graph underlying the input (loops dropped, repeated pairs once)."
+    },
+    {
+     "name": "Conditional log-odds of a tie",
+     "latex": "\\operatorname{logit}\\Pr_\\theta\\bigl(Y_{ij}=1\\mid Y_{-ij}=y_{-ij}\\bigr)=\\theta^{\\top}\\delta_{ij}(y)",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Follows from the model; it is what pseudolikelihood fits and what a toggle in a Markov chain uses."
+    },
+    {
+     "name": "Sum of change statistics",
+     "latex": "c(y)=\\sum_{(i,j)}\\delta_{ij}(y)",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "The change statistic of every dyad, added over all dyads of the observed network (the quantity that enters the score of the pseudolikelihood). For a term that is a sum over ties it equals the number of dyads in which the tie can add to the statistic."
+    }
+   ],
+   "variants": {
+    "ergm_change_sums": "Column sums of the change-statistic matrix over all dyads for the listed terms, directed or undirected; the terms are those of ergm_statistics."
+   },
+   "edge_cases": [
+    {
+     "case": "two_nodes",
+     "definition_gives": "Nodefactor has one statistic (see ergm_statistics).",
+     "tools": {
+      "ergm": {
+       "status": "no_value",
+       "behaviour": "nodefactor() gives one statistic on two nodes.",
+       "source": "conventions.json ergm_change_sums"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No dyads: every sum is empty, 0, and nodefactor has no level left.",
+     "tools": {
+      "ergm": {
+       "status": "no_value",
+       "behaviour": "A network of one node has no dyads, and nodefactor() has no level left.",
+       "source": "conventions.json ergm_change_sums"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed networks have \\(n(n-1)\\) dyads, undirected \\(n(n-1)/2\\); the change statistics of the same term differ accordingly."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The model is for simple graphs: parallel edges collapse to one tie before any statistic is computed."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The model has no loops; loops are dropped."
+    }
+   ],
+   "references": [
+    "frank1986markov",
+    "strauss1990pseudolikelihood",
+    "morris2008specification"
+   ]
+  },
+  "ergm_mcmle": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "g(y)",
+     "meaning": "vector of network statistics"
+    },
+    {
+     "symbol": "\\theta",
+     "meaning": "coefficient vector"
+    },
+    {
+     "symbol": "\\delta_{ij}(y)",
+     "meaning": "change statistic \\(g(y^{ij+})-g(y^{ij-})\\)"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "x_i",
+     "meaning": "a nodal attribute"
+    },
+    {
+     "symbol": "\\eta",
+     "meaning": "the coefficient vector at which the simulation was run"
+    },
+    {
+     "symbol": "Y_1,\\dots,Y_M",
+     "meaning": "draws from \\(\\Pr_\\eta\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Exponential random graph model (Frank and Strauss 1986; Holland and Leinhardt 1981)",
+     "latex": "\\Pr_\\theta(Y=y)=\\frac{\\exp\\{\\theta^{\\top}g(y)\\}}{\\kappa(\\theta)},\\qquad \\kappa(\\theta)=\\sum_{y'}\\exp\\{\\theta^{\\top}g(y')\\}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "An exponential family on networks with sufficient statistics \\(g\\). The normalizing constant sums over all networks of the node set, so it is not computable except for tiny \\(n\\). Defined for simple graphs; the tool networks used in the comparison hold the simple graph underlying the input (loops dropped, repeated pairs once)."
+    },
+    {
+     "name": "Monte Carlo likelihood approximation (Geyer and Thompson 1992)",
+     "latex": "\\ell(\\theta)-\\ell(\\eta)\\approx(\\theta-\\eta)^{\\top}g(y_{\\mathrm{obs}})-\\log\\Bigl\\{\\frac1M\\sum_{m=1}^{M}\\exp\\bigl[(\\theta-\\eta)^{\\top}g(Y_m)\\bigr]\\Bigr\\}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "The log-likelihood ratio relative to \\(\\eta\\) is estimated from simulated statistics; the approximation maximized in each round replaces the intractable normalizing constant. Rounds repeat with \\(\\eta\\) set to the latest maximizer until the observed statistics are close to the simulated mean; the start is the pseudolikelihood estimate or given values."
+    },
+    {
+     "name": "Likelihood equations at the maximizer",
+     "latex": "\\mathbb E_{\\hat\\theta}\\bigl[g(Y)\\bigr]=g(y_{\\mathrm{obs}})",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "The maximum likelihood estimate matches the expected statistics to the observed ones; when \\(g(y_{\\mathrm{obs}})\\) lies on the boundary of the convex hull of the attainable statistics the maximum likelihood estimate does not exist."
+    }
+   ],
+   "variants": {
+    "ergm_mcmle": "Monte Carlo estimate of the maximum likelihood coefficients; the result is random (it depends on the seed, the sample size and the number of rounds), so it can only be compared within a Monte Carlo tolerance."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "The observed statistics are on the boundary of the attainable set: the maximum likelihood estimate does not exist."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Same as the edgeless network for a model with an edge term."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal likelihood values do not arise generically; repeated runs with different seeds give different estimates around the same maximizer."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The model is for simple graphs: parallel edges collapse to one tie before any statistic is computed.",
+     "tools": {
+      "ergm": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The model has no loops; loops are dropped.",
+     "tools": {
+      "ergm": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Edge weights are not part of the model; the network is binary.",
+     "tools": {
+      "ergm": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "geyer1992constrained",
+    "hunter2006inference",
+    "hummel2012improving",
+    "snijders2002markov"
+   ]
+  },
+  "ergm_mple": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "g(y)",
+     "meaning": "vector of network statistics"
+    },
+    {
+     "symbol": "\\theta",
+     "meaning": "coefficient vector"
+    },
+    {
+     "symbol": "\\delta_{ij}(y)",
+     "meaning": "change statistic \\(g(y^{ij+})-g(y^{ij-})\\)"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "x_i",
+     "meaning": "a nodal attribute"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Exponential random graph model (Frank and Strauss 1986; Holland and Leinhardt 1981)",
+     "latex": "\\Pr_\\theta(Y=y)=\\frac{\\exp\\{\\theta^{\\top}g(y)\\}}{\\kappa(\\theta)},\\qquad \\kappa(\\theta)=\\sum_{y'}\\exp\\{\\theta^{\\top}g(y')\\}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "An exponential family on networks with sufficient statistics \\(g\\). The normalizing constant sums over all networks of the node set, so it is not computable except for tiny \\(n\\). Defined for simple graphs; the tool networks used in the comparison hold the simple graph underlying the input (loops dropped, repeated pairs once)."
+    },
+    {
+     "name": "Conditional log-odds of a tie",
+     "latex": "\\operatorname{logit}\\Pr_\\theta\\bigl(Y_{ij}=1\\mid Y_{-ij}=y_{-ij}\\bigr)=\\theta^{\\top}\\delta_{ij}(y)",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Follows from the model; it is what pseudolikelihood fits and what a toggle in a Markov chain uses."
+    },
+    {
+     "name": "Maximum pseudolikelihood estimate (Strauss and Ikeda 1990)",
+     "latex": "\\hat\\theta_{\\mathrm{MPLE}}=\\arg\\max_\\theta\\sum_{i\\ne j}\\Bigl[y_{ij}\\,\\theta^{\\top}\\delta_{ij}(y)-\\log\\bigl(1+e^{\\theta^{\\top}\\delta_{ij}(y)}\\bigr)\\Bigr]",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "A logistic regression of the tie indicators on the change statistics, which ignores the dependence among dyads: the estimate is not the maximum likelihood estimate and its standard errors are not valid. It does not exist when the response is separated by the change statistics (for example an edgeless or complete network with an edge term), where the log pseudolikelihood is monotone."
+    }
+   ],
+   "variants": {
+    "ergm_mple": "Coefficients (and their standard errors, iterations and convergence flag) of the logistic regression above, found by Newton iterations on the pooled change statistics. Unique when it exists, because the log pseudolikelihood is concave."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "The edge coefficient has no finite estimate: the response is constant, the log pseudolikelihood is monotone."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "As for the edgeless network: constant response, no finite estimate for a model with an edge term."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "Fewer dyads than coefficients leave the regression underdetermined."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The model is for simple graphs: parallel edges collapse to one tie before any statistic is computed.",
+     "tools": {
+      "ergm": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The model has no loops; loops are dropped.",
+     "tools": {
+      "ergm": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed and undirected networks have different dyad sets and different statistic definitions (below); the same term name can denote different counts.",
+     "tools": {
+      "ergm": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "strauss1990pseudolikelihood",
+    "frank1986markov",
+    "morris2008specification"
+   ]
+  },
+  "ergm_sim_mean": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "g(y)",
+     "meaning": "vector of network statistics"
+    },
+    {
+     "symbol": "\\theta",
+     "meaning": "coefficient vector"
+    },
+    {
+     "symbol": "\\delta_{ij}(y)",
+     "meaning": "change statistic \\(g(y^{ij+})-g(y^{ij-})\\)"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "x_i",
+     "meaning": "a nodal attribute"
+    },
+    {
+     "symbol": "B",
+     "meaning": "burn-in steps"
+    },
+    {
+     "symbol": "s",
+     "meaning": "interval between kept draws"
+    },
+    {
+     "symbol": "T",
+     "meaning": "number of draws"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Exponential random graph model (Frank and Strauss 1986; Holland and Leinhardt 1981)",
+     "latex": "\\Pr_\\theta(Y=y)=\\frac{\\exp\\{\\theta^{\\top}g(y)\\}}{\\kappa(\\theta)},\\qquad \\kappa(\\theta)=\\sum_{y'}\\exp\\{\\theta^{\\top}g(y')\\}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "An exponential family on networks with sufficient statistics \\(g\\). The normalizing constant sums over all networks of the node set, so it is not computable except for tiny \\(n\\). Defined for simple graphs; the tool networks used in the comparison hold the simple graph underlying the input (loops dropped, repeated pairs once)."
+    },
+    {
+     "name": "Metropolis-Hastings toggle step (Hastings 1970; Snijders 2002)",
+     "latex": "\\Pr(\\text{accept toggle of }(i,j))=\\min\\Bigl\\{1,\\ \\exp\\bigl(\\theta^{\\top}[g(y')-g(y)]\\bigr)\\cdot\\frac{q(y\\mid y')}{q(y'\\mid y)}\\Bigr\\}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "\\(y'\\) is \\(y\\) with one dyad toggled and \\(q\\) is the proposal distribution of the dyad to toggle; the proposal rule changes the chain but not its stationary distribution \\(\\Pr_\\theta\\). With a symmetric proposal the ratio is 1. For a toggle that adds a tie, \\(g(y')-g(y)=\\delta_{ij}\\)."
+    },
+    {
+     "name": "Simulated mean statistics",
+     "latex": "\\bar g=\\frac1T\\sum_{t=1}^{T}g(Y_{B+ts})",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "The Monte Carlo mean over \\(T\\) draws kept after \\(B\\) burn-in steps at spacing \\(s\\) converges to \\(\\mathbb E_\\theta g(Y)\\) as the chain mixes; it is random (seed, \\(B\\), \\(s\\), \\(T\\)). Mixing may be extremely slow for models near degeneracy."
+    }
+   ],
+   "variants": {
+    "ergm_sim_mean": "Mean of the statistics over draws from the model at fixed coefficients, started at the given network; compared against another tool within a tolerance of several standard errors. The acceptance rate per chain is also returned."
+   },
+   "edge_cases": [
+    {
+     "case": "complete_graph",
+     "definition_gives": "A complete start network is a valid state; the chain moves away from it when removing ties has positive probability."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Different seeds give different draws; only the means over many draws agree."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed and undirected dyad sets differ (see ergm_statistics).",
+     "tools": {
+      "ergm": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Simple graphs only: the start network is the simple graph underlying the input.",
+     "tools": {
+      "ergm": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "hastings1970monte",
+    "snijders2002markov",
+    "morris2008specification",
+    "hunter2008ergm"
+   ]
+  },
+  "ergm_statistics": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "g(y)",
+     "meaning": "vector of network statistics"
+    },
+    {
+     "symbol": "\\theta",
+     "meaning": "coefficient vector"
+    },
+    {
+     "symbol": "\\delta_{ij}(y)",
+     "meaning": "change statistic \\(g(y^{ij+})-g(y^{ij-})\\)"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "x_i",
+     "meaning": "a nodal attribute"
+    },
+    {
+     "symbol": "d_i,d^{\\mathrm{in}}_i,d^{\\mathrm{out}}_i",
+     "meaning": "degree, in-degree, out-degree"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Exponential random graph model (Frank and Strauss 1986; Holland and Leinhardt 1981)",
+     "latex": "\\Pr_\\theta(Y=y)=\\frac{\\exp\\{\\theta^{\\top}g(y)\\}}{\\kappa(\\theta)},\\qquad \\kappa(\\theta)=\\sum_{y'}\\exp\\{\\theta^{\\top}g(y')\\}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "An exponential family on networks with sufficient statistics \\(g\\). The normalizing constant sums over all networks of the node set, so it is not computable except for tiny \\(n\\). Defined for simple graphs; the tool networks used in the comparison hold the simple graph underlying the input (loops dropped, repeated pairs once)."
+    },
+    {
+     "name": "Statistics used in the comparison (Morris, Handcock and Hunter 2008; Hunter 2007)",
+     "latex": "\\begin{aligned}\\text{edges}&=\\sum y_{ij},\\quad \\text{mutual}=\\sum_{i<j}y_{ij}y_{ji},\\quad \\text{isolates}=\\#\\{i:\\deg i=0\\},\\\\ \\text{kstar}(k)&=\\sum_i\\tbinom{d_i}{k},\\quad \\text{istar}(k)=\\sum_i\\tbinom{d^{\\mathrm{in}}_i}{k},\\quad \\text{ostar}(k)=\\sum_i\\tbinom{d^{\\mathrm{out}}_i}{k},\\\\ \\text{triangle}&=\\sum_{i<j<h}y_{ij}y_{jh}y_{ih},\\quad \\text{ttriple}=\\sum_{(i,j,h)}y_{ij}y_{jh}y_{ih},\\quad \\text{ctriple}=\\tfrac13\\sum_{(i,j,h)}y_{ij}y_{jh}y_{hi},\\\\ \\text{nodematch}&=\\sum y_{ij}\\mathbf 1[x_i{=}x_j],\\quad \\text{nodecov}=\\sum y_{ij}(x_i{+}x_j),\\quad \\text{nodefactor}_\\ell=\\sum y_{ij}\\bigl(\\mathbf 1[x_i{=}\\ell]{+}\\mathbf 1[x_j{=}\\ell]\\bigr)\\end{aligned}",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Sums over ties (or node pairs \\(i<j\\) in undirected networks); the triple sums run over ordered triples of distinct nodes. One nodefactor statistic exists for every level \\(\\ell\\) of the attribute except the first (the baseline), so the number of statistics depends on the attribute levels present."
+    },
+    {
+     "name": "Geometrically weighted terms (Hunter 2007)",
+     "latex": "\\text{gwesp}_\\alpha=e^{\\alpha}\\sum_{k=1}^{n-2}\\bigl\\{1-(1-e^{-\\alpha})^{k}\\bigr\\}\\,\\mathrm{ESP}_k,\\qquad \\text{gwdsp}_\\alpha=e^{\\alpha}\\sum_{k=1}^{n-2}\\bigl\\{1-(1-e^{-\\alpha})^{k}\\bigr\\}\\,\\mathrm{DSP}_k,\\qquad \\text{gwdegree}_\\alpha=e^{\\alpha}\\sum_{k=1}^{n-1}\\bigl\\{1-(1-e^{-\\alpha})^{k}\\bigr\\}\\,D_k",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "\\(\\mathrm{ESP}_k\\): number of tied pairs with exactly \\(k\\) shared partners; \\(\\mathrm{DSP}_k\\): number of node pairs (tied or not) with \\(k\\) shared partners; \\(D_k\\): number of nodes of degree \\(k\\). With the decay \\(\\alpha\\) fixed they are ordinary statistics; with \\(\\alpha\\) estimated the model is a curved exponential family. Software truncates the counts at a cutoff; a cutoff above \\(n\\) loses nothing. In directed networks the direction of the shared-partner two-path (and of the degree) has to be chosen, giving gwidegree and gwodegree for in- and out-degrees."
+    }
+   ],
+   "variants": {
+    "ergm_statistics": "The value of \\(g(y)\\) for the listed statistics of an observed network (the sums in the second and third formulas); the attribute-based terms use the node index attributes of the comparison."
+   },
+   "edge_cases": [
+    {
+     "case": "two_nodes",
+     "definition_gives": "The attribute has at most two levels, so nodefactor has one statistic (the first level is the baseline); the other statistics are defined as usual.",
+     "tools": {
+      "ergm": {
+       "status": "no_value",
+       "behaviour": "With two nodes mod3 takes only levels 0 and 1, so nodefactor() gives one statistic instead of two.",
+       "source": "conventions.json ergm_statistics"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One node has no dyad: every statistic is 0, and nodefactor has no non-baseline level left.",
+     "tools": {
+      "ergm": {
+       "status": "no_value",
+       "behaviour": "With one node only level 0 of mod3 occurs, so nodefactor() has no statistics left after dropping the first level.",
+       "source": "conventions.json ergm_statistics"
+      }
+     }
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "All sums over ties are 0; the degree-based terms count nodes of degree 0 (isolates equals \\(n\\))."
+    },
+    {
+     "case": "empty_graph",
+     "definition_gives": "With no node every sum is empty and every statistic is 0."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The model is for simple graphs: parallel edges collapse to one tie before any statistic is computed."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The model has no loops; loops are dropped."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed and undirected networks have different dyad sets and different statistic definitions (below); the same term name can denote different counts."
+    }
+   ],
+   "references": [
+    "frank1986markov",
+    "holland1981exponential",
+    "morris2008specification",
+    "hunter2007curved"
+   ]
+  },
+  "generative_model": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "hrg": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "hysteresis": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "latent_loglik": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "z_i\\in\\mathbb R^d",
+     "meaning": "latent position of node \\(i\\)"
+    },
+    {
+     "symbol": "\\alpha",
+     "meaning": "intercept"
+    },
+    {
+     "symbol": "\\eta_{ij}",
+     "meaning": "\\(\\alpha-\\|z_i-z_j\\|\\)"
+    },
+    {
+     "symbol": "p_{ij}",
+     "meaning": "\\(1/(1+e^{-\\eta_{ij}})\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Latent distance model (Hoff, Raftery and Handcock 2002)",
+     "latex": "\\operatorname{logit}\\Pr(y_{ij}=1\\mid z,\\alpha)=\\alpha-\\|z_i-z_j\\|,\\qquad \\ell(\\alpha,z)=\\sum_{i\\ne j}\\bigl[y_{ij}\\eta_{ij}-\\log(1+e^{\\eta_{ij}})\\bigr]",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Ties are independent given the positions. The sum runs over ordered pairs for a directed network and over pairs \\(i<j\\) for an undirected one. The distance is Euclidean in \\(d\\) dimensions; positions are identified only up to rotation, reflection and translation."
+    },
+    {
+     "name": "Gradient",
+     "latex": "\\frac{\\partial\\ell}{\\partial\\alpha}=\\sum_{i\\ne j}(y_{ij}-p_{ij}),\\qquad \\frac{\\partial\\ell}{\\partial z_i}=-\\sum_{j\\ne i}(y_{ij}-p_{ij})\\frac{z_i-z_j}{\\|z_i-z_j\\|}\\ \\ (\\text{counting each pair once per direction})",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Undefined where two positions coincide (the unit vector has a zero norm); the log-likelihood itself is still defined there."
+    }
+   ],
+   "variants": {
+    "latent_loglik": "The log-likelihood and its gradient at given intercept and positions (no fitting); the dimension \\(d\\) and \\(\\alpha\\) are inputs."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "For \\(n\\le1\\) there are no pairs and \\(\\ell=0\\); the formula needs no minimum number of nodes.",
+     "tools": {
+      "latentnet": {
+       "status": "no_value",
+       "behaviour": "latentnet needs at least three nodes.",
+       "source": "conventions.json latent_loglik"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "The log-likelihood is defined, but it has no finite maximum over \\((\\alpha,z)\\) because every \\(y_{ij}=1\\) is improved by increasing \\(\\alpha\\).",
+     "tools": {
+      "latentnet": {
+       "status": "no_value",
+       "behaviour": "The maximum-likelihood fit that builds the model object stops with 'non-finite value supplied by optim' on the complete graphs, where the likelihood has no finite maximum.",
+       "source": "conventions.json latent_loglik"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are not part of the model (sums over \\(i\\ne j\\))."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Binary ties only: repeated edges count once."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Ordered pairs for directed networks, pairs \\(i<j\\) for undirected; the distance term is symmetric so a directed network is treated as two independent ties per pair."
+    }
+   ],
+   "references": [
+    "hoff2002latent",
+    "krivitsky2008fitting"
+   ]
+  },
+  "latent_move_delta": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "z_i\\in\\mathbb R^d",
+     "meaning": "latent position of node \\(i\\)"
+    },
+    {
+     "symbol": "\\alpha",
+     "meaning": "intercept"
+    },
+    {
+     "symbol": "\\eta_{ij}",
+     "meaning": "\\(\\alpha-\\|z_i-z_j\\|\\)"
+    },
+    {
+     "symbol": "p_{ij}",
+     "meaning": "\\(1/(1+e^{-\\eta_{ij}})\\)"
+    },
+    {
+     "symbol": "z_i'",
+     "meaning": "new position of the moved node \\(i\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Latent distance model (Hoff, Raftery and Handcock 2002)",
+     "latex": "\\operatorname{logit}\\Pr(y_{ij}=1\\mid z,\\alpha)=\\alpha-\\|z_i-z_j\\|,\\qquad \\ell(\\alpha,z)=\\sum_{i\\ne j}\\bigl[y_{ij}\\eta_{ij}-\\log(1+e^{\\eta_{ij}})\\bigr]",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Ties are independent given the positions. The sum runs over ordered pairs for a directed network and over pairs \\(i<j\\) for an undirected one. The distance is Euclidean in \\(d\\) dimensions; positions are identified only up to rotation, reflection and translation."
+    },
+    {
+     "name": "Change in log-likelihood from moving one node",
+     "latex": "\\Delta=\\ell(\\alpha,z')-\\ell(\\alpha,z)=\\sum_{j\\ne i}\\Bigl[\\ell_{ij}(\\alpha,z_i',z_j)-\\ell_{ij}(\\alpha,z_i,z_j)\\Bigr]\\quad(\\times2\\text{ pairs per }j\\text{ if directed})",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Only pairs that contain the moved node \\(i\\) change, so the update costs \\(n-1\\) terms, not \\(n^2\\). \\(\\ell_{ij}\\) is the term of the pair in the sum above."
+    }
+   ],
+   "variants": {
+    "latent_move_delta": "The difference of the log-likelihood after and before a one-node move (and the gradient after it)."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "For \\(n=1\\) the sum is empty and \\(\\Delta=0\\).",
+     "tools": {
+      "latentnet": {
+       "status": "no_value",
+       "behaviour": "latentnet needs at least three nodes.",
+       "source": "conventions.json latent_move_delta"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Defined for any positions; the lack of a finite maximum does not matter for a difference.",
+     "tools": {
+      "latentnet": {
+       "status": "no_value",
+       "behaviour": "The maximum-likelihood fit that builds the model object stops with 'non-finite value supplied by optim' on the complete graphs, where the likelihood has no finite maximum.",
+       "source": "conventions.json latent_move_delta"
+      }
+     }
+    }
+   ],
+   "references": [
+    "hoff2002latent",
+    "krivitsky2008fitting"
+   ]
+  },
+  "mcmc_anneal_equilibrate": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "canonical_correlation": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "bct_nbs": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "ordinal_association": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "pstar": {
+   "status": "partial",
+   "note": "The pseudolikelihood regression is written (Wasserman and Pattison 1996; Strauss and Ikeda 1990). Which statistics the tool function offers and its options were not recorded.",
+   "notation": [
+    {
+     "symbol": "y",
+     "meaning": "the network as a matrix of tie indicators \\(y_{ij}\\in\\{0,1\\}\\) (simple graph, no loops); \\(y^{ij+}\\) and \\(y^{ij-}\\) have the tie \\((i,j)\\) set to 1 and 0"
+    },
+    {
+     "symbol": "g(y)",
+     "meaning": "vector of network statistics"
+    },
+    {
+     "symbol": "\\theta",
+     "meaning": "coefficient vector"
+    },
+    {
+     "symbol": "\\delta_{ij}(y)",
+     "meaning": "change statistic \\(g(y^{ij+})-g(y^{ij-})\\)"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "x_i",
+     "meaning": "a nodal attribute"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Conditional log-odds of a tie",
+     "latex": "\\operatorname{logit}\\Pr_\\theta\\bigl(Y_{ij}=1\\mid Y_{-ij}=y_{-ij}\\bigr)=\\theta^{\\top}\\delta_{ij}(y)",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "Follows from the model; it is what pseudolikelihood fits and what a toggle in a Markov chain uses."
+    },
+    {
+     "name": "Logit (p*) estimate",
+     "latex": "\\hat\\theta=\\arg\\max_\\theta\\sum_{i\\ne j}\\bigl[y_{ij}\\theta^{\\top}\\delta_{ij}-\\log(1+e^{\\theta^{\\top}\\delta_{ij}})\\bigr]",
+     "applies_to": [
+      "any",
+      "simple"
+     ],
+     "where": "A logistic regression of ties on change statistics, i.e. the pseudolikelihood estimate; see ergm_mple."
+    }
+   ],
+   "variants": {
+    "cat_pstar": "p* logistic regression on change statistics of the chosen terms; the term list is a tool option not recorded here."
+   },
+   "references": [
+    "wasserman1996logit",
+    "strauss1990pseudolikelihood"
+   ]
+  },
+  "power_law_fit": {
+   "status": "partial",
+   "note": "The maximum likelihood exponent and the minimum-\\(x\\) rule of Clauset et al. are written; the tool options (implementation of the discrete case, whether the Kolmogorov-Smirnov scan is used) were not recorded.",
+   "notation": [
+    {
+     "symbol": "x_i",
+     "meaning": "observed values (degrees) with \\(x_i\\ge x_{\\min}\\)"
+    },
+    {
+     "symbol": "n",
+     "meaning": "number of observations in the tail"
+    },
+    {
+     "symbol": "\\alpha",
+     "meaning": "power-law exponent"
+    },
+    {
+     "symbol": "x_{\\min}",
+     "meaning": "lower cutoff of the power law"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Continuous maximum likelihood exponent (Clauset, Shalizi and Newman 2009)",
+     "latex": "\\hat\\alpha=1+n\\Bigl[\\sum_{i=1}^{n}\\ln\\frac{x_i}{x_{\\min}}\\Bigr]^{-1}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "For \\(p(x)\\propto x^{-\\alpha}\\), \\(x\\ge x_{\\min}\\). Defined if not all \\(x_i\\) equal \\(x_{\\min}\\) (otherwise the sum is 0)."
+    },
+    {
+     "name": "Discrete approximation",
+     "latex": "\\hat\\alpha\\simeq1+n\\Bigl[\\sum_{i=1}^{n}\\ln\\frac{x_i}{x_{\\min}-\\tfrac12}\\Bigr]^{-1}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Approximation for integer data with \\(x_{\\min}\\gtrsim6\\)."
+    },
+    {
+     "name": "Choice of the cutoff",
+     "latex": "\\hat x_{\\min}=\\arg\\min_{x_{\\min}}\\ \\max_{x\\ge x_{\\min}}\\bigl|S(x)-P(x;\\hat\\alpha,x_{\\min})\\bigr|",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The cutoff minimizing the Kolmogorov-Smirnov distance between the empirical distribution \\(S\\) of the tail and the fitted power law \\(P\\)."
+    }
+   ],
+   "variants": {
+    "power_law_fit": "Exponent and cutoff of a power law fitted to the degree distribution by the formulas above (continuous or discrete)."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "All degrees are 0; no positive observations exist and the fit is not defined."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All degrees are equal: the tail has no spread and the exponent is not defined (the sum of logs is 0 for \\(x_{\\min}\\) equal to the degree)."
+    }
+   ],
+   "references": [
+    "clauset2009powerlaw"
+   ]
+  },
+  "sbm_description_length": {
+   "status": "partial",
+   "note": "The decomposition and the meaning of each term are given; the closed-form expressions of \\(P(A\\mid e,b)\\), \\(P(e)\\), \\(P(b)\\) and \\(P(k\\mid e,b)\\) were not checked against the paper text and are not written.",
+   "notation": [
+    {
+     "symbol": "b_i",
+     "meaning": "block of node \\(i\\); \\(B\\) blocks"
+    },
+    {
+     "symbol": "A",
+     "meaning": "multigraph adjacency, \\(A_{ij}\\) edges between \\(i\\) and \\(j\\)"
+    },
+    {
+     "symbol": "e_{rs}",
+     "meaning": "number of edges between blocks \\(r\\) and \\(s\\)"
+    },
+    {
+     "symbol": "k_i",
+     "meaning": "degree of node \\(i\\)"
+    },
+    {
+     "symbol": "n_r",
+     "meaning": "size of block \\(r\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Description length (Peixoto 2017; degree correction after Karrer and Newman 2011)",
+     "latex": "\\Sigma(A,b)=-\\ln P(A\\mid e,b)-\\ln P(e)-\\ln P(b)\\quad\\bigl[-\\ln P(k\\mid e,b)\\ \\text{added, with }P(A\\mid k,e,b),\\ \\text{for the degree-corrected model}\\bigr]",
+     "applies_to": [
+      "any",
+      "multigraph"
+     ],
+     "where": "The negative log of the joint probability of the network, the block edge counts, the partition and (degree-corrected) the degrees, with the microcanonical Bayesian priors of the paper; it is in nats. The components are reported separately: adjacency, partition, edges, degrees. The closed forms of the components are in the paper and are not transcribed here."
+    }
+   ],
+   "variants": {
+    "sbm_description_length": "Total description length of a given partition and its four components, without or with degree correction; parallel edges are read with multiplicity, weights are ignored."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "For one node the partition has one block; the formula is stated for any \\(N\\ge1\\), the sources only record that graph-tool was not run on it.",
+     "tools": {
+      "graphtool": {
+       "status": "no_value",
+       "behaviour": "The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).",
+       "source": "conventions.json sbm_description_length"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The model is for multigraphs: parallel edges count with their multiplicity in \\(A\\) and \\(e_{rs}\\)."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are admitted in the multigraph model."
+    }
+   ],
+   "references": [
+    "peixoto2017nonparametric",
+    "karrer2011stochastic",
+    "peixoto2014hierarchical"
+   ]
+  },
+  "sbm_missing": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "sbm_move_delta": {
+   "status": "partial",
+   "note": "Depends on the description length, whose closed forms are not written here (see sbm_description_length).",
+   "notation": [
+    {
+     "symbol": "b_i",
+     "meaning": "block of node \\(i\\); \\(B\\) blocks"
+    },
+    {
+     "symbol": "A",
+     "meaning": "multigraph adjacency, \\(A_{ij}\\) edges between \\(i\\) and \\(j\\)"
+    },
+    {
+     "symbol": "e_{rs}",
+     "meaning": "number of edges between blocks \\(r\\) and \\(s\\)"
+    },
+    {
+     "symbol": "k_i",
+     "meaning": "degree of node \\(i\\)"
+    },
+    {
+     "symbol": "n_r",
+     "meaning": "size of block \\(r\\)"
+    },
+    {
+     "symbol": "b'",
+     "meaning": "the partition after moving one node to another block"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Description length (Peixoto 2017; degree correction after Karrer and Newman 2011)",
+     "latex": "\\Sigma(A,b)=-\\ln P(A\\mid e,b)-\\ln P(e)-\\ln P(b)\\quad\\bigl[-\\ln P(k\\mid e,b)\\ \\text{added, with }P(A\\mid k,e,b),\\ \\text{for the degree-corrected model}\\bigr]",
+     "applies_to": [
+      "any",
+      "multigraph"
+     ],
+     "where": "The negative log of the joint probability of the network, the block edge counts, the partition and (degree-corrected) the degrees, with the microcanonical Bayesian priors of the paper; it is in nats. The components are reported separately: adjacency, partition, edges, degrees. The closed forms of the components are in the paper and are not transcribed here."
+    },
+    {
+     "name": "Move delta",
+     "latex": "\\Delta=\\Sigma(A,b')-\\Sigma(A,b)",
+     "applies_to": [
+      "any",
+      "multigraph"
+     ],
+     "where": "The change of the description length when one node moves to another block (or to a new block); it can be evaluated from the counts that change, but equals this difference by definition. A negative value favours the move."
+    }
+   ],
+   "variants": {
+    "sbm_move_delta": "Description length after the move minus before it."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "No node can move in a network of fewer than two nodes.",
+     "tools": {
+      "graphtool": {
+       "status": "no_value",
+       "behaviour": "The oracle script does not run graph-tool on a network of fewer than two nodes.",
+       "source": "conventions.json sbm_move_delta"
+      }
+     }
+    }
+   ],
+   "references": [
+    "peixoto2017nonparametric",
+    "peixoto2014efficient"
+   ]
+  },
+  "statistical_inference_clustering": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "sbm_fit": {
+   "status": "partial",
+   "note": "The objective is written; the search (agglomerative start, annealing, Markov chain refinement, restarts) is a heuristic whose result depends on the seed, and is not part of the definition.",
+   "notation": [
+    {
+     "symbol": "b_i",
+     "meaning": "block of node \\(i\\); \\(B\\) blocks"
+    },
+    {
+     "symbol": "A",
+     "meaning": "multigraph adjacency, \\(A_{ij}\\) edges between \\(i\\) and \\(j\\)"
+    },
+    {
+     "symbol": "e_{rs}",
+     "meaning": "number of edges between blocks \\(r\\) and \\(s\\)"
+    },
+    {
+     "symbol": "k_i",
+     "meaning": "degree of node \\(i\\)"
+    },
+    {
+     "symbol": "n_r",
+     "meaning": "size of block \\(r\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Description length (Peixoto 2017; degree correction after Karrer and Newman 2011)",
+     "latex": "\\Sigma(A,b)=-\\ln P(A\\mid e,b)-\\ln P(e)-\\ln P(b)\\quad\\bigl[-\\ln P(k\\mid e,b)\\ \\text{added, with }P(A\\mid k,e,b),\\ \\text{for the degree-corrected model}\\bigr]",
+     "applies_to": [
+      "any",
+      "multigraph"
+     ],
+     "where": "The negative log of the joint probability of the network, the block edge counts, the partition and (degree-corrected) the degrees, with the microcanonical Bayesian priors of the paper; it is in nats. The components are reported separately: adjacency, partition, edges, degrees. The closed forms of the components are in the paper and are not transcribed here."
+    },
+    {
+     "name": "Fit as minimization",
+     "latex": "\\hat b=\\arg\\min_{b}\\ \\Sigma(A,b)",
+     "applies_to": [
+      "any",
+      "multigraph"
+     ],
+     "where": "The partition (and its number of blocks) with the shortest description length. The exact minimizer is found only by exhaustive search on tiny graphs; heuristics return a local minimum."
+    }
+   ],
+   "variants": {
+    "sbm_fit": "Blocks, their number and the description length of the best partition found over several restarts."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "With no edges the description length is smallest for a single block; the fit is trivial.",
+     "tools": {
+      "graphtool": {
+       "status": "no_value",
+       "behaviour": "The oracle script does not run graph-tool on a network with fewer than two nodes or without edges.",
+       "source": "conventions.json sbm_fit"
+      }
+     }
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "With fewer than two nodes there is one partition.",
+     "tools": {
+      "graphtool": {
+       "status": "no_value",
+       "behaviour": "The oracle script does not run graph-tool on a network with fewer than two nodes or without edges.",
+       "source": "conventions.json sbm_fit"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several partitions can share the minimal description length; which one is returned depends on the search and the seed."
+    }
+   ],
+   "references": [
+    "peixoto2017nonparametric",
+    "peixoto2014efficient",
+    "peixoto2020mergesplit"
+   ]
+  },
+  "gergm": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "node_classification": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_activity": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_alter_effects": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_compression": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_covariate_effects": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_cycle_effects": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_assortativity": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_degree_effects": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_dense_triads": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_distance2": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_ego_effects": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_exposure_infection": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_gwesp_gwdsp": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_group_effects": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_comparison_effects": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_isolate_effects": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_popularity": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_primary_setting": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_rate_effects": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_reciprocity": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_simulated_mean": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "x",
+     "meaning": "directed network (state)"
+    },
+    {
+     "symbol": "x^{(ij)}",
+     "meaning": "\\(x\\) with the tie variable \\((i,j)\\) toggled; \\(x^{(ii)}=x\\) means no change"
+    },
+    {
+     "symbol": "\\lambda_i",
+     "meaning": "rate of change opportunities of actor \\(i\\)"
+    },
+    {
+     "symbol": "f_i(x)",
+     "meaning": "objective function \\(\\sum_k\\beta_ks_{ik}(x)\\)"
+    },
+    {
+     "symbol": "s_{ik}",
+     "meaning": "effect statistic: outdegree \\(\\sum_jx_{ij}\\), reciprocity \\(\\sum_jx_{ij}x_{ji}\\), ..."
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Stochastic actor-oriented model (Snijders 2001; Snijders 1996)",
+     "latex": "\\Pr(i\\text{ toggles }(i,j)\\mid x)=\\frac{\\exp f_i(x^{(ij)})}{\\sum_{h}\\exp f_i(x^{(ih)})},\\qquad \\text{waiting time to the next opportunity}\\sim\\mathrm{Exp}\\Bigl(\\sum_i\\lambda_i\\Bigr)",
+     "applies_to": [
+      "any",
+      "directed"
+     ],
+     "where": "Actors take ministeps at a common rate and change one tie variable by a multinomial logit of the objective function after the change; the sum in the denominator includes the choice of no change. Continuous time runs over a period of length 1 between observations. Simulation starts at the first observed network and the statistics of the final network are averaged over replications, so the mean is random."
+    },
+    {
+     "name": "Simulated mean",
+     "latex": "\\bar s_k=\\frac1R\\sum_{r=1}^{R}s_k\\bigl(x^{(r)}_{\\mathrm{end}}\\bigr)",
+     "applies_to": [
+      "any",
+      "directed"
+     ],
+     "where": "Mean of the effect statistics over \\(R\\) simulated end networks; it converges to the model expectation after one period from the start network."
+    }
+   ],
+   "variants": {
+    "saom_sim_mean": "Mean statistics of simulated end networks with fixed rate and effect parameters (density, reciprocity); no estimation."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "Three or more actors are needed by the tool; the definition itself has choices for any \\(n\\ge2\\).",
+     "tools": {
+      "rsiena": {
+       "status": "no_value",
+       "behaviour": "RSiena needs at least three actors (no value on empty, pair and single_node fixtures).",
+       "source": "reasons.json saom_sim_mean",
+       "measure": "saom_sim_mean"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "A complete start network is a valid state of the model; the definition simulates from it like from any other network, so the mean tie count moves from the start value towards the model's stationary value over the period.",
+     "tools": {
+      "rsiena": {
+       "status": "differs",
+       "behaviour": "From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value, 5.4), where the reference and the exact definition oracle relax from 20 ties to 9.3 within the period; one tie removed gives 8.9 under RSiena, in line with the reference. Cause not identified.",
+       "source": "reasons.json saom_sim_mean",
+       "measure": "saom_sim_mean",
+       "finding": "F085"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Replications differ by seed; only means over many replications are compared."
+    }
+   ],
+   "references": [
+    "snijders2001statistical",
+    "snijders1996stochastic",
+    "snijders2010introduction"
+   ]
+  },
+  "saom_similarity": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_structural_equivalence": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_threshold_effects": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_transitive_triplets": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  },
+  "saom_unspecified_interaction": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked."
+  }
+ }
+}

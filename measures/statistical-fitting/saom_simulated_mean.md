@@ -12,11 +12,29 @@ nav_exclude: true
 
 Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: `saom_simulated_mean`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(x\)</td><td>directed network (state)</td></tr><tr><td>\(x^{(ij)}\)</td><td>\(x\) with the tie variable \((i,j)\) toggled; \(x^{(ii)}=x\) means no change</td></tr><tr><td>\(\lambda_i\)</td><td>rate of change opportunities of actor \(i\)</td></tr><tr><td>\(f_i(x)\)</td><td>objective function \(\sum_k\beta_ks_{ik}(x)\)</td></tr><tr><td>\(s_{ik}\)</td><td>effect statistic: outdegree \(\sum_jx_{ij}\), reciprocity \(\sum_jx_{ij}x_{ji}\), ...</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Simulates periods of network change under a stochastic actor-oriented model (Snijders): actors take ministeps at a common rate and toggle one tie by a multinomial logit of the objective function; returns, per run, the target statistics followed by the changed ties, the ministeps taken and no networks. The effects are named from the SAOM vocabulary; the covariates are the columns of the call.
 
-*Definition not yet written.*
+<div class="formula-block"><p class="formula-name"><strong>Stochastic actor-oriented model (Snijders 2001; Snijders 1996)</strong> <span class="applies">applies to: any, directed</span></p><div class="formula">\[\Pr(i\text{ toggles }(i,j)\mid x)=\frac{\exp f_i(x^{(ij)})}{\sum_{h}\exp f_i(x^{(ih)})},\qquad \text{waiting time to the next opportunity}\sim\mathrm{Exp}\Bigl(\sum_i\lambda_i\Bigr)\]</div><p class="formula-where">Actors take ministeps at a common rate and change one tie variable by a multinomial logit of the objective function after the change; the sum in the denominator includes the choice of no change. Continuous time runs over a period of length 1 between observations. Simulation starts at the first observed network and the statistics of the final network are averaged over replications, so the mean is random.</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Simulated mean</strong> <span class="applies">applies to: any, directed</span></p><div class="formula">\[\bar s_k=\frac1R\sum_{r=1}^{R}s_k\bigl(x^{(r)}_{\mathrm{end}}\bigr)\]</div><p class="formula-where">Mean of the effect statistics over \(R\) simulated end networks; it converges to the model expectation after one period from the start network.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#saom_sim_mean">Saom sim mean</a></td><td><code>saom_sim_mean</code></td><td>1</td><td>Mean statistics of simulated end networks with fixed rate and effect parameters (density, reciprocity); no estimation.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/rsiena.html">RSiena</a></th></tr></thead><tbody><tr><td title="The graph has fewer nodes than a normalizing constant or a term of the formula needs (for example n &lt; 3 when dividing by (n-1)(n-2)), so a division by zero or an empty sum arises."><strong>Too few nodes for the formula</strong></td><td class="def">Three or more actors are needed by the tool; the definition itself has choices for any \(n\ge2\).</td><td><a class="st st-w st-nov" href="#why-saom_sim_mean-rsiena" title="RSiena needs at least three actors (no value on empty, pair and single_node fixtures).">no value</a></td></tr><tr><td title="Every pair of distinct nodes is joined by an edge. All nodes are structurally equivalent."><strong>Complete graph</strong></td><td class="def">A complete start network is a valid state of the model; the definition simulates from it like from any other network, so the mean tie count moves from the start value towards the model's stationary value over the period.</td><td><a class="st st-w st-conv" href="../../findings.html#f085" title="From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value, 5.4), where the reference and the exact definition oracle relax from 20 ties to 9.3 within the period; one tie removed gives 8.9 under RSiena, in line with the reference. Cause not identified.">differs</a></td></tr><tr><td title="Several shortest paths of equal length, equal scores, or equal eigenvalues, including ties that arise only in floating point (for example equal sums of reciprocals)."><strong>Ties and equal values</strong></td><td class="def">Replications differ by seed; only means over many replications are compared.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Too few nodes for the formula</summary><ul><li><strong>RSiena</strong>: no value. RSiena needs at least three actors (no value on empty, pair and single_node fixtures). <em>(reasons.json saom_sim_mean)</em></li></ul></details><details><summary>Complete graph</summary><ul><li><strong>RSiena</strong>: differs. From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value, 5.4), where the reference and the exact definition oracle relax from 20 ties to 9.3 within the period; one tie removed gives 8.9 under RSiena, in line with the reference. Cause not identified. <em>(reasons.json saom_sim_mean)</em></li></ul></details><details><summary>Ties and equal values</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Saom sim mean {#saom_sim_mean}
 

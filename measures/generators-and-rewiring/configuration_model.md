@@ -12,15 +12,29 @@ nav_exclude: true
 
 Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models. Concept id: `configuration_model`. 2 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(k_i\)</td><td>prescribed degree of node \(i\)</td></tr><tr><td>\(m\)</td><td>number of edges, \(m=\tfrac12\sum_ik_i\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Configuration model. Entries grouped here: Configuration model; Degseq.
 
-*Definition not yet written.*
+*Definition partly written:* The stub-matching model is written. The options of the tools (rewiring to remove loops, other degseq methods) are named but not recorded, so only the model itself is defined.
+
+<div class="formula-block"><p class="formula-name"><strong>Configuration model (Bollobas 1980; Molloy and Reed 1995; Newman, Strogatz and Watts 2001)</strong> <span class="applies">applies to: undirected, multigraph</span></p><div class="formula">\[\Pr(\text{pairing})=\frac{1}{(2m-1)!!},\qquad \mathbb E[A_{ij}]=\frac{k_ik_j}{2m-1}\ (i\ne j)\]</div><p class="formula-where">Give node \(i\) \(k_i\) stubs and pair all \(2m\) stubs uniformly at random. The result may contain loops and parallel edges; \(\sum k_i\) must be even. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators.</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#gen_configuration">Configuration model</a></td><td><code>gen_configuration</code></td><td>3</td></tr><tr><td><a href="#cat_degseq">Degseq</a></td><td><code>cat_degseq</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_configuration">Configuration model</a></td><td><code>gen_configuration</code></td><td>3</td><td>The stub-matching model above, as a multigraph unless the tool states a simple-graph option (not recorded).</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/networkx.html">NetworkX</a></th><th><a href="../../tools/igraph.html">igraph (R)</a></th><th><a href="../../tools/pyigraph.html">igraph (Python)</a></th></tr></thead><tbody><tr><td title="A free parameter (attenuation, damping, decay, exponent, walk length) outside the range for which the series or fixed point is defined or convergent."><strong>Parameter outside its valid range</strong></td><td class="def">Not defined if \(\sum_ik_i\) is odd.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="An edge whose source and target are the same node."><strong>Self-loops</strong></td><td class="def">Expected loops at \(i\): \(\binom{k_i}{2}/(2m-1)\); loops occur with positive probability.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="Several edges with the same source and target (same endpoints, for undirected edges)."><strong>Parallel edges</strong></td><td class="def">Parallel edges occur with positive probability in the pairing model.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="The graph has nodes but no edges (m = 0)."><strong>Edgeless graph</strong></td><td class="def">All \(k_i=0\): the edgeless graph.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Parameter outside its valid range</summary><ul><li>No tool entries.</li></ul></details><details><summary>Self-loops</summary><ul><li>No tool entries.</li></ul></details><details><summary>Parallel edges</summary><ul><li>No tool entries.</li></ul></details><details><summary>Edgeless graph</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Configuration model {#gen_configuration}
 

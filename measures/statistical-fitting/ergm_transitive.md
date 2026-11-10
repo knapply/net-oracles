@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `e
 
 Transitive and intransitive triple terms. Entries grouped here: Intransitive; Transitive; Transitiveties; Transitiveweights.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

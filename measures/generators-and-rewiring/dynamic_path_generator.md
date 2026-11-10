@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment 
 
 Dynamic path generator. Entries grouped here: Dynamic Path Generator.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Dynamic Path Generator {#cat_dynamic_generator_path}
 

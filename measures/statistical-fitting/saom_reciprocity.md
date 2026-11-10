@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Reciprocity effects. Entries grouped here: Av Rec Alt; Av Rec Alt Same X; Av Sim Rec Pop; Av Sim Recip; Av XRec Alt; Diff XReci Act; and 19 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

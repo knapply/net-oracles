@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Named and deterministi
 
 Linearized chord diagram graph. Entries grouped here: Linearized Chord Diagram Graph Generator.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Linearized Chord Diagram Graph Generator {#cat_chord_diagram_generator_linearized}
 

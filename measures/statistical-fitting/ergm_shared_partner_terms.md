@@ -12,11 +12,17 @@ nav_exclude: true
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_shared_partner_terms`. 12 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(y\)</td><td>the network as a matrix of tie indicators \(y_{ij}\in\{0,1\}\) (simple graph, no loops); \(y^{ij+}\) and \(y^{ij-}\) have the tie \((i,j)\) set to 1 and 0</td></tr><tr><td>\(n\)</td><td>number of nodes</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Shared-partner terms. Entries grouped here: Ddsp; Ddsp L; Desp; Desp L; Dgwdsp; Dgwdsp L; and 6 more.
 
-*Definition not yet written.*
+*Definition partly written:* The geometrically weighted forms are written. The edgewise, dyadwise and non-edgewise shared-partner counts (esp, dsp, nsp) and the directed (d-prefixed) and L-suffixed forms are named in the sources only; variants are not given.
+
+<div class="formula-block"><p class="formula-name"><strong>Geometrically weighted terms (Hunter 2007)</strong> <span class="applies">applies to: any, simple</span></p><div class="formula">\[\text{gwesp}_\alpha=e^{\alpha}\sum_{k=1}^{n-2}\bigl\{1-(1-e^{-\alpha})^{k}\bigr\}\,\mathrm{ESP}_k,\qquad \text{gwdsp}_\alpha=e^{\alpha}\sum_{k=1}^{n-2}\bigl\{1-(1-e^{-\alpha})^{k}\bigr\}\,\mathrm{DSP}_k,\qquad \text{gwdegree}_\alpha=e^{\alpha}\sum_{k=1}^{n-1}\bigl\{1-(1-e^{-\alpha})^{k}\bigr\}\,D_k\]</div><p class="formula-where">\(\mathrm{ESP}_k\): number of tied pairs with exactly \(k\) shared partners; \(\mathrm{DSP}_k\): number of node pairs (tied or not) with \(k\) shared partners; \(D_k\): number of nodes of degree \(k\). With the decay \(\alpha\) fixed they are ordinary statistics; with \(\alpha\) estimated the model is a curved exponential family. Software truncates the counts at a cutoff; a cutoff above \(n\) loses nothing. In directed networks the direction of the shared-partner two-path (and of the degree) has to be chosen, giving gwidegree and gwodegree for in- and out-degrees.</p></div>
 
 ## Variants {#concept-variants}
 

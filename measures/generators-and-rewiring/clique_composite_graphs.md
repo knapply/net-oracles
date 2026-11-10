@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Named and deterministi
 
 Clique composites (barbell, lollipop, tadpole, windmill, caveman, ring of cliques). Entries grouped here: Barbell graph; Caveman graph; Connected caveman graph; Lollipop graph; Make max clique graph; Relaxed caveman graph; and 4 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

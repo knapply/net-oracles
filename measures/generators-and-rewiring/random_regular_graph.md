@@ -12,11 +12,27 @@ nav_exclude: true
 
 Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs. Concept id: `random_regular_graph`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(n\)</td><td>number of nodes</td></tr><tr><td>\(d\)</td><td>degree of every node</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Random regular graph. Entries grouped here: Random regular graph generator.
 
-*Definition not yet written.*
+<div class="formula-block"><p class="formula-name"><strong>Random regular graph (Steger and Wormald 1999; Bollobas 1980)</strong> <span class="applies">applies to: undirected, simple</span></p><div class="formula">\[\Pr(G)=\Bigl|\{\text{simple graphs on }n\text{ labelled nodes, all degrees }d\}\Bigr|^{-1}\]</div><p class="formula-where">Uniform distribution over labelled \(d\)-regular graphs, which exist exactly when \(nd\) is even and \(d&lt;n\). A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_regular">Random regular graph generator</a></td><td><code>gen_regular</code></td><td>6</td><td>Uniform \(d\)-regular simple graph. Which options this function offers is not recorded (documented by name only).</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/networkx.html">NetworkX</a></th><th><a href="../../tools/igraph.html">igraph (R)</a></th><th><a href="../../tools/pyigraph.html">igraph (Python)</a></th><th><a href="../../tools/rustworkx.html">rustworkx</a></th><th><a href="../../tools/jgrapht.html">JGraphT</a></th><th><a href="../../tools/ucinet.html">UCINET</a></th></tr></thead><tbody><tr><td title="A free parameter (attenuation, damping, decay, exponent, walk length) outside the range for which the series or fixed point is defined or convergent."><strong>Parameter outside its valid range</strong></td><td class="def">Not defined if \(nd\) is odd or \(d\ge n\).</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="Every pair of distinct nodes is joined by an edge. All nodes are structurally equivalent."><strong>Complete graph</strong></td><td class="def">\(d=n-1\) gives the complete graph.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="The graph has nodes but no edges (m = 0)."><strong>Edgeless graph</strong></td><td class="def">\(d=0\) gives the edgeless graph.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Parameter outside its valid range</summary><ul><li>No tool entries.</li></ul></details><details><summary>Complete graph</summary><ul><li>No tool entries.</li></ul></details><details><summary>Edgeless graph</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Random regular graph generator {#gen_regular}
 

@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id:
 
 Hierarchical random graph. Entries grouped here: Hierarchical random graph (fit, sample, predict).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Hierarchical random graph (fit, sample, predict) {#hrg}
 

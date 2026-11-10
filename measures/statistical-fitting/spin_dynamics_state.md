@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Dynamics states. Concept i
 
 Ising and Potts dynamics states. Entries grouped here: CIsing Glauber State; Ising Glauber State; Ising Metropolis State; Potts Glauber State; Potts Metropolis State; Potts State.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

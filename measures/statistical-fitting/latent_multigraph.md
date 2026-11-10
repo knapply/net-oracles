@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Marginal and latent graph 
 
 Latent multigraph inference. Entries grouped here: Em infer; Latent multigraph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

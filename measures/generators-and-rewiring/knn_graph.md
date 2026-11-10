@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice a
 
 K-nearest-neighbor graph. Entries grouped here: Generate knn; Nearest Neighbor Graph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

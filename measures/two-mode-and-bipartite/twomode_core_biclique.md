@@ -16,7 +16,7 @@ Family: [Two-mode and bipartite](index.html). Subfamily: Bipartite structure. Co
 
 Two-mode core-periphery and bi-cliques. Entries grouped here: Two-mode core-periphery, bi-cliques, two-mode equivalence.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only: the sources give only the names of the two-mode core-periphery and bi-clique procedures; no definition was checked.
 
 ## Two-mode core-periphery, bi-cliques, two-mode equivalence {#twomode_core_biclique}
 

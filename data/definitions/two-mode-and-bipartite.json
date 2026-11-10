@@ -1,0 +1,631 @@
+{
+ "family": "Two-mode and bipartite",
+ "concepts": {
+  "bipartite_degree_indices": {
+   "status": "name_only",
+   "note": "Documented by name only: the sources record only the tool function names (degree index of each class, total neighbours index) and no formula; the standard degree is not enough to define the index as the tool does."
+  },
+  "bipartite_modularity": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "U,V",
+     "meaning": "the two node classes of a bipartite graph; every edge joins a node of \\(U\\) to a node of \\(V\\)"
+    },
+    {
+     "symbol": "B",
+     "meaning": "biadjacency matrix, \\(B_{uv}=1\\) if \\(u\\in U\\) and \\(v\\in V\\) are joined, otherwise 0"
+    },
+    {
+     "symbol": "N(x)",
+     "meaning": "set of neighbours of node \\(x\\)"
+    },
+    {
+     "symbol": "k_x",
+     "meaning": "degree of node \\(x\\), \\(|N(x)|\\)"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "g_u,h_v",
+     "meaning": "community label of \\(u\\in U\\) and of \\(v\\in V\\)"
+    },
+    {
+     "symbol": "\\delta",
+     "meaning": "1 if the two labels are equal, otherwise 0"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Bipartite modularity (Barber 2007)",
+     "latex": "Q_B=\\frac1m\\sum_{u\\in U}\\sum_{v\\in V}\\Bigl(B_{uv}-\\frac{k_u k_v}{m}\\Bigr)\\,\\delta(g_u,h_v)",
+     "applies_to": [
+      "bipartite",
+      "two_mode"
+     ],
+     "where": "Observed minus expected edges inside communities, where the expected number of edges between \\(u\\) and \\(v\\) is \\(k_uk_v/m\\) under the bipartite null model that keeps degrees. Defined for \\(m>0\\); communities contain nodes of both classes and a node class is fixed by the input."
+    }
+   ],
+   "variants": {
+    "bipartite_modularity": "The single formula above, evaluated for a given assignment of nodes to communities; nothing is optimized."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "Not defined: the factor \\(1/m\\) and the expected term \\(k_uk_v/m\\) divide by \\(m=0\\)."
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "With every node in one community \\(\\delta\\equiv1\\) and the double sum is \\(m-\\sum k_uk_v/m=m-m=0\\), so \\(Q_B=0\\)."
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "This is the domain of the definition; each edge joins the two classes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolate has \\(k=0\\): all its terms are 0, so it changes nothing except through the labels."
+    }
+   ],
+   "references": [
+    "barber2007modularity"
+   ]
+  },
+  "birank": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "U,P",
+     "meaning": "the two node classes"
+    },
+    {
+     "symbol": "W",
+     "meaning": "\\(|U|\\times|P|\\) matrix of non-negative edge weights between the classes"
+    },
+    {
+     "symbol": "D_U,D_P",
+     "meaning": "diagonal matrices of the row sums and column sums of \\(W\\)"
+    },
+    {
+     "symbol": "S",
+     "meaning": "\\(D_U^{-1/2}WD_P^{-1/2}\\), the symmetrically normalized weight matrix"
+    },
+    {
+     "symbol": "\\alpha,\\beta",
+     "meaning": "damping parameters in \\([0,1)\\)"
+    },
+    {
+     "symbol": "u_0,p_0",
+     "meaning": "prior score vectors on \\(U\\) and \\(P\\) (query vectors)"
+    },
+    {
+     "symbol": "u,p",
+     "meaning": "BiRank scores of the two classes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "BiRank fixed point (He et al. 2017)",
+     "latex": "p=\\alpha\\,S^{\\top}u+(1-\\alpha)\\,p_0,\\qquad u=\\beta\\,S\\,p+(1-\\beta)\\,u_0",
+     "applies_to": [
+      "bipartite",
+      "weighted"
+     ],
+     "where": "Scores are the fixed point of damped propagation between the two classes, reached by iterating the two equations alternately. For \\(\\alpha,\\beta<1\\) the iteration converges because the spectral radius of \\(S\\) is at most 1. Defined when every row and column sum of \\(W\\) is positive (otherwise \\(D^{-1/2}\\) has a zero on the diagonal)."
+    }
+   ],
+   "variants": {
+    "birank": "One formula; the choice of \\(\\alpha\\), \\(\\beta\\), the priors and the stopping rule decide the output. The fixed point is unique, so iteration count and tolerance only matter for how closely it is approached."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "Not defined: \\(D_U\\) and \\(D_P\\) are zero, so \\(S\\) has no finite entries."
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Not defined for the normalization: a node with zero weighted degree makes \\(D^{-1/2}\\) infinite."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "For \\(\\alpha=\\beta=1\\) the damping vanishes and the fixed point need not be unique; for \\(\\alpha,\\beta\\in[0,1)\\) it is."
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "The formula is stated for bipartite input with a given class split.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights enter through \\(W\\), then through the normalization \\(S\\); unit weights give the unweighted score."
+    }
+   ],
+   "references": [
+    "he2017birank"
+   ]
+  },
+  "butterflies": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "U,V",
+     "meaning": "the two node classes of a bipartite graph; every edge joins a node of \\(U\\) to a node of \\(V\\)"
+    },
+    {
+     "symbol": "B",
+     "meaning": "biadjacency matrix, \\(B_{uv}=1\\) if \\(u\\in U\\) and \\(v\\in V\\) are joined, otherwise 0"
+    },
+    {
+     "symbol": "N(x)",
+     "meaning": "set of neighbours of node \\(x\\)"
+    },
+    {
+     "symbol": "k_x",
+     "meaning": "degree of node \\(x\\), \\(|N(x)|\\)"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "c(u,w)",
+     "meaning": "number of common neighbours \\(|N(u)\\cap N(w)|\\) of two nodes of one class"
+    },
+    {
+     "symbol": "b(x)",
+     "meaning": "number of butterflies containing node \\(x\\)"
+    },
+    {
+     "symbol": "\\bowtie_G",
+     "meaning": "total number of butterflies in the graph"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Butterfly count at a node (Sanei-Mehri et al. 2018)",
+     "latex": "b(u)=\\sum_{w\\ne u,\\;w\\text{ in the class of }u}\\binom{c(u,w)}{2}",
+     "applies_to": [
+      "bipartite",
+      "simple"
+     ],
+     "where": "A butterfly is a complete bipartite subgraph \\(K_{2,2}\\), i.e. a 4-cycle. A node \\(u\\) is in a butterfly with \\(w\\) of its own class for each pair of common neighbours of \\(u\\) and \\(w\\)."
+    },
+    {
+     "name": "Total butterflies",
+     "latex": "\\bowtie_G=\\frac12\\sum_{u\\in U}b(u)=\\frac14\\sum_{x\\in U\\cup V}b(x)",
+     "applies_to": [
+      "bipartite",
+      "simple"
+     ],
+     "where": "Each butterfly has two nodes in each class, so the node counts add to \\(4\\bowtie_G\\)."
+    }
+   ],
+   "variants": {
+    "butterflies": "Per-node butterfly counts \\(b(x)\\) for every node, as in the first formula; the total is the second formula."
+   },
+   "edge_cases": [
+    {
+     "case": "multi_edges",
+     "definition_gives": "Not defined on multigraphs: the formula counts pairs of common neighbours of a simple bipartite graph, so parallel edges do not enter \\(N(\\cdot)\\)."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A self-loop is not an edge between the classes, so a bipartite graph has none."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "All \\(c(u,w)=0\\), so every \\(b(x)=0\\) and the total is 0."
+    },
+    {
+     "case": "star",
+     "definition_gives": "Every pair of leaves has one common neighbour, \\(c=1\\), \\(\\binom12=0\\): no butterfly."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "For the complete bipartite graph \\(K_{a,b}\\) each node of the class of size \\(a\\) has \\(b(u)=(a-1)\\binom{b}{2}\\)."
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "The domain of the definition.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "sanei2018butterfly"
+   ]
+  },
+  "latapy_clustering": {
+   "status": "partial",
+   "note": "The definition is given from memory of the sum over the nodes at distance two; whether \\(u\\) itself belongs to \\(N(N(u))\\) in the original paper was not checked against its text, so the divisor in the edge cases is stated for nodes other than \\(u\\).",
+   "notation": [
+    {
+     "symbol": "U,V",
+     "meaning": "the two node classes of a bipartite graph; every edge joins a node of \\(U\\) to a node of \\(V\\)"
+    },
+    {
+     "symbol": "B",
+     "meaning": "biadjacency matrix, \\(B_{uv}=1\\) if \\(u\\in U\\) and \\(v\\in V\\) are joined, otherwise 0"
+    },
+    {
+     "symbol": "N(x)",
+     "meaning": "set of neighbours of node \\(x\\)"
+    },
+    {
+     "symbol": "k_x",
+     "meaning": "degree of node \\(x\\), \\(|N(x)|\\)"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "N_2(u)",
+     "meaning": "nodes other than \\(u\\) that share a neighbour with \\(u\\) (distance two)"
+    },
+    {
+     "symbol": "cc_\\bullet(u,v)",
+     "meaning": "pairwise clustering of \\(u\\) and \\(v\\), \\(\\bullet\\in\\{\\text{dot},\\min,\\max\\}\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Pairwise clustering (Latapy, Magnien and Del Vecchio 2008)",
+     "latex": "cc_{\\mathrm{dot}}(u,v)=\\frac{|N(u)\\cap N(v)|}{|N(u)\\cup N(v)|},\\quad cc_{\\min}(u,v)=\\frac{|N(u)\\cap N(v)|}{\\min(|N(u)|,|N(v)|)},\\quad cc_{\\max}(u,v)=\\frac{|N(u)\\cap N(v)|}{\\max(|N(u)|,|N(v)|)}",
+     "applies_to": [
+      "bipartite",
+      "simple"
+     ],
+     "where": "Three ways to normalize the overlap of the neighbourhoods of two nodes of the same class (Jaccard, overlap relative to the smaller, relative to the larger)."
+    },
+    {
+     "name": "Node clustering",
+     "latex": "cc_\\bullet(u)=\\frac{1}{|N_2(u)|}\\sum_{v\\in N_2(u)}cc_\\bullet(u,v)",
+     "applies_to": [
+      "bipartite",
+      "simple"
+     ],
+     "where": "Mean pairwise clustering over the nodes at distance two. Defined when \\(N_2(u)\\ne\\emptyset\\); a node with no node at distance two has no value from the formula."
+    }
+   ],
+   "variants": {
+    "latapy_clustering": "Choice of \\(\\bullet\\): dot (Jaccard), min or max overlap; the three modes differ only in the denominator of the pairwise term."
+   },
+   "edge_cases": [
+    {
+     "case": "isolates",
+     "definition_gives": "\\(N_2(u)=\\emptyset\\): the mean has no terms, so the formula gives no value (0/0)."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Every node has \\(N_2=\\emptyset\\); not defined by the formula."
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "The domain of the definition.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "In \\(K_{a,b}\\) all neighbourhoods of one class coincide, so \\(cc_\\bullet(u,v)=1\\) in all three modes and \\(cc_\\bullet(u)=1\\)."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "The three modes agree whenever the two neighbourhoods have equal size."
+    }
+   ],
+   "references": [
+    "latapy2008basic"
+   ]
+  },
+  "robins_alexander": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "U,V",
+     "meaning": "the two node classes of a bipartite graph; every edge joins a node of \\(U\\) to a node of \\(V\\)"
+    },
+    {
+     "symbol": "B",
+     "meaning": "biadjacency matrix, \\(B_{uv}=1\\) if \\(u\\in U\\) and \\(v\\in V\\) are joined, otherwise 0"
+    },
+    {
+     "symbol": "N(x)",
+     "meaning": "set of neighbours of node \\(x\\)"
+    },
+    {
+     "symbol": "k_x",
+     "meaning": "degree of node \\(x\\), \\(|N(x)|\\)"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "C_4",
+     "meaning": "number of 4-cycles in the graph"
+    },
+    {
+     "symbol": "L_3",
+     "meaning": "number of paths of length three (three edges, four distinct nodes)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Robins-Alexander clustering coefficient (Robins and Alexander 2004)",
+     "latex": "CC_{RA}=\\frac{4\\,C_4}{L_3}",
+     "applies_to": [
+      "bipartite",
+      "simple"
+     ],
+     "where": "Each 4-cycle contains four 3-paths, so the ratio is the fraction of 3-paths that are closed into a 4-cycle. Defined when \\(L_3>0\\)."
+    }
+   ],
+   "variants": {
+    "robins_alexander": "A single graph-level coefficient; no node version and no parameter."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "Not defined: \\(L_3=0\\) so the ratio is 0/0."
+    },
+    {
+     "case": "star",
+     "definition_gives": "Not defined: a star has no path with three edges, \\(L_3=0\\)."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "For \\(K_{a,b}\\) with \\(a,b\\ge2\\) every 3-path closes, so \\(CC_{RA}=1\\)."
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One edge, no 3-path: not defined."
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "The domain of the definition.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Not defined: the 3-path and 4-cycle counts are for simple graphs."
+    }
+   ],
+   "references": [
+    "robins2004small"
+   ]
+  },
+  "spectral_bipartivity": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "A",
+     "meaning": "symmetric adjacency matrix of an undirected graph"
+    },
+    {
+     "symbol": "\\lambda_j,\\varphi_j",
+     "meaning": "eigenvalues of \\(A\\) and the corresponding orthonormal eigenvectors"
+    },
+    {
+     "symbol": "\\varphi_j(i)",
+     "meaning": "component \\(i\\) of \\(\\varphi_j\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Spectral bipartivity of a graph (Estrada and Rodriguez-Velazquez 2005)",
+     "latex": "b_s(G)=\\frac{\\operatorname{tr}\\cosh(A)}{\\operatorname{tr}\\exp(A)}=\\frac{\\sum_j\\cosh\\lambda_j}{\\sum_j e^{\\lambda_j}}",
+     "applies_to": [
+      "undirected",
+      "unweighted"
+     ],
+     "where": "The even-length closed walks (counted by \\(\\cosh A\\)) over all closed walks (counted by \\(\\exp A\\)). It is 1 exactly when the graph is bipartite. Defined when \\(n\\ge1\\)."
+    },
+    {
+     "name": "Spectral bipartivity of a node",
+     "latex": "b_s(i)=\\frac{\\sum_j\\varphi_j(i)^2\\cosh\\lambda_j}{\\sum_j\\varphi_j(i)^2e^{\\lambda_j}}=\\frac{(\\cosh A)_{ii}}{(\\exp A)_{ii}}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "The same ratio for closed walks that start and end at node \\(i\\); the graph value is the ratio of the sums over all nodes."
+    }
+   ],
+   "variants": {
+    "spectral_bipartivity": "Graph value (first formula) or the value of selected nodes (second formula); the same measure, evaluated for all nodes or a subset."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Not defined: \\(\\operatorname{tr}\\exp(A)\\) is an empty sum, 0/0."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(A=0\\), \\(\\cosh A=\\exp A=I\\): \\(b_s=1\\) (an edgeless graph is bipartite).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop adds an odd closed walk (\\(A_{ii}>0\\)), so \\(b_s<1\\); a loop-free input is required to read 1 as bipartite."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Defined on the multiplicity matrix \\(A\\); parallel edges raise the entries and change the value."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Eigenvalues \\(n-1\\) once and \\(-1\\) with multiplicity \\(n-1\\): \\(b_s=\\dfrac{\\cosh(n-1)+(n-1)\\cosh1}{e^{n-1}+(n-1)e^{-1}}\\)."
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "The spectrum is symmetric (\\(\\lambda\\) and \\(-\\lambda\\) pair up), so \\(\\sum\\sinh\\lambda_j=0\\) and \\(b_s=1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The formula uses a symmetric \\(A\\); for a directed graph the eigen-decomposition is not the one above, so the definition is not stated."
+    }
+   ],
+   "references": [
+    "estrada2005spectral"
+   ]
+  },
+  "twomode_clustering": {
+   "status": "name_only",
+   "note": "Documented by name only: the sources give the measure by name (six-cycle based two-mode clustering coefficients) without a formula; the primary paper was not checked."
+  },
+  "twomode_core_biclique": {
+   "status": "name_only",
+   "note": "Documented by name only: the sources give only the names of the two-mode core-periphery and bi-clique procedures; no definition was checked."
+  },
+  "bipartite_projection": {
+   "status": "partial",
+   "note": "Count, Newman and sum-of-products weights are written from their papers. The overlap, Jaccard, covariance, correlation, Bonacich and cosine weights of the measures projection and projection_weights are named by the tools but their formulas are not given here; variants are given only for the measure project.",
+   "notation": [
+    {
+     "symbol": "U,V",
+     "meaning": "the two node classes of a bipartite graph; every edge joins a node of \\(U\\) to a node of \\(V\\)"
+    },
+    {
+     "symbol": "B",
+     "meaning": "biadjacency matrix, \\(B_{uv}=1\\) if \\(u\\in U\\) and \\(v\\in V\\) are joined, otherwise 0"
+    },
+    {
+     "symbol": "N(x)",
+     "meaning": "set of neighbours of node \\(x\\)"
+    },
+    {
+     "symbol": "k_x",
+     "meaning": "degree of node \\(x\\), \\(|N(x)|\\)"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "w_{ue}",
+     "meaning": "weight of the edge between \\(u\\) and \\(e\\)"
+    },
+    {
+     "symbol": "P_{uv}",
+     "meaning": "weight of the projected edge between two nodes \\(u,v\\) of the kept class"
+    },
+    {
+     "symbol": "e",
+     "meaning": "node of the class that is projected away"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Shared-neighbour count (Breiger 1974)",
+     "latex": "P_{uv}=\\sum_{e}B_{ue}B_{ve}=(BB^{\\top})_{uv}",
+     "applies_to": [
+      "bipartite",
+      "two_mode"
+     ],
+     "where": "The number of nodes of the dropped class adjacent to both \\(u\\) and \\(v\\). Defined for \\(u\\ne v\\); the diagonal of \\(BB^{\\top}\\) is the degree."
+    },
+    {
+     "name": "Sum of products",
+     "latex": "P_{uv}=\\sum_{e}w_{ue}\\,w_{ve}",
+     "applies_to": [
+      "bipartite",
+      "weighted"
+     ],
+     "where": "The weighted form of the count; with unit weights it equals the count."
+    },
+    {
+     "name": "Newman collaboration weights (Newman 2001)",
+     "latex": "P_{uv}=\\sum_{e:\\,k_e\\ge2}\\frac{B_{ue}B_{ve}}{k_e-1}",
+     "applies_to": [
+      "bipartite",
+      "two_mode"
+     ],
+     "where": "Each shared node \\(e\\) contributes \\(1/(k_e-1)\\), so a large group dilutes the tie. Nodes with \\(k_e=1\\) join no pair and are skipped (the term would be 0/0)."
+    }
+   ],
+   "variants": {
+    "project": "One-mode projection onto either class with count, Newman or product weights, as in the three formulas; the projected class is chosen by the call."
+   },
+   "edge_cases": [
+    {
+     "case": "bipartite",
+     "definition_gives": "The domain: a class assignment must be given; the projection is computed for each class.",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "one-mode fixture (no node types)",
+       "source": "conventions.json project / project_first"
+      },
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "one-mode fixture (no node types)",
+       "source": "conventions.json project / project_first"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "A node with no neighbour has \\(P_{uv}=0\\) with every other node: it stays in the projection without edges."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "A one-node class has no pair of nodes, so its projection has no edges."
+    }
+   ],
+   "references": [
+    "breiger1974duality",
+    "newman2001scientific",
+    "bonacich1972factoring"
+   ]
+  }
+ }
+}

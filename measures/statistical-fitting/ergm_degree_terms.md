@@ -12,15 +12,21 @@ nav_exclude: true
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_degree_terms`. 13 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(y\)</td><td>the network as a matrix of tie indicators \(y_{ij}\in\{0,1\}\) (simple graph, no loops); \(y^{ij+}\) and \(y^{ij-}\) have the tie \((i,j)\) set to 1 and 0</td></tr><tr><td>\(n\)</td><td>number of nodes</td></tr><tr><td>\(D_d\)</td><td>number of nodes with degree \(d\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Degree terms. Entries grouped here: Concurrent; Concurrentties; Degcor; Degcrossprod; Degrange; Degree1 5; and 7 more.
 
-*Definition not yet written.*
+*Definition partly written:* Only degree, idegree and odegree are written; the range, concurrency, correlation, cross-product, distribution and degree^1.5 terms are named in the sources only.
+
+<div class="formula-block"><p class="formula-name"><strong>Degree counts (Morris et al. 2008)</strong> <span class="applies">applies to: any, simple</span></p><div class="formula">\[\text{degree}(d)=D_d=\#\{i:\deg i=d\},\qquad \text{idegree}(d)=\#\{i:\deg^{\mathrm{in}}i=d\},\qquad \text{odegree}(d)=\#\{i:\deg^{\mathrm{out}}i=d\}\]</div><p class="formula-where">Number of nodes with a given (in, out) degree; a range of degrees or a shared tie counts (degrange, concurrent) is a sum of such counts.</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_concurrent">Concurrent</a></td><td><code>cat_concurrent</code></td><td>1</td></tr><tr><td><a href="#cat_concurrentties">Concurrentties</a></td><td><code>cat_concurrentties</code></td><td>1</td></tr><tr><td><a href="#cat_degcor">Degcor</a></td><td><code>cat_degcor</code></td><td>1</td></tr><tr><td><a href="#cat_degcrossprod">Degcrossprod</a></td><td><code>cat_degcrossprod</code></td><td>1</td></tr><tr><td><a href="#cat_degrange">Degrange</a></td><td><code>cat_degrange</code></td><td>1</td></tr><tr><td><a href="#cat_5_degree1">Degree1 5</a></td><td><code>cat_5_degree1</code></td><td>1</td></tr><tr><td><a href="#cat_degreedist">Degreedist</a></td><td><code>cat_degreedist</code></td><td>1</td></tr><tr><td><a href="#cat_idegrange">Idegrange</a></td><td><code>cat_idegrange</code></td><td>1</td></tr><tr><td><a href="#cat_idegree">Idegree</a></td><td><code>cat_idegree</code></td><td>1</td></tr><tr><td><a href="#cat_5_idegree1">Idegree1 5</a></td><td><code>cat_5_idegree1</code></td><td>1</td></tr><tr><td><a href="#cat_odegrange">Odegrange</a></td><td><code>cat_odegrange</code></td><td>1</td></tr><tr><td><a href="#cat_odegree">Odegree</a></td><td><code>cat_odegree</code></td><td>1</td></tr><tr><td><a href="#cat_5_odegree1">Odegree1 5</a></td><td><code>cat_5_odegree1</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_idegree">Idegree</a></td><td><code>cat_idegree</code></td><td>1</td><td>In-degree count \(\#\{i:\deg^{in}i=d\}\).</td></tr><tr><td><a href="#cat_odegree">Odegree</a></td><td><code>cat_odegree</code></td><td>1</td><td>Out-degree count \(\#\{i:\deg^{out}i=d\}\).</td></tr></tbody></table></div>
 
 ## Concurrent {#cat_concurrent}
 

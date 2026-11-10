@@ -12,15 +12,21 @@ nav_exclude: true
 
 Family: [Statistical fitting](index.html). Subfamily: ERGM terms. Concept id: `ergm_edge_terms`. 3 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(y\)</td><td>the network as a matrix of tie indicators \(y_{ij}\in\{0,1\}\) (simple graph, no loops); \(y^{ij+}\) and \(y^{ij-}\) have the tie \((i,j)\) set to 1 and 0</td></tr><tr><td>\(n\)</td><td>number of nodes</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Edge count and density terms. Entries grouped here: Edges; Isolatededges; Meandeg.
 
-*Definition not yet written.*
+*Definition partly written:* Only the edge count is written; mean degree and isolated-edges terms are named in the sources but their definitions were not checked against a primary paper.
+
+<div class="formula-block"><p class="formula-name"><strong>Edge count (Frank and Strauss 1986; Morris et al. 2008)</strong> <span class="applies">applies to: any, simple</span></p><div class="formula">\[\text{edges}(y)=\sum_{i&lt;j}y_{ij}\ \text{(undirected)},\qquad \sum_{i\ne j}y_{ij}\ \text{(directed)}\]</div><p class="formula-where">Its coefficient is the baseline log-odds of a tie.</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_edge">Edges</a></td><td><code>cat_edge</code></td><td>1</td></tr><tr><td><a href="#cat_isolatededges">Isolatededges</a></td><td><code>cat_isolatededges</code></td><td>1</td></tr><tr><td><a href="#cat_meandeg">Meandeg</a></td><td><code>cat_meandeg</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_edge">Edges</a></td><td><code>cat_edge</code></td><td>1</td><td>The edge count above.</td></tr></tbody></table></div>
 
 ## Edges {#cat_edge}
 

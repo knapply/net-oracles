@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Alter average, total and extremum effects. Entries grouped here: Alt Higher Ego X; Alt LThreshold X; Alt RThreshold X; Alt Sq X; Alt X; Av Alt; and 23 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

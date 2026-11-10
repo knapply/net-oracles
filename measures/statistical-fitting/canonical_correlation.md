@@ -16,7 +16,7 @@ Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id:
 
 Network canonical correlation. Entries grouped here: Netcancor.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function or effect name and no definition, and no primary paper was checked.
 
 ## Netcancor {#cat_netcancor}
 

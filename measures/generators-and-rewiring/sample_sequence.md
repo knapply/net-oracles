@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models
 
 Sample sequence. Entries grouped here: Sample seq.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Sample seq {#cat_sample_seq}
 

@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Random trees and fores
 
 Random shell graph. Entries grouped here: Random shell graph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Random shell graph {#cat_random_shell}
 

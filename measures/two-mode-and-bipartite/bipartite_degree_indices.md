@@ -16,7 +16,7 @@ Family: [Two-mode and bipartite](index.html). Subfamily: Bipartite structure. Co
 
 Bipartite degree and neighbor indices. Entries grouped here: Total Neighbors Index; UDegree Index; VDegree Index.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only: the sources record only the tool function names (degree index of each class, total neighbours index) and no formula; the standard degree is not enough to define the index as the tool does.
 
 ## Variants {#concept-variants}
 

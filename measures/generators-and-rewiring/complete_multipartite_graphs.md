@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Named and deterministi
 
 Complete and complete multipartite graphs. Entries grouped here: Complete multipartite graph generator; Full bipartite graph; Full graph; Full join; Full multipartite; Turan graph generator.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 
