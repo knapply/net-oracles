@@ -1,0 +1,3548 @@
+{
+ "family": "Traversal, trees and DAGs",
+ "concepts": {
+  "all_topological_orders": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\sigma:V\\to\\{1,\\dots,n\\}",
+     "meaning": "a bijection, an ordering of the nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Topological order and all of them (Knuth and Szwarcfiter 1974)",
+     "latex": "\\sigma\\ \\text{is a topological order}\\iff \\sigma(u)<\\sigma(v)\\ \\ \\text{for every arc }(u,v)\\in E",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The set of all linear extensions of the partial order of the DAG; its size ranges from 1 (a total order) to \\(n!\\) (no arcs). The sequence in which an algorithm lists them is not part of the definition."
+    }
+   ],
+   "variants": {
+    "nxs_topological_sorts": "The first orders of the list produced by one generator, compared in its own sequence.",
+    "all_topological": "The full set of orders, which a tool lists in the sequence of the algorithm of Knuth and Szwarcfiter."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): exactly one order, the empty one.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No arc constrains anything: all \\(n!\\) permutations.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One order.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop \\((u,u)\\) would need \\(\\sigma(u)<\\sigma(u)\\): no order exists.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel arcs impose the same constraint; the set of orders is unchanged.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Incomparable nodes may be placed in either order, so the listing sequence is a convention; compare sets, not lists.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for digraphs; for an undirected edge both directions are arcs and no order exists.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "knuth1974structured"
+   ]
+  },
+  "antichains": {
+   "status": "partial",
+   "note": "The documented entry cat_antichains is known by name only: whether it enumerates antichains or returns their width is not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\preceq",
+     "meaning": "reachability order: \\(u\\preceq v\\) iff \\(u=v\\) or \\(u\\leadsto v\\)"
+    },
+    {
+     "symbol": "w(G)",
+     "meaning": "width: size of a largest antichain, a set of pairwise unreachable nodes"
+    },
+    {
+     "symbol": "M",
+     "meaning": "maximum matching of the bipartite graph with an edge \\(u^{+}v^{-}\\) for each \\(u\\leadsto v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Width of a DAG (Dilworth 1950)",
+     "latex": "w(G)=\\max\\{|X|:\\ X\\subseteq V,\\ \\text{no }u\\leadsto v\\text{ for }u,v\\in X\\}=n-|M|",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Dilworth's theorem: the largest antichain equals the least number of chains covering the nodes, which is \\(n\\) minus a maximum matching on the reachability pairs (Hopcroft and Karp 1973)."
+    }
+   ],
+   "variants": {
+    "cat_antichains": "Antichains of a partial order as listed by a documented tool; the object scored is not recorded.",
+    "gb_antichain_width": "The width: the size of a largest antichain."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): width 0.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "All nodes are pairwise unreachable: width \\(n\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Width 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "A transitive tournament (a total order) has width 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Pairs with neither \\(u\\leadsto v\\) nor \\(v\\leadsto u\\) are the incomparable ones that antichains consist of.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for acyclic digraphs; a directed cycle makes its nodes mutually reachable, so the reachability order is not antisymmetric.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "dilworth1950decomposition",
+    "hopcroft1973n52"
+   ]
+  },
+  "aperiodic": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "p(G)",
+     "meaning": "period of a strongly connected graph: the greatest common divisor of the lengths of its directed cycles"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Period and aperiodicity (Kemeny and Snell 1960)",
+     "latex": "p(G)=\\gcd\\{\\ell:\\ \\text{there is a closed walk of length }\\ell\\},\\qquad G\\ \\text{aperiodic}\\iff p(G)=1",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "For a strongly connected graph; equivalently some power \\(A^k\\) is entrywise positive (Wielandt's bound gives \\(k\\le(n-1)^2+1\\)). A graph with a self-loop has period 1."
+    }
+   ],
+   "variants": {
+    "gm_aperiodic": "Aperiodicity as positivity of some power of the adjacency matrix (the matrix reading).",
+    "gb_aperiodic": "Aperiodicity as the gcd of the cycle lengths (the graph reading); the two agree on strongly connected graphs."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "With no cycle the gcd of an empty set is not defined.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No loop: no cycle, the gcd is of an empty set and the period is not defined; with a loop the period is 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a cycle of length 1, so \\(p=1\\): aperiodic.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "The definition requires strong connectivity; for other graphs the period is defined per strongly connected component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "A bipartite (two-mode) digraph has only even cycles, so \\(p\\) is a multiple of 2: periodic.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Applies to digraphs; an undirected edge is two opposite arcs, a 2-cycle, so a connected undirected graph has period 1 or 2 (2 exactly when bipartite).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "kemeny1960finite"
+   ]
+  },
+  "cd_index": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "i^*",
+     "meaning": "focal paper; \\(\\mathrm{refs}(i^*)\\) its references; arcs run from the citing to the cited paper"
+    },
+    {
+     "symbol": "f_i",
+     "meaning": "1 if citer \\(i\\) cites \\(i^*\\), else 0"
+    },
+    {
+     "symbol": "b_i",
+     "meaning": "1 if citer \\(i\\) cites at least one paper in \\(\\mathrm{refs}(i^*)\\), else 0"
+    },
+    {
+     "symbol": "n_t",
+     "meaning": "number of papers published in the window that cite \\(i^*\\) or a paper in \\(\\mathrm{refs}(i^*)\\)"
+    },
+    {
+     "symbol": "\\delta",
+     "meaning": "length of the window after the focal paper's date (time delta)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "CD index (Funk and Owen-Smith 2017)",
+     "latex": "CD_{\\delta}=\\frac1{n_t}\\sum_{i=1}^{n_t}\\bigl(-2f_ib_i+f_i\\bigr)=\\frac{n_i-n_j}{n_i+n_j+n_k}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Only papers published after the focal paper and at most \\(\\delta\\) after it are counted. \\(n_i\\) cite the focal paper only, \\(n_j\\) cite it and its references, \\(n_k\\) cite its references only. The value lies in \\([-1,1]\\): \\(+1\\) disruptive, \\(-1\\) consolidating. The weighted form divides each term by the weight of the citing paper."
+    }
+   ],
+   "variants": {
+    "nxs_cd_index": "The index in the window of length delta (delta 0, 1, 3, ...), unweighted or with each term divided by the citer's weight; the window in the definition covers only papers published after the focal paper."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "\\(n_t=0\\): no citer in the window, \\(0/0\\): not defined.",
+     "tools": {}
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "A paper with no citers and none citing its references has \\(n_t=0\\): not defined.",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Citation arcs are directed from the citing to the cited paper; the formula reads citers as in-neighbours of the focal node. A tool that counts citers published before the focal paper, or all citers of a reference whatever their date, computes a different number.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "NetworkX sums over every citer published up to the end of the window, including citers published before the focal node, and counts in the pool n every citer of a reference whatever its time; Funk and Owen-Smith (and the reference value's default) count only the papers published after the focal paper and at most delta after it. NetworkX 1, reference undefined, since the only citer predates the focal paper). The tolerance is NetworkX's rounding of the index to two decimals.",
+       "source": "conventions.json nxs_cd_index / nxs_cd_index_delta0",
+       "measure": "nxs_cd_index",
+       "finding": "F032"
+      }
+     }
+    }
+   ],
+   "references": [
+    "funk2017dynamic"
+   ]
+  },
+  "chain_decomposition": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "c",
+     "meaning": "number of connected components"
+    },
+    {
+     "symbol": "T",
+     "meaning": "depth-first spanning forest"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Chain decomposition (Schmidt 2013)",
+     "latex": "\\#\\text{chains}=m-n+c",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Each back edge of a depth-first search starts one chain, traversed back along the tree path to an already visited node; the number of back edges is the cyclomatic number \\(m-n+c\\) of a simple graph. The decomposition certifies 2-edge- and 2-vertex-connectivity."
+    }
+   ],
+   "variants": {
+    "cat_chain_decomposition": "The chains themselves, in the order they are traced; documented only and not run.",
+    "gb_chain_count": "The number of chains, equal to the cyclomatic number \\(m-n+c\\) for a simple graph."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=m=c=0\\): no chains.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(m-n+c=0\\): no chains.",
+     "tools": {}
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolated node adds 1 to \\(n\\) and to \\(c\\): no chain.",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a back edge that closes a chain of length 1; whether loops are chain-starting edges is not fixed by the cyclomatic count of a simple graph.",
+     "tools": {}
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "A parallel edge is a back edge, so the count \\(m-n+c\\) of a multigraph includes it; the definition is for simple graphs.",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "NetworkX's chain_decomposition rejects multigraphs.",
+       "source": "conventions.json gb_chain_count / gb_chain_count"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Chains are found in each component; the count is \\(m-n+c\\) with \\(c>1\\).",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for undirected graphs only.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "schmidt2013simple"
+   ]
+  },
+  "colliders": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "(u,v,w)",
+     "meaning": "triple with \\(u,w\\in\\mathrm{pa}(v)\\), \\(u\\neq w\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Collider (Pearl 1988)",
+     "latex": "u\\to v\\leftarrow w,\\quad u\\neq w",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "\\(v\\) is a collider on the path \\(u,v,w\\) when both arcs point into \\(v\\)."
+    },
+    {
+     "name": "V-structure (unshielded collider)",
+     "latex": "u\\to v\\leftarrow w,\\quad u\\not\\sim w",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "A collider whose parents are not adjacent in either direction."
+    }
+   ],
+   "variants": {
+    "nxs_colliders": "All colliders, or only the v-structures (unshielded), as a list of triples; the order is that of the node and neighbour iteration."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No triples.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No triples.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No triples.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "A star with arcs pointing into the centre has one collider per pair of leaves, and every one is a v-structure since the leaves are non-adjacent.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop \\(v\\to v\\) makes \\(v\\) its own parent, which the DAG setting excludes; the definition does not cover it.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel arcs do not create new parent pairs: parents are a set.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Needs arc directions; undirected edges are not colliders.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "pearl1988probabilistic"
+   ]
+  },
+  "dag_reachability": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "R=(r_{uv})",
+     "meaning": "reachability: \\(r_{uv}=1\\) iff \\(u\\leadsto v\\) (a path of at least one arc)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Reachability (Warshall 1962)",
+     "latex": "r_{uv}=1\\iff (A+A^2+\\cdots+A^{n-1})_{uv}>0",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The pairs joined by a directed path; for a DAG a sweep over a reverse topological order computes it as \\(R(u)=\\bigcup_{v\\in\\mathrm{ch}(u)}(\\{v\\}\\cup R(v))\\)."
+    }
+   ],
+   "variants": {
+    "nxs_dag_reachability": "For each node, the set of descendants (nodes reachable from it)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The empty relation.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "The empty relation.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop makes \\(u\\leadsto u\\); acyclic input has none.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel arcs change nothing: reachability is a set.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Pairs are ordered; reachability is not symmetric.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "warshall1962theorem"
+   ]
+  },
+  "is_dag": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Acyclicity (Kahn 1962)",
+     "latex": "G\\ \\text{is a DAG}\\iff\\text{no directed cycle}\\iff\\exists\\ \\text{a topological order of }V",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Kahn's procedure removes nodes without incoming arcs repeatedly; \\(G\\) is a DAG exactly when all nodes are removed. A self-loop is a cycle of length 1."
+    }
+   ],
+   "variants": {
+    "is_dag": "The yes/no test for a directed graph."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No cycle: the null graph is acyclic.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Acyclic without a loop, cyclic with one.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a directed cycle: not a DAG.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel arcs form no cycle: no effect.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed graphs; an undirected edge is a 2-cycle (two opposite arcs), so any undirected graph with an edge is not a DAG under this reading.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "no_value",
+       "behaviour": "rx.is_directed_acyclic_graph() accepts only a PyDiGraph.",
+       "source": "conventions.json is_dag / dag_is_dag"
+      }
+     }
+    }
+   ],
+   "references": [
+    "kahn1962topological"
+   ]
+  },
+  "lexicographic_topological_sort": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\kappa(v)",
+     "meaning": "sort key of node \\(v\\) (its label by default)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Lexicographically least topological order (Kahn 1962 with a priority queue)",
+     "latex": "\\sigma_1=\\arg\\min_{v:\\ \\mathrm{pa}(v)=\\emptyset}\\kappa(v),\\quad \\sigma_{t+1}=\\arg\\min_{v\\notin\\{\\sigma_1..\\sigma_t\\},\\ \\mathrm{pa}(v)\\subseteq\\{\\sigma_1..\\sigma_t\\}}\\kappa(v)",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "At each step take the available node (all parents placed) with the smallest key; the order is unique when keys are distinct and is defined only for DAGs."
+    }
+   ],
+   "variants": {
+    "gb_lex_topo": "The order obtained with the labels as keys.",
+    "lexicographic": "The order obtained with a key function; equal keys are broken by a convention not fixed by the definition."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Empty order.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Nodes in increasing key order.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal keys: the definition does not say which comes first, so the order is not unique.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a cycle: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Needs a DAG.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "kahn1962topological"
+   ]
+  },
+  "dag_longest_path": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\mathrm{pa}(v),\\ \\mathrm{ch}(v)",
+     "meaning": "parents (in-neighbours) and children (out-neighbours) of \\(v\\)"
+    },
+    {
+     "symbol": "u\\leadsto v",
+     "meaning": "there is a directed path of at least one arc from \\(u\\) to \\(v\\)"
+    },
+    {
+     "symbol": "w(u,v)",
+     "meaning": "arc weight, 1 when unweighted"
+    },
+    {
+     "symbol": "\\ell(v)",
+     "meaning": "length of a longest path ending at \\(v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Longest path in a DAG (dynamic programming in topological order; Sedgewick and Wayne 2011)",
+     "latex": "\\ell(v)=\\max\\Bigl(0,\\ \\max_{u\\in\\mathrm{pa}(v)}\\bigl(\\ell(u)+w(u,v)\\bigr)\\Bigr),\\qquad L(G)=\\max_{v}\\ell(v)",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Processing nodes in topological order gives \\(\\ell(v)\\) in one pass. With unit weights \\(L\\) is the number of arcs of the path (one less than the number of nodes on it). With negative weights the inner maximum may be negative, so the term 0 (a path of one node) matters; the definition is for DAGs since the longest simple path of a cyclic graph is a different, hard problem."
+    }
+   ],
+   "variants": {
+    "cat_dag_length_longest_path": "The length of the longest path (arcs), unweighted; documented only.",
+    "cat_dag_length_longest_path_weighted": "The length with arc weights \\(w\\); documented only.",
+    "cat_dag_longest_path": "A longest path as a node list, unweighted; documented only.",
+    "cat_dag_longest_path_weighted": "A longest path as a node list, by weight; documented only.",
+    "gb_longest_path_len": "The length in arcs: the number of nodes of the longest path minus 1.",
+    "longest_length": "The length \\(L(G)\\) of the longest path, with arc weights if given.",
+    "longest_path": "A longest path (the node sequence); when several have the maximal length the choice among them is not fixed by the definition."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: no path; \\(\\max\\) over an empty set is not defined.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(L=0\\), a path with one node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(L=0\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several longest paths of equal length: the length is unique, the path is not.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "negative_weights",
+     "definition_gives": "\\(\\ell(v)\\) may take the 0 branch, so a path starts anew; the dynamic programme is still correct on a DAG.",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a cycle: not a DAG, not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Needs a DAG.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "sedgewick2011algorithms"
+   ]
+  },
+  "dag_lca": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\mathrm{anc}(v)",
+     "meaning": "ancestors of \\(v\\) including \\(v\\) itself"
+    },
+    {
+     "symbol": "\\mathrm{LCA}(u,v)",
+     "meaning": "set of lowest common ancestors"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Lowest common ancestors in a DAG (Aho, Hopcroft and Ullman 1976; Bender et al. 2005)",
+     "latex": "\\mathrm{LCA}(u,v)=\\{a\\in\\mathrm{anc}(u)\\cap\\mathrm{anc}(v):\\ \\text{no }b\\in\\mathrm{anc}(u)\\cap\\mathrm{anc}(v),\\ b\\neq a,\\ a\\leadsto b\\}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The common ancestors that are not an ancestor of another common ancestor. In a DAG this set can have more than one element (unlike in a tree), so a single answer needs a choice rule."
+    }
+   ],
+   "variants": {
+    "dag_lca": "One lowest common ancestor for each pair, or a none mark when the pair has no common ancestor."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "\\(\\mathrm{LCA}(u,u)=\\{u\\}\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "No common ancestor: \\(\\mathrm{LCA}\\) is empty, so there is no answer.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "\\(|\\mathrm{LCA}|>1\\): every member is a correct answer, so which one a tool returns is a convention.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Needs a DAG; ancestors follow arcs backwards.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "When a pair has several lowest common ancestors NetworkX starts its walk from the first common ancestor in Python's set order and the reference from the one of smallest index, so they can return different, equally valid ancestors (checked pair by pair on the corpus: every differing answer of both is a lowest common ancestor). dag_lca_check confirms every reference answer.",
+       "source": "conventions.json dag_lca / dag_lca",
+       "measure": "dag_lca"
+      }
+     }
+    }
+   ],
+   "references": [
+    "aho1976finding",
+    "bender2005lowest"
+   ]
+  },
+  "moral_graph": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "M(G)",
+     "meaning": "moral graph"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Moral graph (Lauritzen and Spiegelhalter 1988)",
+     "latex": "V(M(G))=V,\\quad E(M(G))=\\{uv:\\ (u,v)\\in E\\ \\text{or}\\ (v,u)\\in E\\}\\cup\\{uw:\\ u\\neq w,\\ \\exists v,\\ u,w\\in\\mathrm{pa}(v)\\}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Drop the directions and 'marry' the parents of every node."
+    }
+   ],
+   "variants": {
+    "gb_moral_edges": "The distinct unordered pairs of the moral graph."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The null graph.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Edgeless.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "An in-star (all arcs into the centre) gets all pairs of leaves joined: the moral graph is complete.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop would marry a node to itself and is excluded by \\(u\\neq w\\); DAG input has none.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel arcs add no new pair.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Needs a digraph; an undirected graph has no parents.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "lauritzen1988local"
+   ]
+  },
+  "topological_generations": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\mathrm{pa}(v),\\ \\mathrm{ch}(v)",
+     "meaning": "parents (in-neighbours) and children (out-neighbours) of \\(v\\)"
+    },
+    {
+     "symbol": "u\\leadsto v",
+     "meaning": "there is a directed path of at least one arc from \\(u\\) to \\(v\\)"
+    },
+    {
+     "symbol": "g(v)",
+     "meaning": "generation index of \\(v\\), starting at 0"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Topological generations (Kahn 1962)",
+     "latex": "g(v)=\\begin{cases}0&\\mathrm{pa}(v)=\\emptyset\\\\1+\\max_{u\\in\\mathrm{pa}(v)}g(u)&\\text{otherwise}\\end{cases}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Generation \\(k\\) holds the nodes whose parents are all in earlier generations; \\(g(v)\\) is the length of a longest path from any source to \\(v\\). Unique, unlike a topological order."
+    }
+   ],
+   "variants": {
+    "gb_topo_levels": "The generation index of each node (the longest path from any source).",
+    "generations": "The lists of nodes of generation 0, 1, 2, ...; order inside a generation is a convention."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No generations.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "One generation holding all nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Nodes of one generation are unordered; their listing order is a convention.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a cycle: no generation assignment exists.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Needs a DAG.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "kahn1962topological"
+   ]
+  },
+  "topological_sort": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\sigma",
+     "meaning": "an ordering of the nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Topological order (Kahn 1962; Knuth 1974)",
+     "latex": "\\sigma(u)<\\sigma(v)\\ \\ \\text{for every arc }(u,v)",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Any linear extension of the reachability order; it exists iff the graph is acyclic and is unique iff the DAG has a Hamiltonian path."
+    }
+   ],
+   "variants": {
+    "topological_sort": "One topological order; the result depends on the tie-breaking rule of the algorithm."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The empty order.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Every permutation is valid.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Incomparable nodes can be put in either order: the definition admits many answers, so tools may legitimately differ.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a cycle: no order exists.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Needs a DAG.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "kahn1962topological",
+    "knuth1974structured"
+   ]
+  },
+  "transitive_closure": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "E^{+}",
+     "meaning": "transitive closure of the arc set"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Transitive closure (Warshall 1962)",
+     "latex": "(u,v)\\in E^{+}\\iff u\\leadsto v",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The least transitive relation containing \\(E\\): all pairs joined by a directed path of at least one arc. The reflexive form also contains \\((u,u)\\) for every node."
+    }
+   ],
+   "variants": {
+    "closure": "The arcs \\((u,v)\\) of the closure, sorted by source then target."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No pairs.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No pairs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "\\((u,u)\\in E^{+}\\) only if \\(u\\) lies on a cycle (a loop is one); the reflexive closure adds all of them.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Pairs are a set: parallel arcs collapse.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Ordered pairs; for undirected input every node of a component with an edge is joined to every other, and to itself.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "warshall1962theorem",
+    "aho1972transitive"
+   ]
+  },
+  "transitive_reduction": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "E^{-}",
+     "meaning": "arc set of the transitive reduction"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Transitive reduction (Aho, Garey and Ullman 1972)",
+     "latex": "E^{-}=\\{(u,v)\\in E:\\ \\text{no path }u\\leadsto v\\text{ of length}\\ge2\\}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The fewest arcs with the same reachability as \\(G\\); unique for a DAG. For a graph with cycles a minimal graph is not unique, and the definition's formula would drop every arc of a strongly connected component that also has a longer path."
+    }
+   ],
+   "variants": {
+    "reduction": "The arcs of the reduction of a DAG, sorted by source then target."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No arcs.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No arcs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop \\((u,u)\\) cannot be implied by another path in a DAG; DAG input has none.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Duplicate arcs are redundant by definition: one copy at most.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Needs a DAG for uniqueness.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "aho1972transitive"
+   ]
+  },
+  "capacitated_spanning_tree": {
+   "status": "name_only",
+   "note": "Two capacitated minimum spanning tree heuristics (Esau-Williams, Ahuja-Orlin-Sharma) are listed by name by a documented-only tool; their original papers are not among the checked sources, so no formula is written."
+  },
+  "common_spanning_trees": {
+   "status": "partial",
+   "note": "The definition is written from the name of the documented entry; its algorithm is not recorded and no primary source is cited.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "G_1,G_2",
+     "meaning": "two graphs on the same node set"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Common spanning tree",
+     "latex": "T\\ \\text{is a spanning tree of }G_1\\ \\text{and of }G_2",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "A tree whose edges all lie in both graphs; exists only if the intersection graph \\(G_1\\cap G_2\\) is connected, and then it is a spanning tree of that intersection."
+    }
+   ],
+   "variants": {
+    "cat_common_spanning_tree_two": "A spanning tree common to both graphs; documented only."
+   },
+   "edge_cases": [
+    {
+     "case": "disconnected",
+     "definition_gives": "If \\(G_1\\cap G_2\\) is disconnected there is no common spanning tree: not defined.",
+     "tools": {}
+    }
+   ]
+  },
+  "maximum_branching": {
+   "status": "partial",
+   "note": "cat_branching_dag_to is known by name only (the branching it builds from a DAG is not specified in the sources).",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "w(e)",
+     "meaning": "edge weight"
+    },
+    {
+     "symbol": "B\\subseteq E",
+     "meaning": "arc set with in-degree \\(\\le1\\) at every node and no cycle: a branching"
+    },
+    {
+     "symbol": "r",
+     "meaning": "root of an arborescence"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Optimum branching (Edmonds 1967; Chu and Liu 1965)",
+     "latex": "B^{*}=\\arg\\max_{B\\ \\text{branching}}\\sum_{e\\in B}w(e),\\qquad \\text{an arborescence: a branching with }n-1\\text{ arcs, every node reachable from }r",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "A branching is an acyclic arc set with in-degree at most 1; the maximum-weight one is found by contracting cycles (Edmonds, Camerini et al. 1979, Gabow et al. 1986). Arcs of non-positive weight can be left out of a maximum branching (but not out of a spanning arborescence)."
+    },
+    {
+     "name": "Greedy branching",
+     "latex": "\\text{add arcs in decreasing weight while in-degree}\\le1\\text{ and no cycle arises}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "A heuristic: it returns a branching but not necessarily one of maximum weight."
+    }
+   ],
+   "variants": {
+    "nxs_greedy_branching": "The greedy heuristic branching, not the optimum.",
+    "branching": "An optimum branching or arborescence (by edge positions) and its total weight.",
+    "cat_branching_dag_to": "A branching built from a DAG by a documented tool; the sources record only the name.",
+    "gb_branching_weight": "The total weight of an optimum branching."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The empty branching of weight 0.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "The empty branching.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a cycle: never in a branching.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "At most one of the parallel arcs into a node can be used: the heaviest.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal weights give several optimum branchings with the same total weight.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "A zero-weight arc adds nothing to the weight: optimum branchings may or may not contain it.",
+     "tools": {}
+    },
+    {
+     "case": "negative_weights",
+     "definition_gives": "A negative arc is left out of a maximum branching; a spanning arborescence may be forced to contain it.",
+     "tools": {}
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "A spanning arborescence from \\(r\\) exists only if every node is reachable from \\(r\\); a branching always exists.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Needs a digraph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "edmonds1967optimum",
+    "chu1965shortest",
+    "camerini1979note",
+    "gabow1986efficient"
+   ]
+  },
+  "minimum_spanning_tree": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "w(e)",
+     "meaning": "edge weight"
+    },
+    {
+     "symbol": "T",
+     "meaning": "a spanning forest: an acyclic edge set with one tree per connected component"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Minimum spanning forest (Boruvka 1926; Kruskal 1956; Prim 1957)",
+     "latex": "T^{*}=\\arg\\min_{T\\ \\text{spanning forest}}\\sum_{e\\in T}w(e),\\qquad W(T^{*})=\\sum_{e\\in T^{*}}w(e)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "The tree edges have \\(n-c\\) edges for \\(c\\) components. The weight \\(W\\) is unique; the tree is unique when the weights are distinct. The maximum spanning forest is the same with \\(\\max\\), or with \\(-w\\)."
+    }
+   ],
+   "variants": {
+    "gb_mst_weight": "The total weight \\(W\\) (computed by Prim's algorithm on every component).",
+    "spanning_tree": "The edge set of a minimum or maximum spanning forest, by input edge positions.",
+    "spanning_weight": "The total weight of the minimum (or maximum) spanning forest."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The empty forest, weight 0.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(n-c=0\\) edges, weight 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No edge, weight 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "A forest with one tree per component, \\(n-c\\) edges; there is no spanning tree of the whole graph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a cycle and never in a forest.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Only the lightest of parallel edges can be in the forest.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal weights give several optimum forests with the same total weight.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "A zero-weight edge may be used at no cost.",
+     "tools": {}
+    },
+    {
+     "case": "negative_weights",
+     "definition_gives": "Negative weights are allowed by Kruskal and Prim; the forest minimizes the sum.",
+     "tools": {}
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Unweighted input gives any spanning forest (all have weight \\(n-c\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "boruvka1926jistem",
+    "kruskal1956shortest",
+    "prim1957shortest"
+   ]
+  },
+  "spanning_tree_count": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "L",
+     "meaning": "Laplacian \\(D-A\\)"
+    },
+    {
+     "symbol": "\\tau(G)",
+     "meaning": "number of spanning trees"
+    },
+    {
+     "symbol": "L_{(r)}",
+     "meaning": "\\(L\\) with row and column \\(r\\) removed"
+    },
+    {
+     "symbol": "L^{\\text{out}}_{(r)}",
+     "meaning": "out-degree Laplacian \\(D_{\\text{out}}-A\\) with row and column \\(r\\) removed"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Matrix-tree theorem (Kirchhoff 1847)",
+     "latex": "\\tau(G)=\\det L_{(r)}=\\frac1n\\prod_{i=2}^{n}\\mu_i",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Any cofactor of the Laplacian; also \\(\\frac1n\\) times the product of the non-zero Laplacian eigenvalues. For a multigraph or weighted graph the Laplacian counts multiplicities, and the determinant is the sum over trees of the product of edge multiplicities (weights)."
+    },
+    {
+     "name": "Directed matrix-tree theorem (Tutte 1948)",
+     "latex": "\\tau_r(G)=\\det L^{\\text{out}}_{(r)}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The number of spanning arborescences oriented towards \\(r\\) (every node has a path to \\(r\\); each other node chooses one out-arc). With the in-degree Laplacian \\(D_{\\text{in}}-A\\) the same determinant counts the arborescences oriented away from \\(r\\)."
+    }
+   ],
+   "variants": {
+    "gb_spanning_trees": "The count \\(\\tau(G)\\) for undirected input, or the number of arborescences rooted at a given node for directed input, as an exact integer."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n=0\\): the minor has no rows; the count by the formula is not defined.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "The 0\\(\\times\\)0 determinant is 1: one (empty) spanning tree.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "No spanning tree: \\(\\tau=0\\) (the Laplacian has a repeated zero eigenvalue).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is in no tree: it cancels in \\(D-A\\) when counted once in \\(A\\) and in \\(D\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Multiplicities multiply: two parallel edges give two choices.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "A weighted count sums the products of the weights of the tree edges (not the number of trees).",
+     "tools": {}
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(\\tau(K_n)=n^{n-2}\\) (Cayley).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The directed count depends on the root and on the orientation of the arborescence.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "kirchhoff1847ueber",
+    "tutte1948dissection"
+   ]
+  },
+  "partition_spanning_tree": {
+   "status": "name_only",
+   "note": "The sources list one entry (partition spanning tree) by name only for a documented tool; its definition and source are not stated."
+  },
+  "random_spanning_tree": {
+   "status": "partial",
+   "note": "cat_forest_maximum_random_spanning is known by name only; the other two measures are defined.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "w(e)",
+     "meaning": "edge weight, 1 when unweighted"
+    },
+    {
+     "symbol": "R_{\\mathrm{eff}}(e)",
+     "meaning": "effective resistance between the ends of \\(e\\)"
+    },
+    {
+     "symbol": "\\mathcal T",
+     "meaning": "set of spanning trees"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Distribution of a random spanning tree (Wilson 1996)",
+     "latex": "\\Pr(T)=\\frac{\\prod_{e\\in T}w(e)}{\\sum_{T'\\in\\mathcal T}\\prod_{e\\in T'}w(e)}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Uniform when unweighted; weighted by the product of edge weights otherwise. Wilson's algorithm samples it by loop-erased random walks."
+    },
+    {
+     "name": "Edge inclusion probability",
+     "latex": "\\Pr(e\\in T)=w(e)\\,R_{\\mathrm{eff}}(e)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Follows from the matrix-tree theorem; the effective resistance is computed from the pseudo-inverse of the Laplacian."
+    }
+   ],
+   "variants": {
+    "cat_forest_maximum_random_spanning": "A random maximum spanning forest, as listed by a documented tool; the sources do not say how randomness enters.",
+    "random_spanning_tree": "One tree drawn from the distribution above (the result depends on the random seed).",
+    "rst_edge_freq": "The frequency with which each edge appears in repeated draws, to be compared with \\(w(e)R_{\\mathrm{eff}}(e)\\)."
+   },
+   "edge_cases": [
+    {
+     "case": "disconnected",
+     "definition_gives": "No spanning tree: the distribution is empty.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One (empty) tree.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add weight: \\(\\Pr(e\\in T)\\) is summed over them.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights bias the draw by the product rule; negative weights are outside the definition.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "wilson1996generating",
+    "kirchhoff1847ueber"
+   ]
+  },
+  "steiner_tree": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "K\\subseteq V",
+     "meaning": "terminal set"
+    },
+    {
+     "symbol": "w(e)",
+     "meaning": "edge weight"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Steiner tree",
+     "latex": "T^{*}=\\arg\\min_{T\\ \\text{tree},\\ K\\subseteq V(T)}\\sum_{e\\in T}w(e)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "A least-weight tree that contains all terminals and may contain other nodes; NP-hard, so tools return approximations: Kou, Markowsky and Berman (1981) compute a minimum spanning tree of the metric closure on \\(K\\) and expand it (factor 2); Mehlhorn (1988) computes the same bound faster."
+    }
+   ],
+   "variants": {
+    "steiner_tree": "A Steiner tree (an approximation in general) for a terminal set."
+   },
+   "edge_cases": [
+    {
+     "case": "group_input",
+     "definition_gives": "With \\(|K|\\le 1\\) the tree is a single node (or empty); \\(K=V\\) gives the minimum spanning tree.",
+     "tools": {}
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Terminals in different components cannot be connected: not defined.",
+     "tools": {}
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "Zero-weight edges can be added freely.",
+     "tools": {}
+    },
+    {
+     "case": "negative_weights",
+     "definition_gives": "With negative weights adding a negative edge lowers the cost, so the definition needs non-negative weights (otherwise it is a different problem).",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "kou1981fast",
+    "mehlhorn1988faster"
+   ]
+  },
+  "maximum_spanning_forest": {
+   "status": "name_only",
+   "note": "The sources list one entry (union maximum spanning forest) by name only for a documented tool; the object it returns is not specified and no source is among those checked."
+  },
+  "breadth_first_search": {
+   "status": "partial",
+   "note": "Three documented-only entries (cat_bfs_iterator, cat_bfs_random, cat_bfs_reverse) are described from their names; the exact output of the beam search depends on its score function and width.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "s",
+     "meaning": "start node"
+    },
+    {
+     "symbol": "d(s,v)",
+     "meaning": "number of arcs of a shortest path from \\(s\\) to \\(v\\); \\(\\infty\\) if unreachable"
+    },
+    {
+     "symbol": "L_k",
+     "meaning": "layer \\(k\\): the nodes with \\(d(s,v)=k\\)"
+    },
+    {
+     "symbol": "\\pi(v)",
+     "meaning": "parent of \\(v\\) in the BFS tree"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Breadth-first search (Moore 1959)",
+     "latex": "L_0=\\{s\\},\\quad L_{k+1}=\\{v\\notin L_0\\cup\\cdots\\cup L_k:\\ \\exists u\\in L_k,\\ (u,v)\\in E\\}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Nodes are visited layer by layer, so each is visited at its hop distance \\(d(s,v)\\) from \\(s\\); the BFS tree edges \\((\\pi(v),v)\\) form a shortest-path tree. Layers are determined by the graph; the order inside a layer and the parents are not."
+    }
+   ],
+   "variants": {
+    "cat_bfs_iterator": "The nodes in visiting order as an iterator; documented only and not run.",
+    "cat_bfs_random": "A breadth-first traversal with a random neighbour order; documented only. Layers are unchanged, the order inside layers is random.",
+    "cat_bfs_reverse": "Breadth-first search along arcs backwards (in-neighbours); documented only. It gives distances to \\(s\\) in place of distances from \\(s\\).",
+    "trav_beam": "Beam search: at each layer only the \\(\\beta\\) nodes of best value (by a score function) are kept as the next frontier, so it visits a subset of the nodes of ordinary BFS.",
+    "trav_bfs_edges": "The BFS tree edges \\((\\pi(v),v)\\) in discovery order.",
+    "trav_bfs_labeled": "Every edge visited, labelled as a tree edge or a non-tree edge.",
+    "trav_bfs_layers": "The layers \\(L_0,L_1,\\dots\\) as lists of nodes.",
+    "trav_edge_bfs": "Edge-based BFS: edges (not nodes) in the order they are reached, each edge once."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "There is no start node: nothing is traversed.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Only the start node, layer 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Only the component of the start node is visited; the other components are not reached unless the traversal restarts from every unvisited node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Only nodes reachable along arc directions are visited.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "The visit order inside a layer, and so the choice of tree parents, follows the order in which neighbours are listed: the definition does not fix it, so two correct traversals can differ in order and tree edges while agreeing on the layers.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop leads to an already visited node: it is a non-tree edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges lead to the same neighbour; a node-based traversal visits it once, an edge-based traversal reports each edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Out-edges are followed for directed input, all incident edges for undirected input.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "moore1959shortest"
+   ]
+  },
+  "depth_first_search": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "t_d(v),\\ t_f(v)",
+     "meaning": "discovery and finishing time of \\(v\\)"
+    },
+    {
+     "symbol": "\\pi(v)",
+     "meaning": "parent of \\(v\\) in the DFS forest"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Depth-first search (Tarjan 1972)",
+     "latex": "\\text{visit }v:\\ \\text{set }t_d(v);\\ \\text{for each neighbour }u\\text{ of }v\\text{ not yet visited: set }\\pi(u)=v\\text{ and visit }u;\\ \\text{set }t_f(v)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Each node is explored as deep as possible before backtracking. The order of neighbours decides which of several valid forests results. Arcs are classified tree, back (to an ancestor), forward (to a descendant) and cross; in an undirected graph only tree and back edges occur."
+    }
+   ],
+   "variants": {
+    "cat_dfs_iterator": "Nodes in visiting order as an iterator; documented only.",
+    "trav_dfs_events": "Every edge together with its label (tree, forward/reverse-post, non-tree) as events.",
+    "trav_edge_dfs": "Edge-based DFS: each edge once, in the order reached."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "There is no start node: nothing is traversed.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Only the start node, layer 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Only the component of the start node is visited; the other components are not reached unless the traversal restarts from every unvisited node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Only nodes reachable along arc directions are visited.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "The visit order inside a layer, and so the choice of tree parents, follows the order in which neighbours are listed: the definition does not fix it, so two correct traversals can differ in order and tree edges while agreeing on the layers.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop leads to an already visited node: it is a non-tree edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges lead to the same neighbour; a node-based traversal visits it once, an edge-based traversal reports each edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Out-edges are followed for directed input, all incident edges for undirected input.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "tarjan1972depth"
+   ]
+  },
+  "random_walks": {
+   "status": "partial",
+   "note": "The documented tool entries are not specified beyond their names (walk length, restart rule, sampling scheme not recorded).",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "W=(X_0,X_1,\\dots)",
+     "meaning": "random walk on the graph"
+    },
+    {
+     "symbol": "p,q",
+     "meaning": "return and in-out parameters of a biased walk"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Simple random walk (Kemeny and Snell 1960)",
+     "latex": "\\Pr(X_{t+1}=v\\mid X_t=u)=\\frac{w(u,v)}{\\sum_{x}w(u,x)}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Move along an out-edge chosen in proportion to its weight (uniformly if unweighted); not defined at a node without out-edges."
+    },
+    {
+     "name": "Biased second-order walk (Grover and Leskovec 2016)",
+     "latex": "\\Pr(X_{t+1}=x\\mid X_t=v,X_{t-1}=u)\\propto\\alpha_{pq}(u,x)\\,w(v,x),\\quad \\alpha_{pq}=\\begin{cases}1/p&d_{ux}=0\\\\1&d_{ux}=1\\\\1/q&d_{ux}=2\\end{cases}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Return parameter \\(p\\) and in-out parameter \\(q\\) bias the step by the distance \\(d_{ux}\\) of the candidate from the previous node; \\(p=q=1\\) is the simple walk."
+    }
+   ],
+   "variants": {
+    "random_walk": "Walks drawn from the simple (or biased) transition rule; the results depend on the random seed.",
+    "random_walk_sampling": "Walks used to sample nodes or edges (visit counts, subgraph samples); the sampling scheme is a property of the tool."
+   },
+   "edge_cases": [
+    {
+     "case": "isolates",
+     "definition_gives": "A node without out-edges has no next step: the walk stops, restarts or stays, which the transition formula does not decide.",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a possible step \\(u\\to u\\).",
+     "tools": {}
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights bias the step in proportion; zero-weight edges are never taken, and negative weights are outside the definition.",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Out-edges only for directed input.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "kemeny1960finite",
+    "grover2016node2vec"
+   ]
+  },
+  "vertex_orderings": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\sigma",
+     "meaning": "vertex ordering"
+    },
+    {
+     "symbol": "k(G)",
+     "meaning": "degeneracy"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Degeneracy ordering and core numbers (Matula and Beck 1983)",
+     "latex": "\\sigma_t=\\arg\\min_{v\\notin\\{\\sigma_1..\\sigma_{t-1}\\}}\\deg_{G-\\{\\sigma_1..\\sigma_{t-1}\\}}(v),\\qquad k(G)=\\max_t\\deg_{G-\\{\\sigma_1..\\sigma_{t-1}\\}}(\\sigma_t)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Repeatedly remove a node of least remaining degree; the largest degree seen at removal is the degeneracy."
+    },
+    {
+     "name": "Maximum cardinality search (Tarjan and Yannakakis 1984)",
+     "latex": "\\sigma_t=\\arg\\max_{v\\ \\text{unnumbered}}\\bigl|N(v)\\cap\\{\\sigma_1..\\sigma_{t-1}\\}\\bigr|",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Visit next an unvisited node with most visited neighbours; the reverse of the order is a perfect elimination ordering exactly when the graph is chordal (Berry, Blair and Heggernes 2004 for minimal triangulations)."
+    }
+   ],
+   "variants": {
+    "cat_cardinality_maximum_search": "The maximum cardinality search ordering.",
+    "vertex_orderings": "Collective entry for orderings (maximum cardinality search, degeneracy ordering)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Empty ordering; degeneracy not defined (max over nothing).",
+     "tools": {}
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Isolated nodes have degree 0 and are placed first by degeneracy ordering and, with 0 visited neighbours, tie with every other candidate in MCS.",
+     "tools": {}
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "MCS restarts in each component by choosing any node; the ordering is not unique.",
+     "tools": {}
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Both rules have ties at almost every step: the order is not unique and tools differ by tie rule; the degeneracy value is unique.",
+     "tools": {}
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop adds to the degree in some conventions and is ignored in others.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "matula1983smallest",
+    "tarjan1984simple",
+    "berry2004maximum"
+   ]
+  },
+  "walk_counts": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "A",
+     "meaning": "adjacency matrix (parallel edges counted, loops as in the adjacency convention)"
+    },
+    {
+     "symbol": "W_k(u,v)",
+     "meaning": "number of walks of \\(k\\) arcs from \\(u\\) to \\(v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Number of walks (Biggs 1974)",
+     "latex": "W_k(u,v)=(A^k)_{uv},\\qquad W_k(u)=\\sum_vW_k(u,v)=(A^k\\mathbf 1)_u",
+     "applies_to": [
+      "any"
+     ],
+     "where": "A walk may repeat nodes and edges. \\(W_0=I\\). For undirected input each edge can be used in both directions."
+    }
+   ],
+   "variants": {
+    "gb_walks": "The counts \\(W_k(u,v)\\) (for example \\(k=2\\), the square of the adjacency matrix in exact integers) as a table over node pairs."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No pairs.",
+     "tools": {}
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(W_k=0\\) for \\(k\\ge1\\), \\(W_0=I\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a step \\(u\\to u\\) that can be repeated.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges multiply the count of walks through them.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(k\\) must be a non-negative integer; \\(k=0\\) counts the trivial walk.",
+     "tools": {}
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Counts are of directed walks for digraphs, and walks over both directions for undirected graphs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "biggs1993algebraic"
+   ]
+  },
+  "binomial_tree": {
+   "status": "partial",
+   "note": "Defined from the standard recursion without a cited primary source; the tool entries (documented only) are not specified further.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "B_k",
+     "meaning": "binomial tree of order \\(k\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Binomial tree",
+     "latex": "B_0=K_1,\\qquad B_k=\\text{two disjoint copies of }B_{k-1}\\text{ with the root of one joined to the root of the other}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "\\(B_k\\) has \\(2^k\\) nodes, \\(2^k-1\\) edges, depth \\(k\\), and the root has degree \\(k\\)."
+    }
+   ],
+   "variants": {
+    "cat_binomial_tree": "The binomial tree \\(B_k\\) as a generated graph; documented only."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "\\(k=0\\): the single node.",
+     "tools": {}
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(k\\) must be a non-negative integer.",
+     "tools": {}
+    }
+   ]
+  },
+  "consensus_tree": {
+   "status": "name_only",
+   "note": "The sources list one entry (consensus tree) by name only for a documented tool; neither the consensus rule (strict, majority) nor a source is stated."
+  },
+  "heavy_path_decomposition": {
+   "status": "partial",
+   "note": "Defined from the standard construction without a cited primary source; the tool entry is documented only and not specified further.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\mathrm{size}(v)",
+     "meaning": "number of nodes in the subtree of \\(v\\) in the rooted tree"
+    },
+    {
+     "symbol": "\\mathrm{heavy}(v)",
+     "meaning": "the child of \\(v\\) with the largest subtree"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Heavy path decomposition",
+     "latex": "\\mathrm{heavy}(v)=\\arg\\max_{c\\in\\mathrm{ch}(v)}\\mathrm{size}(c),\\qquad \\text{heavy edges }v\\mathrm{heavy}(v)\\text{ form paths; every other edge is light}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "In a rooted tree every root-to-node path meets at most \\(\\log_2 n\\) light edges. Ties between children of equal size are broken by a convention not fixed here."
+    }
+   ],
+   "variants": {
+    "cat_decomposition_heavy_path": "Heavy path decomposition of a rooted tree; documented only."
+   },
+   "edge_cases": [
+    {
+     "case": "ties",
+     "definition_gives": "Equal subtree sizes: the heavy child is not unique, so the decomposition is not unique.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One path of one node.",
+     "tools": {}
+    }
+   ]
+  },
+  "hierarchy_tree": {
+   "status": "name_only",
+   "note": "The sources list one entry (get hierarchy tree) by name only for a documented tool; the tree it returns and its source are not stated."
+  },
+  "join_trees": {
+   "status": "name_only",
+   "note": "The sources list one entry (join trees) by name only for a documented tool; its definition and source are not stated."
+  },
+  "tree_lca": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "r",
+     "meaning": "root of the tree"
+    },
+    {
+     "symbol": "\\mathrm{anc}(v)",
+     "meaning": "nodes on the path from \\(v\\) to \\(r\\), including \\(v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Lowest common ancestor in a rooted tree (Aho, Hopcroft and Ullman 1976)",
+     "latex": "\\mathrm{LCA}(u,v)=\\arg\\max_{a\\in\\mathrm{anc}(u)\\cap\\mathrm{anc}(v)}\\mathrm{depth}(a)",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The deepest node that is an ancestor of both; unique in a tree, and \\(\\mathrm{LCA}(u,u)=u\\). Constant-time queries after linear preprocessing (Bender et al. 2005)."
+    }
+   ],
+   "variants": {
+    "nxs_tree_lca": "All pairs \\((u,v,a)\\) in the order of the traversal of the tree.",
+    "tree_lca": "The ancestor of a requested pair."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "\\(\\mathrm{LCA}(r,r)=r\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Nodes in different trees of a forest have no common ancestor: no answer.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "The answer is unique, so no ties (unlike a DAG).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Depends on the root: re-rooting changes the ancestors.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "aho1976finding",
+    "bender2005lowest"
+   ]
+  },
+  "nonisomorphic_trees": {
+   "status": "partial",
+   "note": "The count is a known integer sequence given here from its standard definition and first values, without a cited primary source; the tool entry is documented only.",
+   "notation": [
+    {
+     "symbol": "t(n)",
+     "meaning": "number of trees on \\(n\\) nodes, counted up to isomorphism"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Number of nonisomorphic trees",
+     "latex": "t(0),\\dots,t(10)=1,1,1,1,2,3,6,11,23,47,106",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "No closed form; the generating function satisfies a functional equation (Otter). For \\(n=4\\) the two trees are the path and the star."
+    }
+   ],
+   "variants": {
+    "cat_nonisomorphic_tree": "The number \\(t(n)\\) of nonisomorphic (unlabelled) trees on \\(n\\) nodes; documented only."
+   },
+   "edge_cases": [
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(n\\ge0\\) integer; \\(n=0\\) is counted as 1 (the null tree) by the sequence above.",
+     "tools": {}
+    }
+   ]
+  },
+  "predecessor_tree": {
+   "status": "partial",
+   "note": "Defined from the shortest-path-tree construction; the tool entry is documented only, and which search (BFS or Dijkstra) it records is not stated.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\pi(v)",
+     "meaning": "predecessor of \\(v\\) on a shortest path from the source \\(s\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Predecessor (shortest-path) tree (Dijkstra 1959)",
+     "latex": "\\pi(v)=u\\ \\text{with}\\ d(s,u)+w(u,v)=d(s,v);\\qquad E_\\pi=\\{(\\pi(v),v):\\ v\\ne s,\\ d(s,v)<\\infty\\}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "One incoming shortest-path arc per reachable node; unique only when shortest paths are unique, otherwise the choice of predecessor is a tie rule."
+    }
+   ],
+   "variants": {
+    "cat_predecessor_tree": "The tree of predecessors of a search; documented only."
+   },
+   "edge_cases": [
+    {
+     "case": "ties",
+     "definition_gives": "Equal-length shortest paths give several valid predecessors.",
+     "tools": {}
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Unreachable nodes have no predecessor.",
+     "tools": {}
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Nodes outside the source's component have no predecessor.",
+     "tools": {}
+    }
+   ],
+   "references": [
+    "dijkstra1959note"
+   ]
+  },
+  "prufer_sequence": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "P=(p_1,\\dots,p_{n-2})",
+     "meaning": "Pruefer sequence, \\(p_i\\in V\\)"
+    },
+    {
+     "symbol": "\\ell_i",
+     "meaning": "smallest leaf at step \\(i\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Pruefer encoding (Pruefer 1918)",
+     "latex": "\\ell_i=\\min\\{\\text{leaves of }T_i\\},\\quad p_i=\\text{neighbour of }\\ell_i,\\quad T_{i+1}=T_i-\\ell_i,\\qquad i=1,\\dots,n-2",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "A bijection between labelled trees on \\(n\\) nodes and sequences in \\(V^{n-2}\\), so there are \\(n^{n-2}\\) trees (Cayley). It needs an ordered node set. Each node appears in \\(P\\) exactly \\(\\deg(v)-1\\) times."
+    },
+    {
+     "name": "Decoding",
+     "latex": "e_i=\\{\\min\\{v\\notin\\{p_i,\\dots,p_{n-2}\\}\\cup\\{\\ell_1,\\dots,\\ell_{i-1}\\}\\},\\ p_i\\},\\qquad \\text{the last edge joins the two nodes left}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Rebuild the tree by pairing each \\(p_i\\) with the smallest node that no longer appears later in the sequence."
+    }
+   ],
+   "variants": {
+    "nxs_prufer": "The encoding of a tree as its sequence.",
+    "nxs_from_prufer": "The tree rebuilt from a sequence, edges added in the order of decoding."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "\\(n<3\\): the sequence has length \\(n-2\\le 0\\): empty for \\(n=2\\) and not defined for \\(n<2\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "The sequence is empty and the tree is the single edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "The smallest leaf is unique given the order: no ties.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "The star with centre \\(c\\) has the sequence \\(c,c,\\dots,c\\) (\\(n-2\\) times).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Input must be a tree: not defined for forests or graphs with cycles.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "prufer1918neuer"
+   ]
+  },
+  "random_powerlaw_tree": {
+   "status": "name_only",
+   "note": "Two random power-law tree generators are listed by name only for a documented tool; their sampling procedures and sources are not stated."
+  },
+  "random_rooted_forest": {
+   "status": "name_only",
+   "note": "Two random rooted forest generators (labelled and unlabelled) are listed by name only for a documented tool; their sampling distributions and sources are not stated."
+  },
+  "tree_broadcast": {
+   "status": "partial",
+   "note": "cat_broadcast_center_tree is documented only and is described from its name.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "b(v)",
+     "meaning": "least number of rounds to inform all nodes starting from \\(v\\), when in each round every informed node tells at most one neighbour"
+    },
+    {
+     "symbol": "c_1,\\dots,c_k",
+     "meaning": "children of \\(v\\) in the tree rooted at the broadcast origin, ordered by non-increasing \\(b(c_i)\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Broadcast time (Slater, Cockayne and Hedetniemi 1981)",
+     "latex": "b(v)=\\max_{1\\le i\\le k}\\bigl(i+b(c_i)\\bigr),\\quad b(\\text{leaf})=0;\\qquad b(T)=\\max_vb(v)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "The recursion informs the child with the largest remaining broadcast time first. \\(b(T)\\ge\\lceil\\log_2n\\rceil\\)."
+    },
+    {
+     "name": "Broadcast center",
+     "latex": "\\mathrm{center}(T)=\\{v:\\ b(v)=\\min_{u}b(u)\\}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "The nodes from which broadcasting is fastest."
+    }
+   ],
+   "variants": {
+    "cat_broadcast_center_tree": "The set of broadcast centres.",
+    "gb_broadcast_time": "The broadcast time \\(b(T)=\\max_vb(v)\\) of the tree."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Not defined: no origin.",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(b=0\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "\\(b=1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "A forest or disconnected graph cannot be reached from one origin: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "From the centre \\(b=n-1\\); from a leaf \\(b=n-1\\) as well (the leaf tells the centre first, one round).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "slater1981information"
+   ]
+  },
+  "tree_centroid": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "\\mathrm{mc}(v)",
+     "meaning": "size of the largest component of \\(T-v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Centroid of a tree (Jordan 1869; Smart and Slack 1999)",
+     "latex": "\\mathrm{centroid}(T)=\\arg\\min_{v\\in V}\\mathrm{mc}(v)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "The nodes whose removal leaves the smallest largest component; there are one or two, and then they are adjacent; \\(\\mathrm{mc}(v)\\le n/2\\) for a centroid."
+    }
+   ],
+   "variants": {
+    "nxs_tree_centroid": "The centroid node(s), sorted."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "The node itself, \\(\\mathrm{mc}=0\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "Both nodes are centroids.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "The centre is the only centroid.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Two centroids occur when \\(n\\) is even and an edge splits the tree into halves.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Defined for a tree; for a forest it is per component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "smart1999center"
+   ]
+  },
+  "tree_sampling_divergence": {
+   "status": "name_only",
+   "note": "The sources list one entry (tree sampling divergence) by name only for a documented tool; its definition and source are not stated."
+  },
+  "forest_tests": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m=|E|",
+     "meaning": "number of edges"
+    },
+    {
+     "symbol": "c",
+     "meaning": "number of connected components (weak components for digraphs)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Tree and forest (Bondy and Murty 2008)",
+     "latex": "\\text{forest}\\iff\\text{no cycle}\\iff m=n-c;\\qquad \\text{tree}\\iff\\text{forest and }c=1",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "A cycle includes a loop and a pair of parallel edges."
+    },
+    {
+     "name": "Branching and arborescence (Edmonds 1967)",
+     "latex": "\\text{branching}\\iff\\text{forest (ignoring direction) and }d^{\\text{in}}(v)\\le1\\ \\forall v;\\qquad \\text{arborescence}\\iff\\text{branching and }c=1",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "An arborescence has exactly one node of in-degree 0 (the root) from which every node is reachable."
+    }
+   ],
+   "variants": {
+    "nxs_forest_flags": "Four yes/no flags: tree, forest, arborescence, branching."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The null graph has no node: it is acyclic, but \\(c=0\\neq1\\), so it is a forest and not a tree under this definition (a convention some authors reverse).",
+     "tools": {}
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "A tree (and an arborescence) without a loop.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a cycle: not a forest.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges form a cycle of length 2: not a forest.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Acyclic with \\(c>1\\): a forest but not a tree.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Tree and forest are undirected notions; branching and arborescence need directions.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "bondy2008graph",
+    "edmonds1967optimum"
+   ]
+  },
+  "tree_unfold": {
+   "status": "name_only",
+   "note": "The sources list one entry (unfold tree) by name only for a documented tool; the unfolding it performs (depth, root) and its source are not stated."
+  }
+ }
+}
