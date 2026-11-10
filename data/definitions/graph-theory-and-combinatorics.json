@@ -1172,9 +1172,10 @@
      "definition_gives": "Equal degrees or equal saturation: the order is not fixed by the definition.",
      "tools": {
       "networkx": {
-       "status": "agrees",
-       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
-       "source": "capabilities.csv and conventions.json (outcome agrees)"
+       "status": "differs",
+       "behaviour": "NetworkX visits the neighbours of a node in the order its edges were added, and starts each component from the first node of its Python set (not the smallest when the component's nodes are large numbers);",
+       "source": "conventions.json greedy_color / color_connected_sequential_bfs",
+       "measure": "greedy_color"
       }
      }
     },
@@ -1993,8 +1994,8 @@
      "tools": {
       "networkx": {
        "status": "differs",
-       "behaviour": "as for cyc_basis",
-       "source": "conventions.json basis / cyc_basis_check",
+       "behaviour": "NetworkX's simple graph merges parallel edges and repeated loops, whose cycles the reference lists after NetworkX's basis (the basis of the multigraph has m - n + c cycles).",
+       "source": "conventions.json cycle_basis / cyc_basis",
        "measure": "basis"
       }
      }
@@ -2494,8 +2495,8 @@
      "tools": {
       "networkx": {
        "status": "differs",
-       "behaviour": "as for cyc_basis",
-       "source": "conventions.json min_basis / cyc_min_basis_check",
+       "behaviour": "NetworkX's simple graph merges parallel edges and repeated loops, whose cycles the reference lists after NetworkX's basis (the basis of the multigraph has m - n + c cycles).",
+       "source": "conventions.json cycle_basis / cyc_basis",
        "measure": "min_basis"
       }
      }
@@ -4386,23 +4387,17 @@
      "definition_gives": "The arbitrary node \\(v\\) (and equal-degree candidates) decide which clique and which independent set result: the guarantee is about size, not identity.",
      "tools": {
       "networkx": {
-       "status": "agrees",
-       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
-       "source": "capabilities.csv and conventions.json (outcome agrees)"
-      }
-     }
-    },
-    {
-     "case": "direction",
-     "definition_gives": "Undirected notion.",
-     "tools": {
-      "networkx": {
        "status": "differs",
        "behaviour": "NetworkX's ramsey_R2 recurses on subgraphs whose nodes come in Python set order, so its arbitrary node, and the cliques and independent sets it finds, differ from the reference value's, which takes the first node in node order; any graph with a choice can differ. ap_clique_removal_valid checks the reference value's sets, and the convention check ap_clique_removal__networkx reproduces NetworkX through the reference value's set-order kernel.",
        "source": "conventions.json ap_clique_removal / ap_clique_removal",
        "measure": "ap_clique_removal"
       }
      }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Undirected notion.",
+     "tools": {}
     }
    ],
    "references": [
