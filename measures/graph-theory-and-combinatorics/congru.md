@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified pr
 
 Congru. Entries grouped here: Congru.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list this entry (Congru) by name only for a documented tool; neither a definition nor a source is stated.
 
 ## Congru {#cat_congru}
 

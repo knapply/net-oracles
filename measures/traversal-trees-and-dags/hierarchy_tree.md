@@ -16,7 +16,7 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and e
 
 Hierarchy tree. Entries grouped here: Get hierarchy tree.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (get hierarchy tree) by name only for a documented tool; the tree it returns and its source are not stated.
 
 ## Get hierarchy tree {#cat_hierarchy_tree}
 

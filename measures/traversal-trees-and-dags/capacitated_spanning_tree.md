@@ -16,7 +16,7 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Spanning trees and b
 
 Capacitated minimum spanning tree. Entries grouped here: Ahuja Orlin Sharma Capacitated Minimum Spanning Tree; Esau Williams Capacitated Minimum Spanning Tree.
 
-*Definition not yet written.*
+*Definition not yet written.* Two capacitated minimum spanning tree heuristics (Esau-Williams, Ahuja-Orlin-Sharma) are listed by name by a documented-only tool; their original papers are not among the checked sources, so no formula is written.
 
 ## Variants {#concept-variants}
 

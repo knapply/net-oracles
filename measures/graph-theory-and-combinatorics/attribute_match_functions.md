@@ -12,15 +12,33 @@ nav_exclude: true
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Isomorphism and subgraph matching. Concept id: `attribute_match_functions`. 9 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(a(v),\ a(w)\)</td><td>attribute values of two nodes or edges</td></tr><tr><td>\(m(v,w)\)</td><td>match predicate used by an isomorphism search</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Node and edge attribute match functions. Entries grouped here: Categorical edge match; Categorical multiedge match; Categorical node match; Generic edge match; Generic multiedge match; Generic node match; and 3 more.
 
-*Definition not yet written.*
+*Definition partly written:* The functions are described by their names (categorical equality, numerical closeness, user-defined); the exact comparison rules and tolerances of each documented entry are not recorded, and no primary source applies.
+
+<div class="formula-block"><p class="formula-name"><strong>Categorical match</strong> <span class="applies">applies to: any</span></p><div class="formula">\[m(v,w)=\mathbb 1\bigl[a(v)=a(w)\bigr]\]</div><p class="formula-where">True when the attribute values are equal.</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Numerical match</strong> <span class="applies">applies to: any</span></p><div class="formula">\[m(v,w)=\mathbb 1\bigl[|a(v)-a(w)|\le\tau\bigr]\]</div><p class="formula-where">True when the values are within a tolerance \(\tau\); the definition of \(\tau\) (absolute or relative) is not fixed here.</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Generic match</strong> <span class="applies">applies to: any</span></p><div class="formula">\[m(v,w)=f\bigl(a(v),a(w)\bigr)\]</div><p class="formula-where">Any user function returning true or false.</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_categorical_edge_match">Categorical edge match</a></td><td><code>cat_categorical_edge_match</code></td><td>1</td></tr><tr><td><a href="#cat_categorical_match_multiedge">Categorical multiedge match</a></td><td><code>cat_categorical_match_multiedge</code></td><td>1</td></tr><tr><td><a href="#cat_categorical_match">Categorical node match</a></td><td><code>cat_categorical_match</code></td><td>1</td></tr><tr><td><a href="#cat_edge_generic_match">Generic edge match</a></td><td><code>cat_edge_generic_match</code></td><td>1</td></tr><tr><td><a href="#cat_generic_match_multiedge">Generic multiedge match</a></td><td><code>cat_generic_match_multiedge</code></td><td>1</td></tr><tr><td><a href="#cat_generic_match">Generic node match</a></td><td><code>cat_generic_match</code></td><td>1</td></tr><tr><td><a href="#cat_edge_match_numerical">Numerical edge match</a></td><td><code>cat_edge_match_numerical</code></td><td>1</td></tr><tr><td><a href="#cat_match_multiedge_numerical">Numerical multiedge match</a></td><td><code>cat_match_multiedge_numerical</code></td><td>1</td></tr><tr><td><a href="#cat_match_numerical">Numerical node match</a></td><td><code>cat_match_numerical</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_categorical_edge_match">Categorical edge match</a></td><td><code>cat_categorical_edge_match</code></td><td>1</td><td>Categorical edge match.</td></tr><tr><td><a href="#cat_categorical_match_multiedge">Categorical multiedge match</a></td><td><code>cat_categorical_match_multiedge</code></td><td>1</td><td>Categorical match on multi-edge sets: the sets of attributes of the parallel edges are compared.</td></tr><tr><td><a href="#cat_categorical_match">Categorical node match</a></td><td><code>cat_categorical_match</code></td><td>1</td><td>Categorical node match.</td></tr><tr><td><a href="#cat_edge_generic_match">Generic edge match</a></td><td><code>cat_edge_generic_match</code></td><td>1</td><td>Generic edge match.</td></tr><tr><td><a href="#cat_generic_match_multiedge">Generic multiedge match</a></td><td><code>cat_generic_match_multiedge</code></td><td>1</td><td>Generic match on multi-edge sets.</td></tr><tr><td><a href="#cat_generic_match">Generic node match</a></td><td><code>cat_generic_match</code></td><td>1</td><td>Generic node match.</td></tr><tr><td><a href="#cat_edge_match_numerical">Numerical edge match</a></td><td><code>cat_edge_match_numerical</code></td><td>1</td><td>Numerical edge match.</td></tr><tr><td><a href="#cat_match_multiedge_numerical">Numerical multiedge match</a></td><td><code>cat_match_multiedge_numerical</code></td><td>1</td><td>Numerical match on multi-edge sets.</td></tr><tr><td><a href="#cat_match_numerical">Numerical node match</a></td><td><code>cat_match_numerical</code></td><td>1</td><td>Numerical node match.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/networkx.html">NetworkX</a></th></tr></thead><tbody><tr><td title="Several edges with the same source and target (same endpoints, for undirected edges)."><strong>Parallel edges</strong></td><td class="def">For parallel edges the match compares the whole set (multiset) of attribute values, not one edge.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="A free parameter (attenuation, damping, decay, exponent, walk length) outside the range for which the series or fixed point is defined or convergent."><strong>Parameter outside its valid range</strong></td><td class="def">The tolerance \(\tau\) of the numerical match must be non-negative.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Parallel edges</summary><ul><li>No tool entries.</li></ul></details><details><summary>Parameter outside its valid range</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Categorical edge match {#cat_categorical_edge_match}
 

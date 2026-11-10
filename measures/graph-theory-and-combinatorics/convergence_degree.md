@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Triangles and l
 
 Convergence degree and field size. Entries grouped here: Convergence degree; Convergence field size.
 
-*Definition not yet written.*
+*Definition not yet written.* Two entries (convergence degree and convergence field size) are listed by name only for a documented tool; the definition and source are not stated.
 
 ## Variants {#concept-variants}
 

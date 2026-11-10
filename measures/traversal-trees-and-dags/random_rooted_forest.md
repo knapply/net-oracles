@@ -16,7 +16,7 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and e
 
 Random rooted forests. Entries grouped here: Random labeled rooted forest; Random unlabeled rooted forest.
 
-*Definition not yet written.*
+*Definition not yet written.* Two random rooted forest generators (labelled and unlabelled) are listed by name only for a documented tool; their sampling distributions and sources are not stated.
 
 ## Variants {#concept-variants}
 

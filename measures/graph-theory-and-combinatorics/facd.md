@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified pr
 
 FACD. Entries grouped here: Facd.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list this entry (FACD) by name only for a documented tool; neither a definition nor a source is stated.
 
 ## Facd {#cat_facd}
 

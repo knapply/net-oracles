@@ -16,7 +16,7 @@ Family: [Data transforms](index.html). Subfamily: Sparsification and backbones. 
 
 Graph sparsification (score-based edge filtering). Entries grouped here: Algebraic Distance Sparsifier; Degree Multiscale Sparsifier; Forest Fire Sparsifier; Global Threshold Filter; Jaccard Similarity Sparsifier; Local Degree Sparsifier; and 10 more.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list sixteen score-based edge-filtering procedures and L-Spar (Local Degree, Forest Fire, SCAN, Simmelian, Jaccard, algebraic distance, global threshold and others) as documented-only entries by name; none of the original papers is among the checked sources, so no formula is written.
 
 ## Variants {#concept-variants}
 

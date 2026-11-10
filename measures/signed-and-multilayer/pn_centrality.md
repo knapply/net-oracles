@@ -16,7 +16,7 @@ Family: [Signed and multilayer](index.html). Subfamily: Signed networks. Concept
 
 Positive-negative centrality. Entries grouped here: Positive-negative centrality (signed ties).
 
-*Definition not yet written.*
+*Definition not yet written.* The sources name the procedure (positive-negative centrality of signed ties) and list it in the documentation of a documented-only tool, but record no formula and no checkable primary source for it.
 
 ## Positive-negative centrality (signed ties) {#pn_centrality}
 

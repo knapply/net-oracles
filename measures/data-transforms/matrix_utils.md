@@ -12,11 +12,21 @@ nav_exclude: true
 
 Family: [Data transforms](index.html). Subfamily: Matrix and tie transformations. Concept id: `matrix_utils`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(x,y\)</td><td>two vectors (for example columns of two factor matrices)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Congruence, rotation, IPF and state transitions. Entries grouped here: Tucker congruence, factor rotation, iterative proportional fitting, state transitions.
 
-*Definition not yet written.*
+*Definition partly written:* One entry of a documented tool bundles four utilities; only the congruence coefficient is defined here, from its standard form without a cited source. Factor rotation, iterative proportional fitting (see ipf) and state transitions are not specified in the sources.
+
+<div class="formula-block"><p class="formula-name"><strong>Tucker congruence coefficient</strong> <span class="applies">applies to: any</span></p><div class="formula">\[\varphi(x,y)=\frac{x^{\top}y}{\sqrt{(x^{\top}x)(y^{\top}y)}}\]</div><p class="formula-where">Cosine of the angle between \(x\) and \(y\) without centring; not defined when either vector is zero.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#matrix_utils">Tucker congruence, factor rotation, iterative proportional fitting, state transitions</a></td><td><code>matrix_utils</code></td><td>1</td><td>Collective entry (congruence, factor rotation, iterative proportional fitting, state transitions); only the congruence coefficient is defined above.</td></tr></tbody></table></div>
 
 ## Tucker congruence, factor rotation, iterative proportional fitting, state transitions {#matrix_utils}
 

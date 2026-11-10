@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Matching. Conce
 
 Dulmage-Mendelsohn decomposition. Entries grouped here: Dulmage Mendelsohn Decomposition.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (Dulmage-Mendelsohn decomposition) by name only for a documented tool; the original paper is not among the checked sources and the coarse or fine form of the decomposition is not stated.
 
 ## Dulmage Mendelsohn Decomposition {#cat_decomposition_dulmage_mendelsohn}
 

@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified pr
 
 PSI. Entries grouped here: Psi.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list this entry (PSI) by name only for a documented tool; neither a definition nor a source is stated.
 
 ## Psi {#cat_psi}
 

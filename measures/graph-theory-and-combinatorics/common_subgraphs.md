@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Isomorphism and
 
 McGregor common subgraphs. Entries grouped here: Mcgregor common subgraphs.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (McGregor common subgraphs) by name only for a documented tool; the original paper is not among the checked sources and the notion (induced or not, maximum or all) is not stated.
 
 ## Mcgregor common subgraphs {#cat_common_mcgregor_subgraphs}
 

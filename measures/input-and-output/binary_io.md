@@ -16,7 +16,7 @@ Family: [Input and output](index.html). Subfamily: Binary and serialization form
 
 Binary and serialization formats. Entries grouped here: GRAPHTOOLBINARY read and write; NETWORKITBINARY read and write; PICKLE read and write; THRILLGRAPHBINARY read and write.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources name four binary and serialization formats of documented-only listings (a graph-tool binary, a NetworKit binary, Python pickle, a Thrill graph binary) and give no checkable specification of any of them.
 
 ## Variants {#concept-variants}
 

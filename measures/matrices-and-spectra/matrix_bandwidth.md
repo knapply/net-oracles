@@ -12,11 +12,21 @@ nav_exclude: true
 
 Family: [Matrices and spectra](index.html). Subfamily: Graph matrices. Concept id: `matrix_bandwidth`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(G=(V,E)\)</td><td>graph with node set \(V\) and edge set \(E\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)</td></tr><tr><td>\(n=|V|\)</td><td>number of nodes</td></tr><tr><td>\(m=|E|\)</td><td>number of edges</td></tr><tr><td>\(\pi\)</td><td>ordering of the nodes, a bijection \(V\to\{1,\dots,n\}\)</td></tr><tr><td>\(\beta_\pi\)</td><td>bandwidth of \(A\) under \(\pi\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Sparse-matrix orderings and bandwidth. Entries grouped here: Sparse-matrix orderings and bandwidth/wavefront.
 
-*Definition not yet written.*
+*Definition partly written:* The wavefront measure and the particular orderings of each tool are known by name only; only the bandwidth is defined.
+
+<div class="formula-block"><p class="formula-name"><strong>Bandwidth (Cuthill and McKee 1969)</strong> <span class="applies">applies to: undirected</span></p><div class="formula">\[\beta_\pi(G)=\max_{uv\in E}\,|\pi(u)-\pi(v)|\]</div><p class="formula-where">Largest distance from the diagonal of a non-zero entry of \(A\) when rows and columns are ordered by \(\pi\); orderings such as reverse Cuthill-McKee try to make it small. Minimizing it over all \(\pi\) is hard, so tools return a heuristic ordering.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#matrix_bandwidth">Sparse-matrix orderings and bandwidth/wavefront</a></td><td><code>matrix_bandwidth</code></td><td>1</td><td>Collective entry for sparse-matrix orderings and their bandwidth and wavefront; the bandwidth is written above.</td></tr></tbody></table></div>
 
 ## Sparse-matrix orderings and bandwidth/wavefront {#matrix_bandwidth}
 

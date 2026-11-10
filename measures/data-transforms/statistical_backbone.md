@@ -16,7 +16,7 @@ Family: [Data transforms](index.html). Subfamily: Sparsification and backbones. 
 
 Statistical backbone extraction. Entries grouped here: Backbone; Backbone extraction (SDSM/BiCM, FDSM, fixed-row/column/fill); Bicm; Disparity; Fastball; Fdsm; and 6 more.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list thirteen backbone-extraction procedures (SDSM, FDSM, BiCM, fixed row/column/fill, disparity filter, LANS, MLF, fastball) as documented-only entries by name; none of the original papers is among the checked sources, so no formula is written.
 
 ## Variants {#concept-variants}
 

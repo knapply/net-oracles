@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Spanners, contr
 
 Pruned landmark labeling. Entries grouped here: Pruned Landmark Labeling.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (pruned landmark labeling) by name only for a documented tool; the original paper is not among the checked sources, so no formula is written.
 
 ## Pruned Landmark Labeling {#cat_labeling_landmark_pruned}
 

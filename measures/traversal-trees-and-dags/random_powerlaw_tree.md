@@ -16,7 +16,7 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and e
 
 Random power-law trees. Entries grouped here: Random powerlaw tree; Random powerlaw tree sequence.
 
-*Definition not yet written.*
+*Definition not yet written.* Two random power-law tree generators are listed by name only for a documented tool; their sampling procedures and sources are not stated.
 
 ## Variants {#concept-variants}
 

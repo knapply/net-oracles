@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Geometry. Conce
 
 Convex hull. Entries grouped here: Convex hull.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (convex hull) by name only for a documented tool; the object (hull of node coordinates) and its source are not stated.
 
 ## Convex hull {#cat_convex_hull}
 

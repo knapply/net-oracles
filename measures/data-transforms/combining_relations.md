@@ -16,7 +16,7 @@ Family: [Data transforms](index.html). Subfamily: Matrix and tie transformations
 
 Combining similar relations. Entries grouped here: Combining similar relations.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources name the procedure (combining similar relations) in a documented-only tool and give neither a formula nor a source.
 
 ## Combining similar relations {#cat_combining_relations_similar}
 

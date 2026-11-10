@@ -16,7 +16,7 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Spanning trees and b
 
 Partition spanning tree. Entries grouped here: Partition spanning tree.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (partition spanning tree) by name only for a documented tool; its definition and source are not stated.
 
 ## Partition spanning tree {#cat_partition_spanning_tree}
 

@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Similarity and 
 
 Matching index. Entries grouped here: Matching ind.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (matching index) by name only for a documented tool; neither the definition nor a source is stated.
 
 ## Matching ind {#cat_ind_matching}
 

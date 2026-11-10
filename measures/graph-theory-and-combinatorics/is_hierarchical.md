@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Degree sequence
 
 Hierarchy test. Entries grouped here: Is hierarchical.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (hierarchy test) by name only for a documented tool; the notion of hierarchy it tests (acyclicity, Krackhardt hierarchy, flow hierarchy) is not stated.
 
 ## Is hierarchical {#cat_hierarchical_is}
 

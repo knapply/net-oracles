@@ -12,11 +12,29 @@ nav_exclude: true
 
 Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and enumeration. Concept id: `binomial_tree`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(G=(V,E)\)</td><td>graph with node set \(V\) and edge set \(E\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)</td></tr><tr><td>\(n=|V|\)</td><td>number of nodes</td></tr><tr><td>\(m=|E|\)</td><td>number of edges</td></tr><tr><td>\(B_k\)</td><td>binomial tree of order \(k\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Binomial tree. Entries grouped here: Binomial tree.
 
-*Definition not yet written.*
+*Definition partly written:* Defined from the standard recursion without a cited primary source; the tool entries (documented only) are not specified further.
+
+<div class="formula-block"><p class="formula-name"><strong>Binomial tree</strong> <span class="applies">applies to: undirected</span></p><div class="formula">\[B_0=K_1,\qquad B_k=\text{two disjoint copies of }B_{k-1}\text{ with the root of one joined to the root of the other}\]</div><p class="formula-where">\(B_k\) has \(2^k\) nodes, \(2^k-1\) edges, depth \(k\), and the root has degree \(k\).</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_binomial_tree">Binomial tree</a></td><td><code>cat_binomial_tree</code></td><td>2</td><td>The binomial tree \(B_k\) as a generated graph; documented only.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/networkx.html">NetworkX</a></th><th><a href="../../tools/rustworkx.html">rustworkx</a></th></tr></thead><tbody><tr><td title="The graph has exactly one node (n = 1), with or without a self-loop."><strong>Single node</strong></td><td class="def">\(k=0\): the single node.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="A free parameter (attenuation, damping, decay, exponent, walk length) outside the range for which the series or fixed point is defined or convergent."><strong>Parameter outside its valid range</strong></td><td class="def">\(k\) must be a non-negative integer.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Single node</summary><ul><li>No tool entries.</li></ul></details><details><summary>Parameter outside its valid range</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Binomial tree {#cat_binomial_tree}
 

@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified pr
 
 TCE. Entries grouped here: TCE.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list this entry (TCE) by name only for a documented tool; neither a definition nor a source is stated.
 
 ## TCE {#cat_tce}
 

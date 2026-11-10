@@ -16,7 +16,7 @@ Family: [Data transforms](index.html). Subfamily: Matrix and tie transformations
 
 Multiplex coding. Entries grouped here: Multiplex coding of several relations into one matrix.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources name the procedure (multiplex coding of several relations into one matrix) in a documented-only tool and give neither a formula nor a source; the coding scheme is not stated.
 
 ## Multiplex coding of several relations into one matrix {#multiplex_coding}
 

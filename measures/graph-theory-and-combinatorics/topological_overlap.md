@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Similarity and 
 
 Generalized topological overlap. Entries grouped here: Gtom.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (generalized topological overlap, GTOM) by name only for a documented tool; the original papers are not among the checked sources, and the order parameter and normalization are not stated.
 
 ## Gtom {#cat_gtom}
 

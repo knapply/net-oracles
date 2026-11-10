@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified pr
 
 Runtime parallelism context. Entries grouped here: Openmp context.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (OpenMP context) for a documented tool; it is a parallel-execution setting rather than a graph measure and has no mathematical definition.
 
 ## Openmp context {#cat_context_openmp}
 

@@ -16,7 +16,7 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and e
 
 Unfold tree. Entries grouped here: Unfold tree.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (unfold tree) by name only for a documented tool; the unfolding it performs (depth, root) and its source are not stated.
 
 ## Unfold tree {#cat_tree_unfold}
 

@@ -16,7 +16,7 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and e
 
 Consensus tree. Entries grouped here: Consensus tree.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (consensus tree) by name only for a documented tool; neither the consensus rule (strict, majority) nor a source is stated.
 
 ## Consensus tree {#cat_consensus_tree}
 

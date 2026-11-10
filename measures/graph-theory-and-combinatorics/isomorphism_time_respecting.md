@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Isomorphism and
 
 Time-respecting graph matching. Entries grouped here: Time Respecting Di Graph Matcher; Time Respecting Graph Matcher.
 
-*Definition not yet written.*
+*Definition not yet written.* Two time-respecting graph matcher entries are listed by name only for a documented tool; the notion of time-respecting matching (time window, ordering) and its source are not stated.
 
 ## Variants {#concept-variants}
 

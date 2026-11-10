@@ -12,11 +12,27 @@ nav_exclude: true
 
 Family: [Matrices and spectra](index.html). Subfamily: Spectra. Concept id: `eigenvectors_matrix`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(M\)</td><td>a graph matrix: adjacency, Laplacian, normalized Laplacian, modularity or other</td></tr><tr><td>\(\lambda_i,\ x_i\)</td><td>eigenvalue and eigenvector, \(Mx_i=\lambda_ix_i\), \(\|x_i\|_2=1\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Eigenvectors of graph matrices. Entries grouped here: Eigenvectors of graph matrices.
 
-*Definition not yet written.*
+<div class="formula-block"><p class="formula-name"><strong>Eigenpairs of a symmetric matrix (Golub and Van Loan 2013)</strong> <span class="applies">applies to: undirected</span></p><div class="formula">\[Mx_i=\lambda_ix_i,\qquad x_i^{\top}x_j=\delta_{ij}\]</div><p class="formula-where">A real symmetric \(M\) has real eigenvalues and an orthonormal set of eigenvectors; each \(x_i\) is determined up to sign, and up to rotation within an eigenspace when \(\lambda_i\) is repeated. A non-symmetric \(M\) (directed input) can have complex eigenpairs.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#eigenvectors_matrix">Eigenvectors of graph matrices</a></td><td><code>eigenvectors_matrix</code></td><td>1</td><td>Eigenvectors of any of the graph matrices; which matrix, how many vectors, the ordering of eigenvalues and the sign rule are properties of the tool.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/networkit.html">NetworKit</a></th></tr></thead><tbody><tr><td title="Several shortest paths of equal length, equal scores, or equal eigenvalues, including ties that arise only in floating point (for example equal sums of reciprocals)."><strong>Ties and equal values</strong></td><td class="def">Repeated eigenvalues make the eigenvectors non-unique (any orthonormal basis of the eigenspace); a sign flip is always allowed, so two correct results can differ by sign.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="The same measure applied to an undirected graph (each edge usable both ways) and to a directed graph (edges usable from source to target only), including which degree or distance direction is scored."><strong>Undirected versus directed input</strong></td><td class="def">A non-symmetric matrix has right and left eigenvectors that differ, and possibly complex ones.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Ties and equal values</summary><ul><li>No tool entries.</li></ul></details><details><summary>Undirected versus directed input</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Eigenvectors of graph matrices {#eigenvectors_matrix}
 

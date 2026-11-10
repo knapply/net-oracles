@@ -16,7 +16,7 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Spanning trees and b
 
 Union maximum spanning forest. Entries grouped here: Union Maximum Spanning Forest.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (union maximum spanning forest) by name only for a documented tool; the object it returns is not specified and no source is among those checked.
 
 ## Union Maximum Spanning Forest {#cat_forest_maximum_spanning_union}
 

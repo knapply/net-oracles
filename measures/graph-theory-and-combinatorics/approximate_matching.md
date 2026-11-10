@@ -12,11 +12,29 @@ nav_exclude: true
 
 Family: [Graph theory and combinatorics](index.html). Subfamily: Matching. Concept id: `approximate_matching`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(G=(V,E)\)</td><td>graph with node set \(V\) and edge set \(E\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)</td></tr><tr><td>\(n=|V|\)</td><td>number of nodes</td></tr><tr><td>\(m=|E|\)</td><td>number of edges</td></tr><tr><td>\(b(v)\)</td><td>capacity of node \(v\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Approximate and b-matching. Entries grouped here: Approximate and b-matching.
 
-*Definition not yet written.*
+*Definition partly written:* Defined from the textbook notions without a cited primary source; the two documented entries are not specified further (which approximation, which \\(b\\)).
+
+<div class="formula-block"><p class="formula-name"><strong>\(b\)-matching</strong> <span class="applies">applies to: undirected</span></p><div class="formula">\[F\subseteq E:\ \deg_F(v)\le b(v)\ \ \forall v\]</div><p class="formula-where">A matching is the case \(b\equiv1\). A maximal matching is a 2-approximation of a maximum matching in size; greedy weighted matching gives a 2-approximation in weight.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#matching_approx">Approximate and b-matching</a></td><td><code>matching_approx</code></td><td>2</td><td>Approximate matching and \(b\)-matching; documented only.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/networkit.html">NetworKit</a></th><th><a href="../../tools/jgrapht.html">JGraphT</a></th></tr></thead><tbody><tr><td title="The graph has nodes but no edges (m = 0)."><strong>Edgeless graph</strong></td><td class="def">Empty matching.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="An edge whose source and target are the same node."><strong>Self-loops</strong></td><td class="def">A loop uses its node twice; conventions vary.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="Several shortest paths of equal length, equal scores, or equal eigenvalues, including ties that arise only in floating point (for example equal sums of reciprocals)."><strong>Ties and equal values</strong></td><td class="def">Many matchings of the same size or weight.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Edgeless graph</summary><ul><li>No tool entries.</li></ul></details><details><summary>Self-loops</summary><ul><li>No tool entries.</li></ul></details><details><summary>Ties and equal values</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Approximate and b-matching {#matching_approx}
 

@@ -16,7 +16,7 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and e
 
 Join trees. Entries grouped here: Join trees.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (join trees) by name only for a documented tool; its definition and source are not stated.
 
 ## Join trees {#cat_join_tree}
 

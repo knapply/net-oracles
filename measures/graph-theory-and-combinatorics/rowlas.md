@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified pr
 
 Rowlas. Entries grouped here: Rowlas.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list this entry (Rowlas) by name only for a documented tool; neither a definition nor a source is stated.
 
 ## Rowlas {#cat_rowlas}
 

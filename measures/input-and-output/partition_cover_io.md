@@ -16,7 +16,7 @@ Family: [Input and output](index.html). Subfamily: Partition and cover formats. 
 
 Partition and cover file formats. Entries grouped here: BINARYEDGELISTPARTITION read and write; BINARYPARTITION read and write; EDGELISTCOVER read and write; EDGELISTPARTITION read and write; SNAPEDGELISTPARTITION read and write.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list five partition and cover file formats of one documented tool by name only; none is specified in the sources.
 
 ## Variants {#concept-variants}
 

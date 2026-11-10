@@ -16,7 +16,7 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and e
 
 Tree sampling divergence. Entries grouped here: Tree sampling divergence.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list one entry (tree sampling divergence) by name only for a documented tool; its definition and source are not stated.
 
 ## Tree sampling divergence {#cat_divergence_sampling_tree}
 

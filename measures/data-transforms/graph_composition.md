@@ -12,11 +12,23 @@ nav_exclude: true
 
 Family: [Data transforms](index.html). Subfamily: Graph operators. Concept id: `graph_composition`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(G=(V,E)\)</td><td>graph with node set \(V\) and edge set \(E\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)</td></tr><tr><td>\(n=|V|\)</td><td>number of nodes</td></tr><tr><td>\(m=|E|\)</td><td>number of edges</td></tr><tr><td>\(H=(V_H,E_H)\)</td><td>second graph, with the same edge conventions as \(G\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Graph composition. Entries grouped here: Op compose.
 
-*Definition not yet written.*
+*Definition partly written:* Tools use the word 'compose' for at least two different operations (relational composition of edge sets, and the lexicographic product also called composition); the sources do not say which operation each documented entry performs, and a third reading (union with attribute override) is not defined in the sources checked. The relational form is given without a cited source.
+
+<div class="formula-block"><p class="formula-name"><strong>Composition (lexicographic product) G[H] (Harary 1969)</strong> <span class="applies">applies to: simple</span></p><div class="formula">\[V(G[H])=V\times V_H,\qquad (u,x)(v,y)\in E\iff uv\in E\ \text{or}\ (u=v\ \text{and}\ xy\in E_H)\]</div><p class="formula-where">Replace every node of \(G\) by a copy of \(H\); all edges between the copies of adjacent nodes of \(G\).</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Relational composition of edge sets</strong> <span class="applies">applies to: directed</span></p><div class="formula">\[E(G\circ H)=\{(u,w):\ \exists v,\ (u,v)\in E,\ (v,w)\in E_H\}\]</div><p class="formula-where">Path of length 2 whose first edge is in \(G\) and second in \(H\), on a common node set; the order of the operands matters.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#op_compose">Op compose</a></td><td><code>op_compose</code></td><td>3</td><td>Either of the two operations above, depending on the tool; the entries of documented-only tools are not specified further in the sources.</td></tr></tbody></table></div>
 
 ## Op compose {#op_compose}
 

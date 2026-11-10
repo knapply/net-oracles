@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified pr
 
 OPP. Entries grouped here: Opp.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list this entry (OPP) by name only for a documented tool; neither a definition nor a source is stated.
 
 ## Opp {#cat_opp}
 

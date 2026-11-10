@@ -12,11 +12,27 @@ nav_exclude: true
 
 Family: [Matrices and spectra](index.html). Subfamily: Spectra. Concept id: `graph_spectrum`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(G=(V,E)\)</td><td>graph with node set \(V\) and edge set \(E\); every edge has a source and a target (the two ends of an undirected edge are interchangeable)</td></tr><tr><td>\(n=|V|\)</td><td>number of nodes</td></tr><tr><td>\(m=|E|\)</td><td>number of edges</td></tr><tr><td>\(M\)</td><td>a graph matrix (adjacency, Laplacian, normalized Laplacian)</td></tr><tr><td>\(\lambda_1\ge\cdots\ge\lambda_n\)</td><td>eigenvalues of \(M\) with multiplicity</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Graph spectrum. Entries grouped here: Graph spectrum (eigenvalues of a graph matrix).
 
-*Definition not yet written.*
+<div class="formula-block"><p class="formula-name"><strong>Spectrum of a graph (Biggs 1974; Chung 1997)</strong> <span class="applies">applies to: undirected</span></p><div class="formula">\[\operatorname{spec}(G)=\{\lambda:\ \det(M-\lambda I)=0\}\ \text{with multiplicities},\quad \sum_i\lambda_i=\operatorname{tr}M\]</div><p class="formula-where">The multiset of eigenvalues of the chosen matrix; real for a symmetric \(M\). Which matrix is meant (adjacency spectrum, Laplacian spectrum, normalized-Laplacian spectrum) changes the result completely.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#graph_spectrum">Graph spectrum (eigenvalues of a graph matrix)</a></td><td><code>graph_spectrum</code></td><td>3</td><td>Eigenvalues of the adjacency, Laplacian or normalized Laplacian matrix, sorted ascending or descending; which one is returned is a property of the tool and its options.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/networkx.html">NetworkX</a></th><th><a href="../../tools/igraph.html">igraph (R)</a></th><th><a href="../../tools/pyigraph.html">igraph (Python)</a></th></tr></thead><tbody><tr><td title="The graph has no nodes (n = 0)."><strong>Empty graph</strong></td><td class="def">\(n=0\): the empty multiset.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="The graph has nodes but no edges (m = 0)."><strong>Edgeless graph</strong></td><td class="def">Adjacency and Laplacian spectra are all 0; the normalized Laplacian spectrum is all 0 by Chung's convention.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="The same measure applied to an undirected graph (each edge usable both ways) and to a directed graph (edges usable from source to target only), including which degree or distance direction is scored."><strong>Undirected versus directed input</strong></td><td class="def">A non-symmetric matrix can have complex eigenvalues; the real spectral theory holds for undirected input.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="Several shortest paths of equal length, equal scores, or equal eigenvalues, including ties that arise only in floating point (for example equal sums of reciprocals)."><strong>Ties and equal values</strong></td><td class="def">Multiplicities matter: the spectrum is a multiset, and repeated eigenvalues are expected (for example, a complete graph has one large eigenvalue and \(n-1\) equal ones).</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Empty graph</summary><ul><li>No tool entries.</li></ul></details><details><summary>Edgeless graph</summary><ul><li>No tool entries.</li></ul></details><details><summary>Undirected versus directed input</summary><ul><li>No tool entries.</li></ul></details><details><summary>Ties and equal values</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Graph spectrum (eigenvalues of a graph matrix) {#graph_spectrum}
 

@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified pr
 
 Dlbet. Entries grouped here: Dlbet.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list this entry (Dlbet) by name only for a documented tool; neither a definition nor a source is stated.
 
 ## Dlbet {#cat_dlbet}
 

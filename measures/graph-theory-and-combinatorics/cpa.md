@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified pr
 
 CPA. Entries grouped here: Cpa.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list this entry (CPA) by name only for a documented tool; neither a definition nor a source is stated.
 
 ## Cpa {#cat_cpa}
 

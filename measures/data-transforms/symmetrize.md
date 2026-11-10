@@ -12,15 +12,37 @@ nav_exclude: true
 
 Family: [Data transforms](index.html). Subfamily: Matrix and tie transformations. Concept id: `symmetrize`. 2 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(X=(x_{uv})\)</td><td>square matrix, possibly asymmetric</td></tr><tr><td>\(Y=(y_{uv})\)</td><td>symmetrized matrix, \(y_{uv}=y_{vu}\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Symmetrize. Entries grouped here: Full symmetrize method set and dichotomize by density; Symmetrise.
 
-*Definition not yet written.*
+*Definition partly written:* Methods are written from the names in the documented entries without a cited source; which methods each tool offers, and the default, are not recorded.
+
+<div class="formula-block"><p class="formula-name"><strong>Maximum (union, 'or')</strong> <span class="applies">applies to: any</span></p><div class="formula">\[y_{uv}=\max(x_{uv},x_{vu})\]</div><p class="formula-where">Keeps a tie if present in either direction.</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Minimum (intersection, 'and', strong)</strong> <span class="applies">applies to: any</span></p><div class="formula">\[y_{uv}=\min(x_{uv},x_{vu})\]</div><p class="formula-where">Keeps a tie only if reciprocated.</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Sum</strong> <span class="applies">applies to: any</span></p><div class="formula">\[y_{uv}=x_{uv}+x_{vu}\]</div><p class="formula-where">Adds the two directions.</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Mean</strong> <span class="applies">applies to: any</span></p><div class="formula">\[y_{uv}=\tfrac12(x_{uv}+x_{vu})\]</div><p class="formula-where">Averages the two directions.</p></div>
+
+<div class="formula-block"><p class="formula-name"><strong>Upper or lower triangle</strong> <span class="applies">applies to: any</span></p><div class="formula">\[y_{uv}=x_{\min(u,v),\max(u,v)}\ \text{or}\ x_{\max(u,v),\min(u,v)}\]</div><p class="formula-where">Copies one triangle onto the other; depends on the node order.</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#symmetrize_methods">Full symmetrize method set and dichotomize by density</a></td><td><code>symmetrize_methods</code></td><td>3</td></tr><tr><td><a href="#cat_symmetrise">Symmetrise</a></td><td><code>cat_symmetrise</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#symmetrize_methods">Full symmetrize method set and dichotomize by density</a></td><td><code>symmetrize_methods</code></td><td>3</td><td>Collective entry for the full method set of a documented tool, with dichotomization by density.</td></tr><tr><td><a href="#cat_symmetrise">Symmetrise</a></td><td><code>cat_symmetrise</code></td><td>1</td><td>Symmetrization as listed by another documented tool; method not specified in the sources.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/sna.html">sna</a></th><th><a href="../../tools/ergm.html">ergm (statnet)</a></th><th><a href="../../tools/ucinet.html">UCINET</a></th><th><a href="../../tools/tnet.html">tnet</a></th></tr></thead><tbody><tr><td title="An edge whose source and target are the same node."><strong>Self-loops</strong></td><td class="def">The diagonal satisfies \(y_{uu}=x_{uu}\) for max, min and mean, and \(2x_{uu}\) for the sum.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="How edge weights enter: as lengths (costs) in path measures, as strengths (capacities, tie intensities) in degree, flow and spectral measures, or ignored."><strong>Edge weights</strong></td><td class="def">Max, min, sum and mean differ on valued data; on 0/1 data max is 'or' and min is 'and'.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="The same measure applied to an undirected graph (each edge usable both ways) and to a directed graph (edges usable from source to target only), including which degree or distance direction is scored."><strong>Undirected versus directed input</strong></td><td class="def">Only asymmetric input is changed; a symmetric matrix is unchanged by max, min and mean.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Self-loops</summary><ul><li>No tool entries.</li></ul></details><details><summary>Edge weights</summary><ul><li>No tool entries.</li></ul></details><details><summary>Undirected versus directed input</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Full symmetrize method set and dichotomize by density {#symmetrize_methods}
 

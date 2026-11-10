@@ -16,7 +16,7 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Unclassified pr
 
 SPSP. Entries grouped here: SPSP.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list this entry (SPSP) by name only for a documented tool; neither a definition nor a source is stated.
 
 ## SPSP {#cat_spsp}
 

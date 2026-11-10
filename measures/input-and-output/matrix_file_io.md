@@ -16,7 +16,7 @@ Family: [Input and output](index.html). Subfamily: Matrix and spreadsheet format
 
 Matrix and spreadsheet formats. Entries grouped here: Excel (xlsx) reader and writer; MATLAB read and write; MATRIX read and write; MATRIXMARKET read and write; MTX read and write; Multi-matrix DL, edgelist23, nodelist, ranklist, pilesort, VNA; and 3 more.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list matrix and spreadsheet readers and writers (UCINET DL and binary datasets, MATLAB, MATRIX, Matrix Market, MTX, RB, XLSX) by name only; no specification of these formats is among the sources, and the UCINET entries are documented, never run.
 
 ## Variants {#concept-variants}
 

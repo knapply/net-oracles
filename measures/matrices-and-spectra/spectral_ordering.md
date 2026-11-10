@@ -16,7 +16,7 @@ Family: [Matrices and spectra](index.html). Subfamily: Spectra. Concept id: `spe
 
 Spectral ordering. Entries grouped here: Spectral ordering.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list the procedure (a spectral ordering of nodes) in a documented-only tool and record no formula; the primary source for spectral sequencing is not among the sources checked.
 
 ## Spectral ordering {#cat_ordering_spectral}
 

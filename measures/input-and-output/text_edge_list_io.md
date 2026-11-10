@@ -16,7 +16,7 @@ Family: [Input and output](index.html). Subfamily: Edge-list and adjacency-list 
 
 Edge-list and adjacency-list text formats. Entries grouped here: ADJACENCY read and write; CSV read and write; EDGELIST read and write; Extra file formats: ncol, lgl, dimacs, graphdb, adjacency list; KONECT read and write; LGL read and write; and 3 more.
 
-*Definition not yet written.*
+*Definition not yet written.* The sources list edge-list, adjacency-list, CSV, KONECT, LGL, METIS, NCOL and SNAP text readers and writers by name only (documented tools, never run); no specification of any of these formats is among the sources.
 
 ## Variants {#concept-variants}
 

@@ -23,7 +23,7 @@ permalink: /measures/input-and-output/
 
 ## Graph description formats
 
-<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="graph_markup_io.html">Graph description and exchange formats</a></td><td>14</td><td>7</td><td>not yet written</td><td>Graph description and exchange formats. Entries grouped here: DIMACS read and write; GEXF read and write; GML read and write; GRAPH6 read and write; GRAPHDB...</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="graph_markup_io.html">Graph description and exchange formats</a></td><td>14</td><td>7</td><td>partly written</td><td>Graph description and exchange formats. Entries grouped here: DIMACS read and write; GEXF read and write; GML read and write; GRAPH6 read and write; GRAPHDB...</td></tr></tbody></table></div>
 
 ## Matrix and spreadsheet formats
 
