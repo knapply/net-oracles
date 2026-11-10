@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Other detection algorithms. Concep
 
 LocalGreedy, MOCA and partition polishing. Entries grouped here: LocalGreedy, Moca, partition polishing, initial partitions; Polish.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (UCINET LocalGreedy, MOCA, partition polishing and initial partitions), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Variants {#concept-variants}
 

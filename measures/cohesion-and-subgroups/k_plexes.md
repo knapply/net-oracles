@@ -12,11 +12,29 @@ nav_exclude: true
 
 Family: [Cohesion and subgroups](index.html). Subfamily: Relaxed cliques and subgroups. Concept id: `k_plexes`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(G=(V,E)\)</td><td>simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \(V\), \(n=|V|\)</td></tr><tr><td>\(S\)</td><td>a set of \(s=|S|\) nodes</td></tr><tr><td>\(\deg_S(v)\)</td><td>number of neighbours of \(v\) inside \(S\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Maximal k-plexes: node sets in which each member has at most k - 1 non-neighbours among the others.
 
-*Definition not yet written.*
+*Note:* Documented only (UCINET), never run; the formula is the definition of Seidman and Foster 1978.
+
+<div class="formula-block"><p class="formula-name"><strong>k-plex (Seidman and Foster 1978)</strong> <span class="applies">applies to: undirected, simple</span></p><div class="formula">\[S\text{ is a }k\text{-plex}\iff\deg_S(v)\ge |S|-k\ \ \forall v\in S\]</div><p class="formula-where">Each member is adjacent to all but at most \(k-1\) of the other members; a 1-plex is a clique. Maximal \(k\)-plexes cannot be extended. Defined for \(k\ge1\); sets of fewer than \(k\) nodes satisfy it trivially, so a minimum size is imposed in practice.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#k_plexes">K plexes</a></td><td><code>k_plexes</code></td><td>1</td><td>All maximal \(k\)-plexes of at least a given size.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/ucinet.html">UCINET</a></th></tr></thead><tbody><tr><td title="The graph has no nodes (n = 0)."><strong>Empty graph</strong></td><td class="def">No node set.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="The graph has nodes but no edges (m = 0)."><strong>Edgeless graph</strong></td><td class="def">Any set of at most \(k\) nodes is a \(k\)-plex.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="The graph has fewer nodes than a normalizing constant or a term of the formula needs (for example n &lt; 3 when dividing by (n-1)(n-2)), so a division by zero or an empty sum arises."><strong>Too few nodes for the formula</strong></td><td class="def">Sets smaller than the minimum size are not reported.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="Every pair of distinct nodes is joined by an edge. All nodes are structurally equivalent."><strong>Complete graph</strong></td><td class="def">The whole node set is a 1-plex.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="A free parameter (attenuation, damping, decay, exponent, walk length) outside the range for which the series or fixed point is defined or convergent."><strong>Parameter outside its valid range</strong></td><td class="def">\(k&lt;1\) is meaningless (a node would need more than all other members as neighbours).</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Empty graph</summary><ul><li>No tool entries.</li></ul></details><details><summary>Edgeless graph</summary><ul><li>No tool entries.</li></ul></details><details><summary>Too few nodes for the formula</summary><ul><li>No tool entries.</li></ul></details><details><summary>Complete graph</summary><ul><li>No tool entries.</li></ul></details><details><summary>Parameter outside its valid range</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## References {#concept-references}
 

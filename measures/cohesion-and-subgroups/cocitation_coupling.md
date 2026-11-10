@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and loca
 
 Cocitation and bibliographic coupling. Entries grouped here: Cocitation and bibliographic coupling.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (igraph cocitation and bibliographic coupling), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Cocitation and bibliographic coupling {#cocitation}
 

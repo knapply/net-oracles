@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Partition and cover quality. Conce
 
 Partition entropy. Entries grouped here: Partition entropy.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (graph-tool partition entropy), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Partition entropy {#cat_entropy_partition}
 

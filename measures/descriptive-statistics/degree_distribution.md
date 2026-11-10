@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Density and degree dist
 
 Degree distribution and summary statistics. Entries grouped here: Degree distribution and its summary statistics.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworKit degree distribution and summary statistics), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Degree distribution and its summary statistics {#degree_distribution}
 

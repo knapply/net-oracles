@@ -16,7 +16,7 @@ Family: [Paths and distances](index.html). Subfamily: Path enumeration and count
 
 Minimum and maximum cycle ratio. Entries grouped here: Minimum/maximum cycle ratio and mean cycle.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (Boost and JGraphT minimum and maximum cycle ratio and mean cycle), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Minimum/maximum cycle ratio and mean cycle {#cycle_ratio}
 

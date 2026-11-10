@@ -16,7 +16,7 @@ Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homop
 
 Gupta-Anderson-May mixing coefficient. Entries grouped here: Gupta-Anderson-May mixing coefficient.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (Gupta-Anderson-May mixing coefficient (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available.
 
 ## Gupta-Anderson-May mixing coefficient {#seg_gamix}
 

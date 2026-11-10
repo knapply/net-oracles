@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Other detection algorithms. Concep
 
 Combined SCD. Entries grouped here: Combined SCD.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworKit combined SCD), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Combined SCD {#cat_combined_scd}
 

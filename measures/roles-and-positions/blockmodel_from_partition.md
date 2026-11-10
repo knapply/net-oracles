@@ -16,7 +16,7 @@ Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `
 
 Blockmodel from a partition. Entries grouped here: Block (blockmodel from partition), Reduce.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (UCINET Block), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Block (blockmodel from partition), Reduce {#cat_block_blockmodel_from_partition_reduce}
 

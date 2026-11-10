@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Cuts and separator
 
 All node cuts. Entries grouped here: All node cuts (connectivity).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworkX all node cuts), never run; the sources give the name and the tool's function, not a formula.
 
 ## All node cuts (connectivity) {#cat_all_cut-connectivity}
 

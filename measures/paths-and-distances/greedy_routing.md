@@ -16,7 +16,7 @@ Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concep
 
 Greedy routing and navigation. Entries grouped here: Hyperbolic greedy routing; Hyperbolic greedy success rate; Navigation.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (rustworkx hyperbolic greedy routing and BCT navigation), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Variants {#concept-variants}
 

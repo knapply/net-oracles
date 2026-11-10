@@ -16,7 +16,7 @@ Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homop
 
 Spectral segregation index. Entries grouped here: Spectral segregation index (SSI).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (spectral segregation index (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available.
 
 ## Spectral segregation index (SSI) {#seg_ssi}
 

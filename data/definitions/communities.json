@@ -1,0 +1,2506 @@
+{
+ "family": "Communities",
+ "concepts": {
+  "modularity": {
+   "status": "partial",
+   "note": "cat_modularity_state (graph-tool's modularity state object) is documented only and was never run; what it exposes beyond the modularity value is not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "c_i",
+     "meaning": "community (group) of node \\(i\\) in a partition \\(\\mathcal P\\) of \\(V\\); \\(\\delta(c_i,c_j)=1\\) when \\(i,j\\) are in the same community"
+    },
+    {
+     "symbol": "A_{ij}",
+     "meaning": "weight of the edges from \\(i\\) to \\(j\\) (the edge count for an unweighted graph, parallel edges added); for an undirected graph \\(A\\) is symmetric and a self-loop adds 2 to \\(A_{ii}\\)"
+    },
+    {
+     "symbol": "k_i=\\sum_jA_{ij}",
+     "meaning": "degree (strength) of \\(i\\)"
+    },
+    {
+     "symbol": "m=\\tfrac12\\sum_{ij}A_{ij}",
+     "meaning": "total edge weight; \\(2m=\\sum_ik_i\\)"
+    },
+    {
+     "symbol": "\\gamma",
+     "meaning": "resolution parameter (1 for standard modularity)"
+    },
+    {
+     "symbol": "k_i^{\\mathrm{out}},k_j^{\\mathrm{in}}",
+     "meaning": "out-degree of \\(i\\) and in-degree of \\(j\\) of a directed graph; \\(m\\) the total arc weight"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Modularity (Newman and Girvan 2004; Newman 2006)",
+     "latex": "Q=\\frac1{2m}\\sum_{ij}\\Bigl(A_{ij}-\\gamma\\frac{k_ik_j}{2m}\\Bigr)\\delta(c_i,c_j)=\\sum_c\\Bigl[\\frac{L_c}{m}-\\gamma\\Bigl(\\frac{d_c}{2m}\\Bigr)^2\\Bigr]",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Fraction of the edge weight inside communities minus the fraction expected in the configuration model with the same degrees; \\(L_c\\) is the weight inside community \\(c\\), \\(d_c\\) the total degree of \\(c\\). \\(\\gamma\\) is the resolution parameter of Reichardt and Bornholdt 2006. Defined for \\(m>0\\); with \\(m=0\\) it is 0/0."
+    },
+    {
+     "name": "Directed modularity (Leicht and Newman 2008)",
+     "latex": "Q=\\frac1m\\sum_{ij}\\Bigl(A_{ij}-\\gamma\\frac{k_i^{\\mathrm{out}}k_j^{\\mathrm{in}}}{m}\\Bigr)\\delta(c_i,c_j)",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The null model keeps out- and in-degrees; defined for \\(m>0\\)."
+    }
+   ],
+   "variants": {
+    "modularity": "\\(Q\\) of a given partition, undirected or directed, unweighted or weighted, with an optional resolution \\(\\gamma\\); self-loops add twice to both the internal weight and the degree.",
+    "cnx_modularity_nx": "\\(Q\\) of a partition of the graph with the node set read in its natural order, unweighted or with edge weights.",
+    "cat_modularity_state": "Documented for graph-tool as a modularity state object; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes and no edges: \\(m=0\\), not defined."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(m=0\\): the factor \\(1/(2m)\\) is 0/0: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "Without edges modularity is 0 / 0;",
+       "source": "conventions.json modularity / modularity_weighted",
+       "measure": "modularity",
+       "finding": "F035"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sknetwork": {
+       "status": "no_value",
+       "behaviour": "scikit-network reads the adjacency matrix, where an undirected self-loop is 1 on the diagonal and adds 1 to the degree; the reference, like igraph and NetworkX, counts it twice in both (exact rational evaluation of both conventions reproduces each tool's value on multi_loops_und). scikit-network rejects an adjacency matrix without entries ('The input matrix is empty').",
+       "source": "conventions.json modularity / modularity",
+       "measure": "modularity"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Without a loop \\(m=0\\): not defined; with a loop, \\(Q=0\\) for the one community.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "They do not change \\(Q\\) (\\(k_i=0\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "An undirected loop adds 2 to \\(A_{ii}\\) and 2 to \\(k_i\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sknetwork": {
+       "status": "differs",
+       "behaviour": "scikit-network reads the adjacency matrix, where an undirected self-loop is 1 on the diagonal and adds 1 to the degree; the reference, like igraph and NetworkX, counts it twice in both (exact rational evaluation of both conventions reproduces each tool's value on multi_loops_und).",
+       "source": "conventions.json modularity / modularity",
+       "measure": "modularity"
+      },
+      "graspologic": {
+       "status": "differs",
+       "behaviour": "graspologic-native adds an undirected self-loop's weight once to the community's internal weight but twice to the node's degree (exact rational evaluation of that convention reproduces -0.090567 on multi_loops_und);",
+       "source": "conventions.json modularity / modularity",
+       "measure": "modularity"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to \\(A_{ij}\\) and to the degrees: the multigraph is scored with multiplicity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "cdlib": {
+       "status": "differs",
+       "behaviour": "cdlib's newman_girvan_modularity counts the parallel edges inside a community once while the edge total and the degrees count every copy (a triangle with one doubled edge, communities {0, 1} and {2}: cdlib -0.375, NetworkX and the reference -0.125); with loops but no parallel edges it agrees.",
+       "source": "conventions.json modularity / modularity",
+       "measure": "modularity"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Undirected and directed forms differ; reading an undirected graph as a symmetric digraph gives the same \\(Q\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "cdlib": {
+       "status": "no_value",
+       "behaviour": "newman_girvan_modularity is the undirected measure; directed fixtures are not passed.",
+       "source": "conventions.json modularity / modularity",
+       "measure": "modularity"
+      },
+      "graspologic": {
+       "status": "no_value",
+       "behaviour": "graspologic-native adds an undirected self-loop's weight once to the community's internal weight but twice to the node's degree (exact rational evaluation of that convention reproduces -0.090567 on multi_loops_und); graspologic's modularity is for undirected graphs.",
+       "source": "conventions.json modularity / modularity",
+       "measure": "modularity"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Strengths replace degrees.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "negative_weights",
+     "definition_gives": "Not defined by the formulas above (the null model needs non-negative weights)."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(\\gamma\\ge0\\); \\(\\gamma=0\\) rewards any merge."
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "Empty communities contribute 0; the singleton partition has \\(Q=-\\sum_ik_i^2/(4m^2)\\); one community gives \\(Q=1-\\gamma\\)."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "The single community gives \\(1-\\gamma\\) and singletons give \\(-\\gamma/n\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "newman2004finding",
+    "newman2006modularity",
+    "leicht2008community",
+    "reichardt2006statistical"
+   ]
+  },
+  "modularity_maximization": {
+   "status": "partial",
+   "note": "cat_hierarchy_louvain and cat_iteration_louvain (scikit-network's Louvain hierarchy and iteration) are documented only and were never run; what levels or iterations they return is not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "c_i",
+     "meaning": "community (group) of node \\(i\\) in a partition \\(\\mathcal P\\) of \\(V\\); \\(\\delta(c_i,c_j)=1\\) when \\(i,j\\) are in the same community"
+    },
+    {
+     "symbol": "A_{ij}",
+     "meaning": "weight of the edges from \\(i\\) to \\(j\\) (the edge count for an unweighted graph, parallel edges added); for an undirected graph \\(A\\) is symmetric and a self-loop adds 2 to \\(A_{ii}\\)"
+    },
+    {
+     "symbol": "k_i=\\sum_jA_{ij}",
+     "meaning": "degree (strength) of \\(i\\)"
+    },
+    {
+     "symbol": "m=\\tfrac12\\sum_{ij}A_{ij}",
+     "meaning": "total edge weight; \\(2m=\\sum_ik_i\\)"
+    },
+    {
+     "symbol": "\\Sigma_{\\mathrm{in}},\\Sigma_{\\mathrm{tot}}",
+     "meaning": "total weight inside a community and total degree of its nodes"
+    },
+    {
+     "symbol": "k_{i,\\mathrm{in}}",
+     "meaning": "weight from node \\(i\\) to the nodes of a community"
+    },
+    {
+     "symbol": "e_{ab},a_a",
+     "meaning": "fraction of edge ends between communities \\(a,b\\) and in community \\(a\\): \\(a_a=\\sum_be_{ab}\\)"
+    },
+    {
+     "symbol": "B_{ij}=A_{ij}-\\tfrac{k_ik_j}{2m}",
+     "meaning": "modularity matrix"
+    },
+    {
+     "symbol": "s_i\\in\\{\\pm1\\}",
+     "meaning": "split of a group into two parts"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Objective",
+     "latex": "\\max_{\\mathcal P}Q(\\mathcal P)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "All procedures below search for a partition of high modularity \\(Q\\) (defined in the modularity concept); maximizing it is NP-hard (Brandes et al. 2008), so most procedures are heuristics, and the exact search is feasible only on small graphs."
+    },
+    {
+     "name": "Louvain move gain (Blondel et al. 2008)",
+     "latex": "\\Delta Q=\\Bigl[\\frac{\\Sigma_{\\mathrm{in}}+2k_{i,\\mathrm{in}}}{2m}-\\Bigl(\\frac{\\Sigma_{\\mathrm{tot}}+k_i}{2m}\\Bigr)^2\\Bigr]-\\Bigl[\\frac{\\Sigma_{\\mathrm{in}}}{2m}-\\Bigl(\\frac{\\Sigma_{\\mathrm{tot}}}{2m}\\Bigr)^2-\\Bigl(\\frac{k_i}{2m}\\Bigr)^2\\Bigr]",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Gain of moving the isolated node \\(i\\) into community \\(C\\); nodes are moved while the gain is positive, then communities are aggregated into nodes and the step repeated. The visiting order and tie handling are not fixed by the definition, so results depend on them. Leiden (Traag et al. 2019) adds a refinement that keeps communities connected and well separated."
+    },
+    {
+     "name": "Greedy agglomeration (Clauset, Newman and Moore 2004)",
+     "latex": "\\Delta Q_{ab}=2\\,(e_{ab}-a_aa_b)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Repeatedly merge the pair of communities with the largest \\(\\Delta Q\\) (adjacent pairs only); the best level of the dendrogram is the maximum of \\(Q\\) along the merge sequence."
+    },
+    {
+     "name": "Leading eigenvector (Newman 2006)",
+     "latex": "\\Delta Q=\\frac{1}{4m}\\,s^{\\mathsf T}Bs,\\qquad s=\\mathrm{sign}(u_1)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "A group is split by the signs of the leading eigenvector \\(u_1\\) of its (generalized) modularity matrix when the leading eigenvalue is positive; repeated until no split raises \\(Q\\). Zero components (isolated nodes) and repeated eigenvalues leave the split undetermined."
+    }
+   ],
+   "variants": {
+    "louvain_modularity": "Louvain communities of an undirected network by greedy modularity moves and aggregation, scored by modularity (a randomized procedure; the resulting \\(Q\\) differs between runs).",
+    "louvain_quality": "The same Louvain procedure judged by the modularity it reaches, averaged over seeds (the comparison is of distributions, not of single runs).",
+    "cnx_louvain_seeded": "Louvain with a fixed random seed: one reproducible run of the procedure.",
+    "leiden": "Leiden communities of an undirected network: local moving, refinement into connected groups and aggregation.",
+    "cnx_leiden_seeded": "Leiden with a fixed random seed.",
+    "fast_greedy": "The greedy agglomeration of Clauset, Newman and Moore: returns the best level, its modularity and the merge sequence.",
+    "cnx_greedy_modularity": "Greedy modularity communities by repeated best merges (the Clauset-Newman-Moore procedure).",
+    "cnx_naive_greedy": "The greedy merging written as a direct search over all pairs of communities (the same objective, compared by the modularity of the whole merged partition).",
+    "cnx_naive_greedy_nx": "The same naive greedy merging, with whole-partition modularities compared in set order.",
+    "leading_eigen": "The leading eigenvector method: repeated modularity-matrix splits; returns the membership, its modularity and the number of splits.",
+    "optimal_modularity": "A partition of maximum modularity found exactly (a Russian doll search or integer programming): the maximum value is determined, the partition need not be unique.",
+    "cat_hierarchy_louvain": "Documented for scikit-network as the Louvain hierarchy (levels of aggregation); not recorded in detail.",
+    "cat_iteration_louvain": "Documented for scikit-network as a Louvain iteration; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: no partition to compute."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No edges (\\(m=0\\)): modularity is 0/0 and every node can be its own community.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "Without edges modularity is 0 / 0;",
+       "source": "conventions.json louvain_modularity / louvain_modularity_weighted",
+       "measure": "louvain_modularity"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One node: one community; modularity is defined only with a loop."
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolate has \\(k_i=0\\) and adds nothing to \\(Q\\); a tool may keep it alone or attach it anywhere.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "On a disconnected network the leading eigenvector of a division's modularity matrix can be degenerate (components with equal eigenvalues, zero components for isolated nodes), and the definition oracle declines; kite and two_triangles_isolate have a degenerate leading eigenvalue (see the definition oracle), so the division is not unique;",
+       "source": "conventions.json leading_eigen / leading_eigen",
+       "measure": "leading_eigen",
+       "finding": "F011"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "An undirected loop adds 2 to \\(A_{ii}\\) and to the degree, in both the internal weight and the degree of the node.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "NetworkX runs on the simple graph here, while the reference counts parallel edges with their multiplicity; without edges modularity is undefined (the reference reports -1, NetworkX 0)",
+       "source": "conventions.json leiden / leiden_quality"
+      },
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "cluster_fast_greedy() needs a graph without multiple edges, so parallel edges are collapsed into weights, and the self-loops dropped with them count toward degree and modularity in the reference (as in NetworkX) but not in the simplified igraph graph;",
+       "source": "conventions.json fast_greedy / fast_greedy",
+       "measure": "fast_greedy"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to \\(A_{ij}\\): a multigraph is scored with multiplicity.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "NetworkX runs on the simple graph here, while the reference counts parallel edges with their multiplicity;",
+       "source": "conventions.json leiden / leiden_quality"
+      },
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "igraph's ARPACK-based routine is not run on multigraphs, networks with self-loops, or trivial networks, where its conventions for loops and its convergence are not those documented here",
+       "source": "conventions.json leading_eigen / leading_eigen",
+       "measure": "leading_eigen",
+       "finding": "F011"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Modularity has separate undirected and directed forms; the directed form uses out- and in-degrees.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "Exactly tied merges: NetworkX compares whole-partition modularities summed in set order, so rounding decides; the reference compares gains and takes the first pair.",
+       "source": "conventions.json cnx_naive_greedy / nx_naive_greedy_modularity",
+       "measure": "cnx_naive_greedy"
+      },
+      "igraph": {
+       "status": "differs",
+       "behaviour": "Exactly tied mergers on the greedy path are common (modularity gains are sums of small fractions): igraph breaks them by its own order and may reach a different dendrogram and best level. On networks without community structure (complete6, star8, two nodes and one edge) every merger along the reference value's path raises modularity and the path ends in one group (modularity 0), while igraph reports a partition of negative modularity. The definition oracle checks the reference.",
+       "source": "conventions.json fast_greedy / fast_greedy",
+       "measure": "fast_greedy"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights replace edge counts in \\(A\\), \\(k_i\\) and \\(m\\); negative weights are outside the definition."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "A community may span components only if it lowers or keeps \\(Q\\); components are natural communities.",
+     "tools": {
+      "igraph": {
+       "status": "differs",
+       "behaviour": "On a disconnected network the leading eigenvector of a division's modularity matrix can be degenerate (components with equal eigenvalues, zero components for isolated nodes), and the definition oracle declines;",
+       "source": "conventions.json leading_eigen / leading_eigen",
+       "measure": "leading_eigen",
+       "finding": "F011"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "No partition beats one community: \\(Q\\) is 0 for the single community and negative for others.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "Exactly tied mergers on the greedy path are common (modularity gains are sums of small fractions): igraph breaks them by its own order and may reach a different dendrogram and best level. On networks without community structure (complete6, star8, two nodes and one edge) every merger along the reference value's path raises modularity and the path ends in one group (modularity 0), while igraph reports a partition of negative modularity. The definition oracle checks the reference.",
+       "source": "conventions.json fast_greedy / fast_greedy",
+       "measure": "fast_greedy"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "The best partition is the single community (Q = 0) or its equivalents.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "Exactly tied mergers on the greedy path are common (modularity gains are sums of small fractions): igraph breaks them by its own order and may reach a different dendrogram and best level. On networks without community structure (complete6, star8, two nodes and one edge) every merger along the reference value's path raises modularity and the path ends in one group (modularity 0), while igraph reports a partition of negative modularity. The definition oracle checks the reference.",
+       "source": "conventions.json fast_greedy / fast_greedy",
+       "measure": "fast_greedy"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several candidate moves, merges or labels have exactly equal value; the definition does not choose, so the result depends on the tool's ordering or random draws (and on rounding when equal values are sums of floating-point terms).",
+     "tools": {
+      "igraph": {
+       "status": "differs",
+       "behaviour": "igraph puts each isolated node in a group of its own; the reference leaves isolated nodes, whose eigenvector components are zero, on the non-positive side of each division. Isolated nodes add nothing to modularity, so the modularity of the two partitions is the same (checked by leading_eigen). With symmetric positions the leading eigenvector of a division can be repeated or have zero components, which the two place differently. as for leading_eigen (the oracle script skips these fixtures; on other graphs the tag declarations apply)",
+       "source": "conventions.json leading_eigen / leading_eigen_membership",
+       "measure": "leading_eigen",
+       "finding": "F011"
+      }
+     }
+    }
+   ],
+   "references": [
+    "blondel2008fast",
+    "traag2019louvain",
+    "clauset2004finding",
+    "newman2006modularity",
+    "brandes2008modularity",
+    "reichardt2006statistical"
+   ]
+  },
+  "spinglass": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\sigma_i\\in\\{1..q\\}",
+     "meaning": "spin (community) of node \\(i\\), \\(q\\) the maximum number of spins"
+    },
+    {
+     "symbol": "A_{ij}",
+     "meaning": "weight of the edges from \\(i\\) to \\(j\\) (the edge count for an unweighted graph, parallel edges added); for an undirected graph \\(A\\) is symmetric and a self-loop adds 2 to \\(A_{ii}\\)"
+    },
+    {
+     "symbol": "p_{ij}",
+     "meaning": "null-model weight, \\(k_ik_j/2m\\) for the configuration model"
+    },
+    {
+     "symbol": "\\gamma",
+     "meaning": "resolution (coupling) parameter"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Potts Hamiltonian (Reichardt and Bornholdt 2006)",
+     "latex": "\\mathcal H(\\sigma)=-\\sum_{i\\ne j}\\bigl(A_{ij}-\\gamma p_{ij}\\bigr)\\delta(\\sigma_i,\\sigma_j)",
+     "applies_to": [
+      "connected",
+      "undirected"
+     ],
+     "where": "Minimizing \\(\\mathcal H\\) is maximizing modularity at \\(\\gamma=1\\); minimized by simulated annealing, so the result is stochastic. Traag and Bruggeman 2009 add negative weights. Stated for connected networks."
+    }
+   ],
+   "variants": {
+    "spinglass": "The communities of a connected network from simulated annealing of the Potts Hamiltonian; \\(q\\) bounds the number of communities."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Not defined."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Not defined (trivial network)."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No coupling: every spin assignment has \\(\\mathcal H=0\\)."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "The method is stated for connected networks; with several components the annealing is not determined.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "both tools reject disconnected networks;",
+       "source": "conventions.json spinglass / spinglass_quality"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The sum is over \\(i\\ne j\\): loops do not enter."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to \\(A_{ij}\\)."
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights enter \\(A\\) and the null model; negative weights are handled by Traag and Bruggeman 2009."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal energies: a stochastic search returns one minimizer."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(\\gamma\\ge0\\); \\(q\\) at least the number of communities wanted."
+    }
+   ],
+   "references": [
+    "reichardt2006statistical",
+    "traag2009community"
+   ]
+  },
+  "clique_percolation": {
+   "status": "partial",
+   "note": "cat_clique_community (BCT) is documented only and was never run; its options are not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "k",
+     "meaning": "clique size parameter, \\(k\\ge3\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "k-clique communities (Palla et al. 2005)",
+     "latex": "\\text{two }k\\text{-cliques are adjacent if they share }k-1\\text{ nodes; a community is the union of the }k\\text{-cliques in one connected class of adjacent }k\\text{-cliques}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Communities may overlap (a node can lie in several); nodes in no \\(k\\)-clique belong to no community. Equivalent to merging maximal cliques of at least \\(k\\) nodes that share \\(k-1\\) nodes."
+    }
+   ],
+   "variants": {
+    "cnx_k_clique": "The union of maximal cliques of at least \\(k\\) nodes that share \\(k-1\\) nodes, on the simple undirected graph.",
+    "cat_clique_community": "Documented for BCT as clique communities; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "None."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No \\(k\\)-cliques: no communities.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No community.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "In no community.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Dropped (simple graph).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected graph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One community (all nodes) for \\(n\\ge k\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "No community for \\(k\\ge3\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(k<3\\) is not meaningful (k=2 gives connected components)."
+    }
+   ],
+   "references": [
+    "palla2005uncovering"
+   ]
+  },
+  "constant_potts_model": {
+   "status": "complete",
+   "note": "Documented only (NetworkX), never run; the formula is that of Traag, Van Dooren and Nesterov 2011.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "e_c",
+     "meaning": "edge weight inside community \\(c\\)"
+    },
+    {
+     "symbol": "n_c",
+     "meaning": "number of nodes of \\(c\\)"
+    },
+    {
+     "symbol": "\\gamma",
+     "meaning": "resolution: the minimum internal density of a community"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Constant Potts model (Traag et al. 2011)",
+     "latex": "\\mathcal H=-\\sum_c\\Bigl[e_c-\\gamma\\binom{n_c}{2}\\Bigr]",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Rewards edges inside communities and penalizes community size at a constant rate \\(\\gamma\\) per pair; unlike modularity it is resolution-limit free. Minimized over partitions (a maximization of the negative)."
+    }
+   ],
+   "variants": {
+    "cat_constant_model_potts@community": "The constant Potts model value of a partition."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(\\mathcal H\\le0\\); the best partition is singletons for \\(\\gamma>0\\)."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(\\binom{1}{2}=0\\): contributes 0."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Not edges between distinct nodes in this pair-based form."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Add to \\(e_c\\)."
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights add to \\(e_c\\)."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(\\gamma\\) is a density threshold in \\([0,1]\\) for unweighted graphs."
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "Empty communities contribute 0."
+    }
+   ],
+   "references": [
+    "traag2011narrow"
+   ]
+  },
+  "cluster_mode_state": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool mode cluster state), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "scd_combined": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit combined SCD), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "cut_clustering": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit cut clustering), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "dasgupta_cost": {
+   "status": "name_only",
+   "note": "Documented only (scikit-network Dasgupta cost and score), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "core_community_detection": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit k-core community detection), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "k_spanning_tree_clustering": {
+   "status": "name_only",
+   "note": "Documented only (JGraphT k-spanning-tree clustering), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "link_communities": {
+   "status": "name_only",
+   "note": "Documented only (BCT link communities), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "ucinet_community_extras": {
+   "status": "name_only",
+   "note": "Documented only (UCINET LocalGreedy, MOCA, partition polishing and initial partitions), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "overlapping_seed_expansion": {
+   "status": "name_only",
+   "note": "Documented only (NetworkX greedy source expansion and NetworKit GCE, LFM and LFMLocal), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "paris": {
+   "status": "name_only",
+   "note": "Documented only (scikit-network Paris), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "bipartite_partitioning": {
+   "status": "name_only",
+   "note": "Documented only (JGraphT bipartite partitioning), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "randomized_partitioning": {
+   "status": "name_only",
+   "note": "Documented only (NetworkX randomized partitioning), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "partition_agreement": {
+   "status": "name_only",
+   "note": "Documented only (BCT agreement and consensus of partitions), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "cover_comparison": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit cover comparison and cover F1 similarity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "partition_consensus_state": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool partition mode and centroid states), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "partition_overlap": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool partition and nested partition overlap), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "partition_center": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool partition overlap centers), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "hub_dominance": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit hub dominance), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "expansion": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit isolated interpartition expansion), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "intrapartition_density": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit intrapartition density), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "local_partition_coverage": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit local partition coverage), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "local_tightness_expansion": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit local tightness expansion), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "partition_entropy": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool partition entropy), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "partition_fragmentation": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit partition fragmentation), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "overlapping_communities": {
+   "status": "name_only",
+   "note": "Checked against NetworkX (overlapping_modularity of a cover on the simple undirected graph), but the sources record no formula for it; the modularity-density extension of Chen, Kuzmin and Szymanski 2014 is a related but different quantity, so no definition is written."
+  },
+  "fluid_communities": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "k",
+     "meaning": "number of communities requested"
+    },
+    {
+     "symbol": "d(c)=1/|c|",
+     "meaning": "density of community \\(c\\): the fluid of total mass 1 shared by its \\(|c|\\) members"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Fluid communities (Pares et al. 2018)",
+     "latex": "c_v\\leftarrow\\arg\\max_{c}\\sum_{w\\in N[v]:\\,c_w=c}d(c)",
+     "applies_to": [
+      "connected",
+      "undirected"
+     ],
+     "where": "Starting from \\(k\\) random nodes, each in its own community of density 1, nodes are visited in random order and take the community with the largest summed density among the node itself and its neighbours \\(N[v]\\); the sweeps repeat until no node changes. The result is random and requires a connected graph and \\(k\\le n\\)."
+    }
+   ],
+   "variants": {
+    "fluid_communities": "\\(k\\) groups from density-propagating sweeps of a connected undirected network (a randomized procedure: the comparison with another implementation is statistical)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Not defined."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(k\\le n=1\\): trivial."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "The procedure is stated for connected graphs: fluid mass cannot reach other components.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "both tools reject disconnected networks (the reference reports -1);",
+       "source": "conventions.json fluid_communities / fluid_quality"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Not part of neighbourhoods in the simple reading."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal summed densities are broken at random."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(k>n\\) is impossible; \\(k=1\\) is trivial."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Dependent on the random initial seeds."
+    }
+   ],
+   "references": [
+    "pares2018fluid"
+   ]
+  },
+  "girvan_newman": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "B(e)",
+     "meaning": "betweenness of edge \\(e\\): \\(\\sum_{s\\ne t}\\sigma_{st}(e)/\\sigma_{st}\\), the share of shortest paths through it (Brandes 2001)"
+    },
+    {
+     "symbol": "B_{\\mathrm{cf}}(e)",
+     "meaning": "current-flow edge betweenness (Brandes and Fleischer 2005)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Girvan-Newman procedure (Girvan and Newman 2002)",
+     "latex": "\\text{repeat: remove }e^\\star=\\arg\\max_{e}B(e)\\text{ (recomputed after every removal)};\\ \\text{communities}=\\text{components}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Edges between communities carry many shortest paths and are removed first; the removal sequence defines a dendrogram. The level of the dendrogram with highest modularity (Newman and Girvan 2004) or a requested number of groups is reported. Edges of equal betweenness are removed in an order the definition does not fix."
+    },
+    {
+     "name": "Current-flow variant",
+     "latex": "e^\\star=\\arg\\max_eB_{\\mathrm{cf}}(e)",
+     "applies_to": [
+      "connected",
+      "undirected"
+     ],
+     "where": "Edge betweenness replaced by current-flow betweenness; removal repeats until at least \\(k\\) components exist."
+    }
+   ],
+   "variants": {
+    "girvan_newman": "Girvan-Newman clustering by removing the highest-betweenness edge one at a time; returns the best level, its modularity and the removal order.",
+    "girvan_newman_cut": "The same dendrogram cut at a requested number of groups.",
+    "cnx_girvan_newman": "The sequence of partitions as edges are removed (each level of the dendrogram).",
+    "cnx_edge_betweenness": "Component labels after removing the most central edges one at a time until at least \\(k\\) components exist.",
+    "cnx_current_flow": "Component labels after removing the edges of largest current-flow betweenness until at least \\(k\\) components exist."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No levels."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Already all singletons: no edge to remove.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "Without edges: the reference returns no membership level for the null graph and the singletons otherwise, the NetworkX oracle one value for the empty level.",
+       "source": "conventions.json girvan_newman / girvan_newman_membership"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One community.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Isolates are singleton components from the start.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Betweenness ignores unreachable pairs; the components are the first level.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "disconnected and trivial networks give dendrograms that cannot be cut at 3 groups in one tool or the other",
+       "source": "conventions.json girvan_newman_cut / girvan_newman_cut3"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops carry no shortest paths and are never selected.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "the R oracle simplifies the network, so multigraphs and networks with loops are not comparable;",
+       "source": "conventions.json girvan_newman_cut / girvan_newman_cut3"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges split the path counts between them.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "the R oracle simplifies the network, so multigraphs and networks with loops are not comparable;",
+       "source": "conventions.json girvan_newman_cut / girvan_newman_cut3"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on undirected graphs; directed use needs a choice of path direction.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights as lengths in the shortest paths.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Edges of exactly equal betweenness (symmetric positions) are removed in a tool-dependent order, which can change the dendrogram.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "Edges whose current-flow betweenness ties in exact arithmetic (symmetric positions) differ in the last digits;",
+       "source": "conventions.json cnx_current_flow / nx_edge_current_flow_partition",
+       "measure": "cnx_current_flow"
+      },
+      "igraph": {
+       "status": "differs",
+       "behaviour": "Edges of exactly equal betweenness (symmetric positions) are removed in a different order, igraph by its own rule, the reference by edge index, so the dendrograms and their best levels can differ.",
+       "source": "conventions.json girvan_newman / girvan_newman"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Requested \\(k\\) larger than \\(n\\) cannot be reached."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All edges tie; any removal order.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "girvan2002community",
+    "newman2004finding",
+    "brandes2001faster",
+    "brandes2005centrality"
+   ]
+  },
+  "infomap": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "p_\\alpha",
+     "meaning": "stationary visit rate of node \\(\\alpha\\) of the random walk"
+    },
+    {
+     "symbol": "q_{i\\curvearrowright}",
+     "meaning": "rate at which the walk exits module \\(i\\)"
+    },
+    {
+     "symbol": "q_\\curvearrowright=\\sum_iq_{i\\curvearrowright}",
+     "meaning": "total module exit rate"
+    },
+    {
+     "symbol": "p^i_\\circlearrowright=q_{i\\curvearrowright}+\\sum_{\\alpha\\in i}p_\\alpha",
+     "meaning": "total use rate of the code of module \\(i\\)"
+    },
+    {
+     "symbol": "H(\\cdot)",
+     "meaning": "Shannon entropy in bits"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Map equation (Rosvall and Bergstrom 2008; Rosvall, Axelsson and Bergstrom 2009)",
+     "latex": "L(\\mathsf M)=q_\\curvearrowright H(\\mathcal Q)+\\sum_{i}p^i_\\circlearrowright H(\\mathcal P^i)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Expected description length per step of a random walk under a two-level code for partition \\(\\mathsf M\\); \\(H(\\mathcal Q)\\) is the entropy of the module-exit rates \\(q_{i\\curvearrowright}/q_\\curvearrowright\\) and \\(H(\\mathcal P^i)\\) that of the module-exit and node rates within module \\(i\\) over \\(p^i_\\circlearrowright\\). The partition minimizing \\(L\\) is reported; the minimization is a stochastic heuristic. Needs a random walk, so at least one edge."
+    }
+   ],
+   "variants": {
+    "infomap": "The partition of minimum map-equation codelength (in bits), found by a stochastic search from several trials; the walk may include or exclude self-links."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No walk."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No random walk: not defined.",
+     "tools": {
+      "infomap": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Trivial one-module code (needs a loop for a walk).",
+     "tools": {
+      "infomap": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "A walker never visits an isolate (no flow): it has no code.",
+     "tools": {
+      "infomap": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Whether a self-link is a step of the walk is a choice; the definition with loops counts it.",
+     "tools": {
+      "infomap": {
+       "status": "no_value",
+       "behaviour": "Infomap leaves self-links out unless asked; the reference value's flow counts them",
+       "source": "conventions.json infomap / infomap_native"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Weights add to the transition probabilities.",
+     "tools": {
+      "infomap": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed flow uses the stationary distribution of the (teleporting) walk; undirected flow is proportional to degree.",
+     "tools": {
+      "infomap": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Transition probabilities from weights.",
+     "tools": {
+      "infomap": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal codelengths: the search returns one partition.",
+     "tools": {
+      "infomap": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Flow does not cross components: modules cannot span them.",
+     "tools": {
+      "infomap": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Teleportation rate and number of trials are parameters of the procedure for directed graphs."
+    }
+   ],
+   "references": [
+    "rosvall2008maps",
+    "rosvall2009map"
+   ]
+  },
+  "label_propagation": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\ell_v",
+     "meaning": "label of node \\(v\\)"
+    },
+    {
+     "symbol": "N(v)",
+     "meaning": "neighbours of \\(v\\)"
+    },
+    {
+     "symbol": "A_{ij}",
+     "meaning": "weight of the edges from \\(i\\) to \\(j\\) (the edge count for an unweighted graph, parallel edges added); for an undirected graph \\(A\\) is symmetric and a self-loop adds 2 to \\(A_{ii}\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Label propagation (Raghavan, Albert and Kumara 2007)",
+     "latex": "\\ell_v\\leftarrow\\arg\\max_{\\ell}\\sum_{u\\in N(v):\\ell_u=\\ell}A_{vu}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Each node repeatedly takes the label with the largest total weight among its neighbours; started with a unique label per node and run until every node has a label that is a maximum among its neighbours (or for a fixed number of rounds); ties between labels are broken at random. Results are random and depend on the update order (synchronous, asynchronous, semi-synchronous per Cordasco and Gargano 2010; queue-based fast version per Traag and Subelj 2023). A node with no neighbour keeps its label."
+    },
+    {
+     "name": "Stop condition",
+     "latex": "\\forall v:\\ \\sum_{u\\in N(v):\\ell_u=\\ell_v}A_{vu}=\\max_\\ell\\sum_{u\\in N(v):\\ell_u=\\ell}A_{vu}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "The labelling is stable when each node has a label that is a maximum among the neighbours' labels."
+    }
+   ],
+   "variants": {
+    "label_propagation": "Every node repeatedly takes the dominant label among the nodes it reads (asynchronous, random order, random tie-breaking).",
+    "cnx_label_propagation": "Label propagation communities by the asynchronous procedure.",
+    "cnx_seeded_labels": "Per node, the community index produced by asynchronous label propagation, fast label propagation and asynchronous fluid communities (\\(k=\\min(3,n)\\)) with a fixed seed (random procedures run once)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No labels."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Every node keeps its own label (no neighbour).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One community.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolate keeps its label and is a community of its own.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Whether a node reads its own label through a loop is a convention; the definition above sums over neighbours \\(u\\in N(v)\\), which excludes the node unless the loop is counted.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "NetworkX runs on the simple graph here, while the reference counts parallel edges with their multiplicity; without edges modularity is undefined (the reference reports -1, NetworkX 0)",
+       "source": "conventions.json label_propagation / label_prop_quality_fast",
+       "measure": "label_propagation",
+       "finding": "F029"
+      },
+      "igraph": {
+       "status": "differs",
+       "behaviour": "the reference ignores self-loops (a node never reads its own label); igraph documents no rule for loops, but its mean on multi_loops_und (0.258) is what a node that reads its own label once per loop gives (0.265 over 300 simulated runs, against 0.206 with loops ignored), as NetworkX does",
+       "source": "conventions.json label_propagation / label_prop_quality",
+       "measure": "label_propagation"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to \\(A_{vu}\\) and weight the vote.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "NetworkX runs on the simple graph here, while the reference counts parallel edges with their multiplicity;",
+       "source": "conventions.json label_propagation / label_prop_quality_fast",
+       "measure": "label_propagation",
+       "finding": "F029"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "A node reads the labels of its in-neighbours, out-neighbours or both (a choice).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Votes are weighted by \\(A_{vu}\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Labels never cross components.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Ties between equally frequent labels are broken at random: the result is a distribution, not a single partition.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Quickly converges to one label, but possibly after intermediate states.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "Synchronous updates can oscillate on a bipartite graph (labels swap between sides); asynchronous updates do not.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "raghavan2007near",
+    "cordasco2010community",
+    "traag2023large"
+   ]
+  },
+  "label_spreading": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "W",
+     "meaning": "symmetric weight matrix, \\(D\\) its diagonal degree matrix"
+    },
+    {
+     "symbol": "Y",
+     "meaning": "\\(n\\times K\\) matrix of initial class indicators for the labelled nodes (0 rows for unlabelled)"
+    },
+    {
+     "symbol": "S=D^{-1/2}WD^{-1/2}",
+     "meaning": "normalized weight matrix"
+    },
+    {
+     "symbol": "\\alpha\\in(0,1)",
+     "meaning": "weight of neighbours against the initial labels"
+    },
+    {
+     "symbol": "P=D^{-1}W",
+     "meaning": "transition matrix, split into labelled (\\(l\\)) and unlabelled (\\(u\\)) blocks"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Harmonic function (Zhu, Ghahramani and Lafferty 2003)",
+     "latex": "f_u=(I-P_{uu})^{-1}P_{ul}f_l",
+     "applies_to": [
+      "connected",
+      "undirected"
+     ],
+     "where": "Labels of the unlabelled nodes are the weighted average of their neighbours' values with the labelled values fixed; the probability that a random walk first hits each class. Needs every component to contain a labelled node."
+    },
+    {
+     "name": "Local and global consistency (Zhou et al. 2004)",
+     "latex": "F^\\star=(1-\\alpha)(I-\\alpha S)^{-1}Y",
+     "applies_to": [
+      "connected",
+      "undirected"
+     ],
+     "where": "The fixed point of \\(F\\leftarrow\\alpha SF+(1-\\alpha)Y\\); the class of node \\(v\\) is \\(\\arg\\max_kF^\\star_{vk}\\). When several classes tie, the node is flagged as tied."
+    }
+   ],
+   "variants": {
+    "nxo_label_spreading": "The best class of every node and whether its top score ties: from the harmonic function (labelled nodes fixed) or from local and global consistency with \\(\\alpha\\) and a fixed number of iterations."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "No propagation: unlabelled nodes keep zero scores.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolate has \\(D_{vv}=0\\): not defined for the normalized matrix.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "A component without a labelled node has no information: scores 0 and the class is undetermined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal top scores: the class is not determined by the definition.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights enter \\(W\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(\\alpha\\) must lie in \\((0,1)\\) for the inverse to exist; with a fixed iteration count the result is not yet the fixed point."
+    }
+   ],
+   "references": [
+    "zhu2003semi",
+    "zhou2004learning"
+   ]
+  },
+  "voronoi_communities": {
+   "status": "partial",
+   "note": "cat_community_voronoi (python-igraph) and cat_cells_voronoi (igraph, NetworkX) are documented only and were never run; their generator choice and tie handling are not recorded in the sources. The checked entry's radius selection is described under its variant.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "g_1..g_k",
+     "meaning": "generator nodes"
+    },
+    {
+     "symbol": "d(v,g)",
+     "meaning": "distance to a generator (in a possibly transformed length)"
+    },
+    {
+     "symbol": "r",
+     "meaning": "radius parameter of the length transformation"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Voronoi cells (Deritei et al. 2014)",
+     "latex": "\\mathrm{cell}(g)=\\{v: d(v,g)<d(v,g')\\ \\forall g'\\ne g\\}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Each node belongs to the nearest generator; nodes equidistant to several generators are ties that need a rule (split among cells or assigned to one). Generators are chosen by local relative density (a strongly dependent heuristic); the radius or length parameter is chosen to maximize modularity."
+    }
+   ],
+   "variants": {
+    "voronoi": "Voronoi communities: generators chosen by local relative density, cells by nearest generator, radius chosen to maximize modularity (the reference tries every distinct distance; a tool may use a local optimizer).",
+    "cat_community_voronoi": "Documented for python-igraph as Voronoi communities; not recorded in detail.",
+    "cat_cells_voronoi": "Documented for igraph and NetworkX as Voronoi cells of given generators; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "One cell."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Nodes unreachable from any generator belong to no cell."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equidistant nodes are assigned by a tie rule."
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Distances along arcs may leave nodes unassigned."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant to distances.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "igraph chooses the radius with Brent's method, a local search, while the reference tries every distinct distance; where they differ the reference value's modularity is the higher. igraph's result also depends on the random number generator (the seed is fixed at 1). Listed for inspection, not expected to match igraph requires a simple network, and on cycle7_dir its radius search stops with \"optimizer did not converge\"",
+       "source": "conventions.json voronoi / voronoi_modularity",
+       "measure": "voronoi"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Irrelevant with unit lengths.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "igraph chooses the radius with Brent's method, a local search, while the reference tries every distinct distance; where they differ the reference value's modularity is the higher. igraph's result also depends on the random number generator (the seed is fixed at 1). Listed for inspection, not expected to match igraph requires a simple network, and on cycle7_dir its radius search stops with \"optimizer did not converge\"",
+       "source": "conventions.json voronoi / voronoi_modularity",
+       "measure": "voronoi"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Lengths replace edge counts."
+    }
+   ],
+   "references": [
+    "deritei2014community"
+   ]
+  },
+  "walktrap": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "P^t_{i\\cdot}",
+     "meaning": "distribution of a \\(t\\)-step random walk from \\(i\\) (\\(t=4\\) by default), \\(P=D^{-1}A\\)"
+    },
+    {
+     "symbol": "d(k)",
+     "meaning": "degree of node \\(k\\)"
+    },
+    {
+     "symbol": "C_1,C_2",
+     "meaning": "two communities"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Walktrap distance (Pons and Latapy 2006)",
+     "latex": "r_{ij}^2=\\sum_{k}\\frac{(P^t_{ik}-P^t_{jk})^2}{d(k)},\\qquad r^2_{C_1C_2}=\\sum_k\\frac{(P^t_{C_1k}-P^t_{C_2k})^2}{d(k)}",
+     "applies_to": [
+      "connected",
+      "undirected"
+     ],
+     "where": "Distance between the walk distributions of two nodes or communities; \\(P^t_{Ck}\\) is the average over members of \\(C\\)."
+    },
+    {
+     "name": "Merge criterion",
+     "latex": "\\Delta\\sigma(C_1,C_2)=\\frac1n\\,\\frac{|C_1||C_2|}{|C_1|+|C_2|}\\,r^2_{C_1C_2}",
+     "applies_to": [
+      "connected",
+      "undirected"
+     ],
+     "where": "Agglomeration merges the adjacent pair with the smallest \\(\\Delta\\sigma\\); the dendrogram level with the highest modularity is reported."
+    }
+   ],
+   "variants": {
+    "walktrap": "Walktrap communities: merging by the smallest \\(\\Delta\\sigma\\) with walk length \\(t\\); returns the best level, its modularity, the mergers and the modularity path."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No communities."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Walk distributions undefined (\\(d(k)=0\\))."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One community."
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolate has no walk (\\(d=0\\)): not defined."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Walk distributions of different components are disjoint; the procedure is stated for connected graphs.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "exact ties between pairs of groups occur during the merges, which the reference breaks by group names and igraph by an undocumented rule; on the seeded mid-size random networks listed by name igraph merges pairs that do not have the smallest delta sigma (finding F-SIZES-1), which leads to a different best level as for walktrap_merges; igraph's cut_at() raises an error when asked for two groups of a single node",
+       "source": "conventions.json walktrap / walktrap_cut2",
+       "measure": "walktrap",
+       "finding": "F010"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is a step staying in place and enters \\(P\\) and \\(d(k)\\); how it is counted is a convention.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "on the seeded mid-size random networks listed by name igraph merges pairs that do not have the smallest delta sigma (finding F-SIZES-1), which leads to a different best level igraph's treatment of parallel edges and self-loops in the walk is not documented",
+       "source": "conventions.json walktrap / walktrap",
+       "measure": "walktrap",
+       "finding": "F010"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Weights add to \\(P\\).",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "on the seeded mid-size random networks listed by name igraph merges pairs that do not have the smallest delta sigma (finding F-SIZES-1), which leads to a different best level igraph's treatment of parallel edges and self-loops in the walk is not documented",
+       "source": "conventions.json walktrap / walktrap",
+       "measure": "walktrap",
+       "finding": "F010"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Transition probabilities from weights."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Pairs with exactly equal \\(\\Delta\\sigma\\): the merge order is not fixed by the definition.",
+     "tools": {
+      "igraph": {
+       "status": "differs",
+       "behaviour": "exact ties between pairs of groups occur during the merges, which the reference breaks by group names and igraph by an undocumented rule;",
+       "source": "conventions.json walktrap / walktrap",
+       "measure": "walktrap",
+       "finding": "F010"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(t\\ge1\\)."
+    }
+   ],
+   "references": [
+    "pons2006computing"
+   ]
+  },
+  "conductance": {
+   "status": "partial",
+   "note": "cat_conductance_set and cat_conductance_interpartition_isolated (NetworKit) are documented only and were never run; the interpartition form's aggregation over a partition (an average over communities, or the isolated variant) is not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "S",
+     "meaning": "a node set"
+    },
+    {
+     "symbol": "\\mathrm{cut}(S)",
+     "meaning": "weight of edges between \\(S\\) and \\(V\\setminus S\\)"
+    },
+    {
+     "symbol": "\\mathrm{vol}(S)=\\sum_{v\\in S}k_v",
+     "meaning": "total degree of \\(S\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Conductance of a set (Kannan, Vempala and Vetta 2004)",
+     "latex": "\\phi(S)=\\frac{\\mathrm{cut}(S)}{\\min\\bigl(\\mathrm{vol}(S),\\mathrm{vol}(V\\setminus S)\\bigr)}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Fraction of the edge ends of the smaller side that leave the set; 0 for a union of components. Not defined when the smaller volume is 0."
+    }
+   ],
+   "variants": {
+    "cat_conductance_set": "The conductance \\(\\phi(S)\\) of one node set.",
+    "cat_conductance_interpartition_isolated": "Documented for NetworKit as isolated interpartition conductance of a partition; its aggregation is not recorded."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Not defined."
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "An empty set or the whole node set has \\(\\mathrm{vol}=0\\) on one side: not defined."
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "A set of isolates has volume 0: not defined."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop adds to the volume but never to the cut."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to the cut and the volume."
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights enter cut and volume."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "A component has conductance 0."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(\\phi(S)=\\frac{|S|(n-|S|)}{\\min(|S|,n-|S|)(n-1)}\\)."
+    }
+   ],
+   "references": [
+    "kannan2004clusterings"
+   ]
+  },
+  "partition_quality": {
+   "status": "partial",
+   "note": "Documented only (NetworKit, NetworkX), never run. The formulas are the usual coverage and performance of a partition, stated from the NetworkX documentation; the original papers are not in the bibliography, so no citation is given.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "m_{\\mathrm{in}}",
+     "meaning": "number of edges inside communities"
+    },
+    {
+     "symbol": "m_{\\mathrm{out}}",
+     "meaning": "number of non-edges between communities (pairs in different communities without an edge)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Coverage",
+     "latex": "\\mathrm{cov}=\\frac{m_{\\mathrm{in}}}{m}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Fraction of edges that are intra-community; defined for \\(m>0\\)."
+    },
+    {
+     "name": "Performance",
+     "latex": "\\mathrm{perf}=\\frac{m_{\\mathrm{in}}+m_{\\mathrm{out}}}{\\binom n2}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Fraction of node pairs that are correctly classified: intra-community edges plus inter-community non-edges over all pairs; defined for \\(n\\ge2\\)."
+    }
+   ],
+   "variants": {
+    "partition_quality": "The coverage and the performance of a partition."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "Coverage 0/0: not defined; performance 1 for \\(n\\ge2\\)."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Performance: \\(\\binom12=0\\): not defined."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Not between distinct nodes: excluded in the simple reading."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged in the simple reading."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Stated for undirected graphs."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One community gives coverage 1 and performance 1."
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "A partition must cover every node exactly once."
+    }
+   ]
+  },
+  "partition_counts": {
+   "status": "partial",
+   "note": "Defined by the NetworkX documentation (intra-community edges, inter-community edges, inter-community non-edges); no original paper is cited in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "c_i",
+     "meaning": "community (group) of node \\(i\\) in a partition \\(\\mathcal P\\) of \\(V\\); \\(\\delta(c_i,c_j)=1\\) when \\(i,j\\) are in the same community"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Partition counts",
+     "latex": "I=\\bigl|\\{\\{u,v\\}\\in E:c_u=c_v\\}\\bigr|,\\quad X=\\bigl|\\{\\{u,v\\}\\in E:c_u\\ne c_v\\}\\bigr|,\\quad Z=\\bigl|\\{\\{u,v\\}\\notin E,u\\ne v:c_u\\ne c_v\\}\\bigr|",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Counts of intra-community edges, inter-community edges and inter-community non-edges; defined for any partition."
+    }
+   ],
+   "variants": {
+    "cnx_partition_counts": "The triple \\((I,X,Z)\\) of a partition."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "All zero."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(I=X=0\\); \\(Z\\) counts all inter-community pairs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Not edges between distinct nodes: excluded.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged in the simple reading.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Undirected pairs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "A single community: \\(X=Z=0\\); singletons: \\(I=0\\)."
+    }
+   ]
+  },
+  "graph_bisection": {
+   "status": "partial",
+   "note": "cat_partitioner_spectral (NetworKit) and cat_bipartition_greedy_swap@community (NetworkX) are documented only and were never run; their objectives and options are not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "(A,B)",
+     "meaning": "a bisection of \\(V\\) into two parts of fixed sizes"
+    },
+    {
+     "symbol": "D_v",
+     "meaning": "external minus internal cost of \\(v\\): edge weight to the other part minus to its own part"
+    },
+    {
+     "symbol": "c_{ab}",
+     "meaning": "weight of the edge \\(\\{a,b\\}\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Kernighan-Lin gain (Kernighan and Lin 1970)",
+     "latex": "g(a,b)=D_a+D_b-2c_{ab}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Reduction in cut weight when \\(a\\in A\\) and \\(b\\in B\\) are swapped. A pass swaps the pair of largest gain, locks both nodes, and applies the prefix of swaps with the largest total gain; passes repeat until no gain or a pass limit. A local search: it does not guarantee the minimum bisection, and the result depends on the starting partition and tie-breaking."
+    }
+   ],
+   "variants": {
+    "cnx_kernighan_lin": "A bisection improved by the Kernighan-Lin procedure from a given starting partition, with a pass limit and optional weights.",
+    "cat_partitioner_spectral": "Documented for NetworKit as a spectral partitioner; not recorded in detail.",
+    "cat_bipartition_greedy_swap@community": "Documented for NetworkX as a greedy node-swap bipartition; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No bisection."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Cannot bisect one node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One node on each side.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "A bisection with cut 0 exists if components fit the sizes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Never cut.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Add to the cut weight.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Weights are cut costs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal gains: the pair chosen depends on iteration order.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "Part sizes must be fixed (here: halves); the pass limit bounds the effort."
+    }
+   ],
+   "references": [
+    "kernighan1970efficient"
+   ]
+  },
+  "lukes_partitioning": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "T=(V,E)",
+     "meaning": "tree with node weights \\(w_v\\) and edge weights \\(c_e\\)"
+    },
+    {
+     "symbol": "M",
+     "meaning": "maximum cluster weight"
+    },
+    {
+     "symbol": "\\mathcal P",
+     "meaning": "a partition of \\(V\\) into clusters inducing connected subtrees"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Lukes tree partitioning (Lukes 1974)",
+     "latex": "\\max_{\\mathcal P}\\sum_{e\\text{ inside a cluster}}c_e\\quad\\text{s.t. }\\sum_{v\\in P}w_v\\le M\\ \\ \\forall P\\in\\mathcal P",
+     "applies_to": [
+      "tree"
+     ],
+     "where": "Partition a tree into connected clusters of weight at most \\(M\\) so that the total weight of the edges kept inside clusters is maximal; solved exactly by dynamic programming on the tree. Defined for trees; the optimum value is unique, the partition need not be."
+    }
+   ],
+   "variants": {
+    "cnx_lukes": "The partition (edges inside clusters and whether every cluster respects the size limit) of a tree with at most \\(M\\) nodes per cluster, unit node weights."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No clusters."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One cluster of one node (the single-node tree)."
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One cluster if \\(M\\ge2\\), else two."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "A forest rather than a tree: not covered by the definition."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A tree has no loops."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "A tree has no parallel edges."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several optimal partitions of equal value."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(M\\) smaller than some node weight: infeasible."
+    }
+   ],
+   "references": [
+    "lukes1974efficient"
+   ]
+  },
+  "spectral_modularity_bipartition": {
+   "status": "partial",
+   "note": "Documented only (NetworkX), never run; the formula is Newman's spectral bipartition, and the tool's handling of degenerate eigenvectors and options is not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "B_{ij}=A_{ij}-\\tfrac{k_ik_j}{2m}",
+     "meaning": "modularity matrix"
+    },
+    {
+     "symbol": "u_1",
+     "meaning": "leading eigenvector of \\(B\\)"
+    },
+    {
+     "symbol": "s_i\\in\\{\\pm1\\}",
+     "meaning": "side of node \\(i\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Spectral bisection by modularity (Newman 2006)",
+     "latex": "s_i=\\begin{cases}+1&u_{1,i}>0\\\\-1&u_{1,i}\\le0\\end{cases},\\qquad \\Delta Q=\\frac1{4m}s^{\\mathsf T}Bs",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Split by the sign of the leading eigenvector of \\(B\\); no split if its largest eigenvalue is not positive."
+    }
+   ],
+   "variants": {
+    "cat_bipartition_modularity_spectral@community": "The two-way split of a graph by the leading eigenvector of the modularity matrix."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(B\\) undefined (\\(m=0\\))."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "A repeated leading eigenvalue leaves the eigenvector undetermined; zero components (isolates) have no sign."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Components give degenerate eigenvectors."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "No positive eigenvalue: no split."
+    }
+   ],
+   "references": [
+    "newman2006modularity"
+   ]
+  },
+  "compare_partitions": {
+   "status": "partial",
+   "note": "cat_community_same (NetworKit), cat_distance_partition (BCT) and cat_information_mutual_reduced (graph-tool's reduced mutual information) are documented only and were never run; their definitions are not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "X,Y",
+     "meaning": "two partitions of the same \\(n\\) elements, with classes \\(x_i\\) and \\(y_j\\)"
+    },
+    {
+     "symbol": "n_{ij}=|x_i\\cap y_j|",
+     "meaning": "contingency table"
+    },
+    {
+     "symbol": "a_i=\\sum_jn_{ij},\\ b_j=\\sum_in_{ij}",
+     "meaning": "class sizes"
+    },
+    {
+     "symbol": "H(X)=-\\sum_i\\frac{a_i}{n}\\ln\\frac{a_i}{n}",
+     "meaning": "entropy of a partition"
+    },
+    {
+     "symbol": "I(X;Y)=\\sum_{ij}\\frac{n_{ij}}{n}\\ln\\frac{n\\,n_{ij}}{a_ib_j}",
+     "meaning": "mutual information"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Rand index (Rand 1971)",
+     "latex": "R=\\frac{\\binom n2+2\\sum_{ij}\\binom{n_{ij}}2-\\sum_i\\binom{a_i}2-\\sum_j\\binom{b_j}2}{\\binom n2}",
+     "applies_to": [
+      "pair"
+     ],
+     "where": "Fraction of element pairs on which the two partitions agree (same class in both or different classes in both); defined for \\(n\\ge2\\)."
+    },
+    {
+     "name": "Adjusted Rand index (Hubert and Arabie 1985)",
+     "latex": "\\mathrm{ARI}=\\frac{\\sum_{ij}\\binom{n_{ij}}2-\\bigl[\\sum_i\\binom{a_i}2\\sum_j\\binom{b_j}2\\bigr]/\\binom n2}{\\tfrac12\\bigl[\\sum_i\\binom{a_i}2+\\sum_j\\binom{b_j}2\\bigr]-\\bigl[\\sum_i\\binom{a_i}2\\sum_j\\binom{b_j}2\\bigr]/\\binom n2}",
+     "applies_to": [
+      "pair"
+     ],
+     "where": "Rand index corrected for chance: 1 for identical partitions, about 0 for independent ones, possibly negative. The denominator is 0 when both partitions are all-singletons or one-class (and for \\(n<2\\)): 0/0."
+    },
+    {
+     "name": "Normalized mutual information (Danon et al. 2005)",
+     "latex": "\\mathrm{NMI}=\\frac{2I(X;Y)}{H(X)+H(Y)}",
+     "applies_to": [
+      "pair"
+     ],
+     "where": "1 for identical partitions; 0/0 when both partitions are trivial (\\(H=0\\))."
+    },
+    {
+     "name": "Variation of information (Meila 2007)",
+     "latex": "\\mathrm{VI}=H(X)+H(Y)-2I(X;Y)",
+     "applies_to": [
+      "pair"
+     ],
+     "where": "A metric on partitions, 0 for identical ones."
+    },
+    {
+     "name": "Adjusted mutual information (Vinh, Epps and Bailey 2010)",
+     "latex": "\\mathrm{AMI}=\\frac{I-\\mathbb E[I]}{\\tfrac12(H(X)+H(Y))-\\mathbb E[I]}",
+     "applies_to": [
+      "pair"
+     ],
+     "where": "Mutual information corrected for chance by its expectation under random partitions with the same class sizes."
+    }
+   ],
+   "variants": {
+    "compare_partitions": "A similarity or distance between two partitions of the same nodes (the adjusted Rand index among the methods; Rand, normalized mutual information and variation of information are others).",
+    "cat_information_mutual": "Documented for graph-tool as the mutual information \\(I(X;Y)\\) of two partitions.",
+    "cat_information_variation": "Documented for graph-tool as the variation of information.",
+    "cat_information_mutual_reduced": "Documented for graph-tool as reduced mutual information; not recorded in detail.",
+    "cat_community_same": "Documented for NetworKit as the same-community index; not recorded in detail.",
+    "cat_distance_partition": "Documented for BCT as a partition distance; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No elements: the indices are not defined.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "on two nodes both fixed partitions are all singletons, so the two are identical and Hubert and Arabie's formula is 0/0; the reference reports 1, the value for every other pair of identical partitions (as scikit-learn's adjusted_rand_score() does), and igraph NaN igraph raises an error for fewer than two nodes; the reference reports NaN.",
+       "source": "conventions.json compare_partitions / compare_adjusted_rand",
+       "measure": "compare_partitions",
+       "finding": "F036"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(n=1\\): \\(\\binom n2=0\\), ARI is 0/0 (a library may report 1 for identical partitions).",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "on two nodes both fixed partitions are all singletons, so the two are identical and Hubert and Arabie's formula is 0/0;",
+       "source": "conventions.json compare_partitions / compare_adjusted_rand",
+       "measure": "compare_partitions",
+       "finding": "F036"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "With two elements the two all-singleton or the two one-class partitions are identical but the ARI formula is 0/0.",
+     "tools": {
+      "igraph": {
+       "status": "differs",
+       "behaviour": "on two nodes both fixed partitions are all singletons, so the two are identical and Hubert and Arabie's formula is 0/0; the reference reports 1, the value for every other pair of identical partitions (as scikit-learn's adjusted_rand_score() does), and igraph NaN igraph raises an error for fewer than two nodes;",
+       "source": "conventions.json compare_partitions / compare_adjusted_rand",
+       "measure": "compare_partitions",
+       "finding": "F036"
+      }
+     }
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "Trivial partitions (singletons or one class) make the ARI denominator 0 when both are trivial; NMI is 0/0 when both have zero entropy."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Not applicable."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "The partitions must cover the same elements."
+    }
+   ],
+   "references": [
+    "rand1971objective",
+    "hubert1985comparing",
+    "danon2005comparing",
+    "meila2007comparing",
+    "vinh2010information"
+   ]
+  },
+  "is_partition": {
+   "status": "partial",
+   "note": "Documented only (NetworkX), never run; the condition is stated from its definition, with no primary paper.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\{S_1..S_k\\}",
+     "meaning": "a collection of node sets"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Partition test",
+     "latex": "\\{S_i\\}\\text{ is a partition of }V\\iff\\bigcup_iS_i=V\\ \\text{and}\\ S_i\\cap S_j=\\emptyset\\ (i\\ne j)\\ \\text{and}\\ S_i\\ne\\emptyset",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The sets cover all nodes, no node is in two sets (a cover that allows overlap is not a partition); empty sets are normally excluded."
+    }
+   ],
+   "variants": {
+    "cat_is_partition@community": "True when the collection of node sets is a partition of the node set."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The empty collection partitions the empty node set."
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "Overlapping sets or missing nodes make it false."
+    }
+   ]
+  }
+ }
+}

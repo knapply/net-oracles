@@ -16,7 +16,7 @@ Family: [Roles and positions](index.html). Subfamily: Structural holes and broke
 
 Hierarchy. Entries grouped here: Hierarchy.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (igraph, sna, UCINET), never run. The sources give the name 'hierarchy', which is used both for Krackhardt's graph-theoretic hierarchy and for Burt's Coleman-Theil hierarchy index of the constraint terms; which definition each tool implements is not recorded.
 
 ## Hierarchy {#hierarchy}
 

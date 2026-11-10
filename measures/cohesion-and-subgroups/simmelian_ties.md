@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Relaxed cliques and sub
 
 Simmelian ties. Entries grouped here: Simmelian ties.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (ergm, sna and UCINET Simmelian ties), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Simmelian ties {#simmelian}
 

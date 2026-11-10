@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and loca
 
 Mixed triad census. Entries grouped here: Mixed Triad Census.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (RSiena mixed triad census), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Mixed Triad Census {#cat_census_mixed_triad}
 

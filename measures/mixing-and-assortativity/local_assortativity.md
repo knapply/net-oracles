@@ -16,7 +16,7 @@ Family: [Mixing and assortativity](index.html). Subfamily: Assortativity. Concep
 
 Local assortativity. Entries grouped here: Local assortativity.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT): the sources give the name of a node-level assortativity function; the definition (local assortativity, e.g. Piraveenan et al. 2008) is not in the sources checked and no verified bibliography entry is available.
 
 ## Local assortativity {#cat_assortativity_local}
 

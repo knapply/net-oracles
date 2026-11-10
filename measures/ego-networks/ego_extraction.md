@@ -16,7 +16,7 @@ Family: [Ego networks](index.html). Subfamily: Ego measures. Concept id: `ego_ex
 
 Ego network extraction. Entries grouped here: Egotize (6 750), Ego network extraction with tab "Ego"; Makeegonets.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented-only (a UCINET procedure that builds the ego networks of all nodes as separate datasets); the sources give no formula beyond the construction of the ego networks, whose node sets and induced ties are defined under ego members and ego ties.
 
 ## Variants {#concept-variants}
 

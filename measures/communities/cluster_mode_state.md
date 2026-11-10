@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Other detection algorithms. Concep
 
 Cluster mode state. Entries grouped here: Mode Cluster State.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (graph-tool mode cluster state), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Mode Cluster State {#cat_cluster_mode_state}
 

@@ -16,7 +16,7 @@ Family: [Paths and distances](index.html). Subfamily: Path enumeration and count
 
 K-path census. Entries grouped here: Kpath census.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (sna k-path census), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Kpath census {#cat_census_kpath}
 

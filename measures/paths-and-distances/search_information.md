@@ -16,7 +16,7 @@ Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concep
 
 Search information. Entries grouped here: Search information.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT search information), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Search information {#cat_information_search}
 

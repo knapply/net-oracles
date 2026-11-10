@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Clustering and transiti
 
 Normalized reciprocity, DKS transitivity and cyclicity. Entries grouped here: Normalized reciprocity and transitivity, DKS transitivity, cyclicity.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (UCINET: normalized reciprocity and transitivity, Davis-Kenny-Spence style transitivity, cyclicity), never run; the sources give the names and no formulas, and no verified bibliography entry for the originals is available.
 
 ## Normalized reciprocity and transitivity, DKS transitivity, cyclicity {#ucinet_cohesion_variants}
 

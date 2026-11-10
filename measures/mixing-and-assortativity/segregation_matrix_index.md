@@ -16,7 +16,7 @@ Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homop
 
 Segregation matrix index. Entries grouped here: Segregation matrix index (SMI).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (segregation matrix index (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available.
 
 ## Segregation matrix index (SMI) {#seg_smi}
 

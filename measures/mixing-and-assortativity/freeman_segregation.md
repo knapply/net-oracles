@@ -16,7 +16,7 @@ Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homop
 
 Freeman segregation index. Entries grouped here: Freeman's segregation index.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (Freeman's segregation index (netseg)), never run: the sources give the name and the tool's function; the formula is not recorded and no verified bibliography entry for the original paper is available.
 
 ## Freeman's segregation index {#seg_freeman}
 

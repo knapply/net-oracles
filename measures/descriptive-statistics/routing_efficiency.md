@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Efficiency, compactness
 
 Routing efficiency. Entries grouped here: Rout efficiency.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT routing efficiency), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Rout efficiency {#cat_efficiency_rout}
 

@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Partition and cover quality. Conce
 
 Expansion. Entries grouped here: Isolated Interpartition Expansion.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworKit isolated interpartition expansion), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Isolated Interpartition Expansion {#cat_expansion_interpartition_isolated}
 

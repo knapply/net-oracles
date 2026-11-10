@@ -16,7 +16,7 @@ Family: [Roles and positions](index.html). Subfamily: Module-based roles. Concep
 
 Module degree z-score. Entries grouped here: Module degree zscore.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT degree\_module\_zscore), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Module degree zscore {#cat_degree_module_zscore}
 

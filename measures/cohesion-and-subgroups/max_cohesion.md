@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Cliques. Concept id: `m
 
 Maximum cohesion. Entries grouped here: Maxcohesion.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (igraph maxcohesion), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Maxcohesion {#cat_maxcohesion}
 

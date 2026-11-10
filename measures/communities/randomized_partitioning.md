@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Graph bisection and partitioning. 
 
 Randomized partitioning. Entries grouped here: Randomized partitioning (approximate).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworkX randomized partitioning), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Randomized partitioning (approximate) {#cat_partitioning_randomized-approximate}
 

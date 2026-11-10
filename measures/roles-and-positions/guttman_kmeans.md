@@ -16,7 +16,7 @@ Family: [Roles and positions](index.html). Subfamily: Scaling and clustering. Co
 
 Guttman scaling, K-means and quick clustering. Entries grouped here: Guttman scaling, K-means and quick clustering.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (UCINET Guttman scaling, K-means and quick clustering), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Guttman scaling, K-means and quick clustering {#guttman_kmeans}
 

@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Cores, trusses and cohe
 
 Cohesive blocking (Moody-White). Entries grouped here: Cohesive blocking (Moody-White); Cohesive blocks.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (igraph cohesive blocks (Moody-White)), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Variants {#concept-variants}
 

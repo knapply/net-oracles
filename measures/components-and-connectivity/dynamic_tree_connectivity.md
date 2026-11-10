@@ -16,7 +16,7 @@ Family: [Components and connectivity](index.html). Subfamily: Connectivity numbe
 
 Dynamic tree connectivity. Entries grouped here: Tree Dynamic Connectivity.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (JGraphT tree dynamic connectivity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Tree Dynamic Connectivity {#cat_connectivity_dynamic_tree}
 

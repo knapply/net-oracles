@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Other detection algorithms. Concep
 
 Overlapping seed expansion (LFM, GCE). Entries grouped here: GCE; Greedy source expansion (community); LFM; LFMLocal.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworkX greedy source expansion and NetworKit GCE, LFM and LFMLocal), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Variants {#concept-variants}
 

@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and loca
 
 Motif census. Entries grouped here: Motif census.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT, graph-tool and igraph motif census), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Motif census {#motif_census}
 

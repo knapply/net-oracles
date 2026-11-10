@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Density and degree dist
 
 Central graph. Entries grouped here: Centralgraph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (sna centralgraph), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Centralgraph {#cat_centralgraph}
 

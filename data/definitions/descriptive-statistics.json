@@ -1,0 +1,2313 @@
+{
+ "family": "Descriptive statistics",
+ "concepts": {
+  "global_transitivity": {
+   "status": "partial",
+   "note": "The sna entry (sna_transitivity: weak and strong transitivity, rank and correlation forms, directed and weighted clustering conventions) is documented only and was never run; its formulas are not recorded in the sources, so only the closed-triple ratio is written.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target; the simple reading merges parallel edges and drops loops"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "\\tau(G)",
+     "meaning": "number of triangles"
+    },
+    {
+     "symbol": "\\theta(G)",
+     "meaning": "number of connected triples: paths of length 2, i.e. \\(\\sum_i\\binom{k_i}{2}\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Transitivity (Wasserman and Faust 1994; Newman 2003)",
+     "latex": "T=\\frac{3\\,\\tau(G)}{\\theta(G)}=\\frac{\\text{closed ordered paths }i\\!-\\!j\\!-\\!k}{\\text{ordered paths }i\\!-\\!j\\!-\\!k}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Fraction of connected triples (two edges sharing a node) that close into a triangle; each triangle contains three connected triples. Defined when \\(\\theta>0\\), i.e. some node has degree at least 2; for directed graphs the neighbourhood is read as undirected."
+    }
+   ],
+   "variants": {
+    "transitivity": "The ratio \\(3\\tau/\\theta\\) of the simple undirected reading (direction ignored, parallel edges merged, loops dropped).",
+    "sna_transitivity": "Documented for sna as weak and strong transitivity and clustering conventions for directed and weighted data; the definitions are not recorded in the sources."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "No connected triples: \\(\\theta=0\\) so the ratio is 0/0: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "Fewer than three nodes: no triple, \\(\\theta=0\\): not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(\\theta=0\\): not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "\\(\\theta=0\\): not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Isolates have degree 0 and add neither triples nor triangles; the ratio is unchanged.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Dropped in the simple reading; a loop is not an edge between two distinct neighbours.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged in the simple reading: each pair is adjacent or not.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected neighbourhood; directed triangle types (Fagiolo's coefficients) give a different quantity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "no_value",
+       "behaviour": "ClusteringCoefficient.getGlobalClusteringCoefficient throws 'Graph must be undirected' on a directed graph.",
+       "source": "conventions.json transitivity / transitivity",
+       "measure": "transitivity",
+       "finding": "F053"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Triangles and triples are counted over all components together.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Every triple closes: \\(T=1\\) for \\(n\\ge3\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Triples exist but no triangle: \\(T=0\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "No odd cycles, so no triangles: \\(T=0\\) when triples exist.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "wasserman1994social",
+    "newman2003structure"
+   ]
+  },
+  "local_clustering": {
+   "status": "partial",
+   "note": "cat_clustering_extended (graph-tool's extended clustering) is documented only and was never run; its definition is not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target; the simple reading merges parallel edges and drops loops"
+    },
+    {
+     "symbol": "k_i",
+     "meaning": "degree of node \\(i\\) in the simple undirected reading"
+    },
+    {
+     "symbol": "t_i",
+     "meaning": "number of triangles through \\(i\\): edges among the neighbours of \\(i\\)"
+    },
+    {
+     "symbol": "w_{ij}",
+     "meaning": "weight of the edge between \\(i\\) and \\(j\\); \\(s_i=\\sum_j w_{ij}\\) is the strength"
+    },
+    {
+     "symbol": "\\hat w_{ij}=w_{ij}/\\max w",
+     "meaning": "weights scaled by the largest weight"
+    },
+    {
+     "symbol": "A",
+     "meaning": "adjacency matrix of a directed graph; \\(d_i^{\\mathrm{tot}}=d_i^{\\mathrm{in}}+d_i^{\\mathrm{out}}\\), \\(d_i^{\\leftrightarrow}=(A^2)_{ii}\\) the number of reciprocated partners"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Local clustering coefficient (Watts and Strogatz 1998)",
+     "latex": "C_i=\\frac{2\\,t_i}{k_i(k_i-1)}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Fraction of pairs of distinct neighbours of \\(i\\) that are adjacent. Defined for \\(k_i\\ge2\\); the denominator is 0 below two neighbours."
+    },
+    {
+     "name": "Average clustering",
+     "latex": "\\bar C=\\frac1{|V'|}\\sum_{i\\in V'}C_i",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Mean of \\(C_i\\); the node set \\(V'\\) is either the nodes with \\(k_i\\ge2\\) (where \\(C_i\\) is defined) or all of \\(V\\) with \\(C_i:=0\\) below two neighbours. These give different values when low-degree nodes exist."
+    },
+    {
+     "name": "Weighted clustering (Barrat et al. 2004)",
+     "latex": "C_i^{w}=\\frac{1}{s_i(k_i-1)}\\sum_{j,h}\\frac{w_{ij}+w_{ih}}{2}\\,a_{ij}a_{ih}a_{jh}",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "Triangles weighted by the average of the two weights at \\(i\\); defined for \\(k_i\\ge2\\) and \\(s_i>0\\)."
+    },
+    {
+     "name": "Weighted clustering (Onnela et al. 2005)",
+     "latex": "\\tilde C_i=\\frac{1}{k_i(k_i-1)}\\sum_{j,h}\\bigl(\\hat w_{ij}\\hat w_{ih}\\hat w_{jh}\\bigr)^{1/3}",
+     "applies_to": [
+      "weighted"
+     ],
+     "where": "Geometric mean of the three scaled triangle weights, summed over ordered neighbour pairs; defined for \\(k_i\\ge2\\)."
+    },
+    {
+     "name": "Directed clustering (Fagiolo 2007)",
+     "latex": "C_i^{D}=\\frac{\\bigl[(A+A^{\\mathsf T})^3\\bigr]_{ii}}{2\\bigl[d_i^{\\mathrm{tot}}(d_i^{\\mathrm{tot}}-1)-2d_i^{\\leftrightarrow}\\bigr]}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Counts all directed triangle types through \\(i\\) relative to the possible ones; the denominator is 0 when \\(i\\) has fewer than two distinct partners."
+    }
+   ],
+   "variants": {
+    "clustering": "The node coefficient \\(C_i\\) (or its weighted forms) for every node.",
+    "average_clustering": "The mean of the node coefficients, over the nodes where it is defined or with 0 for nodes below two neighbours (the two conventions give different means).",
+    "nxo_directed_clustering": "Fagiolo's directed coefficient \\(C_i^D\\) in place of \\(C_i\\), from the directed adjacency matrix.",
+    "cat_clustering_extended": "Documented for graph-tool as an extended clustering coefficient; the definition is not recorded in the sources."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "Every node has \\(k_i=0\\): \\(C_i\\) is 0/0, not defined; the average over defined nodes is an empty mean.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "Below two neighbours the denominator \\(k_i(k_i-1)\\) is 0: \\(C_i\\) not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: the average is an empty mean, not defined.",
+     "tools": {
+      "igraph": {
+       "status": "no_value",
+       "behaviour": "The null graph has no nodes to average over;",
+       "source": "conventions.json average_clustering / average_clustering_zero"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(k_i=0\\): not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "\\(C_i\\) is not defined for isolates; the average either skips them or counts them as 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is not an edge to a distinct neighbour; the simple reading drops it. A node whose only tie is a loop has no pair of distinct neighbours: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "differs",
+       "behaviour": "Self-loops: a node whose only tie is a loop has no pair of distinct neighbours, so the reference reports it undefined; igraph counts the loop in the strength and degree and reports a number (2 for one loop of weight 1).",
+       "source": "conventions.json clustering / clustering_barrat"
+      },
+      "pyigraph": {
+       "status": "differs",
+       "behaviour": "Self-loops: a node whose only tie is a loop has no pair of distinct neighbours, so the reference reports it undefined;",
+       "source": "conventions.json clustering / clustering_barrat"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "differs",
+       "behaviour": "Gephi counts a self-loop in a node's neighbourhood: with the loops removed (parallel edges kept) its coefficients and triangle counts equal the simple-graph definition, which this reference and the definition oracle follow; parallel edges do not change them (checked on multi_loops_und and multi_loops_dir).",
+       "source": "conventions.json average_clustering / average_clustering",
+       "measure": "average_clustering",
+       "finding": "F021"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The neighbour sets are sets: parallel edges do not change \\(C_i\\) in the simple reading.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "nx.DiGraph(G) keeps the last of a pair's parallel arcs (and its weight);",
+       "source": "conventions.json nxo_directed_clustering / nxo_directed_clustering_weighted"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "differs",
+       "behaviour": "graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins);",
+       "source": "conventions.json clustering / clustering_zero"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "differs",
+       "behaviour": "Gephi counts a self-loop in a node's neighbourhood: with the loops removed (parallel edges kept) its coefficients and triangle counts equal the simple-graph definition, which this reference and the definition oracle follow; parallel edges do not change them (checked on multi_loops_und and multi_loops_dir).",
+       "source": "conventions.json average_clustering / average_clustering",
+       "measure": "average_clustering",
+       "finding": "F021"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The undirected coefficient reads the neighbourhood without direction; Fagiolo's coefficient counts directed triangle types and differs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "no_value",
+       "behaviour": "BGL's mean_clustering_coefficient is defined for undirected graphs only; the driver does not call it on directed input.",
+       "source": "conventions.json average_clustering / average_clustering_zero",
+       "measure": "average_clustering"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Barrat and Onnela weigh the triangles differently, so weighted values differ from each other and from the unweighted one.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Every neighbour pair is adjacent: \\(C_i=1\\) for \\(n\\ge3\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "The centre's neighbours are non-adjacent: 0; leaves have one neighbour: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "No triangles: \\(C_i=0\\) where defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "bctpy": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "tnet": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "watts1998collective",
+    "barrat2004architecture",
+    "onnela2005intensity",
+    "fagiolo2007clustering"
+   ]
+  },
+  "ucinet_cohesion_variants": {
+   "status": "name_only",
+   "note": "Documented only (UCINET: normalized reciprocity and transitivity, Davis-Kenny-Spence style transitivity, cyclicity), never run; the sources give the names and no formulas, and no verified bibliography entry for the originals is available."
+  },
+  "small_world_index": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "C,\\;L",
+     "meaning": "average clustering and characteristic (mean shortest-path) path length of the graph, over connected pairs"
+    },
+    {
+     "symbol": "C_r,\\;L_r",
+     "meaning": "the same for an equivalent random graph (degree-preserving randomization, Maslov and Sneppen 2002)"
+    },
+    {
+     "symbol": "C_\\ell",
+     "meaning": "clustering of an equivalent lattice graph"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Small-world coefficient sigma (Humphries and Gurney 2008)",
+     "latex": "\\sigma=\\frac{C/C_r}{L/L_r}",
+     "applies_to": [
+      "connected",
+      "undirected"
+     ],
+     "where": "Small-world when \\(\\sigma>1\\). The random reference is a stochastic ensemble average, so values depend on the randomization."
+    },
+    {
+     "name": "Small-world coefficient omega (Telesford et al. 2011)",
+     "latex": "\\omega=\\frac{L_r}{L}-\\frac{C}{C_\\ell}",
+     "applies_to": [
+      "connected",
+      "undirected"
+     ],
+     "where": "Near 0 for a small world, towards \\(-1\\) lattice-like, towards \\(+1\\) random-like. Needs a lattice reference."
+    },
+    {
+     "name": "Observed ingredients (Watts and Strogatz 1998)",
+     "latex": "C=\\bar C,\\qquad L=\\frac{1}{|P|}\\sum_{(s,t)\\in P}d(s,t)",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "The observed clustering and mean distance over the set \\(P\\) of connected ordered pairs \\(s\\ne t\\), the two inputs of both coefficients."
+    }
+   ],
+   "variants": {
+    "small_world_observed": "Only the observed pair (clustering, mean distance over connected pairs) of the simple undirected reading, without a random or lattice reference.",
+    "small_world": "The coefficient \\(\\omega\\) of Telesford et al. computed from the observed values and random and lattice references."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "No clustering or distances: not defined.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "A degree-preserving swap involves four nodes, so with fewer the random reference cannot differ from the graph, and the lattice reference needs enough nodes: the references are not meaningful.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "\\(L\\) is over connected pairs only for the observed values; \\(\\sigma\\) and \\(\\omega\\) are stated for connected graphs, so not defined.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "No triangles, so \\(C=0\\) and, for a triangle-free graph, \\(C_r=0\\) as well: the ratio \\(C/C_r\\) is 0/0 and \\(\\sigma\\) is not defined.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "No rewiring changes a complete graph: \\(C=C_r=1\\) and \\(L=L_r=1\\), so \\(\\sigma=1\\).",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "No swap of two edges yields a different graph, so a random reference with a different edge set does not exist.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "The ensemble size and the number of swaps per edge are parameters; the coefficient is an estimate whose value varies with them and with the random seed."
+    }
+   ],
+   "references": [
+    "watts1998collective",
+    "humphries2008network",
+    "telesford2011ubiquity",
+    "maslov2002specificity"
+   ]
+  },
+  "square_clustering": {
+   "status": "partial",
+   "note": "cat_clustering_coefficient_local_square (NetworKit's local square clustering) is documented only and was never run; its definition is not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target; the simple reading merges parallel edges and drops loops"
+    },
+    {
+     "symbol": "k_i",
+     "meaning": "degree of node \\(i\\) in the simple undirected reading"
+    },
+    {
+     "symbol": "q_v(u,w)",
+     "meaning": "number of common neighbours of \\(u\\) and \\(w\\) other than \\(v\\)"
+    },
+    {
+     "symbol": "\\theta_{uv}",
+     "meaning": "1 if \\(u\\) and \\(v\\) are adjacent, else 0"
+    },
+    {
+     "symbol": "a_v(u,w)",
+     "meaning": "\\((k_u-(1+q_v(u,w)+\\theta_{uv}))(k_w-(1+q_v(u,w)+\\theta_{vw}))\\): the number of squares through \\(v,u,w\\) that could still be completed"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Square clustering (Lind, Gonzalez and Herrmann 2005)",
+     "latex": "C_4(v)=\\frac{\\sum_{u<w}q_v(u,w)}{\\sum_{u<w}\\bigl[a_v(u,w)+q_v(u,w)\\bigr]}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Fraction of possible four-cycles through \\(v\\) that exist; \\(u,w\\) range over distinct neighbours of \\(v\\). Defined when the denominator is positive; 0/0 for nodes with fewer than two neighbours. Zhang et al. 2008 and Zlatic et al. 2012 use the same cycle-closing idea for bipartite and multi-edge networks."
+    }
+   ],
+   "variants": {
+    "square_clustering": "\\(C_4(v)\\) for every node, in the pairwise form above (successor sets are used in NetworkX's closed form for directed graphs).",
+    "cat_clustering_coefficient_local_square": "Documented for NetworKit as the local square clustering coefficient; the definition is not recorded in the sources."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "With fewer than two neighbours there is no pair \\(u<w\\): the sums are empty and the coefficient is 0/0; implementations may report 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No neighbours: empty sums.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Empty sums for isolates.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Not part of the simple graph on which \\(q,a\\) are defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Neighbour sets and degrees are of the simple graph; parallel edges do not enter.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "differs",
+       "behaviour": "graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins);",
+       "source": "conventions.json square_clustering / square_clustering",
+       "measure": "square_clustering"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The pairwise formula is stated for undirected graphs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "no_value",
+       "behaviour": "graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins); the reference counts each edge. graphblas-algorithms' square_clustering fails on a DiGraph (KeyError 'degrees+').",
+       "source": "conventions.json square_clustering / square_clustering",
+       "measure": "square_clustering"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(q_v(u,w)=n-3\\) and \\(a_v(u,w)=0\\): the coefficient is 1 for \\(n\\ge4\\) (0/0 for \\(n=3\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Leaves have no common neighbour other than the centre: \\(q=0\\), so \\(C_4=0\\) for the centre.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "Four-cycles are the shortest cycles; the coefficient is defined and can be positive.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "lind2005cycles",
+    "zhang2008clustering",
+    "zlatic2012networks"
+   ]
+  },
+  "successor_transitivity": {
+   "status": "partial",
+   "note": "Defined by the NetworkX documentation of its directed transitivity (triangles over successor sets); no original paper is cited in the sources, so no reference is given.",
+   "notation": [
+    {
+     "symbol": "S(v)",
+     "meaning": "successors of \\(v\\) (nodes \\(w\\) with an arc from \\(v\\) to \\(w\\))"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Successor transitivity",
+     "latex": "T_S=\\frac{\\sum_{v}\\sum_{w\\in S(v)}|S(v)\\cap S(w)|}{\\sum_v|S(v)|\\,(|S(v)|-1)}",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "Share of ordered pairs of successors of \\(v\\) that are joined by an arc between them, the pair \\((w,x)\\) with \\(w\\in S(v)\\), \\(x\\in S(v)\\cap S(w)\\); defined when some node has two or more successors."
+    }
+   ],
+   "variants": {
+    "nxo_successor_transitivity": "The ratio above for a directed graph, taking parallel arcs once."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "The denominator is 0: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "No node has two successors: the denominator is 0: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Not defined (denominator 0).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are not arcs between distinct successors; the simple reading drops them.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Successor sets are sets: parallel arcs count once.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed graphs; reverse arcs are different successors.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ]
+  },
+  "triangle_count": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target; the simple reading merges parallel edges and drops loops"
+    },
+    {
+     "symbol": "A",
+     "meaning": "adjacency matrix of the simple undirected reading"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Triangles at a node",
+     "latex": "t_i=\\tfrac12\\,(A^3)_{ii}=\\bigl|\\{\\{j,h\\}\\subseteq N(i): a_{jh}=1\\}\\bigr|",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Number of triangles that contain node \\(i\\); every triangle is counted once at each of its three nodes, so the total is \\(\\tfrac13\\sum_i t_i\\). Defined for every graph (0 when there are none); triangle listing algorithms are due to Chiba and Nishizeki 1985."
+    }
+   ],
+   "variants": {
+    "nxo_triangles": "The vector of \\(t_i\\) for every node of the simple undirected reading (direction ignored, loops and parallel edges dropped)."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "No edge: all counts 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Dropped: a loop is not a triangle edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "differs",
+       "behaviour": "Gephi counts a self-loop in a node's neighbourhood: with the loops removed (parallel edges kept) its coefficients and triangle counts equal the simple-graph definition, which this reference and the definition oracle follow; parallel edges do not change them (checked on multi_loops_und and multi_loops_dir).",
+       "source": "conventions.json nxo_triangles / nxo_triangles_sorted",
+       "measure": "nxo_triangles"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged: each triangle is counted once, not once per edge multiplicity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "differs",
+       "behaviour": "Gephi counts a self-loop in a node's neighbourhood: with the loops removed (parallel edges kept) its coefficients and triangle counts equal the simple-graph definition, which this reference and the definition oracle follow; parallel edges do not change them (checked on multi_loops_und and multi_loops_dir).",
+       "source": "conventions.json nxo_triangles / nxo_triangles_sorted",
+       "measure": "nxo_triangles"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Direction is ignored in the simple undirected reading.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(\\binom{n-1}{2}\\) triangles at every node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "No triangles.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "No triangles.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "chiba1985arboricity"
+   ]
+  },
+  "trust_transitivity": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool), never run; the sources give a function name and no formula."
+  },
+  "central_graph": {
+   "status": "name_only",
+   "note": "Documented only (sna centralgraph), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "central_point_dominance": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool central point dominance), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "cycle_probability": {
+   "status": "name_only",
+   "note": "Documented only (BCT cycprob), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "degree_distribution": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit degree distribution and summary statistics), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "diversity_index": {
+   "status": "name_only",
+   "note": "Documented only (igraph diversity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "edge_average": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool edge_average), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "group_density": {
+   "status": "name_only",
+   "note": "Documented only (UCINET Groupden), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "joint_degree_distribution": {
+   "status": "name_only",
+   "note": "Documented only (BCT jdegree), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "non_randomness": {
+   "status": "name_only",
+   "note": "Documented only (NetworkX non_randomness), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "tie_count": {
+   "status": "name_only",
+   "note": "Documented only (UCINET Numties), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "rentian_scaling": {
+   "status": "name_only",
+   "note": "Documented only (BCT rentian scaling), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "structure_statistics": {
+   "status": "name_only",
+   "note": "Documented only (sna structure.statistics), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "krackhardt_dimensions": {
+   "status": "name_only",
+   "note": "Documented only (sna and UCINET Krackhardt graph-theoretic dimensions), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "resource_efficiency": {
+   "status": "name_only",
+   "note": "Documented only (BCT resource efficiency), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "routing_efficiency": {
+   "status": "name_only",
+   "note": "Documented only (BCT routing efficiency), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "density": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target; the simple reading merges parallel edges and drops loops"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    },
+    {
+     "symbol": "m",
+     "meaning": "number of edges (arcs for a directed graph)"
+    },
+    {
+     "symbol": "n_1,n_2",
+     "meaning": "sizes of the two node classes of a two-mode graph"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Density (Wasserman and Faust 1994)",
+     "latex": "\\Delta=\\frac{2m}{n(n-1)}\\;\\text{(undirected)},\\qquad \\Delta=\\frac{m}{n(n-1)}\\;\\text{(directed)}",
+     "applies_to": [
+      "simple"
+     ],
+     "where": "Fraction of the possible ties that exist, on a simple graph without loops. Defined for \\(n\\ge2\\); the denominator is 0 for \\(n=1\\)."
+    },
+    {
+     "name": "Density allowing loops",
+     "latex": "\\Delta_\\circ=\\frac{m}{n^2}\\;\\text{(directed)},\\qquad \\Delta_\\circ=\\frac{m}{n(n+1)/2}\\;\\text{(undirected)}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Possible ties include the \\(n\\) loops. Defined for \\(n\\ge1\\)."
+    },
+    {
+     "name": "Two-mode density",
+     "latex": "\\Delta_{12}=\\frac{m}{n_1n_2}",
+     "applies_to": [
+      "two_mode",
+      "bipartite"
+     ],
+     "where": "Ties between the classes over the possible \\(n_1n_2\\); defined when both classes are non-empty."
+    }
+   ],
+   "variants": {
+    "density": "The simple-graph density \\(\\Delta\\) (distinct ties over possible dyads, with or without the loop convention); on a multigraph the edge count is that of the tool's reading.",
+    "twomode:density": "The two-mode form \\(m/(n_1n_2)\\) on the incidence matrix, for graphs with node types."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: the denominator is 0, not defined."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(m=0\\): density 0 for \\(n\\ge2\\).",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(n(n-1)=0\\): not defined in the simple form (0/0); with loops \\(1\\) possible tie, density 0 or 1.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One possible undirected tie: density 0 or 1; two possible directed ties: 0, 1/2 or 1.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Not possible ties in the simple form, so excluded from \\(m\\); counted in the loop form.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "differs",
+       "behaviour": "sna works on adjacency matrices, so parallel edges collapse to one and self-loops are ignored;",
+       "source": "conventions.json density / density",
+       "measure": "density"
+      },
+      "ergm": {
+       "status": "differs",
+       "behaviour": "A network object holds each tie once and no loops (multiple = FALSE, loops = FALSE), so the edge count drops parallel edges and loops that this reference's edge count keeps.",
+       "source": "conventions.json density / density",
+       "measure": "density",
+       "finding": "F070"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "The ratio is of distinct ties; counting parallel edges can give a value above 1.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "differs",
+       "behaviour": "sna works on adjacency matrices, so parallel edges collapse to one and self-loops are ignored;",
+       "source": "conventions.json density / density",
+       "measure": "density"
+      },
+      "ergm": {
+       "status": "differs",
+       "behaviour": "A network object holds each tie once and no loops (multiple = FALSE, loops = FALSE), so the edge count drops parallel edges and loops that this reference's edge count keeps.",
+       "source": "conventions.json density / density",
+       "measure": "density",
+       "finding": "F070"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The directed denominator \\(n(n-1)\\) is twice the undirected one \\(n(n-1)/2\\), so the same arcs give half the density of the symmetrized graph.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Density 1.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "Density of a bipartite graph in the one-mode form is at most \\(n_1n_2/\\binom n2\\); use the two-mode form for \\(\\Delta_{12}\\).",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "one-mode fixture (no node types)",
+       "source": "conventions.json twomode:density / twomode_density"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "wasserman1994social"
+   ]
+  },
+  "compactness": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "d(i,j)",
+     "meaning": "length of a shortest path from \\(i\\) to \\(j\\) (edge count, or the total of the edge lengths when weighted); \\(\\infty\\) when unreachable"
+    },
+    {
+     "symbol": "n=|V|",
+     "meaning": "number of nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Compactness (as efficiency of Latora and Marchiori 2001)",
+     "latex": "\\mathrm{Comp}=\\frac{1}{n(n-1)}\\sum_{i\\ne j}\\frac{1}{d(i,j)}\\qquad\\Bigl(\\tfrac1\\infty=0\\Bigr)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Mean of the reciprocal distances over ordered pairs; unreachable pairs contribute 0, so it is defined on disconnected graphs; it is 1 for a complete graph. Defined for \\(n\\ge2\\). The same quantity is the global efficiency of Latora and Marchiori 2001."
+    }
+   ],
+   "variants": {
+    "compactness": "The mean reciprocal distance with unit lengths; the weighted form uses the edge weights as lengths in \\(d(i,j)\\)."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "For \\(n\\le1\\) the normalizer \\(n(n-1)\\) is 0: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "All pairs unreachable: every term is 0, so the value is 0 for \\(n\\ge2\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Unreachable pairs contribute \\(1/\\infty=0\\); defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Ordered pairs are used, so one-way reachability is counted pair by pair.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "With weights as lengths, \\(d\\) is the weighted shortest-path length; weight 0 would make \\(1/d\\) infinite.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Compactness 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Centre-leaf pairs have distance 1 and leaf-leaf pairs distance 2: \\(\\bigl(2(n-1)+(n-1)(n-2)/2\\bigr)/(n(n-1))\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "latora2001efficient"
+   ]
+  },
+  "dyad_census": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target; the simple reading merges parallel edges and drops loops"
+    },
+    {
+     "symbol": "M,A,N",
+     "meaning": "numbers of mutual, asymmetric and null dyads among the \\(\\binom n2\\) unordered node pairs: both arcs present, exactly one arc, no arc"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Dyad census (Holland and Leinhardt 1976)",
+     "latex": "M+A+N=\\binom n2",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "Every unordered pair of distinct nodes is in exactly one of three states; \\(M\\) is the number of reciprocated pairs, \\(A\\) the asymmetric ones."
+    }
+   ],
+   "variants": {
+    "dyad_census": "The triple \\((M,A,N)\\) of dyad counts on the simple directed reading; parallel arcs count once and loops are ignored."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No pairs: all counts 0."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No pairs: \\(M=A=N=0\\)."
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One dyad, in one of the three states."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are not dyads of distinct nodes."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "A dyad is classified by whether an arc is present each way, so parallel arcs count once."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed graphs; for an undirected graph every tie is mutual."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(M=\\binom n2\\)."
+    },
+    {
+     "case": "star",
+     "definition_gives": "With arcs in both directions: \\(M=n-1\\)."
+    }
+   ],
+   "references": [
+    "holland1976local"
+   ]
+  },
+  "reciprocity": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target; the simple reading merges parallel edges and drops loops"
+    },
+    {
+     "symbol": "L",
+     "meaning": "number of distinct arcs between distinct nodes"
+    },
+    {
+     "symbol": "L^{\\leftrightarrow}",
+     "meaning": "number of those arcs whose reverse arc is also present"
+    },
+    {
+     "symbol": "M,A,N",
+     "meaning": "mutual, asymmetric and null dyad counts of the dyad census"
+    },
+    {
+     "symbol": "x_{ij}",
+     "meaning": "1 if there is an arc from \\(i\\) to \\(j\\), else 0"
+    },
+    {
+     "symbol": "\\bar x=L/(n(n-1))",
+     "meaning": "arc density"
+    },
+    {
+     "symbol": "\\mathrm{in}(v),\\mathrm{out}(v)",
+     "meaning": "in- and out-neighbours of \\(v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Arc reciprocity (ratio of reciprocated arcs)",
+     "latex": "r=\\frac{L^{\\leftrightarrow}}{L}=\\frac{2M}{2M+A}",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "Share of arcs that are reciprocated. Defined when \\(L>0\\); 0/0 without arcs."
+    },
+    {
+     "name": "Dyadic reciprocity",
+     "latex": "r_{\\mathrm{dyad}}=\\frac{M+N}{\\binom n2}",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "Share of dyads in which both nodes agree (both arcs or none); defined for \\(n\\ge2\\)."
+    },
+    {
+     "name": "Dyad-based ratio",
+     "latex": "r_{\\mathrm{ratio}}=\\frac{M}{M+A}",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "Mutual dyads over non-null dyads; defined when some tie exists."
+    },
+    {
+     "name": "Reciprocity correlation (Garlaschelli and Loffredo 2004)",
+     "latex": "\\rho=\\frac{\\sum_{i\\ne j}(x_{ij}-\\bar x)(x_{ji}-\\bar x)}{\\sum_{i\\ne j}(x_{ij}-\\bar x)^2}=\\frac{r-\\bar x}{1-\\bar x}",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "Correlation between the two directions of ordered pairs; positive for more reciprocity than chance. Defined when \\(0<\\bar x<1\\); 0/0 for an empty or complete graph."
+    },
+    {
+     "name": "Node reciprocity",
+     "latex": "r(v)=\\frac{|\\mathrm{in}(v)\\cap\\mathrm{out}(v)|\\cdot 2}{|\\mathrm{in}(v)|+|\\mathrm{out}(v)|}",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "Share of the arcs at \\(v\\) that are reciprocated; defined when \\(v\\) has at least one arc."
+    }
+   ],
+   "variants": {
+    "reciprocity": "The graph-level reciprocity: the arc ratio \\(r\\) in most tools, with dyadic, ratio and correlation forms selected by an option (sna), computed on the simple directed reading.",
+    "nxo_node_reciprocity": "The node form \\(r(v)\\): the share of the arcs at \\(v\\) that are reciprocated."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes or no arcs: the ratio 0/0, not defined."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(L=0\\): \\(r=0/0\\), not defined; the dyadic form is 1 (all dyads null).",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No dyads: not defined.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One dyad: with one arc \\(r=0\\), with two \\(r=1\\); the correlation with one arc is \\(-1\\).",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolated node has no arcs: its node reciprocity is 0/0.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are not arcs between distinct nodes and are excluded from \\(L\\).",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Distinct arcs count: parallel arcs do not add to \\(L\\).",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "graphblas": {
+       "status": "differs",
+       "behaviour": "graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins);",
+       "source": "conventions.json nxo_node_reciprocity / nxo_node_reciprocity"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed graphs; every undirected tie is a mutual pair.",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(r=1\\); the correlation is 0/0 since \\(\\bar x=1\\).",
+     "tools": {
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "garlaschelli2004patterns",
+    "holland1976local"
+   ]
+  },
+  "triad_census": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\) and edge set \\(E\\); every edge has a source and a target; the simple reading merges parallel edges and drops loops"
+    },
+    {
+     "symbol": "T",
+     "meaning": "set of the 16 isomorphism classes of directed triads in MAN order: 003, 012, 102, 021D, 021U, 021C, 111D, 111U, 030T, 030C, 201, 120D, 120U, 120C, 210, 300"
+    },
+    {
+     "symbol": "\\mathrm{type}(i,j,k)",
+     "meaning": "class of the subgraph induced by the nodes \\(i,j,k\\), determined by its mutual, asymmetric and null dyads and their orientation"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Triad census (Holland and Leinhardt 1976)",
+     "latex": "N_t=\\bigl|\\{\\{i,j,k\\}\\subseteq V:\\mathrm{type}(i,j,k)=t\\}\\bigr|,\\qquad \\sum_{t\\in T}N_t=\\binom n3",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "Counts of each triad class over all unordered node triples; defined for \\(n\\ge3\\) (for \\(n<3\\) there are no triples and all counts are 0). Batagelj and Mrvar 2001 compute it in subquadratic time."
+    }
+   ],
+   "variants": {
+    "triad_census": "The 16 counts in MAN order of the simple directed reading: each dyad is classified as tied or not in each direction, so parallel arcs count once.",
+    "st_triads": "The census restricted to the triples that meet a given node subset (the subset forms the subset-restricted triad census of the directed graph); parallel arcs count once."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No triples: all counts 0."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "Fewer than three nodes: there is no triple, counts are 0 (the sum \\(\\binom n3\\) is 0).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "differs",
+       "behaviour": "sna returns NaN for networks with fewer than three nodes, which have no triads;",
+       "source": "conventions.json triad_census / triad_census",
+       "measure": "triad_census"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "No triple: all counts 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops do not affect the classification of a triple of distinct nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "A dyad is tied or not: parallel arcs count once.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "differs",
+       "behaviour": "igraph's triad census does not support multigraphs: parallel edges change its counts. This reference, sna, and the definition oracle classify each dyad as tied or not, so parallel edges count once.",
+       "source": "conventions.json triad_census / triad_census",
+       "measure": "triad_census",
+       "finding": "F039"
+      },
+      "pyigraph": {
+       "status": "differs",
+       "behaviour": "igraph's triad census does not support multigraphs: parallel edges change its counts. This reference, sna, and the definition oracle classify each dyad as tied or not, so parallel edges count once.",
+       "source": "conventions.json triad_census / triad_census",
+       "measure": "triad_census"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed graphs; an undirected graph read as symmetric arcs has only the types 003, 102, 201 and 300.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "NetworkX defines the triad census only for directed graphs. NetworkX's triadic_census accepts only directed graphs.",
+       "source": "conventions.json triad_census / triad_census"
+      },
+      "sna": {
+       "status": "differs",
+       "behaviour": "sna returns NaN for networks with fewer than three nodes, which have no triads; this reference returns zero counts.",
+       "source": "conventions.json triad_census / triad_census",
+       "measure": "triad_census"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All triples are type 300 (all dyads mutual): \\(N_{300}=\\binom n3\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "holland1976local",
+    "batagelj2001subquadratic"
+   ]
+  }
+ }
+}

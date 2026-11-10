@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Graph bisection and partitioning. 
 
 Bipartite partitioning. Entries grouped here: Bipartite Partitioning.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (JGraphT bipartite partitioning), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Bipartite Partitioning {#cat_bipartite_partitioning}
 

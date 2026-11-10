@@ -1,0 +1,2037 @@
+{
+ "family": "Cohesion and subgroups",
+ "concepts": {
+  "clique_number": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "\\mathcal C(G)",
+     "meaning": "set of cliques: node sets \\(S\\) in which every two distinct nodes are adjacent"
+    },
+    {
+     "symbol": "\\omega(v)",
+     "meaning": "size of the largest clique containing \\(v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Clique number",
+     "latex": "\\omega(G)=\\max_{S\\in\\mathcal C(G)}|S|",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Size of a largest clique; 0 for the empty graph, at least 1 otherwise. Maximum cliques are found among the maximal cliques of Bron and Kerbosch 1973 (worst-case bound by Tomita et al. 2006, listing in degeneracy order by Eppstein et al. 2010)."
+    },
+    {
+     "name": "Node clique number",
+     "latex": "\\omega(v)=\\max\\{|S|:S\\in\\mathcal C(G),\\,v\\in S\\}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Largest clique containing the node; at least 1 for every node."
+    }
+   ],
+   "variants": {
+    "clique_number": "\\(\\omega(G)\\): the size of the largest clique of the simple undirected reading.",
+    "node_clique_number": "\\(\\omega(v)\\) for each node: the size of the largest clique that contains it."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: the empty set is the only clique; its size is 0."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Every node is a clique of size 1 and no larger one exists.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One maximal clique of one node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One edge gives one maximal clique of 2; no edge gives two of size 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Each isolate is a maximal clique of size 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Dropped: a clique concerns pairs of distinct nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "no_value",
+       "behaviour": "BronKerboschCliqueFinder throws 'Graph must be simple' on loops or parallel edges;",
+       "source": "conventions.json clique_number / clique_number"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Adjacency is a yes/no relation: parallel edges are merged.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "no_value",
+       "behaviour": "BronKerboschCliqueFinder throws 'Graph must be simple' on loops or parallel edges;",
+       "source": "conventions.json clique_number / clique_number"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected graph; a directed graph is read through its underlying undirected graph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "no_value",
+       "behaviour": "on directed input it does not error but returns a collection that is not the maximal cliques of the underlying graph (pair 0->1 gives two singletons, cycle7_dir six cliques instead of seven edges), so it is not compared.",
+       "source": "conventions.json clique_number / clique_number"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One maximal clique of all \\(n\\) nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Maximal cliques are the \\(n-1\\) edges: clique number 2 (1 for \\(n=1\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "No triangles: maximal cliques are edges and isolated nodes; clique number at most 2.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "bron1973algorithm",
+    "tomita2006worst",
+    "eppstein2010listing"
+   ]
+  },
+  "maximal_cliques": {
+   "status": "partial",
+   "note": "cat_clique_detect (NetworKit) is documented only and was never run; its options (minimum size, callback) are not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Maximal cliques (Bron and Kerbosch 1973)",
+     "latex": "\\mathcal M(G)=\\{S\\subseteq V: S\\text{ is a clique and no }S'\\supsetneq S\\text{ is a clique}\\}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Cliques that cannot be extended by any node. The set is determined by the graph; the order of listing and the minimum-size filter are conventions of the tool. The number of maximal cliques can be exponential (\\(3^{n/3}\\) at most). Isolated nodes are maximal cliques of size 1."
+    }
+   ],
+   "variants": {
+    "max_cliques": "The set \\(\\mathcal M(G)\\) listed in lexicographic order with an optional minimum size (maximal cliques of at least 3 members is the usual filter).",
+    "cat_clique_detect": "Documented for NetworKit as clique detection (maximal cliques); not run, options not recorded."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: the empty set is the only clique; its size is 0."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Every node is a clique of size 1 and no larger one exists.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One maximal clique of one node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One edge gives one maximal clique of 2; no edge gives two of size 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Each isolate is a maximal clique of size 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Dropped: a clique concerns pairs of distinct nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "no_value",
+       "behaviour": "BronKerboschCliqueFinder throws 'Graph must be simple' on loops or parallel edges;",
+       "source": "conventions.json max_cliques / max_cliques"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Adjacency is a yes/no relation: parallel edges are merged.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "no_value",
+       "behaviour": "BronKerboschCliqueFinder throws 'Graph must be simple' on loops or parallel edges;",
+       "source": "conventions.json max_cliques / max_cliques"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected graph; a directed graph is read through its underlying undirected graph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "no_value",
+       "behaviour": "on directed input it does not error but returns a collection that is not the maximal cliques of the underlying graph (pair 0->1 gives two singletons, cycle7_dir six cliques instead of seven edges), so it is not compared.",
+       "source": "conventions.json max_cliques / max_cliques"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One maximal clique of all \\(n\\) nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Maximal cliques are the \\(n-1\\) edges: clique number 2 (1 for \\(n=1\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "No triangles: maximal cliques are edges and isolated nodes; clique number at most 2.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "bron1973algorithm",
+    "tomita2006worst",
+    "eppstein2010listing",
+    "matula1983smallest"
+   ]
+  },
+  "all_cliques": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "\\mathcal C(G)",
+     "meaning": "set of non-empty cliques"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "All cliques",
+     "latex": "\\mathcal C(G)=\\{S\\ne\\emptyset: \\text{every two distinct nodes of }S\\text{ are adjacent}\\}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Every clique, not only the maximal ones: every non-empty subset of a maximal clique. A maximal clique of size \\(s\\) contributes \\(2^s-1\\) cliques, so the set can be exponentially large. Enumeration order (by size) is a tool convention."
+    }
+   ],
+   "variants": {
+    "all_cliques": "The set \\(\\mathcal C(G)\\) of all non-empty cliques, each listed once.",
+    "nx_cliques_order": "The order in which the maximal cliques are listed by two enumeration procedures; the definition fixes the set, not the order."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No non-empty clique."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "The \\(n\\) singletons.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One clique.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Dropped.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Undirected adjacency.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All \\(2^n-1\\) non-empty subsets.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "\\(n\\) singletons and \\(n-1\\) edges.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "bron1973algorithm"
+   ]
+  },
+  "is_clique": {
+   "status": "partial",
+   "note": "Documented only (igraph, python-igraph), never run: the tools' handling of directed graphs, loops and the empty set is not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "S",
+     "meaning": "a set of nodes"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Clique test",
+     "latex": "S\\text{ is a clique}\\iff \\forall\\,u\\ne v\\in S:\\{u,v\\}\\in E",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "True when every two distinct members are adjacent; true for any set with at most one node."
+    }
+   ],
+   "variants": {
+    "cat_clique_is": "Tests whether a given node set satisfies the clique condition above."
+   },
+   "edge_cases": [
+    {
+     "case": "group_input",
+     "definition_gives": "The empty set and every single node satisfy the condition vacuously (no pair to test)."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Pairs are of distinct nodes; loops are irrelevant."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on undirected adjacency."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Every set is a clique."
+    }
+   ],
+   "references": [
+    "harary1969graph"
+   ]
+  },
+  "clique_census": {
+   "status": "name_only",
+   "note": "Documented only (sna clique.census), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "clique_overlap": {
+   "status": "name_only",
+   "note": "Documented only (UCINET clique co-membership and overlap matrices), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "clique_state": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool clique decomposition state), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "max_cohesion": {
+   "status": "name_only",
+   "note": "Documented only (igraph maxcohesion), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "largest_clique_count": {
+   "status": "name_only",
+   "note": "Documented only (igraph count of largest cliques), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "weighted_cliques": {
+   "status": "name_only",
+   "note": "Documented only (igraph weighted cliques), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "cohesive_blocking": {
+   "status": "name_only",
+   "note": "Documented only (igraph cohesive blocks (Moody-White)), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "cut_quality": {
+   "status": "name_only",
+   "note": "Documented only (NetworKit and NetworkX conductance, expansion and boundary), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "simmelian_ties": {
+   "status": "name_only",
+   "note": "Documented only (ergm, sna and UCINET Simmelian ties), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "cocitation_coupling": {
+   "status": "name_only",
+   "note": "Documented only (igraph cocitation and bibliographic coupling), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "graphlets": {
+   "status": "name_only",
+   "note": "Documented only (igraph graphlet basis and projection), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "mixed_triad_census": {
+   "status": "name_only",
+   "note": "Documented only (RSiena mixed triad census), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "motif_census": {
+   "status": "name_only",
+   "note": "Documented only (BCT, graph-tool and igraph motif census), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "triad_enumeration": {
+   "status": "name_only",
+   "note": "Documented only (NetworkX all_triads and UCINET Liststriads), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "max_weight_clique": {
+   "status": "partial",
+   "note": "The problem is stated from its definition; the original algorithm paper is not in the bibliography, so no citation is given. cat_clique_largest_weighted (igraph) is documented only and was never run.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "w_v",
+     "meaning": "weight of node \\(v\\) (integer or real)"
+    },
+    {
+     "symbol": "\\mathcal C(G)",
+     "meaning": "set of cliques"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Maximum-weight clique",
+     "latex": "S^\\star\\in\\arg\\max_{S\\in\\mathcal C(G)}\\sum_{v\\in S}w_v",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "A clique whose node weights sum to the maximum; with all weights 1 it is a maximum clique. Positive weights make the optimum a maximal clique; zero or negative weights can make the empty clique (weight 0) best, and the optimum need not be unique."
+    }
+   ],
+   "variants": {
+    "max_weight_clique": "The pair (total weight, 1 if the returned nodes form a clique) of one maximum-weight clique.",
+    "max_weight_clique_nodes": "The members of one maximum-weight clique, in the order in which the search adds them (the set is defined only up to ties).",
+    "cat_clique_largest_weighted": "Documented for igraph as the largest weighted cliques; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Only the empty clique, of weight 0."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "The single node of largest weight (if positive).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "Nodes of weight 0 add nothing to the sum; the optimum may not be unique."
+    },
+    {
+     "case": "negative_weights",
+     "definition_gives": "A node of negative weight lowers any clique containing it: the optimum never contains it unless forced, and may be the empty set."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several cliques can reach the maximum weight; the definition names the value, not which set is returned.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All nodes with positive weight.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ]
+  },
+  "k_core": {
+   "status": "partial",
+   "note": "cat_core_decomposition_sequence (NetworKit's core decomposition sequence) is documented only and was never run; its definition (presumably the removal order of the peeling) is not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\)"
+    },
+    {
+     "symbol": "\\deg_S(v)",
+     "meaning": "degree of \\(v\\) within the subgraph induced by \\(S\\); for a directed graph the in-, out- or total degree as chosen"
+    },
+    {
+     "symbol": "H_k",
+     "meaning": "the \\(k\\)-core: the maximal induced subgraph in which every node has \\(\\deg\\ge k\\)"
+    },
+    {
+     "symbol": "c(v)",
+     "meaning": "core number: the largest \\(k\\) with \\(v\\in H_k\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Core number (Seidman 1983)",
+     "latex": "c(v)=\\max\\{k: v\\in H_k\\},\\qquad H_k=\\text{the largest }S\\text{ with }\\min_{u\\in S}\\deg_S(u)\\ge k",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Every graph has a unique \\(k\\)-core for each \\(k\\), possibly empty. Computed in \\(O(m)\\) by repeated removal of the minimum-degree node (Batagelj and Zaversnik 2003). The definition is for simple graphs; counting loops and parallel edges in the degree is a convention."
+    },
+    {
+     "name": "Core subsets",
+     "latex": "\\text{shell}_k=\\{v:c(v)=k\\},\\quad \\text{crust}_k=\\{v:c(v)\\le k\\},\\quad \\text{corona}_k=\\{v:c(v)=k,\\ \\deg_{H_k}(v)=k\\}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The \\(k\\)-shell, \\(k\\)-crust and \\(k\\)-corona derived from core numbers; \\(k\\)-core = \\(\\{v:c(v)\\ge k\\}\\)."
+    }
+   ],
+   "variants": {
+    "coreness": "The core number \\(c(v)\\) of every node; for directed graphs the degree in the peeling is the in-, out- or in-plus-out degree.",
+    "core_subset": "A node subset derived from the core numbers: the \\(k\\)-core, \\(k\\)-shell, \\(k\\)-crust or \\(k\\)-corona (with default \\(k\\) the maximum core number for the core and shell).",
+    "cat_core_decomposition_sequence": "Documented for NetworKit as the core decomposition sequence; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: nothing to assign."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Every node has degree 0: \\(c(v)=0\\).",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(c=0\\) (or with a loop, depending on the loop convention).",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "\\(c=0\\).",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "The definition is for simple graphs: whether a loop adds to the degree (2 for an undirected loop) is a convention that changes \\(c(v)\\).",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "nx.core_number rejects self-loops and multigraphs, so the oracle runs on the simple graph without loops; this reference counts each parallel edge and a loop in a node's degree, as igraph does.",
+       "source": "conventions.json core_subset / core_corona_k1",
+       "measure": "core_subset"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "differs",
+       "behaviour": "rx.core_number() counts distinct neighbours and drops self-loops: given the fixture's multigraph it counts parallel edges once and ignores loops, and it reads a directed graph's in- and out-neighbours as one neighbourhood; the reference value's mode 'all' counts in- plus out- degree with every edge, a loop twice (igraph's convention).",
+       "source": "conventions.json coreness / coreness_all",
+       "measure": "coreness"
+      },
+      "jgrapht": {
+       "status": "no_value",
+       "behaviour": "Coreness throws 'Graph must be undirected' on a directed graph and 'Graph must be simple' on loops or parallel edges.",
+       "source": "conventions.json coreness / coreness_all"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Likewise: the definition is for simple graphs; counting each parallel edge in the degree changes \\(c(v)\\) relative to counting distinct neighbours.",
+     "tools": {
+      "networkx": {
+       "status": "differs",
+       "behaviour": "nx.core_number rejects self-loops and multigraphs, so the oracle runs on the simple graph without loops; this reference counts each parallel edge and a loop in a node's degree, as igraph does.",
+       "source": "conventions.json core_subset / core_corona_k1",
+       "measure": "core_subset"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "differs",
+       "behaviour": "rx.core_number() counts distinct neighbours and drops self-loops: given the fixture's multigraph it counts parallel edges once and ignores loops, and it reads a directed graph's in- and out-neighbours as one neighbourhood;",
+       "source": "conventions.json coreness / coreness_all",
+       "measure": "coreness"
+      },
+      "sknetwork": {
+       "status": "differs",
+       "behaviour": "get_core_decomposition() peels by the row (out-) neighbours of the sparse matrix (topology/core.pyx), and a sparse matrix holds one entry per pair, so parallel edges count once;",
+       "source": "conventions.json coreness / coreness_all",
+       "measure": "coreness"
+      },
+      "jgrapht": {
+       "status": "no_value",
+       "behaviour": "Coreness throws 'Graph must be undirected' on a directed graph and 'Graph must be simple' on loops or parallel edges.",
+       "source": "conventions.json coreness / coreness_all"
+      },
+      "bctpy": {
+       "status": "differs",
+       "behaviour": "kcoreness_centrality_bu() takes a binary undirected matrix: a directed fixture enters symmetrized, so a reciprocated pair is one tie, and parallel edges collapse;",
+       "source": "conventions.json coreness / coreness_all",
+       "measure": "coreness"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The directed core depends on the degree type used in peeling (in, out or total).",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "differs",
+       "behaviour": "rx.core_number() counts distinct neighbours and drops self-loops: given the fixture's multigraph it counts parallel edges once and ignores loops, and it reads a directed graph's in- and out-neighbours as one neighbourhood;",
+       "source": "conventions.json coreness / coreness_all",
+       "measure": "coreness"
+      },
+      "sknetwork": {
+       "status": "differs",
+       "behaviour": "get_core_decomposition() peels by the row (out-) neighbours of the sparse matrix (topology/core.pyx), and a sparse matrix holds one entry per pair, so parallel edges count once; the reference value's mode 'all' counts in- plus out-degree with every edge.",
+       "source": "conventions.json coreness / coreness_all",
+       "measure": "coreness"
+      },
+      "jgrapht": {
+       "status": "no_value",
+       "behaviour": "Coreness throws 'Graph must be undirected' on a directed graph and 'Graph must be simple' on loops or parallel edges.",
+       "source": "conventions.json coreness / coreness_all"
+      },
+      "bct": {
+       "status": "no_value",
+       "behaviour": "kcoreness_centrality_bu is defined for undirected matrices only.",
+       "source": "conventions.json coreness / coreness_all",
+       "measure": "coreness"
+      },
+      "bctpy": {
+       "status": "differs",
+       "behaviour": "kcoreness_centrality_bu() takes a binary undirected matrix: a directed fixture enters symmetrized, so a reciprocated pair is one tie, and parallel edges collapse;",
+       "source": "conventions.json coreness / coreness_all",
+       "measure": "coreness"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(c(v)=n-1\\) for all nodes.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "\\(c(v)=1\\) for all nodes.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "seidman1983network",
+    "batagelj2003algorithm"
+   ]
+  },
+  "k_truss": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "\\mathrm{sup}_S(e)",
+     "meaning": "support of edge \\(e=\\{u,v\\}\\) in the subgraph \\(S\\): the number of triangles of \\(S\\) containing it, i.e. \\(|N_S(u)\\cap N_S(v)|\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "k-truss (Wang and Cheng 2012)",
+     "latex": "T_k=\\text{the largest subgraph with }\\mathrm{sup}_{T_k}(e)\\ge k-2\\ \\ \\forall e\\in T_k",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Every edge of the \\(k\\)-truss lies in at least \\(k-2\\) triangles of the truss; the set of nodes is those touched by the surviving edges. Unique for each \\(k\\) and possibly empty."
+    },
+    {
+     "name": "Truss number of an edge",
+     "latex": "\\tau(e)=\\max\\{k:e\\in T_k\\}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "The largest \\(k\\) whose truss contains the edge; at least 2 for every edge of a simple graph."
+    }
+   ],
+   "variants": {
+    "k_truss": "The edges (and nodes touched by them) of the \\(k\\)-truss \\(T_k\\) for a given \\(k\\), on the simple undirected graph.",
+    "truss": "The truss number \\(\\tau(e)\\) of every edge of the simple undirected graph."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No edges: empty truss."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Empty truss for \\(k\\ge2\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "Fewer than \\(k\\) nodes cannot hold a \\(k\\)-truss (a \\(k\\)-truss has at least \\(k\\) nodes).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Dropped: a loop is not in any triangle.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged: support is a count of triangles, not of edge multiplicity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Direction ignored.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Every edge has support \\(n-2\\): the \\(n\\)-truss is the whole graph, \\(\\tau(e)=n\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "No triangles: only \\(k=2\\)-truss (all edges) exists.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "No triangles: \\(\\tau(e)=2\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "wang2012truss",
+    "seidman1983network"
+   ]
+  },
+  "onion_decomposition": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "\\deg_R(v)",
+     "meaning": "degree within the remaining graph \\(R\\)"
+    },
+    {
+     "symbol": "\\ell(v)",
+     "meaning": "onion layer of \\(v\\), starting at 1"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Onion decomposition (Hebert-Dufresne et al. 2016)",
+     "latex": "\\text{repeat: }k\\leftarrow\\max\\bigl(k,\\min_{u\\in R}\\deg_R(u)\\bigr);\\ L=\\{v\\in R:\\deg_R(v)\\le k\\};\\ \\ell(v)=\\text{round index for }v\\in L;\\ R\\leftarrow R\\setminus L",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "A refinement of the core decomposition that records, for each node, the round in which it is peeled when all nodes of degree at most the current core number \\(k\\) are removed simultaneously. The core number of a node is the value of \\(k\\) at its removal; layers are ordered from 1."
+    }
+   ],
+   "variants": {
+    "onion": "The onion layer \\(\\ell(v)\\) of every node of the simple undirected graph (loops dropped)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: no layers."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "All nodes have degree 0 and are removed in round 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Layer 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Dropped (simple graph).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Direction ignored.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All nodes removed together in round 1 (all degrees \\(n-1\\) equal \\(k\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Leaves have degree 1 and are removed first (layer 1); the centre then has degree 0 and is removed in layer 2.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Nodes with equal degree are removed in the same round: the layers do not depend on an order among ties.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "hebertdufresne2016multi"
+   ]
+  },
+  "factions": {
+   "status": "partial",
+   "note": "Both measures are documented only (UCINET) and were never run; the objective below is from the measure description (a partition into k groups fitting the ideal pattern of ties inside groups only, by tabu search from random starts) and no verified primary source is available, so no citation is given. The correlation form of the fit and UCINET's options are not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "a_{ij}",
+     "meaning": "1 if \\(i,j\\) are tied, else 0"
+    },
+    {
+     "symbol": "p:V\\to\\{1..k\\}",
+     "meaning": "a partition into \\(k\\) groups"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Factions error count",
+     "latex": "E(p)=\\sum_{i<j,\\ p_i\\ne p_j}a_{ij}+\\sum_{i<j,\\ p_i=p_j}(1-a_{ij})",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Ties between groups plus missing ties within groups: the deviations from the ideal pattern of complete groups with no ties between them. The best partition minimizes \\(E\\) for the given \\(k\\); found by a heuristic search, so not guaranteed optimal and not unique."
+    }
+   ],
+   "variants": {
+    "cat_factions": "The factions partition as documented for UCINET; the options are not recorded.",
+    "factions_errors": "The partition into \\(k\\) groups with the fewest errors \\(E(p)\\) against the ideal pattern of ties inside groups only, by tabu search from random starts."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "With \\(k>n\\) groups some groups are empty and cannot reduce \\(E\\)."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Within-group missing ties are the only errors; the best partition puts each node alone (\\(E=0\\)) when \\(k\\ge n\\)."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One group (\\(E=0\\)); with \\(k\\) groups forced non-empty, ties between groups are errors."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several partitions may reach the minimum; the search returns one."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(k\\) must be between 1 and \\(n\\)."
+    }
+   ]
+  },
+  "k_plexes": {
+   "status": "complete",
+   "note": "Documented only (UCINET), never run; the formula is the definition of Seidman and Foster 1978.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "S",
+     "meaning": "a set of \\(s=|S|\\) nodes"
+    },
+    {
+     "symbol": "\\deg_S(v)",
+     "meaning": "number of neighbours of \\(v\\) inside \\(S\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "k-plex (Seidman and Foster 1978)",
+     "latex": "S\\text{ is a }k\\text{-plex}\\iff\\deg_S(v)\\ge |S|-k\\ \\ \\forall v\\in S",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Each member is adjacent to all but at most \\(k-1\\) of the other members; a 1-plex is a clique. Maximal \\(k\\)-plexes cannot be extended. Defined for \\(k\\ge1\\); sets of fewer than \\(k\\) nodes satisfy it trivially, so a minimum size is imposed in practice."
+    }
+   ],
+   "variants": {
+    "k_plexes": "All maximal \\(k\\)-plexes of at least a given size."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No node set."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Any set of at most \\(k\\) nodes is a \\(k\\)-plex."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "Sets smaller than the minimum size are not reported."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "The whole node set is a 1-plex."
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(k<1\\) is meaningless (a node would need more than all other members as neighbours)."
+    }
+   ],
+   "references": [
+    "seidman1978graph",
+    "bron1973algorithm"
+   ]
+  },
+  "lambda_connectivity": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "\\lambda(u,v)",
+     "meaning": "edge connectivity between \\(u\\) and \\(v\\): the minimum number of edges whose removal disconnects them, equal to the maximum number of edge-disjoint \\(u\\)-\\(v\\) paths"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Lambda connectivity (Borgatti, Everett and Shirey 1990)",
+     "latex": "\\lambda(u,v)=\\min\\{|F|:F\\subseteq E,\\ u,v\\text{ in different components of }(V,E\\setminus F)\\}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Menger's theorem equates it with the maximum number of edge-disjoint paths; computed for all pairs from the \\(n-1\\) maximum flows of Gusfield's equivalent flow tree (Gusfield 1990), \\(\\lambda(u,v)\\) being the minimum edge value on the tree path. Defined for \\(u\\ne v\\); 0 for nodes in different components."
+    }
+   ],
+   "variants": {
+    "lambda_connectivity": "The matrix \\(\\lambda(u,v)\\) over all pairs of the simple undirected graph (read off the flow tree)."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "No pair.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One pair: \\(\\lambda\\) is 1 if tied, else 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "\\(\\lambda=0\\) to every other node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "\\(\\lambda=0\\) across components.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops never lie on a path between distinct nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged in the simple reading: parallel edges do not raise \\(\\lambda\\); counting them as capacities would.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Direction ignored (simple undirected reading).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(\\lambda=n-1\\) for all pairs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "\\(\\lambda=1\\) for all pairs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "borgatti1990ls",
+    "gusfield1990very",
+    "ford1956maximal"
+   ]
+  },
+  "lambda_sets": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "\\lambda(u,v)",
+     "meaning": "edge connectivity between \\(u\\) and \\(v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Lambda set (Borgatti, Everett and Shirey 1990)",
+     "latex": "S\\ \\text{is a lambda set}\\iff \\min_{i\\ne j\\in S}\\lambda(i,j)>\\max_{i\\in S,\\,k\\notin S}\\lambda(i,k)",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "A set that is more connected internally than to any outside node. The nodes with \\(\\lambda\\ge k\\) to each other form an equivalence relation, so for each \\(k\\) the classes with at least two members are nested lambda sets; they are read off Gusfield's equivalent flow tree (\\(n-1\\) maximum flows) listing each node's parent and the connectivity to it."
+    }
+   ],
+   "variants": {
+    "lambda_sets": "Gusfield's equivalent flow tree (each node's parent and the edge connectivity to it), from which the lambda sets are read; or the classes of \\(\\{\\lambda\\ge k\\}\\) for each \\(k\\)."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "One node: no lambda set of two or more.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolate has \\(\\lambda=0\\) to all: it belongs to no set of \\(\\lambda\\ge1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Components separate the sets (\\(\\lambda=0\\) across).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant to edge connectivity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Merged in the simple reading.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Direction ignored.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "The whole node set is one lambda set at \\(k=n-1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Equal connectivities are what defines the classes; the tree is not unique but its connectivities are.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "borgatti1990ls",
+    "gusfield1990very"
+   ]
+  },
+  "n_cliques": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "d_G(u,v)",
+     "meaning": "geodesic distance in the whole graph \\(G\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "n-clique (Luce 1950; Alba 1973)",
+     "latex": "S\\text{ is an }n\\text{-clique}\\iff d_G(u,v)\\le n\\ \\forall u,v\\in S,\\ \\text{and }S\\text{ is maximal with this property}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Maximal sets whose members are all within \\(n\\) steps of each other, with distances measured in the whole graph (the connecting paths may pass through nodes outside \\(S\\)). Equivalent to the maximal cliques of the \\(n\\)-th power graph. For \\(n=1\\) these are the cliques."
+    }
+   ],
+   "variants": {
+    "n_cliques": "The maximal cliques of the graph that joins nodes at distance at most \\(n\\) (n=2 is the usual choice), optionally with a minimum size."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No sets."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One set of one node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Nodes in different components are at infinite distance and are never in a common n-clique.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One n-clique, the whole node set.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "For \\(n=2\\) the whole graph is one 2-clique.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(n<1\\) is meaningless."
+    }
+   ],
+   "references": [
+    "luce1950connectivity",
+    "alba1973graph",
+    "mokken1979cliques"
+   ]
+  },
+  "n_clans": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple undirected graph (direction ignored, parallel edges merged, loops dropped) with node set \\(V\\), \\(n=|V|\\)"
+    },
+    {
+     "symbol": "d_G(u,v)",
+     "meaning": "geodesic distance in the whole graph \\(G\\)"
+    },
+    {
+     "symbol": "\\mathrm{diam}(G[S])",
+     "meaning": "diameter of the subgraph induced by \\(S\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "n-clan (Mokken 1979)",
+     "latex": "S\\text{ is an }n\\text{-clan}\\iff S\\text{ is an }n\\text{-clique and }\\mathrm{diam}(G[S])\\le n",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "An \\(n\\)-clique whose induced subgraph is connected with diameter at most \\(n\\): the connecting paths stay inside the set."
+    }
+   ],
+   "variants": {
+    "n_clans": "The \\(n\\)-cliques whose induced subgraph is connected with diameter at most \\(n\\)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No sets."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "An n-clique cannot span components; an induced subgraph that is disconnected has infinite diameter and is excluded.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "The whole node set.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "For \\(n=2\\) the whole star is a 2-clan.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "\\(n<1\\) is meaningless."
+    }
+   ],
+   "references": [
+    "mokken1979cliques",
+    "alba1973graph"
+   ]
+  },
+  "triad_type": {
+   "status": "partial",
+   "note": "Both measures are documented only (NetworkX) and were never run; the assignment of the orientation letters (D, U, C, T) is not detailed in the sources.",
+   "notation": [
+    {
+     "symbol": "(m,a,n)",
+     "meaning": "numbers of mutual, asymmetric and null dyads of a triple of nodes, with \\(m+a+n=3\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Triad type (Holland and Leinhardt 1976)",
+     "latex": "\\text{type}(i,j,k)=m\\,a\\,n\\ [\\text{orientation letter}]",
+     "applies_to": [
+      "directed",
+      "simple"
+     ],
+     "where": "One of 16 classes (003, 012, 102, 021D, 021U, 021C, 111D, 111U, 030T, 030C, 201, 120D, 120U, 120C, 210, 300): the three digits are the counts of mutual, asymmetric and null dyads, the letter distinguishes orientations (Down, Up, Cyclic, Transitive) where more than one structure has the same counts."
+    }
+   ],
+   "variants": {
+    "cat_triad_type": "The type of a given triple of nodes among the 16 classes.",
+    "cat_triads_type": "The triples of a graph grouped by type."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "A triad needs three distinct nodes."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are ignored in the dyad classification."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "A dyad is tied or not."
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed graphs."
+    }
+   ],
+   "references": [
+    "holland1976local"
+   ]
+  }
+ }
+}

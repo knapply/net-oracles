@@ -1,0 +1,3819 @@
+{
+ "family": "Components and connectivity",
+ "concepts": {
+  "bridges": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "c(G)",
+     "meaning": "number of connected components"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Bridge (Harary 1969; Tarjan 1972)",
+     "latex": "e\\text{ is a bridge}\\iff c(G-e)>c(G)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "An edge whose removal increases the number of components; equivalently an edge on no cycle. Found in linear time by depth-first search with low-link values (Tarjan 1972). Parallel edges are not bridges (removing one leaves the other), and loops never are."
+    }
+   ],
+   "variants": {
+    "bridges": "The set of bridges of the undirected graph (direction ignored for a directed graph)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: nothing to compute."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One node: no edge, no pair.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One pair of nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No edges, so no bridge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Isolates have no edges and add none.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop lies on a cycle of length 1: never a bridge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Two parallel edges form a cycle: neither is a bridge; a single edge between the two nodes is.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "differs",
+       "behaviour": "Two parallel edges between the same nodes are never a bridge for the reference (removing one leaves the other); rx.bridges() reads the multigraph as a simple graph and reports the pair as a bridge.",
+       "source": "conventions.json bridges / bridges"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected graph; a directed graph is read with direction ignored, so a pair of antiparallel arcs is a pair of parallel edges and not a bridge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "no_value",
+       "behaviour": "rx.bridges() accepts only an undirected PyGraph.",
+       "source": "conventions.json bridges / bridges"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Bridges are found within each component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "None for \\(n\\ge3\\); the single edge for \\(n=2\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Every edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "Not constrained by bipartiteness.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "tarjan1972depth",
+    "harary1969graph"
+   ]
+  },
+  "cut_points": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "c(G)",
+     "meaning": "number of connected components"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Articulation point (Hopcroft and Tarjan 1973)",
+     "latex": "v\\text{ is a cut point}\\iff c(G-v)>c(G)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "A node whose removal (with its edges) increases the number of components. Isolated nodes are not cut points since removing one lowers the component count; a node of degree 1 is not a cut point."
+    }
+   ],
+   "variants": {
+    "cut_points": "The set of articulation points of the undirected graph (direction ignored)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: nothing to compute."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One node: no edge, no pair.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One pair of nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No node is a cut point.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolate is not a cut point.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant to connectivity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Irrelevant to node removal.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected reading.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "no_value",
+       "behaviour": "rx.articulation_points() accepts only an undirected PyGraph.",
+       "source": "conventions.json cut_points / cut_points"
+      },
+      "boost": {
+       "status": "no_value",
+       "behaviour": "BGL's articulation_points is defined for undirected graphs only; the driver does not call it on directed input.",
+       "source": "conventions.json cut_points / cut_points"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Cut points are those of each component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "None.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "The centre for \\(n\\ge3\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "bipartite",
+     "definition_gives": "Not constrained.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "sna": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (davis_twomode, southern_women, twomode_random).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "hopcroft1973algorithm",
+    "tarjan1972depth"
+   ]
+  },
+  "biconnected_components": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Biconnected components (blocks; Hopcroft and Tarjan 1973)",
+     "latex": "B\\ \\text{is a block}\\iff B\\text{ is a maximal connected subgraph without a cut point of its own}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "The blocks partition the edges; two blocks share at most one node, which is then a cut point. A bridge is a block of two nodes; isolated nodes and (in the node-set listing) loops form no block with an edge between distinct nodes."
+    }
+   ],
+   "variants": {
+    "bicomponents": "The blocks of the undirected graph as node sets (a cut point is in several blocks).",
+    "nxo_biconnected": "The blocks as lists of edges (the edge partition), listed in discovery order of the search; the partition is determined, the order is not."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: nothing to compute."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One node: no edge, no pair.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One pair of nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "No blocks.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolate is in no block (it has no edge).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is not an edge between two distinct nodes and forms no block.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges lie in the same block.",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "The backend leaves multigraphs to NetworkX (their adjacency order is not the edge order).",
+       "source": "conventions.json nxo_biconnected / nxo_biconnected"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected reading.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Blocks are found per component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One block, the whole graph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Every edge is its own block.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "A cut point belongs to several blocks.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "hopcroft1973algorithm",
+    "tarjan1972depth"
+   ]
+  },
+  "local_bridges": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "N(u)",
+     "meaning": "neighbours of \\(u\\)"
+    },
+    {
+     "symbol": "\\mathrm{span}(u,v)",
+     "meaning": "distance between \\(u\\) and \\(v\\) after the edge \\(uv\\) is removed from \\(G\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Local bridge (Granovetter 1973)",
+     "latex": "\\{u,v\\}\\text{ is a local bridge}\\iff N(u)\\cap N(v)=\\emptyset\\ (\\mathrm{span}(u,v)>2)",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "An edge whose ends have no common neighbour; deleting it increases the distance between its ends to more than 2 (infinite for a bridge, which is the extreme case). The span is the distance after deletion."
+    }
+   ],
+   "variants": {
+    "local_bridges": "The edges whose ends share no neighbour, with their span (the distance between the ends after removing the edge, infinite for a bridge)."
+   },
+   "edge_cases": [
+    {
+     "case": "edgeless",
+     "definition_gives": "No edges.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No edges.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "The single edge is a bridge, hence a local bridge (no common neighbour).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is not an edge between distinct nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "A parallel edge between the same ends provides an alternative path of length 1: the pair is not a local bridge by this reading; the definition is for simple graphs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected reading.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Every edge has common neighbours (for \\(n\\ge3\\)): none.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Every edge is a local bridge (leaves have no common neighbour with the centre).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "granovetter1973strength"
+   ]
+  },
+  "bridge_components": {
+   "status": "name_only",
+   "note": "Documented only (NetworkX), never run; the sources give the function name. A bridge-connected component is a class of nodes joined after all bridges are removed, which coincides with the 2-edge-connected components of the k-edge-connected components entry (k = 2); the tool's own definition and ordering are not recorded."
+  },
+  "attracting_components": {
+   "status": "partial",
+   "note": "Stated from the standard definition; no primary paper is cited in the sources. The two documented-only measures (cat_attracting_component, cat_attracting_component_is, NetworkX) were never run.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\mathcal S",
+     "meaning": "the strongly connected components of a directed graph"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Attracting component",
+     "latex": "S\\in\\mathcal S\\text{ is attracting}\\iff\\text{no arc leaves }S:\\ \\{(u,v)\\in E:u\\in S,v\\notin S\\}=\\emptyset",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "A strongly connected component with no outgoing arc to another component: a sink of the condensation. Every directed graph has at least one (for \\(n\\ge1\\)). Isolated nodes are attracting components of size 1."
+    }
+   ],
+   "variants": {
+    "attracting": "The attracting components as node sets (a label per node, -1 for nodes in none).",
+    "attracting_flags": "A 0/1 flag per node: 1 if the node lies in an attracting component.",
+    "cat_attracting_component": "Documented for NetworkX as the number of attracting components; the number is the count of sink components.",
+    "cat_attracting_component_is": "Documented for NetworkX as a test of whether a node set is an attracting component."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No components."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "The node is an attracting component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Each isolate is an attracting component of one node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop stays inside the component and does not make it leave.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "No effect.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed graphs; for an undirected graph every component is strongly connected and attracting.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Components that can reach others are not attracting.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Each weak component has at least one attracting component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One attracting component (all nodes) for a symmetric complete digraph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ]
+  },
+  "condensation": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "S_1..S_c",
+     "meaning": "strongly connected components"
+    },
+    {
+     "symbol": "G^{*}",
+     "meaning": "the condensation graph with one node per component"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Condensation (Harary, Norman and Cartwright 1965)",
+     "latex": "G^{*}=(\\{S_i\\},\\ \\{(S_i,S_j):i\\ne j,\\ \\exists u\\in S_i,v\\in S_j,(u,v)\\in E\\})",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Contract each strongly connected component to a node; the result is a directed acyclic graph. The node-to-component mapping is determined up to the numbering of the components, which depends on the algorithm and on edge order."
+    }
+   ],
+   "variants": {
+    "condensation": "The mapping from nodes to components of the condensation (component labels depend on the search order; the partition does not)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Empty graph."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops stay inside a component and do not appear in the condensation.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel arcs between components collapse into one arc.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed graphs; for an undirected graph each component is a node with no arcs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Component numbering depends on discovery order: the partition is canonical, the labels are not.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "A single node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "harary1965structural",
+    "tarjan1972depth"
+   ]
+  },
+  "connected_components": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "u\\leftrightarrow v",
+     "meaning": "mutual reachability (strong components) or reachability ignoring direction (weak components)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Connected components",
+     "latex": "\\mathcal C=\\{[v]:v\\in V\\},\\quad [v]=\\{u:u\\leftrightarrow v\\}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The classes of the equivalence relation \\(\\leftrightarrow\\): weak components (direction ignored; the components of an undirected graph) and strong components (mutually reachable by directed paths, Tarjan 1972; Kosaraju-Sharir 1981). Every node is in exactly one component; an isolate is a component of size 1."
+    }
+   ],
+   "variants": {
+    "components": "A component label per node and the size of each component, weak or strong.",
+    "strong_partition": "The strong components of a directed graph as a partition of the nodes.",
+    "nxo_kosaraju": "The strong components found by the Kosaraju-Sharir two-pass search; the partition equals the other strong-component outputs.",
+    "cat_component_count": "Documented for igraph as the number of components; the count \\(|\\mathcal C|\\).",
+    "cat_component_connected_parallel": "Documented for NetworKit as a parallel version of the component computation; options not recorded."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No nodes: no components (the count is 0)."
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Each node is its own component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One component if tied (strong: if mutually tied), else two.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Each isolate is a component of size 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "The backend leaves multigraphs to NetworkX (their adjacency order is not the edge order);",
+       "source": "conventions.json nxo_kosaraju / nxo_kosaraju"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Weak components ignore direction; strong components need paths both ways.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "A weakly connected digraph may have several strong components.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "One weak component; strong components of a star with one-way arcs are all singletons.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "pyigraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "networkit": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "rustworkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "jgrapht": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "boost": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "gephi": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "tarjan1972depth",
+    "hopcroft1973algorithm",
+    "sharir1981strong"
+   ]
+  },
+  "fragmentation": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "s_k",
+     "meaning": "size of component \\(k\\)"
+    },
+    {
+     "symbol": "r_{ij}",
+     "meaning": "1 if \\(i\\) can reach \\(j\\) (or \\(j\\) can reach \\(i\\)) along a path, else 0"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Fragmentation of an undirected graph (Borgatti 2006)",
+     "latex": "F=1-\\frac{\\sum_k s_k(s_k-1)}{n(n-1)}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Proportion of ordered pairs of distinct nodes that are not connected; 0 for a connected graph and 1 when no pair is connected. Defined for \\(n\\ge2\\)."
+    },
+    {
+     "name": "Fragmentation of a directed graph",
+     "latex": "F=1-\\frac{\\#\\{(i,j):i\\ne j,\\ r_{ij}=1\\ \\text{or}\\ r_{ji}=1\\}}{n(n-1)}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Proportion of ordered pairs with no path in either direction (weak fragmentation); the strong version counts pairs that are not mutually reachable."
+    }
+   ],
+   "variants": {
+    "fragmentation": "\\(F\\): the share of node pairs that are unconnected (undirected) or without a path either way (directed)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "\\(n(n-1)=0\\): not defined."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "\\(n=1\\): \\(n(n-1)=0\\): not defined.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "Not defined (0/0).",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "\\(s_k=1\\): \\(F=1\\).",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Each isolate adds a component of size 1 and raises \\(F\\).",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "\\(F>0\\).",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Pairs with a one-way path count as connected in the weak form; the strong form counts them as not mutually reachable.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed forms use reachability in either direction.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "0.",
+     "tools": {
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "borgatti2006identifying"
+   ]
+  },
+  "semiconnected": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "u\\to^* v",
+     "meaning": "there is a directed path from \\(u\\) to \\(v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Semiconnected (unilaterally connected) digraph (Harary, Norman and Cartwright 1965)",
+     "latex": "\\forall u,v\\in V:\\ u\\to^*v\\ \\text{ or }\\ v\\to^*u",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Every pair of nodes is joined by a directed path in at least one direction; strongly connected implies semiconnected implies weakly connected. Equivalent to the condensation having a Hamiltonian path."
+    }
+   ],
+   "variants": {
+    "semiconnected": "The truth value of the condition for the whole digraph.",
+    "cat_connected_is_semi": "Documented for rustworkx as a test of semiconnectedness; the same condition."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "The condition is vacuous; whether the empty graph is semiconnected depends on convention (some tools reject it)."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "True.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "True if at least one arc.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "False if a second node exists (no path to or from the isolate).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed graphs; an undirected graph is semiconnected iff connected.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "False.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Not strongly connected: true iff each pair is comparable in the reachability order.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "True.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "harary1965structural"
+   ]
+  },
+  "k_components": {
+   "status": "partial",
+   "note": "The notion of a k-component (maximal subgraph of node connectivity at least k; Moody and White 2003; White and Harary 2001) is stated from the NetworkX description; neither original paper is in the bibliography, so the formula cites only Whitney 1932 for node connectivity.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\kappa(H)",
+     "meaning": "node connectivity of a subgraph \\(H\\): the fewest nodes whose removal disconnects it or leaves one node (Whitney 1932)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "k-component",
+     "latex": "H\\text{ is a }k\\text{-component}\\iff H\\text{ is a maximal subgraph with }\\kappa(H)\\ge k",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Components are nested: every \\((k+1)\\)-component lies in a \\(k\\)-component, and two \\(k\\)-components share at most \\(k-1\\) nodes. \\(k=1\\) gives the connected components and \\(k=2\\) the biconnected components."
+    }
+   ],
+   "variants": {
+    "k_components": "For each \\(k\\), the \\(k\\)-components as node sets of the simple undirected graph."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "None."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One node: the 1-component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Each isolate is a 1-component (\\(\\kappa\\) of one node counted as 0 or 1 by convention).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected graph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One \\(k\\)-component for \\(k\\le n-1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Components of the same level can overlap in up to \\(k-1\\) nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "whitney1932congruent"
+   ]
+  },
+  "k_edge_components": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\lambda_G(u,v)",
+     "meaning": "edge connectivity between \\(u\\) and \\(v\\) in the whole graph \\(G\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "k-edge-connected components (Wang et al. 2015)",
+     "latex": "u\\sim_k v\\iff\\lambda_G(u,v)\\ge k",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "The classes of the equivalence relation \\(\\lambda_G\\ge k\\), a partition of the node set; the connecting paths may leave the class. \\(k=1\\) are the connected components and \\(k=2\\) the bridge-connected components."
+    }
+   ],
+   "variants": {
+    "k_edge_components": "The partition of the nodes into classes with pairwise edge connectivity at least \\(k\\) in \\(G\\) (\\(k=2,3\\) compared)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "No classes."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One class.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Each isolate is its own class.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges count as separate edges for \\(\\lambda\\) in a multigraph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected graph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "One class for \\(k\\le n-1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Each node alone for \\(k\\ge2\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "wang2015simple"
+   ]
+  },
+  "k_edge_subgraphs": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\lambda(H)",
+     "meaning": "edge connectivity of a subgraph \\(H\\) on its own"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Maximal k-edge-connected subgraphs (Zhou et al. 2012)",
+     "latex": "H\\text{ is a maximal subgraph with }\\lambda(H)\\ge k",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Connectivity is measured inside the subgraph, so, unlike the k-edge-connected components, the connecting paths must stay in the subgraph; the subgraphs are node-disjoint, and every one is contained in a \\(k\\)-edge-connected component."
+    }
+   ],
+   "variants": {
+    "gb_k_edge_subgraphs": "The maximal subgraphs (as node sets) with internal edge connectivity at least \\(k\\) (\\(k=2\\) compared)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "None."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One node (a trivial subgraph)."
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Singletons."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Multigraphs: edge connectivity counts parallel edges.",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "NetworkX's k_edge_subgraphs rejects multigraphs.",
+       "source": "conventions.json gb_k_edge_subgraphs / gb_k_edge_subgraphs"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined on the undirected graph."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "The whole graph for \\(k\\le n-1\\)."
+    }
+   ],
+   "references": [
+    "zhou2012finding"
+   ]
+  },
+  "k_connected_tests": {
+   "status": "name_only",
+   "note": "Documented only (NetworkX tests of local k-edge connectivity and kl-connectivity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "node_connectivity": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\kappa(G)",
+     "meaning": "node connectivity: the fewest nodes whose removal disconnects \\(G\\), or \\(n-1\\) for a complete graph (Whitney 1932)"
+    },
+    {
+     "symbol": "\\tilde\\kappa(G)",
+     "meaning": "the greedy lower bound"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Node connectivity (Whitney 1932)",
+     "latex": "\\kappa(G)=\\min_{s,t\\text{ non-adjacent}}\\kappa(s,t)\\qquad(\\kappa(K_n)=n-1)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Menger's theorem equates \\(\\kappa(s,t)\\) with the maximum number of internally node-disjoint \\(s\\)-\\(t\\) paths."
+    },
+    {
+     "name": "Approximation (White and Newman 2001)",
+     "latex": "\\tilde\\kappa(s,t)=\\#\\text{paths found by repeatedly taking a shortest }s\\text{-}t\\text{ path and deleting its inner nodes}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "A lower bound \\(\\tilde\\kappa(s,t)\\le\\kappa(s,t)\\) obtained greedily; the graph value is the minimum over pairs (or over the sampled pairs), so it is an upper-bounded estimate and not exact. The result depends on which shortest path is chosen at each step."
+    }
+   ],
+   "variants": {
+    "ap_node_connectivity": "The greedy node-disjoint-path approximation of the node connectivity of the whole network: a lower bound on \\(\\kappa(G)\\) per pair, depending on the order of the search."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Not defined."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "\\(\\kappa=0\\) by convention.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "1 if tied (\\(K_2\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "\\(\\kappa=0\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "\\(\\kappa=0\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Irrelevant to node-disjoint paths.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "For a directed graph the strong node connectivity is used; the approximation is for undirected graphs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "The greedy choice among equal shortest paths changes \\(\\tilde\\kappa\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(\\kappa=n-1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "white2001fast",
+    "whitney1932congruent",
+    "menger1927allgemeinen"
+   ]
+  },
+  "disjoint_paths": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\kappa(s,t),\\lambda(s,t)",
+     "meaning": "maximum number of internally node-disjoint, respectively edge-disjoint, \\(s\\)-\\(t\\) paths"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Disjoint paths (Menger 1927)",
+     "latex": "\\kappa(s,t)=\\max\\{|\\mathcal Q|:\\mathcal Q\\text{ internally node-disjoint }s\\text{-}t\\text{ paths}\\},\\quad \\lambda(s,t)=\\max\\{|\\mathcal Q|:\\mathcal Q\\text{ edge-disjoint }s\\text{-}t\\text{ paths}\\}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "For non-adjacent \\(s,t\\), \\(\\kappa\\) equals the minimum number of nodes separating them, and \\(\\lambda\\) equals the minimum number of edges separating them (also for adjacent nodes). Computed as maximum flow (Ford and Fulkerson 1956). The path sets themselves are not unique; their number is."
+    }
+   ],
+   "variants": {
+    "disjoint_paths": "A maximum set of node-disjoint or edge-disjoint paths from node 0 to node \\(n-1\\) (the number of paths is compared; none when no path exists).",
+    "gb_disjoint_paths": "The same quantity: the number of node-disjoint or edge-disjoint paths between a fixed pair of nodes."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "\\(s=t\\) is excluded.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One path if tied.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "0 paths across components.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "0 when \\(t\\) is unreachable along arcs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant to paths between distinct nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges are separate edge-disjoint paths; node-disjoint paths are not affected beyond a direct edge counting once.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Paths follow arc directions in a directed graph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Many optimal path systems exist: the count is determined, the paths are not.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(\\kappa=\\lambda=n-1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "menger1927allgemeinen",
+    "ford1956maximal"
+   ]
+  },
+  "dynamic_tree_connectivity": {
+   "status": "name_only",
+   "note": "Documented only (JGraphT tree dynamic connectivity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "edge_connectivity": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\lambda(s,t)",
+     "meaning": "minimum number of edges whose removal separates \\(s\\) from \\(t\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Edge connectivity",
+     "latex": "\\lambda(G)=\\min_{s\\ne t}\\lambda(s,t)=\\min\\{|F|:F\\subseteq E,\\ G-F\\text{ disconnected}\\}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The fewest edges whose removal disconnects the graph; 0 for a disconnected graph. For a single node it is 0 by convention. For a directed graph the strong edge connectivity (minimum over ordered pairs) is used."
+    }
+   ],
+   "variants": {
+    "connectivity": "The global edge connectivity \\(\\lambda(G)\\) (the same function also returns the node connectivity \\(\\kappa(G)\\) for the node variant)."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Not defined."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "0 by convention.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "1 if tied.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant to separating distinct nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges each count: they raise \\(\\lambda\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed: the minimum over ordered pairs of arc cuts.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "With weights as capacities: the minimum total weight of a cut.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(n-1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "menger1927allgemeinen",
+    "ford1956maximal",
+    "harary1969graph",
+    "esfahanian1984computing"
+   ]
+  },
+  "connectivity_flow_k": {
+   "status": "name_only",
+   "note": "Documented only (JGraphT k-connectivity by flow), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "local_node_connectivity": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\kappa(s,t)",
+     "meaning": "maximum number of internally node-disjoint \\(s\\)-\\(t\\) paths (Menger 1927); for non-adjacent \\(s,t\\) the minimum number of nodes whose removal separates them"
+    },
+    {
+     "symbol": "\\lambda(s,t)",
+     "meaning": "the edge analogue"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Local node connectivity",
+     "latex": "\\kappa(s,t)=\\min\\{|X|:X\\subseteq V\\setminus\\{s,t\\},\\ s,t\\text{ separated in }G-X\\}\\quad(s,t\\text{ non-adjacent})",
+     "applies_to": [
+      "any"
+     ],
+     "where": "For adjacent nodes no node set separates them, so the separator form is not defined and the path form (counting the direct edge as one path) applies. Computed by maximum flow in a node-split digraph (Even and Tarjan 1975)."
+    },
+    {
+     "name": "Average node connectivity",
+     "latex": "\\bar\\kappa(G)=\\frac{\\sum_{s\\ne t}\\kappa(s,t)}{n(n-1)}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Mean of \\(\\kappa(s,t)\\) over ordered pairs."
+    }
+   ],
+   "variants": {
+    "all_pairs_node": "\\(\\kappa(s,t)\\) for every ordered pair as an \\(n\\times n\\) matrix (0 on the diagonal).",
+    "average_node": "The mean \\(\\bar\\kappa(G)\\) over ordered pairs.",
+    "local_connectivity": "\\(\\kappa(s,t)\\) or \\(\\lambda(s,t)\\) for one pair (node 0 to node \\(n-1\\)).",
+    "ap_local_connectivity": "The greedy approximation of \\(\\kappa(s,t)\\) by successive node-disjoint shortest paths, with an optional cutoff on the number of paths."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "No pair.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "\\(\\kappa=1\\) if tied (the direct edge).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "0 across components.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "0 when \\(t\\) is unreachable from \\(s\\); asymmetric for directed graphs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed graphs give an asymmetric matrix.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges do not add to node-disjoint paths beyond one direct edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "\\(n-1\\) for every pair.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "1 between leaves, 1 centre-leaf.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "parameter_domain",
+     "definition_gives": "With a cutoff \\(c\\) the approximate value is at most \\(c\\)."
+    }
+   ],
+   "references": [
+    "menger1927allgemeinen",
+    "even1975network",
+    "esfahanian1984computing"
+   ]
+  },
+  "connectivity_swan": {
+   "status": "name_only",
+   "note": "Documented only (netrankr Swan connectivity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "st_min_cuts": {
+   "status": "name_only",
+   "note": "Documented only (igraph all minimum s-t cuts), never run; the sources give the name and the tool's function, not a formula."
+  },
+  "all_node_cuts": {
+   "status": "name_only",
+   "note": "Documented only (NetworkX all node cuts), never run; the sources give the name and the tool's function, not a formula."
+  },
+  "d_separator": {
+   "status": "partial",
+   "note": "cat_d_find_minimal_separator and cat_d_is_minimal_separator (NetworkX) are documented only and were never run; minimality and the search options are not recorded.",
+   "notation": [
+    {
+     "symbol": "G",
+     "meaning": "directed acyclic graph"
+    },
+    {
+     "symbol": "X,Y,Z",
+     "meaning": "disjoint node sets"
+    },
+    {
+     "symbol": "\\mathrm{de}(w)",
+     "meaning": "descendants of \\(w\\) (including \\(w\\))"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "d-separation (Pearl 1988)",
+     "latex": "Z\\text{ d-separates }X\\text{ and }Y\\iff\\text{every path between them is blocked by }Z",
+     "applies_to": [
+      "directed",
+      "acyclic"
+     ],
+     "where": "A path is blocked by \\(Z\\) if it contains a chain \\(a\\to w\\to b\\) or fork \\(a\\leftarrow w\\to b\\) with \\(w\\in Z\\), or a collider \\(a\\to w\\leftarrow b\\) with \\(\\mathrm{de}(w)\\cap Z=\\emptyset\\). Defined for DAGs; the sets must be disjoint."
+    }
+   ],
+   "variants": {
+    "gb_d_separated": "Whether a given set \\(Z\\) d-separates the node 0 from node \\(n-1\\) (the test).",
+    "cat_d_find_minimal_separator": "Documented for NetworkX as finding a minimal d-separator; not recorded in detail.",
+    "cat_d_is_minimal_separator": "Documented for NetworkX as testing minimality of a d-separator; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "group_input",
+     "definition_gives": "Empty \\(Z\\): d-separated iff no path connects \\(X\\) and \\(Y\\) without colliders; sets that overlap are not valid input."
+    },
+    {
+     "case": "small_n",
+     "definition_gives": "Two adjacent nodes cannot be d-separated by any set.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Direction matters: blocking depends on the arrow pattern, not on reachability alone.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed acyclic graphs; cycles are excluded.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "pearl1988probabilistic"
+   ]
+  },
+  "global_min_cut": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "S,T",
+     "meaning": "a node set \\(S\\) and its complement or another set \\(T\\)"
+    },
+    {
+     "symbol": "w(S,T)",
+     "meaning": "total weight of edges between \\(S\\) and \\(T\\) (cut size)"
+    },
+    {
+     "symbol": "\\mathrm{vol}(S)=\\sum_{v\\in S}k_v",
+     "meaning": "volume: the total degree of \\(S\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Minimum s-t cut (Ford and Fulkerson 1956)",
+     "latex": "\\min_{S\\ni s,\\,t\\notin S}w(S,V\\setminus S)=\\max\\text{ flow value from }s\\text{ to }t",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Capacity of a smallest cut separating the source side from the sink side; equal to the maximum flow. The cut set is not unique: the source-side set of minimal and of maximal size differ."
+    },
+    {
+     "name": "Global minimum cut (Stoer and Wagner 1997)",
+     "latex": "\\min_{\\emptyset\\ne S\\subsetneq V}w(S,V\\setminus S)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Smallest cut over all bipartitions of an undirected weighted graph; 0 for a disconnected graph; needs \\(n\\ge2\\)."
+    },
+    {
+     "name": "Cut measures of a node-set pair",
+     "latex": "\\mathrm{cutsize}=w(S,T),\\ \\ \\mathrm{ncut}=\\tfrac{w(S,T)}{\\mathrm{vol}(S)}+\\tfrac{w(S,T)}{\\mathrm{vol}(T)},\\ \\ \\phi=\\tfrac{w(S,T)}{\\min(\\mathrm{vol}(S),\\mathrm{vol}(T))},\\ \\ h=\\tfrac{w(S,T)}{\\min(|S|,|T|)}",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "Cut size, normalized cut (Shi and Malik 2000), conductance (Kannan, Vempala and Vetta 2004), edge expansion for node sets \\(S\\) and \\(T\\); undefined when a volume or size is 0."
+    }
+   ],
+   "variants": {
+    "min_cut": "The minimum cut between a set of sources and a set of sinks: its capacity, the source side and the crossing edges (the capacity is determined, the side is not when several minimum cuts exist).",
+    "gb_stoer_wagner": "The global minimum cut value and a partition from the Stoer-Wagner algorithm (the partition is one of the minimum cuts).",
+    "cut_measures": "Cut size, volume, normalized cut, conductance and expansions for a given pair of node sets, with unit or weighted edges."
+   },
+   "edge_cases": [
+    {
+     "case": "empty_graph",
+     "definition_gives": "Not defined."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "No bipartition: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "The cut value is the weight of the edge (0 if untied).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Global minimum cut 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "0 for the global cut (the isolate against the rest).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop never crosses a cut.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add to the cut size.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Directed graphs have separate cuts for each direction.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Capacities are the weights; negative capacities are not allowed.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "Zero-capacity edges never contribute."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several minimum cuts of equal capacity: the value is determined, the partition is not.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "An empty side has volume 0: conductance and normalized cut are 0/0."
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Global minimum cut \\(n-1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "ford1956maximal",
+    "ford1962flows",
+    "stoer1997simple",
+    "dinic1970algorithm",
+    "shi2000normalized",
+    "kannan2004clusterings"
+   ]
+  },
+  "edge_augmentation": {
+   "status": "name_only",
+   "note": "Documented only (NetworkX k-edge augmentation), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "minimum_edge_cut": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\lambda(s,t)",
+     "meaning": "minimum number of edges separating \\(s\\) from \\(t\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Minimum edge cut",
+     "latex": "F^\\star\\in\\arg\\min\\{|F|:F\\subseteq E,\\ G-F\\ \\text{disconnected}\\},\\qquad|F^\\star|=\\lambda(G)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "A smallest set of edges whose removal disconnects the graph (or separates \\(s\\) from \\(t\\) in the \\(s\\)-\\(t\\) form, with \\(|F|=\\lambda(s,t)\\) by Menger). The set is not unique; its size is. A disconnected graph has the empty cut."
+    }
+   ],
+   "variants": {
+    "edge_cut": "A minimum edge cut of the whole graph: its size is \\(\\lambda(G)\\), the particular set is one of the minimum cuts.",
+    "st_edge_cut": "A minimum \\(s\\)-\\(t\\) edge cut between node 0 and node \\(n-1\\) as pairs of ends."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "No cut: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "The single edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "The empty cut: already disconnected.",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "as for conn_node_cut",
+       "source": "conventions.json edge_cut / conn_edge_cut"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "The empty set.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Never in a cut.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges are all in the cut.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Arc cut for directed graphs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several minimum cuts: only the size is determined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Size \\(n-1\\): the edges at one node.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "One edge.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "menger1927allgemeinen",
+    "ford1956maximal",
+    "even1975network",
+    "esfahanian1984computing"
+   ]
+  },
+  "minimum_node_cut": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\kappa(G),\\kappa(s,t)",
+     "meaning": "node connectivity and local node connectivity"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Minimum node cut",
+     "latex": "X^\\star\\in\\arg\\min\\{|X|:X\\subseteq V,\\ G-X\\ \\text{disconnected}\\},\\qquad|X^\\star|=\\kappa(G)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "A smallest set of nodes whose removal disconnects the graph, or (\\(s\\)-\\(t\\) form) separates \\(s\\) from \\(t\\) with \\(|X|=\\kappa(s,t)\\) for non-adjacent \\(s,t\\). Not defined for a complete graph, and no \\(s\\)-\\(t\\) node cut exists for adjacent nodes. The set is not unique; its size is. A disconnected graph has the empty cut."
+    }
+   ],
+   "variants": {
+    "node_cut": "A minimum node cut of the whole graph (its size is \\(\\kappa(G)\\); the set is one of several).",
+    "min_node_cut": "A minimum \\(s\\)-\\(t\\) node cut for non-adjacent \\(s,t\\), in a weighted form where node capacities are given by node weights.",
+    "st_node_cut": "A minimum \\(s\\)-\\(t\\) node cut between node 0 and node \\(n-1\\); none exists when they are adjacent."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "Not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "No node set separates two adjacent nodes: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "The empty cut.",
+     "tools": {
+      "networkx": {
+       "status": "no_value",
+       "behaviour": "NetworkX raises an error for a network that is not connected; the reference returns the empty cut.",
+       "source": "conventions.json node_cut / conn_node_cut"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "The empty cut.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Node cut for directed graphs separates along arcs.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "With node capacities, the minimum total capacity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several minimum cuts: only the size is determined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "No node cut exists (\\(\\kappa=n-1\\) by convention).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "The centre.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "menger1927allgemeinen",
+    "whitney1932congruent",
+    "even1975network"
+   ]
+  },
+  "odd_min_cutset": {
+   "status": "name_only",
+   "note": "Documented only (JGraphT Padberg-Rao minimum odd cutset), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "normalized_cut_state": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool normalized cut state), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "dominators": {
+   "status": "partial",
+   "note": "cat_dominator (python-igraph's dominator tree) is documented only and was never run; its return convention is not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "directed graph with a start node \\(r\\)"
+    },
+    {
+     "symbol": "\\mathrm{dom}(v)",
+     "meaning": "dominators of \\(v\\): nodes on every path from \\(r\\) to \\(v\\)"
+    },
+    {
+     "symbol": "\\mathrm{idom}(v)",
+     "meaning": "immediate dominator: the dominator of \\(v\\) closest to \\(v\\), other than \\(v\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Dominators (Cooper, Harvey and Kennedy 2001)",
+     "latex": "d\\ \\mathrm{dom}\\ v\\iff\\text{every path from }r\\text{ to }v\\text{ contains }d",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "Defined for nodes reachable from \\(r\\); \\(r\\) dominates all and \\(\\mathrm{idom}(r)=r\\) by convention. The immediate dominators form a tree."
+    },
+    {
+     "name": "Dominance frontier (Cytron et al. 1991)",
+     "latex": "\\mathrm{DF}(d)=\\{v:\\exists p\\in\\mathrm{pred}(v),\\ d\\ \\mathrm{dom}\\ p,\\ d\\ \\text{does not strictly dominate}\\ v\\}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The nodes where the dominance of \\(d\\) ends."
+    }
+   ],
+   "variants": {
+    "idom": "The immediate dominator of every node reachable from the start (the start's is itself); unreachable nodes get a none mark.",
+    "frontiers": "The dominance frontier \\(\\mathrm{DF}(d)\\) of every node (a marker for nodes unreachable from the start).",
+    "cat_dominator": "Documented for python-igraph as the dominator tree; not recorded in detail."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "The start node dominates itself.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Nodes not reachable from the start have no dominators: a none mark.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant to dominance.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Irrelevant.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined for directed graphs; the start fixes the direction.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "The start node must be in the graph."
+    }
+   ],
+   "references": [
+    "cooper2001simple",
+    "cytron1991efficiently"
+   ]
+  },
+  "experience_flows": {
+   "status": "name_only",
+   "note": "Documented only (UCINET experience flows), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "flow_coefficient": {
+   "status": "name_only",
+   "note": "Documented only (BCT flow coefficient), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "flow_similarity": {
+   "status": "name_only",
+   "note": "Documented only (UCINET flow similarity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "edge_percolation": {
+   "status": "name_only",
+   "note": "Documented only (graph-tool edge percolation), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  },
+  "gomory_hu_tree": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "\\lambda(s,t)",
+     "meaning": "minimum \\(s\\)-\\(t\\) cut value in \\(G\\) with the edge weights as capacities"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Gomory-Hu tree (Gomory and Hu 1961)",
+     "latex": "T\\ \\text{a tree on }V:\\ \\lambda(s,t)=\\min_{e\\in T[s,t]}w_T(e)\\ \\text{and each tree edge}\\ e\\text{ defines a minimum cut of value }w_T(e)",
+     "applies_to": [
+      "undirected"
+     ],
+     "where": "A weighted tree that encodes the minimum cut value between every pair as the minimum edge weight on the tree path and also the cuts themselves; \\(n-1\\) maximum flows build it (Gusfield 1990). An equivalent flow tree keeps only the first property. The tree is not unique, the values it encodes are."
+    }
+   ],
+   "variants": {
+    "gomory_hu": "The edges of a Gomory-Hu tree with their weights (each node's parent and the minimum cut value to it, Gusfield's method); the tree's shape is not unique.",
+    "gomory_hu_values": "The pairwise minimum cut values \\(\\lambda(u,v)\\) for \\(u<v\\) that the tree encodes (unique).",
+    "cat_equivalent_flow_gusfield_tree": "Documented for JGraphT as the Gusfield equivalent flow tree: a tree with the pairwise values as minimum edge weights on paths, without the cut property."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "A tree with one node and no edges.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One tree edge with the edge's capacity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Cut value 0 across components (a forest or zero-weight tree edges).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "Zero-weight attachments.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Irrelevant to cuts.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Capacities add.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Capacities are the weights.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several equivalent trees: the shape depends on the procedure; the pairwise values do not.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All tree edges have weight \\(n-1\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "All tree edges have weight 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "gomory1961multi",
+    "gusfield1990very"
+   ]
+  },
+  "max_flow": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "c(e)",
+     "meaning": "capacity of edge \\(e\\) (infinite if absent)"
+    },
+    {
+     "symbol": "f",
+     "meaning": "a flow: \\(0\\le f(e)\\le c(e)\\), conserved at every node except the source set \\(S\\) and sink set \\(T\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Maximum flow (Ford and Fulkerson 1956)",
+     "latex": "\\max_f\\ \\sum_{e\\text{ out of }S}f(e)-\\sum_{e\\text{ into }S}f(e)\\quad\\text{s.t. capacity and conservation}",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "The maximum value equals the minimum cut capacity (max-flow min-cut theorem). The value is unique, the flow on individual edges is not. Algorithms: augmenting paths (Edmonds and Karp 1972), blocking flows (Dinic 1970). A multi-source, multi-sink problem is reduced to one source and one sink with infinite-capacity arcs. An unbounded value results when an \\(S\\)-\\(T\\) path has infinite capacity."
+    }
+   ],
+   "variants": {
+    "max_flow": "The maximum flow value and one flow on every edge (the value is determined, the edge flows are not).",
+    "gb_maxflow": "The maximum flow value between two nodes on the simple graph with edge weights as capacities."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "\\(s=t\\) is excluded.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "0 across components.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "0 when \\(T\\) is unreachable from \\(S\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop carries no flow between distinct nodes.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges add capacity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Undirected edges allow flow either way up to their capacity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Capacities are the weights.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "Zero-capacity edges carry no flow."
+    },
+    {
+     "case": "negative_weights",
+     "definition_gives": "Capacities must be non-negative."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Many maximum flows exist: the value is determined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, kite, les_miserables).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "group_input",
+     "definition_gives": "With several sources or sinks, a super source and sink with infinite arcs are used."
+    }
+   ],
+   "references": [
+    "ford1956maximal",
+    "ford1962flows",
+    "dinic1970algorithm",
+    "edmonds1972theoretical"
+   ]
+  },
+  "min_cost_flow": {
+   "status": "partial",
+   "note": "cat_capacity_cost_flow_minimum_scaling and cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma (JGraphT) are documented only and were never run; they are algorithms for the same problem, with options not recorded.",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "graph with node set \\(V\\), \\(n=|V|\\), \\(m=|E|\\); every edge has a source and a target (the ends of an undirected edge are interchangeable)"
+    },
+    {
+     "symbol": "c(e),u(e)",
+     "meaning": "cost per unit and capacity of arc \\(e\\)"
+    },
+    {
+     "symbol": "b(v)",
+     "meaning": "supply (positive) or demand (negative) at node \\(v\\), with \\(\\sum_vb(v)=0\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Minimum-cost flow (Ahuja, Magnanti and Orlin 1993)",
+     "latex": "\\min_f\\sum_ec(e)f(e)\\quad\\text{s.t. }\\ 0\\le f(e)\\le u(e),\\ \\ \\sum_{e\\text{ out of }v}f(e)-\\sum_{e\\text{ into }v}f(e)=b(v)",
+     "applies_to": [
+      "directed"
+     ],
+     "where": "A flow meeting all supplies and demands at least cost; infeasible when no such flow exists. Network simplex is due to Dantzig 1951 and Cunningham 1976 for the strongly feasible version. Costs may be negative if there is no negative-cost cycle of unbounded capacity."
+    }
+   ],
+   "variants": {
+    "max_flow_min_cost": "A maximum flow of least cost between two nodes, with its value (the value and cost are determined; the flow is not).",
+    "gb_mincost": "The minimum cost of sending one unit from node 0 to node \\(n-1\\) (demand \\(-1\\) and \\(+1\\)).",
+    "cat_capacity_cost_flow_minimum_scaling": "Documented for JGraphT as the capacity scaling algorithm for minimum cost flow.",
+    "cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma": "Documented for JGraphT as the Ahuja-Orlin-Sharma cyclic exchange local augmentation for minimum cost flow."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "No flow to route."
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Infeasible if a demand cannot be met."
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Infeasible when a demand cannot be routed."
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Capacities and costs from edge attributes."
+    },
+    {
+     "case": "zero_weights",
+     "definition_gives": "Zero costs make the optimum non-unique."
+    },
+    {
+     "case": "negative_weights",
+     "definition_gives": "Negative costs are allowed if no negative-cost cycle has unbounded capacity."
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel arcs are separate arcs with their own cost and capacity."
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop of negative cost with positive capacity is a negative cycle."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Several flows of equal cost: the cost is determined."
+    }
+   ],
+   "references": [
+    "ahuja1993network",
+    "dantzig1951application",
+    "cunningham1976network"
+   ]
+  },
+  "kl_connected_subgraph": {
+   "status": "name_only",
+   "note": "Documented only (NetworkX kl-connected subgraph), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available."
+  }
+ }
+}

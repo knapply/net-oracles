@@ -16,7 +16,7 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Cliques. Concept id: `l
 
 Number of largest cliques. Entries grouped here: Count max cliques.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (igraph count of largest cliques), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Count max cliques {#cat_clique_count_max}
 

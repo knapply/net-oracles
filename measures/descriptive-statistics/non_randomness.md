@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Density and degree dist
 
 Non-randomness. Entries grouped here: Non randomness.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworkX non\_randomness), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Non randomness {#cat_non_randomness}
 
