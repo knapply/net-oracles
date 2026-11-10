@@ -46,7 +46,7 @@ by_family = [m["id"] for m in measures if concepts[m["concept"]]["family"] == "C
 ```bibtex
 @misc{netoracles,
   title        = {net-oracles: a survey of network-analysis software, its conventions, findings and benchmarks},
-  author       = {Knapp, Conway},
+  author       = {Knapp, Brendan},
   year         = {2026},
   howpublished = {\url{https://github.com/knapply/net-oracles}}
 }

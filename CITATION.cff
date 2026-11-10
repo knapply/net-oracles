@@ -3,7 +3,7 @@ message: "If you use this survey, please cite it as below."
 title: "net-oracles: a survey of network-analysis software, its conventions, findings and benchmarks"
 authors:
   - family-names: "Knapp"
-    given-names: "Conway"
+    given-names: Brendan
     orcid: "https://orcid.org/0000-0003-3284-4972"
 repository-code: "https://github.com/knapply/net-oracles"
 date-released: "2026-11-10"
