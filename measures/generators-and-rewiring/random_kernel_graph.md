@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs.
 
 Random kernel graph. Entries grouped here: Random kernel graph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Random kernel graph {#cat_kernel_random}
 

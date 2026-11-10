@@ -12,11 +12,21 @@ nav_exclude: true
 
 Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models. Concept id: `static_fitness`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(f_i\)</td><td>fitness of node \(i\)</td></tr><tr><td>\(L\)</td><td>number of edges to add</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Static fitness and static power-law models. Entries grouped here: Static fitness and static power-law generators.
 
-*Definition not yet written.*
+*Definition partly written:* The static model is written from the paper; the static power-law form of the tool (fitness \\(i^{-\\alpha}\\)) is named only.
+
+<div class="formula-block"><p class="formula-name"><strong>Static model (Goh, Kahng and Kim 2001)</strong> <span class="applies">applies to: undirected, simple</span></p><div class="formula">\[P_i=\frac{f_i}{\sum_jf_j},\quad f_i=i^{-\mu}\ \ (0\le\mu&lt;1);\ \ \text{repeat }L\text{ times: pick }i\ne j\text{ with probabilities }P_i,P_j\text{, add the edge if absent}\]</div><p class="formula-where">Node fitness fixed in advance gives a power-law degree tail of exponent \(1+1/\mu\). A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_static_fitness">Static fitness and static power-law generators</a></td><td><code>gen_static_fitness</code></td><td>2</td><td>Fitness-weighted edge placement; with fitness \(i^{-\mu}\) it is the static power-law model.</td></tr></tbody></table></div>
 
 ## Static fitness and static power-law generators {#gen_static_fitness}
 

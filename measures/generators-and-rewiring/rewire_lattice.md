@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomiza
 
 Lattice-preserving rewiring. Entries grouped here: Lattice-preserving rewiring.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Lattice-preserving rewiring {#rewire_lattice}
 

@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models
 
 Geometric soft configuration model. Entries grouped here: Geometric soft configuration graph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Geometric soft configuration graph {#cat_configuration_geometric_soft}
 

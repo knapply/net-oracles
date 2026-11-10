@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice a
 
 Latent-space graphs. Entries grouped here: Latent-space generators (dot product, sphere, islands).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Latent-space generators (dot product, sphere, islands) {#gen_latent_space}
 

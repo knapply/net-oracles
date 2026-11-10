@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice a
 
 Visibility graph. Entries grouped here: Visibility graph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Visibility graph {#cat_visibility}
 

@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment 
 
 Growing network models (GN, citation, Callaway, establishment). Entries grouped here: Citation-type growth generators; Establishment; Gn graph; Gnc graph; Gnr graph; Growing random graph generator; and 1 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

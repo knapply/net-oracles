@@ -12,15 +12,29 @@ nav_exclude: true
 
 Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment models. Concept id: `preferential_attachment`. 4 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(k_i(t)\)</td><td>degree of node \(i\) at step \(t\)</td></tr><tr><td>\(m_0\)</td><td>size of the initial network</td></tr><tr><td>\(m\)</td><td>number of edges added with each new node</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Preferential attachment. Entries grouped here: Pa; Pa age; Preferential attachment generator; Preferential attachment graph (bipartite).
 
-*Definition not yet written.*
+*Definition partly written:* The linear preferential attachment model is written. Age-dependent (pa\_age), bipartite and other options of the tool functions are named only.
+
+<div class="formula-block"><p class="formula-name"><strong>Barabasi-Albert growth (Barabasi and Albert 1999)</strong> <span class="applies">applies to: undirected, simple</span></p><div class="formula">\[\Pi(i)=\frac{k_i}{\sum_jk_j}\]</div><p class="formula-where">At each step a new node is added with \(m\le m_0\) edges to distinct existing nodes chosen with probability \(\Pi(i)\). The result depends on the initial graph and the random generator. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators.</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_pa">Pa</a></td><td><code>cat_pa</code></td><td>1</td></tr><tr><td><a href="#cat_age_pa">Pa age</a></td><td><code>cat_age_pa</code></td><td>1</td></tr><tr><td><a href="#gen_preferential">Preferential attachment generator</a></td><td><code>gen_preferential</code></td><td>7</td></tr><tr><td><a href="#cat_attachment_preferential-bipartite">Preferential attachment graph (bipartite)</a></td><td><code>cat_attachment_preferential@bipartite</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_pa">Pa</a></td><td><code>cat_pa</code></td><td>1</td><td>Preferential attachment; the options are not recorded.</td></tr><tr><td><a href="#cat_age_pa">Pa age</a></td><td><code>cat_age_pa</code></td><td>1</td><td>Attachment with an age term in addition to degree; the age function is not recorded here.</td></tr><tr><td><a href="#gen_preferential">Preferential attachment generator</a></td><td><code>gen_preferential</code></td><td>7</td><td>Linear attachment by degree as in the formula; direction, initial graph and exponent options are not recorded.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/networkx.html">NetworkX</a></th><th><a href="../../tools/igraph.html">igraph (R)</a></th><th><a href="../../tools/pyigraph.html">igraph (Python)</a></th><th><a href="../../tools/graphtool.html">graph-tool</a></th><th><a href="../../tools/networkit.html">NetworKit</a></th><th><a href="../../tools/rustworkx.html">rustworkx</a></th><th><a href="../../tools/jgrapht.html">JGraphT</a></th></tr></thead><tbody><tr><td title="A free parameter (attenuation, damping, decay, exponent, walk length) outside the range for which the series or fixed point is defined or convergent."><strong>Parameter outside its valid range</strong></td><td class="def">Needs \(m\le m_0\) so that \(m\) distinct targets exist.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="The graph has exactly one node (n = 1), with or without a self-loop."><strong>Single node</strong></td><td class="def">A starting single node has degree 0, so \(\Pi\) is 0/0; implementations must give initial nodes an offset or a seed graph.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Parameter outside its valid range</summary><ul><li>No tool entries.</li></ul></details><details><summary>Single node</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Pa {#cat_pa}
 

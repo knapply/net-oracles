@@ -12,11 +12,21 @@ nav_exclude: true
 
 Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment models. Concept id: `lfr_benchmark`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(\tau_1,\tau_2\)</td><td>exponents of the power laws for degrees and community sizes</td></tr><tr><td>\(\mu\)</td><td>mixing parameter</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 LFR benchmark generator. Entries grouped here: LFRGenerator.
 
-*Definition not yet written.*
+*Definition partly written:* Only the main parameters of the benchmark are written; the construction of the degree and community-size sequences is not given here.
+
+<div class="formula-block"><p class="formula-name"><strong>LFR benchmark (Lancichinetti, Fortunato and Radicchi 2008)</strong> <span class="applies">applies to: undirected</span></p><div class="formula">\[\text{each node has a fraction }1-\mu\text{ of its edges inside its community and }\mu\text{ outside; }P(k)\propto k^{-\tau_1},\ P(s)\propto s^{-\tau_2}\]</div><p class="formula-where">Degrees and community sizes follow power laws; \(\mu\) controls how well communities are separated. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_generator_lfr">LFRGenerator</a></td><td><code>cat_generator_lfr</code></td><td>1</td><td>The LFR benchmark with the parameters above.</td></tr></tbody></table></div>
 
 ## LFRGenerator {#cat_generator_lfr}
 

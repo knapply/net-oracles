@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomiza
 
 Random matrix generators (density, even degree, fractal, Toeplitz). Entries grouped here: Generate fc; Makeeven CIJ; Makefractal CIJ; Makerand CIJ; Makerand CIJdegreesfixed; Maketoeplitz CIJ.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

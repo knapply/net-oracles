@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Random trees and fores
 
 Random lobster. Entries grouped here: Random lobster graph.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Random lobster graph {#cat_lobster_random}
 

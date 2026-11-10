@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs.
 
 Random intersection graph. Entries grouped here: Random intersection graph generator.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Random intersection graph generator {#gen_intersection}
 

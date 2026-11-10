@@ -16,7 +16,7 @@ Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomiza
 
 Weighted reshuffling. Entries grouped here: Rg; Rg reshuffling.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

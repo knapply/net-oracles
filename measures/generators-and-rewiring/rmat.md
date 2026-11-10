@@ -12,11 +12,21 @@ nav_exclude: true
 
 Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment models. Concept id: `rmat`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(a,b,c,d\)</td><td>quadrant probabilities with \(a+b+c+d=1\)</td></tr><tr><td>\(n\)</td><td>a power of 2: nodes \(2^{s}\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 R-MAT. Entries grouped here: R-MAT generator.
 
-*Definition not yet written.*
+*Definition partly written:* The recursive quadrant rule is written; the tool options (noise, edge factor) are named only.
+
+<div class="formula-block"><p class="formula-name"><strong>R-MAT (Chakrabarti, Zhan and Faloutsos 2004)</strong> <span class="applies">applies to: directed, multigraph</span></p><div class="formula">\[\Pr\bigl(\text{edge in quadrant }q\bigr)=a,b,c,d\ \text{ for top-left, top-right, bottom-left, bottom-right; recurse }s\text{ times}\]</div><p class="formula-where">Each edge is placed by choosing a quadrant of the adjacency matrix with these probabilities and recursing into it until a single cell remains; repeated cells give parallel edges. A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_rmat">R-MAT generator</a></td><td><code>gen_rmat</code></td><td>2</td><td>Recursive quadrant model above.</td></tr></tbody></table></div>
 
 ## R-MAT generator {#gen_rmat}
 

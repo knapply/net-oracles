@@ -12,11 +12,27 @@ nav_exclude: true
 
 Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models. Concept id: `chung_lu`. 1 measure.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(w_i\)</td><td>expected degree of node \(i\)</td></tr><tr><td>\(\rho\)</td><td>\(1/\sum_iw_i\)</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Chung-Lu expected-degree model. Entries grouped here: Chung-Lu (expected degree) generator.
 
-*Definition not yet written.*
+<div class="formula-block"><p class="formula-name"><strong>Chung-Lu expected-degree model (Chung and Lu 2002)</strong> <span class="applies">applies to: any, simple</span></p><div class="formula">\[\Pr(i\sim j)=p_{ij}=\rho\,w_iw_j\ \text{independently},\qquad \max_iw_i^2\le\sum_jw_j\]</div><p class="formula-where">With loops allowed, \(\sum_jp_{ij}=w_i\): node \(i\) has expected degree \(w_i\). The condition keeps every \(p_{ij}\le1\). A generator returns a random sample, so a result is reproducible only for a fixed seed and random generator; tools use different generators.</p></div>
+
+## Variants {#concept-variants}
+
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_chung_lu">Chung-Lu (expected degree) generator</a></td><td><code>gen_chung_lu</code></td><td>4</td><td>Independent edges with probability \(\rho w_iw_j\). Which options this function offers is not recorded (documented by name only).</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/networkx.html">NetworkX</a></th><th><a href="../../tools/igraph.html">igraph (R)</a></th><th><a href="../../tools/pyigraph.html">igraph (Python)</a></th><th><a href="../../tools/networkit.html">NetworKit</a></th></tr></thead><tbody><tr><td title="A free parameter (attenuation, damping, decay, exponent, walk length) outside the range for which the series or fixed point is defined or convergent."><strong>Parameter outside its valid range</strong></td><td class="def">If \(w_iw_j\rho&gt;1\) the model is not a probability; a tool must cap it (the cap changes the expected degrees).</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="At least one node has no edge to any other node (degree 0), in a graph that has other edges."><strong>Isolated nodes</strong></td><td class="def">A node with \(w_i=0\) is isolated with probability 1.</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr><tr><td title="An edge whose source and target are the same node."><strong>Self-loops</strong></td><td class="def">\(p_{ii}=\rho w_i^2\) in the original model; with loops removed the expected degree is below \(w_i\).</td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Parameter outside its valid range</summary><ul><li>No tool entries.</li></ul></details><details><summary>Isolated nodes</summary><ul><li>No tool entries.</li></ul></details><details><summary>Self-loops</summary><ul><li>No tool entries.</li></ul></details></div>
 
 ## Chung-Lu (expected degree) generator {#gen_chung_lu}
 

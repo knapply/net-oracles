@@ -12,15 +12,29 @@ nav_exclude: true
 
 Family: [Generators and rewiring](index.html). Subfamily: Named and deterministic graphs. Concept id: `circulant_ring_graphs`. 9 measures.
 
+## Notation {#concept-notation}
+
+<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody><tr><td>\(n\)</td><td>number of nodes</td></tr><tr><td>\(S\)</td><td>set of offsets</td></tr></tbody></table></div>
+
 ## Definition {#concept-definition}
 
 Circulant and ring graphs (ladder, chordal, Petersen, Harary). Entries grouped here: Chordal cycle graph; Chordal ring generator; Circulant graph generator; Circular ladder graph; Generalized petersen graph; Generalized Petersen graph generator; and 3 more.
 
-*Definition not yet written.*
+*Definition partly written:* No primary paper was checked for the circulant, chordal ring, Harary and generalized Petersen definitions; formulas are not written. NetworkX was run on small cases but the comparison records no counts, so no tool value is stated.
+
+<div class="formula-block"><p class="formula-name"><strong>Circulant graph</strong> <span class="applies">applies to: undirected, simple</span></p><div class="formula">\[i\sim j\iff (i-j)\bmod n\in S\cup(-S)\]</div><p class="formula-where">Nodes on a cycle, an edge joins nodes whose cyclic distance is in the offset set; \(S\subseteq\{1,\dots,\lfloor n/2\rfloor\}\). Standard definition; no primary paper was checked.</p></div>
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_chordal_cycle">Chordal cycle graph</a></td><td><code>cat_chordal_cycle</code></td><td>1</td></tr><tr><td><a href="#gen_chordal_ring">Chordal ring generator</a></td><td><code>gen_chordal_ring</code></td><td>1</td></tr><tr><td><a href="#gen_circulant">Circulant graph generator</a></td><td><code>gen_circulant</code></td><td>2</td></tr><tr><td><a href="#cat_circular_ladder">Circular ladder graph</a></td><td><code>cat_circular_ladder</code></td><td>1</td></tr><tr><td><a href="#cat_generalized_petersen">Generalized petersen graph</a></td><td><code>cat_generalized_petersen</code></td><td>2</td></tr><tr><td><a href="#gen_generalized_petersen">Generalized Petersen graph generator</a></td><td><code>gen_generalized_petersen</code></td><td>1</td></tr><tr><td><a href="#cat_harary_hkn">Hkn harary graph</a></td><td><code>cat_harary_hkn</code></td><td>1</td></tr><tr><td><a href="#cat_harary_hnm">Hnm harary graph</a></td><td><code>cat_harary_hnm</code></td><td>1</td></tr><tr><td><a href="#implicit_family">Implicit family</a></td><td><code>implicit_family</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_circulant">Circulant graph generator</a></td><td><code>gen_circulant</code></td><td>2</td><td>The circulant graph with offset set \(S\) above.</td></tr></tbody></table></div>
+
+## Edge cases {#concept-edge-cases}
+
+<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead><tr><th>Case</th><th>The published definition gives</th><th><a href="../../tools/networkx.html">NetworkX</a></th><th><a href="../../tools/igraph.html">igraph (R)</a></th><th><a href="../../tools/rustworkx.html">rustworkx</a></th><th><a href="../../tools/jgrapht.html">JGraphT</a></th></tr></thead><tbody><tr><td title="The graph has exactly two nodes."><strong>Two nodes</strong></td><td class="def">Cyclic offsets of a 2-cycle coincide; whether the single edge is doubled is not fixed by the definition.</td><td><span class="nr" title="NetworkX 3.7 was run on the pair fixture but the comparison records no counts, so the outcome is not stated.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td><td><span class="nr" title="The sources do not record this tool&#x27;s behaviour on this input.">not recorded</span></td></tr></tbody></table></div>
+
+**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.
+
+<div class="edge-details"><details><summary>Two nodes</summary><ul><li><strong>NetworkX</strong>: not recorded. NetworkX 3.7 was run on the pair fixture but the comparison records no counts, so the outcome is not stated. <em>(reasons.json circulant_ring_graphs)</em></li></ul></details></div>
 
 ## Chordal cycle graph {#cat_chordal_cycle}
 
