@@ -247,3 +247,16 @@ table.matrix td.hl .st { box-shadow: inset 0 0 0 2px var(--st-fg); }
 @media print { .hero-graph, .theme-toggle { display: none; } }
 .side-bar .site-footer p { margin: 0 0 .4rem; }
 .side-bar .site-footer .maint a { display: inline-block; vertical-align: -3px; margin-left: .25rem; text-decoration: none; }
+
+/* Inline code: the theme's own rule sets a fixed light background with a
+   higher specificity, so override it to follow the palette in both modes. */
+.main-content :not(pre):not(figure) > code,
+:not(pre):not(figure) > code {
+  background-color: var(--code-bg) !important;
+  color: var(--ink) !important;
+  border-color: var(--line-soft) !important;
+}
+.main-content pre, .main-content pre code, div.highlighter-rouge, div.highlight, pre.highlight {
+  background-color: var(--code-bg) !important;
+  color: var(--ink);
+}
