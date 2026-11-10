@@ -41,9 +41,9 @@ Measure id: `trav_beam`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `bfs_beam_edges` |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `bfs_beam_edges` |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -61,17 +61,28 @@ Measure id: `trav_bfs_edges`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `bfs_edges; bfs_predecessors; bfs_successors; bfs_tree; edge_bfs` |  |
-| [igraph (R)](../../tools/igraph.html) | · reported in docs | `bfs` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | · reported in docs | `bfs; bfsiter` | API listing |
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `bfs_search` | API listing |
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `BFS` | API listing |
-| [rustworkx](../../tools/rustworkx.html) | · reported in docs | `bfs_predecessors; bfs_search; bfs_successors; digraph_bfs_search; graph_bfs_search` | API listing |
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `breadth_first_search` | API listing |
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `BreadthFirstIterator; LexBreadthFirstIterator` | API listing |
-| [Boost Graph Library](../../tools/boost.html) | · reported in docs | `breadth_first_search` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `bfs_edges; bfs_predecessors; bfs_successors; bfs_tree; edge_bfs` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_bfs_edges-igraph) | `bfs` | API listing |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_bfs_edges-pyigraph) | `bfs; bfsiter` | API listing |
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_bfs_edges-graphtool) | `bfs_search` | API listing |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_bfs_edges-networkit) | `BFS` | API listing |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_bfs_edges-rustworkx) | `bfs_predecessors; bfs_search; bfs_successors; digraph_bfs_search; graph_bfs_search` | API listing |
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_bfs_edges-sknetwork) | `breadth_first_search` | API listing |
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_bfs_edges-jgrapht) | `BreadthFirstIterator; LexBreadthFirstIterator` | API listing |
+| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_bfs_edges-boost) | `breadth_first_search` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-trav_bfs_edges-igraph"></a>**[igraph (R)](../../tools/igraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (R) 2.3.4 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package igraph: exported functions and help titles); API names: bfs.
+- <a id="why-trav_bfs_edges-pyigraph"></a>**[igraph (Python)](../../tools/pyigraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: bfs; bfsiter.
+- <a id="why-trav_bfs_edges-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: bfs\_search.
+- <a id="why-trav_bfs_edges-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: BFS.
+- <a id="why-trav_bfs_edges-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: bfs\_predecessors; bfs\_search; bfs\_successors; digraph\_bfs\_search; graph\_bfs\_search.
+- <a id="why-trav_bfs_edges-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: breadth\_first\_search.
+- <a id="why-trav_bfs_edges-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: BreadthFirstIterator; LexBreadthFirstIterator.
+- <a id="why-trav_bfs_edges-boost"></a>**[Boost Graph Library](../../tools/boost.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. Boost Graph Library 1.90 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (Boost Graph Library 1.90 documentation: table of contents (algorithms and random-graph tools) plus algorithm headers it omits); API names: breadth\_first\_search.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -89,9 +100,13 @@ Measure id: `cat_bfs_iterator`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `bfs_iterator` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_bfs_iterator-graphtool) | `bfs_iterator` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_bfs_iterator-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: bfs\_iterator.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -103,9 +118,9 @@ Measure id: `trav_bfs_labeled`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `bfs_labeled_edges` |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `bfs_labeled_edges` |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -123,10 +138,14 @@ Measure id: `trav_bfs_layers`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `bfs_layers` |  |
-| [rustworkx](../../tools/rustworkx.html) | · reported in docs | `bfs_layers; digraph_bfs_layers; graph_bfs_layers` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `bfs_layers` |  |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_bfs_layers-rustworkx) | `bfs_layers; digraph_bfs_layers; graph_bfs_layers` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-trav_bfs_layers-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: bfs\_layers; digraph\_bfs\_layers; graph\_bfs\_layers.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -146,9 +165,9 @@ Measure id: `trav_edge_bfs`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -168,9 +187,13 @@ Measure id: `cat_bfs_random`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `RandomBFS` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_bfs_random-networkit) | `RandomBFS` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_bfs_random-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: RandomBFS.
 
 **Tools cited:** [staudt2016networkit](../../references.html#staudt2016networkit)
 
@@ -182,9 +205,13 @@ Measure id: `cat_bfs_reverse`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `ReverseBFS` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_bfs_reverse-networkit) | `ReverseBFS` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_bfs_reverse-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: ReverseBFS.
 
 **Tools cited:** [staudt2016networkit](../../references.html#staudt2016networkit)
 {% endraw %}

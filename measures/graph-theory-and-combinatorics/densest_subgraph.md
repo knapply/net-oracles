@@ -38,9 +38,9 @@ Measure id: `ap_densest`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `densest_subgraph` |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `densest_subgraph` |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -60,9 +60,13 @@ Measure id: `cat_density_goldberg_maximum_subgraph`. Original family: Inference 
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `GoldbergMaximumDensitySubgraphAlgorithm` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_density_goldberg_maximum_subgraph-jgrapht) | `GoldbergMaximumDensitySubgraphAlgorithm` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_density_goldberg_maximum_subgraph-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: GoldbergMaximumDensitySubgraphAlgorithm.
 
 **Tools cited:** [michail2020jgrapht](../../references.html#michail2020jgrapht)
 
@@ -74,9 +78,13 @@ Measure id: `cat_base_density_goldberg_maximum_subgraph`. Original family: Infer
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `GoldbergMaximumDensitySubgraphAlgorithmBase` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_base_density_goldberg_maximum_subgraph-jgrapht) | `GoldbergMaximumDensitySubgraphAlgorithmBase` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_base_density_goldberg_maximum_subgraph-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: GoldbergMaximumDensitySubgraphAlgorithmBase.
 
 **Tools cited:** [michail2020jgrapht](../../references.html#michail2020jgrapht)
 
@@ -88,9 +96,13 @@ Measure id: `cat_density_edge_goldberg_maximum_per_subgraph_weight`. Original fa
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `GoldbergMaximumDensitySubgraphAlgorithmNodeWeightPerEdgeWeight` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_density_edge_goldberg_maximum_per_subgraph_weight-jgrapht) | `GoldbergMaximumDensitySubgraphAlgorithmNodeWeightPerEdgeWeight` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_density_edge_goldberg_maximum_per_subgraph_weight-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: GoldbergMaximumDensitySubgraphAlgorithmNodeWeightPerEdgeWeight.
 
 **Tools cited:** [michail2020jgrapht](../../references.html#michail2020jgrapht)
 
@@ -102,9 +114,13 @@ Measure id: `cat_density_goldberg_maximum_subgraph_weights`. Original family: In
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `GoldbergMaximumDensitySubgraphAlgorithmNodeWeights` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_density_goldberg_maximum_subgraph_weights-jgrapht) | `GoldbergMaximumDensitySubgraphAlgorithmNodeWeights` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_density_goldberg_maximum_subgraph_weights-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: GoldbergMaximumDensitySubgraphAlgorithmNodeWeights.
 
 **Tools cited:** [michail2020jgrapht](../../references.html#michail2020jgrapht)
 {% endraw %}

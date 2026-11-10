@@ -37,9 +37,13 @@ Measure id: `walk_embeddings`. Original family: Matrices and spectra.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [DeepWalk](../../tools/deepwalk.html) | · reported in docs |  | documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [DeepWalk](../../tools/deepwalk.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: DeepWalk is documented-only in this survey; listed in its documentation. [details](#why-walk_embeddings-deepwalk) |  | documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-walk_embeddings-deepwalk"></a>**[DeepWalk](../../tools/deepwalk.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. DeepWalk (version not recorded) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: DeepWalk README (phanein/deepwalk): the command-line tool and its stages.
 
 **Tools cited:** [tool_deepwalk](../../references.html#tool_deepwalk)
 
@@ -51,9 +55,13 @@ Measure id: `cat_adjlist_input`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [DeepWalk](../../tools/deepwalk.html) | · reported in docs | `adjlist input` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [DeepWalk](../../tools/deepwalk.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: DeepWalk is documented-only in this survey; listed in its documentation. [details](#why-cat_adjlist_input-deepwalk) | `adjlist input` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_adjlist_input-deepwalk"></a>**[DeepWalk](../../tools/deepwalk.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. DeepWalk (version not recorded) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: DeepWalk README (phanein/deepwalk): the command-line tool and its stages.
 
 **Tools cited:** [tool_deepwalk](../../references.html#tool_deepwalk)
 
@@ -65,9 +73,13 @@ Measure id: `cat_deepwalk`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [DeepWalk](../../tools/deepwalk.html) | · reported in docs | `deepwalk` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [DeepWalk](../../tools/deepwalk.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: DeepWalk is documented-only in this survey; listed in its documentation. [details](#why-cat_deepwalk-deepwalk) | `deepwalk` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_deepwalk-deepwalk"></a>**[DeepWalk](../../tools/deepwalk.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. DeepWalk (version not recorded) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: DeepWalk README (phanein/deepwalk): the command-line tool and its stages.
 
 **Tools cited:** [tool_deepwalk](../../references.html#tool_deepwalk)
 
@@ -79,9 +91,13 @@ Measure id: `cat_edgelist_input`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [DeepWalk](../../tools/deepwalk.html) | · reported in docs | `edgelist input` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [DeepWalk](../../tools/deepwalk.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: DeepWalk is documented-only in this survey; listed in its documentation. [details](#why-cat_edgelist_input-deepwalk) | `edgelist input` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_edgelist_input-deepwalk"></a>**[DeepWalk](../../tools/deepwalk.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. DeepWalk (version not recorded) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: DeepWalk README (phanein/deepwalk): the command-line tool and its stages.
 
 **Tools cited:** [tool_deepwalk](../../references.html#tool_deepwalk)
 
@@ -93,9 +109,13 @@ Measure id: `cat_input_mat`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [DeepWalk](../../tools/deepwalk.html) | · reported in docs | `mat input` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [DeepWalk](../../tools/deepwalk.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: DeepWalk is documented-only in this survey; listed in its documentation. [details](#why-cat_input_mat-deepwalk) | `mat input` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_input_mat-deepwalk"></a>**[DeepWalk](../../tools/deepwalk.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. DeepWalk (version not recorded) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: DeepWalk README (phanein/deepwalk): the command-line tool and its stages.
 
 **Tools cited:** [tool_deepwalk](../../references.html#tool_deepwalk)
 
@@ -107,9 +127,13 @@ Measure id: `cat_corpus_random_walk`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [DeepWalk](../../tools/deepwalk.html) | · reported in docs | `random walk corpus` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [DeepWalk](../../tools/deepwalk.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: DeepWalk is documented-only in this survey; listed in its documentation. [details](#why-cat_corpus_random_walk-deepwalk) | `random walk corpus` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_corpus_random_walk-deepwalk"></a>**[DeepWalk](../../tools/deepwalk.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. DeepWalk (version not recorded) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: DeepWalk README (phanein/deepwalk): the command-line tool and its stages.
 
 **Tools cited:** [tool_deepwalk](../../references.html#tool_deepwalk)
 
@@ -121,9 +145,13 @@ Measure id: `cat_embedding_gram_skip`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [DeepWalk](../../tools/deepwalk.html) | · reported in docs | `skip-gram embedding` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [DeepWalk](../../tools/deepwalk.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: DeepWalk is documented-only in this survey; listed in its documentation. [details](#why-cat_embedding_gram_skip-deepwalk) | `skip-gram embedding` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_embedding_gram_skip-deepwalk"></a>**[DeepWalk](../../tools/deepwalk.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. DeepWalk (version not recorded) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: DeepWalk README (phanein/deepwalk): the command-line tool and its stages.
 
 **Tools cited:** [tool_deepwalk](../../references.html#tool_deepwalk)
 
@@ -135,9 +163,13 @@ Measure id: `cat_output_word2vec`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [DeepWalk](../../tools/deepwalk.html) | · reported in docs | `word2vec output` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [DeepWalk](../../tools/deepwalk.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: DeepWalk is documented-only in this survey; listed in its documentation. [details](#why-cat_output_word2vec-deepwalk) | `word2vec output` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_output_word2vec-deepwalk"></a>**[DeepWalk](../../tools/deepwalk.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. DeepWalk (version not recorded) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: DeepWalk README (phanein/deepwalk): the command-line tool and its stages.
 
 **Tools cited:** [tool_deepwalk](../../references.html#tool_deepwalk)
 {% endraw %}

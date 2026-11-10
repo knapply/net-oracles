@@ -36,20 +36,30 @@ Measure id: `degree`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `degree_centrality; degrees; in_degree_centrality; out_degree_centrality` |  |
-| [igraph (R)](../../tools/igraph.html) | ∅ checked, no value on some inputs | `degree; degree_distribution` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | ✓ checked, agrees | `degree; degree_distribution; mean_degree` |  |
-| [sna](../../tools/sna.html) | ≠ checked, differs by convention | `degree` |  |
-| [ergm (statnet)](../../tools/ergm.html) | · reported in docs | `degree` | API listing |
-| [NetworKit](../../tools/networkit.html) | ✓ checked, agrees | `DegreeCentrality; degreeDistribution` |  |
-| [rustworkx](../../tools/rustworkx.html) | · reported in docs | `degree_centrality; digraph_degree_centrality; graph_degree_centrality; in_degree_centrality; out_degree_centrality` | API listing |
-| [Boost Graph Library](../../tools/boost.html) | · reported in docs | `degree_centrality` | API listing |
-| [BCT (Octave)](../../tools/bct.html) | ≠ checked, differs by convention | `degrees_dir; degrees_und; strengths_dir; strengths_und; strengths_und_sign` |  |
-| [Gephi toolkit](../../tools/gephi.html) | ✓ checked, agrees | `Degree` |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `Degree (Freeman), in/out, normalized, centralization; degree; indeg; outdeg` | published documentation |
-| [tnet](../../tools/tnet.html) | · reported in docs | `degree_tm; degree_w` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `degree_centrality; degrees; in_degree_centrality; out_degree_centrality` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `degree; degree_distribution` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `degree; degree_distribution; mean_degree` |  |
+| [sna](../../tools/sna.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, multi-edges and self-loops): sna works on adjacency matrices, so parallel edges collapse to one, and it ignores the diagonal by default (diag = FALSE). [details](#why-degree-sna) | `degree` |  |
+| [ergm (statnet)](../../tools/ergm.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-degree-ergm) | `degree` | API listing |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `DegreeCentrality; degreeDistribution` |  |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-degree-rustworkx) | `degree_centrality; digraph_degree_centrality; graph_degree_centrality; in_degree_centrality; out_degree_centrality` | API listing |
+| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-degree-boost) | `degree_centrality` | API listing |
+| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (direction, multi-edges, self-loops and ties): A bct call takes a binary adjacency matrix, which cannot carry loops or parallel edges: the driver keeps one arc per ordered pair and drops loops,... [details](#why-degree-bct) | `degrees_dir; degrees_und; strengths_dir; strengths_und; strengths_und_sign` |  |
+| [Gephi toolkit](../../tools/gephi.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `Degree` |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-degree-ucinet) | `Degree (Freeman), in/out, normalized, centralization; degree; indeg; outdeg` | published documentation |
+| [tnet](../../tools/tnet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-degree-tnet) | `degree_tm; degree_w` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-degree-sna"></a>**[sna](../../tools/sna.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> sna 2.8 was run and its value differs from the reference value by convention (defaults, multi-edges and self-loops) on inputs tagged loops and multi\_edges. degree\_all: sna works on adjacency matrices, so parallel edges collapse to one, and it ignores the diagonal by default (diag = FALSE). degree\_all\_noloops: sna works on adjacency matrices, so parallel edges collapse to one. degree\_in and degree\_out: sna collapses parallel edges and ignores the diagonal by default. Mapping: the reference value computed with the adjacency-matrix reading (parallel edges collapse into one tie, self-loops dropped) agrees with the tool within abs 0, rel 0 on all 6 comparisons where the difference occurs. Tolerance before mapping: abs 0, rel 0 (0 means exact equality). 16 comparisons differ and 102 agree. Finding F042 (convention): Degree reads an adjacency matrix: parallel edges collapse and the diagonal is ignored by default. Findings: [F042](../../findings.html#f042).
+- <a id="why-degree-ergm"></a>**[ergm (statnet)](../../tools/ergm.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. ergm (statnet) 4.12.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (network, ergm and tergm exported functions and help titles; ergm term list from search.ergmTerms()); API names: degree.
+- <a id="why-degree-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: degree\_centrality; digraph\_degree\_centrality; graph\_degree\_centrality; in\_degree\_centrality; out\_degree\_centrality.
+- <a id="why-degree-boost"></a>**[Boost Graph Library](../../tools/boost.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. Boost Graph Library 1.90 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (Boost Graph Library 1.90 documentation: table of contents (algorithms and random-graph tools) plus algorithm headers it omits); API names: degree\_centrality.
+- <a id="why-degree-bct"></a>**[BCT (Octave)](../../tools/bct.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> BCT (Octave) 2019-03-03 was run and its value differs from the reference value by convention (direction, multi-edges, self-loops and ties) on the fixtures multi\_loops\_dir, multi\_loops\_und. A bct call takes a binary adjacency matrix, which cannot carry loops or parallel edges: the driver keeps one arc per ordered pair and drops loops, while the reference counts every edge. Mapping: the reference value computed with the adjacency-matrix reading (parallel edges collapse into one tie, self-loops dropped) agrees with the tool within abs 0, rel 0 on all 4 comparisons where the difference occurs. Tolerance before mapping: abs 0, rel 0 (0 means exact equality). 4 comparisons differ and 42 agree. Finding F059 (convention): Matrix-input calls carry no loops or parallel edges. Findings: [F059](../../findings.html#f059).
+- <a id="why-degree-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
+- <a id="why-degree-tnet"></a>**[tnet](../../tools/tnet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. tnet 3.0.16 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package tnet: exported functions and help titles); API names: degree\_tm; degree\_w.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -103,9 +113,9 @@ Measure id: `degree_simple`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [sna](../../tools/sna.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [sna](../../tools/sna.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -123,11 +133,15 @@ Measure id: `twomode:degree`. Original family: Two-mode and bipartite.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ∅ checked, no value on some inputs |  |  |
-| [igraph (R)](../../tools/igraph.html) | ∅ checked, no value on some inputs |  |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `2-mode centrality` | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-twomode-degree-ucinet) | `2-mode centrality` | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-twomode-degree-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

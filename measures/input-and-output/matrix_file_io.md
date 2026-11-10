@@ -38,9 +38,13 @@ Measure id: `io_xlsx`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | · reported in docs |  | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-io_xlsx-ucinet) |  | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-io_xlsx-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet)
 
@@ -52,9 +56,13 @@ Measure id: `io_matlab`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `MatReader; MatWriter` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_matlab-networkit) | `MatReader; MatWriter` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-io_matlab-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: MatReader; MatWriter.
 
 **Tools cited:** [staudt2016networkit](../../references.html#staudt2016networkit)
 
@@ -66,9 +74,13 @@ Measure id: `io_matrix`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `MatrixExporter` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_matrix-jgrapht) | `MatrixExporter` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-io_matrix-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: MatrixExporter.
 
 **Tools cited:** [michail2020jgrapht](../../references.html#michail2020jgrapht)
 
@@ -80,9 +92,13 @@ Measure id: `io_matrixmarket`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [rustworkx](../../tools/rustworkx.html) | · reported in docs | `read_matrix_market; read_matrix_market_file` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_matrixmarket-rustworkx) | `read_matrix_market; read_matrix_market_file` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-io_matrixmarket-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: read\_matrix\_market; read\_matrix\_market\_file.
 
 **Tools cited:** [tool_rustworkx](../../references.html#tool_rustworkx)
 
@@ -94,9 +110,13 @@ Measure id: `io_mtx`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `MTXGraphReader` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_mtx-networkit) | `MTXGraphReader` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-io_mtx-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: MTXGraphReader.
 
 **Tools cited:** [staudt2016networkit](../../references.html#staudt2016networkit)
 
@@ -108,9 +128,13 @@ Measure id: `io_ucinet_multi`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | · reported in docs |  | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-io_ucinet_multi-ucinet) |  | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-io_ucinet_multi-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet)
 
@@ -122,9 +146,13 @@ Measure id: `io_rb`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `RBGraphReader` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_rb-networkit) | `RBGraphReader` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-io_rb-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: RBGraphReader.
 
 **Tools cited:** [staudt2016networkit](../../references.html#staudt2016networkit)
 
@@ -136,9 +164,13 @@ Measure id: `io_ucinet_binary`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | · reported in docs |  | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-io_ucinet_binary-ucinet) |  | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-io_ucinet_binary-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet)
 
@@ -150,10 +182,15 @@ Measure id: `io_dl`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [igraph (Python)](../../tools/pyigraph.html) | · reported in docs | `Read_DL` | API listing |
-| [UCINET](../../tools/ucinet.html) | · reported in docs |  | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_dl-pyigraph) | `Read_DL` | API listing |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-io_dl-ucinet) |  | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-io_dl-pyigraph"></a>**[igraph (Python)](../../tools/pyigraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: Read\_DL.
+- <a id="why-io_dl-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [csardi2006igraph](../../references.html#csardi2006igraph)
 {% endraw %}

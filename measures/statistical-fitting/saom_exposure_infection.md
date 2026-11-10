@@ -36,9 +36,13 @@ Measure id: `cat_av_exposure`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `avExposure` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_exposure-rsiena) | `avExposure` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_av_exposure-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: avExposure.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -50,9 +54,13 @@ Measure id: `cat_covar_infect`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `infectCovar` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_covar_infect-rsiena) | `infectCovar` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_covar_infect-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: infectCovar.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -64,9 +72,13 @@ Measure id: `cat_infect`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `infectIn` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_infect-rsiena) | `infectIn` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_infect-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: infectIn.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -78,9 +90,13 @@ Measure id: `cat_infect_out`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `infectOut` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_infect_out-rsiena) | `infectOut` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_infect_out-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: infectOut.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -92,9 +108,13 @@ Measure id: `cat_av_covar_suscept`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `susceptAvCovar` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_covar_suscept-rsiena) | `susceptAvCovar` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_av_covar_suscept-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: susceptAvCovar.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -106,9 +126,13 @@ Measure id: `cat_av_suscept`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `susceptAvIn` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_suscept-rsiena) | `susceptAvIn` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_av_suscept-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: susceptAvIn.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -120,9 +144,13 @@ Measure id: `cat_exposure_tot`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totExposure` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_exposure_tot-rsiena) | `totExposure` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_exposure_tot-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totExposure.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 {% endraw %}

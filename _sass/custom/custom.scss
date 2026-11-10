@@ -178,6 +178,9 @@ td code { white-space: normal; }
 /* state badges: a glyph and, in prose-sized cells, the words too */
 .st { display: inline-flex; align-items: center; justify-content: center; gap: .4em; font-weight: 600; line-height: 1; white-space: nowrap;
   background: var(--st-bg); color: var(--st-fg); box-shadow: inset 0 0 0 1px var(--st-bd); }
+a.st, a.st:hover { text-decoration: none; background-image: none; }
+a.st:hover, a.st:focus-visible { box-shadow: inset 0 0 0 2px var(--st-fg); }
+.legend a { text-decoration: underline; }
 .st-g { width: 1.5rem; height: 1.5rem; border-radius: 50%; font-size: .85rem; }
 .st-t { padding: .22rem .55rem .22rem .4rem; border-radius: 999px; font-size: .75rem; }
 .st-t .g { font-size: .9rem; }

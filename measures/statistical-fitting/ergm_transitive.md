@@ -33,9 +33,13 @@ Measure id: `cat_intransitive`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [ergm (statnet)](../../tools/ergm.html) | · reported in docs | `intransitive` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [ergm (statnet)](../../tools/ergm.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_intransitive-ergm) | `intransitive` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_intransitive-ergm"></a>**[ergm (statnet)](../../tools/ergm.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. ergm (statnet) 4.12.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (network, ergm and tergm exported functions and help titles; ergm term list from search.ergmTerms()); API names: intransitive.
 
 **Tools cited:** [hunter2008ergm](../../references.html#hunter2008ergm)
 
@@ -47,9 +51,13 @@ Measure id: `cat_transitive`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [ergm (statnet)](../../tools/ergm.html) | · reported in docs | `transitive` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [ergm (statnet)](../../tools/ergm.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_transitive-ergm) | `transitive` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_transitive-ergm"></a>**[ergm (statnet)](../../tools/ergm.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. ergm (statnet) 4.12.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (network, ergm and tergm exported functions and help titles; ergm term list from search.ergmTerms()); API names: transitive.
 
 **Tools cited:** [hunter2008ergm](../../references.html#hunter2008ergm)
 
@@ -61,9 +69,13 @@ Measure id: `cat_transitiveties`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [ergm (statnet)](../../tools/ergm.html) | · reported in docs | `transitiveties` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [ergm (statnet)](../../tools/ergm.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_transitiveties-ergm) | `transitiveties` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_transitiveties-ergm"></a>**[ergm (statnet)](../../tools/ergm.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. ergm (statnet) 4.12.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (network, ergm and tergm exported functions and help titles; ergm term list from search.ergmTerms()); API names: transitiveties.
 
 **Tools cited:** [hunter2008ergm](../../references.html#hunter2008ergm)
 
@@ -75,9 +87,13 @@ Measure id: `cat_transitiveweights`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [ergm (statnet)](../../tools/ergm.html) | · reported in docs | `transitiveweights` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [ergm (statnet)](../../tools/ergm.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_transitiveweights-ergm) | `transitiveweights` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_transitiveweights-ergm"></a>**[ergm (statnet)](../../tools/ergm.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. ergm (statnet) 4.12.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (network, ergm and tergm exported functions and help titles; ergm term list from search.ergmTerms()); API names: transitiveweights.
 
 **Tools cited:** [hunter2008ergm](../../references.html#hunter2008ergm)
 {% endraw %}

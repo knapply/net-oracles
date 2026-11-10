@@ -37,9 +37,13 @@ Measure id: `cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma`. Origina
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `AhujaOrlinSharmaCyclicExchangeLocalAugmentation` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma-jgrapht) | `AhujaOrlinSharmaCyclicExchangeLocalAugmentation` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: AhujaOrlinSharmaCyclicExchangeLocalAugmentation.
 
 **Tools cited:** [michail2020jgrapht](../../references.html#michail2020jgrapht)
 
@@ -51,9 +55,13 @@ Measure id: `cat_capacity_cost_flow_minimum_scaling`. Original family: Component
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `CapacityScalingMinimumCostFlow` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_capacity_cost_flow_minimum_scaling-jgrapht) | `CapacityScalingMinimumCostFlow` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_capacity_cost_flow_minimum_scaling-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: CapacityScalingMinimumCostFlow.
 
 **Tools cited:** [michail2020jgrapht](../../references.html#michail2020jgrapht)
 
@@ -65,10 +73,14 @@ Measure id: `max_flow_min_cost`. Original family: Components and connectivity.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `cost_of_flow; max_flow_min_cost; min_cost_flow; min_cost_flow_cost; network_simplex` |  |
-| [Boost Graph Library](../../tools/boost.html) | · reported in docs | `cycle_canceling; successive_shortest_path_nonnegative_weights` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `cost_of_flow; max_flow_min_cost; min_cost_flow; min_cost_flow_cost; network_simplex` |  |
+| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-max_flow_min_cost-boost) | `cycle_canceling; successive_shortest_path_nonnegative_weights` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-max_flow_min_cost-boost"></a>**[Boost Graph Library](../../tools/boost.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. Boost Graph Library 1.90 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (Boost Graph Library 1.90 documentation: table of contents (algorithms and random-graph tools) plus algorithm headers it omits); API names: cycle\_canceling; successive\_shortest\_path\_nonnegative\_weights.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -88,9 +100,9 @@ Measure id: `gb_mincost`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

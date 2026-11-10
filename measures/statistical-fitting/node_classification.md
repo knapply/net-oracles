@@ -35,9 +35,13 @@ Measure id: `cat_classifier_diffusion`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `DiffusionClassifier` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_classifier_diffusion-sknetwork) | `DiffusionClassifier` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_classifier_diffusion-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: DiffusionClassifier.
 
 **Tools cited:** [tool_sknetwork](../../references.html#tool_sknetwork)
 
@@ -49,9 +53,13 @@ Measure id: `cat_classifier_gnn`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `GNNClassifier` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_classifier_gnn-sknetwork) | `GNNClassifier` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_classifier_gnn-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: GNNClassifier.
 
 **Tools cited:** [tool_sknetwork](../../references.html#tool_sknetwork)
 
@@ -63,9 +71,13 @@ Measure id: `cat_classifier_nn`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `NNClassifier` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_classifier_nn-sknetwork) | `NNClassifier` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_classifier_nn-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: NNClassifier.
 
 **Tools cited:** [tool_sknetwork](../../references.html#tool_sknetwork)
 
@@ -77,9 +89,13 @@ Measure id: `cat_classifier_page_rank`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `PageRankClassifier` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_classifier_page_rank-sknetwork) | `PageRankClassifier` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_classifier_page_rank-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: PageRankClassifier.
 
 **Tools cited:** [tool_sknetwork](../../references.html#tool_sknetwork)
 
@@ -91,9 +107,13 @@ Measure id: `cat_propagation`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `Propagation` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_propagation-sknetwork) | `Propagation` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_propagation-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: Propagation.
 
 **Tools cited:** [tool_sknetwork](../../references.html#tool_sknetwork)
 
@@ -105,9 +125,13 @@ Measure id: `cat_classifier_rank`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `RankClassifier` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_classifier_rank-sknetwork) | `RankClassifier` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_classifier_rank-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: RankClassifier.
 
 **Tools cited:** [tool_sknetwork](../../references.html#tool_sknetwork)
 {% endraw %}

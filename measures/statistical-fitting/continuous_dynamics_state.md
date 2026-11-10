@@ -34,9 +34,13 @@ Measure id: `cat_kuramoto_state`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `KuramotoState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_kuramoto_state-graphtool) | `KuramotoState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_kuramoto_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: KuramotoState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -48,9 +52,13 @@ Measure id: `cat_linear_normal_state`. Original family: Graph theory and combina
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `LinearNormalState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_linear_normal_state-graphtool) | `LinearNormalState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_linear_normal_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: LinearNormalState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -62,9 +70,13 @@ Measure id: `cat_linear_state`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `LinearState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_linear_state-graphtool) | `LinearState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_linear_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: LinearState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -76,9 +88,13 @@ Measure id: `cat_lv_state`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `LVState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_lv_state-graphtool) | `LVState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_lv_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: LVState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -90,9 +106,13 @@ Measure id: `cat_normal_state`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `NormalState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_normal_state-graphtool) | `NormalState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_normal_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: NormalState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 {% endraw %}

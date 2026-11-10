@@ -37,9 +37,13 @@ Measure id: `cat_bethe_entropy`. Original family: Matrices and spectra.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `bethe_entropy` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_bethe_entropy-graphtool) | `bethe_entropy` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_bethe_entropy-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: bethe\_entropy.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -51,9 +55,13 @@ Measure id: `cat_lprob_marginal`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `marginal_graph_lprob` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_lprob_marginal-graphtool) | `marginal_graph_lprob` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_lprob_marginal-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: marginal\_graph\_lprob.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -65,9 +73,13 @@ Measure id: `cat_marginal_sample`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `marginal_graph_sample` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_marginal_sample-graphtool) | `marginal_graph_sample` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_marginal_sample-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: marginal\_graph\_sample.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -79,9 +91,13 @@ Measure id: `cat_entropy_marginal_multigraph`. Original family: Graph theory and
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `marginal_multigraph_entropy` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_entropy_marginal_multigraph-graphtool) | `marginal_multigraph_entropy` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_entropy_marginal_multigraph-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: marginal\_multigraph\_entropy.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -93,9 +109,13 @@ Measure id: `cat_lprob_marginal_multigraph`. Original family: Graph theory and c
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `marginal_multigraph_lprob` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_lprob_marginal_multigraph-graphtool) | `marginal_multigraph_lprob` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_lprob_marginal_multigraph-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: marginal\_multigraph\_lprob.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -107,9 +127,13 @@ Measure id: `cat_marginal_multigraph_sample`. Original family: Graph theory and 
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `marginal_multigraph_sample` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_marginal_multigraph_sample-graphtool) | `marginal_multigraph_sample` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_marginal_multigraph_sample-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: marginal\_multigraph\_sample.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -121,9 +145,13 @@ Measure id: `cat_entropy_mf`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `mf_entropy` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_entropy_mf-graphtool) | `mf_entropy` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_entropy_mf-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: mf\_entropy.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -135,9 +163,13 @@ Measure id: `cat_entropy_microstate`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `microstate_entropy` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_entropy_microstate-graphtool) | `microstate_entropy` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_entropy_microstate-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: microstate\_entropy.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 {% endraw %}

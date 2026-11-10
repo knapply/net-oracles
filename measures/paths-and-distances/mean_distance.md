@@ -28,15 +28,20 @@ Measure id: `mean_distance`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `average_shortest_path_length` |  |
-| [igraph (R)](../../tools/igraph.html) | ✓ checked, agrees | `mean_distance` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | ✓ checked, agrees | `average_path_length; path_length_hist` |  |
-| [rustworkx](../../tools/rustworkx.html) | · reported in docs | `digraph_unweighted_average_shortest_path_length; graph_unweighted_average_shortest_path_length; unweighted_average_shortest_path_length` | API listing |
-| [bctpy](../../tools/bctpy.html) | ✓ checked, agrees |  |  |
-| [Gephi toolkit](../../tools/gephi.html) | ✓ checked, agrees |  |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs |  | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `average_shortest_path_length` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `mean_distance` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `average_path_length; path_length_hist` |  |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-mean_distance-rustworkx) | `digraph_unweighted_average_shortest_path_length; graph_unweighted_average_shortest_path_length; unweighted_average_shortest_path_length` | API listing |
+| [bctpy](../../tools/bctpy.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [Gephi toolkit](../../tools/gephi.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-mean_distance-ucinet) |  | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-mean_distance-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: digraph\_unweighted\_average\_shortest\_path\_length; graph\_unweighted\_average\_shortest\_path\_length; unweighted\_average\_shortest\_path\_length.
+- <a id="why-mean_distance-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

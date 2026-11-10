@@ -35,12 +35,19 @@ Measure id: `compare_partitions`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | ≠ checked, differs by convention | `compare; split_join_distance` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | · reported in docs | `compare_communities; split_join_distance` | API listing |
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `AdjustedRandIndex; AdjustedRandMeasure; GraphStructuralRandMeasure; JaccardMeasure; NMIDistance; NodeStructuralRandMeasure; OverlappingNMIDistance; compareCommunities` | API listing |
-| [cdlib](../../tools/cdlib.html) | ≠ checked, differs by convention |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults): on two nodes both fixed partitions are all singletons, so the two are identical and Hubert and Arabie's formula is 0/0. [details](#why-compare_partitions-igraph) | `compare; split_join_distance` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-compare_partitions-pyigraph) | `compare_communities; split_join_distance` | API listing |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-compare_partitions-networkit) | `AdjustedRandIndex; AdjustedRandMeasure; GraphStructuralRandMeasure; JaccardMeasure; NMIDistance; NodeStructuralRandMeasure; OverlappingNMIDistance; compareCommunities` | API listing |
+| [cdlib](../../tools/cdlib.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults): For partitions of one element cdlib (through scikit-learn) returns 1.0. [details](#why-compare_partitions-cdlib) |  |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-compare_partitions-igraph"></a>**[igraph (R)](../../tools/igraph.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> igraph (R) 2.3.4 was run and its value differs from the reference value by convention (defaults) on inputs tagged two\_nodes. on two nodes both fixed partitions are all singletons, so the two are identical and Hubert and Arabie's formula is 0/0; the reference reports 1, the value for every other pair of identical partitions (as scikit-learn's adjusted\_rand\_score() does), and igraph NaN. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). No value (compare\_nmi) on inputs tagged null\_graph: Two partitions of no nodes: the reference reports undefined, igraph a value. No value (compare\_rand) on the fixtures single\_node: igraph raises an error for fewer than two nodes; the reference reports NaN. No value (compare\_split\_join) on inputs tagged null\_graph: Two partitions of no nodes: the reference reports undefined, igraph a value. No value (compare\_vi) on inputs tagged null\_graph: Two partitions of no nodes: the reference reports undefined, igraph a value. 1 comparisons differ and 137 agree. Finding F036 (convention): Adjusted Rand index is NaN on all-singleton partitions. Findings: [F036](../../findings.html#f036).
+- <a id="why-compare_partitions-pyigraph"></a>**[igraph (Python)](../../tools/pyigraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: compare\_communities; split\_join\_distance.
+- <a id="why-compare_partitions-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: AdjustedRandIndex; AdjustedRandMeasure; GraphStructuralRandMeasure; JaccardMeasure; NMIDistance; NodeStructuralRandMeasure; OverlappingNMIDistance; compareCommunities.
+- <a id="why-compare_partitions-cdlib"></a>**[cdlib](../../tools/cdlib.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> cdlib 0.4.1 was run and its value differs from the reference value by convention (defaults) on the fixtures single\_node. For partitions of one element cdlib (through scikit-learn) returns 1.0; the adjusted Rand index is 0/0 there, and the reference, like igraph, reports it undefined. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 1 comparisons differ and 139 agree. Finding F037 (convention): Adjusted Rand index is 1 on degenerate partitions. Findings: [F037](../../findings.html#f037).
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -74,9 +81,13 @@ Measure id: `cat_information_mutual`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `mutual_information` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_information_mutual-graphtool) | `mutual_information` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_information_mutual-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: mutual\_information.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -88,9 +99,13 @@ Measure id: `cat_distance_partition`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | · reported in docs | `partition_distance` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_distance_partition-bct) | `partition_distance` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_distance_partition-bct"></a>**[BCT (Octave)](../../tools/bct.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. BCT (Octave) 2019-03-03 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (bctpy public functions (the Python port of the Brain Connectivity Toolbox function set)); API names: partition\_distance.
 
 **Tools cited:** [rubinov2010complex](../../references.html#rubinov2010complex)
 
@@ -102,9 +117,13 @@ Measure id: `cat_information_mutual_reduced`. Original family: Generators and re
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `reduced_mutual_information` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_information_mutual_reduced-graphtool) | `reduced_mutual_information` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_information_mutual_reduced-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: reduced\_mutual\_information.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -116,9 +135,13 @@ Measure id: `cat_community_same`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `SameCommunityIndex` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_community_same-networkit) | `SameCommunityIndex` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_community_same-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: SameCommunityIndex.
 
 **Tools cited:** [staudt2016networkit](../../references.html#staudt2016networkit)
 
@@ -130,9 +153,13 @@ Measure id: `cat_information_variation`. Original family: Generators and rewirin
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `variation_information` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_information_variation-graphtool) | `variation_information` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_information_variation-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: variation\_information.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 {% endraw %}

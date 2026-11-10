@@ -24,10 +24,10 @@ Measure id: `edge_lengths`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [s2 (sphere geometry)](../../tools/s2.html) | ✓ checked, agrees |  |  |
-| [sf (planar geometry)](../../tools/sf.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [s2 (sphere geometry)](../../tools/s2.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [sf (planar geometry)](../../tools/sf.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

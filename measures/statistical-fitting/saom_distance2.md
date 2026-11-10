@@ -54,9 +54,13 @@ Measure id: `cat_alt_dist2`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `altDist2; altInDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_dist2-rsiena) | `altDist2; altInDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_dist2-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: altDist2; altInDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -68,9 +72,13 @@ Measure id: `cat_any_dist2_exposure`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `anyInExposureDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_any_dist2_exposure-rsiena) | `anyInExposureDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_any_dist2_exposure-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: anyInExposureDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -82,9 +90,13 @@ Measure id: `cat_alt_av_dist2`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `avAltDist2; avInAltDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2-rsiena) | `avAltDist2; avInAltDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_av_dist2-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: avAltDist2; avInAltDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -96,9 +108,13 @@ Measure id: `cat_alt_av_dist2_nc`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `avInAltDist2_nc` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2_nc-rsiena) | `avInAltDist2_nc` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_av_dist2_nc-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: avInAltDist2\_nc.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -110,9 +126,13 @@ Measure id: `cat_av_dist2_sim`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `avInSimDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_dist2_sim-rsiena) | `avInSimDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_av_dist2_sim-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: avInSimDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -124,9 +144,13 @@ Measure id: `cat_alt_av_dist2_t`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `avTAltDist2; avTInAltDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2_t-rsiena) | `avTAltDist2; avTInAltDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_av_dist2_t-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: avTAltDist2; avTInAltDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -138,9 +162,13 @@ Measure id: `cat_alt_av_dist2_nc_t`. Original family: Graph theory and combinato
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `avTInAltDist2_nc` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2_nc_t-rsiena) | `avTInAltDist2_nc` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_av_dist2_nc_t-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: avTInAltDist2\_nc.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -152,9 +180,13 @@ Measure id: `cat_av_dist2_exposure_tin`. Original family: Graph theory and combi
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `avTinExposureDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_dist2_exposure_tin-rsiena) | `avTinExposureDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_av_dist2_exposure_tin-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: avTinExposureDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -166,9 +198,13 @@ Measure id: `cat_alt_av_dist2_tx`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `avTXAltDist2; avTXInAltDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2_tx-rsiena) | `avTXAltDist2; avTXInAltDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_av_dist2_tx-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: avTXAltDist2; avTXInAltDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -180,9 +216,13 @@ Measure id: `cat_alt_av_dist2_x`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `avXAltDist2; avXInAltDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2_x-rsiena) | `avXAltDist2; avXInAltDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_av_dist2_x-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: avXAltDist2; avXInAltDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -194,9 +234,13 @@ Measure id: `cat_dist2_nbr`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `nbrDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_nbr-rsiena) | `nbrDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_dist2_nbr-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: nbrDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -208,9 +252,13 @@ Measure id: `cat_dist2twice_nbr`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `nbrDist2twice` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2twice_nbr-rsiena) | `nbrDist2twice` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_dist2twice_nbr-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: nbrDist2twice.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -222,9 +270,13 @@ Measure id: `cat_dist2_ego_same`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `sameEgoDist2; sameEgoInDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_ego_same-rsiena) | `sameEgoDist2; sameEgoInDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_dist2_ego_same-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: sameEgoDist2; sameEgoInDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -236,9 +288,13 @@ Measure id: `cat_dist2_sim`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `simDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_sim-rsiena) | `simDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_dist2_sim-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: simDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -250,9 +306,13 @@ Measure id: `cat_dist2_ego_sim`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `simEgoDist2; simEgoInDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_ego_sim-rsiena) | `simEgoDist2; simEgoInDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_dist2_ego_sim-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: simEgoDist2; simEgoInDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -264,9 +324,13 @@ Measure id: `cat_a_alt_dist2_tot`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totAAltDist2; totAInAltDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_a_alt_dist2_tot-rsiena) | `totAAltDist2; totAInAltDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_a_alt_dist2_tot-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totAAltDist2; totAInAltDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -278,9 +342,13 @@ Measure id: `cat_a_alt_dist2_nc_tot`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totAInAltDist2_nc` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_a_alt_dist2_nc_tot-rsiena) | `totAInAltDist2_nc` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_a_alt_dist2_nc_tot-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totAInAltDist2\_nc.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -292,9 +360,13 @@ Measure id: `cat_a_dist2_exposure_tot`. Original family: Graph theory and combin
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totAInExposureDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_a_dist2_exposure_tot-rsiena) | `totAInExposureDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_a_dist2_exposure_tot-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totAInExposureDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -306,9 +378,13 @@ Measure id: `cat_alt_dist2_tot`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totAltDist2; totInAltDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_dist2_tot-rsiena) | `totAltDist2; totInAltDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_dist2_tot-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totAltDist2; totInAltDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -320,9 +396,13 @@ Measure id: `cat_alt_ax_dist2_tot`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totAXAltDist2; totAXInAltDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_ax_dist2_tot-rsiena) | `totAXAltDist2; totAXInAltDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_ax_dist2_tot-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totAXAltDist2; totAXInAltDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -334,9 +414,13 @@ Measure id: `cat_dist2_tot`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totDist2; totInDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_tot-rsiena) | `totDist2; totInDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_dist2_tot-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totDist2; totInDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -348,9 +432,13 @@ Measure id: `cat_alt_dist2_nc_tot`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totInAltDist2_nc` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_dist2_nc_tot-rsiena) | `totInAltDist2_nc` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_dist2_nc_tot-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totInAltDist2\_nc.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -362,9 +450,13 @@ Measure id: `cat_dist2_exposure_tot`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totInExposureDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_exposure_tot-rsiena) | `totInExposureDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_dist2_exposure_tot-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totInExposureDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -376,9 +468,13 @@ Measure id: `cat_dist2_sim_tot`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totInSimDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_sim_tot-rsiena) | `totInSimDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_dist2_sim_tot-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totInSimDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 
@@ -390,9 +486,13 @@ Measure id: `cat_alt_dist2_tot_x`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | · reported in docs | `totXAltDist2; totXInAltDist2` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_dist2_tot_x-rsiena) | `totXAltDist2; totXInAltDist2` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_alt_dist2_tot_x-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. RSiena 1.6.6 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (RSiena exported functions and help titles; effects from getEffects()); API names: totXAltDist2; totXInAltDist2.
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 {% endraw %}

@@ -48,9 +48,13 @@ Measure id: `cat_block_draw_state`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `DrawBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_draw_state-graphtool) | `DrawBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_draw_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: DrawBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -62,9 +66,13 @@ Measure id: `cat_block_em_state`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `EMBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_em_state-graphtool) | `EMBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_em_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: EMBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -76,9 +84,13 @@ Measure id: `cat_block_closure_latent_state`. Original family: Statistical fitti
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `LatentClosureBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_closure_latent_state-graphtool) | `LatentClosureBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_closure_latent_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: LatentClosureBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -90,9 +102,13 @@ Measure id: `cat_block_latent_mask_state`. Original family: Statistical fitting.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `LatentMaskBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_latent_mask_state-graphtool) | `LatentMaskBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_latent_mask_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: LatentMaskBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -104,9 +120,13 @@ Measure id: `cat_block_latent_multigraph_state`. Original family: Statistical fi
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `LatentMultigraphBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_latent_multigraph_state-graphtool) | `LatentMultigraphBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_latent_multigraph_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: LatentMultigraphBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -118,9 +138,13 @@ Measure id: `cat_block_layered_state`. Original family: Signed and multilayer.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `LayeredBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_layered_state-graphtool) | `LayeredBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_layered_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: LayeredBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -132,9 +156,13 @@ Measure id: `cat_block_layered_overlap_state`. Original family: Signed and multi
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `LayeredOverlapBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_layered_overlap_state-graphtool) | `LayeredOverlapBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_layered_overlap_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: LayeredOverlapBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -146,9 +174,13 @@ Measure id: `cat_block_layered_state_weighted`. Original family: Signed and mult
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `LayeredWeightedBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_layered_state_weighted-graphtool) | `LayeredWeightedBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_layered_state_weighted-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: LayeredWeightedBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -160,9 +192,13 @@ Measure id: `cat_block_layered_overlap_state_weighted`. Original family: Signed 
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `LayeredWeightedOverlapBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_layered_overlap_state_weighted-graphtool) | `LayeredWeightedOverlapBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_layered_overlap_state_weighted-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: LayeredWeightedOverlapBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -174,9 +210,13 @@ Measure id: `cat_block_measured_state`. Original family: Graph theory and combin
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `MeasuredBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_measured_state-graphtool) | `MeasuredBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_measured_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: MeasuredBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -188,9 +228,13 @@ Measure id: `cat_block_closure_measured_state`. Original family: Graph theory an
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `MeasuredClosureBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_closure_measured_state-graphtool) | `MeasuredClosureBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_closure_measured_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: MeasuredClosureBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -202,9 +246,13 @@ Measure id: `cat_block_measured_mixed_state`. Original family: Graph theory and 
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `MixedMeasuredBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_measured_mixed_state-graphtool) | `MixedMeasuredBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_measured_mixed_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: MixedMeasuredBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -216,9 +264,13 @@ Measure id: `cat_block_nested_state`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `NestedBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_nested_state-graphtool) | `NestedBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_nested_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: NestedBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -230,9 +282,13 @@ Measure id: `cat_block_overlap_state`. Original family: Graph theory and combina
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `OverlapBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_overlap_state-graphtool) | `OverlapBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_overlap_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: OverlapBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -244,9 +300,13 @@ Measure id: `cat_block_pp_state`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `PPBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_pp_state-graphtool) | `PPBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_pp_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: PPBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -258,9 +318,13 @@ Measure id: `cat_block_ranked_state`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `RankedBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_ranked_state-graphtool) | `RankedBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_ranked_state-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: RankedBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -272,9 +336,13 @@ Measure id: `cat_block_state_uncertain`. Original family: Graph theory and combi
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `UncertainBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_state_uncertain-graphtool) | `UncertainBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_state_uncertain-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: UncertainBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -286,9 +354,13 @@ Measure id: `cat_block_state_weighted`. Original family: Graph theory and combin
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `WeightedBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_state_weighted-graphtool) | `WeightedBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_state_weighted-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: WeightedBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -300,9 +372,13 @@ Measure id: `cat_block_overlap_state_weighted`. Original family: Graph theory an
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `WeightedOverlapBlockState` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_overlap_state_weighted-graphtool) | `WeightedOverlapBlockState` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_overlap_state_weighted-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: WeightedOverlapBlockState.
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 {% endraw %}

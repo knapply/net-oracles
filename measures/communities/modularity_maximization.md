@@ -46,12 +46,18 @@ Measure id: `fast_greedy`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ∅ checked, no value on some inputs | `greedy_modularity_communities; naive_greedy_modularity_communities` |  |
-| [igraph (R)](../../tools/igraph.html) | ≠ checked, differs by convention | `cluster_fast_greedy` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | · reported in docs | `community_fastgreedy` | API listing |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `Community detection (6.7xx): FastGreedy, LabelProp, LocalGreedy (6.809), Louvain-type, Moca, Girvan-Newman, factor-analysis clustering, polish partitions, Initi; FastGreedy` | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `greedy_modularity_communities; naive_greedy_modularity_communities` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (direction, multi-edges, self-loops, ties and weights): Exactly tied mergers on the greedy path are common (modularity gains are sums of small fractions): igraph breaks them by its own order and may reach... [details](#why-fast_greedy-igraph) | `cluster_fast_greedy` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-fast_greedy-pyigraph) | `community_fastgreedy` | API listing |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-fast_greedy-ucinet) | `Community detection (6.7xx): FastGreedy, LabelProp, LocalGreedy (6.809), Louvain-type, Moca, Girvan-Newman, factor-analysis clustering, polish partitions, Initi; FastGreedy` | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-fast_greedy-igraph"></a>**[igraph (R)](../../tools/igraph.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> igraph (R) 2.3.4 was run and its value differs from the reference value by convention (direction, multi-edges, self-loops, ties and weights) on inputs tagged directed and undirected. fast\_greedy: Exactly tied mergers on the greedy path are common (modularity gains are sums of small fractions): igraph breaks them by its own order and may reach a different dendrogram and best level. On networks without community structure (complete6, star8, two nodes and one edge) every merger along the reference value's path raises modularity and the path ends in one group (modularity 0), while igraph reports a partition of negative modularity. The definition oracle checks the reference. fast\_greedy\_weighted: Tied mergers as for fast\_greedy; and self-loops, which igraph drops (one node with a loop: igraph -1, the reference 0). No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 15 comparisons differ and 12 agree.
+- <a id="why-fast_greedy-pyigraph"></a>**[igraph (Python)](../../tools/pyigraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: community\_fastgreedy.
+- <a id="why-fast_greedy-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -76,10 +82,14 @@ Measure id: `cnx_greedy_modularity`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `GreedyModularityAlgorithm` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cnx_greedy_modularity-jgrapht) | `GreedyModularityAlgorithm` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cnx_greedy_modularity-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: GreedyModularityAlgorithm.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -98,11 +108,17 @@ Measure id: `leading_eigen`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | ✓ checked, agrees | `cluster_leading_eigen` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | · reported in docs | `community_leading_eigenvector` | API listing |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `NCD` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, multi-edges, self-loops and ties): On a disconnected network the leading eigenvector of a division's modularity matrix can be degenerate (components with equal eigenvalues, zero... [details](#why-leading_eigen-igraph) | `cluster_leading_eigen` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-leading_eigen-pyigraph) | `community_leading_eigenvector` | API listing |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-leading_eigen-ucinet) | `NCD` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-leading_eigen-igraph"></a>**[igraph (R)](../../tools/igraph.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> igraph (R) 2.3.4 was run and its value differs from the reference value by convention (defaults, multi-edges, self-loops and ties) on inputs tagged disconnected and symmetric\_nodes and the fixtures mid\_plc\_und\_5000, mid\_plc\_und\_real\_3000. leading\_eigen: On a disconnected network the leading eigenvector of a division's modularity matrix can be degenerate (components with equal eigenvalues, zero components for isolated nodes), and the definition oracle declines; igraph's ARPACK vector and the reference value's then split differently. On the two size-tier power-law networks the modularities differ by 5e-7 (0.356872 against 0.356871): the division is decided by the signs of eigenvector entries, and the entries below the solvers' stopping tolerances are assigned differently (about one low-degree node). leading\_eigen\_membership: igraph puts each isolated node in a group of its own; the reference leaves isolated nodes, whose eigenvector components are zero, on the non-positive side of each division. Isolated nodes add nothing to modularity, so the modularity of the two partitions is the same (checked by leading\_eigen). With symmetric positions the leading eigenvector of a division can be repeated or have zero components, which the two place differently. leading\_eigen\_weighted: On a disconnected network the leading eigenvector of a division's modularity matrix can be degenerate (components with equal eigenvalues, zero components for isolated nodes), and the definition oracle declines; igraph's ARPACK vector and the reference value's then split differently. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-14, rel 1e-12; abs 0, rel 0 (0 means exact equality). 14 comparisons differ and 46 agree. Finding F011 (convention): Leading-eigenvector modularity differs at 1e-6 through the ARPACK tolerance. Findings: [F011](../../findings.html#f011).
+- <a id="why-leading_eigen-pyigraph"></a>**[igraph (Python)](../../tools/pyigraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: community\_leading\_eigenvector.
+- <a id="why-leading_eigen-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -130,14 +146,21 @@ Measure id: `leiden`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `leiden_communities; leiden_partitions` |  |
-| [igraph (R)](../../tools/igraph.html) | ∅ checked, no value on some inputs | `cluster_leiden` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | · reported in docs | `community_leiden` | API listing |
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `ParallelLeiden` | API listing |
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `Leiden` | API listing |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `localgreedy` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `leiden_communities; leiden_partitions` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `cluster_leiden` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-leiden-pyigraph) | `community_leiden` | API listing |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-leiden-networkit) | `ParallelLeiden` | API listing |
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-leiden-sknetwork) | `Leiden` | API listing |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-leiden-ucinet) | `localgreedy` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-leiden-pyigraph"></a>**[igraph (Python)](../../tools/pyigraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: community\_leiden.
+- <a id="why-leiden-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: ParallelLeiden.
+- <a id="why-leiden-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: Leiden.
+- <a id="why-leiden-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -159,9 +182,9 @@ Measure id: `cnx_leiden_seeded`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -180,9 +203,13 @@ Measure id: `cat_hierarchy_louvain`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `LouvainHierarchy` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_hierarchy_louvain-sknetwork) | `LouvainHierarchy` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_hierarchy_louvain-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: LouvainHierarchy.
 
 **Tools cited:** [tool_sknetwork](../../references.html#tool_sknetwork)
 
@@ -194,9 +221,13 @@ Measure id: `cat_iteration_louvain`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `LouvainIteration` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_iteration_louvain-sknetwork) | `LouvainIteration` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_iteration_louvain-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: LouvainIteration.
 
 **Tools cited:** [tool_sknetwork](../../references.html#tool_sknetwork)
 
@@ -208,15 +239,25 @@ Measure id: `louvain_modularity`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ≠ checked, differs by convention | `louvain_communities; louvain_partitions` |  |
-| [igraph (R)](../../tools/igraph.html) | · reported in docs | `cluster_louvain` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | · reported in docs | `community_multilevel` | API listing |
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `LouvainMapEquation; PLM` | API listing |
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `Louvain` | API listing |
-| [BCT (Octave)](../../tools/bct.html) | · reported in docs | `community_louvain; modularity_finetune_dir; modularity_finetune_und; modularity_finetune_und_sign; modularity_louvain_dir; modularity_louvain_und; modularity_louvain_und_sign; modularity_probtune_und_sign` | API listing |
-| [UCINET](../../tools/ucinet.html) | · reported in docs |  | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults): NetworkX returns 0 for a network without edges. [details](#why-louvain_modularity-networkx) | `louvain_communities; louvain_partitions` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-louvain_modularity-igraph) | `cluster_louvain` | API listing |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-louvain_modularity-pyigraph) | `community_multilevel` | API listing |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-louvain_modularity-networkit) | `LouvainMapEquation; PLM` | API listing |
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-louvain_modularity-sknetwork) | `Louvain` | API listing |
+| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-louvain_modularity-bct) | `community_louvain; modularity_finetune_dir; modularity_finetune_und; modularity_finetune_und_sign; modularity_louvain_dir; modularity_louvain_und; modularity_louvain_und_sign; modularity_probtune_und_sign` | API listing |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-louvain_modularity-ucinet) |  | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-louvain_modularity-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> NetworkX 3.7 was run and its value differs from the reference value by convention (defaults) on inputs tagged edge\_case and edgeless. louvain\_modularity and louvain\_modularity\_resolution: NetworkX returns 0 for a network without edges; this reference returns NaN. louvain\_modularity\_weighted: Without edges modularity is 0 / 0; NetworkX returns 0, the reference NaN. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 2 comparisons differ and 63 agree.
+- <a id="why-louvain_modularity-igraph"></a>**[igraph (R)](../../tools/igraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (R) 2.3.4 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package igraph: exported functions and help titles); API names: cluster\_louvain.
+- <a id="why-louvain_modularity-pyigraph"></a>**[igraph (Python)](../../tools/pyigraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: community\_multilevel.
+- <a id="why-louvain_modularity-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: LouvainMapEquation; PLM.
+- <a id="why-louvain_modularity-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: Louvain.
+- <a id="why-louvain_modularity-bct"></a>**[BCT (Octave)](../../tools/bct.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. BCT (Octave) 2019-03-03 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (bctpy public functions (the Python port of the Brain Connectivity Toolbox function set)); API names: community\_louvain; modularity\_finetune\_dir; modularity\_finetune\_und; modularity\_finetune\_und\_sign; modularity\_louvain\_dir; modularity\_louvain\_und; modularity\_louvain\_und\_sign; modularity\_probtune\_und\_sign.
+- <a id="why-louvain_modularity-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -238,11 +279,17 @@ Measure id: `louvain_quality`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ≠ checked, differs by convention |  |  |
-| [igraph (R)](../../tools/igraph.html) | ≠ checked, differs by convention |  |  |
-| [Gephi toolkit](../../tools/gephi.html) | ≠ checked, differs by convention |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, direction and ties): NetworkX returns 0 for a network without edges. [details](#why-louvain_quality-networkx) |  |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, direction and ties): Two different randomized procedures: the mean modularity over 20 seeds agrees within the tolerance on the corpus, but on small graphs the spread... [details](#why-louvain_quality-igraph) |  |  |
+| [Gephi toolkit](../../tools/gephi.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (multi-edges and self-loops): With self-loops Gephi's modularity changes (mean of 20 runs 0.249 with the loops, 0.321 with the loops removed and parallel edges kept). [details](#why-louvain_quality-gephi) |  |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-louvain_quality-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> NetworkX 3.7 was run and its value differs from the reference value by convention (defaults, direction and ties) on inputs tagged directed, edge\_case, edgeless and undirected. louvain\_quality and louvain\_quality\_resolution: NetworkX returns 0 for a network without edges; this reference returns NaN. louvain\_quality\_weighted: Two different randomized procedures: the mean modularity over the seeds agrees within the tolerance on the corpus but not on every graph; the comparison is statistical, not per run (and without edges modularity is 0 / 0: the reference NaN, the tools 0). No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 0.02, rel 0; abs 0.01, rel 0; abs 0.005, rel 0 (0 means exact equality). 2 comparisons differ and 63 agree.
+- <a id="why-louvain_quality-igraph"></a>**[igraph (R)](../../tools/igraph.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> igraph (R) 2.3.4 was run and its value differs from the reference value by convention (defaults, direction and ties) on inputs tagged directed and undirected. louvain\_quality: Two different randomized procedures: the mean modularity over 20 seeds agrees within the tolerance on the corpus, but on small graphs the spread between runs exceeds it (0.219 against 0.187 on 7 nodes); the comparison is statistical, not per run. louvain\_quality\_resolution and louvain\_quality\_weighted: Two different randomized procedures: the mean modularity over the seeds agrees within the tolerance on the corpus but not on every graph; the comparison is statistical, not per run (and without edges modularity is 0 / 0: the reference NaN, the tools 0). No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 0.02, rel 0; abs 0.01, rel 0; abs 0.005, rel 0 (0 means exact equality). 1 comparisons differ and 73 agree.
+- <a id="why-louvain_quality-gephi"></a>**[Gephi toolkit](../../tools/gephi.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Gephi toolkit 0.11.3 was run and its value differs from the reference value by convention (multi-edges and self-loops) on the fixtures multi\_loops\_und. With self-loops Gephi's modularity changes (mean of 20 runs 0.249 with the loops, 0.321 with the loops removed and parallel edges kept); the reference value and the definition oracle count a loop as degree 2, the standard modularity of a multigraph. Relation to the reference value: Self-loops: a loop enters the neighbourhood; removing loops gives the simple-graph value. Meaning: reciprocal of gamma; modularity reported at gamma = 1; runs not reproducible, sometimes non-terminating. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 0.02, rel 0 (0 means exact equality). 1 comparisons differ and 23 agree. Finding F015 (defect): Louvain with setRandom(false) is not reproducible. Finding F016 (defect): Louvain sometimes does not return. Finding F022 (convention): Louvain resolution acts as the reciprocal of gamma. Findings: [F015](../../findings.html#f015), [F016](../../findings.html#f016), [F022](../../findings.html#f022).
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -277,9 +324,9 @@ Measure id: `cnx_louvain_seeded`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -298,9 +345,13 @@ Measure id: `cnx_naive_greedy`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ≠ checked, differs by convention |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (direction and ties): Exactly tied merges: NetworkX compares whole-partition modularities summed in set order, so rounding decides. [details](#why-cnx_naive_greedy-networkx) |  |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cnx_naive_greedy-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> NetworkX 3.7 was run and its value differs from the reference value by convention (direction and ties) on inputs tagged directed and undirected. Exactly tied merges: NetworkX compares whole-partition modularities summed in set order, so rounding decides; the reference compares gains and takes the first pair. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 0, rel 0 (0 means exact equality). 2 comparisons differ and 26 agree.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -318,9 +369,9 @@ Measure id: `cnx_naive_greedy_nx`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -338,10 +389,14 @@ Measure id: `optimal_modularity`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | ✓ checked, agrees | `cluster_optimal` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | · reported in docs | `community_optimal_modularity` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `cluster_optimal` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-optimal_modularity-pyigraph) | `community_optimal_modularity` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-optimal_modularity-pyigraph"></a>**[igraph (Python)](../../tools/pyigraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: community\_optimal\_modularity.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

@@ -28,10 +28,15 @@ Measure id: `group:betweenness`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ≠ checked, differs by convention | `group_betweenness_centrality` |  |
-| [rustworkx](../../tools/rustworkx.html) | · reported in docs | `digraph_group_betweenness_centrality; graph_group_betweenness_centrality; group_betweenness_centrality` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (multi-edges and weights): NetworkX counts parallel edges as one path. [details](#why-group-betweenness-networkx) | `group_betweenness_centrality` |  |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-group-betweenness-rustworkx) | `digraph_group_betweenness_centrality; graph_group_betweenness_centrality; group_betweenness_centrality` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-group-betweenness-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> NetworkX 3.7 was run and its value differs from the reference value by convention (multi-edges and weights) on inputs tagged fractional\_weights and multi\_edges. group\_betweenness: NetworkX counts parallel edges as one path; the reference counts them as distinct shortest paths, as igraph's betweenness does. group\_betweenness\_raw: NetworkX counts parallel edges as one path. group\_betweenness\_weighted: NetworkX keeps one edge per pair of nodes; and it compares floating- point path lengths exactly, so with non-integer weights a path can be counted or dropped by rounding (306 against 310 paths on real\_weights\_dir; 7 against 6 on an 8-node digraph, where integer weights scaled by 1e6 give 6: a NetworkX defect). The definition oracle, in exact arithmetic, agrees with the reference. Mapping: the reference value computed with the adjacency-matrix reading (parallel edges collapse into one tie, self-loops dropped) agrees with the tool within abs 1e-14, rel 1e-12 on all 4 comparisons where the difference occurs. Tolerance before mapping: abs 1e-14, rel 1e-12; abs 1e-12, rel 1e-09 (0 means exact equality). 4 comparisons differ and 53 agree. Finding F001 (defect): group\_betweenness\_centrality compares float path lengths exactly. Finding F030 (defect): group\_betweenness\_centrality can vary with PYTHONHASHSEED. Findings: [F001](../../findings.html#f001), [F030](../../findings.html#f030).
+- <a id="why-group-betweenness-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: digraph\_group\_betweenness\_centrality; graph\_group\_betweenness\_centrality; group\_betweenness\_centrality.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

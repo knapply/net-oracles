@@ -1,0 +1,383 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "reasons.json",
+ "description": "One object per capabilities.csv row whose state is not checked-agrees: why the entry is not 'agrees'. build.py --check fails if such a row has no object here, if the object's state differs from the row's, or if a required field of its state is missing. Join keys: measure, tool.",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "measure",
+   "tool",
+   "state",
+   "reason",
+   "short",
+   "reason_incomplete"
+  ],
+  "properties": {
+   "measure": {
+    "type": "string"
+   },
+   "tool": {
+    "type": "string"
+   },
+   "state": {
+    "enum": [
+     "reported-in-docs",
+     "checked-convention",
+     "checked-defect",
+     "checked-no-value"
+    ]
+   },
+   "reason": {
+    "type": "string",
+    "minLength": 40,
+    "description": "The reason in plain words, complete for its state: checked-convention names the convention, what each side does, the relation between the tool's value and the reference value and the tolerance; checked-defect says what is wrong, on which inputs, observed against expected, the tool version and the finding; checked-no-value says on which inputs there is no value and why, with the error text if known; reported-in-docs says why the entry was not run and the documentation source."
+   },
+   "short": {
+    "type": "string",
+    "minLength": 10,
+    "description": "One sentence for tooltips and table cells."
+   },
+   "reason_incomplete": {
+    "type": "boolean",
+    "description": "True when the sources do not say everything the state requires; 'missing' then says what is not known."
+   },
+   "missing": {
+    "type": "string",
+    "description": "Present when reason_incomplete is true: what the sources do not say."
+   },
+   "tool_version": {
+    "type": "string",
+    "description": "Version of the tool that was run (checked states)."
+   },
+   "convention": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    },
+    "description": "checked-convention: the conventions involved (normalization, direction, weights, self-loops, multi-edges, ties, defaults, scaling, ordering, ...)."
+   },
+   "relation": {
+    "type": "string",
+    "description": "The relation between the tool's value and the reference value where the sources state it."
+   },
+   "mapping": {
+    "type": "array",
+    "description": "checked-convention: the mapping of the reference value that reproduces the tool's value, with the tolerance after mapping.",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "description",
+      "tolerance",
+      "variants"
+     ],
+     "properties": {
+      "description": {
+       "type": "string"
+      },
+      "tolerance": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "abs",
+        "rel"
+       ],
+       "properties": {
+        "abs": {
+         "type": "number",
+         "minimum": 0
+        },
+        "rel": {
+         "type": "number",
+         "minimum": 0
+        }
+       }
+      },
+      "variants": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    }
+   },
+   "inputs": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "differs",
+     "no_value"
+    ],
+    "properties": {
+     "differs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "tags",
+       "named"
+      ],
+      "properties": {
+       "tags": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Structural conditions of the inputs (loops, multi_edges, directed, disconnected, ...; the list is in data.md)."
+       },
+       "named": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Fixture names from data/fixtures.json (or sized fixtures) on which it was observed."
+       }
+      }
+     },
+     "no_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "tags",
+       "named"
+      ],
+      "properties": {
+       "tags": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Structural conditions of the inputs (loops, multi_edges, directed, disconnected, ...; the list is in data.md)."
+       },
+       "named": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        },
+        "description": "Fixture names from data/fixtures.json (or sized fixtures) on which it was observed."
+       }
+      }
+     }
+    }
+   },
+   "comparisons": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "agreeing",
+     "differing"
+    ],
+    "properties": {
+     "agreeing": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "differing": {
+      "type": "integer",
+      "minimum": 0
+     }
+    }
+   },
+   "observed": {
+    "type": "string",
+    "description": "checked-defect: the value the tool gave."
+   },
+   "expected": {
+    "type": "string",
+    "description": "checked-defect: the value under the published definition."
+   },
+   "findings": {
+    "type": "array",
+    "items": {
+     "type": "string",
+     "pattern": "^F[0-9]{3}$"
+    }
+   },
+   "variants": {
+    "type": "array",
+    "description": "The measure's variants that differ or give no value, one object each.",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "variant",
+      "outcome",
+      "reason",
+      "tolerance"
+     ],
+     "properties": {
+      "variant": {
+       "type": "string"
+      },
+      "outcome": {
+       "enum": [
+        "differs",
+        "no-value"
+       ]
+      },
+      "reason": {
+       "type": "string"
+      },
+      "convention": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "tolerance": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "abs",
+        "rel"
+       ],
+       "properties": {
+        "abs": {
+         "type": "number",
+         "minimum": 0
+        },
+        "rel": {
+         "type": "number",
+         "minimum": 0
+        }
+       }
+      },
+      "differs_inputs": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "tags",
+        "named"
+       ],
+       "properties": {
+        "tags": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": "Structural conditions of the inputs (loops, multi_edges, directed, disconnected, ...; the list is in data.md)."
+        },
+        "named": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": "Fixture names from data/fixtures.json (or sized fixtures) on which it was observed."
+        }
+       }
+      },
+      "no_value_inputs": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "tags",
+        "named"
+       ],
+       "properties": {
+        "tags": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": "Structural conditions of the inputs (loops, multi_edges, directed, disconnected, ...; the list is in data.md)."
+        },
+        "named": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": "Fixture names from data/fixtures.json (or sized fixtures) on which it was observed."
+        }
+       }
+      },
+      "no_value_reason": {
+       "type": "string"
+      },
+      "relation": {
+       "type": "string"
+      },
+      "mapping": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "description",
+        "tolerance",
+        "comparisons_agreeing",
+        "inputs"
+       ],
+       "properties": {
+        "description": {
+         "type": "string"
+        },
+        "tolerance": {
+         "type": "object",
+         "additionalProperties": false,
+         "required": [
+          "abs",
+          "rel"
+         ],
+         "properties": {
+          "abs": {
+           "type": "number",
+           "minimum": 0
+          },
+          "rel": {
+           "type": "number",
+           "minimum": 0
+          }
+         }
+        },
+        "comparisons_agreeing": {
+         "type": "integer",
+         "minimum": 0
+        },
+        "inputs": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        }
+       }
+      },
+      "not_compared_at_size": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+         "inputs",
+         "why"
+        ],
+        "properties": {
+         "inputs": {
+          "type": "array",
+          "items": {
+           "type": "string"
+          }
+         },
+         "why": {
+          "type": "string"
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "why_not_run": {
+    "enum": [
+     "not-yet-wired",
+     "documented-only-tool",
+     "commercial-closed-source"
+    ],
+    "description": "reported-in-docs: not-yet-wired (the tool was run on other measures, no comparison is set up for this one), documented-only-tool (the tool is documented-only in this survey), commercial-closed-source (proprietary, cannot be run on the test machines)."
+   },
+   "documentation": {
+    "type": "string",
+    "description": "reported-in-docs: the documentation or API listing the entry is taken from."
+   }
+  }
+ }
+}

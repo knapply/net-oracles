@@ -24,9 +24,13 @@ Measure id: `dynam`. Original family: Statistical fitting.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [goldfish](../../tools/goldfish.html) | · reported in docs |  | documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [goldfish](../../tools/goldfish.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: goldfish is documented-only in this survey; listed in its documentation. [details](#why-dynam-goldfish) |  | documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-dynam-goldfish"></a>**[goldfish](../../tools/goldfish.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. goldfish (1.6.12) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: R package goldfish: exported functions and help titles.
 
 **Tools cited:** [tool_goldfish](../../references.html#tool_goldfish)
 {% endraw %}

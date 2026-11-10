@@ -24,13 +24,18 @@ Measure id: `constraint`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ≠ checked, differs by convention | `constraint; local_constraint` |  |
-| [igraph (R)](../../tools/igraph.html) | ✓ checked, agrees | `constraint` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | ✓ checked, agrees | `constraint` |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `constraint` | published documentation |
-| [manynet](../../tools/manynet.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, self-loops, ties and weights): NetworkX keeps self-loops in the adjacency matrix, so a loop adds to the node's total tie volume and lowers every p\_ij. [details](#why-constraint-networkx) | `constraint; local_constraint` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `constraint` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `constraint` |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-constraint-ucinet) | `constraint` | published documentation |
+| [manynet](../../tools/manynet.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-constraint-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> NetworkX 3.7 was run and its value differs from the reference value by convention (defaults, self-loops, ties and weights) on inputs tagged loops. constraint: NetworkX keeps self-loops in the adjacency matrix, so a loop adds to the node's total tie volume and lowers every p\_ij. Burt's measure concerns ties to others; this reference and igraph ignore loops. constraint\_weighted: A node whose only tie is a self-loop has no neighbours, so Burt's constraint is undefined for the reference value and the definition oracle; NetworkX counts the loop as a tie to itself (4 for one loop of weight 2). No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-12, rel 1e-12 (0 means exact equality). 2 comparisons differ and 33 agree.
+- <a id="why-constraint-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

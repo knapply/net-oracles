@@ -41,23 +41,35 @@ Measure id: `closeness`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `closeness_centrality` |  |
-| [igraph (R)](../../tools/igraph.html) | ✓ checked, agrees | `closeness` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | ✓ checked, agrees | `closeness` |  |
-| [sna](../../tools/sna.html) | ✓ checked, agrees | `closeness` |  |
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `closeness` | API listing |
-| [NetworKit](../../tools/networkit.html) | ✓ checked, agrees | `Closeness` |  |
-| [rustworkx](../../tools/rustworkx.html) | ✓ checked, agrees | `closeness_centrality; digraph_closeness_centrality; graph_closeness_centrality` |  |
-| [scikit-network](../../tools/sknetwork.html) | ≠ checked, differs by convention | `Closeness` |  |
-| [JGraphT](../../tools/jgrapht.html) | ≠ checked, differs by convention | `ClosenessCentrality` |  |
-| [Boost Graph Library](../../tools/boost.html) | ≠ checked, differs by convention | `closeness_centrality` |  |
-| [Gephi toolkit](../../tools/gephi.html) | ≠ checked, differs by convention |  |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `Closeness: Freeman (inverse of total distance), unreachable set to max observed + 1 (default), n, or ignored; InClose/OutClose; reciprocal-distance variant` | published documentation |
-| [tnet](../../tools/tnet.html) | · reported in docs | `closeness_w` | API listing |
-| [netrankr](../../tools/netrankr.html) | ≠ checked, differs by convention |  |  |
-| [centiserve](../../tools/centiserve.html) | · reported in docs | `closeness.freeman` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `closeness_centrality` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `closeness` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `closeness` |  |
+| [sna](../../tools/sna.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `closeness` |  |
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-closeness-graphtool) | `closeness` | API listing |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `Closeness` |  |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `closeness_centrality; digraph_closeness_centrality; graph_closeness_centrality` |  |
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults): Closeness() sets the score of every node that does not reach all others to 0 (ranking/closeness.py). [details](#why-closeness-sknetwork) | `Closeness` |  |
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults): JGraphT's closeness is exactly 0 for a node that does not reach every other node, and Infinity for the lone node of a one-node network (checked on... [details](#why-closeness-jgrapht) | `ClosenessCentrality` |  |
+| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults): BGL's closeness is 1 / (sum of distances) with DBL\_MAX standing in for an unreachable distance, so a node that cannot reach every other node gets... [details](#why-closeness-boost) | `closeness_centrality` |  |
+| [Gephi toolkit](../../tools/gephi.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, direction and normalization): Gephi gives 0 to a node that reaches no other node. [details](#why-closeness-gephi) |  |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-closeness-ucinet) | `Closeness: Freeman (inverse of total distance), unreachable set to max observed + 1 (default), n, or ignored; InClose/OutClose; reciprocal-distance variant` | published documentation |
+| [tnet](../../tools/tnet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-closeness-tnet) | `closeness_w` | API listing |
+| [netrankr](../../tools/netrankr.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, direction and weights): netrankr takes 1 over the sum of the finite and infinite distances, so a node that does not reach every other node gets 0 (an isolated node too). [details](#why-closeness-netrankr) |  |  |
+| [centiserve](../../tools/centiserve.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-closeness-centiserve) | `closeness.freeman` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-closeness-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: closeness.
+- <a id="why-closeness-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> scikit-network 0.33.0 was run and its value differs from the reference value by convention (defaults) on the fixtures gnp\_dir\_sparse, multi\_loops\_dir, pair, weighted\_dir. Closeness() sets the score of every node that does not reach all others to 0 (ranking/closeness.py); the reference ignores unreachable nodes and leaves a node that reaches none undefined. Mapping: the reference value computed with the tool's convention (0 for a node that does not reach every other node, as sna) agrees with the tool within abs 1e-14, rel 1e-12 on all 4 comparisons where the difference occurs. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 4 comparisons differ and 19 agree.
+- <a id="why-closeness-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> JGraphT 1.5.2 was run and its value differs from the reference value by convention (defaults) on the fixtures empty, gnp\_dir\_sparse, gnp\_und\_sparse, multi\_loops\_dir, multi\_loops\_und, pair, single\_node, two\_triangles\_isolate, weighted\_dir. JGraphT's closeness is exactly 0 for a node that does not reach every other node, and Infinity for the lone node of a one-node network (checked on all 1534 node values of the corpus); the reference uses the reachable nodes only (unreachable: ignore) and marks a node reaching no other as undefined. Fixtures listed are those with such nodes. Relation to the reference value: Nodes not reaching everyone: value is exactly 0 for a node that cannot reach every other node (not the reachable-only sum the reference uses); Infinity for the single node of a one-node network. Mapping: the reference value computed with the tool's convention (0 for a node that does not reach every other node, as sna) agrees with the tool within abs 1e-14, rel 1e-12 on all 22 comparisons where the difference occurs. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 23 comparisons differ and 49 agree. Finding F047 (convention): Closeness is 0 for a node that cannot reach every other node. Findings: [F047](../../findings.html#f047).
+- <a id="why-closeness-boost"></a>**[Boost Graph Library](../../tools/boost.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Boost Graph Library 1.90 was run and its value differs from the reference value by convention (defaults) on the fixtures empty, gnp\_dir\_sparse, gnp\_und\_sparse, multi\_loops\_dir, multi\_loops\_und, pair, single\_node, two\_triangles\_isolate, weighted\_dir. BGL's closeness is 1 / (sum of distances) with DBL\_MAX standing in for an unreachable distance, so a node that cannot reach every other node gets about 5.6e-309 (effectively 0), and the lone node of a one-node network gets Infinity (1/0); the reference uses the reachable nodes only (unreachable: ignore) and marks a node reaching no other as undefined. Listed fixtures contain such nodes. Relation to the reference value: Nodes not reaching everyone: 1 / sum of distances with DBL\_MAX for an unreachable distance, giving about 5.6e-309 (zero in effect); Infinity on one node. Normalization: 1 / sum of distances, i.e. the reference value's unnormalized closeness; times (n-1) gives the normalized one. Mapping: the reference value computed with the tool's convention (0 for a node that does not reach every other node, as sna) agrees with the tool within abs 1e-14, rel 1e-12 on all 8 comparisons where the difference occurs. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 9 comparisons differ and 19 agree. Finding F048 (convention): Closeness is 1 / sum of distances, with DBL\_MAX for an unreachable pair. Findings: [F048](../../findings.html#f048).
+- <a id="why-closeness-gephi"></a>**[Gephi toolkit](../../tools/gephi.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Gephi toolkit 0.11.3 was run and its value differs from the reference value by convention (defaults, direction and normalization) on the fixtures empty, gnp\_dir\_sparse, gnp\_und\_sparse, multi\_loops\_und, pair, single\_node, two\_triangles\_isolate, weighted\_dir. closeness\_all: Gephi gives 0 to a node that reaches no other node; the reference leaves closeness undefined there (reported -1). closeness\_normalized: Gephi's closeness is (nodes reached) / (sum of distances to them), the reference value's unreachable: ignore reading, but it gives 0 to a node that reaches no other node (isolated, or a sink in a directed network); the reference leaves closeness undefined there (reported -1). setNormalized does not change it. Relation to the reference value: Nodes reaching nobody: (reached) / (sum of distances), 0 for a node that reaches nobody (the reference: undefined); setNormalized has no effect. Mapping: the reference value computed with the tool's convention (nodes reached / sum of distances, and 0 for a node that reaches no other node) agrees with the tool within abs 1e-14, rel 1e-12 on all 9 comparisons where the difference occurs. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 9 comparisons differ and 28 agree. Finding F018 (convention): Closeness is reached/sum of distances; 0 for a node reaching nobody. Findings: [F018](../../findings.html#f018).
+- <a id="why-closeness-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
+- <a id="why-closeness-tnet"></a>**[tnet](../../tools/tnet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. tnet 3.0.16 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package tnet: exported functions and help titles); API names: closeness\_w.
+- <a id="why-closeness-netrankr"></a>**[netrankr](../../tools/netrankr.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> netrankr 2.0.0 was run and its value differs from the reference value by convention (defaults, direction and weights) on inputs tagged disconnected. netrankr takes 1 over the sum of the finite and infinite distances, so a node that does not reach every other node gets 0 (an isolated node too); the reference (and igraph) sum over the nodes reached, and leave a node that reaches none undefined. Relation to the reference value: Nodes without reachable nodes: empty distance sum inverts to 0 where the reference value and igraph give NaN. Mapping: the reference value computed with the tool's convention (0 for a node that does not reach every other node, as sna) agrees with the tool within abs 1e-14, rel 1e-12 on all 3 comparisons where the difference occurs. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 3 comparisons differ and 15 agree. Finding F081 (convention): Empty distance sum inverts to 0. Findings: [F081](../../findings.html#f081).
+- <a id="why-closeness-centiserve"></a>**[centiserve](../../tools/centiserve.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. centiserve 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package centiserve: exported functions and help titles); API names: closeness.freeman.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -125,9 +137,13 @@ Measure id: `closeness_approx`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `ApproxCloseness; DynTopHarmonicCloseness; GroupClosenessGrowShrink; GroupClosenessLocalSearch; GroupClosenessLocalSwaps; GroupHarmonicCloseness; TopCloseness` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-closeness_approx-networkit) | `ApproxCloseness; DynTopHarmonicCloseness; GroupClosenessGrowShrink; GroupClosenessLocalSearch; GroupClosenessLocalSwaps; GroupHarmonicCloseness; TopCloseness` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-closeness_approx-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: ApproxCloseness; DynTopHarmonicCloseness; GroupClosenessGrowShrink; GroupClosenessLocalSearch; GroupClosenessLocalSwaps; GroupHarmonicCloseness; TopCloseness.
 
 **Tools cited:** [staudt2016networkit](../../references.html#staudt2016networkit)
 
@@ -139,9 +155,13 @@ Measure id: `cat_closeness_latora`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [centiserve](../../tools/centiserve.html) | · reported in docs | `closeness.latora` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [centiserve](../../tools/centiserve.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_closeness_latora-centiserve) | `closeness.latora` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_closeness_latora-centiserve"></a>**[centiserve](../../tools/centiserve.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. centiserve 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package centiserve: exported functions and help titles); API names: closeness.latora.
 
 **Tools cited:** [jalili2015centiserver](../../references.html#jalili2015centiserver)
 
@@ -153,9 +173,13 @@ Measure id: `cat_closeness_residual`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [centiserve](../../tools/centiserve.html) | · reported in docs | `closeness.residual` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [centiserve](../../tools/centiserve.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_closeness_residual-centiserve) | `closeness.residual` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_closeness_residual-centiserve"></a>**[centiserve](../../tools/centiserve.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. centiserve 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package centiserve: exported functions and help titles); API names: closeness.residual.
 
 **Tools cited:** [jalili2015centiserver](../../references.html#jalili2015centiserver)
 
@@ -167,9 +191,13 @@ Measure id: `cat_closeness_incremental`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | · reported in docs | `incremental_closeness_centrality` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_closeness_incremental-networkx) | `incremental_closeness_centrality` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_closeness_incremental-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: incremental\_closeness\_centrality.
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -181,9 +209,13 @@ Measure id: `cat_closeness_newman_weighted`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [rustworkx](../../tools/rustworkx.html) | · reported in docs | `digraph_newman_weighted_closeness_centrality; graph_newman_weighted_closeness_centrality; newman_weighted_closeness_centrality` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_closeness_newman_weighted-rustworkx) | `digraph_newman_weighted_closeness_centrality; graph_newman_weighted_closeness_centrality; newman_weighted_closeness_centrality` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_closeness_newman_weighted-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: digraph\_newman\_weighted\_closeness\_centrality; graph\_newman\_weighted\_closeness\_centrality; newman\_weighted\_closeness\_centrality.
 
 **Tools cited:** [tool_rustworkx](../../references.html#tool_rustworkx)
 
@@ -195,9 +227,13 @@ Measure id: `cat_closeness_swan`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [netrankr](../../tools/netrankr.html) | · reported in docs | `swan_closeness` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [netrankr](../../tools/netrankr.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_closeness_swan-netrankr) | `swan_closeness` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_closeness_swan-netrankr"></a>**[netrankr](../../tools/netrankr.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. netrankr 2.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package netrankr: exported functions and help titles); API names: swan\_closeness.
 
 **Tools cited:** [schoch2018centrality](../../references.html#schoch2018centrality)
 
@@ -209,11 +245,16 @@ Measure id: `twomode:closeness`. Original family: Two-mode and bipartite.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ≠ checked, differs by convention |  |  |
-| [igraph (R)](../../tools/igraph.html) | ∅ checked, no value on some inputs |  |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs |  | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults): One node, or a node that reaches nobody: no other node to be close to. [details](#why-twomode-closeness-networkx) |  |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-twomode-closeness-ucinet) |  | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-twomode-closeness-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> NetworkX 3.7 was run and its value differs from the reference value by convention (defaults) on inputs tagged isolates and one\_node. One node, or a node that reaches nobody: no other node to be close to; the reference reports undefined, NetworkX 0. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 0, rel 1e-12 (0 means exact equality). No value (twomode\_closeness) on the fixtures complete5\_dir, complete6, cycle7\_dir, empty, florentine, gnp\_dir\_dense, gnp\_dir\_sparse, gnp\_und\_dense, gnp\_und\_sparse, karate, kite, les\_miserables, multi\_loops\_dir, multi\_loops\_und, pair, path10, real\_weights\_dir, real\_weights\_und, single\_node, southern\_women, star8, two\_triangles\_isolate, uniform\_weights, weighted\_dir, weighted\_und: one-mode fixture (no node types). 1 comparisons differ and 7 agree.
+- <a id="why-twomode-closeness-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

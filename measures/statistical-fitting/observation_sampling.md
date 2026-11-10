@@ -38,9 +38,13 @@ Measure id: `cat_block_dyad_sampler`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | · reported in docs | `blockDyadSampler` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_block_dyad_sampler-missSBM) | `blockDyadSampler` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_dyad_sampler-missSBM"></a>**[missSBM](../../tools/missSBM.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. missSBM (1.1.0) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of missSBM 1.1.0: help topics.
 
 **Tools cited:** [tool_misssbm](../../references.html#tool_misssbm)
 
@@ -52,9 +56,13 @@ Measure id: `cat_block_sampler`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | · reported in docs | `blockNodeSampler` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_block_sampler-missSBM) | `blockNodeSampler` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_block_sampler-missSBM"></a>**[missSBM](../../tools/missSBM.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. missSBM (1.1.0) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of missSBM 1.1.0: help topics.
 
 **Tools cited:** [tool_misssbm](../../references.html#tool_misssbm)
 
@@ -66,9 +74,13 @@ Measure id: `cat_degree_sampler`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | · reported in docs | `degreeSampler` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_degree_sampler-missSBM) | `degreeSampler` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_degree_sampler-missSBM"></a>**[missSBM](../../tools/missSBM.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. missSBM (1.1.0) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of missSBM 1.1.0: help topics.
 
 **Tools cited:** [tool_misssbm](../../references.html#tool_misssbm)
 
@@ -80,9 +92,13 @@ Measure id: `cat_double_sampler_standard`. Original family: Graph theory and com
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | · reported in docs | `doubleStandardSampler` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_double_sampler_standard-missSBM) | `doubleStandardSampler` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_double_sampler_standard-missSBM"></a>**[missSBM](../../tools/missSBM.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. missSBM (1.1.0) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of missSBM 1.1.0: help topics.
 
 **Tools cited:** [tool_misssbm](../../references.html#tool_misssbm)
 
@@ -94,9 +110,13 @@ Measure id: `cat_dyad_sampler`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | · reported in docs | `dyadSampler` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_dyad_sampler-missSBM) | `dyadSampler` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_dyad_sampler-missSBM"></a>**[missSBM](../../tools/missSBM.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. missSBM (1.1.0) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of missSBM 1.1.0: help topics.
 
 **Tools cited:** [tool_misssbm](../../references.html#tool_misssbm)
 
@@ -108,9 +128,13 @@ Measure id: `cat_sampler`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | · reported in docs | `nodeSampler` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_sampler-missSBM) | `nodeSampler` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_sampler-missSBM"></a>**[missSBM](../../tools/missSBM.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. missSBM (1.1.0) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of missSBM 1.1.0: help topics.
 
 **Tools cited:** [tool_misssbm](../../references.html#tool_misssbm)
 
@@ -122,9 +146,13 @@ Measure id: `cat_dyad_sampler_simple`. Original family: Graph theory and combina
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | · reported in docs | `simpleDyadSampler` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_dyad_sampler_simple-missSBM) | `simpleDyadSampler` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_dyad_sampler_simple-missSBM"></a>**[missSBM](../../tools/missSBM.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. missSBM (1.1.0) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of missSBM 1.1.0: help topics.
 
 **Tools cited:** [tool_misssbm](../../references.html#tool_misssbm)
 
@@ -136,9 +164,13 @@ Measure id: `cat_sampler_simple`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | · reported in docs | `simpleNodeSampler` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_sampler_simple-missSBM) | `simpleNodeSampler` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_sampler_simple-missSBM"></a>**[missSBM](../../tools/missSBM.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. missSBM (1.1.0) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of missSBM 1.1.0: help topics.
 
 **Tools cited:** [tool_misssbm](../../references.html#tool_misssbm)
 
@@ -150,9 +182,13 @@ Measure id: `cat_sampler_snowball`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | · reported in docs | `snowballSampler` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_sampler_snowball-missSBM) | `snowballSampler` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_sampler_snowball-missSBM"></a>**[missSBM](../../tools/missSBM.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. missSBM (1.1.0) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of missSBM 1.1.0: help topics.
 
 **Tools cited:** [tool_misssbm](../../references.html#tool_misssbm)
 {% endraw %}

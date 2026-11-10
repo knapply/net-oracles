@@ -1,7 +1,7 @@
 ---
 title: Findings
 layout: default
-nav_order: 5
+nav_order: 6
 ---
 
 {% raw %}
@@ -107,6 +107,8 @@ Bugs, disagreements and limitations observed in other tools. `kind` is *defect* 
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: reproduced.
 
+**Entry:** [Group / betweenness](measures/centrality/group_betweenness.html#group-betweenness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (multi-edges and weights): NetworkX counts parallel edges as one path. [Full reason](measures/centrality/group_betweenness.html#why-group-betweenness-networkx).
+
 **Observed:** 7.0 on the directed 8-node graph in the reproduction; the 12-cycle with random weights gave 16 where the exact count is 14
 
 **Expected:** 6.0 (pairs outside {0,1,2} with a shortest path through the group: (5,3),(5,4),(5,6),(7,3),(7,4),(7,6), one path each)
@@ -130,6 +132,8 @@ nx.group_betweenness_centrality(G, [0,1,2], normalized=False, weight='weight')  
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: reproduced.
 
+**Entry:** [Prominent group](measures/centrality/group_prominence.html#nxo_prominent) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** prominent\_group(G, 2) returns (0.0, \[3, 0\])
 
 **Expected:** group\_betweenness\_centrality(G, \[0, 2\]) is 1.0, so a better group exists
@@ -148,6 +152,8 @@ nx.group_betweenness_centrality(G, [0, 2])  # 1.0
 ## F003 graph\_edit\_distance substitutes a self-loop for an ordinary edge at no cost {#f003}
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: reproduced.
+
+**Entry:** [Graph edit distance](measures/graph-theory-and-combinatorics/graph_edit_distance.html#ged) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
 
 **Observed:** 0
 
@@ -168,6 +174,8 @@ nx.graph_edit_distance(G1, G2)  # 0
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: observed.
 
+**Entry:** [Bellman ford](measures/paths-and-distances/shortest_paths.html#ord_bellman_ford) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** NetworkXUnbounded, even when the loop is unreachable from the source
 
 **Expected:** a negative self-loop that is unreachable from the source should not make the problem unbounded
@@ -177,6 +185,8 @@ Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: observed.
 ## F005 PageRank stops on an L1 change below n \* tol {#f005}
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
+
+**Entry:** [Pagerank](measures/centrality/pagerank.html#pagerank) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults and weights): The tool stops when the L1 change of the iterate falls below n \* tol, which leaves an error of a few 1e-9 relative on networks of thousands of nodes. [Full reason](measures/centrality/pagerank.html#why-pagerank-networkx).
 
 **Observed:** absolute error 3.4e-11 (relative 4.2e-9) against the exact solution on a 2000-node directed graph, damping 0.85
 
@@ -188,6 +198,8 @@ Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
 
 Tool: [rustworkx](tools/rustworkx.html) 0.18.1. Kind: convention. Status: observed.
 
+**Entry:** [Pagerank](measures/centrality/pagerank.html#pagerank) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction, normalization, self-loops and weights): rx.pagerank() takes a directed graph. [Full reason](measures/centrality/pagerank.html#why-pagerank-rustworkx).
+
 **Observed:** same stopping rule as NetworkX
 
 **Expected:** exact solution
@@ -197,6 +209,8 @@ Tool: [rustworkx](tools/rustworkx.html) 0.18.1. Kind: convention. Status: observ
 ## F007 Undirected self-loop is one arc {#f007}
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
+
+**Entry:** [Pagerank](measures/centrality/pagerank.html#pagerank) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults and weights): The tool stops when the L1 change of the iterate falls below n \* tol, which leaves an error of a few 1e-9 relative on networks of thousands of nodes. [Full reason](measures/centrality/pagerank.html#why-pagerank-networkx).
 
 **Observed:** path graph 0-1-2 with a loop at node 1: 0.5745 at node 1
 
@@ -216,6 +230,8 @@ nx.pagerank(G)[1]  # 0.5745
 
 Tool: [rustworkx](tools/rustworkx.html) 0.18.1. Kind: convention. Status: observed.
 
+**Entry:** [Pagerank](measures/centrality/pagerank.html#pagerank) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction, normalization, self-loops and weights): rx.pagerank() takes a directed graph. [Full reason](measures/centrality/pagerank.html#why-pagerank-rustworkx).
+
 **Observed:** same as NetworkX: the loop adds 1 to the node's out-degree
 
 **Expected:** two edge ends on the diagonal (igraph)
@@ -226,6 +242,8 @@ Tool: [rustworkx](tools/rustworkx.html) 0.18.1. Kind: convention. Status: observ
 
 Tool: [JGraphT](tools/jgrapht.html) 1.5.2. Kind: convention. Status: observed.
 
+**Entry:** [Pagerank](measures/centrality/pagerank.html#pagerank) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** same as NetworkX
 
 **Expected:** two edge ends on the diagonal (igraph)
@@ -235,6 +253,8 @@ Tool: [JGraphT](tools/jgrapht.html) 1.5.2. Kind: convention. Status: observed.
 ## F010 Walktrap skips minimal merge pairs on mid-size random networks {#f010}
 
 Tool: [igraph (R)](tools/igraph.html) 2.3.4. Kind: defect. Status: observed.
+
+**Entry:** [Walktrap](measures/communities/walktrap.html#walktrap) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, multi-edges, self-loops, ties and weights): exact ties between pairs of groups occur during the merges, which the reference breaks by group names and igraph by an undocumented rule. [Full reason](measures/communities/walktrap.html#why-walktrap-igraph).
 
 **Observed:** igraph merges a pair above the minimum (by more than a relative 1e-9) in 179 of 1999 merges (2000-node G(n,m)), 23 of 2498, 557 of 999 (dense, 1000 nodes) and 771 of 3999 (4000-node block model); the skipped pair joins a node to the group created by the preceding merge
 
@@ -248,6 +268,8 @@ References: [pons2006computing](references.html#pons2006computing)
 
 Tool: [igraph (R)](tools/igraph.html) 2.3.4. Kind: convention. Status: observed.
 
+**Entry:** [Leading eigen](measures/communities/modularity_maximization.html#leading_eigen) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, multi-edges, self-loops and ties): On a disconnected network the leading eigenvector of a division's modularity matrix can be degenerate (components with equal eigenvalues, zero... [Full reason](measures/communities/modularity_maximization.html#why-leading_eigen-igraph).
+
 **Observed:** 0.5404499 on Les Miserables (weighted)
 
 **Expected:** 0.5404514 from the exact eigenvector
@@ -257,6 +279,8 @@ Tool: [igraph (R)](tools/igraph.html) 2.3.4. Kind: convention. Status: observed.
 ## F012 Weighted distances (binary = FALSE) are not shortest-path lengths {#f012}
 
 Tool: [keyplayer](tools/keyplayer.html) 1.0.4. Kind: defect. Status: observed.
+
+**Entry:** [Kpp\_single / distance\_reach](measures/centrality/key_player_single.html#kpp_single-distance_reach) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults and weights): keyplayer's weighted distances are not the Dijkstra shortest-path lengths: on a probe graph its closeness-based reach lies 2 to 5 percent below the... [Full reason](measures/centrality/key_player_single.html#why-kpp_single-distance_reach-keyplayer).
 
 **Observed:** reach 0.4485 on an 8-node probe
 
@@ -268,6 +292,8 @@ Tool: [keyplayer](tools/keyplayer.html) 1.0.4. Kind: defect. Status: observed.
 
 Tool: [centiserve](tools/centiserve.html) 1.0.0. Kind: defect. Status: reproduced.
 
+**Entry:** [Communicability betweenness](measures/centrality/communicability_betweenness.html#cx_communicability_betweenness) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** error from requireNamespace
 
 **Expected:** a value; a patched copy gives matching values on connected networks and NaN on disconnected ones
@@ -277,6 +303,8 @@ Tool: [centiserve](tools/centiserve.html) 1.0.0. Kind: defect. Status: reproduce
 ## F014 Eigenvector centrality is not converged {#f014}
 
 Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: defect. Status: reproduced.
+
+**Entry:** [Eigenvector](measures/centrality/eigenvector_centrality.html#eigenvector) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction, multi-edges, normalization, self-loops, ties and weights): Gephi runs a fixed number of power-iteration steps (setNumRuns, here 10^6) without a convergence test, and its result is not the converged... [Full reason](measures/centrality/eigenvector_centrality.html#why-eigenvector-gephi).
 
 **Observed:** karate, node 0: k=1: 0.941; k=100: 0.957540; k=1000: 0.953256; k=10^5: 0.952067; k=10^6: 0.952061; k=10^8: 0.952103
 
@@ -296,6 +324,8 @@ References: [bonacich1987power](references.html#bonacich1987power)
 
 Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: defect. Status: reproduced.
 
+**Entry:** [Louvain quality](measures/communities/modularity_maximization.html#louvain_quality) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (multi-edges and self-loops): With self-loops Gephi's modularity changes (mean of 20 runs 0.249 with the loops, 0.321 with the loops removed and parallel edges kept). [Full reason](measures/communities/modularity_maximization.html#why-louvain_quality-gephi).
+
 **Observed:** karate modularity 0.3950, 0.4156, 0.4033, ... on repeated runs in one JVM
 
 **Expected:** identical results for identical input
@@ -313,6 +343,8 @@ References: [blondel2008fast](references.html#blondel2008fast)
 ## F016 Louvain sometimes does not return {#f016}
 
 Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: defect. Status: reproduced.
+
+**Entry:** [Louvain quality](measures/communities/modularity_maximization.html#louvain_quality) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (multi-edges and self-loops): With self-loops Gephi's modularity changes (mean of 20 runs 0.249 with the loops, 0.321 with the loops removed and parallel edges kept). [Full reason](measures/communities/modularity_maximization.html#why-louvain_quality-gephi).
 
 **Observed:** on a triangle, 2 of 100 repetitions did not return within 3 s (8 of 100 on a triangle plus an isolated node)
 
@@ -332,6 +364,8 @@ References: [blondel2008fast](references.html#blondel2008fast)
 
 Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: defect. Status: reproduced.
 
+**Entry:** [Pagerank](measures/centrality/pagerank.html#pagerank) <a class="st st-t st-defect" href="method.html#state-checked-defect"><span class="g" aria-hidden="true">✗</span>checked, defect</a> Defect: PageRank loses probability mass at self-loops; scores do not sum to 1 (finding F017). [Full reason](measures/centrality/pagerank.html#why-pagerank-gephi).
+
 **Observed:** undirected edges 0-0, 0-1, 1-2, damping 0.85: scores 0.1375, 0.2058, 0.1375 (sum 0.4807); directed arcs 0&gt;0, 0&gt;1, 1&gt;0: 0.5, 0.2875 (sum 0.7875)
 
 **Expected:** scores that sum to 1 (they do without the loop)
@@ -348,6 +382,8 @@ Run PageRank with epsilon 1e-14 on the graphs above.
 
 Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: convention. Status: observed.
 
+**Entry:** [Closeness](measures/centrality/closeness.html#closeness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction and normalization): Gephi gives 0 to a node that reaches no other node. [Full reason](measures/centrality/closeness.html#why-closeness-gephi).
+
 **Observed:** (nodes reached)/(sum of distances); setNormalized has no effect on closeness
 
 **Expected:** (n-1)/(sum of distances) with undefined for nodes that reach nobody
@@ -360,6 +396,8 @@ References: [freeman1978centrality](references.html#freeman1978centrality)
 
 Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: convention. Status: observed.
 
+**Entry:** [Hits](measures/centrality/hits.html#hits) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction, normalization and self-loops): Gephi scales the hub and authority vectors to unit Euclidean length. [Full reason](measures/centrality/hits.html#why-hits-gephi).
+
 **Observed:** unit-length vectors; 0 on an edgeless network
 
 **Expected:** tool-specific scaling
@@ -370,6 +408,8 @@ References: [kleinberg1999authoritative](references.html#kleinberg1999authoritat
 
 Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: convention. Status: observed.
 
+**Entry:** [Degree](measures/centrality/degree.html#degree) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** loop adds 2
 
 **Notes:** Betweenness, eccentricity, radius, diameter, density and components agree with the definition.
@@ -378,6 +418,8 @@ Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: convention. Status: observ
 
 Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: convention. Status: observed.
 
+**Entry:** [Average clustering](measures/descriptive-statistics/local_clustering.html#average_clustering) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (multi-edges and self-loops): Gephi counts a self-loop in a node's neighbourhood: with the loops removed (parallel edges kept) its coefficients and triangle counts equal the... [Full reason](measures/descriptive-statistics/local_clustering.html#why-average_clustering-gephi).
+
 **Observed:** nodes of degree 0 or 1 are excluded from the average (their local value is 0)
 
 **Expected:** average over all nodes with local value 0 for those nodes
@@ -385,6 +427,8 @@ Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: convention. Status: observ
 ## F022 Louvain resolution acts as the reciprocal of gamma {#f022}
 
 Tool: [Gephi toolkit](tools/gephi.html) 0.11.3. Kind: convention. Status: observed.
+
+**Entry:** [Louvain quality](measures/communities/modularity_maximization.html#louvain_quality) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (multi-edges and self-loops): With self-loops Gephi's modularity changes (mean of 20 runs 0.249 with the loops, 0.321 with the loops removed and parallel edges kept). [Full reason](measures/communities/modularity_maximization.html#why-louvain_quality-gephi).
 
 **Observed:** getModularity() always returns the gamma = 1 modularity
 
@@ -398,6 +442,8 @@ References: [blondel2008fast](references.html#blondel2008fast)
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: observed.
 
+**Entry:** [Index](measures/paths-and-distances/wiener_index.html#dm_index) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** twice the value of the defining formula (Randic 1993)
 
 **Expected:** published value
@@ -410,6 +456,8 @@ References: [randic1993novel](references.html#randic1993novel)
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: observed.
 
+**Entry:** [Betweenness subset](measures/centrality/betweenness.html#cx_betweenness_subset) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (multi-edges): NetworkX counts a pair of adjacent nodes once however many parallel edges join them. [Full reason](measures/centrality/betweenness.html#why-cx_betweenness_subset-networkx).
+
 **Observed:** values differ from the documented subset definition
 
 **Expected:** documented formula
@@ -419,6 +467,8 @@ Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: observed.
 ## F025 effective\_size is wrong for weighted or directed graphs on its vectorized path {#f025}
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: observed.
+
+**Entry:** [Effective size](measures/roles-and-positions/effective_size.html#effective_size) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (self-loops, ties and weights): NetworkX keeps self-loops in the adjacency matrix, so a loop adds to the node's tie volume and can be its strongest tie. [Full reason](measures/roles-and-positions/effective_size.html#why-effective_size-networkx).
 
 **Observed:** values differ from Burt's definition
 
@@ -446,6 +496,8 @@ Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: observed.
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: limitation. Status: observed.
 
+**Entry:** [K edge components](measures/components-and-connectivity/k_edge_components.html#k_edge_components) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** RecursionError
 
 **Expected:** a result
@@ -453,6 +505,8 @@ Tool: [NetworkX](tools/networkx.html) 3.7. Kind: limitation. Status: observed.
 ## F029 Ties are broken by Python set or insertion order {#f029}
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
+
+**Entry:** [Label propagation](measures/communities/label_propagation.html#label_propagation) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, multi-edges and self-loops): NetworkX runs on the simple graph here, while the reference counts parallel edges with their multiplicity. [Full reason](measures/communities/label_propagation.html#why-label_propagation-networkx).
 
 **Observed:** results depend on iteration order
 
@@ -464,6 +518,8 @@ Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: observed.
 
+**Entry:** [Group / betweenness](measures/centrality/group_betweenness.html#group-betweenness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (multi-edges and weights): NetworkX counts parallel edges as one path. [Full reason](measures/centrality/group_betweenness.html#why-group-betweenness-networkx).
+
 **Observed:** results vary with the hash seed on some inputs
 
 **Expected:** one value
@@ -473,6 +529,8 @@ Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: observed.
 ## F031 approximation.node\_connectivity starts from a bound that can exceed the connectivity {#f031}
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: defect. Status: reproduced.
+
+**Entry:** [Node connectivity](measures/components-and-connectivity/node_connectivity.html#ap_node_connectivity) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
 
 **Observed:** 2 for one node with a self-loop (6 for the complete digraph on 4 nodes)
 
@@ -492,6 +550,8 @@ nx.approximation.node_connectivity(G)  # 2
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
 
+**Entry:** [CD index](measures/traversal-trees-and-dags/cd_index.html#nxs_cd_index) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults and direction): NetworkX sums over every citer published up to the end of the window, including citers published before the focal node, and counts in the pool n... [Full reason](measures/traversal-trees-and-dags/cd_index.html#why-nxs_cd_index-networkx).
+
 **Observed:** on nodes 0, 1 with the arc 0 -&gt; 1 NetworkX gives 1
 
 **Expected:** undefined in the published definition (Funk and Owen-Smith 2017), whose window excludes earlier citers
@@ -504,6 +564,8 @@ References: [funk2017dynamic](references.html#funk2017dynamic)
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
 
+**Entry:** [Betweenness](measures/centrality/betweenness.html#betweenness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (multi-edges, normalization, ties and weights): NetworkX traverses neighbor sets, so parallel edges count as a single shortest path. [Full reason](measures/centrality/betweenness.html#why-betweenness-networkx).
+
 **Observed:** node 1 gets 1/2 on arcs 0-&gt;1 twice, 1-&gt;2, 0-&gt;3, 3-&gt;2
 
 **Expected:** 2/3 when each parallel edge is a distinct path (igraph, NetworKit)
@@ -514,6 +576,8 @@ References: [brandes2001faster](references.html#brandes2001faster)
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
 
+**Entry:** [Implicit family](measures/generators-and-rewiring/circulant_ring_graphs.html#implicit_family) <a class="st st-t st-nov" href="method.html#state-checked-no-value"><span class="g" aria-hidden="true">∅</span>checked, no value on some inputs</a> Checked, no comparison counts recorded for this entry. [Full reason](measures/generators-and-rewiring/circulant_ring_graphs.html#why-implicit_family-networkx).
+
 **Observed:** tuple labels
 
 **Expected:** integer labels from reading the tuple as a number
@@ -522,6 +586,8 @@ Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
 
+**Entry:** [Modularity](measures/communities/modularity.html#modularity) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults): NetworkX returns 0 for a network without edges. [Full reason](measures/communities/modularity.html#why-modularity-networkx).
+
 **Observed:** 0
 
 **Expected:** undefined (0/0)
@@ -529,6 +595,8 @@ Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
 ## F036 Adjusted Rand index is NaN on all-singleton partitions {#f036}
 
 Tool: [igraph (R)](tools/igraph.html) 2.3.4. Kind: convention. Status: observed.
+
+**Entry:** [Compare partitions](measures/communities/compare_partitions.html#compare_partitions) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults): on two nodes both fixed partitions are all singletons, so the two are identical and Hubert and Arabie's formula is 0/0. [Full reason](measures/communities/compare_partitions.html#why-compare_partitions-igraph).
 
 **Observed:** NaN
 
@@ -540,6 +608,8 @@ References: [hubert1985comparing](references.html#hubert1985comparing)
 
 Tool: [cdlib](tools/cdlib.html) 0.4.1. Kind: convention. Status: observed.
 
+**Entry:** [Compare partitions](measures/communities/compare_partitions.html#compare_partitions) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults): For partitions of one element cdlib (through scikit-learn) returns 1.0. [Full reason](measures/communities/compare_partitions.html#why-compare_partitions-cdlib).
+
 **Observed:** 1
 
 **Expected:** 0/0 in the definition
@@ -550,6 +620,8 @@ References: [hubert1985comparing](references.html#hubert1985comparing)
 
 Tool: [igraph (R)](tools/igraph.html) 2.3.4. Kind: convention. Status: observed.
 
+**Entry:** [Spinglass](measures/communities/spinglass.html#spinglass) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** two parallel edges on two nodes give -0.5
 
 **Expected:** -1 for the multigraph Hamiltonian
@@ -558,6 +630,8 @@ Tool: [igraph (R)](tools/igraph.html) 2.3.4. Kind: convention. Status: observed.
 
 Tool: [igraph (R)](tools/igraph.html) 2.3.4. Kind: defect. Status: observed.
 
+**Entry:** [Triad census](measures/descriptive-statistics/triad_census.html#triad_census) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (multi-edges and ties): igraph's triad census does not support multigraphs: parallel edges change its counts. [Full reason](measures/descriptive-statistics/triad_census.html#why-triad_census-igraph).
+
 **Observed:** values differ when parallel edges exist
 
 **Expected:** triad census of the underlying simple digraph or a documented rule
@@ -565,6 +639,8 @@ Tool: [igraph (R)](tools/igraph.html) 2.3.4. Kind: defect. Status: observed.
 ## F040 HITS returns 1 for an edgeless network {#f040}
 
 Tool: [igraph (R)](tools/igraph.html) 2.3.4. Kind: convention. Status: observed.
+
+**Entry:** [Hits](measures/centrality/hits.html#hits) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults and ties): Without ties the scores are undefined (reference NaN, igraph fills in values). [Full reason](measures/centrality/hits.html#why-hits-igraph).
 
 **Observed:** 1
 
@@ -576,6 +652,8 @@ References: [kleinberg1999authoritative](references.html#kleinberg1999authoritat
 
 Tool: [sna](tools/sna.html) 2.8. Kind: defect. Status: observed.
 
+**Entry:** [Information centrality](measures/centrality/information_centrality.html#information_centrality) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction, multi-edges, self-loops, ties and weights): On networks with more than one component sna's results differ from Stephenson and Zelen's formula as evaluated exactly by the definition oracle,... [Full reason](measures/centrality/information_centrality.html#why-information_centrality-sna).
+
 **Observed:** error or invalid values on disconnected or valued directed networks
 
 **Expected:** a documented rule for singular matrices
@@ -583,6 +661,8 @@ Tool: [sna](tools/sna.html) 2.8. Kind: defect. Status: observed.
 ## F042 Degree reads an adjacency matrix: parallel edges collapse and the diagonal is ignored by default {#f042}
 
 Tool: [sna](tools/sna.html) 2.8. Kind: convention. Status: observed.
+
+**Entry:** [Degree](measures/centrality/degree.html#degree) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, multi-edges and self-loops): sna works on adjacency matrices, so parallel edges collapse to one, and it ignores the diagonal by default (diag = FALSE). [Full reason](measures/centrality/degree.html#why-degree-sna).
 
 **Observed:** parallel edges count once; loops ignored (diag = FALSE)
 
@@ -594,6 +674,8 @@ Tool: [sna](tools/sna.html) 2.8. Kind: convention. Status: observed.
 
 Tool: [sna](tools/sna.html) 2.8. Kind: convention. Status: observed.
 
+**Entry:** [Closeness](measures/centrality/closeness.html#closeness) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** tool-specific normalizing constants
 
 **Notes:** Also differs from UCINET's documented normalizations.
@@ -604,6 +686,8 @@ References: [freeman1978centrality](references.html#freeman1978centrality)
 
 Tool: [sna](tools/sna.html) 2.8. Kind: convention. Status: observed.
 
+**Entry:** [Reciprocity](measures/descriptive-statistics/reciprocity.html#reciprocity) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction and ties): On a two-node network with one arc the two ordered pairs give the perfectly anticorrelated values (1, 0) and (0, 1), so the correlation is -1, as... [Full reason](measures/descriptive-statistics/reciprocity.html#why-reciprocity-sna).
+
 **Observed:** 0
 
 **Expected:** -1 (the correlation)
@@ -611,6 +695,8 @@ Tool: [sna](tools/sna.html) 2.8. Kind: convention. Status: observed.
 ## F045 Normalized betweenness divides by (n-1)(n-2) in undirected graphs {#f045}
 
 Tool: [JGraphT](tools/jgrapht.html) 1.5.2. Kind: convention. Status: observed.
+
+**Entry:** [Betweenness](measures/centrality/betweenness.html#betweenness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction and normalization): JGraphT normalizes the undirected betweenness by (n-1)(n-2) rather than (n-1)(n-2)/2: every nonzero value on all 16 undirected networks with at... [Full reason](measures/centrality/betweenness.html#why-betweenness-jgrapht).
 
 **Observed:** exactly half the standard value on 16 undirected fixtures with n &gt;= 3 (raw betweenness agrees)
 
@@ -622,6 +708,8 @@ References: [brandes2001faster](references.html#brandes2001faster)
 
 Tool: [Boost Graph Library](tools/boost.html) 1.90. Kind: convention. Status: observed.
 
+**Entry:** [Betweenness](measures/centrality/betweenness.html#betweenness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction and normalization): relative\_betweenness\_centrality gives exactly twice the reference value's normalized value on every directed network (checked on all six directed... [Full reason](measures/centrality/betweenness.html#why-betweenness-boost).
+
 **Observed:** ratio 2 on 6 directed fixtures with n &gt;= 3 (undirected agrees); 0/0 = NaN below 3 nodes
 
 **Expected:** standard value; 0 below 3 nodes in NetworkX
@@ -631,6 +719,8 @@ References: [brandes2001faster](references.html#brandes2001faster)
 ## F047 Closeness is 0 for a node that cannot reach every other node {#f047}
 
 Tool: [JGraphT](tools/jgrapht.html) 1.5.2. Kind: convention. Status: observed.
+
+**Entry:** [Closeness](measures/centrality/closeness.html#closeness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults): JGraphT's closeness is exactly 0 for a node that does not reach every other node, and Infinity for the lone node of a one-node network (checked on... [Full reason](measures/centrality/closeness.html#why-closeness-jgrapht).
 
 **Observed:** 0 for any node not reaching all; Infinity for the single node of a one-node network
 
@@ -642,6 +732,8 @@ References: [freeman1978centrality](references.html#freeman1978centrality)
 
 Tool: [Boost Graph Library](tools/boost.html) 1.90. Kind: convention. Status: observed.
 
+**Entry:** [Closeness](measures/centrality/closeness.html#closeness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults): BGL's closeness is 1 / (sum of distances) with DBL\_MAX standing in for an unreachable distance, so a node that cannot reach every other node gets... [Full reason](measures/centrality/closeness.html#why-closeness-boost).
+
 **Observed:** about 5.6e-309 for unreachable cases; Infinity on one node; equals the unnormalized closeness on connected networks
 
 **Expected:** normalized (n-1)/sum
@@ -652,6 +744,8 @@ References: [freeman1978centrality](references.html#freeman1978centrality)
 
 Tool: [JGraphT](tools/jgrapht.html) 1.5.2. Kind: convention. Status: observed.
 
+**Entry:** [Eccentricity](measures/paths-and-distances/eccentricity.html#eccentricity) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction): JGraphT's GraphMeasurer follows edge direction and returns Infinity for a node that cannot reach every other node. [Full reason](measures/paths-and-distances/eccentricity.html#why-eccentricity-jgrapht).
+
 **Observed:** Infinity
 
 **Expected:** longest finite shortest path
@@ -660,6 +754,8 @@ Tool: [JGraphT](tools/jgrapht.html) 1.5.2. Kind: convention. Status: observed.
 
 Tool: [Boost Graph Library](tools/boost.html) 1.90. Kind: convention. Status: observed.
 
+**Entry:** [Eccentricity](measures/paths-and-distances/eccentricity.html#eccentricity) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction): BGL's all\_eccentricities and radius\_and\_diameter follow edge direction and give DBL\_MAX for a node that cannot reach every other node. [Full reason](measures/paths-and-distances/eccentricity.html#why-eccentricity-boost).
+
 **Observed:** DBL\_MAX
 
 **Expected:** longest finite shortest path
@@ -667,6 +763,8 @@ Tool: [Boost Graph Library](tools/boost.html) 1.90. Kind: convention. Status: ob
 ## F051 Local clustering counts ordered neighbour pairs on directed input; counts loops and parallel edges in pseudographs {#f051}
 
 Tool: [JGraphT](tools/jgrapht.html) 1.5.2. Kind: convention. Status: observed.
+
+**Entry:** [Clustering](measures/descriptive-statistics/local_clustering.html#clustering) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction, multi-edges, self-loops and ties): JGraphT's local clustering on a directed graph counts ordered pairs of neighbours (denominator k(k-1) per arc direction), while the reference, like... [Full reason](measures/descriptive-statistics/local_clustering.html#why-clustering-jgrapht).
 
 **Observed:** half the undirected-neighbourhood value on directed input
 
@@ -678,6 +776,8 @@ References: [fagiolo2007clustering](references.html#fagiolo2007clustering)
 
 Tool: [Boost Graph Library](tools/boost.html) 1.90. Kind: convention. Status: observed.
 
+**Entry:** [Clustering](measures/descriptive-statistics/local_clustering.html#clustering) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction, multi-edges and self-loops): BGL's clustering\_coefficient counts parallel edges and loops as extra neighbours. [Full reason](measures/descriptive-statistics/local_clustering.html#why-clustering-boost).
+
 **Observed:** extra neighbours
 
 **Expected:** simple-graph value
@@ -688,17 +788,23 @@ References: [fagiolo2007clustering](references.html#fagiolo2007clustering)
 
 Tool: [JGraphT](tools/jgrapht.html) 1.5.2. Kind: limitation. Status: observed.
 
+**Entry:** [Transitivity](measures/descriptive-statistics/global_transitivity.html#transitivity) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction, multi-edges and self-loops): JGraphT counts loops and parallel edges as extra neighbours/triangles in a pseudograph. [Full reason](measures/descriptive-statistics/global_transitivity.html#why-transitivity-jgrapht).
+
 **Observed:** "Graph must be undirected"; NaN when there is no connected triple
 
 ## F054 Coreness and clique finders refuse non-simple input {#f054}
 
 Tool: [JGraphT](tools/jgrapht.html) 1.5.2. Kind: limitation. Status: observed.
 
+**Entry:** [Coreness](measures/cohesion-and-subgroups/k_core.html#coreness) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** "Graph must be simple"; coreness refuses directed input; the clique finder accepts directed input but does not return the maximal cliques of the underlying graph
 
 ## F055 Betweenness counts ordered pairs on undirected networks {#f055}
 
 Tool: [BCT (Octave)](tools/bct.html) 2019-03-03. Kind: convention. Status: observed.
+
+**Entry:** [Betweenness](measures/centrality/betweenness.html#betweenness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction, multi-edges, normalization, self-loops, ties and weights): BCT's betweenness\_bin counts ordered pairs, so an undirected network's value is exactly twice the reference value's (checked on every undirected... [Full reason](measures/centrality/betweenness.html#why-betweenness-bct).
 
 **Observed:** exactly twice the standard value
 
@@ -710,6 +816,8 @@ References: [brandes2001faster](references.html#brandes2001faster)
 
 Tool: [BCT (Octave)](tools/bct.html) 2019-03-03. Kind: convention. Status: observed.
 
+**Entry:** [Clustering](measures/descriptive-statistics/local_clustering.html#clustering) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction): BCT's directed variants (clustering\_coef\_bd, transitivity\_bd) are Fagiolo's directed coefficients, which weigh the in/out/cycle/middleman triangle... [Full reason](measures/descriptive-statistics/local_clustering.html#why-clustering-bct).
+
 **Observed:** values differ from the undirected-neighbourhood value on 5 directed fixtures
 
 **Notes:** Undirected simple networks agree.
@@ -720,11 +828,15 @@ References: [fagiolo2007clustering](references.html#fagiolo2007clustering)
 
 Tool: [BCT (Octave)](tools/bct.html) 2019-03-03. Kind: convention. Status: observed.
 
+**Entry:** [Eccentricity](measures/paths-and-distances/eccentricity.html#eccentricity) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults and direction): charpath(distance\_bin(A), 0, 0) takes the longest finite distance and gives NaN to a node that reaches nobody. [Full reason](measures/paths-and-distances/eccentricity.html#why-eccentricity-bct).
+
 **Observed:** NaN diameter for an edgeless network; radius ignores nodes reaching nobody
 
 ## F058 Degree assortativity is NaN for regular networks; the directed variant differs from the Pearson correlation of out-degree at the source and in-degree at the target {#f058}
 
 Tool: [BCT (Octave)](tools/bct.html) 2019-03-03. Kind: convention. Status: observed.
+
+**Entry:** [Assortativity degree](measures/mixing-and-assortativity/assortativity_coefficient.html#assortativity_degree) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction, multi-edges, self-loops, ties and weights): BCT returns NaN where the degree variance is zero (regular networks, a single node). [Full reason](measures/mixing-and-assortativity/assortativity_coefficient.html#why-assortativity_degree-bct).
 
 **Observed:** differences of 0.1% to 14% on 4 directed fixtures
 
@@ -738,11 +850,15 @@ References: [newman2002assortative](references.html#newman2002assortative)
 
 Tool: [BCT (Octave)](tools/bct.html) 2019-03-03. Kind: convention. Status: observed.
 
+**Entry:** [Degree](measures/centrality/degree.html#degree) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction, multi-edges, self-loops and ties): A bct call takes a binary adjacency matrix, which cannot carry loops or parallel edges: the driver keeps one arc per ordered pair and drops loops,... [Full reason](measures/centrality/degree.html#why-degree-bct).
+
 **Observed:** degree, coreness and local efficiency differ on multigraph inputs
 
 ## F060 Undirected betweenness scores both orderings of a pair {#f060}
 
 Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: convention. Status: observed.
+
+**Entry:** [Betweenness](measures/centrality/betweenness.html#betweenness) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
 
 **Observed:** twice the standard value
 
@@ -754,6 +870,8 @@ References: [brandes2001faster](references.html#brandes2001faster)
 
 Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: convention. Status: observed.
 
+**Entry:** [Closeness](measures/centrality/closeness.html#closeness) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** 1.0 on every node of K6 with normalized = False; ratio exactly n-1 on karate
 
 **Expected:** unnormalized 1/sum of distances
@@ -764,6 +882,8 @@ References: [freeman1978centrality](references.html#freeman1978centrality)
 
 Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: convention. Status: observed.
 
+**Entry:** [Edge betweenness](measures/centrality/edge_betweenness.html#edge_betweenness) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** not the input edge order
 
 **Notes:** Scores agree to 1e-14 after mapping by endpoints.
@@ -771,6 +891,8 @@ Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: convention. Status: observ
 ## F063 Katz and degree assortativity differ by 2% to 40% {#f063}
 
 Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: defect. Status: observed.
+
+**Entry:** [Katz](measures/centrality/katz_centrality.html#katz) <a class="st st-t st-docs" href="method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [Full reason](measures/centrality/katz_centrality.html#why-katz-networkit).
 
 **Observed:** differences on 7 to 11 fixtures each
 
@@ -784,6 +906,8 @@ References: [katz1953new](references.html#katz1953new)
 
 Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: defect. Status: observed.
 
+**Entry:** [Eigenvector](measures/centrality/eigenvector_centrality.html#eigenvector) <a class="st st-t st-docs" href="method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [Full reason](measures/centrality/eigenvector_centrality.html#why-eigenvector-networkit).
+
 **Observed:** differences of 6% to 90% on 7 to 11 fixtures
 
 **Expected:** converged eigenvector
@@ -794,11 +918,15 @@ References: [bonacich1987power](references.html#bonacich1987power)
 
 Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: convention. Status: observed.
 
+**Entry:** [Degree](measures/centrality/degree.html#degree) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** k-core on a directed graph ignores direction; degenerate inputs (no edges, two nodes) return sentinel values
 
 ## F066 MaximalCliques omits a node without edges {#f066}
 
 Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: convention. Status: observed.
+
+**Entry:** [Max cliques](measures/cohesion-and-subgroups/maximal_cliques.html#max_cliques) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
 
 **Observed:** isolates missing
 
@@ -807,6 +935,8 @@ Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: convention. Status: observ
 ## F067 Exact diameter on a weighted graph returns whole numbers; weighted Laplacian differs by 5% to 10% {#f067}
 
 Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: defect. Status: observed.
+
+**Entry:** [Diameter](measures/paths-and-distances/diameter.html#diameter) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
 
 **Observed:** 12.0 against 12.5
 
@@ -818,17 +948,23 @@ Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: defect. Status: observed.
 
 Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: convention. Status: observed.
 
+**Entry:** [Pagerank](measures/centrality/pagerank.html#pagerank) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** a 5% difference on a sparse random graph
 
 ## F069 weightedDegree counts out-edges only; a single node gets 0 {#f069}
 
 Tool: [NetworKit](tools/networkit.html) 11.2.2. Kind: convention. Status: observed.
 
+**Entry:** [Strength](measures/centrality/strength.html#strength) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Expected:** in plus out for directed input; undefined for one node
 
 ## F070 A network object holds each tie once and no loops {#f070}
 
 Tool: [ergm (statnet)](tools/ergm.html) 4.12.0. Kind: convention. Status: observed.
+
+**Entry:** [Density](measures/descriptive-statistics/density.html#density) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (multi-edges, self-loops and ties): A network object holds each tie once and no loops (multiple = FALSE, loops = FALSE), so the edge count drops parallel edges and loops that this... [Full reason](measures/descriptive-statistics/density.html#why-density-ergm).
 
 **Observed:** edge count lower than a multigraph's
 
@@ -838,11 +974,15 @@ Tool: [ergm (statnet)](tools/ergm.html) 4.12.0. Kind: convention. Status: observ
 
 Tool: [nauty](tools/nauty.html) 2.8.8. Kind: limitation. Status: observed.
 
+**Entry:** [Vf2pp](measures/graph-theory-and-combinatorics/graph_isomorphism.html#vf2pp) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** undefined on networks with parallel edges
 
 ## F072 The I-DAD normalized Laplacian normalizes by in-degrees on directed graphs {#f072}
 
 Tool: [graspologic](tools/graspologic.html) 3.4.4. Kind: convention. Status: observed.
+
+**Entry:** [Gm laplacian](measures/matrices-and-spectra/laplacian_matrix.html#gm_laplacian) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction): For a directed graph graspologic's 'I-DAD' form is D\_in^-1/2 (D\_in - A) D\_in^-1/2 with in-degrees (graspologic/utils/utils.py, to\_laplacian), and a... [Full reason](measures/matrices-and-spectra/laplacian_matrix.html#why-gm_laplacian-graspologic).
 
 **Observed:** a node without in-links gets 0 on the diagonal
 
@@ -854,6 +994,8 @@ Tool: [graspologic](tools/graspologic.html) 3.4.4. Kind: convention. Status: obs
 
 Tool: [egor](tools/egor.html) 1.25.10. Kind: convention. Status: observed.
 
+**Entry:** [Ei index](measures/mixing-and-assortativity/ei_index.html#ei_index) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction, multi-edges, self-loops and ties): egor's comp\_ei() counts alters, each neighbour once whatever the number or direction of the ties to it, and no self-loop. [Full reason](measures/mixing-and-assortativity/ei_index.html#why-ei_index-egor).
+
 **Observed:** one count per neighbour whatever the number or direction of ties
 
 **Expected:** count of ties
@@ -863,6 +1005,8 @@ Tool: [egor](tools/egor.html) 1.25.10. Kind: convention. Status: observed.
 ## F074 assortativity\_nominal(normalized=False) raises SystemError; eigenvector\_centrality(directed=False) on a directed graph raises Invalid mode {#f074}
 
 Tool: [igraph (Python)](tools/pyigraph.html) 1.0.0. Kind: limitation. Status: observed.
+
+**Entry:** [Assortativity nominal](measures/mixing-and-assortativity/assortativity_coefficient.html#assortativity_nominal) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
 
 **Observed:** error on every fixture
 
@@ -890,6 +1034,8 @@ References: [brandes2001faster](references.html#brandes2001faster)
 
 Tool: [centiserve](tools/centiserve.html) 1.0.0. Kind: convention. Status: observed.
 
+**Entry:** [Current flow closeness](measures/centrality/information_centrality.html#cx_current_flow_closeness) <a class="st st-t st-docs" href="method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [Full reason](measures/centrality/information_centrality.html#why-cx_current_flow_closeness-centiserve).
+
 **Observed:** ratio 31 on a two-mode fixture; ratio 2.0 on a dense random graph
 
 **Notes:** The raw Laplacian also differs on a fixture with loops.
@@ -897,6 +1043,8 @@ Tool: [centiserve](tools/centiserve.html) 1.0.0. Kind: convention. Status: obser
 ## F078 Weighted distance and closeness with the alpha exponent differ from the definition {#f078}
 
 Tool: [tnet](tools/tnet.html) 3.0.16. Kind: defect. Status: observed.
+
+**Entry:** [Distances](measures/paths-and-distances/geodesic_distances.html#distances) <a class="st st-t st-docs" href="method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [Full reason](measures/paths-and-distances/geodesic_distances.html#why-distances-tnet).
 
 **Observed:** differences on 7 weighted fixtures each
 
@@ -906,6 +1054,8 @@ Tool: [tnet](tools/tnet.html) 3.0.16. Kind: defect. Status: observed.
 
 Tool: [netrankr](tools/netrankr.html) 2.0.0. Kind: convention. Status: observed.
 
+**Entry:** [Betweenness](measures/centrality/betweenness.html#betweenness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction, multi-edges, self-loops, ties and weights): netrankr reads the simple undirected graph (parallel edges collapsed, loops dropped), while the reference counts parallel edges as distinct shortest... [Full reason](measures/centrality/betweenness.html#why-betweenness-netrankr).
+
 **Observed:** twice the standard value; parallel edges and loops dropped
 
 References: [brandes2001faster](references.html#brandes2001faster)
@@ -914,11 +1064,15 @@ References: [brandes2001faster](references.html#brandes2001faster)
 
 Tool: [netrankr](tools/netrankr.html) 2.0.0. Kind: convention. Status: observed.
 
+**Entry:** [Information centrality](measures/centrality/information_centrality.html#information_centrality) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
+
 **Observed:** ratio n on all connected fixtures
 
 ## F081 Empty distance sum inverts to 0 {#f081}
 
 Tool: [netrankr](tools/netrankr.html) 2.0.0. Kind: convention. Status: observed.
+
+**Entry:** [Closeness](measures/centrality/closeness.html#closeness) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction and weights): netrankr takes 1 over the sum of the finite and infinite distances, so a node that does not reach every other node gets 0 (an isolated node too). [Full reason](measures/centrality/closeness.html#why-closeness-netrankr).
 
 **Observed:** 0 for nodes without reachable nodes
 
@@ -929,6 +1083,8 @@ References: [freeman1978centrality](references.html#freeman1978centrality)
 ## F082 Effective size and efficiency differ on directed networks and multigraphs with loops {#f082}
 
 Tool: [manynet](tools/manynet.html) 2.4.0. Kind: defect. Status: observed.
+
+**Entry:** [Effective size](measures/roles-and-positions/effective_size.html#effective_size) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults, direction, multi-edges, normalization, self-loops and ties): manynet (netrics) returns a different value from the reference on directed networks, on multigraphs with loops, and on the two-node network (about... [Full reason](measures/roles-and-positions/effective_size.html#why-effective_size-manynet).
 
 **Observed:** half the standard value on a directed cycle
 
@@ -946,11 +1102,15 @@ Tool: [manynet](tools/manynet.html) 2.4.0. Kind: defect. Status: observed.
 
 Tool: [blockmodeling](tools/blockmodeling.html) 1.1.8. Kind: convention. Status: observed.
 
+**Entry:** [Structural equivalence](measures/roles-and-positions/structural_equivalence.html#structural_equivalence) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction): On a symmetric matrix (every undirected fixture and complete5\_dir) blockmodeling::sedist agrees with the reference. [Full reason](measures/roles-and-positions/structural_equivalence.html#why-structural_equivalence-blockmodeling).
+
 **Observed:** 7 directed fixtures differ; 20 others agree
 
 ## F085 From a complete first wave the mean tie count stays at 5.0 {#f085}
 
 Tool: [RSiena](tools/rsiena.html) 1.6.6. Kind: defect. Status: observed.
+
+**Entry:** [Saom sim mean](measures/statistical-fitting/saom_simulated_mean.html#saom_sim_mean) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (ties): From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value of the model, 5.4), where the reference value... [Full reason](measures/statistical-fitting/saom_simulated_mean.html#why-saom_sim_mean-rsiena).
 
 **Observed:** 5.0 on the 5-node complete digraph
 
@@ -962,6 +1122,8 @@ Tool: [RSiena](tools/rsiena.html) 1.6.6. Kind: defect. Status: observed.
 
 Tool: [GraphBLAS algorithms](tools/graphblas.html) 2023.10.0. Kind: defect. Status: observed.
 
+**Entry:** [Katz](measures/centrality/katz_centrality.html#katz) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (direction and multi-edges): graphblas-algorithms' katz\_centrality drops the beta term for nodes that have no in-links (they get no entry in the sparse result, read as 0), so... [Full reason](measures/centrality/katz_centrality.html#why-katz-graphblas).
+
 **Expected:** definition
 
 **Notes:** Beta lost at nodes without in-links; also 0 for PageRank, HITS, Katz on edgeless input.
@@ -971,6 +1133,8 @@ References: [katz1953new](references.html#katz1953new)
 ## F087 PageRank restart vector departs from the definition {#f087}
 
 Tool: [scikit-network](tools/sknetwork.html) 0.33.0. Kind: defect. Status: observed.
+
+**Entry:** [Pagerank](measures/centrality/pagerank.html#pagerank) <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Differs by convention (defaults): scikit-network's random-surfer operator weights the restart vector by each node's own out-degree status, b\_i = (1 - d \[i has out-links\]) y\_i... [Full reason](measures/centrality/pagerank.html#why-pagerank-sknetwork).
 
 **Expected:** definition
 
@@ -997,6 +1161,8 @@ References: [beamer2015gap](references.html#beamer2015gap)
 ## F090 Betweenness normalization can differ by a factor 2 from the Freeman convention {#f090}
 
 Tool: [graph-tool](tools/graphtool.html) 3.9. Kind: convention. Status: reported.
+
+**Entry:** [Betweenness](measures/centrality/betweenness.html#betweenness) <a class="st st-t st-docs" href="method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [Full reason](measures/centrality/betweenness.html#why-betweenness-graphtool).
 
 **Expected:** Freeman / BGL
 

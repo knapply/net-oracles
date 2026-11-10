@@ -31,9 +31,13 @@ Measure id: `classical_mds`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `MDS (metric, classic, non-metric), Guttman scaling (6.831), correspondence analysis, factor analysis; classicmds` | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-classical_mds-ucinet) | `MDS (metric, classic, non-metric), Guttman scaling (6.831), correspondence analysis, factor analysis; classicmds` | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-classical_mds-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet)
 
@@ -45,9 +49,13 @@ Measure id: `mds_nonmetric`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | · reported in docs |  | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-mds_nonmetric-ucinet) |  | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-mds_nonmetric-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet)
 {% endraw %}

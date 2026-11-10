@@ -1,7 +1,7 @@
 ---
 title: References
 layout: default
-nav_order: 8
+nav_order: 9
 ---
 
 {% raw %}
@@ -53,6 +53,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="brandes2009experimental"></a>`brandes2009experimental` Brandes, U.; Pich, C. (2009) An Experimental Study on Distance-Based Graph Drawing. \*Graph Drawing (GD 2008)\*, 5417, 218–229. doi:10.1007/978-3-642-00219-9\_21
 - <a id="breiger1974duality"></a>`breiger1974duality` Breiger, R.L. (1974) The Duality of Persons and Groups. \*Social Forces\*, 53(2), 181–190. doi:10.2307/2576011
 - <a id="breiger1975algorithm"></a>`breiger1975algorithm` Breiger, R.L.; Boorman, S.A.; Arabie, P. (1975) An Algorithm for Clustering Relational Data with Applications to Social Network Analysis and Comparison with Multidimensional Scaling. \*Journal of Mathematical Psychology\*, 12(3), 328–383. doi:10.1016/0022-2496(75)90028-0
+- <a id="breiger1986cumulated"></a>`breiger1986cumulated` Breiger, R.L.; Pattison, P.E. (1986) Cumulated Social Roles: The Duality of Persons and Their Algebras. \*Social Networks\*, 8(3), 215–256. doi:10.1016/0378-8733(86)90006-7
 - <a id="brelaz1979new"></a>`brelaz1979new` Brélaz, D. (1979) New Methods to Color the Vertices of a Graph. \*Communications of the ACM\*, 22(4), 251–256. doi:10.1145/359094.359101
 - <a id="brin1998anatomy"></a>`brin1998anatomy` Brin, S.; Page, L. (1998) The Anatomy of a Large-Scale Hypertextual Web Search Engine. \*Computer Networks and ISDN Systems\*, 30(1-7), 107–117. doi:10.1016/S0169-7552(98)00110-X
 - <a id="bron1973algorithm"></a>`bron1973algorithm` Bron, C.; Kerbosch, J. (1973) Algorithm 457: Finding All Cliques of an Undirected Graph. \*Communications of the ACM\*, 16(9), 575–577. doi:10.1145/362342.362367
@@ -75,6 +76,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="cytron1991efficiently"></a>`cytron1991efficiently` Cytron, R.; Ferrante, J.; Rosen, B.K.; Wegman, M.N.; Zadeck, F.K. (1991) Efficiently Computing Static Single Assignment Form and the Control Dependence Graph. \*ACM Transactions on Programming Languages and Systems\*, 13(4), 451–490. doi:10.1145/115372.115320
 - <a id="daniel1976reorthogonalization"></a>`daniel1976reorthogonalization` Daniel, J.W.; Gragg, W.B.; Kaufman, L.; Stewart, G.W. (1976) Reorthogonalization and Stable Algorithms for Updating the Gram-Schmidt QR Factorization. \*Mathematics of Computation\*, 30(136), 772–795. doi:10.1090/S0025-5718-1976-0431641-8
 - <a id="dantzig1951application"></a>`dantzig1951application` Dantzig, G.B. (1951) Application of the Simplex Method to a Transportation Problem. \*Activity Analysis of Production and Allocation\*, 359–373.
+- <a id="davis1941deep"></a>`davis1941deep` Davis, A.; Gardner, B.B.; Gardner, M.R. (1941) Deep South: A Social Anthropological Study of Caste and Class.
 - <a id="davis2019algorithm"></a>`davis2019algorithm` Davis, T.A. (2019) Algorithm 1000: SuiteSparse:GraphBLAS: Graph Algorithms in the Language of Sparse Linear Algebra. \*ACM Transactions on Mathematical Software\*, 45(4), 44:1–44:25. doi:10.1145/3322125
 - <a id="depina1995applications"></a>`depina1995applications` de Pina, J.C. (1995) Applications of Shortest Path Methods.
 - <a id="dial1969algorithm"></a>`dial1969algorithm` Dial, R.B. (1969) Algorithm 360: Shortest-Path Forest with Topological Ordering. \*Communications of the ACM\*, 12(11), 632–633. doi:10.1145/363269.363610
@@ -90,6 +92,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="edmonds1972theoretical"></a>`edmonds1972theoretical` Edmonds, J.; Karp, R.M. (1972) Theoretical Improvements in Algorithmic Efficiency for Network Flow Problems. \*Journal of the ACM\*, 19(2), 248–264. doi:10.1145/321694.321699
 - <a id="ellens2011effective"></a>`ellens2011effective` Ellens, W.; Spieksma, F.M.; Van Mieghem, P.; Jamakovic, A.; Kooij, R.E. (2011) Effective Graph Resistance. \*Linear Algebra and its Applications\*, 435(10), 2491–2506. doi:10.1016/j.laa.2011.02.024
 - <a id="eppstein2010listing"></a>`eppstein2010listing` Eppstein, D.; Löffler, M.; Strash, D. (2010) Listing All Maximal Cliques in Sparse Graphs in Near-Optimal Time. \*Algorithms and Computation (ISAAC 2010)\*, 6506, 403–414. doi:10.1007/978-3-642-17517-6\_36
+- <a id="erdos1959random"></a>`erdos1959random` ErdHos, P.; Rényi, A. (1959) On Random Graphs I. \*Publicationes Mathematicae Debrecen\*, 6, 290–297.
 - <a id="erdos2010simple"></a>`erdos2010simple` ErdHos, P.L.; Miklós, I.; Toroczkai, Z. (2010) A Simple Havel-Hakimi Type Algorithm to Realize Graphical Degree Sequences of Directed Graphs. \*The Electronic Journal of Combinatorics\*, 17(1), R66. doi:10.37236/338
 - <a id="esfahanian1984computing"></a>`esfahanian1984computing` Esfahanian, A.H.; Hakimi, S.L. (1984) On Computing the Connectivities of Graphs and Digraphs. \*Networks\*, 14(2), 355–366. doi:10.1002/net.3230140211
 - <a id="estrada2005spectral"></a>`estrada2005spectral` Estrada, E.; Rodriguez-Velázquez, J.A. (2005) Spectral Measures of Bipartivity in Complex Networks. \*Physical Review E\*, 72(4), 046105. doi:10.1103/PhysRevE.72.046105
@@ -132,6 +135,8 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="hebertdufresne2016multi"></a>`hebertdufresne2016multi` Hébert-Dufresne, L.; Grochow, J.A.; Allard, A. (2016) Multi-Scale Structure and Topological Anomaly Detection via a New Network Statistic: The Onion Decomposition. \*Scientific Reports\*, 6(1). doi:10.1038/srep31708
 - <a id="hestenes1952methods"></a>`hestenes1952methods` Hestenes, M.R.; Stiefel, E. (1952) Methods of Conjugate Gradients for Solving Linear Systems. \*Journal of Research of the National Bureau of Standards\*, 49(6), 409–436. doi:10.6028/jres.049.044
 - <a id="holland1976local"></a>`holland1976local` Holland, P.W.; Leinhardt, S. (1976) Local Structure in Social Networks. \*Sociological Methodology\*, 7, 1–45. doi:10.2307/270703
+- <a id="holland1983stochastic"></a>`holland1983stochastic` Holland, P.W.; Laskey, K.B.; Leinhardt, S. (1983) Stochastic Blockmodels: First Steps. \*Social Networks\*, 5(2), 109–137. doi:10.1016/0378-8733(83)90021-7
+- <a id="holme2002growing"></a>`holme2002growing` Holme, P.; Kim, B.J. (2002) Growing Scale-Free Networks with Tunable Clustering. \*Physical Review E\*, 65(2), 026107. doi:10.1103/PhysRevE.65.026107
 - <a id="hopcroft1973algorithm"></a>`hopcroft1973algorithm` Hopcroft, J.; Tarjan, R. (1973) Algorithm 447: Efficient Algorithms for Graph Manipulation. \*Communications of the ACM\*, 16(6), 372–378. doi:10.1145/362248.362272
 - <a id="hopcroft1973n52"></a>`hopcroft1973n52` Hopcroft, J.E.; Karp, R.M. (1973) An $n^5/2$ Algorithm for Maximum Matchings in Bipartite Graphs. \*SIAM Journal on Computing\*, 2(4), 225–231. doi:10.1137/0202019
 - <a id="hubert1985comparing"></a>`hubert1985comparing` Hubert, L.; Arabie, P. (1985) Comparing Partitions. \*Journal of Classification\*, 2(1), 193–218. doi:10.1007/BF01908075
@@ -156,8 +161,10 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="klein1995hyper"></a>`klein1995hyper` Klein, D.J.; Lukovits, I.; Gutman, I. (1995) On the Definition of the Hyper-Wiener Index for Cycle-Containing Structures. \*Journal of Chemical Information and Computer Sciences\*, 35(1), 50–52. doi:10.1021/ci00023a007
 - <a id="kleinberg1999authoritative"></a>`kleinberg1999authoritative` Kleinberg, J.M. (1999) Authoritative Sources in a Hyperlinked Environment. \*Journal of the ACM\*, 46(5), 604–632. doi:10.1145/324133.324140
 - <a id="knuth1974structured"></a>`knuth1974structured` Knuth, D.E.; Szwarcfiter, J.L. (1974) A Structured Program to Generate All Topological Sorting Arrangements. \*Information Processing Letters\*, 2(6), 153–157. doi:10.1016/0020-0190(74)90001-5
+- <a id="knuth1993stanford"></a>`knuth1993stanford` Knuth, D.E. (1993) The Stanford GraphBase: A Platform for Combinatorial Computing.
 - <a id="koschutzki2005centrality"></a>`koschutzki2005centrality` Koschützki, D.; Lehmann, K.A.; Peeters, L.; Richter, S.; Tenfelde-Podehl, D.; Zlotowski, O. (2005) Centrality Indices. \*Network Analysis: Methodological Foundations\*, 3418, 16–61. doi:10.1007/978-3-540-31955-9\_3
 - <a id="kosowski2004classical"></a>`kosowski2004classical` Kosowski, A.; Manuszewski, K. (2004) Classical Coloring of Graphs. \*Graph Colorings\*, 352.
+- <a id="krackhardt1990assessing"></a>`krackhardt1990assessing` Krackhardt, D. (1990) Assessing the Political Landscape: Structure, Cognition, and Power in Organizations. \*Administrative Science Quarterly\*, 35(2), 342–369. doi:10.2307/2393394
 - <a id="krivitsky2008fitting"></a>`krivitsky2008fitting` Krivitsky, P.N.; Handcock, M.S. (2008) Fitting Position Latent Cluster Models for Social Networks with latentnet. \*Journal of Statistical Software\*, 24(5), 1–23. doi:10.18637/jss.v024.i05
 - <a id="kruskal1956shortest"></a>`kruskal1956shortest` Kruskal, J.B. (1956) On the Shortest Spanning Subtree of a Graph and the Traveling Salesman Problem. \*Proceedings of the American Mathematical Society\*, 7(1), 48–50. doi:10.1090/S0002-9939-1956-0078686-7
 - <a id="kuhn1955hungarian"></a>`kuhn1955hungarian` Kuhn, H.W. (1955) The Hungarian Method for the Assignment Problem. \*Naval Research Logistics Quarterly\*, 2(1–2), 83–97. doi:10.1002/nav.3800020109
@@ -197,6 +204,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="nurmi2024pymnet"></a>`nurmi2024pymnet` Nurmi, T.; Badie-Modiri, A.; Coupette, C.; Kivelä, M. (2024) pymnet: A Python Library for Multilayer Networks. \*Journal of Open Source Software\*, 9(99), 6930. doi:10.21105/joss.06930
 - <a id="opsahl2010node"></a>`opsahl2010node` Opsahl, T.; Agneessens, F.; Skvoretz, J. (2010) Node Centrality in Weighted Networks: Generalizing Degree and Shortest Paths. \*Social Networks\*, 32(3), 245–251. doi:10.1016/j.socnet.2010.03.006
 - <a id="ortmann2017sparse"></a>`ortmann2017sparse` Ortmann, M.; Klimenta, M.; Brandes, U. (2017) A Sparse Stress Model. \*Journal of Graph Algorithms and Applications\*, 21(5), 791–821. doi:10.7155/jgaa.00440
+- <a id="padgett1993robust"></a>`padgett1993robust` Padgett, J.F.; Ansell, C.K. (1993) Robust Action and the Rise of the Medici, 1400–1434. \*American Journal of Sociology\*, 98(6), 1259–1319. doi:10.1086/230190
 - <a id="pares2018fluid"></a>`pares2018fluid` Parés, F.; Garcia-Gasulla, D.; Vilalta, A.; Moreno, J.; Ayguadé, E.; Labarta, J. et al. (2018) Fluid Communities: A Competitive, Scalable and Diverse Community Detection Algorithm. \*Complex Networks & Their Applications VI (COMPLEX NETWORKS 2017)\*, 689, 229–240. doi:10.1007/978-3-319-72150-7\_19
 - <a id="pebesma2018sf"></a>`pebesma2018sf` Pebesma, E. (2018) Simple Features for R: Standardized Support for Spatial Vector Data. \*The R Journal\*, 10(1), 439–446. doi:10.32614/RJ-2018-009
 - <a id="peixoto2014graphtool"></a>`peixoto2014graphtool` Peixoto, T.P. (2014) The graph-tool python library. doi:10.6084/m9.figshare.1164194
@@ -265,6 +273,8 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="white2001fast"></a>`white2001fast` White, D.R.; Newman, M.E.J. (2001) Fast Approximation Algorithms for Finding Node-Independent Paths in Networks. \*Santa Fe Institute Working Papers\*(01-07-035).
 - <a id="wilson1996generating"></a>`wilson1996generating` Wilson, D.B. (1996) Generating Random Spanning Trees More Quickly than the Cover Time. \*Proceedings of the Twenty-Eighth Annual ACM Symposium on Theory of Computing\*, 296–303. doi:10.1145/237814.237880
 - <a id="wu2000thick"></a>`wu2000thick` Wu, K.; Simon, H. (2000) Thick-Restart Lanczos Method for Large Symmetric Eigenvalue Problems. \*SIAM Journal on Matrix Analysis and Applications\*, 22(2), 602–616. doi:10.1137/S0895479898334605
+- <a id="wulczyn2015clickstream"></a>`wulczyn2015clickstream` Wulczyn, E.; Taraborelli, D. (2015) Wikipedia Clickstream. doi:10.6084/m9.figshare.1305770
+- <a id="zachary1977information"></a>`zachary1977information` Zachary, W.W. (1977) An Information Flow Model for Conflict and Fission in Small Groups. \*Journal of Anthropological Research\*, 33(4), 452–473. doi:10.1086/jar.33.4.3629752
 - <a id="zhang2008clustering"></a>`zhang2008clustering` Zhang, P.; Wang, J.; Li, X.; Li, M.; Di, Z.; Fan, Y. (2008) Clustering Coefficient and Community Structure of Bipartite Networks. \*Physica A: Statistical Mechanics and its Applications\*, 387(27), 6869–6875. doi:10.1016/j.physa.2008.09.006
 - <a id="zhang2015panther"></a>`zhang2015panther` Zhang, J.; Tang, J.; Ma, C.; Tong, H.; Jing, Y.; Li, J. (2015) Panther: Fast Top-k Similarity Search on Large Networks. \*Proceedings of the 21th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining\*, 1445–1454. doi:10.1145/2783258.2783267
 - <a id="zhang2016identifying"></a>`zhang2016identifying` Zhang, J.X.; Chen, D.B.; Dong, Q.; Zhao, Z.D. (2016) Identifying a Set of Influential Spreaders in Complex Networks. \*Scientific Reports\*, 6, 27823. doi:10.1038/srep27823

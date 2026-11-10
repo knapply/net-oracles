@@ -38,20 +38,31 @@ Measure id: `pagerank`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ≠ checked, differs by convention | `pagerank` |  |
-| [igraph (R)](../../tools/igraph.html) | ∅ checked, no value on some inputs | `page_rank` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | ✓ checked, agrees | `pagerank; personalized_pagerank` |  |
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `pagerank` | API listing |
-| [NetworKit](../../tools/networkit.html) | ∅ checked, no value on some inputs | `PageRank` |  |
-| [rustworkx](../../tools/rustworkx.html) | ≠ checked, differs by convention | `pagerank` |  |
-| [scikit-network](../../tools/sknetwork.html) | ≠ checked, differs by convention | `PageRank; get_pagerank` |  |
-| [JGraphT](../../tools/jgrapht.html) | ✓ checked, agrees | `PageRank` |  |
-| [Boost Graph Library](../../tools/boost.html) | · reported in docs | `page_rank` | API listing |
-| [GraphBLAS algorithms](../../tools/graphblas.html) | ≠ checked, differs by convention |  |  |
-| [Gephi toolkit](../../tools/gephi.html) | ✗ checked, defect | `PageRank` |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `PageRank` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults and weights): The tool stops when the L1 change of the iterate falls below n \* tol, which leaves an error of a few 1e-9 relative on networks of thousands of nodes. [details](#why-pagerank-networkx) | `pagerank` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `page_rank` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `pagerank; personalized_pagerank` |  |
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-pagerank-graphtool) | `pagerank` | API listing |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `PageRank` |  |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, direction, normalization, self-loops and weights): rx.pagerank() takes a directed graph. [details](#why-pagerank-rustworkx) | `pagerank` |  |
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults): scikit-network's random-surfer operator weights the restart vector by each node's own out-degree status, b\_i = (1 - d \[i has out-links\]) y\_i... [details](#why-pagerank-sknetwork) | `PageRank; get_pagerank` |  |
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `PageRank` |  |
+| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-pagerank-boost) | `page_rank` | API listing |
+| [GraphBLAS algorithms](../../tools/graphblas.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, direction, multi-edges and weights): graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins). [details](#why-pagerank-graphblas) |  |  |
+| [Gephi toolkit](../../tools/gephi.html) | <a class="st st-t st-defect" href="../../method.html#state-checked-defect"><span class="g" aria-hidden="true">✗</span>checked, defect</a> | Defect: PageRank loses probability mass at self-loops; scores do not sum to 1 (finding F017). [details](#why-pagerank-gephi) | `PageRank` |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-pagerank-ucinet) | `PageRank` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-pagerank-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> NetworkX 3.7 was run and its value differs from the reference value by convention (defaults and weights) on the fixtures mid\_messy\_dir\_int\_2000, mid\_plc\_dir\_4000. The tool stops when the L1 change of the iterate falls below n \* tol, which leaves an error of a few 1e-9 relative on networks of thousands of nodes. Against the exact solution of the linear system (numpy.linalg.solve) on mid\_messy\_dir\_int\_2000 NetworkX is off by 3.4e-11 absolute (4.2e-9 relative), the reference by 1.8e-12 (2.1e-10). No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-11, rel 1e-09 (0 means exact equality). No value (pagerank\_weighted\_networkx\_damping\_060) on inputs tagged negative\_weights: Negative weights are outside the measure's domain (lengths, transition probabilities, attenuated walks): the reference declines (no value) where the oracle computes numbers from them. 6 comparisons differ and 280 agree. Finding F005 (convention): PageRank stops on an L1 change below n \* tol. Finding F007 (convention): Undirected self-loop is one arc. Findings: [F005](../../findings.html#f005), [F007](../../findings.html#f007).
+- <a id="why-pagerank-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: pagerank.
+- <a id="why-pagerank-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> rustworkx 0.18.1 was run and its value differs from the reference value by convention (defaults, direction, normalization, self-loops and weights) on inputs tagged loops and the fixtures mid\_messy\_dir\_int\_2000, mid\_plc\_dir\_4000. pagerank: rx.pagerank() takes a directed graph; an undirected fixture enters as two arcs per edge and one arc per self-loop, so a loop counts once (NetworkX's convention, pagerank\_networkx), not twice (igraph's, this variant). pagerank\_networkx, pagerank\_personalized\_networkx and pagerank\_uniform\_dangling: The tool stops when the L1 change of the iterate falls below n \* tol, which leaves an error of a few 1e-9 relative on networks of thousands of nodes. Against the exact solution of the linear system (numpy.linalg.solve) on mid\_messy\_dir\_int\_2000 NetworkX is off by 3.4e-11 absolute (4.2e-9 relative), the reference by 1.8e-12 (2.1e-10). pagerank\_personalized: A self-loop enters rx.pagerank() as one arc, so it counts once, not twice as in this variant (see pagerank). pagerank\_weighted: The entry counts an undirected self-loop twice (loops: twice); rustworkx counts it once. Relation to the reference value: Undirected self-loop: the loop is one arc (adjacency diagonal 1), so it adds 1 to the node's out-degree; igraph and the reference value's default put 2 on the diagonal (two edge ends). Graph and MultiGraph agree. Path graph 0-1-2 with a loop at 1: NetworkX 0.5745 at node 1, loop counted twice 0.6316. Mapping: the reference value computed with the tool's convention (an undirected self-loop is one arc) agrees with the tool within abs 5e-11, rel 5e-08 on all 2 comparisons where the difference occurs. Tolerance before mapping: abs 5e-11, rel 5e-08 (0 means exact equality). 7 comparisons differ and 274 agree. Finding F006 (convention): PageRank stops on an L1 change below n \* tol. Finding F008 (convention): Undirected self-loop is one arc. Findings: [F006](../../findings.html#f006), [F008](../../findings.html#f008).
+- <a id="why-pagerank-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> scikit-network 0.33.0 was run and its value differs from the reference value by convention (defaults) on the fixtures gnp\_dir\_sparse, gnp\_und\_sparse, multi\_loops\_und, pair, two\_triangles\_isolate, weighted\_dir. scikit-network's random-surfer operator weights the restart vector by each node's own out-degree status, b\_i = (1 - d \[i has out-links\]) y\_i (sknetwork/linalg/ppr\_solver.py), instead of spreading the rank of dangling nodes over y, so on fixtures with dangling nodes (sinks or isolates) its scores are not the stationary distribution of the Google matrix the reference value and NetworkX use. Elsewhere the two agree. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-11, rel 1e-09 (0 means exact equality). 25 comparisons differ and 86 agree. Finding F087 (defect): PageRank restart vector departs from the definition. Findings: [F087](../../findings.html#f087).
+- <a id="why-pagerank-boost"></a>**[Boost Graph Library](../../tools/boost.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. Boost Graph Library 1.90 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (Boost Graph Library 1.90 documentation: table of contents (algorithms and random-graph tools) plus algorithm headers it omits); API names: page\_rank.
+- <a id="why-pagerank-graphblas"></a>**[GraphBLAS algorithms](../../tools/graphblas.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> GraphBLAS algorithms graphblas-algorithms 2023.10.0 (python-graphblas 2025.2.0, SuiteSparse:GraphBLAS 9.4.5.0) was run and its value differs from the reference value by convention (defaults, direction, multi-edges and weights) on inputs tagged multi\_edges and the fixtures empty, single\_node. graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins); the reference counts each edge. On a graph without edges graphblas-algorithms returns 0 for every node; the PageRank of an edgeless graph is uniform (every node dangles), as the reference value and NetworkX return. Mapping: the reference value computed with NetworkX's Graph/DiGraph reading (parallel edges collapse, one self-loop per node kept) agrees with the tool within abs 1e-11, rel 1e-09 on all 10 comparisons where the difference occurs. Tolerance before mapping: abs 1e-11, rel 1e-09 (0 means exact equality). 20 comparisons differ and 127 agree.
+- <a id="why-pagerank-gephi"></a>**[Gephi toolkit](../../tools/gephi.html)** <a class="st st-t st-defect" href="../../method.html#state-checked-defect"><span class="g" aria-hidden="true">✗</span>checked, defect</a> Gephi toolkit 0.11.3 gives a wrong value under the published definition of PageRank: it loses probability mass at self-loops, so the scores no longer sum to 1. Inputs: any network with self-loops; in the comparison corpus multi\_loops\_dir (scores sum to 0.545) and multi\_loops\_und (0.496); without self-loops the tool agrees. Observed: undirected edges 0-0, 0-1, 1-2, damping 0.85: scores 0.1375, 0.2058, 0.1375 (sum 0.4807); directed arcs 0&gt;0, 0&gt;1, 1&gt;0: 0.5, 0.2875 (sum 0.7875). Expected: scores that sum to 1 (they do without the loop). Separately, its undirected reading of a directed network merges a pair of opposite arcs into one edge, where the reference value counts each arc (a convention, reproduced by reading the network as symmetric). Tool version 0.11.3. 7 comparisons differ and 37 agree. Finding F017. Findings: [F017](../../findings.html#f017).
+- <a id="why-pagerank-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -125,9 +136,9 @@ Measure id: `nxp_google`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `google_matrix` |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `google_matrix` |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -145,9 +156,13 @@ Measure id: `local_pagerank`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `ApproximatePageRank; PageRankMatrix; PageRankNibble` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-local_pagerank-networkit) | `ApproximatePageRank; PageRankMatrix; PageRankNibble` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-local_pagerank-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: ApproximatePageRank; PageRankMatrix; PageRankNibble.
 
 **Tools cited:** [staudt2016networkit](../../references.html#staudt2016networkit)
 
@@ -159,10 +174,14 @@ Measure id: `nxp_pagerank`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
-| [BCT (Octave)](../../tools/bct.html) | · reported in docs | `pagerank_centrality` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-nxp_pagerank-bct) | `pagerank_centrality` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-nxp_pagerank-bct"></a>**[BCT (Octave)](../../tools/bct.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. BCT (Octave) 2019-03-03 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (bctpy public functions (the Python port of the Brain Connectivity Toolbox function set)); API names: pagerank\_centrality.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -181,9 +200,9 @@ Measure id: `walks_ppr`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

@@ -36,9 +36,9 @@ Measure id: `could_be_iso`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -61,9 +61,13 @@ Measure id: `cat_di_matcher`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | · reported in docs | `DiGraphMatcher` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_di_matcher-networkx) | `DiGraphMatcher` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_di_matcher-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: DiGraphMatcher.
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -75,9 +79,13 @@ Measure id: `cat_matcher`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | · reported in docs | `GraphMatcher` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_matcher-networkx) | `GraphMatcher` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_matcher-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: GraphMatcher.
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -89,9 +97,13 @@ Measure id: `cat_match`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | · reported in docs | `match_vertices` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_match-igraph) | `match_vertices` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_match-igraph"></a>**[igraph (R)](../../tools/igraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (R) 2.3.4 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package igraph: exported functions and help titles); API names: match\_vertices.
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph)
 
@@ -103,9 +115,13 @@ Measure id: `cat_di_matcher_multi`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | · reported in docs | `MultiDiGraphMatcher` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_di_matcher_multi-networkx) | `MultiDiGraphMatcher` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_di_matcher_multi-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: MultiDiGraphMatcher.
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -117,9 +133,13 @@ Measure id: `cat_matcher_multi`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | · reported in docs | `MultiGraphMatcher` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_matcher_multi-networkx) | `MultiGraphMatcher` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_matcher_multi-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: MultiGraphMatcher.
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -131,17 +151,27 @@ Measure id: `vf2pp`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `could_be_isomorphic; fast_could_be_isomorphic; faster_could_be_isomorphic; is_isomorphic; rooted_tree_isomorphism; tree_isomorphism; vf2pp_all_isomorphisms; vf2pp_all_monomorphisms; vf2pp_all_subgraph_isomorphisms; vf2pp_is_isomorphic; vf2pp_is_monomorphic; vf2pp_isomorphism` |  |
-| [igraph (R)](../../tools/igraph.html) | · reported in docs | `count_isomorphisms; count_subgraph_isomorphisms; is_isomorphic_to; is_subgraph_isomorphic_to; isomorphism_class; isomorphisms; subgraph_isomorphisms` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | · reported in docs | `count_automorphisms_vf2; count_isomorphisms_vf2; count_subisomorphisms_vf2; get_automorphisms_vf2; get_isomorphisms_vf2; get_subisomorphisms_lad; get_subisomorphisms_vf2; isomorphic; isomorphic_bliss; isomorphic_vf2; subisomorphic_lad; subisomorphic_vf2` | API listing |
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `isomorphism; subgraph_isomorphism` | API listing |
-| [rustworkx](../../tools/rustworkx.html) | · reported in docs | `digraph_is_isomorphic; digraph_is_subgraph_isomorphic; digraph_vf2_mapping; graph_is_isomorphic; graph_is_subgraph_isomorphic; graph_vf2_mapping; is_isomorphic; is_isomorphic_node_match; is_subgraph_isomorphic; vf2_mapping` | API listing |
-| [scikit-network](../../tools/sknetwork.html) | · reported in docs | `are_isomorphic` | API listing |
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `AHUForestIsomorphismInspector; AHURootedTreeIsomorphismInspector; AHUUnrootedTreeIsomorphismInspector; ColorRefinementIsomorphismInspector; IsomorphicGraphMapping; IsomorphismInspector; VF2GraphIsomorphismInspector; VF2SubgraphIsomorphismInspector` | API listing |
-| [Boost Graph Library](../../tools/boost.html) | · reported in docs | `isomorphism; vf2_sub_graph_iso` | API listing |
-| [nauty](../../tools/nauty.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `could_be_isomorphic; fast_could_be_isomorphic; faster_could_be_isomorphic; is_isomorphic; rooted_tree_isomorphism; tree_isomorphism; vf2pp_all_isomorphisms; vf2pp_all_monomorphisms; vf2pp_all_subgraph_isomorphisms; vf2pp_is_isomorphic; vf2pp_is_monomorphic; vf2pp_isomorphism` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-vf2pp-igraph) | `count_isomorphisms; count_subgraph_isomorphisms; is_isomorphic_to; is_subgraph_isomorphic_to; isomorphism_class; isomorphisms; subgraph_isomorphisms` | API listing |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-vf2pp-pyigraph) | `count_automorphisms_vf2; count_isomorphisms_vf2; count_subisomorphisms_vf2; get_automorphisms_vf2; get_isomorphisms_vf2; get_subisomorphisms_lad; get_subisomorphisms_vf2; isomorphic; isomorphic_bliss; isomorphic_vf2; subisomorphic_lad; subisomorphic_vf2` | API listing |
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-vf2pp-graphtool) | `isomorphism; subgraph_isomorphism` | API listing |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-vf2pp-rustworkx) | `digraph_is_isomorphic; digraph_is_subgraph_isomorphic; digraph_vf2_mapping; graph_is_isomorphic; graph_is_subgraph_isomorphic; graph_vf2_mapping; is_isomorphic; is_isomorphic_node_match; is_subgraph_isomorphic; vf2_mapping` | API listing |
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-vf2pp-sknetwork) | `are_isomorphic` | API listing |
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-vf2pp-jgrapht) | `AHUForestIsomorphismInspector; AHURootedTreeIsomorphismInspector; AHUUnrootedTreeIsomorphismInspector; ColorRefinementIsomorphismInspector; IsomorphicGraphMapping; IsomorphismInspector; VF2GraphIsomorphismInspector; VF2SubgraphIsomorphismInspector` | API listing |
+| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-vf2pp-boost) | `isomorphism; vf2_sub_graph_iso` | API listing |
+| [nauty](../../tools/nauty.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-vf2pp-igraph"></a>**[igraph (R)](../../tools/igraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (R) 2.3.4 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package igraph: exported functions and help titles); API names: count\_isomorphisms; count\_subgraph\_isomorphisms; is\_isomorphic\_to; is\_subgraph\_isomorphic\_to; isomorphism\_class; isomorphisms; subgraph\_isomorphisms.
+- <a id="why-vf2pp-pyigraph"></a>**[igraph (Python)](../../tools/pyigraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: count\_automorphisms\_vf2; count\_isomorphisms\_vf2; count\_subisomorphisms\_vf2; get\_automorphisms\_vf2; get\_isomorphisms\_vf2; get\_subisomorphisms\_lad; get\_subisomorphisms\_vf2; isomorphic; isomorphic\_bliss; isomorphic\_vf2; subisomorphic\_lad; subisomorphic\_vf2.
+- <a id="why-vf2pp-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: isomorphism; subgraph\_isomorphism.
+- <a id="why-vf2pp-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: digraph\_is\_isomorphic; digraph\_is\_subgraph\_isomorphic; digraph\_vf2\_mapping; graph\_is\_isomorphic; graph\_is\_subgraph\_isomorphic; graph\_vf2\_mapping; is\_isomorphic; is\_isomorphic\_node\_match; is\_subgraph\_isomorphic; vf2\_mapping.
+- <a id="why-vf2pp-sknetwork"></a>**[scikit-network](../../tools/sknetwork.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. scikit-network 0.33.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (scikit-network public classes and functions); API names: are\_isomorphic.
+- <a id="why-vf2pp-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: AHUForestIsomorphismInspector; AHURootedTreeIsomorphismInspector; AHUUnrootedTreeIsomorphismInspector; ColorRefinementIsomorphismInspector; IsomorphicGraphMapping; IsomorphismInspector; VF2GraphIsomorphismInspector; VF2SubgraphIsomorphismInspector.
+- <a id="why-vf2pp-boost"></a>**[Boost Graph Library](../../tools/boost.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. Boost Graph Library 1.90 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (Boost Graph Library 1.90 documentation: table of contents (algorithms and random-graph tools) plus algorithm headers it omits); API names: isomorphism; vf2\_sub\_graph\_iso.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

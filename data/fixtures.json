@@ -1,0 +1,832 @@
+[
+ {
+  "name": "complete5_dir",
+  "tier": "small",
+  "nodes": 5,
+  "edges": 20,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "onemode",
+   "symmetric_nodes"
+  ],
+  "description": "Synthetic",
+  "references": []
+ },
+ {
+  "name": "complete6",
+  "tier": "small",
+  "nodes": 6,
+  "edges": 15,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "onemode",
+   "symmetric_nodes"
+  ],
+  "description": "Synthetic",
+  "references": []
+ },
+ {
+  "name": "cycle7_dir",
+  "tier": "small",
+  "nodes": 7,
+  "edges": 7,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "onemode",
+   "symmetric_nodes"
+  ],
+  "description": "Synthetic",
+  "references": []
+ },
+ {
+  "name": "davis_twomode",
+  "tier": "small",
+  "nodes": 32,
+  "edges": 89,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "bipartite",
+   "symmetric_nodes",
+   "twomode"
+  ],
+  "description": "Southern women attending social events, as a two-mode network (women type 0, events type 1)",
+  "references": [
+   "davis1941deep"
+  ]
+ },
+ {
+  "name": "empty",
+  "tier": "small",
+  "nodes": 5,
+  "edges": 0,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "bipartite",
+   "disconnected",
+   "edge_case",
+   "edgeless",
+   "isolates",
+   "no_two_paths",
+   "not_strongly_connected",
+   "onemode",
+   "symmetric_nodes"
+  ],
+  "description": "Synthetic",
+  "references": []
+ },
+ {
+  "name": "florentine",
+  "tier": "small",
+  "nodes": 15,
+  "edges": 20,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "onemode",
+   "unsorted_edges"
+  ],
+  "description": "Florentine families, marriage ties",
+  "references": [
+   "breiger1986cumulated",
+   "padgett1993robust"
+  ]
+ },
+ {
+  "name": "gnp_dir_dense",
+  "tier": "small",
+  "nodes": 40,
+  "edges": 784,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "onemode"
+  ],
+  "description": "G(n=40, p=0.5), seed 12",
+  "references": []
+ },
+ {
+  "name": "gnp_dir_sparse",
+  "tier": "small",
+  "nodes": 60,
+  "edges": 169,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "not_strongly_connected",
+   "onemode"
+  ],
+  "description": "G(n=60, p=0.05), seed 11",
+  "references": []
+ },
+ {
+  "name": "gnp_und_dense",
+  "tier": "small",
+  "nodes": 30,
+  "edges": 268,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "onemode"
+  ],
+  "description": "G(n=30, p=0.6), seed 14",
+  "references": []
+ },
+ {
+  "name": "gnp_und_sparse",
+  "tier": "small",
+  "nodes": 80,
+  "edges": 115,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "disconnected",
+   "isolates",
+   "onemode",
+   "symmetric_nodes"
+  ],
+  "description": "G(n=80, p=0.04), seed 13",
+  "references": []
+ },
+ {
+  "name": "karate",
+  "tier": "small",
+  "nodes": 34,
+  "edges": 78,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "onemode",
+   "symmetric_nodes"
+  ],
+  "description": "Zachary's karate club network",
+  "references": [
+   "zachary1977information"
+  ]
+ },
+ {
+  "name": "kite",
+  "tier": "small",
+  "nodes": 10,
+  "edges": 18,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "onemode",
+   "symmetric_nodes"
+  ],
+  "description": "Krackhardt's kite network",
+  "references": [
+   "krackhardt1990assessing"
+  ]
+ },
+ {
+  "name": "les_miserables",
+  "tier": "small",
+  "nodes": 77,
+  "edges": 254,
+  "directed": false,
+  "weights": "integer",
+  "tags": [
+   "integer_weights",
+   "onemode",
+   "symmetric_nodes",
+   "weighted"
+  ],
+  "description": "Co-appearance network of Les Miserables characters",
+  "references": [
+   "knuth1993stanford"
+  ]
+ },
+ {
+  "name": "multi_loops_dir",
+  "tier": "small",
+  "nodes": 20,
+  "edges": 72,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "loops",
+   "multi_edges",
+   "not_strongly_connected",
+   "onemode",
+   "unsorted_edges"
+  ],
+  "description": "random multigraph n=20, m=72, seed 17",
+  "references": []
+ },
+ {
+  "name": "multi_loops_und",
+  "tier": "small",
+  "nodes": 20,
+  "edges": 72,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "disconnected",
+   "isolates",
+   "loops",
+   "multi_edges",
+   "onemode",
+   "unsorted_edges"
+  ],
+  "description": "random multigraph n=20, m=72, seed 18",
+  "references": []
+ },
+ {
+  "name": "pair",
+  "tier": "small",
+  "nodes": 2,
+  "edges": 1,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "bipartite",
+   "edge_case",
+   "no_two_paths",
+   "not_strongly_connected",
+   "onemode",
+   "symmetric_nodes",
+   "two_nodes"
+  ],
+  "description": "Synthetic",
+  "references": []
+ },
+ {
+  "name": "path10",
+  "tier": "small",
+  "nodes": 10,
+  "edges": 9,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "bipartite",
+   "onemode",
+   "symmetric_nodes"
+  ],
+  "description": "Synthetic",
+  "references": []
+ },
+ {
+  "name": "real_weights_dir",
+  "tier": "small",
+  "nodes": 45,
+  "edges": 208,
+  "directed": true,
+  "weights": "real",
+  "tags": [
+   "fractional_weights",
+   "onemode",
+   "weighted"
+  ],
+  "description": "G(n=45, p=0.1), seed 22, real weights in [0.1, 3]",
+  "references": []
+ },
+ {
+  "name": "real_weights_und",
+  "tier": "small",
+  "nodes": 45,
+  "edges": 104,
+  "directed": false,
+  "weights": "real",
+  "tags": [
+   "fractional_weights",
+   "onemode",
+   "weighted"
+  ],
+  "description": "G(n=45, p=0.1), seed 23, real weights in [0.1, 3]",
+  "references": []
+ },
+ {
+  "name": "single_node",
+  "tier": "small",
+  "nodes": 1,
+  "edges": 0,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "bipartite",
+   "edge_case",
+   "edgeless",
+   "isolates",
+   "no_two_paths",
+   "one_node",
+   "onemode"
+  ],
+  "description": "Synthetic",
+  "references": []
+ },
+ {
+  "name": "southern_women",
+  "tier": "small",
+  "nodes": 32,
+  "edges": 89,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "bipartite",
+   "onemode",
+   "symmetric_nodes"
+  ],
+  "description": "Southern women attending social events, one-mode reading of the same data",
+  "references": [
+   "davis1941deep"
+  ]
+ },
+ {
+  "name": "star8",
+  "tier": "small",
+  "nodes": 8,
+  "edges": 7,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "bipartite",
+   "onemode",
+   "symmetric_nodes"
+  ],
+  "description": "Synthetic",
+  "references": []
+ },
+ {
+  "name": "two_triangles_isolate",
+  "tier": "small",
+  "nodes": 7,
+  "edges": 6,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "disconnected",
+   "edge_case",
+   "isolates",
+   "onemode",
+   "symmetric_nodes",
+   "unsorted_edges"
+  ],
+  "description": "Synthetic",
+  "references": []
+ },
+ {
+  "name": "twomode_random",
+  "tier": "small",
+  "nodes": 21,
+  "edges": 39,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "bipartite",
+   "symmetric_nodes",
+   "twomode",
+   "unsorted_edges"
+  ],
+  "description": "random bipartite graph, 12 + 9 nodes, p=0.3, seed 32",
+  "references": []
+ },
+ {
+  "name": "twomode_weighted",
+  "tier": "small",
+  "nodes": 15,
+  "edges": 27,
+  "directed": false,
+  "weights": "integer",
+  "tags": [
+   "bipartite",
+   "integer_weights",
+   "twomode",
+   "unsorted_edges",
+   "weighted"
+  ],
+  "description": "random bipartite graph, 9 + 6 nodes, p=0.45, seed 41",
+  "references": []
+ },
+ {
+  "name": "uniform_weights",
+  "tier": "small",
+  "nodes": 40,
+  "edges": 91,
+  "directed": false,
+  "weights": "real",
+  "tags": [
+   "fractional_weights",
+   "onemode",
+   "weighted"
+  ],
+  "description": "G(n=40, p=0.12), seed 21, every weight 2.5",
+  "references": []
+ },
+ {
+  "name": "weighted_dir",
+  "tier": "small",
+  "nodes": 50,
+  "edges": 232,
+  "directed": true,
+  "weights": "integer",
+  "tags": [
+   "integer_weights",
+   "not_strongly_connected",
+   "onemode",
+   "weighted"
+  ],
+  "description": "G(n=50, p=0.1), seed 15",
+  "references": []
+ },
+ {
+  "name": "weighted_und",
+  "tier": "small",
+  "nodes": 50,
+  "edges": 133,
+  "directed": false,
+  "weights": "integer",
+  "tags": [
+   "integer_weights",
+   "onemode",
+   "weighted"
+  ],
+  "description": "G(n=50, p=0.1), seed 16",
+  "references": []
+ },
+ {
+  "name": "mid_gnm_und_2000",
+  "tier": "mid",
+  "nodes": 2000,
+  "edges": 10000,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: random graph with a fixed number of edges G(n, m) (Erdos and Renyi), seed 101, undirected.",
+  "references": [
+   "erdos1959random"
+  ]
+ },
+ {
+  "name": "mid_gnm_dir_3000",
+  "tier": "mid",
+  "nodes": 3000,
+  "edges": 15000,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: random graph with a fixed number of edges G(n, m) (Erdos and Renyi), seed 102, directed.",
+  "references": [
+   "erdos1959random"
+  ]
+ },
+ {
+  "name": "mid_plc_und_5000",
+  "tier": "mid",
+  "nodes": 5000,
+  "edges": null,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: Holme-Kim power-law graph with triadic closure, seed 103, undirected.",
+  "references": [
+   "holme2002growing"
+  ]
+ },
+ {
+  "name": "mid_plc_dir_4000",
+  "tier": "mid",
+  "nodes": 4000,
+  "edges": null,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: Holme-Kim power-law graph with triadic closure, seed 104, directed.",
+  "references": [
+   "holme2002growing"
+  ]
+ },
+ {
+  "name": "mid_sbm_und_4000",
+  "tier": "mid",
+  "nodes": 4000,
+  "edges": null,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: stochastic block model with fixed block sizes, seed 105, undirected.",
+  "references": [
+   "holland1983stochastic"
+  ]
+ },
+ {
+  "name": "mid_sbm_dir_3000",
+  "tier": "mid",
+  "nodes": 3000,
+  "edges": null,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: stochastic block model with fixed block sizes, seed 106, directed.",
+  "references": [
+   "holland1983stochastic"
+  ]
+ },
+ {
+  "name": "mid_gnm_und_int_2500",
+  "tier": "mid",
+  "nodes": 2500,
+  "edges": 12000,
+  "directed": false,
+  "weights": "integer",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: random graph with a fixed number of edges G(n, m) (Erdos and Renyi), seed 107, undirected.",
+  "references": [
+   "erdos1959random"
+  ]
+ },
+ {
+  "name": "mid_gnm_dir_real_2500",
+  "tier": "mid",
+  "nodes": 2500,
+  "edges": 12000,
+  "directed": true,
+  "weights": "real",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: random graph with a fixed number of edges G(n, m) (Erdos and Renyi), seed 108, directed.",
+  "references": [
+   "erdos1959random"
+  ]
+ },
+ {
+  "name": "mid_plc_und_real_3000",
+  "tier": "mid",
+  "nodes": 3000,
+  "edges": null,
+  "directed": false,
+  "weights": "real",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: Holme-Kim power-law graph with triadic closure, seed 109, undirected.",
+  "references": [
+   "holme2002growing"
+  ]
+ },
+ {
+  "name": "mid_messy_und_2000",
+  "tier": "mid",
+  "nodes": 2000,
+  "edges": 9000,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: random graph with a fixed number of edges G(n, m) (Erdos and Renyi), seed 110, undirected, with self-loops (fraction 0.01) and repeated edges (fraction 0.05).",
+  "references": [
+   "erdos1959random"
+  ]
+ },
+ {
+  "name": "mid_messy_dir_int_2000",
+  "tier": "mid",
+  "nodes": 2000,
+  "edges": 9000,
+  "directed": true,
+  "weights": "integer",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: random graph with a fixed number of edges G(n, m) (Erdos and Renyi), seed 111, directed, with self-loops (fraction 0.01) and repeated edges (fraction 0.05).",
+  "references": [
+   "erdos1959random"
+  ]
+ },
+ {
+  "name": "mid_islands_3000",
+  "tier": "mid",
+  "nodes": null,
+  "edges": null,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: several components of different kinds plus isolated nodes, seed 112, undirected.",
+  "references": []
+ },
+ {
+  "name": "mid_twomode_2500",
+  "tier": "mid",
+  "nodes": 2500,
+  "edges": 9000,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: random two-mode graph, seed 113, undirected.",
+  "references": []
+ },
+ {
+  "name": "mid_dense_und_1000",
+  "tier": "mid",
+  "nodes": 1000,
+  "edges": 60000,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Seeded generator: dense random graph, seed 114, undirected.",
+  "references": []
+ },
+ {
+  "name": "large_gnm_und_300k",
+  "tier": "large",
+  "nodes": 60000,
+  "edges": 300000,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_large"
+  ],
+  "description": "Seeded generator: random graph with a fixed number of edges G(n, m) (Erdos and Renyi), seed 201, undirected.",
+  "references": [
+   "erdos1959random"
+  ]
+ },
+ {
+  "name": "large_gnm_dir_real_250k",
+  "tier": "large",
+  "nodes": 50000,
+  "edges": 250000,
+  "directed": true,
+  "weights": "real",
+  "tags": [
+   "size_large"
+  ],
+  "description": "Seeded generator: random graph with a fixed number of edges G(n, m) (Erdos and Renyi), seed 202, directed.",
+  "references": [
+   "erdos1959random"
+  ]
+ },
+ {
+  "name": "large_plc_und_300k",
+  "tier": "large",
+  "nodes": 100000,
+  "edges": null,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_large"
+  ],
+  "description": "Seeded generator: Holme-Kim power-law graph with triadic closure, seed 203, undirected.",
+  "references": [
+   "holme2002growing"
+  ]
+ },
+ {
+  "name": "large_plc_dir_400k",
+  "tier": "large",
+  "nodes": 100000,
+  "edges": null,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "size_large"
+  ],
+  "description": "Seeded generator: Holme-Kim power-law graph with triadic closure, seed 204, directed.",
+  "references": [
+   "holme2002growing"
+  ]
+ },
+ {
+  "name": "large_sbm_und_500k",
+  "tier": "large",
+  "nodes": 100000,
+  "edges": null,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_large"
+  ],
+  "description": "Seeded generator: stochastic block model with fixed block sizes, seed 205, undirected.",
+  "references": [
+   "holland1983stochastic"
+  ]
+ },
+ {
+  "name": "large_messy_und_int_200k",
+  "tier": "large",
+  "nodes": 40000,
+  "edges": 190000,
+  "directed": false,
+  "weights": "integer",
+  "tags": [
+   "size_large"
+  ],
+  "description": "Seeded generator: random graph with a fixed number of edges G(n, m) (Erdos and Renyi), seed 206, undirected, with self-loops (fraction 0.01) and repeated edges (fraction 0.05).",
+  "references": [
+   "erdos1959random"
+  ]
+ },
+ {
+  "name": "large_gnm_dir_int_1m",
+  "tier": "large",
+  "nodes": 200000,
+  "edges": 1000000,
+  "directed": true,
+  "weights": "integer",
+  "tags": [
+   "size_large"
+  ],
+  "description": "Seeded generator: random graph with a fixed number of edges G(n, m) (Erdos and Renyi), seed 207, directed.",
+  "references": [
+   "erdos1959random"
+  ]
+ },
+ {
+  "name": "real_mid_us_counties",
+  "tier": "mid",
+  "nodes": null,
+  "edges": null,
+  "directed": false,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Real network: US county adjacency (counties and county equivalents that share a boundary). Source: US Census Bureau, County Adjacency File, www2.census.gov/geo/docs/reference/county_adjacency.txt. Licence: public domain (work of the US Government, 17 U.S.C. 105; US Census Bureau).",
+  "references": []
+ },
+ {
+  "name": "real_mid_openflights_routes",
+  "tier": "mid",
+  "nodes": null,
+  "edges": null,
+  "directed": true,
+  "weights": "none",
+  "tags": [
+   "size_mid"
+  ],
+  "description": "Real network: airline routes between airports (one directed edge per route row; parallel edges for airlines on the same pair). Source: OpenFlights.org route database, openflights.org/data.html. Licence: Open Database License 1.0 (database), Database Contents License (contents), as stated on openflights.org/data.html.",
+  "references": []
+ },
+ {
+  "name": "real_large_clickstream_ukwiki",
+  "tier": "large",
+  "nodes": null,
+  "edges": null,
+  "directed": true,
+  "weights": "integer",
+  "tags": [
+   "size_large"
+  ],
+  "description": "Real network: Wikimedia Clickstream, Ukrainian Wikipedia, August 2026; article-to-article link clicks (weights). Source: Wikimedia Foundation, Clickstream dataset, dumps.wikimedia.org/other/clickstream. Licence: CC0 1.0 (Wikimedia Analytics datasets, dumps.wikimedia.org/other/clickstream/readme.html).",
+  "references": [
+   "wulczyn2015clickstream"
+  ]
+ },
+ {
+  "name": "real_large_clickstream_plwiki",
+  "tier": "large",
+  "nodes": null,
+  "edges": null,
+  "directed": true,
+  "weights": "integer",
+  "tags": [
+   "size_large"
+  ],
+  "description": "Real network: Wikimedia Clickstream, Polish Wikipedia, August 2026; article-to-article link clicks (weights). Source: Wikimedia Foundation, Clickstream dataset, dumps.wikimedia.org/other/clickstream. Licence: CC0 1.0 (Wikimedia Analytics datasets, dumps.wikimedia.org/other/clickstream/readme.html).",
+  "references": [
+   "wulczyn2015clickstream"
+  ]
+ },
+ {
+  "name": "real_large_clickstream_svwiki",
+  "tier": "large",
+  "nodes": null,
+  "edges": null,
+  "directed": true,
+  "weights": "integer",
+  "tags": [
+   "size_large"
+  ],
+  "description": "Real network: Wikimedia Clickstream, Swedish Wikipedia, August 2026; article-to-article link clicks (weights). Source: Wikimedia Foundation, Clickstream dataset, dumps.wikimedia.org/other/clickstream. Licence: CC0 1.0 (Wikimedia Analytics datasets, dumps.wikimedia.org/other/clickstream/readme.html).",
+  "references": [
+   "wulczyn2015clickstream"
+  ]
+ }
+]

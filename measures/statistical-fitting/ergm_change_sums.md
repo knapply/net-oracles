@@ -24,9 +24,9 @@ Measure id: `ergm_change_sums`. Original family: Statistical fitting.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [ergm (statnet)](../../tools/ergm.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [ergm (statnet)](../../tools/ergm.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

@@ -1,0 +1,73 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "fixtures.json",
+ "description": "The graphs every tool is run on (small tier) and the larger graphs of the size tier. 'all inputs' in the definition of checked-agrees means every fixture of this list that the tool accepts.",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "name",
+   "tier",
+   "nodes",
+   "edges",
+   "directed",
+   "weights",
+   "tags",
+   "description",
+   "references"
+  ],
+  "properties": {
+   "name": {
+    "type": "string"
+   },
+   "tier": {
+    "enum": [
+     "small",
+     "mid",
+     "large"
+    ]
+   },
+   "nodes": {
+    "type": [
+     "integer",
+     "null"
+    ],
+    "minimum": 0
+   },
+   "edges": {
+    "type": [
+     "integer",
+     "null"
+    ],
+    "minimum": 0
+   },
+   "directed": {
+    "type": "boolean"
+   },
+   "weights": {
+    "enum": [
+     "none",
+     "integer",
+     "real"
+    ]
+   },
+   "tags": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    },
+    "description": "Structural tags computed from the graph (loops, multi_edges, disconnected, ...)."
+   },
+   "description": {
+    "type": "string"
+   },
+   "references": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

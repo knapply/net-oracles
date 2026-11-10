@@ -28,9 +28,13 @@ Measure id: `cx_reaching`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ≠ checked, differs by convention | `global_reaching_centrality; local_reaching_centrality` |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (direction, multi-edges, normalization, ties and weights): With integer weights some nodes have several shortest paths (lengths W/w) whose edges have different mean weights, and each tool averages the path... [details](#why-cx_reaching-networkx) | `global_reaching_centrality; local_reaching_centrality` |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cx_reaching-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> NetworkX 3.7 was run and its value differs from the reference value by convention (direction, multi-edges, normalization, ties and weights) on inputs tagged integer\_weights and multi\_edges. With integer weights some nodes have several shortest paths (lengths W/w) whose edges have different mean weights, and each tool averages the path its search finds first: NetworkX settles ties in insertion order, the reference by node index (weighted\_dir has two such pairs from node 3, checked with nx.all\_shortest\_paths). The NetworkX oracle builds a simple graph (the last parallel weight wins), while the reference keeps every edge, so the mean edge weight that normalizes the measure counts parallel edges (two parallel edges of weights 1 and 9: 1.8 against 1.0). No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-12, rel 1e-09 (0 means exact equality). 2 comparisons differ and 68 agree.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

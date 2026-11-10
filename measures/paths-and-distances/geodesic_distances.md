@@ -35,23 +35,29 @@ Measure id: `distances`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
-| [igraph (R)](../../tools/igraph.html) | ✓ checked, agrees | `distances` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | ✓ checked, agrees | `distances` |  |
-| [sna](../../tools/sna.html) | ✓ checked, agrees | `geodist` |  |
-| [NetworKit](../../tools/networkit.html) | ✓ checked, agrees | `GraphDistance` |  |
-| [rustworkx](../../tools/rustworkx.html) | ✓ checked, agrees |  |  |
-| [scikit-network](../../tools/sknetwork.html) | ✓ checked, agrees | `get_distances` |  |
-| [JGraphT](../../tools/jgrapht.html) | ✓ checked, agrees |  |  |
-| [Boost Graph Library](../../tools/boost.html) | ✓ checked, agrees | `geodesic_distance` |  |
-| [GraphBLAS algorithms](../../tools/graphblas.html) | ✓ checked, agrees |  |  |
-| [BCT (Octave)](../../tools/bct.html) | ✓ checked, agrees | `distance_bin; distance_wei; distance_wei_floyd` |  |
-| [bctpy](../../tools/bctpy.html) | ✓ checked, agrees |  |  |
-| [Gephi toolkit](../../tools/gephi.html) | · reported in docs | `GraphDistance` | API listing |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `Distance: geodesics (parallel routine 6.745), reachability, diameter, mean distance, compactness, breadth; floyd; geo` | published documentation |
-| [tnet](../../tools/tnet.html) | · reported in docs | `distance_tm; distance_w` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `distances` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `distances` |  |
+| [sna](../../tools/sna.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `geodist` |  |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `GraphDistance` |  |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `get_distances` |  |
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `geodesic_distance` |  |
+| [GraphBLAS algorithms](../../tools/graphblas.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `distance_bin; distance_wei; distance_wei_floyd` |  |
+| [bctpy](../../tools/bctpy.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [Gephi toolkit](../../tools/gephi.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-distances-gephi) | `GraphDistance` | API listing |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-distances-ucinet) | `Distance: geodesics (parallel routine 6.745), reachability, diameter, mean distance, compactness, breadth; floyd; geo` | published documentation |
+| [tnet](../../tools/tnet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-distances-tnet) | `distance_tm; distance_w` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-distances-gephi"></a>**[Gephi toolkit](../../tools/gephi.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. Gephi toolkit 0.11.3 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (Gephi toolkit 0.11.3 javadoc (published class list of org.gephi.statistics.plugin)); API names: GraphDistance.
+- <a id="why-distances-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
+- <a id="why-distances-tnet"></a>**[tnet](../../tools/tnet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. tnet 3.0.16 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package tnet: exported functions and help titles); API names: distance\_tm; distance\_w.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -105,9 +111,9 @@ Measure id: `nxs_fw_tree`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -128,9 +134,9 @@ Measure id: `nxs_johnson_lengths`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -148,12 +154,18 @@ Measure id: `paths_all_pairs`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `all_pairs_all_shortest_paths; all_pairs_bellman_ford_path; all_pairs_bellman_ford_path_length; all_pairs_dijkstra; all_pairs_dijkstra_path; all_pairs_dijkstra_path_length; all_pairs_lowest_common_ancestor; all_pairs_node_connectivity; all_pairs_shortest_path; all_pairs_shortest_path_length; floyd_warshall_numpy` |  |
-| [igraph (R)](../../tools/igraph.html) | · reported in docs | `distance_table` | API listing |
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `APSP; DynAPSP` | API listing |
-| [rustworkx](../../tools/rustworkx.html) | · reported in docs | `all_pairs_all_simple_paths; all_pairs_bellman_ford_path_lengths; all_pairs_bellman_ford_shortest_paths; all_pairs_dijkstra_path_lengths; all_pairs_dijkstra_shortest_paths; digraph_all_pairs_all_simple_paths; digraph_all_pairs_bellman_ford_path_lengths; digraph_all_pairs_bellman_ford_shortest_paths; digraph_all_pairs_dijkstra_path_lengths; digraph_all_pairs_dijkstra_shortest_paths; digraph_distance_matrix; digraph_floyd_warshall_numpy` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `all_pairs_all_shortest_paths; all_pairs_bellman_ford_path; all_pairs_bellman_ford_path_length; all_pairs_dijkstra; all_pairs_dijkstra_path; all_pairs_dijkstra_path_length; all_pairs_lowest_common_ancestor; all_pairs_node_connectivity; all_pairs_shortest_path; all_pairs_shortest_path_length; floyd_warshall_numpy` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-paths_all_pairs-igraph) | `distance_table` | API listing |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-paths_all_pairs-networkit) | `APSP; DynAPSP` | API listing |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-paths_all_pairs-rustworkx) | `all_pairs_all_simple_paths; all_pairs_bellman_ford_path_lengths; all_pairs_bellman_ford_shortest_paths; all_pairs_dijkstra_path_lengths; all_pairs_dijkstra_shortest_paths; digraph_all_pairs_all_simple_paths; digraph_all_pairs_bellman_ford_path_lengths; digraph_all_pairs_bellman_ford_shortest_paths; digraph_all_pairs_dijkstra_path_lengths; digraph_all_pairs_dijkstra_shortest_paths; digraph_distance_matrix; digraph_floyd_warshall_numpy` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-paths_all_pairs-igraph"></a>**[igraph (R)](../../tools/igraph.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. igraph (R) 2.3.4 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package igraph: exported functions and help titles); API names: distance\_table.
+- <a id="why-paths_all_pairs-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: APSP; DynAPSP.
+- <a id="why-paths_all_pairs-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: all\_pairs\_all\_simple\_paths; all\_pairs\_bellman\_ford\_path\_lengths; all\_pairs\_bellman\_ford\_shortest\_paths; all\_pairs\_dijkstra\_path\_lengths; all\_pairs\_dijkstra\_shortest\_paths; digraph\_all\_pairs\_all\_simple\_paths; digraph\_all\_pairs\_bellman\_ford\_path\_lengths; digraph\_all\_pairs\_bellman\_ford\_shortest\_paths; digraph\_all\_pairs\_dijkstra\_path\_lengths; digraph\_all\_pairs\_dijkstra\_shortest\_paths; digraph\_distance\_matrix; digraph\_floyd\_warshall\_numpy.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -172,12 +184,18 @@ Measure id: `paths_floyd_warshall`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `floyd_warshall; floyd_warshall_predecessor_and_distance; floyd_warshall_tree` |  |
-| [rustworkx](../../tools/rustworkx.html) | · reported in docs | `digraph_floyd_warshall; digraph_floyd_warshall_successor_and_distance; floyd_warshall; floyd_warshall_successor_and_distance; graph_floyd_warshall; graph_floyd_warshall_successor_and_distance` | API listing |
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `FloydWarshallShortestPaths` | API listing |
-| [Boost Graph Library](../../tools/boost.html) | · reported in docs | `floyd_warshall_all_pairs_shortest_paths` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `floyd_warshall; floyd_warshall_predecessor_and_distance; floyd_warshall_tree` |  |
+| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-paths_floyd_warshall-rustworkx) | `digraph_floyd_warshall; digraph_floyd_warshall_successor_and_distance; floyd_warshall; floyd_warshall_successor_and_distance; graph_floyd_warshall; graph_floyd_warshall_successor_and_distance` | API listing |
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-paths_floyd_warshall-jgrapht) | `FloydWarshallShortestPaths` | API listing |
+| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-paths_floyd_warshall-boost) | `floyd_warshall_all_pairs_shortest_paths` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-paths_floyd_warshall-rustworkx"></a>**[rustworkx](../../tools/rustworkx.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: digraph\_floyd\_warshall; digraph\_floyd\_warshall\_successor\_and\_distance; floyd\_warshall; floyd\_warshall\_successor\_and\_distance; graph\_floyd\_warshall; graph\_floyd\_warshall\_successor\_and\_distance.
+- <a id="why-paths_floyd_warshall-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: FloydWarshallShortestPaths.
+- <a id="why-paths_floyd_warshall-boost"></a>**[Boost Graph Library](../../tools/boost.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. Boost Graph Library 1.90 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (Boost Graph Library 1.90 documentation: table of contents (algorithms and random-graph tools) plus algorithm headers it omits); API names: floyd\_warshall\_all\_pairs\_shortest\_paths.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -197,11 +215,16 @@ Measure id: `paths_johnson`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `johnson` |  |
-| [JGraphT](../../tools/jgrapht.html) | · reported in docs | `JohnsonShortestPaths` | API listing |
-| [Boost Graph Library](../../tools/boost.html) | · reported in docs | `johnson_all_pairs_shortest_paths` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `johnson` |  |
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-paths_johnson-jgrapht) | `JohnsonShortestPaths` | API listing |
+| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-paths_johnson-boost) | `johnson_all_pairs_shortest_paths` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-paths_johnson-jgrapht"></a>**[JGraphT](../../tools/jgrapht.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. JGraphT 1.5.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.\*)); API names: JohnsonShortestPaths.
+- <a id="why-paths_johnson-boost"></a>**[Boost Graph Library](../../tools/boost.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. Boost Graph Library 1.90 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (Boost Graph Library 1.90 documentation: table of contents (algorithms and random-graph tools) plus algorithm headers it omits); API names: johnson\_all\_pairs\_shortest\_paths.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

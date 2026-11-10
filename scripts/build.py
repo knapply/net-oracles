@@ -69,6 +69,7 @@ def load_all():
         "tools": load_json("tools.json"), "measures": load_json("measures.json"), "concepts": load_json("concepts.json"),
         "conventions": load_json("conventions.json"), "findings": load_json("findings.json"),
         "capabilities": load_csv("capabilities.csv"), "results": load_csv("benchmarks/results.csv"),
+        "reasons": load_json("reasons.json"), "fixtures": load_json("fixtures.json"),
         "bib": parse_bib(open(os.path.join(DATA, "references.bib"), encoding="utf-8").read()),
     }
     return d
@@ -77,7 +78,7 @@ def load_all():
 def check_data(d):
     errs = []
     sch = lambda n: load_json("schema/" + n)
-    for name, f in [("tools", "tools"), ("measures", "measures"), ("concepts", "concepts"), ("conventions", "conventions"), ("findings", "findings")]:
+    for name, f in [("tools", "tools"), ("measures", "measures"), ("concepts", "concepts"), ("conventions", "conventions"), ("findings", "findings"), ("reasons", "reasons"), ("fixtures", "fixtures")]:
         errs += validate(d[name], sch(f + ".schema.json"), name)
     for name, f in [("capabilities", "capabilities"), ("results", "benchmarks-results")]:
         s = sch(f + ".schema.json")
@@ -134,6 +135,52 @@ def check_data(d):
             if k not in bib: errs.append("findings: missing bib key " + k)
     for r in d["results"]:
         if r["tool"] not in tools: errs.append("benchmarks: unknown tool " + r["tool"])
+    for fx in d["fixtures"]:
+        for k in fx["references"]:
+            if k not in bib: errs.append("fixtures: missing bib key " + k)
+    if len({fx["name"] for fx in d["fixtures"]}) != len(d["fixtures"]): errs.append("duplicate fixture names")
+    errs += check_reasons(d)
+    return errs
+
+
+NEEDS_REASON = ("reported-in-docs", "checked-convention", "checked-defect", "checked-no-value")
+
+
+def check_reasons(d):
+    """Every capabilities row whose state is not checked-agrees has exactly one record in reasons.json, with the content its state requires."""
+    errs = []
+    caps = {(r["measure"], r["tool"]): r["state"] for r in d["capabilities"]}
+    fids = {f["id"] for f in d["findings"]}
+    seen = collections.Counter((r["measure"], r["tool"]) for r in d["reasons"])
+    for k, n in seen.items():
+        if n > 1: errs.append("reasons: %s/%s appears %d times" % (k[0], k[1], n))
+        if k not in caps: errs.append("reasons: %s/%s is not a capabilities row" % k)
+        elif caps[k] == "checked-agrees": errs.append("reasons: %s/%s is checked-agrees and needs no reason" % k)
+    for k, st in caps.items():
+        if st in NEEDS_REASON and k not in seen: errs.append("capabilities: %s/%s is %s and has no reason in reasons.json" % (k[0], k[1], st))
+    for r in d["reasons"]:
+        k = (r["measure"], r["tool"]); w = "reasons %s/%s" % k
+        if k in caps and caps[k] != r["state"]: errs.append("%s: state %s differs from capabilities.csv (%s)" % (w, r["state"], caps[k]))
+        if not r["reason"].strip(): errs.append(w + ": empty reason")
+        if r["reason_incomplete"] and not r.get("missing", "").strip(): errs.append(w + ": reason_incomplete without a statement of what is missing")
+        if not r["reason_incomplete"] and r.get("missing"): errs.append(w + ": 'missing' given but reason_incomplete is false")
+        for f in r.get("findings", []):
+            if f not in fids: errs.append("%s: unknown finding %s" % (w, f))
+        need = {"checked-convention": ["tool_version", "convention", "variants", "inputs", "comparisons"],
+                "checked-defect": ["tool_version", "observed", "expected", "findings", "inputs", "comparisons"],
+                "checked-no-value": ["tool_version", "inputs", "comparisons"],
+                "reported-in-docs": ["why_not_run", "documentation"]}.get(r["state"], [])
+        for f in need:
+            if f in r and r[f] not in ("", [], None): continue
+            if f == "convention" and r["reason_incomplete"]: continue
+            if f == "variants" and r["state"] == "checked-no-value": continue
+            errs.append("%s: %s required for %s" % (w, f, r["state"]))
+        if r["state"] == "checked-convention":
+            if not any(v["outcome"] == "differs" for v in r.get("variants", [])): errs.append(w + ": no variant with outcome differs")
+            if not r.get("inputs", {}).get("differs", {}).get("tags") and not r.get("inputs", {}).get("differs", {}).get("named"):
+                errs.append(w + ": no inputs on which the values differ")
+        if r["state"] == "checked-defect" and not (r.get("inputs", {}).get("differs", {}).get("named") or r.get("inputs", {}).get("differs", {}).get("tags")):
+            errs.append(w + ": no inputs on which the value is wrong")
     return errs
 
 
@@ -225,13 +272,34 @@ LEGEND = "✓ checked, agrees; ≠ checked, differs by a documented convention; 
 STATE_CLS = {"checked-agrees": "ok", "checked-convention": "conv", "checked-defect": "defect", "checked-no-value": "nov", "reported-in-docs": "docs"}
 
 
-def state_badge(k):
-    return '<span class="st st-g st-%s" role="img" aria-label="%s" title="%s">%s</span>' % (STATE_CLS[k], STATE_TXT[k], STATE_TXT[k], STATE_SYM[k])
+METHOD = "method.html"
+STATE_DEF = {
+    "checked-agrees": "The tool was run and its value equals the reference value of the published definition, within the stated tolerance, on every fixture the tool accepts. No convention is mapped.",
+    "checked-convention": "The tool was run and on some fixtures its value differs from the reference value because it follows a different, documented convention. The entry states the convention, what each side does, the relation between the two values and the tolerances.",
+    "checked-defect": "The tool was run and on some inputs its value is wrong under the published definition. The entry states what is wrong, on which inputs, observed against expected, the tool version and the finding.",
+    "checked-no-value": "The tool was run but gave no value on the compared inputs, so no comparison could be made. The entry states on which inputs and why.",
+    "reported-in-docs": "The tool lists the capability in its documentation or public API, but it was not run for this measure. The entry states why and the documentation source.",
+}
 
 
-def legend_html():
-    items = "".join("<span>%s %s</span>" % (state_badge(k), STATE_TXT[k]) for k in STATE_SYM)
-    return '<div class="legend" role="group" aria-label="State legend">' + items + '<span class="blank">blank: not known to implement it</span></div>'
+def state_badge(k, rel="", title=None):
+    """A glyph badge that links to the definition of the state on the method page."""
+    t = title if title is not None else STATE_TXT[k]
+    return '<a class="st st-g st-%s" href="%s%s#state-%s" title="%s" aria-label="%s">%s</a>' % (STATE_CLS[k], rel, METHOD, k, esc_attr(t), esc_attr(STATE_TXT[k]), STATE_SYM[k])
+
+
+def state_tag(k, rel=""):
+    """A badge with the state in words, linking to its definition."""
+    return '<a class="st st-t st-%s" href="%s%s#state-%s"><span class="g" aria-hidden="true">%s</span>%s</a>' % (STATE_CLS[k], rel, METHOD, k, STATE_SYM[k], STATE_TXT[k])
+
+
+def esc_attr(s): return re.sub(r"\s+", " ", str(s)).strip().replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;").replace("|", "&#124;")
+
+
+def legend_html(rel=""):
+    items = "".join("<span>%s %s</span>" % (state_badge(k, rel), STATE_TXT[k]) for k in STATE_SYM)
+    return ('<div class="legend" role="group" aria-label="State legend">' + items + '<span class="blank">blank: not known to implement it</span>'
+            + '<span><a href="%s%s">How entries are labelled</a></span></div>' % (rel, METHOD))
 
 
 def harness_links(conv_rows, tool_ids, rel="../"):
@@ -270,6 +338,14 @@ def build(d):
     for f in d["findings"]:
         fnd_by_t[f["tool"]].append(f)
         if f["measure"]: fnd_by_m[f["measure"]].append(f)
+    rsn = {(r["measure"], r["tool"]): r for r in d["reasons"]}
+    why_id = lambda m_, t_: "why-%s-%s" % (slug(m_), t_)
+
+    def why_cell(m_, t_, rel):
+        r = rsn.get((m_, t_))
+        if not r: return ""
+        href = ("" if rel is None else curl(cid_[mid[m_]["concept"]], rel)) + "#" + why_id(m_, t_)
+        return "%s%s [details](%s)" % (esc(r["short"]), " *(reason incomplete)*" if r["reason_incomplete"] else "", href)
     families = sorted({c["family"] for c in concepts})
     tool_order = [t["id"] for t in tools]
     n_checked = sum(1 for r in d["capabilities"] if r["state"].startswith("checked"))
@@ -286,7 +362,8 @@ def build(d):
             '<ul class="hero-counts">' + "".join("<li><b>%d</b>%s</li>" % c for c in counts) + '</ul></div></section>')
     cards = [("measures/", "Families", "%d families, %d concepts and %d measures." % (len(families), len(concepts), len(meas))),
              ("tools/", "Tools", "%d tools, %d run and compared." % (ntools, ncheck_t)),
-             ("matrix.html", "Capability matrix", "Measure by tool, with the state of each entry."),
+             ("matrix.html", "Capability matrix", "Measure by tool, with the state of each entry and the reason for it."),
+             ("method.html", "How entries are labelled", "What was compared, how, on which inputs, and what each state means."),
              ("findings.html", "Findings", "%d bugs, disagreements and limitations." % len(d["findings"])),
              ("benchmarks.html", "Benchmarks", "Method and %d timing rows." % len(d["results"])),
              ("references.html", "References", "Every cited package and paper."),
@@ -305,13 +382,11 @@ A neutral, citable survey of network-analysis software: which tool implements wh
 
 ## How entries are labelled
 
-Each tool-by-measure entry has one state:
+Each tool-by-measure entry has one state. Every state other than `checked-agrees` carries a reason, shown wherever the entry is shown. The full definitions, the comparison rules and the fixture list are on [How entries are labelled](method.html).
 
-{table(['State', 'Meaning'], [[code(k), state_badge(k) + ' ' + STATE_TXT[k]] for k in STATE_SYM])}
+{table(['State', 'Meaning'], [[state_tag(k) + ' ' + code(k), STATE_DEF[k]] for k in STATE_SYM])}
 
-The definitions are in `data/schema/capabilities.schema.json`. A tool marked *documented-only* was never run: its entries come from its documentation and are always `reported-in-docs`.
-
-A *reference value* in these pages means the value of the published definition, evaluated independently (brute force on small graphs, in exact arithmetic where the quantity allows), and confirmed against other tools before a difference is attributed to a convention.
+A tool marked *documented-only* was never run: its entries come from its documentation and are always `reported-in-docs`. A *reference value* is the value of the published definition, evaluated independently of every tool compared (see [How entries are labelled](method.html#reference-value)).
 """
     files["index.md"] = page({"title": "Home", "layout": "default", "nav_order": 1, "permalink": "/"}, body)
 
@@ -322,6 +397,8 @@ A *reference value* in these pages means the value of the published definition, 
         ("concepts.json", "Concepts: id, name, family, subfamily, definition, citation keys. A concept groups measures that are the same quantity, alternative algorithms, options or one tool's function for it."),
         ("aliases.csv", "Old measure id to concept page and anchor (generated). Join key: `measure`."),
         ("capabilities.csv", "Measure by tool: state, API names, comparison counts. Join keys: `measure`, `tool`."),
+        ("reasons.json", "Per measure and tool, for every entry whose state is not `checked-agrees`: plain-words reason, short form, structured fields (convention, relation, inputs, tolerance, finding, source) and `reason_incomplete`."),
+        ("fixtures.json", "The input graphs used for the comparisons: id, tier, kind, size, direction, weights, source and citation key."),
         ("conventions.json", "Per measure, variant and tool: scope, call, outcome, differing conditions, normalization/direction/weights/self-loops/ties/defaults dimensions, note, tolerance."),
         ("findings.json", "Bugs, disagreements and limitations in other tools."),
         ("benchmarks/results.csv", "Timing and memory of other tools; method in `data/benchmarks/method.md`."),
@@ -334,16 +411,22 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
 
 - `measures.json[].concept` is `concepts.json[].id`; `aliases.csv.measure` is `measures.json[].id` and `aliases.csv.concept` is `concepts.json[].id`. The page of a measure is `aliases.csv.page` plus `#` plus `aliases.csv.anchor`.
 - `capabilities.csv.measure` is `measures.json[].id`; `capabilities.csv.tool` is `tools.json[].id`.
+- `reasons.json[].measure`, `.tool` use the same ids; every row of `capabilities.csv` whose state is not `checked-agrees` has exactly one record there, and no other row has one.
+- `fixtures.json[].id` are the fixture names used in `conventions.json` (`differs_on_inputs`, `no_value_on_inputs`) and in `reasons.json[].inputs`.
 - `conventions.json[].measure`, `.tool` use the same ids. `.variant` names one parameterization of the measure (for example normalized or weighted).
 - `findings.json[].tool`, `.measure` (nullable) use the same ids.
 - `benchmarks/results.csv.tool` is `tools.json[].id`.
 - Citation keys in `tools.json[].citation_key`, `measures.json[].references`, `concepts.json[].references`, `findings.json[].references` and `conventions.json[].reference` are keys of `references.bib`.
 
+## Reasons
+
+Every entry that is not `checked-agrees` has a reason in `reasons.json`. `build.py --check` fails if one is missing or lacks what its state requires. `reason_incomplete: true` marks the entries for which the sources do not state everything; `missing` says what is not known. The states, the comparison rules and the fixtures are defined on [How entries are labelled](method.html).
+
 ## Conventions record fields
 
 `outcome` is `agrees` (values agreed on every compared input), `differs` (they differ under `differs_when`), `no-value-on-some-inputs` (the tool returns no value or an error under `undefined_when`), or `documented` (taken from documentation). `dimensions` lists which conventions are involved. `tolerance` is the absolute and relative tolerance used when comparing: integer outputs are compared exactly, floating-point outputs within the stated bound. The structural conditions are: `loops`, `multi_edges`, `directed`, `undirected`, `disconnected`, `not_strongly_connected`, `null_graph`, `one_node`, `two_nodes`, `edgeless`, `isolates`, `symmetric_nodes`, `negative_weights`, `zero_weights`, `integer_weights`, `fractional_weights`, `weighted`, `bipartite`, `onemode`, `unsorted_edges`, `no_two_paths`, `edge_case`.
 """
-    files["data.md"] = page({"title": "Data and schemas", "layout": "default", "nav_order": 7}, body)
+    files["data.md"] = page({"title": "Data and schemas", "layout": "default", "nav_order": 8}, body)
 
     # tools index + pages
     rows = []
@@ -352,7 +435,7 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
         cs = caps_by_t.get(t["id"], [])
         rows.append(["[%s](%s.html)" % (esc(t["name"]), t["id"]), esc(t["language"] or ""), esc(t["version_tested"]), esc(t["license"] or ""), t["role"], len(cs), sum(1 for c in cs if c["state"].startswith("checked")), len(fnd_by_t.get(t["id"], []))])
     body = "# Tools\n\n" + table(["Tool", "Language", "Version tested", "License", "Role", "Measures", "Checked", "Findings"], rows)
-    files["tools/index.md"] = page({"title": "Tools", "layout": "default", "nav_order": 3, "has_children": "true", "permalink": "/tools/"}, body)
+    files["tools/index.md"] = page({"title": "Tools", "layout": "default", "nav_order": 4, "has_children": "true", "permalink": "/tools/"}, body)
     for t in tools:
         if t["role"] == "reference": continue
         cs = sorted(caps_by_t.get(t["id"], []), key=lambda r: mkey(r["measure"]))
@@ -364,9 +447,11 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
         if t["api_listing"] and t["api_listing"]["method"]:
             body += "\nCapabilities listed by %s of %s.\n" % (esc(t["api_listing"]["method"]), esc(t["api_listing"]["source"] or "its documentation"))
         if cs:
-            body += "\n## Coverage\n\n" + table(["State", "Measures"], [[STATE_TXT[k] + " (" + STATE_SYM[k] + ")", cnt[k]] for k in STATE_SYM if cnt[k]]) + "\n"
-            body += "\n## Measures\n\n" + table(["Family", "Subfamily", "Concept", "Measure (variant)", "State", "API names"], [
-                [esc(cid_[mid[c["measure"]]["concept"]]["family"]), esc(cid_[mid[c["measure"]]["concept"]]["subfamily"]), "[%s](%s)" % (esc(cid_[mid[c["measure"]]["concept"]]["name"]), curl(cid_[mid[c["measure"]]["concept"]], "../")), mlink(c["measure"], "../", esc(mid[c["measure"]]["variant"])), STATE_SYM[c["state"]] + " " + STATE_TXT[c["state"]], code(c["api_names"]) if c["api_names"] else ""] for c in cs]) + "\n"
+            body += "\n## Coverage\n\n" + table(["State", "Measures"], [[state_tag(k, "../"), cnt[k]] for k in STATE_SYM if cnt[k]]) + "\n"
+            body += "\nEvery state other than checked, agrees has a reason, shown in the last column and in full on the measure's page. The states are defined on [How entries are labelled](../method.html).\n"
+            body += "\n## Measures\n\n" + table(["Family", "Subfamily", "Concept", "Measure (variant)", "State", "API names", "Why, if not agrees"], [
+                [esc(cid_[mid[c["measure"]]["concept"]]["family"]), esc(cid_[mid[c["measure"]]["concept"]]["subfamily"]), "[%s](%s)" % (esc(cid_[mid[c["measure"]]["concept"]]["name"]), curl(cid_[mid[c["measure"]]["concept"]], "../")), mlink(c["measure"], "../", esc(mid[c["measure"]]["variant"])), state_tag(c["state"], "../"), code(c["api_names"]) if c["api_names"] else "",
+                 why_cell(c["measure"], t["id"], "../") ] for c in cs]) + "\n"
         fs = fnd_by_t.get(t["id"], [])
         if fs:
             body += "\n## Findings\n\n" + table(["Id", "Kind", "Title"], [["[%s](../findings.html#%s)" % (f["id"], f["id"].lower()), f["kind"], esc(f["title"])] for f in fs]) + "\n"
@@ -382,7 +467,7 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
         subs = collections.OrderedDict()
         for c in cs: subs.setdefault(c["subfamily"], []).append(c)
         body += " · ".join("%s (%d)" % (esc(sf), len(sc)) for sf, sc in subs.items()) + "\n"
-    files["measures/index.md"] = page({"title": "Measures", "layout": "default", "nav_order": 4, "has_children": "true", "permalink": "/measures/"}, body)
+    files["measures/index.md"] = page({"title": "Measures", "layout": "default", "nav_order": 5, "has_children": "true", "permalink": "/measures/"}, body)
     for fi, (f, cs) in enumerate(fam_concepts.items()):
         subs = collections.OrderedDict()
         for c in cs: subs.setdefault(c["subfamily"], []).append(c)
@@ -407,8 +492,17 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
             body += "\n## %s {#%s}\n\nMeasure id: %s. Original family: %s.\n" % (esc(m["variant"]), slug(m["id"]), code(m["id"]), esc(m["family"]))
             if m["name"] != m["variant"]: body += "\nName: %s.\n" % esc(m["name"])
             body += "\n**Definition.** %s\n" % esc(m["definition"])
-            body += "\n**Implementations**\n\n" + table(["Tool", "State", "API names", "Source"], [
-                ["[%s](../../tools/%s.html)" % (esc(tid[r["tool"]]["name"]), r["tool"]), STATE_SYM[r["state"]] + " " + STATE_TXT[r["state"]], code(r["api_names"]) if r["api_names"] else "", esc(r["source"])] for r in cs_]) + "\n"
+            body += "\n**Implementations**\n\n" + table(["Tool", "State", "Why, if not agrees", "API names", "Source"], [
+                ["[%s](../../tools/%s.html)" % (esc(tid[r["tool"]]["name"]), r["tool"]), state_tag(r["state"], "../../"), why_cell(m["id"], r["tool"], None) if (m["id"], r["tool"]) in rsn else "", code(r["api_names"]) if r["api_names"] else "", esc(r["source"])] for r in cs_]) + "\n"
+            ws = [r for r in cs_ if (m["id"], r["tool"]) in rsn]
+            if ws:
+                body += "\n**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).\n\n"
+                for r in ws:
+                    z = rsn[(m["id"], r["tool"])]
+                    body += '- <a id="%s"></a>**[%s](../../tools/%s.html)** %s %s' % (why_id(m["id"], r["tool"]), esc(tid[r["tool"]]["name"]), r["tool"], state_tag(r["state"], "../../"), esc(z["reason"]))
+                    if z.get("findings"): body += " Findings: " + ", ".join("[%s](../../findings.html#%s)" % (f, f.lower()) for f in z["findings"]) + "."
+                    if z["reason_incomplete"]: body += " **Reason incomplete:** " + esc(z["missing"])
+                    body += "\n"
             cv = [x for x in conv_by_m.get(m["id"], []) if x["tool"] in tid]
             if cv:
                 body += "\n**Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).\n\n"
@@ -428,8 +522,16 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
         files["measures/%s/%s.md" % (fam_slug(c["family"]), c["id"])] = page({"title": yq(c["name"]), "layout": "default", "parent": yq(c["family"]), "grand_parent": "Measures", "nav_exclude": "true"}, body)
 
     # matrix
-    body = "# Capability matrix\n\n" + legend_html() + "\n\nColumns are tool identifiers (see [Tools](tools/)). Rows are measures, grouped by family, subfamily and concept; the concept name links to its page and each variant links to its section.\n"
+    body = "# Capability matrix\n\n" + legend_html() + "\n\nColumns are tool identifiers (see [Tools](tools/)). Rows are measures, grouped by family, subfamily and concept; the concept name links to its page and each variant links to its section. Every symbol is a link: hover for the reason, or follow it to the full reason on the measure's page (for a state other than checked, agrees) or to the definition of the state on [How entries are labelled](method.html) (for checked, agrees). Entries marked with a reason the sources only partly give say so in the detail.\n"
     cap = {(r["measure"], r["tool"]): r["state"] for r in d["capabilities"]}
+
+    def cell_html(m_, t_, cap_):
+        k = cap_.get((m_, t_))
+        if not k: return ""
+        z = rsn.get((m_, t_))
+        if z is None: return state_badge(k, "", STATE_TXT[k] + ": agrees with the reference value on every compared input")
+        tip = z["short"] + (" (reason incomplete)" if z["reason_incomplete"] else "")
+        return '<a class="st st-g st-%s" href="%s#%s" title="%s" aria-label="%s: %s">%s</a>' % (STATE_CLS[k], curl(cid_[mid[m_]["concept"]], ""), why_id(m_, t_), esc_attr(tip), esc_attr(STATE_TXT[k]), esc_attr(z["short"]), STATE_SYM[k])
     for f, cs in fam_concepts.items():
         body += "\n## %s\n\n%d measures in %d concepts.\n" % (esc(f), sum(len(mem[c["id"]]) for c in cs), len(cs))
         subs = collections.OrderedDict()
@@ -440,10 +542,46 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
             rows = []
             for c in sc:
                 for i, m in enumerate(mem[c["id"]]):
-                    rows.append(["[%s](%s)" % (esc(c["name"]), curl(c, "")) if i == 0 else "", mlink(m["id"], "", esc(m["variant"]))] + [STATE_SYM.get(cap.get((m["id"], t), ""), "") for t in ts])
+                    rows.append(["[%s](%s)" % (esc(c["name"]), curl(c, "")) if i == 0 else "", mlink(m["id"], "", esc(m["variant"]))] + [cell_html(m["id"], t, cap) for t in ts])
             body += "\n### %s\n\n%d measures in %d concepts.\n\n" % (esc(sf), len(ms_), len(sc))
             body += table(["Concept", "Variant"] + [t for t in ts], rows) + "\n"
     files["matrix.md"] = page({"title": "Capability matrix", "layout": "default", "nav_order": 2}, body)
+
+
+    # method: how entries are labelled
+    mtxt = open(os.path.join(DATA, "method.md"), encoding="utf-8").read().strip()
+    mtxt = re.sub(r"^# .*\n", "", mtxt)
+    ncap = collections.Counter(r["state"] for r in d["capabilities"])
+    nwhy = collections.Counter(r["why_not_run"] for r in d["reasons"] if r["state"] == "reported-in-docs")
+    ninc = sum(1 for r in d["reasons"] if r["reason_incomplete"])
+    sec = []
+    def state_sec(k, text):
+        sec.append("### %s {#state-%s}\n\n%s %s\n\n%s\n\nEntries with this state: **%d**.\n" % (STATE_TXT[k][0].upper() + STATE_TXT[k][1:], k, state_tag(k), code(k), text, ncap[k]))
+    state_sec("checked-agrees", "The tool was run, and on **every** fixture that applies to the measure and that the tool accepts, its value equals the reference value within the tolerance recorded for the measure: exactly for integers, sets and discrete labels (partitions up to relabelling), within the absolute and relative tolerances for floating-point values, by seed or by distribution for random and approximate algorithms. The tool's default behaviour is compared as it is: **no convention is mapped for this state**, no input is left out because the tool disagrees, and no tolerance is widened to make the entry agree. Inputs the tool does not accept are not comparisons (see [the inputs](#inputs)). `comparisons_agreeing` counts the agreeing comparisons (variant by fixture) and `comparisons_differing` is 0. Agreement is a statement about the listed fixtures and the tool version tested, not a proof for all graphs.")
+    state_sec("checked-convention", "The tool was run and its value differs from the reference value, beyond the tolerance, on at least one fixture it accepts, and the difference is a documented convention: the tool follows a different, defensible reading of the quantity (normalization, direction, weights, self-loops, multi-edges, ties, defaults, scaling, ordering, or the way an undefined value is encoded). Conventions are mapped before comparing **only for this state**: the reference value is recomputed with the tool's convention, and where such a mapping is recorded it is compared with the tool's values on exactly the inputs where the difference occurs, with its own tolerance; a mismatch there would show that the difference is not the named convention alone. The reason states which convention differs, what each side does, the exact relation between the tool's value and the reference value where the sources give it (for example a constant factor), the inputs, and the tolerance before and after mapping. `comparisons_differing` counts the differing comparisons.")
+    state_sec("checked-defect", "The tool was run and on some input its value is wrong under the published definition: it contradicts the definition, as the direct evaluation shows, rather than reading it differently. The reason states what is wrong, on which inputs, the value observed against the value expected, and the tool version, and links the finding that records the observation and, where available, a minimal reproduction. Findings of kind *defect* are listed on the [findings page](findings.html); a finding recorded for an entry of another state is linked from that entry.")
+    state_sec("checked-no-value", "The tool was run for the measure but gave no value on the compared inputs, so no comparison could be made: it raised an error, returned an undefined marker, does not support the type of input, did not finish within the time limit, or its run was declined. The reason states on which inputs and why, with the error text where the sources record it. A tool that gives no value on *some* inputs but values on others is not in this state: its entry is `checked-agrees` or `checked-convention` according to the comparisons made, and the inputs without value are listed in the reason of a `checked-convention` entry (as \"No value\") and in `data/conventions.json` (`no_value_on_inputs`).")
+    state_sec("reported-in-docs", "The tool lists the capability in its documentation or public API, but it was **not run** for this measure, so nothing is stated about agreement. The reason says why it was not run and gives the documentation source. Three reasons occur: *not yet wired up* (%d entries: the tool was run in this survey on other measures, but no comparison against the reference value has been set up for this one), *documented-only tool* (%d entries: the tool is documented-only in this survey, so none of its measures was run), and *commercial, closed-source software* (%d entries: UCINET is proprietary Windows software that was never run here; it is never described as checked)." % (nwhy["not-yet-wired"], nwhy["documented-only-tool"], nwhy["commercial-closed-source"]))
+    sec.append("### Blank\n\nA blank cell in the matrix, or an absent row in `data/capabilities.csv`, means the tool is not known to implement the measure. It says nothing about whether it does.\n")
+    mtxt = mtxt.replace("{{STATE_SECTIONS}}", "\n".join(sec).strip())
+    mtxt = mtxt.replace("only when the sources used for this survey do not say", "only when the sources used for this survey do not say")
+    mtxt += "\n\n%d of the %d reasons are marked `reason_incomplete`.\n" % (ninc, len(d["reasons"]))
+    fr = [[code(fx["name"]), fx["tier"], fx["nodes"] if fx["nodes"] is not None else "", fx["edges"] if fx["edges"] is not None else "", "directed" if fx["directed"] else "undirected", fx["weights"],
+           esc(", ".join(fx["tags"])), esc(fx["description"]) + (" " + ", ".join(cite(k, "") for k in fx["references"]) if fx["references"] else "")] for fx in d["fixtures"]]
+    ftxt = ("%d fixtures: %d in the small tier (run for every tool and every measure that applies), %d mid-size and %d large (run only for the pairs of tool and measure that can follow them). The tags are structural conditions computed from the graph; they are the conditions named in `differs_when`, `undefined_when` and the reasons, and are listed in [data.html](data.html). Node and edge counts are given where fixed by the generator; the edge count of the small tier counts rows of the edge list, including repeated edges and loops.\n\n"
+            % (len(d["fixtures"]), sum(1 for x in d["fixtures"] if x["tier"] == "small"), sum(1 for x in d["fixtures"] if x["tier"] == "mid"), sum(1 for x in d["fixtures"] if x["tier"] == "large"))
+            + table(["Fixture", "Tier", "Nodes", "Edges", "Direction", "Weights", "Tags", "Description"], fr))
+    mtxt = mtxt.replace("{{FIXTURES}}", ftxt)
+    def tclass(t):
+        m_ = max(t["abs"], t["rel"])
+        if m_ == 0: return 0
+        return 1 if m_ <= 1e-12 else 2 if m_ <= 1e-9 else 3 if m_ <= 1e-6 else 4
+    tnames = ["exact (abs 0, rel 0)", "floating point, both bounds at most 1e-12", "floating point, larger bound above 1e-12 up to 1e-9", "larger bound above 1e-9 up to 1e-6", "larger bound above 1e-6 (statistical comparisons)"]
+    tc = collections.defaultdict(list)
+    for c in d["conventions"]: tc[tclass(c["tolerance"])].append(c)
+    trows = [[tnames[k], len(tc[k]), len({c["measure"] for c in tc[k]}), ("abs %g to %g, rel %g to %g" % (min(c["tolerance"]["abs"] for c in tc[k]), max(c["tolerance"]["abs"] for c in tc[k]), min(c["tolerance"]["rel"] for c in tc[k]), max(c["tolerance"]["rel"] for c in tc[k]))) if tc[k] else ""] for k in range(5)]
+    mtxt = mtxt.replace("{{TOLERANCES}}", "Tolerances of the %d convention records, by size of the larger bound.\n\n" % len(d["conventions"]) + table(["Class", "Records", "Measures", "Range used"], trows))
+    files["method.md"] = page({"title": yq("How entries are labelled"), "layout": "default", "nav_order": 3, "permalink": "/method.html"}, "# How entries are labelled\n\n" + mtxt)
 
     # findings
     body = "# Findings\n\nBugs, disagreements and limitations observed in other tools. `kind` is *defect* (wrong under the published definition), *convention* (differs by a convention) or *limitation* (refuses or cannot represent the input). `status` is *reproduced* (minimal reproduction recorded), *observed* (seen on a shared corpus of test graphs) or *reported* (public discussion, not re-measured). Versions are those tested; a finding may not hold in later versions.\n\n"
@@ -451,13 +589,18 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
         "[%s](#%s)" % (f["id"], f["id"].lower()), esc(tid[f["tool"]]["name"]), esc(f["version"]), mlink(f["measure"], "", esc(mid[f["measure"]]["name"])) if f["measure"] else "", f["kind"], f["status"], esc(f["title"])] for f in d["findings"]]) + "\n"
     for f in d["findings"]:
         body += "\n## %s %s {#%s}\n\nTool: [%s](tools/%s.html) %s. Kind: %s. Status: %s.\n" % (f["id"], esc(f["title"]), f["id"].lower(), esc(tid[f["tool"]]["name"]), f["tool"], esc(f["version"]), f["kind"], f["status"])
+        z = rsn.get((f["measure"], f["tool"])) if f["measure"] else None
+        if f["measure"] and (f["measure"], f["tool"]) in cap:
+            k = cap[(f["measure"], f["tool"])]
+            why = (esc(z["short"]) + " [Full reason](%s#%s)." % (curl(cid_[mid[f["measure"]]["concept"]], ""), why_id(f["measure"], f["tool"]))) if z else "Agrees with the reference value on every compared input."
+            body += "\n**Entry:** %s %s %s\n" % (mlink(f["measure"], "", esc(mid[f["measure"]]["name"])), state_tag(k), why)
         if f["observed"]: body += "\n**Observed:** %s\n" % esc(f["observed"])
         if f["expected"]: body += "\n**Expected:** %s\n" % esc(f["expected"])
         if f["reproduction"]:
             body += "\n**Reproduction:**\n\n```\n%s\n```\n" % f["reproduction"].replace("```", "'''")
         if f["evidence"]: body += "\n**Notes:** %s\n" % esc(f["evidence"])
         if f["references"]: body += "\nReferences: " + ", ".join(cite(k, "") for k in f["references"]) + "\n"
-    files["findings.md"] = page({"title": "Findings", "layout": "default", "nav_order": 5}, body)
+    files["findings.md"] = page({"title": "Findings", "layout": "default", "nav_order": 6}, body)
 
     # benchmarks
     method = open(os.path.join(DATA, "benchmarks", "method.md"), encoding="utf-8").read().strip()
@@ -479,7 +622,7 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
             mb = [float(r["peak_megabytes"]) for r in rs if r["peak_megabytes"]]
             rows.append([mlink(me, "", esc(me)) if me in mid else esc(me), esc(tid[t]["name"]), len(rs), len(sec), "%.4g" % statistics.median(sec) if sec else "", "%.4g" % statistics.median(mb) if mb else ""])
         body += table(["Measure", "Tool", "Graphs", "Finished", "Median seconds", "Median peak MB"], rows) + "\n"
-    files["benchmarks.md"] = page({"title": "Benchmarks", "layout": "default", "nav_order": 6}, body)
+    files["benchmarks.md"] = page({"title": "Benchmarks", "layout": "default", "nav_order": 7}, body)
 
     # references
     cited = collections.defaultdict(list)
@@ -490,7 +633,7 @@ Each JSON or CSV file has a JSON Schema in `data/schema/` (draft 2020-12). `pyth
     body = "# References\n\nEvery cited package and paper. Keys match `data/references.bib`.\n\n"
     for k in sorted(d["bib"]):
         body += '- <a id="%s"></a>`%s` %s\n' % (k, k, esc(cite_text(d["bib"][k])))
-    files["references.md"] = page({"title": "References", "layout": "default", "nav_order": 8}, body)
+    files["references.md"] = page({"title": "References", "layout": "default", "nav_order": 9}, body)
 
     # aliases: old measure id -> concept page and anchor
     arows = [[m["id"], m["concept"], cid_[m["concept"]]["family"], cid_[m["concept"]]["subfamily"], mpath(m["id"])[0], mpath(m["id"])[1]] for m in sorted(d["measures"], key=lambda m: m["id"])]
@@ -519,7 +662,9 @@ Source of truth is data/. Pages are generated from it by scripts/build.py (pytho
 - data/concepts.json (data/schema/concepts.schema.json): array of concepts. A concept groups measures that are the same quantity, an alternative algorithm for it, a normalization, direction or weighting option of it, or one tool's function for it; measures that compute different quantities are never merged. Fields: id (snake_case), name, family, subfamily, definition, references (BibTeX keys, union of its measures' keys). The grouping rules are in data/README.md.
 - data/aliases.csv (data/schema/aliases.schema.json, generated by scripts/build.py): one row per measure id. Columns: measure, concept, family, subfamily, page (site-relative path of the concept page), anchor (section of that page for this measure). Use it to map an old measure id, or any measure id found in capabilities.csv, conventions.json, findings.json or benchmarks, to its concept page.
 - data/capabilities.csv (data/schema/capabilities.schema.json): one row per measure and tool. Columns: measure, tool, state, api_names (semicolon separated), comparisons_agreeing, comparisons_differing, source.
-  State vocabulary: reported-in-docs (listed in the tool's documentation or public API, not run); checked-agrees (run, agrees with an independent evaluation within tolerance); checked-convention (run, differs on some inputs by a documented convention); checked-defect (run, wrong under the published definition); checked-no-value (run, returns no value or an error on the compared inputs). Tools with role documented-only only have reported-in-docs. A blank (absent row) means not known to implement it.
+  State vocabulary: reported-in-docs (listed in the tool's documentation or public API, not run); checked-agrees (run, agrees with an independent evaluation within tolerance); checked-convention (run, differs on some inputs by a documented convention); checked-defect (run, wrong under the published definition); checked-no-value (run, returns no value or an error on the compared inputs). Tools with role documented-only only have reported-in-docs. Precise definitions, the comparison rules (tolerances, exact for integers and sets, partitions up to relabelling, ties, sign of eigenvectors, seeds or distributions for random algorithms) and the fixture list are at method.html (How entries are labelled). checked-agrees means the tool equals the reference value on every fixture that applies and that the tool accepts, with no convention mapped; conventions are mapped only for checked-convention. A blank (absent row) means not known to implement it.
+- data/reasons.json (data/schema/reasons.schema.json): one record per capabilities.csv row whose state is not checked-agrees (join: measure, tool). Fields: measure, tool, state, reason (plain words), short (one sentence), convention, relation, inputs, tolerance, finding, source, why_not_run (reported-in-docs only), reason_incomplete, missing.
+- data/fixtures.json (data/schema/fixtures.schema.json): the input graphs of the comparisons (id, tier, kind, size, direction, weights, source, citation key).
 - data/conventions.json (data/schema/conventions.schema.json): array of records per measure, variant and tool. Fields: measure, variant, manifest, tool, scope (any | directed | undirected), weights_required, call (how the tool was invoked), outcome (agrees | differs | no-value-on-some-inputs | documented), differs_when and undefined_when (structural conditions such as loops, multi_edges, directed, disconnected, ties), only_on, dimensions (normalization, direction, weights, self_loops, multi_edges, ties, defaults), note, tolerance {{abs, rel}} (0 means exact), optional differs_on_inputs, no_value_on_inputs, reference.
 - data/findings.json (data/schema/findings.schema.json): array of findings. Fields: id, tool, version, measure (nullable), kind (defect | convention | limitation), status (reproduced | observed | reported), title, reproduction, observed, expected, evidence, references.
 - data/benchmarks/results.csv (data/schema/benchmarks-results.schema.json): timing rows of other tools. Columns: suite, graph, nodes, edges, measure, tool, tool_version, seconds (empty when over budget), peak_megabytes, threads, status. Method: data/benchmarks/method.md.
@@ -527,11 +672,11 @@ Source of truth is data/. Pages are generated from it by scripts/build.py (pytho
 
 ## Joins
 
-measures.concept -> concepts.id; aliases.measure -> measures.id; aliases.concept -> concepts.id; capabilities.measure -> measures.id; capabilities.tool -> tools.id; conventions.measure/tool -> measures.id/tools.id; findings.tool -> tools.id; findings.measure -> measures.id (nullable); benchmarks.tool -> tools.id; every citation key -> references.bib. Page for a concept: measures/<family-slug>/<concept id>.html, where family-slug is the family name in lower case with runs of other characters replaced by a hyphen (see aliases.csv, column page). Each measure is a section of its concept page with anchor = the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens), so the page of a measure is aliases.page + "#" + aliases.anchor. Family overview: measures/<family-slug>/. Page for a tool: tools/<id>.html. To join a measure-level table to concepts: join on measure id with measures.json (concept, variant) and then with concepts.json (family, subfamily).
+reasons.measure/tool -> capabilities.measure/tool; measures.concept -> concepts.id; aliases.measure -> measures.id; aliases.concept -> concepts.id; capabilities.measure -> measures.id; capabilities.tool -> tools.id; conventions.measure/tool -> measures.id/tools.id; findings.tool -> tools.id; findings.measure -> measures.id (nullable); benchmarks.tool -> tools.id; every citation key -> references.bib. Page for a concept: measures/<family-slug>/<concept id>.html, where family-slug is the family name in lower case with runs of other characters replaced by a hyphen (see aliases.csv, column page). Each measure is a section of its concept page with anchor = the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens), so the page of a measure is aliases.page + "#" + aliases.anchor. Family overview: measures/<family-slug>/. Page for a tool: tools/<id>.html. To join a measure-level table to concepts: join on measure id with measures.json (concept, variant) and then with concepts.json (family, subfamily).
 
 ## Conventions of the data
 
-Edge ends are called source and target. A reference value is the published definition evaluated independently. UCINET is documented-only: it was never run. Tool versions are those tested; findings may not hold in later versions.
+Edge ends are called source and target. A reference value is the published definition evaluated independently. Every state other than checked-agrees has a reason in data/reasons.json. UCINET is documented-only: it was never run. Tool versions are those tested; findings may not hold in later versions.
 
 ## Regenerate and validate
 
@@ -542,7 +687,7 @@ python3 scripts/build.py --check  # validate data against schemas, check that ev
 
 # ---------------------------------------------------------------- main
 GENERATED_DIRS = ["tools", "measures"]
-GENERATED_TOP = ["index.md", "data.md", "matrix.md", "findings.md", "benchmarks.md", "references.md", "llms.txt", "data/aliases.csv"]
+GENERATED_TOP = ["index.md", "method.md", "data.md", "matrix.md", "findings.md", "benchmarks.md", "references.md", "llms.txt", "data/aliases.csv"]
 
 
 def existing_generated():

@@ -41,9 +41,13 @@ Measure id: `cat_backbone`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | · reported in docs | `backbone_wu` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_backbone-bct) | `backbone_wu` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_backbone-bct"></a>**[BCT (Octave)](../../tools/bct.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. BCT (Octave) 2019-03-03 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (bctpy public functions (the Python port of the Brain Connectivity Toolbox function set)); API names: backbone\_wu.
 
 **Tools cited:** [rubinov2010complex](../../references.html#rubinov2010complex)
 
@@ -55,9 +59,13 @@ Measure id: `backbone_extraction`. Original family: Two-mode and bipartite.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs |  | documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-backbone_extraction-backbone) |  | documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-backbone_extraction-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 
@@ -69,9 +77,13 @@ Measure id: `cat_bicm`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs | `bicm` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_bicm-backbone) | `bicm` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_bicm-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 
@@ -83,9 +95,13 @@ Measure id: `cat_disparity`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs | `disparity` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_disparity-backbone) | `disparity` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_disparity-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 
@@ -97,9 +113,13 @@ Measure id: `cat_fastball`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs | `fastball` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_fastball-backbone) | `fastball` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_fastball-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 
@@ -111,9 +131,13 @@ Measure id: `cat_fdsm`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs | `fdsm` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_fdsm-backbone) | `fdsm` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_fdsm-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 
@@ -125,9 +149,13 @@ Measure id: `cat_fixedcol`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs | `fixedcol` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_fixedcol-backbone) | `fixedcol` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_fixedcol-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 
@@ -139,9 +167,13 @@ Measure id: `cat_fixedfill`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs | `fixedfill` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_fixedfill-backbone) | `fixedfill` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_fixedfill-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 
@@ -153,9 +185,13 @@ Measure id: `cat_fixedrow`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs | `fixedrow` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_fixedrow-backbone) | `fixedrow` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_fixedrow-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 
@@ -167,9 +203,13 @@ Measure id: `cat_lans`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs | `lans` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_lans-backbone) | `lans` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_lans-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 
@@ -181,9 +221,13 @@ Measure id: `cat_mlf`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs | `mlf` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_mlf-backbone) | `mlf` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_mlf-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 
@@ -195,9 +239,13 @@ Measure id: `cat_sdsm`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [backbone](../../tools/backbone.html) | · reported in docs | `sdsm` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_sdsm-backbone) | `sdsm` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_sdsm-backbone"></a>**[backbone](../../tools/backbone.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. backbone (3.0.4) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of backbone 3.0.4: help topics.
 
 **Tools cited:** [tool_backbone](../../references.html#tool_backbone)
 {% endraw %}

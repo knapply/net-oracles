@@ -26,14 +26,16 @@ Called through pynauty on graph adjacency dictionaries.
 
 | State | Measures |
 |---|---|
-| checked, agrees (✓) | 2 |
+| <a class="st st-t st-ok" href="../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> | 2 |
+
+Every state other than checked, agrees has a reason, shown in the last column and in full on the measure's page. The states are defined on [How entries are labelled](../method.html).
 
 ## Measures
 
-| Family | Subfamily | Concept | Measure (variant) | State | API names |
-|---|---|---|---|---|---|
-| Graph theory and combinatorics | Isomorphism and subgraph matching | [Graph isomorphism](../measures/graph-theory-and-combinatorics/graph_isomorphism.html) | [Vf2pp](../measures/graph-theory-and-combinatorics/graph_isomorphism.html#vf2pp) | ✓ checked, agrees |  |
-| Roles and positions | Equivalence and clustering | [Automorphic equivalence](../measures/roles-and-positions/automorphic_equivalence.html) | [Automorphic equivalence](../measures/roles-and-positions/automorphic_equivalence.html#automorphic_equivalence) | ✓ checked, agrees |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names | Why, if not agrees |
+|---|---|---|---|---|---|---|
+| Graph theory and combinatorics | Isomorphism and subgraph matching | [Graph isomorphism](../measures/graph-theory-and-combinatorics/graph_isomorphism.html) | [Vf2pp](../measures/graph-theory-and-combinatorics/graph_isomorphism.html#vf2pp) | <a class="st st-t st-ok" href="../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |
+| Roles and positions | Equivalence and clustering | [Automorphic equivalence](../measures/roles-and-positions/automorphic_equivalence.html) | [Automorphic equivalence](../measures/roles-and-positions/automorphic_equivalence.html#automorphic_equivalence) | <a class="st st-t st-ok" href="../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |
 
 ## Findings
 

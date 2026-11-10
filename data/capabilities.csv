@@ -21,16 +21,16 @@ assort,bctpy,checked-convention,,23,1,
 assort,netseg,reported-in-docs,assort,0,0,API listing
 assort,networkx,checked-agrees,degree_pearson_correlation_coefficient,349,0,
 assortativity_degree,bct,checked-convention,,15,13,
-assortativity_degree,igraph,checked-no-value,,0,0,
+assortativity_degree,igraph,checked-agrees,,59,0,
 assortativity_degree,networkx,checked-agrees,,55,0,
 assortativity_degree,pyigraph,checked-agrees,,73,0,
-assortativity_nominal,igraph,checked-no-value,,0,0,
+assortativity_nominal,igraph,checked-agrees,,132,0,
 assortativity_nominal,networkx,checked-convention,,42,2,
 assortativity_nominal,pyigraph,checked-agrees,,106,0,
 assortativity_nominal,ucinet,reported-in-docs,categonethomophily; homophily,0,0,API listing
 assortativity_values,bct,reported-in-docs,assortativity_bin; assortativity_wei,0,0,API listing
 assortativity_values,graphtool,reported-in-docs,assortativity; scalar_assortativity,0,0,API listing
-assortativity_values,igraph,checked-no-value,assortativity; assortativity_degree; assortativity_nominal,0,0,
+assortativity_values,igraph,checked-agrees,assortativity; assortativity_degree; assortativity_nominal,103,0,
 assortativity_values,networkit,reported-in-docs,Assortativity,0,0,API listing
 assortativity_values,networkx,checked-agrees,attribute_assortativity_coefficient; degree_assortativity_coefficient; numeric_assortativity_coefficient,44,0,
 assortativity_values,pyigraph,checked-agrees,assortativity; assortativity_degree; assortativity_nominal,126,0,
@@ -46,7 +46,7 @@ average_clustering,bctpy,checked-agrees,,33,0,
 average_clustering,boost,checked-convention,,18,1,
 average_clustering,gephi,checked-convention,,26,2,
 average_clustering,graphblas,checked-agrees,,28,0,
-average_clustering,igraph,checked-no-value,,0,0,
+average_clustering,igraph,checked-agrees,,88,0,
 average_clustering,jgrapht,checked-convention,,22,6,
 average_clustering,networkit,checked-agrees,,53,0,
 average_clustering,networkx,checked-agrees,average_clustering,51,0,
@@ -66,7 +66,7 @@ betweenness,graphtool,reported-in-docs,betweenness,0,0,API listing
 betweenness,igraph,checked-convention,betweenness,108,2,
 betweenness,jgrapht,checked-convention,BetweennessCentrality,47,16,
 betweenness,netrankr,checked-convention,aggregate_positions,17,1,
-betweenness,networkit,checked-no-value,Betweenness,0,0,
+betweenness,networkit,checked-agrees,Betweenness,86,0,
 betweenness,networkx,checked-convention,betweenness_centrality,81,13,
 betweenness,pyigraph,checked-agrees,betweenness,66,0,
 betweenness,rsiena,reported-in-docs,between,0,0,API listing
@@ -84,7 +84,7 @@ bicomponents,boost,reported-in-docs,biconnected_components,0,0,API listing
 bicomponents,graphtool,reported-in-docs,label_biconnected_components,0,0,API listing
 bicomponents,igraph,checked-agrees,biconnected_components,53,0,
 bicomponents,jgrapht,reported-in-docs,BiconnectivityInspector; BlockCutpointGraph,0,0,API listing
-bicomponents,networkit,checked-no-value,BiconnectedComponents,0,0,
+bicomponents,networkit,checked-agrees,BiconnectedComponents,33,0,
 bicomponents,networkx,checked-agrees,biconnected_component_edges; biconnected_components,44,0,
 bicomponents,pyigraph,reported-in-docs,biconnected_components,0,0,API listing
 bicomponents,rustworkx,reported-in-docs,biconnected_components,0,0,API listing
@@ -108,7 +108,7 @@ bonacich,igraph,checked-agrees,bonpow; power_centrality,101,0,
 bonacich,sna,checked-agrees,bonpow,23,0,
 bonacich,ucinet,reported-in-docs,Bonacich power / beta centrality; betacent; bonamat,0,0,published documentation
 branching,networkx,checked-agrees,maximum_branching; maximum_spanning_arborescence; minimal_branching; minimum_branching; minimum_spanning_arborescence,45,0,
-bridges,igraph,checked-no-value,bridges,0,0,
+bridges,igraph,checked-agrees,bridges,30,0,
 bridges,networkx,checked-agrees,bridges; has_bridges; local_bridges,44,0,
 bridges,pyigraph,reported-in-docs,bridges,0,0,API listing
 bridges,rustworkx,checked-agrees,bridges,33,0,
@@ -1178,7 +1178,7 @@ centralization:betweenness,ucinet,reported-in-docs,,0,0,published documentation
 centralization:closeness,igraph,checked-agrees,centr_clo,44,0,
 centralization:closeness,sna,checked-agrees,,36,0,
 centralization:closeness,ucinet,reported-in-docs,,0,0,published documentation
-centralization:degree,igraph,checked-no-value,centr_degree,0,0,
+centralization:degree,igraph,checked-agrees,centr_degree,59,0,
 centralization:degree,sna,checked-agrees,,44,0,
 centralization:degree,ucinet,reported-in-docs,,0,0,published documentation
 centralization_eigenvector,igraph,checked-convention,centr_eigen,27,1,
@@ -1204,7 +1204,7 @@ closeness,graphtool,reported-in-docs,closeness,0,0,API listing
 closeness,igraph,checked-agrees,closeness,140,0,
 closeness,jgrapht,checked-convention,ClosenessCentrality,49,23,
 closeness,netrankr,checked-convention,,15,3,
-closeness,networkit,checked-agrees,Closeness,108,0,
+closeness,networkit,checked-agrees,Closeness,180,0,
 closeness,networkx,checked-agrees,closeness_centrality,94,0,
 closeness,pyigraph,checked-agrees,closeness,140,0,
 closeness,rustworkx,checked-agrees,closeness_centrality; digraph_closeness_centrality; graph_closeness_centrality,88,0,
@@ -1224,11 +1224,11 @@ clustering,boost,checked-convention,clustering_coefficient,18,1,
 clustering,gephi,checked-convention,ClusteringCoefficient,26,2,
 clustering,graphblas,checked-agrees,,28,0,
 clustering,graphtool,reported-in-docs,local_clustering,0,0,API listing
-clustering,igraph,checked-no-value,,0,0,
+clustering,igraph,checked-agrees,,95,0,
 clustering,jgrapht,checked-convention,ClusteringCoefficient,22,6,
 clustering,networkit,checked-agrees,ClusteringCoefficient; LocalClusteringCoefficient; clustering,106,0,
 clustering,networkx,checked-agrees,clustering,51,0,
-clustering,pyigraph,checked-agrees,transitivity_local_undirected,106,0,
+clustering,pyigraph,checked-agrees,transitivity_local_undirected,113,0,
 clustering,sknetwork,reported-in-docs,get_clustering_coefficient,0,0,API listing
 clustering,tnet,checked-agrees,clustering_local_tm; clustering_local_w; clustering_tm; clustering_w,5,0,
 clustering,ucinet,reported-in-docs,"Clustering coefficient (ClusteringCoefficient, nordcp, fagiolocc, oldcc CLI)",0,0,published documentation
@@ -1263,7 +1263,7 @@ components,bct,reported-in-docs,get_components; number_of_components,0,0,API lis
 components,boost,reported-in-docs,connected_components; incremental_components; st_connected; strong_components,0,0,API listing
 components,gephi,checked-agrees,ConnectedComponents,56,0,
 components,graphtool,reported-in-docs,extract_largest_component; label_components; label_largest_component; label_out_component,0,0,API listing
-components,igraph,checked-no-value,clusters; component_distribution; components; decompose; is_biconnected; is_connected; largest_component; subcomponent,0,0,
+components,igraph,checked-agrees,clusters; component_distribution; components; decompose; is_biconnected; is_connected; largest_component; subcomponent,88,0,
 components,jgrapht,reported-in-docs,ConnectivityInspector,0,0,API listing
 components,networkit,checked-agrees,ConnectedComponents; StronglyConnectedComponents; WeaklyConnectedComponents,106,0,
 components,networkx,checked-agrees,connected_components; is_biconnected; is_connected; is_strongly_connected; is_weakly_connected; kosaraju_strongly_connected_components; node_connected_component; number_connected_components; number_strongly_connected_components; number_weakly_connected_components; strongly_connected_components; weakly_connected_components,88,0,
@@ -1300,7 +1300,7 @@ coreness,boost,reported-in-docs,core_numbers,0,0,API listing
 coreness,graphtool,reported-in-docs,kcore_decomposition,0,0,API listing
 coreness,igraph,checked-agrees,coreness,93,0,
 coreness,jgrapht,checked-agrees,Coreness,18,0,
-coreness,networkit,checked-no-value,CoreDecomposition,0,0,
+coreness,networkit,checked-agrees,CoreDecomposition,30,0,
 coreness,networkx,checked-convention,core_number; k_core; k_corona; k_crust; k_shell; onion_layers,39,5,
 coreness,pyigraph,checked-agrees,coreness; k_core,93,0,
 coreness,rustworkx,checked-convention,core_number; digraph_core_number; graph_core_number,34,19,
@@ -1315,7 +1315,7 @@ cug_null_models,sna,reported-in-docs,cug.test; cugtest,0,0,documentation
 cug_null_models,ucinet,reported-in-docs,"Conditional uniform graph tests, TERGM/ERGM are not UCINET",0,0,API listing
 cut_measures,networkx,checked-agrees,,63,0,
 cut_points,boost,checked-agrees,articulation_points,19,0,
-cut_points,igraph,checked-no-value,articulation_points,0,0,
+cut_points,igraph,checked-agrees,articulation_points,44,0,
 cut_points,networkx,checked-agrees,articulation_points,44,0,
 cut_points,pyigraph,checked-agrees,articulation_points,53,0,
 cut_points,rustworkx,checked-agrees,articulation_points,33,0,
@@ -1363,8 +1363,8 @@ degree,bct,checked-convention,degrees_dir; degrees_und; strengths_dir; strengths
 degree,boost,reported-in-docs,degree_centrality,0,0,API listing
 degree,ergm,reported-in-docs,degree,0,0,API listing
 degree,gephi,checked-agrees,Degree,46,0,
-degree,igraph,checked-no-value,degree; degree_distribution,0,0,
-degree,networkit,checked-agrees,DegreeCentrality; degreeDistribution,40,0,
+degree,igraph,checked-agrees,degree; degree_distribution,118,0,
+degree,networkit,checked-agrees,DegreeCentrality; degreeDistribution,140,0,
 degree,networkx,checked-agrees,degree_centrality; degrees; in_degree_centrality; out_degree_centrality,74,0,
 degree,pyigraph,checked-agrees,degree; degree_distribution; mean_degree,146,0,
 degree,rustworkx,reported-in-docs,degree_centrality; digraph_degree_centrality; graph_degree_centrality; in_degree_centrality; out_degree_centrality,0,0,API listing
@@ -1377,7 +1377,7 @@ density,bct,checked-convention,density_dir; density_und,27,1,
 density,bctpy,checked-agrees,,27,0,
 density,ergm,checked-convention,density,52,2,
 density,gephi,checked-agrees,GraphDensity,28,0,
-density,igraph,checked-no-value,edge_density,0,0,
+density,igraph,checked-agrees,edge_density,88,0,
 density,networkit,checked-agrees,,52,0,
 density,networkx,checked-convention,density,86,2,
 density,pyigraph,checked-agrees,density,106,0,
@@ -1398,7 +1398,7 @@ diameter,gephi,checked-agrees,,37,0,
 diameter,graphtool,reported-in-docs,pseudo_diameter,0,0,API listing
 diameter,igraph,checked-agrees,diameter; get_diameter,114,0,
 diameter,jgrapht,checked-convention,,20,8,
-diameter,networkit,checked-no-value,Diameter; DiameterAlgo; EffectiveDiameter,0,0,
+diameter,networkit,checked-agrees,Diameter; DiameterAlgo; EffectiveDiameter,29,0,
 diameter,networkx,checked-agrees,diameter; harmonic_diameter,69,0,
 diameter,pyigraph,checked-agrees,diameter; get_diameter,114,0,
 diameter,ucinet,reported-in-docs,,0,0,published documentation
@@ -1447,7 +1447,7 @@ eccentricity,boost,checked-convention,eccentricity,22,15,
 eccentricity,gephi,checked-agrees,,37,0,
 eccentricity,igraph,checked-agrees,eccentricity,59,0,
 eccentricity,jgrapht,checked-convention,,22,15,
-eccentricity,networkit,checked-no-value,Eccentricity,0,0,
+eccentricity,networkit,checked-agrees,Eccentricity,29,0,
 eccentricity,networkx,checked-agrees,eccentricity,80,0,
 eccentricity,pyigraph,checked-agrees,eccentricity,59,0,
 eccentricity,ucinet,reported-in-docs,"Eccentricity, Radiality, Integration, Delta/fragmentation (fragcent CLI 6.746), DW fragmentation and reach",0,0,published documentation
@@ -1501,10 +1501,10 @@ eigenvector,bct,reported-in-docs,eigenvector_centrality_und,0,0,API listing
 eigenvector,gephi,checked-convention,EigenvectorCentrality,29,15,
 eigenvector,graphblas,checked-convention,,32,2,
 eigenvector,graphtool,reported-in-docs,eigenvector,0,0,API listing
-eigenvector,igraph,checked-no-value,eigen_centrality; evcent,0,0,
+eigenvector,igraph,checked-convention,eigen_centrality; evcent,69,1,
 eigenvector,jgrapht,reported-in-docs,EigenvectorCentrality,0,0,API listing
 eigenvector,networkit,reported-in-docs,EigenvectorCentrality,0,0,API listing
-eigenvector,networkx,checked-no-value,eigenvector_centrality; eigenvector_centrality_numpy,0,0,
+eigenvector,networkx,checked-agrees,eigenvector_centrality; eigenvector_centrality_numpy,31,0,
 eigenvector,pyigraph,checked-convention,eigenvector_centrality,68,1,
 eigenvector,rustworkx,checked-agrees,digraph_eigenvector_centrality; eigenvector_centrality; graph_eigenvector_centrality,68,0,
 eigenvector,sna,checked-convention,evcent,41,1,
@@ -1520,7 +1520,7 @@ estrada_index,networkx,reported-in-docs,estrada_index,0,0,API listing
 eulerian,jgrapht,reported-in-docs,HierholzerEulerianCycle,0,0,API listing
 factions_errors,ucinet,reported-in-docs,,0,0,published documentation
 fast_greedy,igraph,checked-convention,cluster_fast_greedy,12,15,
-fast_greedy,networkx,checked-no-value,greedy_modularity_communities; naive_greedy_modularity_communities,0,0,
+fast_greedy,networkx,checked-agrees,greedy_modularity_communities; naive_greedy_modularity_communities,52,0,
 fast_greedy,pyigraph,reported-in-docs,community_fastgreedy,0,0,API listing
 fast_greedy,ucinet,reported-in-docs,"Community detection (6.7xx): FastGreedy, LabelProp, LocalGreedy (6.809), Louvain-type, Moca, Girvan-Newman, factor-analysis clustering, polish partitions, Initi; FastGreedy",0,0,published documentation
 feedback_sets,igraph,reported-in-docs,feedback_arc_set; feedback_vertex_set,0,0,API listing
@@ -1535,7 +1535,7 @@ flow_betweenness,ucinet,reported-in-docs,,0,0,published documentation
 fluid_communities,igraph,checked-agrees,cluster_fluid_communities,15,0,
 fluid_communities,networkx,checked-agrees,asyn_fluidc,19,0,
 fluid_communities,pyigraph,reported-in-docs,community_fluid_communities,0,0,API listing
-fragmentation,igraph,checked-no-value,,0,0,
+fragmentation,igraph,checked-agrees,,59,0,
 fragmentation,ucinet,reported-in-docs,fragcent,0,0,published documentation
 frontiers,networkx,checked-agrees,,9,0,
 gb_antichain_width,networkx,checked-agrees,,9,0,
@@ -1764,10 +1764,10 @@ hierarchy,ucinet,reported-in-docs,,0,0,published documentation
 hits,gephi,checked-convention,Hits,2,54,
 hits,graphblas,checked-convention,,48,8,
 hits,graphtool,reported-in-docs,hits,0,0,API listing
-hits,igraph,checked-no-value,authority_score; hits_scores; hub_score,0,0,
+hits,igraph,checked-convention,authority_score; hits_scores; hub_score,66,22,
 hits,networkx,checked-agrees,hits,84,0,
 hits,pyigraph,checked-convention,authority_score; hub_score,86,20,
-hits,rustworkx,checked-no-value,hits,0,0,
+hits,rustworkx,checked-convention,hits,84,12,
 hits,sknetwork,checked-convention,HITS,36,16,
 hits,ucinet,reported-in-docs,"Hubs and authorities, SVD (two-mode fixes 6.748)",0,0,published documentation
 hopcroft_karp,boost,reported-in-docs,edmonds_maximum_cardinality_matching,0,0,API listing
@@ -1783,7 +1783,7 @@ idom,networkx,checked-agrees,dominance_frontiers; immediate_dominators,9,0,
 idom,rustworkx,reported-in-docs,dominance_frontiers; immediate_dominators,0,0,API listing
 implicit_family,networkx,checked-no-value,,0,0,
 induced_centrality,ucinet,reported-in-docs,,0,0,published documentation
-infomap,igraph,checked-no-value,cluster_infomap,0,0,
+infomap,igraph,checked-agrees,cluster_infomap,30,0,
 infomap,infomap,checked-agrees,,58,0,
 infomap,pyigraph,reported-in-docs,community_infomap,0,0,API listing
 information_centrality,netrankr,checked-agrees,,15,0,
@@ -1867,11 +1867,11 @@ k_truss,networkx,checked-agrees,k_truss,176,0,
 katz,centiserve,checked-agrees,katzcent,17,0,
 katz,graphblas,checked-convention,,27,8,
 katz,graphtool,reported-in-docs,katz,0,0,API listing
-katz,igraph,checked-no-value,alpha_centrality,0,0,
+katz,igraph,checked-agrees,alpha_centrality,88,0,
 katz,jgrapht,reported-in-docs,KatzCentrality,0,0,API listing
 katz,networkit,reported-in-docs,KatzCentrality; KatzIndex,0,0,API listing
 katz,networkx,checked-agrees,katz_centrality; katz_centrality_numpy,108,0,
-katz,rustworkx,checked-no-value,digraph_katz_centrality; graph_katz_centrality; katz_centrality,0,0,
+katz,rustworkx,checked-agrees,digraph_katz_centrality; graph_katz_centrality; katz_centrality,55,0,
 katz,sknetwork,reported-in-docs,Katz,0,0,API listing
 katz,ucinet,reported-in-docs,"Katz family (replaced Katz-Hubbell, 6.771)",0,0,published documentation
 kpp_optimum:distance_fragmentation,keyplayer,checked-agrees,,18,0,
@@ -1884,7 +1884,7 @@ kpp_single:fragmentation,ucinet,reported-in-docs,Key player / group centrality; 
 kpp_single:m_reach,keyplayer,checked-agrees,,28,0,
 krackhardt_dimensions,sna,reported-in-docs,connectedness; lubness,0,0,documentation
 krackhardt_dimensions,ucinet,reported-in-docs,"Fragmentation, Krackhardt graph-theoretic dimensions (connectedness, hierarchy, efficiency, LUBness)",0,0,published documentation
-label_propagation,igraph,checked-no-value,cluster_label_prop,0,0,
+label_propagation,igraph,checked-convention,cluster_label_prop,29,1,
 label_propagation,jgrapht,reported-in-docs,LabelPropagationClustering,0,0,API listing
 label_propagation,networkit,reported-in-docs,LPDegreeOrdered; PLP,0,0,API listing
 label_propagation,networkx,checked-convention,asyn_lpa_communities; fast_label_propagation_communities; label_propagation_communities,84,3,
@@ -1937,10 +1937,10 @@ layout_stress_quality,networkx,checked-no-value,,0,0,
 layout_stress_value,networkx,checked-no-value,,0,0,
 layout_sugiyama,igraph,reported-in-docs,layout_with_sugiyama,0,0,API listing
 layout_sugiyama,pyigraph,reported-in-docs,layout_sugiyama,0,0,API listing
-leading_eigen,igraph,checked-agrees,cluster_leading_eigen,8,0,
+leading_eigen,igraph,checked-convention,cluster_leading_eigen,46,14,
 leading_eigen,pyigraph,reported-in-docs,community_leading_eigenvector,0,0,API listing
 leading_eigen,ucinet,reported-in-docs,NCD,0,0,API listing
-leiden,igraph,checked-no-value,cluster_leiden,0,0,
+leiden,igraph,checked-agrees,cluster_leiden,59,0,
 leiden,networkit,reported-in-docs,ParallelLeiden,0,0,API listing
 leiden,networkx,checked-agrees,leiden_communities; leiden_partitions,29,0,
 leiden,pyigraph,reported-in-docs,community_leiden,0,0,API listing
@@ -1988,7 +1988,7 @@ max_cliques,boost,reported-in-docs,bron_kerbosch_all_cliques,0,0,API listing
 max_cliques,graphtool,reported-in-docs,max_cliques,0,0,API listing
 max_cliques,igraph,checked-agrees,clique_size_counts; cliques; largest_cliques; max_cliques,106,0,
 max_cliques,jgrapht,checked-agrees,BronKerboschCliqueFinder; DegeneracyBronKerboschCliqueFinder; PivotBronKerboschCliqueFinder,18,0,
-max_cliques,networkit,checked-no-value,MaximalCliques,0,0,
+max_cliques,networkit,checked-agrees,MaximalCliques,72,0,
 max_cliques,networkx,checked-agrees,enumerate_all_cliques; find_cliques; find_cliques_recursive,88,0,
 max_cliques,pyigraph,checked-agrees,cliques; largest_cliques; maximal_cliques,106,0,
 max_cliques,sknetwork,reported-in-docs,count_cliques,0,0,API listing
@@ -2045,7 +2045,7 @@ modularity,graphtool,reported-in-docs,modularity,0,0,API listing
 modularity,graspologic,checked-convention,,39,2,
 modularity,igraph,checked-agrees,modularity,122,0,
 modularity,jgrapht,reported-in-docs,NaiveGreedyModularityAlgorithm; UndirectedModularityMeasurer,0,0,API listing
-modularity,networkit,checked-no-value,Modularity,0,0,
+modularity,networkit,checked-agrees,Modularity,36,0,
 modularity,networkx,checked-convention,modularity,95,4,
 modularity,pyigraph,checked-agrees,modularity,122,0,
 modularity,sknetwork,checked-convention,get_modularity,57,2,
@@ -2173,9 +2173,9 @@ pagerank,boost,reported-in-docs,page_rank,0,0,API listing
 pagerank,gephi,checked-defect,PageRank,37,7,
 pagerank,graphblas,checked-convention,,127,20,
 pagerank,graphtool,reported-in-docs,pagerank,0,0,API listing
-pagerank,igraph,checked-no-value,page_rank,0,0,
+pagerank,igraph,checked-agrees,page_rank,114,0,
 pagerank,jgrapht,checked-agrees,PageRank,35,0,
-pagerank,networkit,checked-no-value,PageRank,0,0,
+pagerank,networkit,checked-agrees,PageRank,90,0,
 pagerank,networkx,checked-convention,pagerank,280,6,
 pagerank,pyigraph,checked-agrees,pagerank; personalized_pagerank,142,0,
 pagerank,rustworkx,checked-convention,pagerank,274,7,
@@ -2248,8 +2248,8 @@ pn_centrality,ucinet,reported-in-docs,pncent,0,0,published documentation
 power_law_fit,igraph,reported-in-docs,fit_power_law,0,0,API listing
 power_law_fit,pyigraph,reported-in-docs,power_law_fit,0,0,API listing
 project,ergm,reported-in-docs,Project,0,0,API listing
-project,igraph,checked-no-value,bipartite_projection; bipartite_projection_size,0,0,
-project,networkx,checked-no-value,collaboration_weighted_projected_graph; generic_weighted_projected_graph; overlap_weighted_projected_graph; projected_graph; weighted_projected_graph,0,0,
+project,igraph,checked-agrees,bipartite_projection; bipartite_projection_size,8,0,
+project,networkx,checked-agrees,collaboration_weighted_projected_graph; generic_weighted_projected_graph; overlap_weighted_projected_graph; projected_graph; weighted_projected_graph,17,0,
 project,pyigraph,reported-in-docs,bipartite_projection; bipartite_projection_size,0,0,API listing
 project,tnet,checked-agrees,projecting_tm,12,0,
 project,ucinet,reported-in-docs,"Affiliations (2-mode to 1-mode): co-membership values 0-4; cosine similarity (6.833); old routine ""to avoid""; bprod; bxtx; bxxt; xtx; xxt",0,0,published documentation
@@ -2296,7 +2296,7 @@ reachability,ucinet,reported-in-docs,,0,0,published documentation
 reciprocity,ergm,checked-agrees,mutual,8,0,
 reciprocity,graphblas,checked-agrees,,8,0,
 reciprocity,graphtool,reported-in-docs,edge_reciprocity,0,0,API listing
-reciprocity,igraph,checked-no-value,reciprocity,0,0,
+reciprocity,igraph,checked-agrees,reciprocity,28,0,
 reciprocity,networkx,checked-agrees,overall_reciprocity; reciprocity,14,0,
 reciprocity,pyigraph,checked-agrees,reciprocity,38,0,
 reciprocity,sna,checked-convention,grecip; mutuality,55,1,
@@ -2340,7 +2340,7 @@ simple_cycles,jgrapht,reported-in-docs,DirectedSimpleCycles; HawickJamesSimpleCy
 simple_cycles,networkx,checked-agrees,minimum_cycle_basis; recursive_simple_cycles; simple_cycles,42,0,
 simple_cycles,pyigraph,reported-in-docs,fundamental_cycles; minimum_cycle_basis; simple_cycles,0,0,API listing
 simple_cycles,rustworkx,reported-in-docs,simple_cycles,0,0,API listing
-simrank,networkx,checked-agrees,simrank_similarity,36,0,
+simrank,networkx,checked-agrees,simrank_similarity,92,0,
 small_world,networkx,checked-agrees,omega; sigma,13,0,
 small_world_observed,igraph,checked-agrees,,56,0,
 small_world_observed,networkx,checked-agrees,,56,0,
@@ -2402,8 +2402,8 @@ steiner_tree,jgrapht,reported-in-docs,KouMarkowskyBermanAlgorithm,0,0,API listin
 steiner_tree,networkx,reported-in-docs,steiner_tree,0,0,API listing
 steiner_tree,rustworkx,reported-in-docs,steiner_tree,0,0,API listing
 strength,gephi,checked-agrees,WeightedDegree,7,0,
-strength,igraph,checked-no-value,strength,0,0,
-strength,networkit,checked-no-value,,0,0,
+strength,igraph,checked-agrees,strength,11,0,
+strength,networkit,checked-agrees,,8,0,
 strength,networkx,checked-agrees,,11,0,
 strength,pyigraph,checked-agrees,strength,16,0,
 strength,tnet,checked-agrees,,7,0,
@@ -2439,7 +2439,7 @@ transitivity,bctpy,checked-agrees,,25,0,
 transitivity,ergm,checked-agrees,kstar,37,0,
 transitivity,graphblas,checked-agrees,,28,0,
 transitivity,graphtool,reported-in-docs,global_clustering,0,0,API listing
-transitivity,igraph,checked-no-value,transitivity,0,0,
+transitivity,igraph,checked-agrees,transitivity,41,0,
 transitivity,jgrapht,checked-convention,,18,1,
 transitivity,networkit,checked-agrees,,100,0,
 transitivity,networkx,checked-agrees,transitivity,44,0,
@@ -2473,7 +2473,7 @@ tree_iso,networkx,checked-agrees,,28,0,
 tree_lca,jgrapht,reported-in-docs,BinaryLiftingLCAFinder; EulerTourRMQLCAFinder; HeavyPathLCAFinder; NaiveLCAFinder; TarjanLCAFinder,0,0,API listing
 tree_lca,networkx,checked-agrees,,28,0,
 triad_census,ergm,checked-agrees,triadcensus,8,0,
-triad_census,igraph,checked-no-value,triad_census,0,0,
+triad_census,igraph,checked-convention,triad_census,39,5,
 triad_census,networkx,checked-agrees,triadic_census,15,0,
 triad_census,pyigraph,checked-convention,triad_census,47,6,
 triad_census,rsiena,reported-in-docs,TriadCensus,0,0,API listing
@@ -2484,16 +2484,16 @@ tsp,boost,reported-in-docs,metric_tsp_approx,0,0,API listing
 tsp,jgrapht,reported-in-docs,ChristofidesThreeHalvesApproxMetricTSP; FarthestInsertionHeuristicTSP; GreedyHeuristicTSP; HeldKarpTSP; NearestInsertionHeuristicTSP; NearestNeighborHeuristicTSP; RandomTourTSP; TwoApproxMetricTSP; TwoOptHeuristicTSP,0,0,API listing
 tsp,networkit,reported-in-docs,STSP,0,0,API listing
 tsp,networkx,reported-in-docs,asadpour_atsp; christofides; greedy_tsp; simulated_annealing_tsp; threshold_accepting_tsp,0,0,API listing
-twomode:betweenness,igraph,checked-no-value,,0,0,
-twomode:betweenness,networkx,checked-no-value,,0,0,
+twomode:betweenness,igraph,checked-agrees,,4,0,
+twomode:betweenness,networkx,checked-agrees,,8,0,
 twomode:betweenness,ucinet,reported-in-docs,,0,0,published documentation
-twomode:closeness,igraph,checked-no-value,,0,0,
-twomode:closeness,networkx,checked-convention,,3,1,
+twomode:closeness,igraph,checked-agrees,,4,0,
+twomode:closeness,networkx,checked-convention,,7,1,
 twomode:closeness,ucinet,reported-in-docs,,0,0,published documentation
-twomode:degree,igraph,checked-no-value,,0,0,
-twomode:degree,networkx,checked-no-value,,0,0,
+twomode:degree,igraph,checked-agrees,,4,0,
+twomode:degree,networkx,checked-agrees,,4,0,
 twomode:degree,ucinet,reported-in-docs,2-mode centrality,0,0,published documentation
-twomode:density,networkx,checked-no-value,,0,0,
+twomode:density,networkx,checked-agrees,,4,0,
 twomode:density,ucinet,reported-in-docs,"2-mode eigenvector, SVD, matching 2-mode, bipartite/density",0,0,published documentation
 twomode:eigenvector,igraph,checked-agrees,,4,0,
 twomode:eigenvector,ucinet,reported-in-docs,,0,0,published documentation
@@ -2517,7 +2517,7 @@ vf2pp,sknetwork,reported-in-docs,are_isomorphic,0,0,API listing
 voronoi,igraph,checked-convention,,11,14,
 walk_embeddings,deepwalk,reported-in-docs,,0,0,documentation
 walks_ppr,networkx,checked-agrees,,59,0,
-walktrap,igraph,checked-convention,cluster_walktrap,5,2,
+walktrap,igraph,checked-convention,cluster_walktrap,76,53,
 walktrap,pyigraph,reported-in-docs,community_walktrap,0,0,API listing
 wl_hash,jgrapht,reported-in-docs,ColorRefinementAlgorithm,0,0,API listing
 wl_hash,networkx,checked-agrees,weisfeiler_lehman_graph_hash; weisfeiler_lehman_subgraph_hashes,254,0,

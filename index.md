@@ -15,21 +15,19 @@ A neutral, citable survey of network-analysis software: which tool implements wh
 
 ## Where to go
 
-<nav class="cards" aria-label="Sections"><a class="card" href="measures/"><strong>Families</strong><span>21 families, 702 concepts and 1635 measures.</span></a><a class="card" href="tools/"><strong>Tools</strong><span>47 tools, 34 run and compared.</span></a><a class="card" href="matrix.html"><strong>Capability matrix</strong><span>Measure by tool, with the state of each entry.</span></a><a class="card" href="findings.html"><strong>Findings</strong><span>90 bugs, disagreements and limitations.</span></a><a class="card" href="benchmarks.html"><strong>Benchmarks</strong><span>Method and 1228 timing rows.</span></a><a class="card" href="references.html"><strong>References</strong><span>Every cited package and paper.</span></a><a class="card" href="data.html"><strong>Data and schemas</strong><span>File formats, joins and the state vocabulary.</span></a><a class="card" href="llms.txt"><strong>llms.txt</strong><span>Every data file, its schema and how the files join, as plain text.</span></a></nav>
+<nav class="cards" aria-label="Sections"><a class="card" href="measures/"><strong>Families</strong><span>21 families, 702 concepts and 1635 measures.</span></a><a class="card" href="tools/"><strong>Tools</strong><span>47 tools, 34 run and compared.</span></a><a class="card" href="matrix.html"><strong>Capability matrix</strong><span>Measure by tool, with the state of each entry and the reason for it.</span></a><a class="card" href="method.html"><strong>How entries are labelled</strong><span>What was compared, how, on which inputs, and what each state means.</span></a><a class="card" href="findings.html"><strong>Findings</strong><span>90 bugs, disagreements and limitations.</span></a><a class="card" href="benchmarks.html"><strong>Benchmarks</strong><span>Method and 1228 timing rows.</span></a><a class="card" href="references.html"><strong>References</strong><span>Every cited package and paper.</span></a><a class="card" href="data.html"><strong>Data and schemas</strong><span>File formats, joins and the state vocabulary.</span></a><a class="card" href="llms.txt"><strong>llms.txt</strong><span>Every data file, its schema and how the files join, as plain text.</span></a></nav>
 
 ## How entries are labelled
 
-Each tool-by-measure entry has one state:
+Each tool-by-measure entry has one state. Every state other than `checked-agrees` carries a reason, shown wherever the entry is shown. The full definitions, the comparison rules and the fixture list are on [How entries are labelled](method.html).
 
 | State | Meaning |
 |---|---|
-| `checked-agrees` | <span class="st st-g st-ok" role="img" aria-label="checked, agrees" title="checked, agrees">✓</span> checked, agrees |
-| `checked-convention` | <span class="st st-g st-conv" role="img" aria-label="checked, differs by convention" title="checked, differs by convention">≠</span> checked, differs by convention |
-| `checked-defect` | <span class="st st-g st-defect" role="img" aria-label="checked, defect" title="checked, defect">✗</span> checked, defect |
-| `checked-no-value` | <span class="st st-g st-nov" role="img" aria-label="checked, no value on some inputs" title="checked, no value on some inputs">∅</span> checked, no value on some inputs |
-| `reported-in-docs` | <span class="st st-g st-docs" role="img" aria-label="reported in docs" title="reported in docs">·</span> reported in docs |
+| <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> `checked-agrees` | The tool was run and its value equals the reference value of the published definition, within the stated tolerance, on every fixture the tool accepts. No convention is mapped. |
+| <a class="st st-t st-conv" href="method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> `checked-convention` | The tool was run and on some fixtures its value differs from the reference value because it follows a different, documented convention. The entry states the convention, what each side does, the relation between the two values and the tolerances. |
+| <a class="st st-t st-defect" href="method.html#state-checked-defect"><span class="g" aria-hidden="true">✗</span>checked, defect</a> `checked-defect` | The tool was run and on some inputs its value is wrong under the published definition. The entry states what is wrong, on which inputs, observed against expected, the tool version and the finding. |
+| <a class="st st-t st-nov" href="method.html#state-checked-no-value"><span class="g" aria-hidden="true">∅</span>checked, no value on some inputs</a> `checked-no-value` | The tool was run but gave no value on the compared inputs, so no comparison could be made. The entry states on which inputs and why. |
+| <a class="st st-t st-docs" href="method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> `reported-in-docs` | The tool lists the capability in its documentation or public API, but it was not run for this measure. The entry states why and the documentation source. |
 
-The definitions are in `data/schema/capabilities.schema.json`. A tool marked *documented-only* was never run: its entries come from its documentation and are always `reported-in-docs`.
-
-A *reference value* in these pages means the value of the published definition, evaluated independently (brute force on small graphs, in exact arithmetic where the quantity allows), and confirmed against other tools before a difference is attributed to a convention.
+A tool marked *documented-only* was never run: its entries come from its documentation and are always `reported-in-docs`. A *reference value* is the value of the published definition, evaluated independently of every tool compared (see [How entries are labelled](method.html#reference-value)).
 {% endraw %}

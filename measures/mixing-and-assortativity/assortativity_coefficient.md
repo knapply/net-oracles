@@ -33,11 +33,16 @@ Measure id: `assort`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `degree_pearson_correlation_coefficient` |  |
-| [bctpy](../../tools/bctpy.html) | ≠ checked, differs by convention |  |  |
-| [netseg](../../tools/netseg.html) | · reported in docs | `assort` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `degree_pearson_correlation_coefficient` |  |
+| [bctpy](../../tools/bctpy.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (direction and multi-edges): BCT works on the binary matrix, so parallel edges collapse and degrees count distinct neighbours. [details](#why-assort-bctpy) |  |  |
+| [netseg](../../tools/netseg.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: netseg is documented-only in this survey; listed in its documentation. [details](#why-assort-netseg) | `assort` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-assort-bctpy"></a>**[bctpy](../../tools/bctpy.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> bctpy 0.6.1 was run and its value differs from the reference value by convention (direction and multi-edges) on inputs tagged multi\_edges. BCT works on the binary matrix, so parallel edges collapse and degrees count distinct neighbours; NetworkX and the reference count every edge. Mapping: the reference value computed with the adjacency-matrix reading (parallel edges collapse into one tie, self-loops dropped) agrees with the tool within abs 1e-12, rel 1e-09 on all 1 comparison where the difference occurs. Tolerance before mapping: abs 1e-12, rel 1e-09 (0 means exact equality). No value (assort\_degree\_weighted) on inputs tagged directed: assortativity\_wei(flag = 0) is the undirected coefficient; directed fixtures are not passed to it. 1 comparisons differ and 23 agree.
+- <a id="why-assort-netseg"></a>**[netseg](../../tools/netseg.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. netseg (1.0-3) is a documented-only tool in this survey: no comparison has been set up for it (not yet wired up), so its values are not compared with the reference value. Documentation source: CRAN reference manual of netseg 1.0-3: help topics.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -66,12 +71,16 @@ Measure id: `assortativity_degree`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
-| [igraph (R)](../../tools/igraph.html) | ∅ checked, no value on some inputs |  |  |
-| [igraph (Python)](../../tools/pyigraph.html) | ✓ checked, agrees |  |  |
-| [BCT (Octave)](../../tools/bct.html) | ≠ checked, differs by convention |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, direction, multi-edges, self-loops, ties and weights): BCT returns NaN where the degree variance is zero (regular networks, a single node). *(reason incomplete)* [details](#why-assortativity_degree-bct) |  |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-assortativity_degree-bct"></a>**[BCT (Octave)](../../tools/bct.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> BCT (Octave) 2019-03-03 was run and its value differs from the reference value by convention (defaults, direction, multi-edges, self-loops, ties and weights) on the fixtures complete5\_dir, complete6, cycle7\_dir, empty, gnp\_dir\_dense, gnp\_dir\_sparse, multi\_loops\_dir, multi\_loops\_und, pair, real\_weights\_dir, single\_node, two\_triangles\_isolate, weighted\_dir. BCT returns NaN where the degree variance is zero (regular networks, a single node); the reference returns no value there, so both are undefined. On directed networks BCT's assortativity\_bin(A, 1) is close to but not equal to the Pearson correlation of out-degree at the source and in-degree at the target over the arcs (differences of 0.1% to 14% on the four directed random/weighted fixtures; cause not identified), and it cannot count loops or parallel edges. Relation to the reference value: Directed input, zero variance: NaN for regular networks (the reference returns no value); the directed variant is close to but not equal to the Pearson correlation of out-degree at the source and in-degree at the target (0.1% to 14%, cause not identified). Mapping: the reference value computed with the adjacency-matrix reading (parallel edges collapse into one tie, self-loops dropped) agrees with the tool within abs 1e-12, rel 1e-10 on all 1 comparison where the difference occurs. Tolerance before mapping: abs 1e-12, rel 1e-10 (0 means exact equality). 13 comparisons differ and 15 agree. Finding F058 (convention): Degree assortativity is NaN for regular networks; the directed variant differs from the Pearson correlation of out-degree at the source and in-degree at the target. Findings: [F058](../../findings.html#f058). **Reason incomplete:** the cause of the difference is stated in the sources as not identified.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -101,12 +110,17 @@ Measure id: `assortativity_nominal`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ≠ checked, differs by convention |  |  |
-| [igraph (R)](../../tools/igraph.html) | ∅ checked, no value on some inputs |  |  |
-| [igraph (Python)](../../tools/pyigraph.html) | ✓ checked, agrees |  |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `categonethomophily; homophily` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults): Without edges the mixing matrix is empty and the coefficient is 0 / 0. [details](#why-assortativity_nominal-networkx) |  |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-assortativity_nominal-ucinet) | `categonethomophily; homophily` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-assortativity_nominal-networkx"></a>**[NetworkX](../../tools/networkx.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> NetworkX 3.7 was run and its value differs from the reference value by convention (defaults) on inputs tagged edge\_case. Without edges the mixing matrix is empty and the coefficient is 0 / 0; NetworkX returns 0, the reference and igraph return NaN. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-12, rel 1e-10 (0 means exact equality). 2 comparisons differ and 42 agree.
+- <a id="why-assortativity_nominal-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -135,14 +149,20 @@ Measure id: `assortativity_values`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `attribute_assortativity_coefficient; degree_assortativity_coefficient; numeric_assortativity_coefficient` |  |
-| [igraph (R)](../../tools/igraph.html) | ∅ checked, no value on some inputs | `assortativity; assortativity_degree; assortativity_nominal` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | ✓ checked, agrees | `assortativity; assortativity_degree; assortativity_nominal` |  |
-| [graph-tool](../../tools/graphtool.html) | · reported in docs | `assortativity; scalar_assortativity` | API listing |
-| [NetworKit](../../tools/networkit.html) | · reported in docs | `Assortativity` | API listing |
-| [BCT (Octave)](../../tools/bct.html) | · reported in docs | `assortativity_bin; assortativity_wei` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `attribute_assortativity_coefficient; degree_assortativity_coefficient; numeric_assortativity_coefficient` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `assortativity; assortativity_degree; assortativity_nominal` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `assortativity; assortativity_degree; assortativity_nominal` |  |
+| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-assortativity_values-graphtool) | `assortativity; scalar_assortativity` | API listing |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-assortativity_values-networkit) | `Assortativity` | API listing |
+| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-assortativity_values-bct) | `assortativity_bin; assortativity_wei` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-assortativity_values-graphtool"></a>**[graph-tool](../../tools/graphtool.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. graph-tool 3.9 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (graph-tool public classes and functions); API names: assortativity; scalar\_assortativity.
+- <a id="why-assortativity_values-networkit"></a>**[NetworKit](../../tools/networkit.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. NetworKit 11.2.2 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (NetworKit public classes and functions); API names: Assortativity.
+- <a id="why-assortativity_values-bct"></a>**[BCT (Octave)](../../tools/bct.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. BCT (Octave) 2019-03-03 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (bctpy public functions (the Python port of the Brain Connectivity Toolbox function set)); API names: assortativity\_bin; assortativity\_wei.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

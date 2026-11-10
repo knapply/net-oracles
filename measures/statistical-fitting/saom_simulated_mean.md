@@ -24,9 +24,13 @@ Measure id: `saom_sim_mean`. Original family: Statistical fitting.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | ≠ checked, differs by convention | `siena07` |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (ties): From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value of the model, 5.4), where the reference value... *(reason incomplete)* [details](#why-saom_sim_mean-rsiena) | `siena07` |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-saom_sim_mean-rsiena"></a>**[RSiena](../../tools/rsiena.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> RSiena 1.6.6 was run and its value differs from the reference value by convention (ties) on the fixtures complete5\_dir. From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value of the model, 5.4), where the reference value and the exact definition oracle relax from 20 ties to 9.3 within the period. The same network with one tie removed gives 8.9 under RSiena (tools/probe\_rsiena.R), in line with the reference, so RSiena treats an all-ones first wave differently; the cause is not identified. Relation to the reference value: Complete first wave: from a complete network the mean tie count is the stationary value (5.0) instead of relaxing to 9.3; one tie removed agrees with the reference; cause not identified. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 0.5, rel 0.02 (0 means exact equality). 2 comparisons differ and 12 agree. Finding F085 (defect): From a complete first wave the mean tie count stays at 5.0. Findings: [F085](../../findings.html#f085). **Reason incomplete:** the cause of the difference is stated in the sources as not identified.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

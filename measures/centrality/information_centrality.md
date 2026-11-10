@@ -35,12 +35,17 @@ Measure id: `information_centrality`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees |  |  |
-| [sna](../../tools/sna.html) | ≠ checked, differs by convention | `infocent` |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `Information centrality (fails on singular input)` | published documentation |
-| [netrankr](../../tools/netrankr.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [sna](../../tools/sna.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults, direction, multi-edges, self-loops, ties and weights): On networks with more than one component sna's results differ from Stephenson and Zelen's formula as evaluated exactly by the definition oracle,... [details](#why-information_centrality-sna) | `infocent` |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-information_centrality-ucinet) | `Information centrality (fails on singular input)` | published documentation |
+| [netrankr](../../tools/netrankr.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-information_centrality-sna"></a>**[sna](../../tools/sna.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> sna 2.8 was run and its value differs from the reference value by convention (defaults, direction, multi-edges, self-loops, ties and weights) on inputs tagged directed, disconnected, loops and multi\_edges. information\_centrality: On networks with more than one component sna's results differ from Stephenson and Zelen's formula as evaluated exactly by the definition oracle, which agrees with this reference. sna reads the network as an adjacency matrix, so parallel edges collapse to one tie, while this reference counts each edge. information\_centrality\_weighted: For valued directed networks sna symmetrizes the tie values differently from this reference, and on disconnected networks its matrix is singular (sna's known behaviour on singular inputs); on connected undirected valued networks the two agree, and the definition oracle agrees with this reference throughout. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 4 comparisons differ and 28 agree. Finding F041 (defect): Information centrality fails on singular inputs. Findings: [F041](../../findings.html#f041).
+- <a id="why-information_centrality-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -71,11 +76,15 @@ Measure id: `cx_current_flow_closeness`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `current_flow_closeness_centrality` |  |
-| [netrankr](../../tools/netrankr.html) | ✓ checked, agrees |  |  |
-| [centiserve](../../tools/centiserve.html) | · reported in docs | `closeness.currentflow` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `current_flow_closeness_centrality` |  |
+| [netrankr](../../tools/netrankr.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [centiserve](../../tools/centiserve.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cx_current_flow_closeness-centiserve) | `closeness.currentflow` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cx_current_flow_closeness-centiserve"></a>**[centiserve](../../tools/centiserve.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run for this measure. centiserve 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package centiserve: exported functions and help titles); API names: closeness.currentflow.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

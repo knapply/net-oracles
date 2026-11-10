@@ -36,11 +36,16 @@ Measure id: `structural_equivalence`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [sna](../../tools/sna.html) | ✓ checked, agrees | `sedist` |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `SE` | published documentation |
-| [blockmodeling](../../tools/blockmodeling.html) | ≠ checked, differs by convention | `sedist` |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [sna](../../tools/sna.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `sedist` |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-structural_equivalence-ucinet) | `SE` | published documentation |
+| [blockmodeling](../../tools/blockmodeling.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (direction): On a symmetric matrix (every undirected fixture and complete5\_dir) blockmodeling::sedist agrees with the reference. [details](#why-structural_equivalence-blockmodeling) | `sedist` |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-structural_equivalence-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
+- <a id="why-structural_equivalence-blockmodeling"></a>**[blockmodeling](../../tools/blockmodeling.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> blockmodeling 1.1.8 was run and its value differs from the reference value by convention (direction) on inputs tagged directed. On a symmetric matrix (every undirected fixture and complete5\_dir) blockmodeling::sedist agrees with the reference. On an asymmetric one it compares full row and column profiles including the entries for the two nodes themselves (k = i, j), where the reference, like sna::sedist, leaves them out; node 0 against node 1 on cycle7\_dir is 2 against sqrt(2), and on pair 0 against sqrt(2). Relation to the reference value: Asymmetric matrices: profiles keep the entries for the two nodes themselves (k = i, j) when the matrix is asymmetric; equal to the reference on symmetric matrices. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-12, rel 1e-12 (0 means exact equality). 9 comparisons differ and 25 agree. Finding F084 (convention): Profiles keep the entries for the two nodes themselves on asymmetric matrices. Findings: [F084](../../findings.html#f084).
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
@@ -71,9 +76,13 @@ Measure id: `equivalence_extra`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | · reported in docs |  | published documentation |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-equivalence_extra-ucinet) |  | published documentation |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-equivalence_extra-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet)
 
@@ -85,9 +94,13 @@ Measure id: `cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `Structural equivalence: profile (correlation, Euclidean, etc.), similarities and distance measures (Jaccard, matches, Hamming, Manhattan), diagonal options (Row` | API listing |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming_jaccard_manhattan_matches_measures_options_profile_row_similarities_structural-ucinet) | `Structural equivalence: profile (correlation, Euclidean, etc.), similarities and distance measures (Jaccard, matches, Hamming, Manhattan), diagonal options (Row` | API listing |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming_jaccard_manhattan_matches_measures_options_profile_row_similarities_structural-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet)
 {% endraw %}

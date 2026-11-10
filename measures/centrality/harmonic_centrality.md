@@ -28,18 +28,24 @@ Measure id: `harmonic`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | API names | Source |
-|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | ✓ checked, agrees | `harmonic_centrality` |  |
-| [igraph (R)](../../tools/igraph.html) | ✓ checked, agrees | `harmonic_centrality` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | ✓ checked, agrees | `harmonic_centrality` |  |
-| [sna](../../tools/sna.html) | ≠ checked, differs by convention |  |  |
-| [NetworKit](../../tools/networkit.html) | ✓ checked, agrees | `HarmonicCloseness; TopHarmonicCloseness` |  |
-| [JGraphT](../../tools/jgrapht.html) | ✓ checked, agrees | `HarmonicCentrality` |  |
-| [Gephi toolkit](../../tools/gephi.html) | ≠ checked, differs by convention |  |  |
-| [UCINET](../../tools/ucinet.html) | · reported in docs | `fcent` | published documentation |
-| [netrankr](../../tools/netrankr.html) | ✓ checked, agrees |  |  |
-| [centiserve](../../tools/centiserve.html) | ✓ checked, agrees |  |  |
+| Tool | State | Why, if not agrees | API names | Source |
+|---|---|---|---|---|
+| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `harmonic_centrality` |  |
+| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `harmonic_centrality` |  |
+| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `harmonic_centrality` |  |
+| [sna](../../tools/sna.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (defaults and normalization): For a single node sna divides 0 by n - 1 = 0 and reports NaN. [details](#why-harmonic-sna) |  |  |
+| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `HarmonicCloseness; TopHarmonicCloseness` |  |
+| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `HarmonicCentrality` |  |
+| [Gephi toolkit](../../tools/gephi.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (normalization): Gephi divides the sum of 1/d by the number of nodes the node reaches (0 if none), the reference by n - 1 (the standard normalization). [details](#why-harmonic-gephi) |  |  |
+| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-harmonic-ucinet) | `fcent` | published documentation |
+| [netrankr](../../tools/netrankr.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+| [centiserve](../../tools/centiserve.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+
+**Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
+
+- <a id="why-harmonic-sna"></a>**[sna](../../tools/sna.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> sna 2.8 was run and its value differs from the reference value by convention (defaults and normalization) on inputs tagged edge\_case. For a single node sna divides 0 by n - 1 = 0 and reports NaN; igraph and this reference report 0, since there are no other nodes. No mapping that reproduces the tool's value is recorded, so the entry was not compared after mapping. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 1 comparisons differ and 35 agree.
+- <a id="why-harmonic-gephi"></a>**[Gephi toolkit](../../tools/gephi.html)** <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> Gephi toolkit 0.11.3 was run and its value differs from the reference value by convention (normalization) on the fixtures gnp\_dir\_sparse, gnp\_und\_sparse, multi\_loops\_dir, multi\_loops\_und, two\_triangles\_isolate. Gephi divides the sum of 1/d by the number of nodes the node reaches (0 if none), the reference by n - 1 (the standard normalization); the two agree when every node reaches every other. Checked to 1e-15 on the five fixtures. setNormalized does not change it. Relation to the reference value: Normalization: sum(1/d) / (nodes reached), the reference divides by n - 1; equal when every node reaches all. Mapping: the reference value computed with the tool's convention (the sum of 1/d divided by the number of nodes reached, 0 if none, not by n - 1) agrees with the tool within abs 1e-14, rel 1e-12 on all 5 comparisons where the difference occurs. Tolerance before mapping: abs 1e-14, rel 1e-12 (0 means exact equality). 5 comparisons differ and 23 agree.
+- <a id="why-harmonic-ucinet"></a>**[UCINET](../../tools/ucinet.html)** <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> Not run. UCINET is proprietary, commercial software for Windows; it was never run in this survey (it cannot be run headless on the Linux test machines), so no value from it is compared with the reference value. Documentation source: published help pages and program documentation.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 

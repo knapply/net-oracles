@@ -27,7 +27,7 @@
     "checked-defect",
     "checked-no-value"
    ],
-   "description": "reported-in-docs: the tool lists the capability in its documentation or public API; not run. checked-agrees: run, and values agree with an independent evaluation within tolerance on every compared input. checked-convention: run; values differ on some inputs because of a documented convention. checked-defect: run; values are wrong under the published definition. checked-no-value: run; the tool returns no value or an error on the compared inputs."
+   "description": "reported-in-docs: the tool lists the capability in its documentation or public API; not run for this measure (the reason is in reasons.json). checked-agrees: run, and on every fixture the tool accepts its value equals the reference value of the published definition within the stated tolerance, with no convention mapped (exact for integers, sets and partitions up to relabelling). checked-convention: run; on some fixtures its value differs from the reference value because of a documented convention, and a mapping of the reference value to that convention reproduces it where a mapping is recorded. checked-defect: run; its value is wrong under the published definition on some inputs. checked-no-value: run; the tool gave no value on the compared inputs and no comparison could be made. Every state other than checked-agrees has a record in reasons.json. Full definitions: method.html."
   },
   "api_names": {
    "type": "string"
