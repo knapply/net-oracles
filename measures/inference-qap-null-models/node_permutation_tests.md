@@ -16,7 +16,7 @@ Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutati
 
 Group-level permutation tests. Entries grouped here: Group-level permutation tests.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only: the group-level permutation tests are named in the sources only; no primary paper or formula was checked.
 
 ## Group-level permutation tests {#node_permutation_tests}
 
