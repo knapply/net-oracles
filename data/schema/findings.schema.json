@@ -1,0 +1,90 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "findings.json",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "id",
+   "tool",
+   "version",
+   "measure",
+   "kind",
+   "status",
+   "title",
+   "reproduction",
+   "observed",
+   "expected",
+   "evidence",
+   "references"
+  ],
+  "properties": {
+   "id": {
+    "type": "string",
+    "pattern": "^F[0-9]{3}$"
+   },
+   "tool": {
+    "type": "string"
+   },
+   "version": {
+    "type": "string"
+   },
+   "measure": {
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "kind": {
+    "enum": [
+     "defect",
+     "convention",
+     "limitation"
+    ],
+    "description": "defect: wrong under the published definition; convention: differs by a documented or inferable convention; limitation: refuses or cannot represent the input."
+   },
+   "status": {
+    "enum": [
+     "reproduced",
+     "observed",
+     "reported"
+    ],
+    "description": "reproduced: a minimal reproduction is recorded; observed: seen on a shared corpus of test graphs without a minimal case; reported: taken from public discussion, not re-measured."
+   },
+   "title": {
+    "type": "string"
+   },
+   "reproduction": {
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "observed": {
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "expected": {
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "evidence": {
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "references": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

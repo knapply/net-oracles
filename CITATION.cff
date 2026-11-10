@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you use this survey, please cite it as below."
+title: "net-oracles: a survey of network-analysis software, its conventions, findings and benchmarks"
+authors:
+  - name: "net-oracles contributors"
+repository-code: "https://github.com/knapply/net-oracles"
+date-released: "2026-11-10"

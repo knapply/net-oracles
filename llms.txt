@@ -1,0 +1,31 @@
+# net-oracles
+
+A neutral survey of network-analysis software. It records which tool implements which measure, how conventions differ between tools (normalization, direction, weights, self-loops, ties, defaults, tolerances), bugs and disagreements found in other tools, how tools were benchmarked, and citations. It describes other tools only.
+
+Counts: 48 tool records, 1635 measures in 21 families, 2524 measure-by-tool entries (671 checked by running the tool), 1412 convention records, 90 findings, 1228 benchmark rows.
+
+Source of truth is data/. Pages are generated from it by scripts/build.py (python3, standard library only). Raw base: https://raw.githubusercontent.com/knapply/net-oracles/main/ ; site: https://knapply.github.io/net-oracles/
+
+## Data files and schemas
+
+- data/tools.json (schema data/schema/tools.schema.json): array of tools. Fields: id, name, language, version_tested, license, homepage, citation_key, role (checked | documented-only | benchmarked-only | reference), how_run, api_listing.
+- data/measures.json (data/schema/measures.schema.json): array of measures. Fields: id, name, family, definition, references (BibTeX keys).
+- data/capabilities.csv (data/schema/capabilities.schema.json): one row per measure and tool. Columns: measure, tool, state, api_names (semicolon separated), comparisons_agreeing, comparisons_differing, source.
+  State vocabulary: reported-in-docs (listed in the tool's documentation or public API, not run); checked-agrees (run, agrees with an independent evaluation within tolerance); checked-convention (run, differs on some inputs by a documented convention); checked-defect (run, wrong under the published definition); checked-no-value (run, returns no value or an error on the compared inputs). Tools with role documented-only only have reported-in-docs. A blank (absent row) means not known to implement it.
+- data/conventions.json (data/schema/conventions.schema.json): array of records per measure, variant and tool. Fields: measure, variant, manifest, tool, scope (any | directed | undirected), weights_required, call (how the tool was invoked), outcome (agrees | differs | no-value-on-some-inputs | documented), differs_when and undefined_when (structural conditions such as loops, multi_edges, directed, disconnected, ties), only_on, dimensions (normalization, direction, weights, self_loops, multi_edges, ties, defaults), note, tolerance {abs, rel} (0 means exact), optional differs_on_inputs, no_value_on_inputs, reference.
+- data/findings.json (data/schema/findings.schema.json): array of findings. Fields: id, tool, version, measure (nullable), kind (defect | convention | limitation), status (reproduced | observed | reported), title, reproduction, observed, expected, evidence, references.
+- data/benchmarks/results.csv (data/schema/benchmarks-results.schema.json): timing rows of other tools. Columns: suite, graph, nodes, edges, measure, tool, tool_version, seconds (empty when over budget), peak_megabytes, threads, status. Method: data/benchmarks/method.md.
+- data/references.bib: BibTeX for every key used above.
+
+## Joins
+
+capabilities.measure -> measures.id; capabilities.tool -> tools.id; conventions.measure/tool -> measures.id/tools.id; findings.tool -> tools.id; findings.measure -> measures.id (nullable); benchmarks.tool -> tools.id; every citation key -> references.bib. Page for a measure: measures/<id>.html (characters other than letters, digits, underscore, dot and hyphen in the id become hyphens). Page for a tool: tools/<id>.html.
+
+## Conventions of the data
+
+Edge ends are called source and target. A reference value is the published definition evaluated independently. UCINET is documented-only: it was never run. Tool versions are those tested; findings may not hold in later versions.
+
+## Regenerate and validate
+
+python3 scripts/build.py          # write pages
+python3 scripts/build.py --check  # validate data against schemas and fail if pages are stale

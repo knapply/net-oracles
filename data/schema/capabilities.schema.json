@@ -1,0 +1,52 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "capabilities.csv (one object per CSV row; every CSV field is text, integer columns parse as integers)",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "measure",
+  "tool",
+  "state",
+  "api_names",
+  "comparisons_agreeing",
+  "comparisons_differing",
+  "source"
+ ],
+ "properties": {
+  "measure": {
+   "type": "string"
+  },
+  "tool": {
+   "type": "string"
+  },
+  "state": {
+   "enum": [
+    "reported-in-docs",
+    "checked-agrees",
+    "checked-convention",
+    "checked-defect",
+    "checked-no-value"
+   ],
+   "description": "reported-in-docs: the tool lists the capability in its documentation or public API; not run. checked-agrees: run, and values agree with an independent evaluation within tolerance on every compared input. checked-convention: run; values differ on some inputs because of a documented convention. checked-defect: run; values are wrong under the published definition. checked-no-value: run; the tool returns no value or an error on the compared inputs."
+  },
+  "api_names": {
+   "type": "string"
+  },
+  "comparisons_agreeing": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "comparisons_differing": {
+   "type": "integer",
+   "minimum": 0
+  },
+  "source": {
+   "enum": [
+    "",
+    "API listing",
+    "documentation",
+    "published documentation"
+   ]
+  }
+ }
+}

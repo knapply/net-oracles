@@ -1,0 +1,95 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "tools.json",
+ "description": "One object per tool, reference evaluation or benchmarked program. id is the join key used by capabilities.csv, conventions.json, findings.json and benchmarks/results.csv.",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "id",
+   "name",
+   "language",
+   "version_tested",
+   "license",
+   "homepage",
+   "citation_key",
+   "role",
+   "how_run",
+   "api_listing"
+  ],
+  "properties": {
+   "id": {
+    "type": "string",
+    "pattern": "^[A-Za-z0-9_-]+$"
+   },
+   "name": {
+    "type": "string"
+   },
+   "language": {
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "version_tested": {
+    "type": "string"
+   },
+   "license": {
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "homepage": {
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "citation_key": {
+    "type": [
+     "string",
+     "null"
+    ]
+   },
+   "role": {
+    "enum": [
+     "checked",
+     "documented-only",
+     "benchmarked-only",
+     "reference"
+    ],
+    "description": "checked: run and compared; documented-only: capabilities taken from documentation, never run; benchmarked-only: appears only in the benchmark data; reference: evaluation of the published definition."
+   },
+   "how_run": {
+    "type": "string"
+   },
+   "api_listing": {
+    "type": [
+     "object",
+     "null"
+    ],
+    "additionalProperties": false,
+    "required": [
+     "method",
+     "source"
+    ],
+    "properties": {
+     "method": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "source": {
+      "type": [
+       "string",
+       "null"
+      ]
+     }
+    }
+   }
+  }
+ }
+}

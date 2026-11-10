@@ -1,0 +1,1229 @@
+suite,graph,nodes,edges,measure,tool,tool_version,seconds,peak_megabytes,threads,status
+r-comparison,"scale-free n=100000, m=299994",,,Louvain communities,igraph,,15.67,,1,ok
+r-comparison,"100 nodes, 1000 draws",,,MRQAP (DSP),sna,,21.673,,1,ok
+r-comparison,"100 nodes, 1000 draws",,,QAP correlation,sna,,0.618,,1,ok
+r-comparison,"G(n=10000, m=50000)",,,betweenness,igraph,,7.635,,1,ok
+r-comparison,"directed G(10000, 50000)",,,betweenness,igraph,,5.0405,,1,ok
+r-comparison,"directed G(2000, 10000)",,,betweenness,sna,,1.615,,1,ok
+r-comparison,"directed, integer (Dial) weights, 5000 / 25000",,,betweenness,igraph,,3.2305,,1,ok
+r-comparison,"directed, real (Dijkstra) weights, 5000 / 25000",,,betweenness,igraph,,3.443,,1,ok
+r-comparison,"integer (Dial) weights, 5000 / 25000",,,betweenness,igraph,,4.208,,1,ok
+r-comparison,"real (Dijkstra) weights, 5000 / 25000",,,betweenness,igraph,,4.764,,1,ok
+r-comparison,"directed G(2000, 10000)",,,brokerage,sna,,0.1033,,1,ok
+r-comparison,"G(n=10000, m=50000)",,,closeness,igraph,,2.608,,1,ok
+r-comparison,"directed G(10000, 50000)",,,closeness,igraph,,2.393,,1,ok
+r-comparison,"directed, integer (Dial) weights, 5000 / 25000",,,closeness,igraph,,2.299,,1,ok
+r-comparison,"directed, real (Dijkstra) weights, 5000 / 25000",,,closeness,igraph,,2.72,,1,ok
+r-comparison,"integer (Dial) weights, 5000 / 25000",,,closeness,igraph,,2.901,,1,ok
+r-comparison,"real (Dijkstra) weights, 5000 / 25000",,,closeness,igraph,,3.5675,,1,ok
+r-comparison,"scale-free n=100000, m=299994",,,components,igraph,,0.0003,,1,ok
+r-comparison,"G(n=10000, m=50000)",,,constraint,igraph,,0.0067,,1,ok
+r-comparison,"scale-free n=100000, m=299994",,,eigenvector centrality,igraph,,0.197,,1,ok
+r-comparison,"G(n=10000, m=50000)",,,harmonic centrality,igraph,,2.596,,1,ok
+r-comparison,"directed G(10000, 50000)",,,harmonic centrality,igraph,,2.313,,1,ok
+r-comparison,"directed, integer (Dial) weights, 5000 / 25000",,,harmonic centrality,igraph,,2.259,,1,ok
+r-comparison,"directed, real (Dijkstra) weights, 5000 / 25000",,,harmonic centrality,igraph,,2.651,,1,ok
+r-comparison,"integer (Dial) weights, 5000 / 25000",,,harmonic centrality,igraph,,2.933,,1,ok
+r-comparison,"real (Dijkstra) weights, 5000 / 25000",,,harmonic centrality,igraph,,3.6095,,1,ok
+r-comparison,"scale-free n=100000, m=299994",,,k-cores,igraph,,0.007,,1,ok
+r-comparison,"scale-free n=100000, m=299994",,,maximal cliques,igraph,,3.486,,1,ok
+r-comparison,"directed G(2000, 10000)",,,structural equivalence,sna,,121.77,,1,ok
+r-comparison,"directed G(10000, 50000)",,,triad census,igraph,,0.0352,,1,ok
+r-comparison,"directed G(2000, 10000)",,,triad census,sna,,140.803,,1,ok
+python-comparison,"scale-free n=100000, m=299991",,,Louvain communities,networkit,,0.110123,,all,ok
+python-comparison,"scale-free n=100000, m=299991",,,Louvain communities,networkx,,151.844,,1,ok
+python-comparison,"scale-free n=100000, m=299991",,,Louvain communities,pyigraph,,11.3446,,1,ok
+python-comparison,"G(n=5000, m=25000)",,,betweenness,networkit,,0.307653,,all,ok
+python-comparison,"G(n=5000, m=25000)",,,betweenness,networkx,,64.3857,,1,ok
+python-comparison,"G(n=5000, m=25000)",,,betweenness,pyigraph,,1.29514,,1,ok
+python-comparison,"directed G(5000, 25000)",,,betweenness,networkit,,0.220009,,all,ok
+python-comparison,"directed G(5000, 25000)",,,betweenness,networkx,,50.8465,,1,ok
+python-comparison,"directed G(5000, 25000)",,,betweenness,pyigraph,,0.866434,,1,ok
+python-comparison,"directed, integer (Dial) weights, 2000 / 10000",,,betweenness,networkx,,11.6775,,1,ok
+python-comparison,"directed, integer (Dial) weights, 2000 / 10000",,,betweenness,pyigraph,,0.370672,,1,ok
+python-comparison,"directed, real (Dijkstra) weights, 2000 / 10000",,,betweenness,networkx,,11.77,,1,ok
+python-comparison,"directed, real (Dijkstra) weights, 2000 / 10000",,,betweenness,pyigraph,,0.379104,,1,ok
+python-comparison,"integer (Dial) weights, 2000 / 10000",,,betweenness,networkx,,13.7998,,1,ok
+python-comparison,"integer (Dial) weights, 2000 / 10000",,,betweenness,pyigraph,,0.459726,,1,ok
+python-comparison,"real (Dijkstra) weights, 2000 / 10000",,,betweenness,networkx,,15.4446,,1,ok
+python-comparison,"real (Dijkstra) weights, 2000 / 10000",,,betweenness,pyigraph,,0.522105,,1,ok
+python-comparison,"G(n=5000, m=25000)",,,closeness,networkx,,8.5582,,1,ok
+python-comparison,"directed G(5000, 25000)",,,closeness,networkx,,5.12004,,1,ok
+python-comparison,"directed, integer (Dial) weights, 2000 / 10000",,,closeness,networkx,,4.35995,,1,ok
+python-comparison,"directed, real (Dijkstra) weights, 2000 / 10000",,,closeness,networkx,,4.43869,,1,ok
+python-comparison,"integer (Dial) weights, 2000 / 10000",,,closeness,networkx,,6.21357,,1,ok
+python-comparison,"real (Dijkstra) weights, 2000 / 10000",,,closeness,networkx,,7.64584,,1,ok
+python-comparison,"scale-free n=100000, m=299991",,,components,networkit,,0.00353601,,all,ok
+python-comparison,"scale-free n=100000, m=299991",,,components,networkx,,0.0559887,,1,ok
+python-comparison,"scale-free n=100000, m=299991",,,components,pyigraph,,0.00169757,,1,ok
+python-comparison,"G(n=2000, m=10000)",,,constraint,networkx,,0.0115828,,1,ok
+python-comparison,"G(n=2000, m=10000)",,,constraint,pyigraph,,0.00110869,,1,ok
+python-comparison,"scale-free n=100000, m=299991",,,eigenvector centrality,networkit,,0.0202602,,all,ok
+python-comparison,"scale-free n=100000, m=299991",,,eigenvector centrality,networkx,,0.531514,,1,ok
+python-comparison,"scale-free n=100000, m=299991",,,eigenvector centrality,pyigraph,,0.280665,,1,ok
+python-comparison,"G(n=5000, m=25000)",,,harmonic centrality,networkit,,0.220902,,all,ok
+python-comparison,"G(n=5000, m=25000)",,,harmonic centrality,networkx,,10.0556,,1,ok
+python-comparison,"G(n=5000, m=25000)",,,harmonic centrality,pyigraph,,0.52968,,1,ok
+python-comparison,"directed G(5000, 25000)",,,harmonic centrality,networkx,,7.63964,,1,ok
+python-comparison,"directed G(5000, 25000)",,,harmonic centrality,pyigraph,,0.471384,,1,ok
+python-comparison,"directed, integer (Dial) weights, 2000 / 10000",,,harmonic centrality,networkx,,4.74048,,1,ok
+python-comparison,"directed, integer (Dial) weights, 2000 / 10000",,,harmonic centrality,pyigraph,,0.284318,,1,ok
+python-comparison,"directed, real (Dijkstra) weights, 2000 / 10000",,,harmonic centrality,networkx,,4.94598,,1,ok
+python-comparison,"directed, real (Dijkstra) weights, 2000 / 10000",,,harmonic centrality,pyigraph,,0.316091,,1,ok
+python-comparison,"integer (Dial) weights, 2000 / 10000",,,harmonic centrality,networkx,,6.49025,,1,ok
+python-comparison,"integer (Dial) weights, 2000 / 10000",,,harmonic centrality,pyigraph,,0.334018,,1,ok
+python-comparison,"real (Dijkstra) weights, 2000 / 10000",,,harmonic centrality,networkx,,7.96704,,1,ok
+python-comparison,"real (Dijkstra) weights, 2000 / 10000",,,harmonic centrality,pyigraph,,0.425087,,1,ok
+python-comparison,"scale-free n=100000, m=299991",,,k-cores,networkit,,0.00236855,,all,ok
+python-comparison,"scale-free n=100000, m=299991",,,k-cores,networkx,,0.432221,,1,ok
+python-comparison,"scale-free n=100000, m=299991",,,k-cores,pyigraph,,0.0057807,,1,ok
+python-comparison,"scale-free n=100000, m=299991",,,maximal cliques,networkit,,0.0897939,,all,ok
+python-comparison,"scale-free n=100000, m=299991",,,maximal cliques,networkx,,1.13291,,1,ok
+python-comparison,"scale-free n=100000, m=299991",,,maximal cliques,pyigraph,,1.04509,,1,ok
+python-comparison,"directed G(5000, 25000)",,,triad census,networkx,,0.742634,,1,ok
+python-comparison,"directed G(5000, 25000)",,,triad census,pyigraph,,0.015083,,1,ok
+gap-kernels,kron22 t=1,4194302,128311450,betweenness (4 sources),gapbs,941462c7c42e,7.77059,614,1,ok
+gap-kernels,kron22 t=21,4194302,128311450,betweenness (4 sources),gapbs,941462c7c42e,0.61978,615,21,ok
+gap-kernels,urand22 t=1,4194304,134217158,betweenness (4 sources),gapbs,941462c7c42e,13.9677,644,1,ok
+gap-kernels,urand22 t=21,4194304,134217158,betweenness (4 sources),gapbs,941462c7c42e,1.07238,644,21,ok
+gap-kernels,kron22 t=1,4194302,128311450,bfs,gapbs,941462c7c42e,0.09276,557,1,ok
+gap-kernels,kron22 t=21,4194302,128311450,bfs,gapbs,941462c7c42e,0.008995,557,21,ok
+gap-kernels,urand22 t=1,4194304,134217158,bfs,gapbs,941462c7c42e,0.09692,580,1,ok
+gap-kernels,urand22 t=21,4194304,134217158,bfs,gapbs,941462c7c42e,0.012965,579,21,ok
+gap-kernels,kron22 t=1,4194302,128311450,components,gapbs,941462c7c42e,0.17295,558,1,ok
+gap-kernels,kron22 t=21,4194302,128311450,components,gapbs,941462c7c42e,0.01104,557,21,ok
+gap-kernels,urand22 t=1,4194304,134217158,components,gapbs,941462c7c42e,0.21595,580,1,ok
+gap-kernels,urand22 t=21,4194304,134217158,components,gapbs,941462c7c42e,0.018525,579,21,ok
+gap-kernels,kron22 t=1,4194302,128311450,pagerank,gapbs,941462c7c42e,2.02243,558,1,ok
+gap-kernels,kron22 t=21,4194302,128311450,pagerank,gapbs,941462c7c42e,0.191885,557,21,ok
+gap-kernels,urand22 t=1,4194304,134217158,pagerank,gapbs,941462c7c42e,1.67592,580,1,ok
+gap-kernels,urand22 t=21,4194304,134217158,pagerank,gapbs,941462c7c42e,0.20303,580,21,ok
+gap-kernels,kron22 t=1,4194302,128311450,sssp,gapbs,941462c7c42e,1.04336,1066,1,ok
+gap-kernels,kron22 t=21,4194302,128311450,sssp,gapbs,941462c7c42e,0.096435,1136,21,ok
+gap-kernels,urand22 t=1,4194304,134217158,sssp,gapbs,941462c7c42e,2.27378,1146,1,ok
+gap-kernels,urand22 t=21,4194304,134217158,sssp,gapbs,941462c7c42e,0.149165,1181,21,ok
+gap-kernels,kron22 t=1,4194302,128311450,triangle count,gapbs,941462c7c42e,59.767,1175,1,ok
+gap-kernels,kron22 t=21,4194302,128311450,triangle count,gapbs,941462c7c42e,3.56632,1238,21,ok
+gap-kernels,urand22 t=1,4194304,134217158,triangle count,gapbs,941462c7c42e,14.2135,580,1,ok
+gap-kernels,urand22 t=21,4194304,134217158,triangle count,gapbs,941462c7c42e,0.77676,580,21,ok
+size-ladder,chicago_road,12982,39018,betweenness (16 sources),networkit,11.2.2,0.00588661,27.4,21,ok
+size-ladder,chicago_road,12982,39018,betweenness (16 sources),networkx,3.7,0.235106,34.4,1,ok
+size-ladder,chicago_road,12982,39018,betweenness (16 sources),gapbs,941462c7c42e,0.01601,4.8,21,ok
+size-ladder,chicago_road,12982,39018,betweenness (16 sources),igraph,1.0.0,0.00735928,6.3,1,ok
+size-ladder,citeseer,384413,1751463,betweenness (16 sources),networkit,11.2.2,0.0558344,541.7,21,ok
+size-ladder,citeseer,384413,1751463,betweenness (16 sources),gapbs,941462c7c42e,0.0148,29.1,21,ok
+size-ladder,citeseer,384413,1751463,betweenness (16 sources),igraph,1.0.0,0.0589551,135.1,1,ok
+size-ladder,email_enron,36692,367662,betweenness (16 sources),networkit,11.2.2,0.01979,93.9,21,ok
+size-ladder,email_enron,36692,367662,betweenness (16 sources),gapbs,941462c7c42e,0.01047,7.4,21,ok
+size-ladder,email_enron,36692,367662,betweenness (16 sources),igraph,1.0.0,0.0263303,33.5,1,ok
+size-ladder,google_plus,211187,1506896,betweenness (16 sources),networkit,11.2.2,0.0850003,367.9,21,ok
+size-ladder,google_plus,211187,1506896,betweenness (16 sources),gapbs,941462c7c42e,0.02086,22.7,21,ok
+size-ladder,google_plus,211187,1506896,betweenness (16 sources),igraph,1.0.0,0.151378,101.8,1,ok
+size-ladder,internet_as,22963,48436,betweenness (16 sources),networkit,11.2.2,0.0139539,50.9,21,ok
+size-ladder,internet_as,22963,48436,betweenness (16 sources),networkx,3.7,0.477088,45.7,1,ok
+size-ladder,internet_as,22963,48436,betweenness (16 sources),gapbs,941462c7c42e,0.00889,4.8,21,ok
+size-ladder,internet_as,22963,48436,betweenness (16 sources),igraph,1.0.0,0.0134508,9.2,1,ok
+size-ladder,kron12,4096,48474,betweenness (16 sources),networkit,11.2.2,0.00470601,10.7,21,ok
+size-ladder,kron12,4096,48474,betweenness (16 sources),networkx,3.7,0.138789,30,1,ok
+size-ladder,kron12,4096,48474,betweenness (16 sources),gapbs,941462c7c42e,0.08735,4.7,21,ok
+size-ladder,kron12,4096,48474,betweenness (16 sources),igraph,1.0.0,0.00552825,7.5,1,ok
+size-ladder,kron14,16384,212944,betweenness (16 sources),networkit,11.2.2,0.0926038,47.2,21,ok
+size-ladder,kron14,16384,212944,betweenness (16 sources),gapbs,941462c7c42e,0.0091,6.1,21,ok
+size-ladder,kron14,16384,212944,betweenness (16 sources),igraph,1.0.0,0.030312,23.8,1,ok
+size-ladder,kron16,65536,909258,betweenness (16 sources),networkit,11.2.2,0.0784432,193.2,21,ok
+size-ladder,kron16,65536,909258,betweenness (16 sources),gapbs,941462c7c42e,0.02616,12.6,21,ok
+size-ladder,kron16,65536,909258,betweenness (16 sources),igraph,1.0.0,0.203999,67.2,1,ok
+size-ladder,kron18,262144,3805960,betweenness (16 sources),networkit,11.2.2,0.414202,652.7,21,ok
+size-ladder,kron18,262144,3805960,betweenness (16 sources),gapbs,941462c7c42e,0.09003,41.4,21,ok
+size-ladder,kron18,262144,3805960,betweenness (16 sources),igraph,1.0.0,1.32012,272.7,1,ok
+size-ladder,lfr12,4096,41951,betweenness (16 sources),networkit,11.2.2,0.00494909,11.4,21,ok
+size-ladder,lfr12,4096,41951,betweenness (16 sources),networkx,3.7,0.14623,27.3,1,ok
+size-ladder,lfr12,4096,41951,betweenness (16 sources),gapbs,941462c7c42e,0.01494,4.6,21,ok
+size-ladder,lfr12,4096,41951,betweenness (16 sources),igraph,1.0.0,0.00620025,6.5,1,ok
+size-ladder,lfr14,16384,165870,betweenness (16 sources),networkit,11.2.2,0.016845,49.4,21,ok
+size-ladder,lfr14,16384,165870,betweenness (16 sources),networkx,3.7,0.985818,72.7,1,ok
+size-ladder,lfr14,16384,165870,betweenness (16 sources),gapbs,941462c7c42e,0.00618,5.6,21,ok
+size-ladder,lfr14,16384,165870,betweenness (16 sources),igraph,1.0.0,0.0324657,18.9,1,ok
+size-ladder,lfr16,65536,668086,betweenness (16 sources),networkit,11.2.2,0.101434,191.4,21,ok
+size-ladder,lfr16,65536,668086,betweenness (16 sources),gapbs,941462c7c42e,0.01814,11,21,ok
+size-ladder,lfr16,65536,668086,betweenness (16 sources),igraph,1.0.0,0.248739,53.5,1,ok
+size-ladder,lfr18,262144,2683411,betweenness (16 sources),networkit,11.2.2,0.60639,784.5,21,ok
+size-ladder,lfr18,262144,2683411,betweenness (16 sources),gapbs,941462c7c42e,0.08556,32.3,21,ok
+size-ladder,lfr18,262144,2683411,betweenness (16 sources),igraph,1.0.0,1.74884,207.5,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,betweenness (16 sources),networkit,11.2.2,0.011278,105.6,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,betweenness (16 sources),networkx,3.7,0.556097,104.2,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,betweenness (16 sources),gapbs,941462c7c42e,0.00319,7.2,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,betweenness (16 sources),igraph,1.0.0,0.00582737,19.3,1,ok
+size-ladder,road12,4096,7251,betweenness (16 sources),networkit,11.2.2,0.00343663,8.6,21,ok
+size-ladder,road12,4096,7251,betweenness (16 sources),networkx,3.7,0.063942,16.1,1,ok
+size-ladder,road12,4096,7251,betweenness (16 sources),gapbs,941462c7c42e,0.01623,4.7,21,ok
+size-ladder,road12,4096,7251,betweenness (16 sources),igraph,1.0.0,0.00261092,2.6,1,ok
+size-ladder,road14,16384,29246,betweenness (16 sources),networkit,11.2.2,0.00893958,33.2,21,ok
+size-ladder,road14,16384,29246,betweenness (16 sources),networkx,3.7,0.311442,30.8,1,ok
+size-ladder,road14,16384,29246,betweenness (16 sources),gapbs,941462c7c42e,0.03451,4.6,21,ok
+size-ladder,road14,16384,29246,betweenness (16 sources),igraph,1.0.0,0.0120696,5.8,1,ok
+size-ladder,road16,65536,117367,betweenness (16 sources),networkit,11.2.2,0.0433775,134.8,21,ok
+size-ladder,road16,65536,117367,betweenness (16 sources),gapbs,941462c7c42e,0.10107,6.1,21,ok
+size-ladder,road16,65536,117367,betweenness (16 sources),igraph,1.0.0,0.0663592,20.4,1,ok
+size-ladder,road18,262144,471118,betweenness (16 sources),networkit,11.2.2,0.216235,540.5,21,ok
+size-ladder,road18,262144,471118,betweenness (16 sources),gapbs,941462c7c42e,0.22233,14.1,21,ok
+size-ladder,road18,262144,471118,betweenness (16 sources),igraph,1.0.0,0.53356,69.9,1,ok
+size-ladder,urand12,4096,32678,betweenness (16 sources),networkit,11.2.2,0.00663536,11.3,21,ok
+size-ladder,urand12,4096,32678,betweenness (16 sources),networkx,3.7,0.123381,24.2,1,ok
+size-ladder,urand12,4096,32678,betweenness (16 sources),gapbs,941462c7c42e,0.0024,4.7,21,ok
+size-ladder,urand12,4096,32678,betweenness (16 sources),igraph,1.0.0,0.00626142,5.8,1,ok
+size-ladder,urand14,16384,131006,betweenness (16 sources),networkit,11.2.2,0.0145399,43.2,21,ok
+size-ladder,urand14,16384,131006,betweenness (16 sources),networkx,3.7,0.82599,60.9,1,ok
+size-ladder,urand14,16384,131006,betweenness (16 sources),gapbs,941462c7c42e,0.05311,5.5,21,ok
+size-ladder,urand14,16384,131006,betweenness (16 sources),igraph,1.0.0,0.0233906,14.6,1,ok
+size-ladder,urand16,65536,524225,betweenness (16 sources),networkit,11.2.2,0.0990282,187,21,ok
+size-ladder,urand16,65536,524225,betweenness (16 sources),gapbs,941462c7c42e,0.01842,9.5,21,ok
+size-ladder,urand16,65536,524225,betweenness (16 sources),igraph,1.0.0,0.233744,55.6,1,ok
+size-ladder,urand18,262144,2097084,betweenness (16 sources),networkit,11.2.2,0.516967,710.8,21,ok
+size-ladder,urand18,262144,2097084,betweenness (16 sources),gapbs,941462c7c42e,0.06855,27.7,21,ok
+size-ladder,urand18,262144,2097084,betweenness (16 sources),igraph,1.0.0,1.57397,171.2,1,ok
+size-ladder,wordnet,146005,656999,betweenness (16 sources),networkit,11.2.2,0.111603,345,21,ok
+size-ladder,wordnet,146005,656999,betweenness (16 sources),gapbs,941462c7c42e,0.02411,12.9,21,ok
+size-ladder,wordnet,146005,656999,betweenness (16 sources),igraph,1.0.0,0.252678,63,1,ok
+size-ladder,yeast_causal_regulation,6216,1666106,betweenness (16 sources),networkit,11.2.2,0.0210744,63.1,21,ok
+size-ladder,yeast_causal_regulation,6216,1666106,betweenness (16 sources),gapbs,941462c7c42e,0.00607,17.3,21,ok
+size-ladder,yeast_causal_regulation,6216,1666106,betweenness (16 sources),igraph,1.0.0,0.0190728,79.2,1,ok
+size-ladder,chicago_road,12982,39018,bfs,networkit,11.2.2,0.000342142,1.3,21,ok
+size-ladder,chicago_road,12982,39018,bfs,networkx,3.7,0.00334728,17.1,1,ok
+size-ladder,chicago_road,12982,39018,bfs,gapbs,941462c7c42e,0.00064,4.6,21,ok
+size-ladder,chicago_road,12982,39018,bfs,igraph,1.0.0,0.000541062,5.2,1,ok
+size-ladder,citeseer,384413,1751463,bfs,networkit,11.2.2,0.000113726,63.8,21,ok
+size-ladder,citeseer,384413,1751463,bfs,gapbs,941462c7c42e,0.0001,24.4,21,ok
+size-ladder,citeseer,384413,1751463,bfs,igraph,1.0.0,0.00132636,77.5,1,ok
+size-ladder,email_enron,36692,367662,bfs,networkit,11.2.2,0.00110591,20.3,21,ok
+size-ladder,email_enron,36692,367662,bfs,gapbs,941462c7c42e,0.00015,7.1,21,ok
+size-ladder,email_enron,36692,367662,bfs,igraph,1.0.0,0.00163614,32.8,1,ok
+size-ladder,google_plus,211187,1506896,bfs,networkit,11.2.2,0.00934301,47.4,21,ok
+size-ladder,google_plus,211187,1506896,bfs,gapbs,941462c7c42e,0.00094,19.3,21,ok
+size-ladder,google_plus,211187,1506896,bfs,igraph,1.0.0,0.0126538,80.3,1,ok
+size-ladder,internet_as,22963,48436,bfs,networkit,11.2.2,0.00050915,1.8,21,ok
+size-ladder,internet_as,22963,48436,bfs,networkx,3.7,0.00596215,24.3,1,ok
+size-ladder,internet_as,22963,48436,bfs,gapbs,941462c7c42e,0.00012,4.8,21,ok
+size-ladder,internet_as,22963,48436,bfs,igraph,1.0.0,0.00102898,6,1,ok
+size-ladder,kron12,4096,48474,bfs,networkit,11.2.2,0.000185415,1.2,21,ok
+size-ladder,kron12,4096,48474,bfs,networkx,3.7,0.00231398,14.1,1,ok
+size-ladder,kron12,4096,48474,bfs,gapbs,941462c7c42e,0.00011,4.6,21,ok
+size-ladder,kron12,4096,48474,bfs,igraph,1.0.0,0.000246368,5.9,1,ok
+size-ladder,kron14,16384,212944,bfs,networkit,11.2.2,0.000951411,10.2,21,ok
+size-ladder,kron14,16384,212944,bfs,gapbs,941462c7c42e,0.0002,5.9,21,ok
+size-ladder,kron14,16384,212944,bfs,igraph,1.0.0,0.00152119,19.7,1,ok
+size-ladder,kron16,65536,909258,bfs,networkit,11.2.2,0.00473233,47.8,21,ok
+size-ladder,kron16,65536,909258,bfs,gapbs,941462c7c42e,0.00013,11.7,21,ok
+size-ladder,kron16,65536,909258,bfs,igraph,1.0.0,0.0124256,45.4,1,ok
+size-ladder,kron18,262144,3805960,bfs,networkit,11.2.2,0.0324026,94.7,21,ok
+size-ladder,kron18,262144,3805960,bfs,gapbs,941462c7c42e,0.0004,35.3,21,ok
+size-ladder,kron18,262144,3805960,bfs,igraph,1.0.0,0.0745655,161.5,1,ok
+size-ladder,lfr12,4096,41951,bfs,networkit,11.2.2,0.000212624,0.9,21,ok
+size-ladder,lfr12,4096,41951,bfs,networkx,3.7,0.00152074,12.5,1,ok
+size-ladder,lfr12,4096,41951,bfs,gapbs,941462c7c42e,7e-05,4.6,21,ok
+size-ladder,lfr12,4096,41951,bfs,igraph,1.0.0,0.000303984,5,1,ok
+size-ladder,lfr14,16384,165870,bfs,networkit,11.2.2,0.000845864,8,21,ok
+size-ladder,lfr14,16384,165870,bfs,networkx,3.7,0.0103839,51.2,1,ok
+size-ladder,lfr14,16384,165870,bfs,gapbs,941462c7c42e,0.00012,5.5,21,ok
+size-ladder,lfr14,16384,165870,bfs,igraph,1.0.0,0.00142276,15.5,1,ok
+size-ladder,lfr16,65536,668086,bfs,networkit,11.2.2,0.00595777,36.8,21,ok
+size-ladder,lfr16,65536,668086,bfs,gapbs,941462c7c42e,0.0002,9.7,21,ok
+size-ladder,lfr16,65536,668086,bfs,igraph,1.0.0,0.014443,45.9,1,ok
+size-ladder,lfr18,262144,2683411,bfs,networkit,11.2.2,0.0528019,74.5,21,ok
+size-ladder,lfr18,262144,2683411,bfs,gapbs,941462c7c42e,0.00048,26.6,21,ok
+size-ladder,lfr18,262144,2683411,bfs,igraph,1.0.0,0.103731,124.1,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,bfs,networkit,11.2.2,9.62894e-06,9.5,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,bfs,networkx,3.7,1.1121e-05,63.9,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,bfs,gapbs,941462c7c42e,6e-05,5.6,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,bfs,igraph,1.0.0,0.000243689,11.4,1,ok
+size-ladder,road12,4096,7251,bfs,networkit,11.2.2,7.55469e-05,0.7,21,ok
+size-ladder,road12,4096,7251,bfs,networkx,3.7,0.000828675,2.6,1,ok
+size-ladder,road12,4096,7251,bfs,gapbs,941462c7c42e,0.00049,4.5,21,ok
+size-ladder,road12,4096,7251,bfs,igraph,1.0.0,0.000192347,1.5,1,ok
+size-ladder,road14,16384,29246,bfs,networkit,11.2.2,0.000340164,0.8,21,ok
+size-ladder,road14,16384,29246,bfs,networkx,3.7,0.0041463,12.9,1,ok
+size-ladder,road14,16384,29246,bfs,gapbs,941462c7c42e,0.00088,4.7,21,ok
+size-ladder,road14,16384,29246,bfs,igraph,1.0.0,0.000753445,3.6,1,ok
+size-ladder,road16,65536,117367,bfs,networkit,11.2.2,0.00178559,6.5,21,ok
+size-ladder,road16,65536,117367,bfs,gapbs,941462c7c42e,0.00273,5.4,21,ok
+size-ladder,road16,65536,117367,bfs,igraph,1.0.0,0.00417442,14.3,1,ok
+size-ladder,road18,262144,471118,bfs,networkit,11.2.2,0.0106606,30.7,21,ok
+size-ladder,road18,262144,471118,bfs,gapbs,941462c7c42e,0.00631,11.2,21,ok
+size-ladder,road18,262144,471118,bfs,igraph,1.0.0,0.0260005,59.3,1,ok
+size-ladder,urand12,4096,32678,bfs,networkit,11.2.2,0.00013412,0.8,21,ok
+size-ladder,urand12,4096,32678,bfs,networkx,3.7,0.00128904,9.9,1,ok
+size-ladder,urand12,4096,32678,bfs,gapbs,941462c7c42e,5e-05,4.3,21,ok
+size-ladder,urand12,4096,32678,bfs,igraph,1.0.0,0.000256705,4.5,1,ok
+size-ladder,urand14,16384,131006,bfs,networkit,11.2.2,0.000744521,6.3,21,ok
+size-ladder,urand14,16384,131006,bfs,networkx,3.7,0.0100057,42.1,1,ok
+size-ladder,urand14,16384,131006,bfs,gapbs,941462c7c42e,0.00016,5.2,21,ok
+size-ladder,urand14,16384,131006,bfs,igraph,1.0.0,0.00123405,11.8,1,ok
+size-ladder,urand16,65536,524225,bfs,networkit,11.2.2,0.00610531,30,21,ok
+size-ladder,urand16,65536,524225,bfs,gapbs,941462c7c42e,0.00024,8.4,21,ok
+size-ladder,urand16,65536,524225,bfs,igraph,1.0.0,0.0125027,47.6,1,ok
+size-ladder,urand18,262144,2097084,bfs,networkit,11.2.2,0.0510394,64.3,21,ok
+size-ladder,urand18,262144,2097084,bfs,gapbs,941462c7c42e,0.00047,23.6,21,ok
+size-ladder,urand18,262144,2097084,bfs,igraph,1.0.0,0.101433,101.8,1,ok
+size-ladder,wordnet,146005,656999,bfs,networkit,11.2.2,0.00822995,38,21,ok
+size-ladder,wordnet,146005,656999,bfs,gapbs,941462c7c42e,0.00039,10.5,21,ok
+size-ladder,wordnet,146005,656999,bfs,igraph,1.0.0,0.0161817,52,1,ok
+size-ladder,yeast_causal_regulation,6216,1666106,bfs,networkit,11.2.2,2.01096e-06,38.2,21,ok
+size-ladder,yeast_causal_regulation,6216,1666106,bfs,gapbs,941462c7c42e,1e-05,16.8,21,ok
+size-ladder,yeast_causal_regulation,6216,1666106,bfs,igraph,1.0.0,1.7102e-05,78,1,ok
+size-ladder,chicago_road,12982,39018,closeness,networkit,11.2.2,0.192764,27.6,21,ok
+size-ladder,chicago_road,12982,39018,closeness,igraph,1.0.0,3.59641,6.6,1,ok
+size-ladder,email_enron,36692,367662,closeness,networkit,11.2.2,1.53955,94.9,21,ok
+size-ladder,internet_as,22963,48436,closeness,networkit,11.2.2,0.519746,51.6,21,ok
+size-ladder,internet_as,22963,48436,closeness,igraph,1.0.0,8.8369,9.3,1,ok
+size-ladder,kron12,4096,48474,closeness,networkit,11.2.2,0.023675,10.9,21,ok
+size-ladder,kron12,4096,48474,closeness,networkx,3.7,7.45857,30,1,ok
+size-ladder,kron12,4096,48474,closeness,igraph,1.0.0,0.314269,7.5,1,ok
+size-ladder,kron14,16384,212944,closeness,networkit,11.2.2,0.404506,47.7,21,ok
+size-ladder,kron14,16384,212944,closeness,igraph,1.0.0,5.85389,23.8,1,ok
+size-ladder,kron16,65536,909258,closeness,networkit,11.2.2,8.83294,194.7,21,ok
+size-ladder,lfr12,4096,41951,closeness,networkit,11.2.2,0.0306916,11.7,21,ok
+size-ladder,lfr12,4096,41951,closeness,networkx,3.7,6.33743,27.3,1,ok
+size-ladder,lfr12,4096,41951,closeness,igraph,1.0.0,0.430972,6.5,1,ok
+size-ladder,lfr14,16384,165870,closeness,networkit,11.2.2,0.604556,50,21,ok
+size-ladder,lfr14,16384,165870,closeness,igraph,1.0.0,8.70721,18.9,1,ok
+size-ladder,lfr16,65536,668086,closeness,networkit,11.2.2,15.6517,193.3,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,closeness,networkit,11.2.2,0.00765024,105.3,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,closeness,igraph,1.0.0,104.119,19.3,1,ok
+size-ladder,road12,4096,7251,closeness,networkit,11.2.2,0.0136485,8.8,21,ok
+size-ladder,road12,4096,7251,closeness,networkx,3.7,3.08972,16.1,1,ok
+size-ladder,road12,4096,7251,closeness,igraph,1.0.0,0.317718,2.7,1,ok
+size-ladder,road14,16384,29246,closeness,networkit,11.2.2,0.228674,33.4,21,ok
+size-ladder,road14,16384,29246,closeness,igraph,1.0.0,5.58695,5.9,1,ok
+size-ladder,road16,65536,117367,closeness,networkit,11.2.2,4.42354,134.9,21,ok
+size-ladder,road16,65536,117367,closeness,igraph,1.0.0,108.525,20.4,1,ok
+size-ladder,urand12,4096,32678,closeness,networkit,11.2.2,0.0268422,11.6,21,ok
+size-ladder,urand12,4096,32678,closeness,networkx,3.7,5.06926,24.2,1,ok
+size-ladder,urand12,4096,32678,closeness,igraph,1.0.0,0.390876,5.9,1,ok
+size-ladder,urand14,16384,131006,closeness,networkit,11.2.2,0.543381,43.8,21,ok
+size-ladder,urand14,16384,131006,closeness,igraph,1.0.0,7.70328,14.7,1,ok
+size-ladder,urand16,65536,524225,closeness,networkit,11.2.2,14.3977,188.8,21,ok
+size-ladder,yeast_causal_regulation,6216,1666106,closeness,networkit,11.2.2,0.073614,63.4,21,ok
+size-ladder,chicago_road,12982,39018,components,networkit,11.2.2,0.00037287,1.4,21,ok
+size-ladder,chicago_road,12982,39018,components,networkx,3.7,0.00441992,16.8,1,ok
+size-ladder,chicago_road,12982,39018,components,gapbs,941462c7c42e,0.00031,4.7,21,ok
+size-ladder,chicago_road,12982,39018,components,igraph,1.0.0,0.000678914,5.2,1,ok
+size-ladder,citeseer,384413,1751463,components,networkit,11.2.2,0.0554447,69.8,21,ok
+size-ladder,citeseer,384413,1751463,components,gapbs,941462c7c42e,0.00119,24.4,21,ok
+size-ladder,citeseer,384413,1751463,components,igraph,1.0.0,0.0775707,77.6,1,ok
+size-ladder,email_enron,36692,367662,components,networkit,11.2.2,0.00178269,20.5,21,ok
+size-ladder,email_enron,36692,367662,components,gapbs,941462c7c42e,0.00038,7.1,21,ok
+size-ladder,email_enron,36692,367662,components,igraph,1.0.0,0.00247584,32.8,1,ok
+size-ladder,google_plus,211187,1506896,components,networkit,11.2.2,0.0229848,50.9,21,ok
+size-ladder,google_plus,211187,1506896,components,gapbs,941462c7c42e,0.00105,19,21,ok
+size-ladder,google_plus,211187,1506896,components,igraph,1.0.0,0.0343547,75.7,1,ok
+size-ladder,internet_as,22963,48436,components,networkit,11.2.2,0.00035687,1.9,21,ok
+size-ladder,internet_as,22963,48436,components,networkx,3.7,0.00507136,23.2,1,ok
+size-ladder,internet_as,22963,48436,components,gapbs,941462c7c42e,0.00022,4.6,21,ok
+size-ladder,internet_as,22963,48436,components,igraph,1.0.0,0.000385444,6.1,1,ok
+size-ladder,kron12,4096,48474,components,networkit,11.2.2,0.000107524,1.3,21,ok
+size-ladder,kron12,4096,48474,components,networkx,3.7,0.00230272,14.1,1,ok
+size-ladder,kron12,4096,48474,components,gapbs,941462c7c42e,0.00011,4.6,21,ok
+size-ladder,kron12,4096,48474,components,igraph,1.0.0,0.00030591,6,1,ok
+size-ladder,kron14,16384,212944,components,networkit,11.2.2,0.000547092,10.3,21,ok
+size-ladder,kron14,16384,212944,components,gapbs,941462c7c42e,0.0005,5.8,21,ok
+size-ladder,kron14,16384,212944,components,igraph,1.0.0,0.00177101,19.8,1,ok
+size-ladder,kron16,65536,909258,components,networkit,11.2.2,0.00376902,48,21,ok
+size-ladder,kron16,65536,909258,components,gapbs,941462c7c42e,0.00083,11.3,21,ok
+size-ladder,kron16,65536,909258,components,igraph,1.0.0,0.0128993,44.9,1,ok
+size-ladder,kron18,262144,3805960,components,networkit,11.2.2,0.0280674,96.5,21,ok
+size-ladder,kron18,262144,3805960,components,gapbs,941462c7c42e,0.00092,35.4,21,ok
+size-ladder,kron18,262144,3805960,components,igraph,1.0.0,0.0847798,153.7,1,ok
+size-ladder,lfr12,4096,41951,components,networkit,11.2.2,0.000110185,1,21,ok
+size-ladder,lfr12,4096,41951,components,networkx,3.7,0.00160778,12.5,1,ok
+size-ladder,lfr12,4096,41951,components,gapbs,941462c7c42e,0.00011,4.4,21,ok
+size-ladder,lfr12,4096,41951,components,igraph,1.0.0,6.8823e-05,5.1,1,ok
+size-ladder,lfr14,16384,165870,components,networkit,11.2.2,0.000632206,8.1,21,ok
+size-ladder,lfr14,16384,165870,components,networkx,3.7,0.0110412,51.2,1,ok
+size-ladder,lfr14,16384,165870,components,gapbs,941462c7c42e,0.05589,5.3,21,ok
+size-ladder,lfr14,16384,165870,components,igraph,1.0.0,0.000266864,15.6,1,ok
+size-ladder,lfr16,65536,668086,components,networkit,11.2.2,0.00411559,37,21,ok
+size-ladder,lfr16,65536,668086,components,gapbs,941462c7c42e,0.00068,9.7,21,ok
+size-ladder,lfr16,65536,668086,components,igraph,1.0.0,0.00104993,43.2,1,ok
+size-ladder,lfr18,262144,2683411,components,networkit,11.2.2,0.0403434,77.3,21,ok
+size-ladder,lfr18,262144,2683411,components,gapbs,941462c7c42e,0.00103,26.6,21,ok
+size-ladder,lfr18,262144,2683411,components,igraph,1.0.0,0.00443971,109.4,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,components,networkit,11.2.2,0.00264307,9.6,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,components,networkx,3.7,0.0298487,70.2,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,components,gapbs,941462c7c42e,0.00065,5.6,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,components,igraph,1.0.0,0.00420936,11.4,1,ok
+size-ladder,road12,4096,7251,components,networkit,11.2.2,4.9526e-05,0.9,21,ok
+size-ladder,road12,4096,7251,components,networkx,3.7,0.00069761,2.7,1,ok
+size-ladder,road12,4096,7251,components,gapbs,941462c7c42e,0.00012,4.3,21,ok
+size-ladder,road12,4096,7251,components,igraph,1.0.0,6.69369e-05,1.6,1,ok
+size-ladder,road14,16384,29246,components,networkit,11.2.2,0.000196562,1,21,ok
+size-ladder,road14,16384,29246,components,networkx,3.7,0.00299736,12.2,1,ok
+size-ladder,road14,16384,29246,components,gapbs,941462c7c42e,0.00037,4.4,21,ok
+size-ladder,road14,16384,29246,components,igraph,1.0.0,0.000697886,3.7,1,ok
+size-ladder,road16,65536,117367,components,networkit,11.2.2,0.00102282,6.7,21,ok
+size-ladder,road16,65536,117367,components,gapbs,941462c7c42e,0.00087,5.6,21,ok
+size-ladder,road16,65536,117367,components,igraph,1.0.0,0.0032846,11.8,1,ok
+size-ladder,road18,262144,471118,components,networkit,11.2.2,0.00609376,30.8,21,ok
+size-ladder,road18,262144,471118,components,gapbs,941462c7c42e,0.00133,9.8,21,ok
+size-ladder,road18,262144,471118,components,igraph,1.0.0,0.0209327,44.6,1,ok
+size-ladder,urand12,4096,32678,components,networkit,11.2.2,9.6016e-05,0.9,21,ok
+size-ladder,urand12,4096,32678,components,networkx,3.7,0.0011506,10.2,1,ok
+size-ladder,urand12,4096,32678,components,gapbs,941462c7c42e,0.00012,4.5,21,ok
+size-ladder,urand12,4096,32678,components,igraph,1.0.0,6.8426e-05,4.6,1,ok
+size-ladder,urand14,16384,131006,components,networkit,11.2.2,0.000615039,6.5,21,ok
+size-ladder,urand14,16384,131006,components,networkx,3.7,0.00780067,42.1,1,ok
+size-ladder,urand14,16384,131006,components,gapbs,941462c7c42e,0.00058,5.5,21,ok
+size-ladder,urand14,16384,131006,components,igraph,1.0.0,0.000268076,11.9,1,ok
+size-ladder,urand16,65536,524225,components,networkit,11.2.2,0.00394345,30.1,21,ok
+size-ladder,urand16,65536,524225,components,gapbs,941462c7c42e,0.00076,8.5,21,ok
+size-ladder,urand16,65536,524225,components,igraph,1.0.0,0.00113653,44.9,1,ok
+size-ladder,urand18,262144,2097084,components,networkit,11.2.2,0.0361282,67.7,21,ok
+size-ladder,urand18,262144,2097084,components,gapbs,941462c7c42e,0.00099,22.2,21,ok
+size-ladder,urand18,262144,2097084,components,igraph,1.0.0,0.098458,87,1,ok
+size-ladder,wordnet,146005,656999,components,networkit,11.2.2,0.00590139,38.2,21,ok
+size-ladder,wordnet,146005,656999,components,gapbs,941462c7c42e,0.00081,10.2,21,ok
+size-ladder,wordnet,146005,656999,components,igraph,1.0.0,0.0135746,45.3,1,ok
+size-ladder,yeast_causal_regulation,6216,1666106,components,networkit,11.2.2,0.00396111,38.4,21,ok
+size-ladder,yeast_causal_regulation,6216,1666106,components,gapbs,941462c7c42e,0.00124,16.9,21,ok
+size-ladder,yeast_causal_regulation,6216,1666106,components,igraph,1.0.0,0.000100716,78.1,1,ok
+size-ladder,chicago_road,12982,39018,load (read and build; memory = resident graph),networkit,11.2.2,0.00788185,1.05078,21,ok
+size-ladder,chicago_road,12982,39018,load (read and build; memory = resident graph),networkx,3.7,0.0302503,16.3047,1,ok
+size-ladder,chicago_road,12982,39018,load (read and build; memory = resident graph),igraph,1.0.0,0.00863556,5.20312,1,ok
+size-ladder,citeseer,384413,1751463,load (read and build; memory = resident graph),networkit,11.2.2,0.110586,60.5938,21,ok
+size-ladder,citeseer,384413,1751463,load (read and build; memory = resident graph),igraph,1.0.0,0.342028,77.5312,1,ok
+size-ladder,email_enron,36692,367662,load (read and build; memory = resident graph),networkit,11.2.2,0.0211624,20.0625,21,ok
+size-ladder,email_enron,36692,367662,load (read and build; memory = resident graph),igraph,1.0.0,0.0568413,32.7891,1,ok
+size-ladder,google_plus,211187,1506896,load (read and build; memory = resident graph),networkit,11.2.2,0.0747673,45.2656,21,ok
+size-ladder,google_plus,211187,1506896,load (read and build; memory = resident graph),igraph,1.0.0,0.253859,75.5586,1,ok
+size-ladder,internet_as,22963,48436,load (read and build; memory = resident graph),networkit,11.2.2,0.00890932,1.53906,21,ok
+size-ladder,internet_as,22963,48436,load (read and build; memory = resident graph),networkx,3.7,0.0463509,20.1523,1,ok
+size-ladder,internet_as,22963,48436,load (read and build; memory = resident graph),igraph,1.0.0,0.00874279,5.98047,1,ok
+size-ladder,kron12,4096,48474,load (read and build; memory = resident graph),networkit,11.2.2,0.0130344,0.925781,21,ok
+size-ladder,kron12,4096,48474,load (read and build; memory = resident graph),networkx,3.7,0.0293977,14.0898,1,ok
+size-ladder,kron12,4096,48474,load (read and build; memory = resident graph),igraph,1.0.0,0.0103287,5.83984,1,ok
+size-ladder,kron14,16384,212944,load (read and build; memory = resident graph),networkit,11.2.2,0.0138739,9.95312,21,ok
+size-ladder,kron14,16384,212944,load (read and build; memory = resident graph),igraph,1.0.0,0.0362437,19.6328,1,ok
+size-ladder,kron16,65536,909258,load (read and build; memory = resident graph),networkit,11.2.2,0.0366112,47.5977,21,ok
+size-ladder,kron16,65536,909258,load (read and build; memory = resident graph),igraph,1.0.0,0.170641,43.9727,1,ok
+size-ladder,kron18,262144,3805960,load (read and build; memory = resident graph),networkit,11.2.2,0.164677,92.1641,21,ok
+size-ladder,kron18,262144,3805960,load (read and build; memory = resident graph),igraph,1.0.0,1.12233,152.438,1,ok
+size-ladder,lfr12,4096,41951,load (read and build; memory = resident graph),networkit,11.2.2,0.00731446,0.613281,21,ok
+size-ladder,lfr12,4096,41951,load (read and build; memory = resident graph),networkx,3.7,0.0266986,12.5117,1,ok
+size-ladder,lfr12,4096,41951,load (read and build; memory = resident graph),igraph,1.0.0,0.00928399,4.96875,1,ok
+size-ladder,lfr14,16384,165870,load (read and build; memory = resident graph),networkit,11.2.2,0.0136213,7.70312,21,ok
+size-ladder,lfr14,16384,165870,load (read and build; memory = resident graph),networkx,3.7,0.133162,49.4219,1,ok
+size-ladder,lfr14,16384,165870,load (read and build; memory = resident graph),igraph,1.0.0,0.0273466,15.4375,1,ok
+size-ladder,lfr16,65536,668086,load (read and build; memory = resident graph),networkit,11.2.2,0.0356715,36.582,21,ok
+size-ladder,lfr16,65536,668086,load (read and build; memory = resident graph),igraph,1.0.0,0.120539,43.0352,1,ok
+size-ladder,lfr18,262144,2683411,load (read and build; memory = resident graph),networkit,11.2.2,0.185391,70.5742,21,ok
+size-ladder,lfr18,262144,2683411,load (read and build; memory = resident graph),igraph,1.0.0,0.735556,110.094,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,load (read and build; memory = resident graph),networkit,11.2.2,0.0133492,9.1875,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,load (read and build; memory = resident graph),networkx,3.7,0.120083,63.8672,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,load (read and build; memory = resident graph),igraph,1.0.0,0.0199324,11.3281,1,ok
+size-ladder,road12,4096,7251,load (read and build; memory = resident graph),networkit,11.2.2,0.00698645,0.5,21,ok
+size-ladder,road12,4096,7251,load (read and build; memory = resident graph),networkx,3.7,0.00991644,2.47266,1,ok
+size-ladder,road12,4096,7251,load (read and build; memory = resident graph),igraph,1.0.0,0.00367748,1.45703,1,ok
+size-ladder,road14,16384,29246,load (read and build; memory = resident graph),networkit,11.2.2,0.00688703,0.5625,21,ok
+size-ladder,road14,16384,29246,load (read and build; memory = resident graph),networkx,3.7,0.0240958,11.7422,1,ok
+size-ladder,road14,16384,29246,load (read and build; memory = resident graph),igraph,1.0.0,0.00736924,3.52734,1,ok
+size-ladder,road16,65536,117367,load (read and build; memory = resident graph),networkit,11.2.2,0.0132308,6.23438,21,ok
+size-ladder,road16,65536,117367,load (read and build; memory = resident graph),igraph,1.0.0,0.023326,11.8125,1,ok
+size-ladder,road18,262144,471118,load (read and build; memory = resident graph),networkit,11.2.2,0.0321795,30.3945,21,ok
+size-ladder,road18,262144,471118,load (read and build; memory = resident graph),igraph,1.0.0,0.0896254,45.2734,1,ok
+size-ladder,urand12,4096,32678,load (read and build; memory = resident graph),networkit,11.2.2,0.00741851,0.5625,21,ok
+size-ladder,urand12,4096,32678,load (read and build; memory = resident graph),networkx,3.7,0.0209683,9.90234,1,ok
+size-ladder,urand12,4096,32678,load (read and build; memory = resident graph),igraph,1.0.0,0.00751568,4.48438,1,ok
+size-ladder,urand14,16384,131006,load (read and build; memory = resident graph),networkit,11.2.2,0.0136985,6.08594,21,ok
+size-ladder,urand14,16384,131006,load (read and build; memory = resident graph),networkx,3.7,0.106517,40.3438,1,ok
+size-ladder,urand14,16384,131006,load (read and build; memory = resident graph),igraph,1.0.0,0.0224769,11.7461,1,ok
+size-ladder,urand16,65536,524225,load (read and build; memory = resident graph),networkit,11.2.2,0.0331859,29.7344,21,ok
+size-ladder,urand16,65536,524225,load (read and build; memory = resident graph),igraph,1.0.0,0.0862946,44.9453,1,ok
+size-ladder,urand18,262144,2097084,load (read and build; memory = resident graph),networkit,11.2.2,0.165971,60.4023,21,ok
+size-ladder,urand18,262144,2097084,load (read and build; memory = resident graph),igraph,1.0.0,0.40124,86.7695,1,ok
+size-ladder,wordnet,146005,656999,load (read and build; memory = resident graph),networkit,11.2.2,0.0384103,37.7539,21,ok
+size-ladder,wordnet,146005,656999,load (read and build; memory = resident graph),igraph,1.0.0,0.104137,44.7188,1,ok
+size-ladder,yeast_causal_regulation,6216,1666106,load (read and build; memory = resident graph),networkit,11.2.2,0.0471818,37.9453,21,ok
+size-ladder,yeast_causal_regulation,6216,1666106,load (read and build; memory = resident graph),igraph,1.0.0,0.241193,77.9766,1,ok
+size-ladder,chicago_road,12982,39018,pagerank,networkit,11.2.2,0.000900189,1.9,21,ok
+size-ladder,chicago_road,12982,39018,pagerank,networkx,3.7,0.0278294,33.3,1,ok
+size-ladder,chicago_road,12982,39018,pagerank,gapbs,941462c7c42e,0.00189,4.6,21,ok
+size-ladder,chicago_road,12982,39018,pagerank,igraph,1.0.0,0.00321066,6.1,1,ok
+size-ladder,citeseer,384413,1751463,pagerank,networkit,11.2.2,0.0826846,76.2,21,ok
+size-ladder,citeseer,384413,1751463,pagerank,gapbs,941462c7c42e,0.01067,24.4,21,ok
+size-ladder,citeseer,384413,1751463,pagerank,igraph,1.0.0,0.103853,149.7,1,ok
+size-ladder,email_enron,36692,367662,pagerank,networkit,11.2.2,0.0100403,20.9,21,ok
+size-ladder,email_enron,36692,367662,pagerank,gapbs,941462c7c42e,0.00794,7.4,21,ok
+size-ladder,email_enron,36692,367662,pagerank,igraph,1.0.0,0.0123229,33.4,1,ok
+size-ladder,google_plus,211187,1506896,pagerank,networkit,11.2.2,0.0434081,54.6,21,ok
+size-ladder,google_plus,211187,1506896,pagerank,gapbs,941462c7c42e,0.01163,19.3,21,ok
+size-ladder,google_plus,211187,1506896,pagerank,igraph,1.0.0,0.0702315,119.9,1,ok
+size-ladder,internet_as,22963,48436,pagerank,networkit,11.2.2,0.00234963,2.4,21,ok
+size-ladder,internet_as,22963,48436,pagerank,networkx,3.7,0.0450268,45.3,1,ok
+size-ladder,internet_as,22963,48436,pagerank,gapbs,941462c7c42e,0.00437,4.6,21,ok
+size-ladder,internet_as,22963,48436,pagerank,igraph,1.0.0,0.00512971,8.4,1,ok
+size-ladder,kron12,4096,48474,pagerank,networkit,11.2.2,0.000387789,1.8,21,ok
+size-ladder,kron12,4096,48474,pagerank,networkx,3.7,0.0380755,34.9,1,ok
+size-ladder,kron12,4096,48474,pagerank,gapbs,941462c7c42e,0.00216,4.4,21,ok
+size-ladder,kron12,4096,48474,pagerank,igraph,1.0.0,0.00341384,7.3,1,ok
+size-ladder,kron14,16384,212944,pagerank,networkit,11.2.2,0.000813448,10.8,21,ok
+size-ladder,kron14,16384,212944,pagerank,gapbs,941462c7c42e,0.00713,5.9,21,ok
+size-ladder,kron14,16384,212944,pagerank,igraph,1.0.0,0.00922153,23.7,1,ok
+size-ladder,kron16,65536,909258,pagerank,networkit,11.2.2,0.00478448,48.4,21,ok
+size-ladder,kron16,65536,909258,pagerank,gapbs,941462c7c42e,0.01027,11.4,21,ok
+size-ladder,kron16,65536,909258,pagerank,igraph,1.0.0,0.0505513,83.7,1,ok
+size-ladder,kron18,262144,3805960,pagerank,networkit,11.2.2,0.0188226,101,21,ok
+size-ladder,kron18,262144,3805960,pagerank,gapbs,941462c7c42e,0.01694,36.6,21,ok
+size-ladder,kron18,262144,3805960,pagerank,igraph,1.0.0,0.352995,343.3,1,ok
+size-ladder,lfr12,4096,41951,pagerank,networkit,11.2.2,0.000248819,1.4,21,ok
+size-ladder,lfr12,4096,41951,pagerank,networkx,3.7,0.0330758,31.7,1,ok
+size-ladder,lfr12,4096,41951,pagerank,gapbs,941462c7c42e,0.00127,4.5,21,ok
+size-ladder,lfr12,4096,41951,pagerank,igraph,1.0.0,0.00293416,6.3,1,ok
+size-ladder,lfr14,16384,165870,pagerank,networkit,11.2.2,0.000722946,8.5,21,ok
+size-ladder,lfr14,16384,165870,pagerank,networkx,3.7,0.105445,93.2,1,ok
+size-ladder,lfr14,16384,165870,pagerank,gapbs,941462c7c42e,0.00536,5.5,21,ok
+size-ladder,lfr14,16384,165870,pagerank,igraph,1.0.0,0.0102833,18.7,1,ok
+size-ladder,lfr16,65536,668086,pagerank,networkit,11.2.2,0.00364206,37.5,21,ok
+size-ladder,lfr16,65536,668086,pagerank,gapbs,941462c7c42e,0.00544,9.8,21,ok
+size-ladder,lfr16,65536,668086,pagerank,igraph,1.0.0,0.0364213,63.7,1,ok
+size-ladder,lfr18,262144,2683411,pagerank,networkit,11.2.2,0.0230994,81.8,21,ok
+size-ladder,lfr18,262144,2683411,pagerank,gapbs,941462c7c42e,0.00964,27.9,21,ok
+size-ladder,lfr18,262144,2683411,pagerank,igraph,1.0.0,0.304111,249.4,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,pagerank,networkit,11.2.2,0.00228545,10.1,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,pagerank,networkx,3.7,0.0513023,95.7,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,pagerank,gapbs,941462c7c42e,0.00227,5.6,21,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,pagerank,igraph,1.0.0,0.00685358,16.3,1,ok
+size-ladder,road12,4096,7251,pagerank,networkit,11.2.2,0.00116001,1.3,21,ok
+size-ladder,road12,4096,7251,pagerank,networkx,3.7,0.00486005,15.6,1,ok
+size-ladder,road12,4096,7251,pagerank,gapbs,941462c7c42e,0.00039,4.4,21,ok
+size-ladder,road12,4096,7251,pagerank,igraph,1.0.0,0.00145598,2.4,1,ok
+size-ladder,road14,16384,29246,pagerank,networkit,11.2.2,0.000988131,1.4,21,ok
+size-ladder,road14,16384,29246,pagerank,networkx,3.7,0.0296976,30.7,1,ok
+size-ladder,road14,16384,29246,pagerank,gapbs,941462c7c42e,0.00181,4.5,21,ok
+size-ladder,road14,16384,29246,pagerank,igraph,1.0.0,0.0040519,5.5,1,ok
+size-ladder,road16,65536,117367,pagerank,networkit,11.2.2,0.00198046,7.1,21,ok
+size-ladder,road16,65536,117367,pagerank,gapbs,941462c7c42e,0.00302,5.8,21,ok
+size-ladder,road16,65536,117367,pagerank,igraph,1.0.0,0.0142782,18.1,1,ok
+size-ladder,road18,262144,471118,pagerank,networkit,11.2.2,0.0120406,31.2,21,ok
+size-ladder,road18,262144,471118,pagerank,gapbs,941462c7c42e,0.00406,11.2,21,ok
+size-ladder,road18,262144,471118,pagerank,igraph,1.0.0,0.0685733,70.7,1,ok
+size-ladder,urand12,4096,32678,pagerank,networkit,11.2.2,0.000170532,1.4,21,ok
+size-ladder,urand12,4096,32678,pagerank,networkx,3.7,0.0254599,27.8,1,ok
+size-ladder,urand12,4096,32678,pagerank,gapbs,941462c7c42e,0.00084,4.5,21,ok
+size-ladder,urand12,4096,32678,pagerank,igraph,1.0.0,0.00241793,5.7,1,ok
+size-ladder,urand14,16384,131006,pagerank,networkit,11.2.2,0.000491006,6.9,21,ok
+size-ladder,urand14,16384,131006,pagerank,networkx,3.7,0.0865605,77.4,1,ok
+size-ladder,urand14,16384,131006,pagerank,gapbs,941462c7c42e,0.00328,5.1,21,ok
+size-ladder,urand14,16384,131006,pagerank,igraph,1.0.0,0.00778797,14.5,1,ok
+size-ladder,urand16,65536,524225,pagerank,networkit,11.2.2,0.00204117,30.6,21,ok
+size-ladder,urand16,65536,524225,pagerank,gapbs,941462c7c42e,0.00395,8.4,21,ok
+size-ladder,urand16,65536,524225,pagerank,igraph,1.0.0,0.0277863,54.6,1,ok
+size-ladder,urand18,262144,2097084,pagerank,networkit,11.2.2,0.0143738,72.1,21,ok
+size-ladder,urand18,262144,2097084,pagerank,gapbs,941462c7c42e,0.00601,23.4,21,ok
+size-ladder,urand18,262144,2097084,pagerank,igraph,1.0.0,0.239419,200.3,1,ok
+size-ladder,wordnet,146005,656999,pagerank,networkit,11.2.2,0.00753324,38.6,21,ok
+size-ladder,wordnet,146005,656999,pagerank,gapbs,941462c7c42e,0.00686,10.5,21,ok
+size-ladder,wordnet,146005,656999,pagerank,igraph,1.0.0,0.0424251,71.1,1,ok
+size-ladder,yeast_causal_regulation,6216,1666106,pagerank,networkit,11.2.2,0.00129787,39,21,ok
+size-ladder,yeast_causal_regulation,6216,1666106,pagerank,gapbs,941462c7c42e,0.0045,16.9,21,ok
+size-ladder,yeast_causal_regulation,6216,1666106,pagerank,igraph,1.0.0,0.0317314,116.5,1,ok
+size-ladder,chicago_road,12982,39018,triangles,networkx,3.7,0.0211589,32.5,1,ok
+size-ladder,chicago_road,12982,39018,triangles,igraph,1.0.0,0.00143067,6.2,1,ok
+size-ladder,citeseer,384413,1751463,triangles,igraph,1.0.0,0.172205,127.1,1,ok
+size-ladder,email_enron,36692,367662,triangles,igraph,1.0.0,0.0134303,33.5,1,ok
+size-ladder,google_plus,211187,1506896,triangles,igraph,1.0.0,0.145274,94.9,1,ok
+size-ladder,internet_as,22963,48436,triangles,networkit,11.2.2,0.000877411,2.4,21,ok
+size-ladder,internet_as,22963,48436,triangles,networkx,3.7,0.0394489,42.4,1,ok
+size-ladder,internet_as,22963,48436,triangles,gapbs,941462c7c42e,7e-05,4.5,21,ok
+size-ladder,internet_as,22963,48436,triangles,igraph,1.0.0,0.0020873,8.5,1,ok
+size-ladder,kron12,4096,48474,triangles,networkit,11.2.2,0.000747434,1.8,21,ok
+size-ladder,kron12,4096,48474,triangles,networkx,3.7,0.0840624,30,1,ok
+size-ladder,kron12,4096,48474,triangles,gapbs,941462c7c42e,0.00095,4.7,21,ok
+size-ladder,kron12,4096,48474,triangles,igraph,1.0.0,0.00463819,7.5,1,ok
+size-ladder,kron14,16384,212944,triangles,networkit,11.2.2,0.00403506,10.8,21,ok
+size-ladder,kron14,16384,212944,triangles,gapbs,941462c7c42e,0.00337,8.1,21,ok
+size-ladder,kron14,16384,212944,triangles,igraph,1.0.0,0.0296515,23.8,1,ok
+size-ladder,kron16,65536,909258,triangles,networkit,11.2.2,0.0224603,48.4,21,ok
+size-ladder,kron16,65536,909258,triangles,gapbs,941462c7c42e,0.01496,21.3,21,ok
+size-ladder,kron16,65536,909258,triangles,igraph,1.0.0,0.217275,51.5,1,ok
+size-ladder,kron18,262144,3805960,triangles,networkit,11.2.2,0.1496,130.7,21,ok
+size-ladder,kron18,262144,3805960,triangles,gapbs,941462c7c42e,0.08959,80.1,21,ok
+size-ladder,kron18,262144,3805960,triangles,igraph,1.0.0,1.78609,207.7,1,ok
+size-ladder,lfr12,4096,41951,triangles,networkit,11.2.2,0.000576376,1.4,21,ok
+size-ladder,lfr12,4096,41951,triangles,networkx,3.7,0.032084,27.3,1,ok
+size-ladder,lfr12,4096,41951,triangles,gapbs,941462c7c42e,0.00031,4.8,21,ok
+size-ladder,lfr12,4096,41951,triangles,igraph,1.0.0,0.00206766,6.5,1,ok
+size-ladder,lfr14,16384,165870,triangles,networkit,11.2.2,0.00223147,8.5,21,ok
+size-ladder,lfr14,16384,165870,triangles,networkx,3.7,0.148779,72.7,1,ok
+size-ladder,lfr14,16384,165870,triangles,gapbs,941462c7c42e,0.00109,6.1,21,ok
+size-ladder,lfr14,16384,165870,triangles,igraph,1.0.0,0.0066942,18.9,1,ok
+size-ladder,lfr16,65536,668086,triangles,networkit,11.2.2,0.00999535,37.5,21,ok
+size-ladder,lfr16,65536,668086,triangles,gapbs,941462c7c42e,0.00402,17.5,21,ok
+size-ladder,lfr16,65536,668086,triangles,igraph,1.0.0,0.0390978,46,1,ok
+size-ladder,lfr18,262144,2683411,triangles,networkit,11.2.2,0.0650526,102.3,21,ok
+size-ladder,lfr18,262144,2683411,triangles,gapbs,941462c7c42e,0.01919,60.1,21,ok
+size-ladder,lfr18,262144,2683411,triangles,igraph,1.0.0,0.317744,154,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,triangles,networkx,3.7,0.143774,98.3,1,ok
+size-ladder,matpower-case_SyntheticUSA,82000,104121,triangles,igraph,1.0.0,0.00688205,18.1,1,ok
+size-ladder,road12,4096,7251,triangles,networkit,11.2.2,0.000148024,1.3,21,ok
+size-ladder,road12,4096,7251,triangles,networkx,3.7,0.00418692,16,1,ok
+size-ladder,road12,4096,7251,triangles,gapbs,941462c7c42e,1e-05,4.4,21,ok
+size-ladder,road12,4096,7251,triangles,igraph,1.0.0,0.000474655,2.6,1,ok
+size-ladder,road14,16384,29246,triangles,networkit,11.2.2,0.000600944,1.4,21,ok
+size-ladder,road14,16384,29246,triangles,networkx,3.7,0.0196121,29.1,1,ok
+size-ladder,road14,16384,29246,triangles,gapbs,941462c7c42e,3e-05,4.5,21,ok
+size-ladder,road14,16384,29246,triangles,igraph,1.0.0,0.001745,5.6,1,ok
+size-ladder,road16,65536,117367,triangles,networkit,11.2.2,0.00267261,7.1,21,ok
+size-ladder,road16,65536,117367,triangles,gapbs,941462c7c42e,0.00014,5.8,21,ok
+size-ladder,road16,65536,117367,triangles,igraph,1.0.0,0.00612313,19.3,1,ok
+size-ladder,road18,262144,471118,triangles,networkit,11.2.2,0.0146963,31.2,21,ok
+size-ladder,road18,262144,471118,triangles,gapbs,941462c7c42e,0.00051,9.8,21,ok
+size-ladder,road18,262144,471118,triangles,igraph,1.0.0,0.0416868,56.8,1,ok
+size-ladder,urand12,4096,32678,triangles,networkit,11.2.2,0.000747402,1.4,21,ok
+size-ladder,urand12,4096,32678,triangles,networkx,3.7,0.0205001,24.1,1,ok
+size-ladder,urand12,4096,32678,triangles,gapbs,941462c7c42e,0.00012,4.6,21,ok
+size-ladder,urand12,4096,32678,triangles,igraph,1.0.0,0.00138645,5.8,1,ok
+size-ladder,urand14,16384,131006,triangles,networkit,11.2.2,0.00173286,6.9,21,ok
+size-ladder,urand14,16384,131006,triangles,networkx,3.7,0.103768,60.8,1,ok
+size-ladder,urand14,16384,131006,triangles,gapbs,941462c7c42e,0.00036,5.4,21,ok
+size-ladder,urand14,16384,131006,triangles,igraph,1.0.0,0.00427237,14.6,1,ok
+size-ladder,urand16,65536,524225,triangles,networkit,11.2.2,0.00928826,30.6,21,ok
+size-ladder,urand16,65536,524225,triangles,gapbs,941462c7c42e,0.0015,8.5,21,ok
+size-ladder,urand16,65536,524225,triangles,igraph,1.0.0,0.0264263,55.6,1,ok
+size-ladder,urand18,262144,2097084,triangles,networkit,11.2.2,0.0563313,88.1,21,ok
+size-ladder,urand18,262144,2097084,triangles,gapbs,941462c7c42e,0.00667,22.2,21,ok
+size-ladder,urand18,262144,2097084,triangles,igraph,1.0.0,0.193333,127.4,1,ok
+size-ladder,wordnet,146005,656999,triangles,networkit,11.2.2,0.00987752,38.6,21,ok
+size-ladder,wordnet,146005,656999,triangles,gapbs,941462c7c42e,0.00168,10.5,21,ok
+size-ladder,wordnet,146005,656999,triangles,igraph,1.0.0,0.0366302,48.4,1,ok
+size-ladder,yeast_causal_regulation,6216,1666106,triangles,igraph,1.0.0,0.91567,79.2,1,ok
+size-ladder-graph-tool,chicago_road,12982,39018,betweenness (16 sources),graphtool,3.9,0.00403463,10.2,5,ok
+size-ladder-graph-tool,citeseer,384413,1751463,betweenness (16 sources),graphtool,3.9,0.0583636,228.6,5,ok
+size-ladder-graph-tool,email_enron,36692,367662,betweenness (16 sources),graphtool,3.9,0.0197064,39.3,5,ok
+size-ladder-graph-tool,google_plus,211187,1506896,betweenness (16 sources),graphtool,3.9,0.110314,203.1,5,ok
+size-ladder-graph-tool,internet_as,22963,48436,betweenness (16 sources),graphtool,3.9,0.00595194,15.6,5,ok
+size-ladder-graph-tool,kron12,4096,48474,betweenness (16 sources),graphtool,3.9,0.00394908,10,5,ok
+size-ladder-graph-tool,kron14,16384,212944,betweenness (16 sources),graphtool,3.9,0.0146392,30.7,5,ok
+size-ladder-graph-tool,kron16,65536,909258,betweenness (16 sources),graphtool,3.9,0.114651,168.3,5,ok
+size-ladder-graph-tool,kron18,262144,3805960,betweenness (16 sources),graphtool,3.9,1.21615,736.1,5,ok
+size-ladder-graph-tool,lfr12,4096,41951,betweenness (16 sources),graphtool,3.9,0.00327461,10.8,5,ok
+size-ladder-graph-tool,lfr14,16384,165870,betweenness (16 sources),graphtool,3.9,0.0159515,28.2,5,ok
+size-ladder-graph-tool,lfr16,65536,668086,betweenness (16 sources),graphtool,3.9,0.173607,135.9,5,ok
+size-ladder-graph-tool,lfr18,262144,2683411,betweenness (16 sources),graphtool,3.9,0.907948,633.7,5,ok
+size-ladder-graph-tool,matpower-case_SyntheticUSA,82000,104121,betweenness (16 sources),graphtool,3.9,0.00340605,21.3,5,ok
+size-ladder-graph-tool,road12,4096,7251,betweenness (16 sources),graphtool,3.9,0.0023213,7,5,ok
+size-ladder-graph-tool,road14,16384,29246,betweenness (16 sources),graphtool,3.9,0.0113072,12.8,5,ok
+size-ladder-graph-tool,road16,65536,117367,betweenness (16 sources),graphtool,3.9,0.029239,38.3,5,ok
+size-ladder-graph-tool,road18,262144,471118,betweenness (16 sources),graphtool,3.9,0.442985,200.4,5,ok
+size-ladder-graph-tool,urand12,4096,32678,betweenness (16 sources),graphtool,3.9,0.00597517,10.1,5,ok
+size-ladder-graph-tool,urand14,16384,131006,betweenness (16 sources),graphtool,3.9,0.0295649,21.3,5,ok
+size-ladder-graph-tool,urand16,65536,524225,betweenness (16 sources),graphtool,3.9,0.244983,132.6,5,ok
+size-ladder-graph-tool,urand18,262144,2097084,betweenness (16 sources),graphtool,3.9,1.38028,469.2,5,ok
+size-ladder-graph-tool,wordnet,146005,656999,betweenness (16 sources),graphtool,3.9,0.159007,164.8,5,ok
+size-ladder-graph-tool,yeast_causal_regulation,6216,1666106,betweenness (16 sources),graphtool,3.9,0.0307408,114.3,5,ok
+size-ladder-graph-tool,chicago_road,12982,39018,bfs,graphtool,3.9,0.000395528,3,5,ok
+size-ladder-graph-tool,citeseer,384413,1751463,bfs,graphtool,3.9,0.000624195,86.1,5,ok
+size-ladder-graph-tool,email_enron,36692,367662,bfs,graphtool,3.9,0.00130098,3.2,5,ok
+size-ladder-graph-tool,google_plus,211187,1506896,bfs,graphtool,3.9,0.00887064,66.9,5,ok
+size-ladder-graph-tool,internet_as,22963,48436,bfs,graphtool,3.9,0.000470762,3,5,ok
+size-ladder-graph-tool,kron12,4096,48474,bfs,graphtool,3.9,0.000265934,3,5,ok
+size-ladder-graph-tool,kron14,16384,212944,bfs,graphtool,3.9,0.000948263,3.4,5,ok
+size-ladder-graph-tool,kron16,65536,909258,bfs,graphtool,3.9,0.00487388,31.2,5,ok
+size-ladder-graph-tool,kron18,262144,3805960,bfs,graphtool,3.9,0.0293049,158.1,5,ok
+size-ladder-graph-tool,lfr12,4096,41951,bfs,graphtool,3.9,0.000296166,3.5,5,ok
+size-ladder-graph-tool,lfr14,16384,165870,bfs,graphtool,3.9,0.00080896,3.3,5,ok
+size-ladder-graph-tool,lfr16,65536,668086,bfs,graphtool,3.9,0.00632915,21.6,5,ok
+size-ladder-graph-tool,lfr18,262144,2683411,bfs,graphtool,3.9,0.0369184,139.7,5,ok
+size-ladder-graph-tool,matpower-case_SyntheticUSA,82000,104121,bfs,graphtool,3.9,0.000202412,3.4,5,ok
+size-ladder-graph-tool,road12,4096,7251,bfs,graphtool,3.9,0.00013336,3.5,5,ok
+size-ladder-graph-tool,road14,16384,29246,bfs,graphtool,3.9,0.000398875,3.1,5,ok
+size-ladder-graph-tool,road16,65536,117367,bfs,graphtool,3.9,0.00129691,3.2,5,ok
+size-ladder-graph-tool,road18,262144,471118,bfs,graphtool,3.9,0.0249633,14.5,5,ok
+size-ladder-graph-tool,urand12,4096,32678,bfs,graphtool,3.9,0.000276247,3.1,5,ok
+size-ladder-graph-tool,urand14,16384,131006,bfs,graphtool,3.9,0.00150235,3.6,5,ok
+size-ladder-graph-tool,urand16,65536,524225,bfs,graphtool,3.9,0.0106543,15.7,5,ok
+size-ladder-graph-tool,urand18,262144,2097084,bfs,graphtool,3.9,0.051086,114.2,5,ok
+size-ladder-graph-tool,wordnet,146005,656999,bfs,graphtool,3.9,0.00780121,21.4,5,ok
+size-ladder-graph-tool,yeast_causal_regulation,6216,1666106,bfs,graphtool,3.9,8.1223e-05,69.1,5,ok
+size-ladder-graph-tool,chicago_road,12982,39018,closeness,graphtool,3.9,1.29263,10.3,5,ok
+size-ladder-graph-tool,email_enron,36692,367662,closeness,graphtool,3.9,15.2732,39.4,5,ok
+size-ladder-graph-tool,internet_as,22963,48436,closeness,graphtool,3.9,3.79171,15.7,5,ok
+size-ladder-graph-tool,kron12,4096,48474,closeness,graphtool,3.9,0.17973,10.1,5,ok
+size-ladder-graph-tool,kron14,16384,212944,closeness,graphtool,3.9,3.25815,30.8,5,ok
+size-ladder-graph-tool,kron16,65536,909258,closeness,graphtool,3.9,99.4172,168.4,5,ok
+size-ladder-graph-tool,lfr12,4096,41951,closeness,graphtool,3.9,0.236474,10.9,5,ok
+size-ladder-graph-tool,lfr14,16384,165870,closeness,graphtool,3.9,5.65318,28.3,5,ok
+size-ladder-graph-tool,lfr16,65536,668086,closeness,graphtool,3.9,186.205,136,5,ok
+size-ladder-graph-tool,matpower-case_SyntheticUSA,82000,104121,closeness,graphtool,3.9,0.643771,21.3,5,ok
+size-ladder-graph-tool,road12,4096,7251,closeness,graphtool,3.9,0.194792,7.4,5,ok
+size-ladder-graph-tool,road14,16384,29246,closeness,graphtool,3.9,2.8204,13.9,5,ok
+size-ladder-graph-tool,road16,65536,117367,closeness,graphtool,3.9,64.6665,44.4,5,ok
+size-ladder-graph-tool,urand12,4096,32678,closeness,graphtool,3.9,0.353604,10.3,5,ok
+size-ladder-graph-tool,urand14,16384,131006,closeness,graphtool,3.9,6.3217,21.4,5,ok
+size-ladder-graph-tool,urand16,65536,524225,closeness,graphtool,3.9,202.651,132.8,5,ok
+size-ladder-graph-tool,yeast_causal_regulation,6216,1666106,closeness,graphtool,3.9,0.793783,114.5,5,ok
+size-ladder-graph-tool,chicago_road,12982,39018,components,graphtool,3.9,0.000406316,3.2,5,ok
+size-ladder-graph-tool,citeseer,384413,1751463,components,graphtool,3.9,0.0657178,95.1,5,ok
+size-ladder-graph-tool,email_enron,36692,367662,components,graphtool,3.9,0.00189274,3.4,5,ok
+size-ladder-graph-tool,google_plus,211187,1506896,components,graphtool,3.9,0.0330296,67.1,5,ok
+size-ladder-graph-tool,internet_as,22963,48436,components,graphtool,3.9,0.000739259,3.2,5,ok
+size-ladder-graph-tool,kron12,4096,48474,components,graphtool,3.9,0.000195722,3.3,5,ok
+size-ladder-graph-tool,kron14,16384,212944,components,graphtool,3.9,0.00113088,3.6,5,ok
+size-ladder-graph-tool,kron16,65536,909258,components,graphtool,3.9,0.00661993,31.3,5,ok
+size-ladder-graph-tool,kron18,262144,3805960,components,graphtool,3.9,0.0477917,164.8,5,ok
+size-ladder-graph-tool,lfr12,4096,41951,components,graphtool,3.9,0.000216865,3.7,5,ok
+size-ladder-graph-tool,lfr14,16384,165870,components,graphtool,3.9,0.00109407,3.5,5,ok
+size-ladder-graph-tool,lfr16,65536,668086,components,graphtool,3.9,0.0139282,27.7,5,ok
+size-ladder-graph-tool,lfr18,262144,2683411,components,graphtool,3.9,0.0700883,163.2,5,ok
+size-ladder-graph-tool,matpower-case_SyntheticUSA,82000,104121,components,graphtool,3.9,0.00276699,3.5,5,ok
+size-ladder-graph-tool,road12,4096,7251,components,graphtool,3.9,0.000134075,3.7,5,ok
+size-ladder-graph-tool,road14,16384,29246,components,graphtool,3.9,0.000687904,3.3,5,ok
+size-ladder-graph-tool,road16,65536,117367,components,graphtool,3.9,0.00255639,3.5,5,ok
+size-ladder-graph-tool,road18,262144,471118,components,graphtool,3.9,0.0508749,47.1,5,ok
+size-ladder-graph-tool,urand12,4096,32678,components,graphtool,3.9,0.000220251,3.4,5,ok
+size-ladder-graph-tool,urand14,16384,131006,components,graphtool,3.9,0.00180627,3.7,5,ok
+size-ladder-graph-tool,urand16,65536,524225,components,graphtool,3.9,0.0195801,22.2,5,ok
+size-ladder-graph-tool,urand18,262144,2097084,components,graphtool,3.9,0.115837,139.5,5,ok
+size-ladder-graph-tool,wordnet,146005,656999,components,graphtool,3.9,0.0150146,23.7,5,ok
+size-ladder-graph-tool,yeast_causal_regulation,6216,1666106,components,graphtool,3.9,0.00503251,69.3,5,ok
+size-ladder-graph-tool,chicago_road,12982,39018,load (read and build; memory = resident graph),graphtool,3.9,0.0190672,1.125,5,ok
+size-ladder-graph-tool,citeseer,384413,1751463,load (read and build; memory = resident graph),graphtool,3.9,0.130054,84.1797,5,ok
+size-ladder-graph-tool,email_enron,36692,367662,load (read and build; memory = resident graph),graphtool,3.9,0.0283408,1.25,5,ok
+size-ladder-graph-tool,google_plus,211187,1506896,load (read and build; memory = resident graph),graphtool,3.9,0.0986387,64.957,5,ok
+size-ladder-graph-tool,internet_as,22963,48436,load (read and build; memory = resident graph),graphtool,3.9,0.017729,1.125,5,ok
+size-ladder-graph-tool,kron12,4096,48474,load (read and build; memory = resident graph),graphtool,3.9,0.0255241,1.125,5,ok
+size-ladder-graph-tool,kron14,16384,212944,load (read and build; memory = resident graph),graphtool,3.9,0.0251953,1.375,5,ok
+size-ladder-graph-tool,kron16,65536,909258,load (read and build; memory = resident graph),graphtool,3.9,0.0545633,29.0195,5,ok
+size-ladder-graph-tool,kron18,262144,3805960,load (read and build; memory = resident graph),graphtool,3.9,0.204683,152.109,5,ok
+size-ladder-graph-tool,lfr12,4096,41951,load (read and build; memory = resident graph),graphtool,3.9,0.0224831,1.3125,5,ok
+size-ladder-graph-tool,lfr14,16384,165870,load (read and build; memory = resident graph),graphtool,3.9,0.0244095,1.375,5,ok
+size-ladder-graph-tool,lfr16,65536,668086,load (read and build; memory = resident graph),graphtool,3.9,0.0738174,19.6484,5,ok
+size-ladder-graph-tool,lfr18,262144,2683411,load (read and build; memory = resident graph),graphtool,3.9,0.235289,137.688,5,ok
+size-ladder-graph-tool,matpower-case_SyntheticUSA,82000,104121,load (read and build; memory = resident graph),graphtool,3.9,0.0227144,1.5,5,ok
+size-ladder-graph-tool,road12,4096,7251,load (read and build; memory = resident graph),graphtool,3.9,0.0334866,1.4375,5,ok
+size-ladder-graph-tool,road14,16384,29246,load (read and build; memory = resident graph),graphtool,3.9,0.0306601,1.125,5,ok
+size-ladder-graph-tool,road16,65536,117367,load (read and build; memory = resident graph),graphtool,3.9,0.022551,1.375,5,ok
+size-ladder-graph-tool,road18,262144,471118,load (read and build; memory = resident graph),graphtool,3.9,0.091557,11.4961,5,ok
+size-ladder-graph-tool,urand12,4096,32678,load (read and build; memory = resident graph),graphtool,3.9,0.0348823,1.125,5,ok
+size-ladder-graph-tool,urand14,16384,131006,load (read and build; memory = resident graph),graphtool,3.9,0.0377641,1.4375,5,ok
+size-ladder-graph-tool,urand16,65536,524225,load (read and build; memory = resident graph),graphtool,3.9,0.0780838,13.6211,5,ok
+size-ladder-graph-tool,urand18,262144,2097084,load (read and build; memory = resident graph),graphtool,3.9,0.361249,112.27,5,ok
+size-ladder-graph-tool,wordnet,146005,656999,load (read and build; memory = resident graph),graphtool,3.9,0.0568395,19.457,5,ok
+size-ladder-graph-tool,yeast_causal_regulation,6216,1666106,load (read and build; memory = resident graph),graphtool,3.9,0.0635332,67.0586,5,ok
+size-ladder-graph-tool,chicago_road,12982,39018,pagerank,graphtool,3.9,0.00687705,4.1,5,ok
+size-ladder-graph-tool,citeseer,384413,1751463,pagerank,graphtool,3.9,0.325943,95.9,5,ok
+size-ladder-graph-tool,email_enron,36692,367662,pagerank,graphtool,3.9,0.0239726,4.2,5,ok
+size-ladder-graph-tool,google_plus,211187,1506896,pagerank,graphtool,3.9,0.244551,68,5,ok
+size-ladder-graph-tool,internet_as,22963,48436,pagerank,graphtool,3.9,0.00860763,4,5,ok
+size-ladder-graph-tool,kron12,4096,48474,pagerank,graphtool,3.9,0.00511116,4,5,ok
+size-ladder-graph-tool,kron14,16384,212944,pagerank,graphtool,3.9,0.00582669,4.3,5,ok
+size-ladder-graph-tool,kron16,65536,909258,pagerank,graphtool,3.9,0.0225158,32.2,5,ok
+size-ladder-graph-tool,kron18,262144,3805960,pagerank,graphtool,3.9,0.119475,165.5,5,ok
+size-ladder-graph-tool,lfr12,4096,41951,pagerank,graphtool,3.9,0.00292585,4.6,5,ok
+size-ladder-graph-tool,lfr14,16384,165870,pagerank,graphtool,3.9,0.00460713,4.3,5,ok
+size-ladder-graph-tool,lfr16,65536,668086,pagerank,graphtool,3.9,0.0424315,28.5,5,ok
+size-ladder-graph-tool,lfr18,262144,2683411,pagerank,graphtool,3.9,0.125821,164.1,5,ok
+size-ladder-graph-tool,matpower-case_SyntheticUSA,82000,104121,pagerank,graphtool,3.9,0.0150842,4.5,5,ok
+size-ladder-graph-tool,road12,4096,7251,pagerank,graphtool,3.9,0.0117107,4.5,5,ok
+size-ladder-graph-tool,road14,16384,29246,pagerank,graphtool,3.9,0.0177786,4.2,5,ok
+size-ladder-graph-tool,road16,65536,117367,pagerank,graphtool,3.9,0.011811,4.2,5,ok
+size-ladder-graph-tool,road18,262144,471118,pagerank,graphtool,3.9,0.254899,48,5,ok
+size-ladder-graph-tool,urand12,4096,32678,pagerank,graphtool,3.9,0.00457141,4.2,5,ok
+size-ladder-graph-tool,urand14,16384,131006,pagerank,graphtool,3.9,0.00757049,4.6,5,ok
+size-ladder-graph-tool,urand16,65536,524225,pagerank,graphtool,3.9,0.03854,23,5,ok
+size-ladder-graph-tool,urand18,262144,2097084,pagerank,graphtool,3.9,0.174699,140.4,5,ok
+size-ladder-graph-tool,wordnet,146005,656999,pagerank,graphtool,3.9,0.0542082,24.4,5,ok
+size-ladder-graph-tool,yeast_causal_regulation,6216,1666106,pagerank,graphtool,3.9,0.00334007,70.2,5,ok
+size-ladder-graph-tool,chicago_road,12982,39018,triangles,graphtool,3.9,0.000545213,4.7,5,ok
+size-ladder-graph-tool,citeseer,384413,1751463,triangles,graphtool,3.9,0.209154,107.8,5,ok
+size-ladder-graph-tool,email_enron,36692,367662,triangles,graphtool,3.9,0.0549116,5.6,5,ok
+size-ladder-graph-tool,google_plus,211187,1506896,triangles,graphtool,3.9,0.286381,74.5,5,ok
+size-ladder-graph-tool,internet_as,22963,48436,triangles,graphtool,3.9,0.00410433,4.9,5,ok
+size-ladder-graph-tool,kron12,4096,48474,triangles,graphtool,3.9,0.0019057,4.3,5,ok
+size-ladder-graph-tool,kron14,16384,212944,triangles,graphtool,3.9,0.0162549,5,5,ok
+size-ladder-graph-tool,kron16,65536,909258,triangles,graphtool,3.9,0.201919,34.3,5,ok
+size-ladder-graph-tool,kron18,262144,3805960,triangles,graphtool,3.9,3.24095,173.7,5,ok
+size-ladder-graph-tool,lfr12,4096,41951,triangles,graphtool,3.9,0.000673123,5,5,ok
+size-ladder-graph-tool,lfr14,16384,165870,triangles,graphtool,3.9,0.00311005,5,5,ok
+size-ladder-graph-tool,lfr16,65536,668086,triangles,graphtool,3.9,0.0417748,30.6,5,ok
+size-ladder-graph-tool,lfr18,262144,2683411,triangles,graphtool,3.9,0.230193,172.3,5,ok
+size-ladder-graph-tool,matpower-case_SyntheticUSA,82000,104121,triangles,graphtool,3.9,0.000804894,7.1,5,ok
+size-ladder-graph-tool,road12,4096,7251,triangles,graphtool,3.9,0.000303382,4.8,5,ok
+size-ladder-graph-tool,road14,16384,29246,triangles,graphtool,3.9,0.000564565,4.8,5,ok
+size-ladder-graph-tool,road16,65536,117367,triangles,graphtool,3.9,0.000967621,6.4,5,ok
+size-ladder-graph-tool,road18,262144,471118,triangles,graphtool,3.9,0.0217329,56.2,5,ok
+size-ladder-graph-tool,urand12,4096,32678,triangles,graphtool,3.9,0.000896434,4.5,5,ok
+size-ladder-graph-tool,urand14,16384,131006,triangles,graphtool,3.9,0.00379868,5.3,5,ok
+size-ladder-graph-tool,urand16,65536,524225,triangles,graphtool,3.9,0.0289562,25.2,5,ok
+size-ladder-graph-tool,urand18,262144,2097084,triangles,graphtool,3.9,0.213264,148.5,5,ok
+size-ladder-graph-tool,wordnet,146005,656999,triangles,graphtool,3.9,0.0234956,29,5,ok
+size-ladder-graph-tool,yeast_causal_regulation,6216,1666106,triangles,graphtool,3.9,0.769117,70.5,5,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,adjacency_matrix (weighted),networkx,,0.0427,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,adjacency_matrix (weighted),networkx,,0.47,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,adjacency_matrix (weighted),networkx,,0.00668,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,adjacency_matrix (weighted),networkx,,0.0844,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,adjacency_matrix (weighted),networkx,,0.00195,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,adjacency_matrix (weighted),networkx,,0.299,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,adjacency_matrix (weighted),networkx,,0.0207,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,all_pairs_dijkstra_path_length (weighted),networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,all_pairs_dijkstra_path_length (weighted),nx-parallel,,,,,over-budget
+networkx-backends,medium n=1000 m=16000,1000,16000,all_pairs_dijkstra_path_length (weighted),networkx,,3.73,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,all_pairs_dijkstra_path_length (weighted),nx-parallel,,3.73,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,all_pairs_dijkstra_path_length (weighted),networkx,,1.26,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,all_pairs_dijkstra_path_length (weighted),nx-parallel,,1.27,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,all_pairs_shortest_path_length,networkx,,0.147,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,all_pairs_shortest_path_length,graphblas,,0.0406,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,all_pairs_shortest_path_length,nx-parallel,,0.15,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,all_pairs_shortest_path_length,networkx,,1.44,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,all_pairs_shortest_path_length,graphblas,,0.334,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,all_pairs_shortest_path_length,nx-parallel,,1.35,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,all_pairs_shortest_path_length,networkx,,0.161,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,all_pairs_shortest_path_length,graphblas,,0.0326,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,all_pairs_shortest_path_length,nx-parallel,,0.167,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,all_pairs_shortest_path_length,networkx,,0.195,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,all_pairs_shortest_path_length,graphblas,,0.0372,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,all_pairs_shortest_path_length,nx-parallel,,0.205,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,average_neighbor_degree,networkx,,0.00437,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,average_neighbor_degree,nx-parallel,,0.327,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,average_neighbor_degree,networkx,,0.0391,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,average_neighbor_degree,nx-parallel,,5.04,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,average_neighbor_degree,networkx,,0.00128,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,average_neighbor_degree,nx-parallel,,0.0584,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,average_neighbor_degree,networkx,,0.0139,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,average_neighbor_degree,nx-parallel,,0.752,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,average_neighbor_degree,networkx,,0.00111,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,average_neighbor_degree,nx-parallel,,0.0226,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,average_neighbor_degree,networkx,,0.121,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,average_neighbor_degree,nx-parallel,,3.65,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,average_neighbor_degree,networkx,,0.00849,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,average_neighbor_degree,nx-parallel,,0.196,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,average_shortest_path_length,networkx,,0.151,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,average_shortest_path_length,networkx,,1.39,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,average_shortest_path_length,networkx,,0.164,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,average_shortest_path_length,networkx,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,average_shortest_path_length,networkx,,0.208,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,average_shortest_path_length,networkx,,,,,over-budget
+networkx-backends,sparse n=9998 m=40000,9998,40000,average_shortest_path_length,networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,betweenness_centrality,networkx,,7.95,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,betweenness_centrality,nx-parallel,,2.25,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,betweenness_centrality,networkx,,,,,over-budget
+networkx-backends,dense n=3000 m=900000,3000,900000,betweenness_centrality,nx-parallel,,,,,over-budget
+networkx-backends,medium n=1000 m=16000,1000,16000,betweenness_centrality,networkx,,1.95,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,betweenness_centrality,nx-parallel,,0.424,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,betweenness_centrality,networkx,,,,,over-budget
+networkx-backends,medium n=10000 m=160000,10000,160000,betweenness_centrality,nx-parallel,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,betweenness_centrality,networkx,,0.965,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,betweenness_centrality,nx-parallel,,0.171,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,betweenness_centrality,networkx,,,,,over-budget
+networkx-backends,sparse n=9998 m=40000,9998,40000,betweenness_centrality,nx-parallel,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,betweenness_centrality (weighted),networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,betweenness_centrality (weighted),nx-parallel,,8.07,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,betweenness_centrality (weighted),networkx,,,,,over-budget
+networkx-backends,dense n=3000 m=900000,3000,900000,betweenness_centrality (weighted),nx-parallel,,,,,over-budget
+networkx-backends,medium n=1000 m=16000,1000,16000,betweenness_centrality (weighted),networkx,,5.98,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,betweenness_centrality (weighted),nx-parallel,,1.2,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,betweenness_centrality (weighted),networkx,,,,,over-budget
+networkx-backends,medium n=10000 m=160000,10000,160000,betweenness_centrality (weighted),nx-parallel,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,betweenness_centrality (weighted),networkx,,2.51,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,betweenness_centrality (weighted),nx-parallel,,0.42,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,betweenness_centrality (weighted),networkx,,,,,over-budget
+networkx-backends,sparse n=9998 m=40000,9998,40000,betweenness_centrality (weighted),nx-parallel,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,betweenness_centrality_subset,networkx,,0.365,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,betweenness_centrality_subset,networkx,,3.69,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,betweenness_centrality_subset,networkx,,0.109,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,betweenness_centrality_subset,networkx,,2.87,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,betweenness_centrality_subset,networkx,,0.0446,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,betweenness_centrality_subset,networkx,,2.39,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,bfs_edges,networkx,,0.000273,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,bfs_edges,networkx,,0.00123,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,bfs_edges,networkx,,0.000334,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,bfs_edges,networkx,,0.00521,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,bfs_edges,networkx,,0.000589,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,bfs_edges,networkx,,0.096,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,bfs_edges,networkx,,0.00513,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,biconnected_components,networkx,,0.0369,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,biconnected_components,networkx,,0.449,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,biconnected_components,networkx,,0.00625,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,biconnected_components,networkx,,0.0816,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,biconnected_components,networkx,,0.00235,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,biconnected_components,networkx,,1.41,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,biconnected_components,networkx,,0.0253,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,closeness_centrality,networkx,,0.143,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,closeness_centrality,networkx,,1.31,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,closeness_centrality,networkx,,0.157,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,closeness_centrality,networkx,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,closeness_centrality,networkx,,0.192,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,closeness_centrality,networkx,,,,,over-budget
+networkx-backends,sparse n=9998 m=40000,9998,40000,closeness_centrality,networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,clustering,networkx,,2.17,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,clustering,graphblas,,0.0121,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,clustering,nx-parallel,,0.661,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,clustering,networkx,,,,,over-budget
+networkx-backends,dense n=3000 m=900000,3000,900000,clustering,graphblas,,0.264,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,clustering,nx-parallel,,12.5,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,clustering,networkx,,0.0812,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,clustering,graphblas,,0.00208,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,clustering,nx-parallel,,0.0687,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,clustering,networkx,,0.799,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,clustering,graphblas,,0.00667,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,clustering,nx-parallel,,0.988,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,clustering,networkx,,0.00922,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,clustering,graphblas,,0.00075,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,clustering,nx-parallel,,0.0217,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,clustering,networkx,,1.47,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,clustering,graphblas,,0.00995,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,clustering,nx-parallel,,4.06,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,clustering,networkx,,0.104,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,clustering,graphblas,,0.00242,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,clustering,nx-parallel,,0.245,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,clustering (weighted),networkx,,5.02,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,clustering (weighted),graphblas,,0.0138,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,clustering (weighted),nx-parallel,,0.991,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,clustering (weighted),networkx,,,,,over-budget
+networkx-backends,dense n=3000 m=900000,3000,900000,clustering (weighted),graphblas,,0.244,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,clustering (weighted),nx-parallel,,,,,over-budget
+networkx-backends,medium n=1000 m=16000,1000,16000,clustering (weighted),networkx,,0.139,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,clustering (weighted),graphblas,,0.00239,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,clustering (weighted),nx-parallel,,0.0587,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,clustering (weighted),networkx,,1.4,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,clustering (weighted),graphblas,,0.00819,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,clustering (weighted),nx-parallel,,0.785,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,clustering (weighted),networkx,,0.0195,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,clustering (weighted),graphblas,,0.000847,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,clustering (weighted),nx-parallel,,0.0214,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,clustering (weighted),networkx,,2.4,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,clustering (weighted),graphblas,,0.013,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,clustering (weighted),nx-parallel,,3.16,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,clustering (weighted),networkx,,0.196,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,clustering (weighted),graphblas,,0.00331,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,clustering (weighted),nx-parallel,,0.165,,,ok
+networkx-backends,dense dir. n=1000 m=200000,1000,200000,condensation,networkx,,0.00782,,,ok
+networkx-backends,dense dir. n=3000 m=1800000,3000,1800000,condensation,networkx,,0.0628,,,ok
+networkx-backends,medium dir. n=1000 m=32000,1000,32000,condensation,networkx,,0.00191,,,ok
+networkx-backends,medium dir. n=10000 m=320000,10000,320000,condensation,networkx,,0.0209,,,ok
+networkx-backends,sparse dir. n=1000 m=8000,1000,8000,condensation,networkx,,0.00148,,,ok
+networkx-backends,sparse dir. n=10000 m=80000,10000,80000,condensation,networkx,,0.0131,,,ok
+networkx-backends,sparse dir. n=100000 m=800000,100000,800000,condensation,networkx,,0.215,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,conductance,networkx,,0.0125,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,conductance,graphblas,,0.0018,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,conductance,networkx,,0.124,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,conductance,graphblas,,0.00645,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,conductance,networkx,,0.00193,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,conductance,graphblas,,0.000684,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,conductance,networkx,,0.0264,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,conductance,graphblas,,0.00245,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,conductance,networkx,,0.00159,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,conductance,graphblas,,0.000449,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,conductance,networkx,,0.116,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,conductance,graphblas,,0.00874,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,conductance,networkx,,0.00924,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,conductance,graphblas,,0.0018,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,connected_components,networkx,,0.000139,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,connected_components,networkx,,0.000525,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,connected_components,networkx,,0.000161,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,connected_components,networkx,,0.00243,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,connected_components,networkx,,0.000223,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,connected_components,networkx,,0.0625,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,connected_components,networkx,,0.00264,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,constraint,networkx,,0.116,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,constraint,networkx,,2,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,constraint,networkx,,0.0319,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,constraint,networkx,,0.453,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,constraint,networkx,,0.00487,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,constraint,networkx,,0.558,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,constraint,networkx,,0.043,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,core_number,networkx,,0.0182,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,core_number,networkx,,0.272,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,core_number,networkx,,0.00279,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,core_number,networkx,,0.0388,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,core_number,networkx,,0.00613,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,core_number,networkx,,0.253,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,core_number,networkx,,0.0125,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,current_flow_betweenness_centrality,networkx,,,,,over-budget
+networkx-backends,medium n=1000 m=16000,1000,16000,current_flow_betweenness_centrality,networkx,,11.7,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,current_flow_betweenness_centrality,networkx,,2.76,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,cycle_basis,networkx,,0.0276,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,cycle_basis,networkx,,2.22,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,cycle_basis,networkx,,0.0103,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,cycle_basis,networkx,,1.2,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,cycle_basis,networkx,,0.00582,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,cycle_basis,networkx,,0.436,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,degree_assortativity_coefficient,networkx,,0.0611,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,degree_assortativity_coefficient,networkx,,0.731,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,degree_assortativity_coefficient,networkx,,0.0109,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,degree_assortativity_coefficient,networkx,,0.206,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,degree_assortativity_coefficient,networkx,,0.00493,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,degree_assortativity_coefficient,networkx,,0.868,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,degree_assortativity_coefficient,networkx,,0.0553,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,diameter,networkx,,0.151,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,diameter,networkx,,1.34,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,diameter,networkx,,0.171,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,diameter,networkx,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,diameter,networkx,,0.219,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,diameter,networkx,,,,,over-budget
+networkx-backends,sparse n=9998 m=40000,9998,40000,diameter,networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,edge_betweenness_centrality,networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,edge_betweenness_centrality,nx-parallel,,5.48,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,edge_betweenness_centrality,networkx,,,,,over-budget
+networkx-backends,dense n=3000 m=900000,3000,900000,edge_betweenness_centrality,nx-parallel,,,,,over-budget
+networkx-backends,medium n=1000 m=16000,1000,16000,edge_betweenness_centrality,networkx,,4.29,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,edge_betweenness_centrality,nx-parallel,,0.988,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,edge_betweenness_centrality,networkx,,,,,over-budget
+networkx-backends,medium n=10000 m=160000,10000,160000,edge_betweenness_centrality,nx-parallel,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,edge_betweenness_centrality,networkx,,1.74,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,edge_betweenness_centrality,nx-parallel,,0.309,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,edge_betweenness_centrality,networkx,,,,,over-budget
+networkx-backends,sparse n=9998 m=40000,9998,40000,edge_betweenness_centrality,nx-parallel,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,edge_connectivity,networkx,,0.707,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,edge_connectivity,networkx,,9.77,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,edge_connectivity,networkx,,0.152,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,edge_connectivity,networkx,,0.0614,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,edge_dfs,networkx,,0.573,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,edge_dfs,networkx,,5.18,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,edge_dfs,networkx,,0.019,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,edge_dfs,networkx,,1.73,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,edge_dfs,networkx,,0.00726,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,edge_dfs,networkx,,4.72,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,edge_dfs,networkx,,0.0959,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,edge_disjoint_paths,networkx,,0.301,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,edge_disjoint_paths,networkx,,3.42,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,edge_disjoint_paths,networkx,,0.044,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,edge_disjoint_paths,networkx,,0.581,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,edge_disjoint_paths,networkx,,0.0122,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,edge_disjoint_paths,networkx,,2.22,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,edge_disjoint_paths,networkx,,0.142,,,ok
+networkx-backends,dense dir. n=1000 m=200000,1000,200000,edmonds_karp (weighted),networkx,,0.298,,,ok
+networkx-backends,dense dir. n=3000 m=1800000,3000,1800000,edmonds_karp (weighted),networkx,,3.17,,,ok
+networkx-backends,medium dir. n=1000 m=32000,1000,32000,edmonds_karp (weighted),networkx,,0.0502,,,ok
+networkx-backends,medium dir. n=10000 m=320000,10000,320000,edmonds_karp (weighted),networkx,,0.533,,,ok
+networkx-backends,sparse dir. n=1000 m=8000,1000,8000,edmonds_karp (weighted),networkx,,0.0124,,,ok
+networkx-backends,sparse dir. n=10000 m=80000,10000,80000,edmonds_karp (weighted),networkx,,0.133,,,ok
+networkx-backends,sparse dir. n=100000 m=800000,100000,800000,edmonds_karp (weighted),networkx,,2.37,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,eigenvector_centrality_numpy,networkx,,0.0546,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,eigenvector_centrality_numpy,networkx,,0.603,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,eigenvector_centrality_numpy,networkx,,0.0172,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,eigenvector_centrality_numpy,networkx,,0.109,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,eigenvector_centrality_numpy,networkx,,0.00723,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,eigenvector_centrality_numpy,networkx,,0.697,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,eigenvector_centrality_numpy,networkx,,0.0561,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,find_cliques,networkx,,0.0326,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,find_cliques,networkx,,0.582,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,find_cliques,networkx,,0.00532,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,find_cliques,networkx,,1.58,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,find_cliques,networkx,,0.289,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,floyd_warshall (weighted),networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,floyd_warshall (weighted),graphblas,,3.27,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,floyd_warshall (weighted),networkx,,,,,over-budget
+networkx-backends,medium n=1000 m=16000,1000,16000,floyd_warshall (weighted),graphblas,,3.26,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,floyd_warshall (weighted),networkx,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,floyd_warshall (weighted),graphblas,,2.58,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,global_efficiency,networkx,,0.181,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,global_efficiency,networkx,,1.48,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,global_efficiency,networkx,,0.177,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,global_efficiency,networkx,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,global_efficiency,networkx,,0.214,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,global_efficiency,networkx,,,,,over-budget
+networkx-backends,sparse n=9998 m=40000,9998,40000,global_efficiency,networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,greedy_color,networkx,,0.00618,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,greedy_color,networkx,,0.047,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,greedy_color,networkx,,0.00139,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,greedy_color,networkx,,0.0156,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,greedy_color,networkx,,0.00108,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,greedy_color,networkx,,0.126,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,greedy_color,networkx,,0.00796,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,harmonic_centrality,networkx,,0.192,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,harmonic_centrality,nx-parallel,,0.462,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,harmonic_centrality,networkx,,2.09,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,harmonic_centrality,nx-parallel,,7.09,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,harmonic_centrality,networkx,,0.236,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,harmonic_centrality,nx-parallel,,0.0971,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,harmonic_centrality,networkx,,,,,over-budget
+networkx-backends,medium n=10000 m=160000,10000,160000,harmonic_centrality,nx-parallel,,11.8,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,harmonic_centrality,networkx,,0.276,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,harmonic_centrality,nx-parallel,,0.0776,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,harmonic_centrality,networkx,,,,,over-budget
+networkx-backends,sparse n=99969 m=400000,99969,400000,harmonic_centrality,nx-parallel,,,,,over-budget
+networkx-backends,sparse n=9998 m=40000,9998,40000,harmonic_centrality,networkx,,,,,over-budget
+networkx-backends,sparse n=9998 m=40000,9998,40000,harmonic_centrality,nx-parallel,,14.4,,,ok
+networkx-backends,dense dir. n=1000 m=200000,1000,200000,hits,networkx,,0.0695,,,ok
+networkx-backends,dense dir. n=3000 m=1800000,3000,1800000,hits,networkx,,0.74,,,ok
+networkx-backends,medium dir. n=1000 m=32000,1000,32000,hits,networkx,,0.00978,,,ok
+networkx-backends,medium dir. n=10000 m=320000,10000,320000,hits,networkx,,0.124,,,ok
+networkx-backends,sparse dir. n=1000 m=8000,1000,8000,hits,networkx,,0.00416,,,ok
+networkx-backends,sparse dir. n=10000 m=80000,10000,80000,hits,networkx,,0.0347,,,ok
+networkx-backends,sparse dir. n=100000 m=800000,100000,800000,hits,networkx,,0.54,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,hyper_wiener_index,networkx,,0.169,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,hyper_wiener_index,networkx,,1.46,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,hyper_wiener_index,networkx,,0.173,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,hyper_wiener_index,networkx,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,hyper_wiener_index,networkx,,0.21,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,hyper_wiener_index,networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,jaccard_coefficient,networkx,,7.84,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,jaccard_coefficient,nx-parallel,,1.41,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,jaccard_coefficient,networkx,,,,,over-budget
+networkx-backends,dense n=3000 m=900000,3000,900000,jaccard_coefficient,nx-parallel,,,,,over-budget
+networkx-backends,medium n=1000 m=16000,1000,16000,jaccard_coefficient,networkx,,2.18,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,jaccard_coefficient,nx-parallel,,0.406,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,jaccard_coefficient,networkx,,0.962,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,jaccard_coefficient,nx-parallel,,0.235,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,k_truss,networkx,,0.884,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,k_truss,graphblas,,0.0254,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,k_truss,networkx,,,,,over-budget
+networkx-backends,dense n=3000 m=900000,3000,900000,k_truss,graphblas,,0.659,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,k_truss,networkx,,0.0493,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,k_truss,graphblas,,0.00259,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,k_truss,networkx,,0.566,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,k_truss,graphblas,,0.0083,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,k_truss,networkx,,0.00798,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,k_truss,graphblas,,0.00084,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,k_truss,networkx,,1.75,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,k_truss,graphblas,,0.0148,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,k_truss,networkx,,0.115,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,k_truss,graphblas,,0.00233,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,load_centrality,networkx,,5.77,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,load_centrality,networkx,,,,,over-budget
+networkx-backends,medium n=1000 m=16000,1000,16000,load_centrality,networkx,,2.9,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,load_centrality,networkx,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,load_centrality,networkx,,1.24,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,load_centrality,networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,local_efficiency,networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,local_efficiency,nx-parallel,,15.9,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,local_efficiency,networkx,,0.794,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,local_efficiency,nx-parallel,,0.168,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,local_efficiency,networkx,,0.051,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,local_efficiency,nx-parallel,,0.0323,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,louvain_communities,networkx,,0.519,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,louvain_communities,networkx,,8.96,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,louvain_communities,networkx,,0.114,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,louvain_communities,networkx,,2.34,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,louvain_communities,networkx,,0.0301,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,louvain_communities,networkx,,12.5,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,louvain_communities,networkx,,0.997,,,ok
+networkx-backends,dense dir. n=1000 m=200000,1000,200000,maximum_branching (weighted),networkx,,,,,over-budget
+networkx-backends,medium dir. n=1000 m=32000,1000,32000,maximum_branching (weighted),networkx,,,,,over-budget
+networkx-backends,sparse dir. n=1000 m=8000,1000,8000,maximum_branching (weighted),networkx,,11.1,,,ok
+networkx-backends,sparse dir. n=10000 m=80000,10000,80000,maximum_branching (weighted),networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,minimum_spanning_tree (weighted),networkx,,0.497,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,minimum_spanning_tree (weighted),networkx,,2.16,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,minimum_spanning_tree (weighted),networkx,,0.00859,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,minimum_spanning_tree (weighted),networkx,,0.575,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,minimum_spanning_tree (weighted),networkx,,0.00529,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,minimum_spanning_tree (weighted),networkx,,1.7,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,minimum_spanning_tree (weighted),networkx,,0.0469,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,number_of_walks (length 3),networkx,,6.07,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,number_of_walks (length 3),networkx,,6.12,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,number_of_walks (length 3),networkx,,5.56,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,onion_layers,networkx,,0.0377,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,onion_layers,networkx,,0.838,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,onion_layers,networkx,,0.00388,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,onion_layers,networkx,,0.0509,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,onion_layers,networkx,,0.00215,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,onion_layers,networkx,,0.966,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,onion_layers,networkx,,0.0201,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,pagerank,networkx,,0.0446,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,pagerank,graphblas,,0.00152,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,pagerank,networkx,,0.53,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,pagerank,graphblas,,0.00431,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,pagerank,networkx,,0.00782,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,pagerank,graphblas,,0.00138,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,pagerank,networkx,,0.0851,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,pagerank,graphblas,,0.0031,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,pagerank,networkx,,0.0035,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,pagerank,graphblas,,0.00211,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,pagerank,networkx,,0.368,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,pagerank,graphblas,,0.0487,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,pagerank,networkx,,0.0243,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,pagerank,graphblas,,0.00574,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,second_order_centrality,networkx,,7.07,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,second_order_centrality,networkx,,6.94,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,second_order_centrality,networkx,,7.08,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,shortest_simple_paths (20 paths),networkx,,0.0012,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,shortest_simple_paths (20 paths),networkx,,0.00285,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,shortest_simple_paths (20 paths),networkx,,0.000816,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,shortest_simple_paths (20 paths),networkx,,0.00487,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,shortest_simple_paths (20 paths),networkx,,0.00167,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,shortest_simple_paths (20 paths),networkx,,0.00562,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,single_source_bellman_ford_path_length (weighted),networkx,,0.0422,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,single_source_bellman_ford_path_length (weighted),graphblas,,0.00108,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,single_source_bellman_ford_path_length (weighted),networkx,,0.585,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,single_source_bellman_ford_path_length (weighted),graphblas,,0.0652,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,single_source_bellman_ford_path_length (weighted),networkx,,0.00713,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,single_source_bellman_ford_path_length (weighted),graphblas,,0.000962,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,single_source_bellman_ford_path_length (weighted),networkx,,0.147,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,single_source_bellman_ford_path_length (weighted),graphblas,,0.00299,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,single_source_bellman_ford_path_length (weighted),networkx,,0.0028,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,single_source_bellman_ford_path_length (weighted),graphblas,,0.00088,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,single_source_bellman_ford_path_length (weighted),networkx,,2.1,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,single_source_bellman_ford_path_length (weighted),graphblas,,0.028,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,single_source_bellman_ford_path_length (weighted),networkx,,0.0476,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,single_source_bellman_ford_path_length (weighted),graphblas,,0.00373,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,single_source_dijkstra (weighted),networkx,,0.0305,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,single_source_dijkstra (weighted),networkx,,0.378,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,single_source_dijkstra (weighted),networkx,,0.00489,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,single_source_dijkstra (weighted),networkx,,0.0792,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,single_source_dijkstra (weighted),networkx,,0.00205,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,single_source_dijkstra (weighted),networkx,,0.697,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,single_source_dijkstra (weighted),networkx,,0.0287,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,square_clustering,networkx,,4.39,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,square_clustering,graphblas,,0.0122,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,square_clustering,nx-parallel,,14.7,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,square_clustering,networkx,,,,,over-budget
+networkx-backends,dense n=3000 m=900000,3000,900000,square_clustering,graphblas,,0.222,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,square_clustering,nx-parallel,,,,,over-budget
+networkx-backends,medium n=1000 m=16000,1000,16000,square_clustering,networkx,,0.32,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,square_clustering,graphblas,,0.00467,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,square_clustering,nx-parallel,,0.0681,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,square_clustering,networkx,,0.0181,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,square_clustering,graphblas,,0.00189,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,square_clustering,nx-parallel,,0.012,,,ok
+networkx-backends,dense dir. n=1000 m=200000,1000,200000,strongly_connected_components,networkx,,0.00077,,,ok
+networkx-backends,dense dir. n=3000 m=1800000,3000,1800000,strongly_connected_components,networkx,,0.00266,,,ok
+networkx-backends,medium dir. n=1000 m=32000,1000,32000,strongly_connected_components,networkx,,0.00067,,,ok
+networkx-backends,medium dir. n=10000 m=320000,10000,320000,strongly_connected_components,networkx,,0.00983,,,ok
+networkx-backends,sparse dir. n=1000 m=8000,1000,8000,strongly_connected_components,networkx,,0.000799,,,ok
+networkx-backends,sparse dir. n=10000 m=80000,10000,80000,strongly_connected_components,networkx,,0.00899,,,ok
+networkx-backends,sparse dir. n=100000 m=800000,100000,800000,strongly_connected_components,networkx,,0.157,,,ok
+networkx-backends,dense dir. n=1000 m=200000,1000,200000,topological_sort (DAG),networkx,,0.00904,,,ok
+networkx-backends,dense dir. n=3000 m=1800000,3000,1800000,topological_sort (DAG),networkx,,0.0647,,,ok
+networkx-backends,medium dir. n=1000 m=32000,1000,32000,topological_sort (DAG),networkx,,0.00204,,,ok
+networkx-backends,medium dir. n=10000 m=320000,10000,320000,topological_sort (DAG),networkx,,0.023,,,ok
+networkx-backends,sparse dir. n=1000 m=8000,1000,8000,topological_sort (DAG),networkx,,0.00122,,,ok
+networkx-backends,sparse dir. n=10000 m=80000,10000,80000,topological_sort (DAG),networkx,,0.0129,,,ok
+networkx-backends,sparse dir. n=100000 m=800000,100000,800000,topological_sort (DAG),networkx,,0.216,,,ok
+networkx-backends,dense dir. n=1000 m=200000,1000,200000,transitive_reduction (DAG),networkx,,0.00827,,,ok
+networkx-backends,dense dir. n=3000 m=1800000,3000,1800000,transitive_reduction (DAG),networkx,,0.0631,,,ok
+networkx-backends,medium dir. n=1000 m=32000,1000,32000,transitive_reduction (DAG),networkx,,0.00209,,,ok
+networkx-backends,sparse dir. n=1000 m=8000,1000,8000,transitive_reduction (DAG),networkx,,0.0026,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,transitivity,networkx,,2.28,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,transitivity,graphblas,,0.00663,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,transitivity,networkx,,,,,over-budget
+networkx-backends,dense n=3000 m=900000,3000,900000,transitivity,graphblas,,0.138,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,transitivity,networkx,,0.0825,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,transitivity,graphblas,,0.000994,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,transitivity,networkx,,0.832,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,transitivity,graphblas,,0.00403,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,transitivity,networkx,,0.0155,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,transitivity,graphblas,,0.000591,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,transitivity,networkx,,1.58,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,transitivity,graphblas,,0.00556,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,transitivity,networkx,,0.376,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,transitivity,graphblas,,0.00131,,,ok
+networkx-backends,dense dir. n=1000 m=200000,1000,200000,triadic_census,networkx,,,,,over-budget
+networkx-backends,dense dir. n=3000 m=1800000,3000,1800000,triadic_census,networkx,,,,,over-budget
+networkx-backends,medium dir. n=1000 m=32000,1000,32000,triadic_census,networkx,,4.12,,,ok
+networkx-backends,medium dir. n=10000 m=320000,10000,320000,triadic_census,networkx,,,,,over-budget
+networkx-backends,sparse dir. n=1000 m=8000,1000,8000,triadic_census,networkx,,0.275,,,ok
+networkx-backends,sparse dir. n=10000 m=80000,10000,80000,triadic_census,networkx,,3.65,,,ok
+networkx-backends,sparse dir. n=100000 m=800000,100000,800000,triadic_census,networkx,,,,,over-budget
+networkx-backends,dense n=1000 m=100000,1000,100000,vf2pp_is_isomorphic,networkx,,0.31,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,vf2pp_is_isomorphic,networkx,,4.54,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,vf2pp_is_isomorphic,networkx,,0.0638,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,vf2pp_is_isomorphic,networkx,,,,,over-budget
+networkx-backends,sparse n=1000 m=4000,1000,4000,vf2pp_is_isomorphic,networkx,,0.0429,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,vf2pp_is_isomorphic,networkx,,,,,over-budget
+networkx-backends,sparse n=9998 m=40000,9998,40000,vf2pp_is_isomorphic,networkx,,15.9,,,ok
+networkx-backends,dense n=1000 m=100000,1000,100000,weisfeiler_lehman_graph_hash,networkx,,0.0472,,,ok
+networkx-backends,dense n=3000 m=900000,3000,900000,weisfeiler_lehman_graph_hash,networkx,,0.433,,,ok
+networkx-backends,medium n=1000 m=16000,1000,16000,weisfeiler_lehman_graph_hash,networkx,,0.00712,,,ok
+networkx-backends,medium n=10000 m=160000,10000,160000,weisfeiler_lehman_graph_hash,networkx,,0.0898,,,ok
+networkx-backends,sparse n=1000 m=4000,1000,4000,weisfeiler_lehman_graph_hash,networkx,,0.00398,,,ok
+networkx-backends,sparse n=99969 m=400000,99969,400000,weisfeiler_lehman_graph_hash,networkx,,0.51,,,ok
+networkx-backends,sparse n=9998 m=40000,9998,40000,weisfeiler_lehman_graph_hash,networkx,,0.0316,,,ok

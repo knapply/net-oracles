@@ -1,0 +1,127 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "conventions.json",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "measure",
+   "variant",
+   "tool",
+   "scope",
+   "weights_required",
+   "call",
+   "outcome",
+   "differs_when",
+   "undefined_when",
+   "only_on",
+   "dimensions",
+   "note",
+   "tolerance"
+  ],
+  "properties": {
+   "measure": {
+    "type": "string"
+   },
+   "variant": {
+    "type": "string"
+   },
+   "manifest": {
+    "type": "string"
+   },
+   "tool": {
+    "type": "string"
+   },
+   "scope": {
+    "enum": [
+     "any",
+     "directed",
+     "undirected"
+    ]
+   },
+   "weights_required": {
+    "type": "boolean"
+   },
+   "call": {
+    "type": "string"
+   },
+   "outcome": {
+    "enum": [
+     "agrees",
+     "differs",
+     "no-value-on-some-inputs",
+     "documented"
+    ]
+   },
+   "differs_when": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "undefined_when": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "only_on": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "dimensions": {
+    "type": "array",
+    "items": {
+     "enum": [
+      "normalization",
+      "direction",
+      "weights",
+      "self_loops",
+      "multi_edges",
+      "ties",
+      "defaults"
+     ]
+    }
+   },
+   "note": {
+    "type": "string"
+   },
+   "tolerance": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "rel",
+     "abs"
+    ],
+    "properties": {
+     "rel": {
+      "type": "number",
+      "minimum": 0
+     },
+     "abs": {
+      "type": "number",
+      "minimum": 0
+     }
+    }
+   },
+   "differs_on_inputs": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "no_value_on_inputs": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "reference": {
+    "type": "string"
+   }
+  }
+ }
+}

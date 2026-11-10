@@ -1,0 +1,39 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "measures.json",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "id",
+   "name",
+   "family",
+   "definition",
+   "references"
+  ],
+  "properties": {
+   "id": {
+    "type": "string",
+    "minLength": 1
+   },
+   "name": {
+    "type": "string",
+    "minLength": 1
+   },
+   "family": {
+    "type": "string"
+   },
+   "definition": {
+    "type": "string",
+    "minLength": 1
+   },
+   "references": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

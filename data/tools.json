@@ -1,0 +1,662 @@
+[
+ {
+  "id": "networkx",
+  "name": "NetworkX",
+  "language": "Python",
+  "version_tested": "3.7",
+  "license": "BSD-3-Clause",
+  "homepage": "https://networkx.org",
+  "citation_key": "hagberg2008exploring",
+  "role": "checked",
+  "how_run": "Imported in CPython 3.12; public functions called on graph objects built from edge lists.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "networkx public API (algorithms, generators, linalg, readwrite)"
+  }
+ },
+ {
+  "id": "igraph",
+  "name": "igraph (R)",
+  "language": "R over C",
+  "version_tested": "2.3.4",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://r.igraph.org",
+  "citation_key": "csardi2006igraph",
+  "role": "checked",
+  "how_run": "Called from R through exported functions on igraph objects.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "R package igraph: exported functions and help titles"
+  }
+ },
+ {
+  "id": "pyigraph",
+  "name": "igraph (Python)",
+  "language": "Python over C",
+  "version_tested": "1.0.0",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://python.igraph.org",
+  "citation_key": "csardi2006igraph",
+  "role": "checked",
+  "how_run": "Imported in CPython; Graph methods and module functions called on graph objects.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "python-igraph Graph methods and module functions"
+  }
+ },
+ {
+  "id": "sna",
+  "name": "sna",
+  "language": "R",
+  "version_tested": "2.8",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://cran.r-project.org/package=sna",
+  "citation_key": "butts2008sna",
+  "role": "checked",
+  "how_run": "Called from R on adjacency matrices (the package works on matrices and edge arrays).",
+  "api_listing": {
+   "method": "introspection",
+   "source": "R package sna: exported functions and help titles"
+  }
+ },
+ {
+  "id": "ergm",
+  "name": "ergm (statnet)",
+  "language": "R",
+  "version_tested": "4.12.0",
+  "license": "GPL-3.0-only",
+  "homepage": "https://cran.r-project.org/package=ergm",
+  "citation_key": "hunter2008ergm",
+  "role": "checked",
+  "how_run": "Called from R; summary statistics evaluated on network objects (network package).",
+  "api_listing": {
+   "method": "introspection",
+   "source": "network, ergm and tergm exported functions and help titles; ergm term list from search.ergmTerms()"
+  }
+ },
+ {
+  "id": "tsna",
+  "name": "tsna / networkDynamic",
+  "language": "R",
+  "version_tested": "0.3.6",
+  "license": "GPL-3.0-only",
+  "homepage": "https://cran.r-project.org/package=tsna",
+  "citation_key": "handcock2008statnet",
+  "role": "checked",
+  "how_run": "Called from R on networkDynamic objects.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "R package tsna: exported functions and help titles"
+  }
+ },
+ {
+  "id": "rsiena",
+  "name": "RSiena",
+  "language": "R",
+  "version_tested": "1.6.6",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://cran.r-project.org/package=RSiena",
+  "citation_key": "ripley2026manual",
+  "role": "checked",
+  "how_run": "Called from R; effects and simulations evaluated on small panel data sets.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "RSiena exported functions and help titles; effects from getEffects()"
+  }
+ },
+ {
+  "id": "graphtool",
+  "name": "graph-tool",
+  "language": "C++ / Python",
+  "version_tested": "3.9",
+  "license": "LGPL-3.0-or-later",
+  "homepage": "https://graph-tool.skewed.de",
+  "citation_key": "peixoto2014graphtool",
+  "role": "checked",
+  "how_run": "Imported in CPython from a container image with the tool installed; public functions called on Graph objects.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "graph-tool public classes and functions"
+  }
+ },
+ {
+  "id": "networkit",
+  "name": "NetworKit",
+  "language": "C++ / Python",
+  "version_tested": "11.2.2",
+  "license": "MIT",
+  "homepage": "https://networkit.github.io",
+  "citation_key": "staudt2016networkit",
+  "role": "checked",
+  "how_run": "Imported in CPython; classes constructed and run on graphs with edges added one by one.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "NetworKit public classes and functions"
+  }
+ },
+ {
+  "id": "rustworkx",
+  "name": "rustworkx",
+  "language": "Rust / Python",
+  "version_tested": "0.18.1",
+  "license": "Apache-2.0",
+  "homepage": "https://www.rustworkx.org",
+  "citation_key": "tool_rustworkx",
+  "role": "checked",
+  "how_run": "Imported in CPython; public functions called on PyGraph and PyDiGraph objects.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "rustworkx public functions and generators"
+  }
+ },
+ {
+  "id": "sknetwork",
+  "name": "scikit-network",
+  "language": "Python",
+  "version_tested": "0.33.0",
+  "license": "BSD-3-Clause",
+  "homepage": "https://scikit-network.readthedocs.io",
+  "citation_key": "tool_sknetwork",
+  "role": "checked",
+  "how_run": "Imported in CPython; algorithms called on sparse adjacency matrices.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "scikit-network public classes and functions"
+  }
+ },
+ {
+  "id": "jgrapht",
+  "name": "JGraphT",
+  "language": "Java",
+  "version_tested": "1.5.2",
+  "license": "LGPL-2.1-or-later OR EPL-2.0",
+  "homepage": "https://jgrapht.org",
+  "citation_key": "michail2020jgrapht",
+  "role": "checked",
+  "how_run": "Driver programs in Java run against the released jar.",
+  "api_listing": {
+   "method": "documentation",
+   "source": "JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.*)"
+  }
+ },
+ {
+  "id": "boost",
+  "name": "Boost Graph Library",
+  "language": "C++",
+  "version_tested": "1.90",
+  "license": "BSL-1.0",
+  "homepage": "https://www.boost.org/libs/graph/",
+  "citation_key": "siek2002boost",
+  "role": "checked",
+  "how_run": "Small C++ driver programs compiled against the headers.",
+  "api_listing": {
+   "method": "documentation",
+   "source": "Boost Graph Library 1.90 documentation: table of contents (algorithms and random-graph tools) plus algorithm headers it omits"
+  }
+ },
+ {
+  "id": "graphblas",
+  "name": "GraphBLAS algorithms",
+  "language": "Python / C",
+  "version_tested": "graphblas-algorithms 2023.10.0 (python-graphblas 2025.2.0, SuiteSparse:GraphBLAS 9.4.5.0)",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/python-graphblas/graphblas-algorithms",
+  "citation_key": "davis2019algorithm",
+  "role": "checked",
+  "how_run": "Imported in CPython (graphblas-algorithms over python-graphblas and SuiteSparse:GraphBLAS) as a NetworkX backend.",
+  "api_listing": null
+ },
+ {
+  "id": "bct",
+  "name": "BCT (Octave)",
+  "language": "MATLAB code under Octave",
+  "version_tested": "2019-03-03",
+  "license": "not stated on the distribution site",
+  "homepage": "https://www.brain-connectivity-toolbox.net",
+  "citation_key": "rubinov2010complex",
+  "role": "checked",
+  "how_run": "The 2019-03-03 .m files run under GNU Octave 10.3 on binary or weighted adjacency matrices.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "bctpy public functions (the Python port of the Brain Connectivity Toolbox function set)"
+  }
+ },
+ {
+  "id": "bctpy",
+  "name": "bctpy",
+  "language": "Python",
+  "version_tested": "0.6.1",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://pypi.org/project/bctpy/",
+  "citation_key": "rubinov2010complex",
+  "role": "checked",
+  "how_run": "Imported in CPython; functions called on NumPy adjacency matrices.",
+  "api_listing": null
+ },
+ {
+  "id": "gephi",
+  "name": "Gephi toolkit",
+  "language": "Java",
+  "version_tested": "0.11.3",
+  "license": "GPL-3.0 / CDDL-1.0 (dual)",
+  "homepage": "https://gephi.org",
+  "citation_key": "bastian2009gephi",
+  "role": "checked",
+  "how_run": "Statistics classes in the published toolkit jar driven through the public Java API.",
+  "api_listing": {
+   "method": "documentation",
+   "source": "Gephi toolkit 0.11.3 javadoc (published class list of org.gephi.statistics.plugin)"
+  }
+ },
+ {
+  "id": "ucinet",
+  "name": "UCINET",
+  "language": "Windows desktop application",
+  "version_tested": "6.x (documentation audit)",
+  "license": "proprietary",
+  "homepage": null,
+  "citation_key": "borgatti2002ucinet",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from the published help pages and the program documentation.",
+  "api_listing": {
+   "method": "documentation audit",
+   "source": "published help pages and program documentation"
+  }
+ },
+ {
+  "id": "tnet",
+  "name": "tnet",
+  "language": "R",
+  "version_tested": "3.0.16",
+  "license": "GPL-3.0-only",
+  "homepage": "https://cran.r-project.org/package=tnet",
+  "citation_key": "opsahl2010node",
+  "role": "checked",
+  "how_run": "Called from R on edge lists.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "R package tnet: exported functions and help titles"
+  }
+ },
+ {
+  "id": "netrankr",
+  "name": "netrankr",
+  "language": "R",
+  "version_tested": "2.0.0",
+  "license": "MIT",
+  "homepage": "https://cran.r-project.org/package=netrankr",
+  "citation_key": "schoch2018centrality",
+  "role": "checked",
+  "how_run": "Called from R on igraph objects.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "R package netrankr: exported functions and help titles"
+  }
+ },
+ {
+  "id": "keyplayer",
+  "name": "keyplayer",
+  "language": "R",
+  "version_tested": "1.0.4",
+  "license": "see package DESCRIPTION",
+  "homepage": "https://cran.r-project.org/package=keyplayer",
+  "citation_key": "an2016keyplayer",
+  "role": "checked",
+  "how_run": "Called from R on adjacency matrices.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "R package keyplayer: exported functions and help titles"
+  }
+ },
+ {
+  "id": "centiserve",
+  "name": "centiserve",
+  "language": "R",
+  "version_tested": "1.0.0",
+  "license": "see package DESCRIPTION",
+  "homepage": "https://cran.r-project.org/package=centiserve",
+  "citation_key": "jalili2015centiserver",
+  "role": "checked",
+  "how_run": "Called from R on igraph objects.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "R package centiserve: exported functions and help titles"
+  }
+ },
+ {
+  "id": "blockmodeling",
+  "name": "blockmodeling",
+  "language": "R",
+  "version_tested": "1.1.8",
+  "license": "see package DESCRIPTION",
+  "homepage": "https://cran.r-project.org/package=blockmodeling",
+  "citation_key": "ziberna2007generalized",
+  "role": "checked",
+  "how_run": "Called from R on matrices.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "R package blockmodeling: exported functions and help titles"
+  }
+ },
+ {
+  "id": "manynet",
+  "name": "manynet",
+  "language": "R",
+  "version_tested": "2.4.0",
+  "license": "MIT",
+  "homepage": "https://cran.r-project.org/package=manynet",
+  "citation_key": "tool_manynet",
+  "role": "checked",
+  "how_run": "Called from R on igraph objects.",
+  "api_listing": null
+ },
+ {
+  "id": "egor",
+  "name": "egor",
+  "language": "R",
+  "version_tested": "1.25.10",
+  "license": "AGPL-3.0",
+  "homepage": "https://cran.r-project.org/package=egor",
+  "citation_key": "tool_egor",
+  "role": "checked",
+  "how_run": "Called from R on ego-centred data objects.",
+  "api_listing": null
+ },
+ {
+  "id": "cdlib",
+  "name": "cdlib",
+  "language": "Python",
+  "version_tested": "0.4.1",
+  "license": "BSD-2-Clause",
+  "homepage": "https://cdlib.readthedocs.io",
+  "citation_key": "tool_cdlib",
+  "role": "checked",
+  "how_run": "Imported in CPython; evaluation functions called on communities.",
+  "api_listing": null
+ },
+ {
+  "id": "infomap",
+  "name": "Infomap",
+  "language": "C++ / Python",
+  "version_tested": "2.16.0",
+  "license": "AGPL-3.0-or-later",
+  "homepage": "https://www.mapequation.org/infomap/",
+  "citation_key": "rosvall2008maps",
+  "role": "checked",
+  "how_run": "Imported in CPython; run on edge lists with several trials.",
+  "api_listing": null
+ },
+ {
+  "id": "graspologic",
+  "name": "graspologic",
+  "language": "Python",
+  "version_tested": "3.4.4",
+  "license": "MIT",
+  "homepage": "https://graspologic-org.github.io/graspologic/",
+  "citation_key": "tool_graspologic",
+  "role": "checked",
+  "how_run": "Imported in CPython; functions called on NumPy matrices.",
+  "api_listing": null
+ },
+ {
+  "id": "cpnet",
+  "name": "cpnet",
+  "language": "Python",
+  "version_tested": "0.0.21",
+  "license": "see package metadata",
+  "homepage": "https://pypi.org/project/cpnet/",
+  "citation_key": "tool_cpnet",
+  "role": "checked",
+  "how_run": "Imported in CPython; algorithms called on graph objects.",
+  "api_listing": null
+ },
+ {
+  "id": "nauty",
+  "name": "nauty",
+  "language": "C (via pynauty)",
+  "version_tested": "2.8.8 (pynauty 2.8.8.1)",
+  "license": "permissive (see the distribution COPYRIGHT file)",
+  "homepage": "https://pallini.di.uniroma1.it/",
+  "citation_key": "mckay2014practical",
+  "role": "checked",
+  "how_run": "Called through pynauty on graph adjacency dictionaries.",
+  "api_listing": null
+ },
+ {
+  "id": "latentnet",
+  "name": "latentnet",
+  "language": "R",
+  "version_tested": "2.12.0",
+  "license": "GPL-3.0-only",
+  "homepage": "https://cran.r-project.org/package=latentnet",
+  "citation_key": "krivitsky2008fitting",
+  "role": "checked",
+  "how_run": "Called from R on network objects; stochastic fits compared by objective.",
+  "api_listing": null
+ },
+ {
+  "id": "remstats",
+  "name": "remstats / remify",
+  "language": "R",
+  "version_tested": "remstats 4.1.0, remstimate 3.1.0, remify 4.1.0",
+  "license": "see package DESCRIPTION",
+  "homepage": "https://cran.r-project.org/package=remstats",
+  "citation_key": "arena2026remstats",
+  "role": "checked",
+  "how_run": "Called from R on relational event sequences.",
+  "api_listing": null
+ },
+ {
+  "id": "s2",
+  "name": "s2 (sphere geometry)",
+  "language": "R",
+  "version_tested": "1.1.13",
+  "license": "Apache-2.0",
+  "homepage": "https://cran.r-project.org/package=s2",
+  "citation_key": "tool_s2",
+  "role": "checked",
+  "how_run": "Called from R for distances on a sphere of radius 6371008.7714 m.",
+  "api_listing": null
+ },
+ {
+  "id": "sf",
+  "name": "sf (planar geometry)",
+  "language": "R",
+  "version_tested": "1.1.3 (GEOS 3.12.1)",
+  "license": "GPL-2.0-or-later OR MIT",
+  "homepage": "https://r-spatial.github.io/sf/",
+  "citation_key": "pebesma2018sf",
+  "role": "checked",
+  "how_run": "Called from R for planar distances (GEOS 3.12.1).",
+  "api_listing": null
+ },
+ {
+  "id": "netseg",
+  "name": "netseg",
+  "language": "R",
+  "version_tested": "1.0-3",
+  "license": "GPL",
+  "homepage": "https://cran.r-project.org/package=netseg",
+  "citation_key": "tool_netseg",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from the CRAN reference manual.",
+  "api_listing": {
+   "method": "documentation",
+   "source": "CRAN reference manual of netseg 1.0-3: help topics"
+  }
+ },
+ {
+  "id": "backbone",
+  "name": "backbone",
+  "language": "R",
+  "version_tested": "3.0.4",
+  "license": "GPL-3.0-only",
+  "homepage": "https://cran.r-project.org/package=backbone",
+  "citation_key": "tool_backbone",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from the CRAN reference manual.",
+  "api_listing": {
+   "method": "documentation",
+   "source": "CRAN reference manual of backbone 3.0.4: help topics"
+  }
+ },
+ {
+  "id": "signnet",
+  "name": "signnet",
+  "language": "R",
+  "version_tested": "",
+  "license": "MIT",
+  "homepage": "https://cran.r-project.org/package=signnet",
+  "citation_key": "tool_signnet",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from the documentation.",
+  "api_listing": null
+ },
+ {
+  "id": "graphlayouts",
+  "name": "graphlayouts",
+  "language": "R",
+  "version_tested": "1.2.5",
+  "license": "MIT",
+  "homepage": "https://cran.r-project.org/package=graphlayouts",
+  "citation_key": "tool_graphlayouts",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from the CRAN reference manual.",
+  "api_listing": {
+   "method": "documentation",
+   "source": "CRAN reference manual of graphlayouts 1.2.5: help topics"
+  }
+ },
+ {
+  "id": "missSBM",
+  "name": "missSBM",
+  "language": "R",
+  "version_tested": "1.1.0",
+  "license": "GPL-3.0-only",
+  "homepage": "https://cran.r-project.org/package=missSBM",
+  "citation_key": "tool_misssbm",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from the CRAN reference manual.",
+  "api_listing": {
+   "method": "documentation",
+   "source": "CRAN reference manual of missSBM 1.1.0: help topics"
+  }
+ },
+ {
+  "id": "goldfish",
+  "name": "goldfish",
+  "language": "R",
+  "version_tested": "1.6.12",
+  "license": "see package DESCRIPTION",
+  "homepage": "https://cran.r-project.org/package=goldfish",
+  "citation_key": "tool_goldfish",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from exported function help titles.",
+  "api_listing": {
+   "method": "introspection",
+   "source": "R package goldfish: exported functions and help titles"
+  }
+ },
+ {
+  "id": "gergm",
+  "name": "GERGM",
+  "language": "R",
+  "version_tested": "archived 2020-03",
+  "license": "not stated",
+  "homepage": "https://github.com/matthewjdenny/GERGM",
+  "citation_key": "tool_gergm",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from the manual pages of the archived package.",
+  "api_listing": {
+   "method": "documentation",
+   "source": "GERGM manual pages (matthewjdenny/GERGM, man/); the package was removed from CRAN"
+  }
+ },
+ {
+  "id": "pymnet",
+  "name": "pymnet",
+  "language": "Python",
+  "version_tested": "",
+  "license": "MIT",
+  "homepage": "https://pypi.org/project/pymnet/",
+  "citation_key": "nurmi2024pymnet",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from the documentation.",
+  "api_listing": null
+ },
+ {
+  "id": "multinet",
+  "name": "multinet",
+  "language": "R",
+  "version_tested": "",
+  "license": "see package DESCRIPTION",
+  "homepage": "https://cran.r-project.org/package=multinet",
+  "citation_key": "magnani2021analysis",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from the documentation.",
+  "api_listing": null
+ },
+ {
+  "id": "deepwalk",
+  "name": "DeepWalk",
+  "language": "Python",
+  "version_tested": "",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/phanein/deepwalk",
+  "citation_key": "tool_deepwalk",
+  "role": "documented-only",
+  "how_run": "Not run. Capabilities are taken from the README.",
+  "api_listing": {
+   "method": "documentation",
+   "source": "DeepWalk README (phanein/deepwalk): the command-line tool and its stages"
+  }
+ },
+ {
+  "id": "influencer",
+  "name": "influenceR",
+  "language": "R",
+  "version_tested": "0.1.5",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://cran.r-project.org/package=influenceR",
+  "citation_key": "tool_influencer",
+  "role": "checked",
+  "how_run": "Called from R on igraph objects.",
+  "api_listing": null
+ },
+ {
+  "id": "gapbs",
+  "name": "GAP Benchmark Suite",
+  "language": "C++",
+  "version_tested": "941462c7c42e",
+  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/sbeamer/gapbs",
+  "citation_key": "beamer2015gap",
+  "role": "benchmarked-only",
+  "how_run": "Compiled reference kernels run with the thread counts listed in the benchmark data.",
+  "api_listing": null
+ },
+ {
+  "id": "nx-parallel",
+  "name": "nx-parallel",
+  "language": "Python",
+  "version_tested": "",
+  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/networkx/nx-parallel",
+  "citation_key": "tool_nxparallel",
+  "role": "benchmarked-only",
+  "how_run": "NetworkX backend enabled by name; run with the thread counts listed in the benchmark data.",
+  "api_listing": null
+ },
+ {
+  "id": "definition",
+  "name": "Published definition",
+  "language": "Python (exact arithmetic where possible)",
+  "version_tested": "",
+  "license": null,
+  "homepage": null,
+  "citation_key": null,
+  "role": "reference",
+  "how_run": "Brute-force evaluation of the published definition on small graphs, with fractions, enumeration or pseudo-inverses where the quantity allows.",
+  "api_listing": null
+ }
+]
