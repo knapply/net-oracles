@@ -16,7 +16,7 @@ Family: [Layout](index.html). Subfamily: Embeddings. Concept id: `umap_weights`.
 
 UMAP weights and layout. Entries grouped here: Layout umap; Umap compute weights.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

@@ -16,7 +16,7 @@ Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `geometr
 
 Grid, random, circle and sphere layouts. Entries grouped here: Circle, tree and two-mode (barycenter) layouts; Grid layout; Random layout; Sphere layout.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

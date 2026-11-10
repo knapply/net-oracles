@@ -16,7 +16,7 @@ Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Con
 
 Time-projected network. Entries grouped here: Time Projected Network.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Time Projected Network {#cat_projected_time}
 

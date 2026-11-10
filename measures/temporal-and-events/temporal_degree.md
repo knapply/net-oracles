@@ -16,7 +16,7 @@ Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Con
 
 Temporal degree. Entries grouped here: Dynamic Degree; T Degree.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

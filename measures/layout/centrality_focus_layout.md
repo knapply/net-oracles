@@ -16,7 +16,7 @@ Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `central
 
 Backbone, focus and centrality layouts. Entries grouped here: Backbone, focus and centrality (concentric) layouts; Layout backbone; Layout centrality; Layout centrality group; Layout focus; Layout focus group.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

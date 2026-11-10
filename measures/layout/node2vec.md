@@ -16,7 +16,7 @@ Family: [Layout](index.html). Subfamily: Embeddings. Concept id: `node2vec`. 1 m
 
 Node2vec. Entries grouped here: Node2 Vec.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Node2 Vec {#cat_node2_vec}
 

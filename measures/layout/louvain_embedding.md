@@ -16,7 +16,7 @@ Family: [Layout](index.html). Subfamily: Embeddings. Concept id: `louvain_embedd
 
 Louvain embedding. Entries grouped here: Louvain Embedding.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Louvain Embedding {#cat_embedding_louvain}
 

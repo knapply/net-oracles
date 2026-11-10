@@ -16,7 +16,7 @@ Family: [Layout](index.html). Subfamily: Embeddings. Concept id: `walk_embedding
 
 Walk corpora and skip-gram embeddings (DeepWalk). Entries grouped here: Walk corpora and skip-gram embeddings (DeepWalk); Adjlist input; Deepwalk; Edgelist input; Mat input; Random walk corpus; and 2 more.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

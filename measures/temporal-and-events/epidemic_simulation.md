@@ -16,7 +16,7 @@ Family: [Temporal and events](index.html). Subfamily: Diffusion simulation. Conc
 
 Epidemic simulation (SIR, SEIR). Entries grouped here: Epidemic Simulation SEIR; Sir.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Variants {#concept-variants}
 

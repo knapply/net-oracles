@@ -1,0 +1,299 @@
+{
+ "family": "Layout",
+ "concepts": {
+  "louvain_embedding": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "node2vec": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "spectral_embedding": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "umap_weights": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "walk_embeddings": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "centrality_focus_layout": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "dynamic_layout": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "force_directed_layout": {
+   "status": "partial",
+   "note": "The Fruchterman-Reingold forces and the Kamada-Kawai energy are written from their papers. Davidson-Harel, DrL/OpenOrd, GEM, graphopt, LGL, multilevel, spring and the Gursoy-Atun layouts are named by the sources only; their variants have no entry.",
+   "notation": [
+    {
+     "symbol": "A",
+     "meaning": "frame area"
+    },
+    {
+     "symbol": "k",
+     "meaning": "optimal distance, \\(k=C\\sqrt{A/n}\\) with a constant \\(C\\)"
+    },
+    {
+     "symbol": "d",
+     "meaning": "Euclidean distance between two node positions"
+    },
+    {
+     "symbol": "t",
+     "meaning": "temperature: a maximum displacement per iteration that is cooled over the iterations"
+    },
+    {
+     "symbol": "X=(x_1,\\dots,x_n)",
+     "meaning": "node coordinates in \\(\\mathbb R^2\\) (or \\(\\mathbb R^3\\) for the three-dimensional layouts)"
+    },
+    {
+     "symbol": "d_{ij}",
+     "meaning": "graph distance between \\(i\\) and \\(j\\): hops, or the sum of edge lengths for weighted layouts; \\(\\infty\\) between components"
+    },
+    {
+     "symbol": "w_{ij}",
+     "meaning": "pair weight, \\(d_{ij}^{-2}\\) in the stress and Kamada-Kawai models"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Fruchterman-Reingold forces (Fruchterman and Reingold 1991)",
+     "latex": "f_a(d)=\\frac{d^2}{k}\\ \\text{(between adjacent nodes)},\\qquad f_r(d)=-\\frac{k^2}{d}\\ \\text{(between all pairs)}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Attraction along edges and repulsion between every pair; each iteration moves a node along the sum of its forces by at most \\(t\\), and \\(t\\) is cooled. The result depends on the initial (usually random) positions, so a seed fixes it."
+    },
+    {
+     "name": "Kamada-Kawai energy (Kamada and Kawai 1989)",
+     "latex": "E(X)=\\sum_{i<j}\\frac{K}{2\\,d_{ij}^{2}}\\bigl(\\|x_i-x_j\\|-L\\,d_{ij}\\bigr)^2",
+     "applies_to": [
+      "any",
+      "connected"
+     ],
+     "where": "Spring system with natural length proportional to the graph distance and spring constant inversely proportional to its square; defined for connected graphs (\\(d_{ij}<\\infty\\))."
+    }
+   ],
+   "variants": {
+    "layout_fruchterman_reingold": "The force model of the first formula, minimizing no explicit global energy; initial positions, number of iterations, cooling schedule and the constant \\(C\\) are free parameters of the procedure.",
+    "layout_kamada_kawai": "Minimizes the Kamada-Kawai energy of the second formula (equivalent to stress with its own scale), by the Newton-Raphson scheme of the paper or any other minimizer."
+   },
+   "edge_cases": [
+    {
+     "case": "disconnected",
+     "definition_gives": "Kamada-Kawai energy is not defined: \\(d_{ij}=\\infty\\) for pairs in different components. The Fruchterman-Reingold forces are defined for any graph, but nothing attracts different components to each other."
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "One node has no pair and no force: its position is the starting position."
+    },
+    {
+     "case": "ties",
+     "definition_gives": "Both procedures reach local minima of a non-convex objective; equal-energy layouts differ by rotation, reflection and translation."
+    }
+   ],
+   "references": [
+    "fruchterman1991graph",
+    "kamada1989algorithm"
+   ]
+  },
+  "geometric_layout": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "layered_layout": {
+   "status": "partial",
+   "note": "Only the Sugiyama barycenter ordering rule is written. Reingold-Tilford tree drawing and the two-layer bipartite greedy (barycenter, median) functions are named by the sources only; the layer assignment and crossing-reduction steps of the full method are not written.",
+   "notation": [
+    {
+     "symbol": "L_k",
+     "meaning": "the set of nodes in layer \\(k\\)"
+    },
+    {
+     "symbol": "\\pi_k(v)",
+     "meaning": "position of node \\(v\\) within layer \\(k\\)"
+    },
+    {
+     "symbol": "N_{k-1}(v)",
+     "meaning": "neighbours of \\(v\\) in layer \\(k-1\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Barycenter ordering (Sugiyama, Tagawa and Toda 1981)",
+     "latex": "\\operatorname{bary}(v)=\\frac{1}{|N_{k-1}(v)|}\\sum_{u\\in N_{k-1}(v)}\\pi_{k-1}(u),\\qquad \\text{sort }L_k\\text{ by }\\operatorname{bary}",
+     "applies_to": [
+      "any",
+      "directed"
+     ],
+     "where": "Within a layer, nodes are ordered by the mean position of their neighbours in the previous layer to reduce edge crossings; sweeps run down and up repeatedly. Defined for nodes with at least one neighbour in the adjacent layer; ties and such nodes need a rule not given by the formula."
+    }
+   ],
+   "variants": {
+    "layout_sugiyama": "The layered drawing whose crossing-reduction step uses the barycenter rule above (after layer assignment); ordering ties are broken by an unspecified rule."
+   },
+   "references": [
+    "sugiyama1981methods"
+   ]
+  },
+  "metromap_layout": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool function and no definition, and no primary paper was checked."
+  },
+  "pivot_mds_layout": {
+   "status": "name_only",
+   "note": "Documented by name only; the sources record the tool functions (pivot MDS) but the pivot-based formulas were not checked against the original paper."
+  },
+  "spectral_mds_layout": {
+   "status": "partial",
+   "note": "Classical multidimensional scaling is written (Torgerson 1952). The Laplacian-eigenvector (spectral) layout is named by the sources and its formula is not given here, so it has no variant entry.",
+   "notation": [
+    {
+     "symbol": "D^{(2)}",
+     "meaning": "matrix of squared graph distances \\(d_{ij}^2\\)"
+    },
+    {
+     "symbol": "J",
+     "meaning": "centering matrix \\(I-\\tfrac1n\\mathbf 1\\mathbf 1^{\\top}\\)"
+    },
+    {
+     "symbol": "B",
+     "meaning": "double-centered matrix"
+    },
+    {
+     "symbol": "\\lambda_k,v_k",
+     "meaning": "the largest eigenvalues of \\(B\\) and their unit eigenvectors"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Classical scaling (Torgerson 1952)",
+     "latex": "B=-\\tfrac12\\,J\\,D^{(2)}J,\\qquad x_i=\\bigl(\\sqrt{\\lambda_1}\\,v_1(i),\\ \\sqrt{\\lambda_2}\\,v_2(i)\\bigr)",
+     "applies_to": [
+      "any",
+      "connected"
+     ],
+     "where": "Coordinates are the leading eigenvector components of the double-centered squared distances, scaled by the square roots of the eigenvalues. Defined for connected graphs; negative or missing eigenvalues are dropped."
+    }
+   ],
+   "variants": {
+    "layout_mds": "Classical scaling of the graph distance matrix into two dimensions, as above."
+   },
+   "edge_cases": [
+    {
+     "case": "disconnected",
+     "definition_gives": "Not defined: \\(d_{ij}=\\infty\\) for pairs in different components."
+    }
+   ],
+   "references": [
+    "torgerson1952multidimensional"
+   ]
+  },
+  "stress_layout": {
+   "status": "partial",
+   "note": "The stress and Kamada-Kawai objectives and the optimal scaling are written. The constrained, three-dimensional and maximum-entropy variants and the sparse stress model are named in the sources only: their objectives and constraints are not written here, so their variants have no entry. The comparison builds the distances on the undirected skeleton of the input (loops dropped, parallel edges keep the smallest weight).",
+   "notation": [
+    {
+     "symbol": "X=(x_1,\\dots,x_n)",
+     "meaning": "node coordinates in \\(\\mathbb R^2\\) (or \\(\\mathbb R^3\\) for the three-dimensional layouts)"
+    },
+    {
+     "symbol": "d_{ij}",
+     "meaning": "graph distance between \\(i\\) and \\(j\\): hops, or the sum of edge lengths for weighted layouts; \\(\\infty\\) between components"
+    },
+    {
+     "symbol": "w_{ij}",
+     "meaning": "pair weight, \\(d_{ij}^{-2}\\) in the stress and Kamada-Kawai models"
+    },
+    {
+     "symbol": "\\|\\cdot\\|",
+     "meaning": "Euclidean norm"
+    },
+    {
+     "symbol": "\\alpha",
+     "meaning": "a uniform scale factor applied to the layout"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Stress (Kamada and Kawai 1989; Gansner, Koren and North 2005)",
+     "latex": "\\sigma(X)=\\sum_{i<j}w_{ij}\\bigl(\\|x_i-x_j\\|-d_{ij}\\bigr)^2,\\qquad w_{ij}=d_{ij}^{-2}",
+     "applies_to": [
+      "any",
+      "connected"
+     ],
+     "where": "The weighted squared mismatch between layout distance and graph distance. The Kamada-Kawai energy is the same sum with spring constant \\(k_{ij}=K/d_{ij}^2\\) and natural length \\(L\\,d_{ij}\\) (\\(K,L\\) constants), so the two minimizers coincide up to scale. The sum runs over pairs with finite \\(d_{ij}\\); layouts are determined up to rotation, reflection and translation."
+    },
+    {
+     "name": "Optimally scaled stress",
+     "latex": "\\sigma^\\ast(X)=\\min_{\\alpha>0}\\sigma(\\alpha X)=\\sum_{i<j}w_{ij}d_{ij}^2-\\frac{\\bigl(\\sum_{i<j}w_{ij}d_{ij}\\|x_i-x_j\\|\\bigr)^2}{\\sum_{i<j}w_{ij}\\|x_i-x_j\\|^2}",
+     "applies_to": [
+      "any",
+      "connected"
+     ],
+     "where": "Stress after the best uniform rescaling, which removes the arbitrary unit of the layout, so values of layouts produced with different scales are comparable. Needs at least one pair with \\(\\|x_i-x_j\\|>0\\)."
+    },
+    {
+     "name": "Stress majorization step (Gansner, Koren and North 2005)",
+     "latex": "x_i^{(t+1)}=\\frac{\\sum_{j\\ne i}w_{ij}\\Bigl(x_j^{(t)}+d_{ij}\\dfrac{x_i^{(t)}-x_j^{(t)}}{\\|x_i^{(t)}-x_j^{(t)}\\|}\\Bigr)}{\\sum_{j\\ne i}w_{ij}}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Localized update of one node with the others fixed; it never increases \\(\\sigma\\). The result depends on the starting coordinates, so a layout is reproducible only for a fixed start or seed."
+    }
+   ],
+   "variants": {
+    "layout_stress": "Minimizes the stress \\(\\sigma\\) (Kamada-Kawai energy) over all pairs by majorization or by direct minimization; the starting layout decides which local minimum is returned.",
+    "layout_stress_value": "The number \\(\\sigma(X)\\) of a given layout, with \\(w_{ij}=d_{ij}^{-2}\\) and distances in hops or by edge weights, over pairs inside one component.",
+    "layout_stress_quality": "The optimally scaled stress \\(\\sigma^\\ast(X)\\) of a layout, hop or weighted distances; set to 0 when the layout has fewer than three nodes."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "With fewer than three nodes the scaled stress is 0: one or two nodes can always be placed at the exact distance.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "disconnected",
+     "definition_gives": "Pairs in different components have \\(d_{ij}=\\infty\\) and \\(w_{ij}=0\\): they carry no term, so the stress is a sum over pairs inside components and does not constrain how components are placed relative to each other.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (two_triangles_isolate, gnp_und_sparse, multi_loops_und).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "weights",
+     "definition_gives": "Edge weights are read as lengths, \\(d_{ij}\\) is the weighted shortest-path length and the weighted stress uses \\(w_{ij}=d_{ij}^{-2}\\) of those lengths.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (weighted_und, weighted_dir, real_weights_und, real_weights_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "kamada1989algorithm",
+    "gansner2005graph",
+    "ortmann2017sparse"
+   ]
+  }
+ }
+}

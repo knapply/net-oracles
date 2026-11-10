@@ -16,7 +16,7 @@ Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `pivot_m
 
 Pivot MDS layout. Entries grouped here: Layout pmds; Pivot MDS.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool functions (pivot MDS) but the pivot-based formulas were not checked against the original paper.
 
 ## Variants {#concept-variants}
 

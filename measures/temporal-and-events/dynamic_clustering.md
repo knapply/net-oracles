@@ -16,7 +16,7 @@ Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Con
 
 Dynamic clustering coefficient. Entries grouped here: Dynamic Clustering Coefficient.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented by name only; the sources record the tool function and no definition, and no primary paper was checked.
 
 ## Dynamic Clustering Coefficient {#cat_clustering_coefficient_dynamic}
 
