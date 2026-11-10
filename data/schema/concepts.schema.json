@@ -1,0 +1,50 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "concepts.json",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "id",
+   "name",
+   "family",
+   "subfamily",
+   "definition",
+   "references"
+  ],
+  "properties": {
+   "id": {
+    "type": "string",
+    "pattern": "^[a-z][a-z0-9_]*$",
+    "description": "snake_case identifier; also the file name of the concept page."
+   },
+   "name": {
+    "type": "string",
+    "minLength": 1
+   },
+   "family": {
+    "type": "string",
+    "minLength": 1,
+    "description": "Browsing family (page measures/<family-slug>/)."
+   },
+   "subfamily": {
+    "type": "string",
+    "minLength": 1,
+    "description": "Section of the family overview page that lists this concept."
+   },
+   "definition": {
+    "type": "string",
+    "minLength": 1,
+    "description": "What the concept computes, taken from its measures' definitions; for concepts whose measures carry no definition beyond their name, a list of the grouped entries."
+   },
+   "references": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    },
+    "description": "BibTeX keys: the union of the references of the concept's measures."
+   }
+  }
+ }
+}

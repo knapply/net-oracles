@@ -29,7 +29,7 @@ Not run. Capabilities are taken from the documentation.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Signed and multilayer | [Multilayer networks (node-layers, supra-adjacency)](../measures/multilayer.html) | · reported in docs |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Signed and multilayer | Multilayer networks | [Multilayer networks](../measures/signed-and-multilayer/multilayer.html) | [Multilayer networks (node-layers, supra-adjacency)](../measures/signed-and-multilayer/multilayer.html#multilayer) | · reported in docs |  |
 {% endraw %}

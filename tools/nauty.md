@@ -29,10 +29,10 @@ Called through pynauty on graph adjacency dictionaries.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Graph theory and combinatorics | [Vf2pp](../measures/vf2pp.html) | ✓ checked, agrees |  |
-| Roles and positions | [Automorphic equivalence](../measures/automorphic_equivalence.html) | ✓ checked, agrees |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Graph theory and combinatorics | Isomorphism and subgraph matching | [Graph isomorphism](../measures/graph-theory-and-combinatorics/graph_isomorphism.html) | [Vf2pp](../measures/graph-theory-and-combinatorics/graph_isomorphism.html#vf2pp) | ✓ checked, agrees |  |
+| Roles and positions | Equivalence and clustering | [Automorphic equivalence](../measures/roles-and-positions/automorphic_equivalence.html) | [Automorphic equivalence](../measures/roles-and-positions/automorphic_equivalence.html#automorphic_equivalence) | ✓ checked, agrees |  |
 
 ## Findings
 

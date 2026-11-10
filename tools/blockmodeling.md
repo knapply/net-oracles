@@ -33,13 +33,13 @@ Capabilities listed by introspection of R package blockmodeling: exported functi
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Graph theory and combinatorics | [Crit Fun C](../measures/cat_c_crit_fun.html) | · reported in docs | `critFunC` |
-| Roles and positions | [Block density](../measures/block_density.html) | ✓ checked, agrees |  |
-| Roles and positions | [Direct blockmodel search (structural, regular, generalised block types)](../measures/blockmodel_search.html) | · reported in docs | `optParC; optRandomParC` |
-| Roles and positions | [Regular equivalence](../measures/regular_equivalence.html) | · reported in docs | `REGD.for; REGD.ne.for; REGD.ow.for; REGE; REGE.FC; REGE.FC.ow; REGE.for; REGE.ne.for; REGE.nm.diag.for; REGE.nm.for; REGE.nm.ne.for; REGE.ow` |
-| Roles and positions | [Structural equivalence](../measures/structural_equivalence.html) | ≠ checked, differs by convention | `sedist` |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Roles and positions | Blockmodels | [Block density](../measures/roles-and-positions/block_density.html) | [Block density](../measures/roles-and-positions/block_density.html#block_density) | ✓ checked, agrees |  |
+| Roles and positions | Blockmodels | [Blockmodel criterion function](../measures/roles-and-positions/blockmodel_criterion.html) | [Crit Fun C](../measures/roles-and-positions/blockmodel_criterion.html#cat_c_crit_fun) | · reported in docs | `critFunC` |
+| Roles and positions | Blockmodels | [Direct blockmodel search](../measures/roles-and-positions/blockmodel_search.html) | [Direct blockmodel search (structural, regular, generalised block types)](../measures/roles-and-positions/blockmodel_search.html#blockmodel_search) | · reported in docs | `optParC; optRandomParC` |
+| Roles and positions | Equivalence and clustering | [Regular equivalence (REGE, CATREGE)](../measures/roles-and-positions/regular_equivalence.html) | [Regular equivalence](../measures/roles-and-positions/regular_equivalence.html#regular_equivalence) | · reported in docs | `REGD.for; REGD.ne.for; REGD.ow.for; REGE; REGE.FC; REGE.FC.ow; REGE.for; REGE.ne.for; REGE.nm.diag.for; REGE.nm.for; REGE.nm.ne.for; REGE.ow` |
+| Roles and positions | Equivalence and clustering | [Structural equivalence](../measures/roles-and-positions/structural_equivalence.html) | [Structural equivalence](../measures/roles-and-positions/structural_equivalence.html#structural_equivalence) | ≠ checked, differs by convention | `sedist` |
 
 ## Findings
 

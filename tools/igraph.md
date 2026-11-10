@@ -34,220 +34,220 @@ Capabilities listed by introspection of R package igraph: exported functions and
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Centrality | [Betweenness](../measures/betweenness.html) | ≠ checked, differs by convention | `betweenness` |
-| Centrality | [Bonacich](../measures/bonacich.html) | ✓ checked, agrees | `bonpow; power_centrality` |
-| Centrality | [Closeness](../measures/closeness.html) | ✓ checked, agrees | `closeness` |
-| Centrality | [Communicability](../measures/cx_communicability.html) | · reported in docs | `subgraph_centrality` |
-| Centrality | [Edge betweenness](../measures/edge_betweenness.html) | ✓ checked, agrees | `edge_betweenness` |
-| Centrality | [Eigenvector](../measures/eigenvector.html) | ∅ checked, no value on some inputs | `eigen_centrality; evcent` |
-| Centrality | [Harmonic](../measures/harmonic.html) | ✓ checked, agrees | `harmonic_centrality` |
-| Centrality | [Hits](../measures/hits.html) | ∅ checked, no value on some inputs | `authority_score; hits_scores; hub_score` |
-| Centrality | [Katz](../measures/katz.html) | ∅ checked, no value on some inputs | `alpha_centrality` |
-| Centrality | [Pagerank](../measures/pagerank.html) | ∅ checked, no value on some inputs | `page_rank` |
-| Centrality | [Reach](../measures/reach.html) | ✓ checked, agrees | `count_reachable` |
-| Centrality | [Strength](../measures/strength.html) | ∅ checked, no value on some inputs | `strength` |
-| Centrality | [Theoretical maximum of centralization](../measures/centralization_tmax.html) | · reported in docs | `centr_betw_tmax; centr_clo_tmax; centr_degree_tmax; centr_eigen_tmax` |
-| Cohesion and subgroups | [Clique number](../measures/clique_number.html) | ✓ checked, agrees | `clique_num; weighted_clique_num` |
-| Cohesion and subgroups | [Cocitation and bibliographic coupling](../measures/cocitation.html) | · reported in docs | `bibcoupling; cocitation` |
-| Cohesion and subgroups | [Cohesive blocks](../measures/cat_blocks_cohesive.html) | · reported in docs | `cohesive_blocks` |
-| Cohesion and subgroups | [Coreness](../measures/coreness.html) | ✓ checked, agrees | `coreness` |
-| Cohesion and subgroups | [Count max cliques](../measures/cat_clique_count_max.html) | · reported in docs | `count_max_cliques` |
-| Cohesion and subgroups | [Graphlet basis and projection](../measures/graphlets.html) | · reported in docs | `graphlet_basis; graphlet_proj` |
-| Cohesion and subgroups | [Is clique](../measures/cat_clique_is.html) | · reported in docs | `is_clique` |
-| Cohesion and subgroups | [Lambda connectivity](../measures/lambda_connectivity.html) | ✓ checked, agrees |  |
-| Cohesion and subgroups | [Largest weighted cliques](../measures/cat_clique_largest_weighted.html) | · reported in docs | `largest_weighted_cliques` |
-| Cohesion and subgroups | [Max cliques](../measures/max_cliques.html) | ✓ checked, agrees | `clique_size_counts; cliques; largest_cliques; max_cliques` |
-| Cohesion and subgroups | [Motif census](../measures/motif_census.html) | · reported in docs | `count_motifs; graphlets; motifs; sample_motifs` |
-| Cohesion and subgroups | [Weighted cliques](../measures/cat_clique_weighted.html) | · reported in docs | `weighted_cliques` |
-| Communities | [Compare partitions](../measures/compare_partitions.html) | ≠ checked, differs by convention | `compare; split_join_distance` |
-| Communities | [Fast greedy](../measures/fast_greedy.html) | ≠ checked, differs by convention | `cluster_fast_greedy` |
-| Communities | [Fluid communities](../measures/fluid_communities.html) | ✓ checked, agrees | `cluster_fluid_communities` |
-| Communities | [Girvan newman](../measures/girvan_newman.html) | ✓ checked, agrees | `cluster_edge_betweenness` |
-| Communities | [Girvan newman cut](../measures/girvan_newman_cut.html) | ✓ checked, agrees |  |
-| Communities | [Infomap](../measures/infomap.html) | ∅ checked, no value on some inputs | `cluster_infomap` |
-| Communities | [Label propagation](../measures/label_propagation.html) | ∅ checked, no value on some inputs | `cluster_label_prop` |
-| Communities | [Leading eigen](../measures/leading_eigen.html) | ✓ checked, agrees | `cluster_leading_eigen` |
-| Communities | [Leiden](../measures/leiden.html) | ∅ checked, no value on some inputs | `cluster_leiden` |
-| Communities | [Louvain modularity](../measures/louvain_modularity.html) | · reported in docs | `cluster_louvain` |
-| Communities | [Louvain quality](../measures/louvain_quality.html) | ≠ checked, differs by convention |  |
-| Communities | [Modularity](../measures/modularity.html) | ✓ checked, agrees | `modularity` |
-| Communities | [Optimal modularity](../measures/optimal_modularity.html) | ✓ checked, agrees | `cluster_optimal` |
-| Communities | [Spinglass](../measures/spinglass.html) | ✓ checked, agrees | `cluster_spinglass` |
-| Communities | [Voronoi](../measures/voronoi.html) | ≠ checked, differs by convention |  |
-| Communities | [Walktrap](../measures/walktrap.html) | ≠ checked, differs by convention | `cluster_walktrap` |
-| Components and connectivity | [Bicomponents](../measures/bicomponents.html) | ✓ checked, agrees | `biconnected_components` |
-| Components and connectivity | [Bridges](../measures/bridges.html) | ∅ checked, no value on some inputs | `bridges` |
-| Components and connectivity | [Cohesive blocking (Moody-White)](../measures/cohesive_blocking.html) | · reported in docs |  |
-| Components and connectivity | [Connectivity](../measures/connectivity.html) | · reported in docs | `adhesion; cohesion; edge_connectivity; vertex_connectivity` |
-| Components and connectivity | [Count components](../measures/cat_component_count.html) | · reported in docs | `count_components` |
-| Components and connectivity | [Cut points](../measures/cut_points.html) | ∅ checked, no value on some inputs | `articulation_points` |
-| Components and connectivity | [Disjoint paths](../measures/disjoint_paths.html) | · reported in docs | `edge_disjoint_paths; vertex_disjoint_paths` |
-| Components and connectivity | [Fragmentation](../measures/fragmentation.html) | ∅ checked, no value on some inputs |  |
-| Components and connectivity | [Max flow](../measures/max_flow.html) | · reported in docs | `max_flow` |
-| Components and connectivity | [Min cut](../measures/min_cut.html) | · reported in docs | `min_cut` |
-| Components and connectivity | [Node cut](../measures/node_cut.html) | · reported in docs | `is_min_separator; is_separator; min_separators; min_st_separators; stCuts; st_cuts; st_min_cuts` |
-| Components and connectivity | [St Mincuts](../measures/cat_mincuts_st.html) | · reported in docs | `stMincuts` |
-| Data transforms | [Graph complement](../measures/op_complement.html) | · reported in docs | `complementer` |
-| Data transforms | [Line graph](../measures/line_graph.html) | · reported in docs | `line_graph; make_line_graph` |
-| Data transforms | [Op compose](../measures/op_compose.html) | · reported in docs | `compose` |
-| Data transforms | [Op difference](../measures/op_difference.html) | · reported in docs | `difference` |
-| Data transforms | [Op intersection](../measures/op_intersection.html) | · reported in docs | `intersection` |
-| Data transforms | [Op union](../measures/op_union.html) | · reported in docs | `disjoint_union; union` |
-| Descriptive statistics | [Average clustering](../measures/average_clustering.html) | ∅ checked, no value on some inputs |  |
-| Descriptive statistics | [Centralization / betweenness](../measures/centralization-betweenness.html) | ✓ checked, agrees | `centr_betw` |
-| Descriptive statistics | [Centralization / closeness](../measures/centralization-closeness.html) | ✓ checked, agrees | `centr_clo` |
-| Descriptive statistics | [Centralization / degree](../measures/centralization-degree.html) | ∅ checked, no value on some inputs | `centr_degree` |
-| Descriptive statistics | [Centralization eigenvector](../measures/centralization_eigenvector.html) | ≠ checked, differs by convention | `centr_eigen` |
-| Descriptive statistics | [Clustering](../measures/clustering.html) | ∅ checked, no value on some inputs |  |
-| Descriptive statistics | [Compactness](../measures/compactness.html) | ✓ checked, agrees |  |
-| Descriptive statistics | [Components](../measures/components.html) | ∅ checked, no value on some inputs | `clusters; component_distribution; components; decompose; is_biconnected; is_connected; largest_component; subcomponent` |
-| Descriptive statistics | [Degree](../measures/degree.html) | ∅ checked, no value on some inputs | `degree; degree_distribution` |
-| Descriptive statistics | [Density](../measures/density.html) | ∅ checked, no value on some inputs | `edge_density` |
-| Descriptive statistics | [Dyad census (mutual, asymmetric, null)](../measures/dyad_census.html) | · reported in docs | `dyad_census` |
-| Descriptive statistics | [Ego size](../measures/ego_size.html) | ✓ checked, agrees | `ego_size` |
-| Descriptive statistics | [Knn](../measures/cat_knn.html) | · reported in docs | `knn` |
-| Descriptive statistics | [Reciprocity](../measures/reciprocity.html) | ∅ checked, no value on some inputs | `reciprocity` |
-| Descriptive statistics | [Small world observed](../measures/small_world_observed.html) | ✓ checked, agrees |  |
-| Descriptive statistics | [Transitivity](../measures/transitivity.html) | ∅ checked, no value on some inputs | `transitivity` |
-| Descriptive statistics | [Triad census](../measures/triad_census.html) | ∅ checked, no value on some inputs | `triad_census` |
-| Descriptive statistics | [Triangles](../measures/nxo_triangles.html) | · reported in docs | `count_triangles; triangles` |
-| Generators and rewiring | [Bipartite degree-sequence realization](../measures/gen_realize_bipartite.html) | · reported in docs | `realize_bipartite_degseq` |
-| Generators and rewiring | [Chordal ring generator](../measures/gen_chordal_ring.html) | · reported in docs | `chordal_ring; make_chordal_ring` |
-| Generators and rewiring | [Chung-Lu (expected degree) generator](../measures/gen_chung_lu.html) | · reported in docs | `chung_lu; sample_chung_lu` |
-| Generators and rewiring | [Circulant graph generator](../measures/gen_circulant.html) | · reported in docs | `circulant; make_circulant` |
-| Generators and rewiring | [Citation-type growth generators](../measures/gen_citation.html) | · reported in docs | `cit_cit_types; cit_types; full_citation_graph; last_cit; make_full_citation_graph; sample_cit_cit_types; sample_cit_types; sample_last_cit` |
-| Generators and rewiring | [Complete multipartite graph generator](../measures/gen_complete_multipartite.html) | · reported in docs | `make_full_multipartite` |
-| Generators and rewiring | [Configuration model](../measures/gen_configuration.html) | · reported in docs | `sample_degseq` |
-| Generators and rewiring | [Correlated and bipartite random graph generators](../measures/gen_correlated_bipartite.html) | · reported in docs | `sample_bipartite_gnm; sample_bipartite_gnp; sample_correlated_gnp; sample_correlated_gnp_pair` |
-| Generators and rewiring | [De Bruijn graph generator](../measures/gen_de_bruijn.html) | · reported in docs | `de_bruijn_graph; make_de_bruijn_graph` |
-| Generators and rewiring | [Deterministic generators](../measures/deterministic_generators.html) | · reported in docs | `empty_graph; make_empty_graph; make_full_bipartite_graph; make_full_graph; make_ring; make_star; make_tree; make_wheel; ring; star; tree; wheel` |
-| Generators and rewiring | [Deterministic realisation of a degree sequence](../measures/gen_degree_realization.html) | · reported in docs | `realize_degseq` |
-| Generators and rewiring | [Forest fire generator](../measures/gen_forest_fire.html) | · reported in docs | `sample_forestfire` |
-| Generators and rewiring | [Full bipartite graph](../measures/cat_bipartite_full.html) | · reported in docs | `full_bipartite_graph` |
-| Generators and rewiring | [Full graph](../measures/cat_full.html) | · reported in docs | `full_graph` |
-| Generators and rewiring | [Full multipartite](../measures/cat_full_multipartite.html) | · reported in docs | `full_multipartite` |
-| Generators and rewiring | [G(n, m) random graph](../measures/gen_gnm.html) | · reported in docs | `sample_gnm` |
-| Generators and rewiring | [G(n, p) random graph](../measures/gen_gnp.html) | · reported in docs | `sample_gnp` |
-| Generators and rewiring | [Gnm](../measures/cat_gnm.html) | · reported in docs | `gnm` |
-| Generators and rewiring | [Gnp](../measures/cat_gnp.html) | · reported in docs | `gnp` |
-| Generators and rewiring | [Growing random graph generator](../measures/gen_growing.html) | · reported in docs | `growing; sample_growing` |
-| Generators and rewiring | [Is complete](../measures/cat_complete_is.html) | · reported in docs | `is_complete` |
-| Generators and rewiring | [Kautz graph generator](../measures/gen_kautz.html) | · reported in docs | `kautz_graph; make_kautz_graph` |
-| Generators and rewiring | [Latent-space generators (dot product, sphere, islands)](../measures/gen_latent_space.html) | · reported in docs | `dot_product; sample_dirichlet; sample_dot_product; sample_islands; sample_sphere_surface; sample_sphere_volume` |
-| Generators and rewiring | [Lattice generator](../measures/gen_lattice.html) | · reported in docs | `lattice; make_lattice` |
-| Generators and rewiring | [Preference (types) random graph generator](../measures/gen_preference.html) | · reported in docs | `asym_pref; pref; sample_asym_pref; sample_pref` |
-| Generators and rewiring | [Preferential attachment generator](../measures/gen_preferential.html) | · reported in docs | `sample_pa; sample_pa_age` |
-| Generators and rewiring | [Random bipartite graph generator](../measures/gen_random_bipartite.html) | · reported in docs | `bipartite_gnm; bipartite_gnp; sample_bipartite` |
-| Generators and rewiring | [Random geometric graph generator](../measures/gen_geometric.html) | · reported in docs | `grg; sample_grg` |
-| Generators and rewiring | [Random regular graph generator](../measures/gen_regular.html) | · reported in docs | `sample_k_regular` |
-| Generators and rewiring | [Random tree generator](../measures/gen_random_tree.html) | · reported in docs | `sample_tree` |
-| Generators and rewiring | [Sample seq](../measures/cat_sample_seq.html) | · reported in docs | `sample_seq` |
-| Generators and rewiring | [Small-world generator](../measures/gen_small_world.html) | · reported in docs | `sample_smallworld; smallworld` |
-| Generators and rewiring | [Static fitness and static power-law generators](../measures/gen_static_fitness.html) | · reported in docs | `sample_fitness; sample_fitness_pl` |
-| Generators and rewiring | [Stochastic block model generator](../measures/gen_sbm.html) | · reported in docs | `hierarchical_sbm; sample_hierarchical_sbm; sample_sbm; sbm` |
-| Generators and rewiring | [Swap contract](../measures/swap_contract.html) | · reported in docs | `rewire` |
-| Generators and rewiring | [Trait-based (Callaway) growth generator](../measures/gen_traits.html) | · reported in docs | `sample_traits; sample_traits_callaway; traits; traits_callaway` |
-| Generators and rewiring | [Turan graph generator](../measures/gen_turan.html) | · reported in docs | `make_turan; turan` |
-| Graph theory and combinatorics | [Automorphism group, count and canonical form](../measures/automorphisms.html) | · reported in docs | `automorphism_group; automorphisms; canonical_permutation; count_automorphisms` |
-| Graph theory and combinatorics | [Check matching](../measures/check_matching.html) | · reported in docs | `is_matching; is_max_matching` |
-| Graph theory and combinatorics | [Contracted nodes](../measures/nxs_contracted_nodes.html) | · reported in docs | `contract` |
-| Graph theory and combinatorics | [Degseq](../measures/cat_degseq.html) | · reported in docs | `degseq` |
-| Graph theory and combinatorics | [Diversity](../measures/cat_diversity.html) | · reported in docs | `diversity` |
-| Graph theory and combinatorics | [Euler](../measures/nxs_euler.html) | · reported in docs | `eulerian_cycle; eulerian_path; has_eulerian_cycle; has_eulerian_path` |
-| Graph theory and combinatorics | [Farthest vertices](../measures/cat_farthest.html) | · reported in docs | `farthest_vertices` |
-| Graph theory and combinatorics | [Feedback arc and vertex sets](../measures/feedback_sets.html) | · reported in docs | `feedback_arc_set; feedback_vertex_set` |
-| Graph theory and combinatorics | [Find cycle](../measures/find_cycle.html) | · reported in docs | `find_cycle` |
-| Graph theory and combinatorics | [Forest flags](../measures/nxs_forest_flags.html) | · reported in docs | `is_forest; is_tree` |
-| Graph theory and combinatorics | [From prufer](../measures/nxs_from_prufer.html) | · reported in docs | `make_from_prufer` |
-| Graph theory and combinatorics | [Girth](../measures/girth.html) | · reported in docs | `girth` |
-| Graph theory and combinatorics | [Greedy color](../measures/greedy_color.html) | · reported in docs | `greedy_vertex_coloring` |
-| Graph theory and combinatorics | [Is degseq](../measures/cat_degseq_is.html) | · reported in docs | `is_degseq` |
-| Graph theory and combinatorics | [Is graphical](../measures/cat_graphical_is.html) | · reported in docs | `is_graphical` |
-| Graph theory and combinatorics | [Is hierarchical](../measures/cat_hierarchical_is.html) | · reported in docs | `is_hierarchical` |
-| Graph theory and combinatorics | [Is ivs](../measures/cat_is_ivs.html) | · reported in docs | `is_ivs` |
-| Graph theory and combinatorics | [Link prediction](../measures/link_prediction.html) | · reported in docs | `similarity` |
-| Graph theory and combinatorics | [Local scan](../measures/cat_local_scan.html) | · reported in docs | `local_scan` |
-| Graph theory and combinatorics | [Loop and multi-edge detection](../measures/multi_loop_detection.html) | · reported in docs | `any_loop; any_multiple; count_loops; count_multiple; is_simple; which_loop; which_multiple; which_mutual` |
-| Graph theory and combinatorics | [Match vertices](../measures/cat_match.html) | · reported in docs | `match_vertices` |
-| Graph theory and combinatorics | [Maxcohesion](../measures/cat_maxcohesion.html) | · reported in docs | `maxcohesion` |
-| Graph theory and combinatorics | [Mis](../measures/mis.html) | · reported in docs | `independence_number; ivs; largest_ivs; max_ivs; maximal_ivs` |
-| Graph theory and combinatorics | [Pa](../measures/cat_pa.html) | · reported in docs | `pa` |
-| Graph theory and combinatorics | [Pa age](../measures/cat_age_pa.html) | · reported in docs | `pa_age` |
-| Graph theory and combinatorics | [Scan stat](../measures/cat_scan_stat.html) | · reported in docs | `scan_stat` |
-| Graph theory and combinatorics | [Simple cycles](../measures/simple_cycles.html) | · reported in docs | `simple_cycles` |
-| Graph theory and combinatorics | [Sir](../measures/cat_sir.html) | · reported in docs | `sir` |
-| Graph theory and combinatorics | [St chordal](../measures/st_chordal.html) | · reported in docs | `is_chordal` |
-| Graph theory and combinatorics | [Vf2pp](../measures/vf2pp.html) | · reported in docs | `count_isomorphisms; count_subgraph_isomorphisms; is_isomorphic_to; is_subgraph_isomorphic_to; isomorphism_class; isomorphisms; subgraph_isomorphisms` |
-| Graph theory and combinatorics | [Voronoi cells](../measures/cat_cells_voronoi.html) | · reported in docs | `voronoi_cells` |
-| Input and output | [Extra file formats: ncol, lgl, dimacs, graphdb, adjacency list](../measures/io_text_formats.html) | · reported in docs |  |
-| Input and output | [GML read and write](../measures/io_gml.html) | · reported in docs |  |
-| Input and output | [GraphML read and write](../measures/io_graphml.html) | · reported in docs |  |
-| Input and output | [Pajek .net read and write](../measures/io_pajek.html) | · reported in docs |  |
-| Layout | [Circle, tree and two-mode (barycenter) layouts](../measures/layout_simple.html) | · reported in docs | `layout_as_bipartite; layout_as_star; layout_as_tree; layout_in_circle` |
-| Layout | [Davidson-Harel layout](../measures/layout_dh.html) | · reported in docs | `layout_with_dh` |
-| Layout | [DrL (OpenOrd) layout](../measures/layout_drl.html) | · reported in docs | `layout_with_drl` |
-| Layout | [Fruchterman-Reingold layout](../measures/layout_fruchterman_reingold.html) | · reported in docs | `layout_nicely; layout_with_fr` |
-| Layout | [GEM layout](../measures/layout_gem.html) | · reported in docs | `layout_with_gem` |
-| Layout | [Graphopt layout](../measures/layout_graphopt.html) | · reported in docs | `layout_with_graphopt` |
-| Layout | [Grid layout](../measures/layout_grid.html) | · reported in docs | `layout_on_grid` |
-| Layout | [Kamada-Kawai layout](../measures/layout_kamada_kawai.html) | · reported in docs | `layout_with_kk` |
-| Layout | [Large graph layout (LGL)](../measures/layout_lgl.html) | · reported in docs | `layout_with_lgl` |
-| Layout | [Multidimensional scaling layout](../measures/layout_mds.html) | · reported in docs | `layout_with_mds` |
-| Layout | [Random layout](../measures/layout_random.html) | · reported in docs | `layout_randomly` |
-| Layout | [Sphere layout](../measures/layout_sphere.html) | · reported in docs | `layout_on_sphere` |
-| Layout | [Sugiyama layered layout](../measures/layout_sugiyama.html) | · reported in docs | `layout_with_sugiyama` |
-| Matrices and spectra | [Adjacency](../measures/gm_adjacency.html) | · reported in docs | `as_adjacency_matrix` |
-| Matrices and spectra | [Gm laplacian](../measures/gm_laplacian.html) | · reported in docs | `laplacian_matrix` |
-| Matrices and spectra | [Gm modularity](../measures/gm_modularity.html) | · reported in docs | `modularity_matrix` |
-| Matrices and spectra | [Graph spectrum (eigenvalues of a graph matrix)](../measures/graph_spectrum.html) | · reported in docs | `embed_adjacency_matrix; embed_laplacian_matrix; spectrum` |
-| Matrices and spectra | [Incidence](../measures/gm_incidence.html) | · reported in docs | `as_biadjacency_matrix; as_incidence_matrix` |
-| Matrices and spectra | [Stochastic matrix](../measures/cat_matrix_stochastic.html) | · reported in docs | `stochastic_matrix` |
-| Mixing and assortativity | [Assortativity degree](../measures/assortativity_degree.html) | ∅ checked, no value on some inputs |  |
-| Mixing and assortativity | [Assortativity nominal](../measures/assortativity_nominal.html) | ∅ checked, no value on some inputs |  |
-| Mixing and assortativity | [Assortativity values](../measures/assortativity_values.html) | ∅ checked, no value on some inputs | `assortativity; assortativity_degree; assortativity_nominal` |
-| Paths and distances | [Center](../measures/dm_center.html) | · reported in docs | `graph_center` |
-| Paths and distances | [Diameter](../measures/diameter.html) | ✓ checked, agrees | `diameter; get_diameter` |
-| Paths and distances | [Distances](../measures/distances.html) | ✓ checked, agrees | `distances` |
-| Paths and distances | [Eccentricity](../measures/eccentricity.html) | ✓ checked, agrees | `eccentricity` |
-| Paths and distances | [Global and local efficiency](../measures/efficiency_global.html) | · reported in docs | `average_local_efficiency; global_efficiency; local_efficiency` |
-| Paths and distances | [Mean distance](../measures/mean_distance.html) | ✓ checked, agrees | `mean_distance` |
-| Paths and distances | [Paths all pairs](../measures/paths_all_pairs.html) | · reported in docs | `distance_table` |
-| Paths and distances | [Paths all shortest](../measures/paths_all_shortest.html) | · reported in docs | `all_shortest_paths` |
-| Paths and distances | [Paths k shortest](../measures/paths_k_shortest.html) | · reported in docs | `k_shortest_paths` |
-| Paths and distances | [Paths simple](../measures/paths_simple.html) | · reported in docs | `all_simple_paths` |
-| Paths and distances | [Paths sssp](../measures/paths_sssp.html) | · reported in docs | `shortest_paths` |
-| Paths and distances | [Radius](../measures/radius.html) | ✓ checked, agrees | `radius` |
-| Paths and distances | [Reachability](../measures/reachability.html) | ✓ checked, agrees |  |
-| Roles and positions | [Constraint](../measures/constraint.html) | ✓ checked, agrees | `constraint` |
-| Roles and positions | [Hierarchy](../measures/hierarchy.html) | · reported in docs | `hierarchy` |
-| Statistical fitting | [Hierarchical random graph (fit, sample, predict)](../measures/hrg.html) | · reported in docs | `fit_hrg; hrg; hrg_tree; predict_edges; sample_hrg` |
-| Statistical fitting | [Power-law fit of a degree distribution](../measures/power_law_fit.html) | · reported in docs | `fit_power_law` |
-| Traversal, trees and DAGs | [Bfs edges](../measures/trav_bfs_edges.html) | · reported in docs | `bfs` |
-| Traversal, trees and DAGs | [Closure](../measures/closure.html) | · reported in docs | `transitive_closure` |
-| Traversal, trees and DAGs | [Consensus tree](../measures/cat_consensus_tree.html) | · reported in docs | `consensus_tree` |
-| Traversal, trees and DAGs | [Edge dfs](../measures/trav_edge_dfs.html) | · reported in docs | `dfs` |
-| Traversal, trees and DAGs | [Idom](../measures/idom.html) | · reported in docs | `dominator_tree` |
-| Traversal, trees and DAGs | [Is dag](../measures/is_dag.html) | · reported in docs | `is_acyclic; is_dag` |
-| Traversal, trees and DAGs | [Random spanning tree](../measures/random_spanning_tree.html) | · reported in docs | `sample_spanning_tree` |
-| Traversal, trees and DAGs | [Random walks](../measures/random_walk.html) | · reported in docs | `random_edge_walk; random_walk` |
-| Traversal, trees and DAGs | [Spanning tree](../measures/spanning_tree.html) | · reported in docs | `mst` |
-| Traversal, trees and DAGs | [Topological sort](../measures/topological_sort.html) | · reported in docs | `topo_sort` |
-| Traversal, trees and DAGs | [Unfold tree](../measures/cat_tree_unfold.html) | · reported in docs | `unfold_tree` |
-| Two-mode and bipartite | [Bipartite](../measures/cat_bipartite.html) | · reported in docs | `bipartite` |
-| Two-mode and bipartite | [Bipartite color](../measures/bipartite_color.html) | · reported in docs | `bipartite_mapping; is_bipartite` |
-| Two-mode and bipartite | [Ego members](../measures/ego_members.html) | ✓ checked, agrees | `ego; make_ego_graph` |
-| Two-mode and bipartite | [Ego\_summary / betweenness](../measures/ego_summary-betweenness.html) | ✓ checked, agrees |  |
-| Two-mode and bipartite | [Ego\_summary / components](../measures/ego_summary-components.html) | ✓ checked, agrees |  |
-| Two-mode and bipartite | [Ego\_summary / density](../measures/ego_summary-density.html) | ✓ checked, agrees |  |
-| Two-mode and bipartite | [Ego\_summary / ties](../measures/ego_summary-ties.html) | ✓ checked, agrees |  |
-| Two-mode and bipartite | [Hopcroft karp](../measures/hopcroft_karp.html) | · reported in docs | `max_bipartite_match` |
-| Two-mode and bipartite | [Project](../measures/project.html) | ∅ checked, no value on some inputs | `bipartite_projection; bipartite_projection_size` |
-| Two-mode and bipartite | [Twomode / betweenness](../measures/twomode-betweenness.html) | ∅ checked, no value on some inputs |  |
-| Two-mode and bipartite | [Twomode / closeness](../measures/twomode-closeness.html) | ∅ checked, no value on some inputs |  |
-| Two-mode and bipartite | [Twomode / degree](../measures/twomode-degree.html) | ∅ checked, no value on some inputs |  |
-| Two-mode and bipartite | [Twomode / eigenvector](../measures/twomode-eigenvector.html) | ✓ checked, agrees |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Centrality | Betweenness, load and flow | [Betweenness](../measures/centrality/betweenness.html) | [Betweenness](../measures/centrality/betweenness.html#betweenness) | ≠ checked, differs by convention | `betweenness` |
+| Centrality | Betweenness, load and flow | [Betweenness](../measures/centrality/betweenness.html) | [Twomode / betweenness](../measures/centrality/betweenness.html#twomode-betweenness) | ∅ checked, no value on some inputs |  |
+| Centrality | Betweenness, load and flow | [Edge betweenness](../measures/centrality/edge_betweenness.html) | [Edge betweenness](../measures/centrality/edge_betweenness.html#edge_betweenness) | ✓ checked, agrees | `edge_betweenness` |
+| Centrality | Centralization and tables | [Centralization](../measures/centrality/centralization.html) | [Centralization / betweenness](../measures/centrality/centralization.html#centralization-betweenness) | ✓ checked, agrees | `centr_betw` |
+| Centrality | Centralization and tables | [Centralization](../measures/centrality/centralization.html) | [Centralization / closeness](../measures/centrality/centralization.html#centralization-closeness) | ✓ checked, agrees | `centr_clo` |
+| Centrality | Centralization and tables | [Centralization](../measures/centrality/centralization.html) | [Centralization / degree](../measures/centrality/centralization.html#centralization-degree) | ∅ checked, no value on some inputs | `centr_degree` |
+| Centrality | Centralization and tables | [Centralization](../measures/centrality/centralization.html) | [Centralization eigenvector](../measures/centrality/centralization.html#centralization_eigenvector) | ≠ checked, differs by convention | `centr_eigen` |
+| Centrality | Centralization and tables | [Centralization](../measures/centrality/centralization.html) | [Theoretical maximum of centralization](../measures/centrality/centralization.html#centralization_tmax) | · reported in docs | `centr_betw_tmax; centr_clo_tmax; centr_degree_tmax; centr_eigen_tmax` |
+| Centrality | Degree and strength | [Degree](../measures/centrality/degree.html) | [Degree](../measures/centrality/degree.html#degree) | ∅ checked, no value on some inputs | `degree; degree_distribution` |
+| Centrality | Degree and strength | [Degree](../measures/centrality/degree.html) | [Twomode / degree](../measures/centrality/degree.html#twomode-degree) | ∅ checked, no value on some inputs |  |
+| Centrality | Degree and strength | [Strength (weighted degree)](../measures/centrality/strength.html) | [Strength](../measures/centrality/strength.html#strength) | ∅ checked, no value on some inputs | `strength` |
+| Centrality | Distance-based | [Closeness](../measures/centrality/closeness.html) | [Closeness](../measures/centrality/closeness.html#closeness) | ✓ checked, agrees | `closeness` |
+| Centrality | Distance-based | [Closeness](../measures/centrality/closeness.html) | [Twomode / closeness](../measures/centrality/closeness.html#twomode-closeness) | ∅ checked, no value on some inputs |  |
+| Centrality | Distance-based | [Harmonic centrality](../measures/centrality/harmonic_centrality.html) | [Harmonic](../measures/centrality/harmonic_centrality.html#harmonic) | ✓ checked, agrees | `harmonic_centrality` |
+| Centrality | Distance-based | [Reach and m-reach](../measures/centrality/reach_centrality.html) | [Reach](../measures/centrality/reach_centrality.html#reach) | ✓ checked, agrees | `count_reachable` |
+| Centrality | Spectral and walk-based | [Bonacich power centrality](../measures/centrality/bonacich_power.html) | [Bonacich](../measures/centrality/bonacich_power.html#bonacich) | ✓ checked, agrees | `bonpow; power_centrality` |
+| Centrality | Spectral and walk-based | [Communicability](../measures/centrality/communicability.html) | [Communicability](../measures/centrality/communicability.html#cx_communicability) | · reported in docs | `subgraph_centrality` |
+| Centrality | Spectral and walk-based | [Eigenvector centrality](../measures/centrality/eigenvector_centrality.html) | [Eigenvector](../measures/centrality/eigenvector_centrality.html#eigenvector) | ∅ checked, no value on some inputs | `eigen_centrality; evcent` |
+| Centrality | Spectral and walk-based | [Eigenvector centrality](../measures/centrality/eigenvector_centrality.html) | [Twomode / eigenvector](../measures/centrality/eigenvector_centrality.html#twomode-eigenvector) | ✓ checked, agrees |  |
+| Centrality | Spectral and walk-based | [HITS hubs and authorities](../measures/centrality/hits.html) | [Hits](../measures/centrality/hits.html#hits) | ∅ checked, no value on some inputs | `authority_score; hits_scores; hub_score` |
+| Centrality | Spectral and walk-based | [Katz centrality](../measures/centrality/katz_centrality.html) | [Katz](../measures/centrality/katz_centrality.html#katz) | ∅ checked, no value on some inputs | `alpha_centrality` |
+| Centrality | Spectral and walk-based | [PageRank](../measures/centrality/pagerank.html) | [Pagerank](../measures/centrality/pagerank.html#pagerank) | ∅ checked, no value on some inputs | `page_rank` |
+| Cohesion and subgroups | Cliques | [Clique number](../measures/cohesion-and-subgroups/clique_number.html) | [Clique number](../measures/cohesion-and-subgroups/clique_number.html#clique_number) | ✓ checked, agrees | `clique_num; weighted_clique_num` |
+| Cohesion and subgroups | Cliques | [Clique test](../measures/cohesion-and-subgroups/is_clique.html) | [Is clique](../measures/cohesion-and-subgroups/is_clique.html#cat_clique_is) | · reported in docs | `is_clique` |
+| Cohesion and subgroups | Cliques | [Maximal cliques](../measures/cohesion-and-subgroups/maximal_cliques.html) | [Max cliques](../measures/cohesion-and-subgroups/maximal_cliques.html#max_cliques) | ✓ checked, agrees | `clique_size_counts; cliques; largest_cliques; max_cliques` |
+| Cohesion and subgroups | Cliques | [Maximum cohesion](../measures/cohesion-and-subgroups/max_cohesion.html) | [Maxcohesion](../measures/cohesion-and-subgroups/max_cohesion.html#cat_maxcohesion) | · reported in docs | `maxcohesion` |
+| Cohesion and subgroups | Cliques | [Maximum-weight clique](../measures/cohesion-and-subgroups/max_weight_clique.html) | [Largest weighted cliques](../measures/cohesion-and-subgroups/max_weight_clique.html#cat_clique_largest_weighted) | · reported in docs | `largest_weighted_cliques` |
+| Cohesion and subgroups | Cliques | [Number of largest cliques](../measures/cohesion-and-subgroups/largest_clique_count.html) | [Count max cliques](../measures/cohesion-and-subgroups/largest_clique_count.html#cat_clique_count_max) | · reported in docs | `count_max_cliques` |
+| Cohesion and subgroups | Cliques | [Weighted cliques](../measures/cohesion-and-subgroups/weighted_cliques.html) | [Weighted cliques](../measures/cohesion-and-subgroups/weighted_cliques.html#cat_clique_weighted) | · reported in docs | `weighted_cliques` |
+| Cohesion and subgroups | Cores, trusses and cohesive blocks | [Cohesive blocking (Moody-White)](../measures/cohesion-and-subgroups/cohesive_blocking.html) | [Cohesive blocking (Moody-White)](../measures/cohesion-and-subgroups/cohesive_blocking.html#cohesive_blocking) | · reported in docs |  |
+| Cohesion and subgroups | Cores, trusses and cohesive blocks | [Cohesive blocking (Moody-White)](../measures/cohesion-and-subgroups/cohesive_blocking.html) | [Cohesive blocks](../measures/cohesion-and-subgroups/cohesive_blocking.html#cat_blocks_cohesive) | · reported in docs | `cohesive_blocks` |
+| Cohesion and subgroups | Cores, trusses and cohesive blocks | [K-core decomposition](../measures/cohesion-and-subgroups/k_core.html) | [Coreness](../measures/cohesion-and-subgroups/k_core.html#coreness) | ✓ checked, agrees | `coreness` |
+| Cohesion and subgroups | Relaxed cliques and subgroups | [Lambda connectivity matrix](../measures/cohesion-and-subgroups/lambda_connectivity.html) | [Lambda connectivity](../measures/cohesion-and-subgroups/lambda_connectivity.html#lambda_connectivity) | ✓ checked, agrees |  |
+| Cohesion and subgroups | Triads, motifs and local structure | [Cocitation and bibliographic coupling](../measures/cohesion-and-subgroups/cocitation_coupling.html) | [Cocitation and bibliographic coupling](../measures/cohesion-and-subgroups/cocitation_coupling.html#cocitation) | · reported in docs | `bibcoupling; cocitation` |
+| Cohesion and subgroups | Triads, motifs and local structure | [Graphlets](../measures/cohesion-and-subgroups/graphlets.html) | [Graphlet basis and projection](../measures/cohesion-and-subgroups/graphlets.html#graphlets) | · reported in docs | `graphlet_basis; graphlet_proj` |
+| Cohesion and subgroups | Triads, motifs and local structure | [Motif census](../measures/cohesion-and-subgroups/motif_census.html) | [Motif census](../measures/cohesion-and-subgroups/motif_census.html#motif_census) | · reported in docs | `count_motifs; graphlets; motifs; sample_motifs` |
+| Communities | Modularity-based detection | [Modularity maximization (Louvain, Leiden, greedy, spectral, exact)](../measures/communities/modularity_maximization.html) | [Fast greedy](../measures/communities/modularity_maximization.html#fast_greedy) | ≠ checked, differs by convention | `cluster_fast_greedy` |
+| Communities | Modularity-based detection | [Modularity maximization (Louvain, Leiden, greedy, spectral, exact)](../measures/communities/modularity_maximization.html) | [Leading eigen](../measures/communities/modularity_maximization.html#leading_eigen) | ✓ checked, agrees | `cluster_leading_eigen` |
+| Communities | Modularity-based detection | [Modularity maximization (Louvain, Leiden, greedy, spectral, exact)](../measures/communities/modularity_maximization.html) | [Leiden](../measures/communities/modularity_maximization.html#leiden) | ∅ checked, no value on some inputs | `cluster_leiden` |
+| Communities | Modularity-based detection | [Modularity maximization (Louvain, Leiden, greedy, spectral, exact)](../measures/communities/modularity_maximization.html) | [Louvain modularity](../measures/communities/modularity_maximization.html#louvain_modularity) | · reported in docs | `cluster_louvain` |
+| Communities | Modularity-based detection | [Modularity maximization (Louvain, Leiden, greedy, spectral, exact)](../measures/communities/modularity_maximization.html) | [Louvain quality](../measures/communities/modularity_maximization.html#louvain_quality) | ≠ checked, differs by convention |  |
+| Communities | Modularity-based detection | [Modularity maximization (Louvain, Leiden, greedy, spectral, exact)](../measures/communities/modularity_maximization.html) | [Optimal modularity](../measures/communities/modularity_maximization.html#optimal_modularity) | ✓ checked, agrees | `cluster_optimal` |
+| Communities | Modularity-based detection | [Spinglass](../measures/communities/spinglass.html) | [Spinglass](../measures/communities/spinglass.html#spinglass) | ✓ checked, agrees | `cluster_spinglass` |
+| Communities | Other detection algorithms | [Fluid communities](../measures/communities/fluid_communities.html) | [Fluid communities](../measures/communities/fluid_communities.html#fluid_communities) | ✓ checked, agrees | `cluster_fluid_communities` |
+| Communities | Other detection algorithms | [Girvan-Newman edge removal](../measures/communities/girvan_newman.html) | [Girvan newman](../measures/communities/girvan_newman.html#girvan_newman) | ✓ checked, agrees | `cluster_edge_betweenness` |
+| Communities | Other detection algorithms | [Girvan-Newman edge removal](../measures/communities/girvan_newman.html) | [Girvan newman cut](../measures/communities/girvan_newman.html#girvan_newman_cut) | ✓ checked, agrees |  |
+| Communities | Other detection algorithms | [Infomap](../measures/communities/infomap.html) | [Infomap](../measures/communities/infomap.html#infomap) | ∅ checked, no value on some inputs | `cluster_infomap` |
+| Communities | Other detection algorithms | [Label propagation](../measures/communities/label_propagation.html) | [Label propagation](../measures/communities/label_propagation.html#label_propagation) | ∅ checked, no value on some inputs | `cluster_label_prop` |
+| Communities | Other detection algorithms | [Voronoi communities](../measures/communities/voronoi_communities.html) | [Voronoi](../measures/communities/voronoi_communities.html#voronoi) | ≠ checked, differs by convention |  |
+| Communities | Other detection algorithms | [Voronoi communities](../measures/communities/voronoi_communities.html) | [Voronoi cells](../measures/communities/voronoi_communities.html#cat_cells_voronoi) | · reported in docs | `voronoi_cells` |
+| Communities | Other detection algorithms | [Walktrap](../measures/communities/walktrap.html) | [Walktrap](../measures/communities/walktrap.html#walktrap) | ≠ checked, differs by convention | `cluster_walktrap` |
+| Communities | Partition and cover quality | [Modularity](../measures/communities/modularity.html) | [Modularity](../measures/communities/modularity.html#modularity) | ✓ checked, agrees | `modularity` |
+| Communities | Partition comparison and operations | [Compare partitions](../measures/communities/compare_partitions.html) | [Compare partitions](../measures/communities/compare_partitions.html#compare_partitions) | ≠ checked, differs by convention | `compare; split_join_distance` |
+| Components and connectivity | Articulation points, bridges and biconnected components | [Biconnected components](../measures/components-and-connectivity/biconnected_components.html) | [Bicomponents](../measures/components-and-connectivity/biconnected_components.html#bicomponents) | ✓ checked, agrees | `biconnected_components` |
+| Components and connectivity | Articulation points, bridges and biconnected components | [Bridges](../measures/components-and-connectivity/bridges.html) | [Bridges](../measures/components-and-connectivity/bridges.html#bridges) | ∅ checked, no value on some inputs | `bridges` |
+| Components and connectivity | Articulation points, bridges and biconnected components | [Cut points (articulation points)](../measures/components-and-connectivity/cut_points.html) | [Cut points](../measures/components-and-connectivity/cut_points.html#cut_points) | ∅ checked, no value on some inputs | `articulation_points` |
+| Components and connectivity | Connected components | [Connected components](../measures/components-and-connectivity/connected_components.html) | [Components](../measures/components-and-connectivity/connected_components.html#components) | ∅ checked, no value on some inputs | `clusters; component_distribution; components; decompose; is_biconnected; is_connected; largest_component; subcomponent` |
+| Components and connectivity | Connected components | [Connected components](../measures/components-and-connectivity/connected_components.html) | [Count components](../measures/components-and-connectivity/connected_components.html#cat_component_count) | · reported in docs | `count_components` |
+| Components and connectivity | Connected components | [Fragmentation](../measures/components-and-connectivity/fragmentation.html) | [Fragmentation](../measures/components-and-connectivity/fragmentation.html#fragmentation) | ∅ checked, no value on some inputs |  |
+| Components and connectivity | Connectivity numbers | [Disjoint paths](../measures/components-and-connectivity/disjoint_paths.html) | [Disjoint paths](../measures/components-and-connectivity/disjoint_paths.html#disjoint_paths) | · reported in docs | `edge_disjoint_paths; vertex_disjoint_paths` |
+| Components and connectivity | Connectivity numbers | [Edge connectivity](../measures/components-and-connectivity/edge_connectivity.html) | [Connectivity](../measures/components-and-connectivity/edge_connectivity.html#connectivity) | · reported in docs | `adhesion; cohesion; edge_connectivity; vertex_connectivity` |
+| Components and connectivity | Cuts and separators | [All minimum s-t cuts](../measures/components-and-connectivity/st_min_cuts.html) | [St Mincuts](../measures/components-and-connectivity/st_min_cuts.html#cat_mincuts_st) | · reported in docs | `stMincuts` |
+| Components and connectivity | Cuts and separators | [Global minimum cut](../measures/components-and-connectivity/global_min_cut.html) | [Min cut](../measures/components-and-connectivity/global_min_cut.html#min_cut) | · reported in docs | `min_cut` |
+| Components and connectivity | Cuts and separators | [Minimum node cut](../measures/components-and-connectivity/minimum_node_cut.html) | [Node cut](../measures/components-and-connectivity/minimum_node_cut.html#node_cut) | · reported in docs | `is_min_separator; is_separator; min_separators; min_st_separators; stCuts; st_cuts; st_min_cuts` |
+| Components and connectivity | Dominators | [Dominators and dominance frontiers](../measures/components-and-connectivity/dominators.html) | [Idom](../measures/components-and-connectivity/dominators.html#idom) | · reported in docs | `dominator_tree` |
+| Components and connectivity | Flows and flow trees | [Maximum flow](../measures/components-and-connectivity/max_flow.html) | [Max flow](../measures/components-and-connectivity/max_flow.html#max_flow) | · reported in docs | `max_flow` |
+| Data transforms | Graph operators | [Graph complement](../measures/data-transforms/graph_complement.html) | [Graph complement (op\_complement)](../measures/data-transforms/graph_complement.html#op_complement) | · reported in docs | `complementer` |
+| Data transforms | Graph operators | [Graph composition](../measures/data-transforms/graph_composition.html) | [Op compose](../measures/data-transforms/graph_composition.html#op_compose) | · reported in docs | `compose` |
+| Data transforms | Graph operators | [Graph difference](../measures/data-transforms/graph_difference.html) | [Op difference](../measures/data-transforms/graph_difference.html#op_difference) | · reported in docs | `difference` |
+| Data transforms | Graph operators | [Graph intersection](../measures/data-transforms/graph_intersection.html) | [Op intersection](../measures/data-transforms/graph_intersection.html#op_intersection) | · reported in docs | `intersection` |
+| Data transforms | Graph operators | [Graph union](../measures/data-transforms/graph_union.html) | [Op union](../measures/data-transforms/graph_union.html#op_union) | · reported in docs | `disjoint_union; union` |
+| Data transforms | Graph operators | [Line graph](../measures/data-transforms/line_graph.html) | [Line graph](../measures/data-transforms/line_graph.html#line_graph) | · reported in docs | `line_graph; make_line_graph` |
+| Descriptive statistics | Clustering and transitivity | [Global transitivity](../measures/descriptive-statistics/global_transitivity.html) | [Transitivity](../measures/descriptive-statistics/global_transitivity.html#transitivity) | ∅ checked, no value on some inputs | `transitivity` |
+| Descriptive statistics | Clustering and transitivity | [Local clustering coefficient](../measures/descriptive-statistics/local_clustering.html) | [Average clustering](../measures/descriptive-statistics/local_clustering.html#average_clustering) | ∅ checked, no value on some inputs |  |
+| Descriptive statistics | Clustering and transitivity | [Local clustering coefficient](../measures/descriptive-statistics/local_clustering.html) | [Clustering](../measures/descriptive-statistics/local_clustering.html#clustering) | ∅ checked, no value on some inputs |  |
+| Descriptive statistics | Clustering and transitivity | [Small-world quotient](../measures/descriptive-statistics/small_world_index.html) | [Small world observed](../measures/descriptive-statistics/small_world_index.html#small_world_observed) | ✓ checked, agrees |  |
+| Descriptive statistics | Clustering and transitivity | [Triangle count](../measures/descriptive-statistics/triangle_count.html) | [Triangles](../measures/descriptive-statistics/triangle_count.html#nxo_triangles) | · reported in docs | `count_triangles; triangles` |
+| Descriptive statistics | Density and degree distribution | [Density](../measures/descriptive-statistics/density.html) | [Density](../measures/descriptive-statistics/density.html#density) | ∅ checked, no value on some inputs | `edge_density` |
+| Descriptive statistics | Density and degree distribution | [Diversity index](../measures/descriptive-statistics/diversity_index.html) | [Diversity](../measures/descriptive-statistics/diversity_index.html#cat_diversity) | · reported in docs | `diversity` |
+| Descriptive statistics | Efficiency, compactness and hierarchy | [Compactness](../measures/descriptive-statistics/compactness.html) | [Compactness](../measures/descriptive-statistics/compactness.html#compactness) | ✓ checked, agrees |  |
+| Descriptive statistics | Reciprocity, dyad and triad census | [Dyad census](../measures/descriptive-statistics/dyad_census.html) | [Dyad census (mutual, asymmetric, null)](../measures/descriptive-statistics/dyad_census.html#dyad_census) | · reported in docs | `dyad_census` |
+| Descriptive statistics | Reciprocity, dyad and triad census | [Reciprocity](../measures/descriptive-statistics/reciprocity.html) | [Reciprocity](../measures/descriptive-statistics/reciprocity.html#reciprocity) | ∅ checked, no value on some inputs | `reciprocity` |
+| Descriptive statistics | Reciprocity, dyad and triad census | [Triad census](../measures/descriptive-statistics/triad_census.html) | [Triad census](../measures/descriptive-statistics/triad_census.html#triad_census) | ∅ checked, no value on some inputs | `triad_census` |
+| Ego networks | Ego measures | [Ego betweenness](../measures/ego-networks/ego_betweenness.html) | [Ego\_summary / betweenness](../measures/ego-networks/ego_betweenness.html#ego_summary-betweenness) | ✓ checked, agrees |  |
+| Ego networks | Ego measures | [Ego network components](../measures/ego-networks/ego_components.html) | [Ego\_summary / components](../measures/ego-networks/ego_components.html#ego_summary-components) | ✓ checked, agrees |  |
+| Ego networks | Ego measures | [Ego network density](../measures/ego-networks/ego_density.html) | [Ego\_summary / density](../measures/ego-networks/ego_density.html#ego_summary-density) | ✓ checked, agrees |  |
+| Ego networks | Ego measures | [Ego network members](../measures/ego-networks/ego_members.html) | [Ego members](../measures/ego-networks/ego_members.html#ego_members) | ✓ checked, agrees | `ego; make_ego_graph` |
+| Ego networks | Ego measures | [Ego network ties](../measures/ego-networks/ego_ties.html) | [Ego\_summary / ties](../measures/ego-networks/ego_ties.html#ego_summary-ties) | ✓ checked, agrees |  |
+| Ego networks | Ego measures | [Ego size](../measures/ego-networks/ego_size.html) | [Ego size](../measures/ego-networks/ego_size.html#ego_size) | ✓ checked, agrees | `ego_size` |
+| Generators and rewiring | Block models | [Stochastic block model generator](../measures/generators-and-rewiring/sbm_generator.html) | [Stochastic block model generator](../measures/generators-and-rewiring/sbm_generator.html#gen_sbm) | · reported in docs | `hierarchical_sbm; sample_hierarchical_sbm; sample_sbm; sbm` |
+| Generators and rewiring | Classic random graphs | [G(n, m) random graph](../measures/generators-and-rewiring/gnm_random_graph.html) | [G(n, m) random graph](../measures/generators-and-rewiring/gnm_random_graph.html#gen_gnm) | · reported in docs | `sample_gnm` |
+| Generators and rewiring | Classic random graphs | [G(n, m) random graph](../measures/generators-and-rewiring/gnm_random_graph.html) | [Gnm](../measures/generators-and-rewiring/gnm_random_graph.html#cat_gnm) | · reported in docs | `gnm` |
+| Generators and rewiring | Classic random graphs | [G(n, p) random graph](../measures/generators-and-rewiring/gnp_random_graph.html) | [G(n, p) random graph](../measures/generators-and-rewiring/gnp_random_graph.html#gen_gnp) | · reported in docs | `sample_gnp` |
+| Generators and rewiring | Classic random graphs | [G(n, p) random graph](../measures/generators-and-rewiring/gnp_random_graph.html) | [Gnp](../measures/generators-and-rewiring/gnp_random_graph.html#cat_gnp) | · reported in docs | `gnp` |
+| Generators and rewiring | Classic random graphs | [Random bipartite graph](../measures/generators-and-rewiring/random_bipartite_graph.html) | [Correlated and bipartite random graph generators](../measures/generators-and-rewiring/random_bipartite_graph.html#gen_correlated_bipartite) | · reported in docs | `sample_bipartite_gnm; sample_bipartite_gnp; sample_correlated_gnp; sample_correlated_gnp_pair` |
+| Generators and rewiring | Classic random graphs | [Random bipartite graph](../measures/generators-and-rewiring/random_bipartite_graph.html) | [Random bipartite graph generator](../measures/generators-and-rewiring/random_bipartite_graph.html#gen_random_bipartite) | · reported in docs | `bipartite_gnm; bipartite_gnp; sample_bipartite` |
+| Generators and rewiring | Classic random graphs | [Random regular graph](../measures/generators-and-rewiring/random_regular_graph.html) | [Random regular graph generator](../measures/generators-and-rewiring/random_regular_graph.html#gen_regular) | · reported in docs | `sample_k_regular` |
+| Generators and rewiring | Degree-sequence models | [Chung-Lu expected-degree model](../measures/generators-and-rewiring/chung_lu.html) | [Chung-Lu (expected degree) generator](../measures/generators-and-rewiring/chung_lu.html#gen_chung_lu) | · reported in docs | `chung_lu; sample_chung_lu` |
+| Generators and rewiring | Degree-sequence models | [Configuration model](../measures/generators-and-rewiring/configuration_model.html) | [Configuration model](../measures/generators-and-rewiring/configuration_model.html#gen_configuration) | · reported in docs | `sample_degseq` |
+| Generators and rewiring | Degree-sequence models | [Configuration model](../measures/generators-and-rewiring/configuration_model.html) | [Degseq](../measures/generators-and-rewiring/configuration_model.html#cat_degseq) | · reported in docs | `degseq` |
+| Generators and rewiring | Degree-sequence models | [Deterministic degree-sequence realization](../measures/generators-and-rewiring/degree_sequence_realization.html) | [Bipartite degree-sequence realization](../measures/generators-and-rewiring/degree_sequence_realization.html#gen_realize_bipartite) | · reported in docs | `realize_bipartite_degseq` |
+| Generators and rewiring | Degree-sequence models | [Deterministic degree-sequence realization](../measures/generators-and-rewiring/degree_sequence_realization.html) | [Deterministic realisation of a degree sequence](../measures/generators-and-rewiring/degree_sequence_realization.html#gen_degree_realization) | · reported in docs | `realize_degseq` |
+| Generators and rewiring | Degree-sequence models | [Sample sequence](../measures/generators-and-rewiring/sample_sequence.html) | [Sample seq](../measures/generators-and-rewiring/sample_sequence.html#cat_sample_seq) | · reported in docs | `sample_seq` |
+| Generators and rewiring | Degree-sequence models | [Static fitness and static power-law models](../measures/generators-and-rewiring/static_fitness.html) | [Static fitness and static power-law generators](../measures/generators-and-rewiring/static_fitness.html#gen_static_fitness) | · reported in docs | `sample_fitness; sample_fitness_pl` |
+| Generators and rewiring | Growth and attachment models | [Forest fire model](../measures/generators-and-rewiring/forest_fire.html) | [Forest fire generator](../measures/generators-and-rewiring/forest_fire.html#gen_forest_fire) | · reported in docs | `sample_forestfire` |
+| Generators and rewiring | Growth and attachment models | [Growing network models (GN, citation, Callaway, establishment)](../measures/generators-and-rewiring/growing_network_models.html) | [Citation-type growth generators](../measures/generators-and-rewiring/growing_network_models.html#gen_citation) | · reported in docs | `cit_cit_types; cit_types; full_citation_graph; last_cit; make_full_citation_graph; sample_cit_cit_types; sample_cit_types; sample_last_cit` |
+| Generators and rewiring | Growth and attachment models | [Growing network models (GN, citation, Callaway, establishment)](../measures/generators-and-rewiring/growing_network_models.html) | [Growing random graph generator](../measures/generators-and-rewiring/growing_network_models.html#gen_growing) | · reported in docs | `growing; sample_growing` |
+| Generators and rewiring | Growth and attachment models | [Growing network models (GN, citation, Callaway, establishment)](../measures/generators-and-rewiring/growing_network_models.html) | [Trait-based (Callaway) growth generator](../measures/generators-and-rewiring/growing_network_models.html#gen_traits) | · reported in docs | `sample_traits; sample_traits_callaway; traits; traits_callaway` |
+| Generators and rewiring | Growth and attachment models | [Preference (types) random graph](../measures/generators-and-rewiring/preference_types.html) | [Preference (types) random graph generator](../measures/generators-and-rewiring/preference_types.html#gen_preference) | · reported in docs | `asym_pref; pref; sample_asym_pref; sample_pref` |
+| Generators and rewiring | Growth and attachment models | [Preferential attachment](../measures/generators-and-rewiring/preferential_attachment.html) | [Pa](../measures/generators-and-rewiring/preferential_attachment.html#cat_pa) | · reported in docs | `pa` |
+| Generators and rewiring | Growth and attachment models | [Preferential attachment](../measures/generators-and-rewiring/preferential_attachment.html) | [Pa age](../measures/generators-and-rewiring/preferential_attachment.html#cat_age_pa) | · reported in docs | `pa_age` |
+| Generators and rewiring | Growth and attachment models | [Preferential attachment](../measures/generators-and-rewiring/preferential_attachment.html) | [Preferential attachment generator](../measures/generators-and-rewiring/preferential_attachment.html#gen_preferential) | · reported in docs | `sample_pa; sample_pa_age` |
+| Generators and rewiring | Named and deterministic graphs | [Algebraic and combinatorial named graphs (Kneser, Paley, Kautz, De Bruijn, LCF, Sudoku)](../measures/generators-and-rewiring/algebraic_named_graphs.html) | [De Bruijn graph generator](../measures/generators-and-rewiring/algebraic_named_graphs.html#gen_de_bruijn) | · reported in docs | `de_bruijn_graph; make_de_bruijn_graph` |
+| Generators and rewiring | Named and deterministic graphs | [Algebraic and combinatorial named graphs (Kneser, Paley, Kautz, De Bruijn, LCF, Sudoku)](../measures/generators-and-rewiring/algebraic_named_graphs.html) | [Kautz graph generator](../measures/generators-and-rewiring/algebraic_named_graphs.html#gen_kautz) | · reported in docs | `kautz_graph; make_kautz_graph` |
+| Generators and rewiring | Named and deterministic graphs | [Circulant and ring graphs (ladder, chordal, Petersen, Harary)](../measures/generators-and-rewiring/circulant_ring_graphs.html) | [Chordal ring generator](../measures/generators-and-rewiring/circulant_ring_graphs.html#gen_chordal_ring) | · reported in docs | `chordal_ring; make_chordal_ring` |
+| Generators and rewiring | Named and deterministic graphs | [Circulant and ring graphs (ladder, chordal, Petersen, Harary)](../measures/generators-and-rewiring/circulant_ring_graphs.html) | [Circulant graph generator](../measures/generators-and-rewiring/circulant_ring_graphs.html#gen_circulant) | · reported in docs | `circulant; make_circulant` |
+| Generators and rewiring | Named and deterministic graphs | [Complete and complete multipartite graphs](../measures/generators-and-rewiring/complete_multipartite_graphs.html) | [Complete multipartite graph generator](../measures/generators-and-rewiring/complete_multipartite_graphs.html#gen_complete_multipartite) | · reported in docs | `make_full_multipartite` |
+| Generators and rewiring | Named and deterministic graphs | [Complete and complete multipartite graphs](../measures/generators-and-rewiring/complete_multipartite_graphs.html) | [Full bipartite graph](../measures/generators-and-rewiring/complete_multipartite_graphs.html#cat_bipartite_full) | · reported in docs | `full_bipartite_graph` |
+| Generators and rewiring | Named and deterministic graphs | [Complete and complete multipartite graphs](../measures/generators-and-rewiring/complete_multipartite_graphs.html) | [Full graph](../measures/generators-and-rewiring/complete_multipartite_graphs.html#cat_full) | · reported in docs | `full_graph` |
+| Generators and rewiring | Named and deterministic graphs | [Complete and complete multipartite graphs](../measures/generators-and-rewiring/complete_multipartite_graphs.html) | [Full multipartite](../measures/generators-and-rewiring/complete_multipartite_graphs.html#cat_full_multipartite) | · reported in docs | `full_multipartite` |
+| Generators and rewiring | Named and deterministic graphs | [Complete and complete multipartite graphs](../measures/generators-and-rewiring/complete_multipartite_graphs.html) | [Turan graph generator](../measures/generators-and-rewiring/complete_multipartite_graphs.html#gen_turan) | · reported in docs | `make_turan; turan` |
+| Generators and rewiring | Named and deterministic graphs | [Deterministic generators](../measures/generators-and-rewiring/deterministic_generators.html) | [Deterministic generators](../measures/generators-and-rewiring/deterministic_generators.html#deterministic_generators) | · reported in docs | `empty_graph; make_empty_graph; make_full_bipartite_graph; make_full_graph; make_ring; make_star; make_tree; make_wheel; ring; star; tree; wheel` |
+| Generators and rewiring | Random trees and forests | [Random tree](../measures/generators-and-rewiring/random_tree.html) | [Random tree generator](../measures/generators-and-rewiring/random_tree.html#gen_random_tree) | · reported in docs | `sample_tree` |
+| Generators and rewiring | Rewiring and randomization | [Edge swap and contract](../measures/generators-and-rewiring/swap_contract.html) | [Swap contract](../measures/generators-and-rewiring/swap_contract.html#swap_contract) | · reported in docs | `rewire` |
+| Generators and rewiring | Small-world, lattice and geometric models | [Latent-space graphs](../measures/generators-and-rewiring/latent_space_graph.html) | [Latent-space generators (dot product, sphere, islands)](../measures/generators-and-rewiring/latent_space_graph.html#gen_latent_space) | · reported in docs | `dot_product; sample_dirichlet; sample_dot_product; sample_islands; sample_sphere_surface; sample_sphere_volume` |
+| Generators and rewiring | Small-world, lattice and geometric models | [Lattice graphs](../measures/generators-and-rewiring/lattice_graphs.html) | [Lattice generator](../measures/generators-and-rewiring/lattice_graphs.html#gen_lattice) | · reported in docs | `lattice; make_lattice` |
+| Generators and rewiring | Small-world, lattice and geometric models | [Random geometric graph](../measures/generators-and-rewiring/geometric_graph.html) | [Random geometric graph generator](../measures/generators-and-rewiring/geometric_graph.html#gen_geometric) | · reported in docs | `grg; sample_grg` |
+| Generators and rewiring | Small-world, lattice and geometric models | [Small-world generator](../measures/generators-and-rewiring/small_world_generator.html) | [Small-world generator](../measures/generators-and-rewiring/small_world_generator.html#gen_small_world) | · reported in docs | `sample_smallworld; smallworld` |
+| Graph theory and combinatorics | Chordal, perfect and special graph classes | [Chordal graphs](../measures/graph-theory-and-combinatorics/chordal_graphs.html) | [St chordal](../measures/graph-theory-and-combinatorics/chordal_graphs.html#st_chordal) | · reported in docs | `is_chordal` |
+| Graph theory and combinatorics | Coloring | [Bipartite coloring and test](../measures/graph-theory-and-combinatorics/bipartite_coloring.html) | [Bipartite](../measures/graph-theory-and-combinatorics/bipartite_coloring.html#cat_bipartite) | · reported in docs | `bipartite` |
+| Graph theory and combinatorics | Coloring | [Bipartite coloring and test](../measures/graph-theory-and-combinatorics/bipartite_coloring.html) | [Bipartite color](../measures/graph-theory-and-combinatorics/bipartite_coloring.html#bipartite_color) | · reported in docs | `bipartite_mapping; is_bipartite` |
+| Graph theory and combinatorics | Coloring | [Vertex coloring](../measures/graph-theory-and-combinatorics/vertex_coloring.html) | [Greedy color](../measures/graph-theory-and-combinatorics/vertex_coloring.html#greedy_color) | · reported in docs | `greedy_vertex_coloring` |
+| Graph theory and combinatorics | Cycles | [Feedback arc and vertex sets](../measures/graph-theory-and-combinatorics/feedback_sets.html) | [Feedback arc and vertex sets](../measures/graph-theory-and-combinatorics/feedback_sets.html#feedback_sets) | · reported in docs | `feedback_arc_set; feedback_vertex_set` |
+| Graph theory and combinatorics | Cycles | [Find a cycle](../measures/graph-theory-and-combinatorics/find_cycle.html) | [Find cycle](../measures/graph-theory-and-combinatorics/find_cycle.html#find_cycle) | · reported in docs | `find_cycle` |
+| Graph theory and combinatorics | Cycles | [Girth](../measures/graph-theory-and-combinatorics/girth.html) | [Girth](../measures/graph-theory-and-combinatorics/girth.html#girth) | · reported in docs | `girth` |
+| Graph theory and combinatorics | Cycles | [Simple cycles](../measures/graph-theory-and-combinatorics/simple_cycles.html) | [Simple cycles](../measures/graph-theory-and-combinatorics/simple_cycles.html#simple_cycles) | · reported in docs | `simple_cycles` |
+| Graph theory and combinatorics | Degree sequences and predicates | [Complete graph test](../measures/graph-theory-and-combinatorics/is_complete.html) | [Is complete](../measures/graph-theory-and-combinatorics/is_complete.html#cat_complete_is) | · reported in docs | `is_complete` |
+| Graph theory and combinatorics | Degree sequences and predicates | [Graphical and bigraphical degree-sequence tests](../measures/graph-theory-and-combinatorics/degree_sequence_tests.html) | [Is degseq](../measures/graph-theory-and-combinatorics/degree_sequence_tests.html#cat_degseq_is) | · reported in docs | `is_degseq` |
+| Graph theory and combinatorics | Degree sequences and predicates | [Graphical and bigraphical degree-sequence tests](../measures/graph-theory-and-combinatorics/degree_sequence_tests.html) | [Is graphical](../measures/graph-theory-and-combinatorics/degree_sequence_tests.html#cat_graphical_is) | · reported in docs | `is_graphical` |
+| Graph theory and combinatorics | Degree sequences and predicates | [Hierarchy test](../measures/graph-theory-and-combinatorics/is_hierarchical.html) | [Is hierarchical](../measures/graph-theory-and-combinatorics/is_hierarchical.html#cat_hierarchical_is) | · reported in docs | `is_hierarchical` |
+| Graph theory and combinatorics | Degree sequences and predicates | [Loop and multi-edge detection](../measures/graph-theory-and-combinatorics/multi_loop_detection.html) | [Loop and multi-edge detection](../measures/graph-theory-and-combinatorics/multi_loop_detection.html#multi_loop_detection) | · reported in docs | `any_loop; any_multiple; count_loops; count_multiple; is_simple; which_loop; which_multiple; which_mutual` |
+| Graph theory and combinatorics | Eulerian paths, Hamiltonian paths and tours | [Eulerian circuits and paths](../measures/graph-theory-and-combinatorics/eulerian.html) | [Euler](../measures/graph-theory-and-combinatorics/eulerian.html#nxs_euler) | · reported in docs | `eulerian_cycle; eulerian_path; has_eulerian_cycle; has_eulerian_path` |
+| Graph theory and combinatorics | Geometry | [Farthest vertices](../measures/graph-theory-and-combinatorics/farthest_vertices.html) | [Farthest vertices](../measures/graph-theory-and-combinatorics/farthest_vertices.html#cat_farthest) | · reported in docs | `farthest_vertices` |
+| Graph theory and combinatorics | Independent sets and approximation | [Maximal independent set](../measures/graph-theory-and-combinatorics/independent_set.html) | [Is ivs](../measures/graph-theory-and-combinatorics/independent_set.html#cat_is_ivs) | · reported in docs | `is_ivs` |
+| Graph theory and combinatorics | Independent sets and approximation | [Maximal independent set](../measures/graph-theory-and-combinatorics/independent_set.html) | [Mis](../measures/graph-theory-and-combinatorics/independent_set.html#mis) | · reported in docs | `independence_number; ivs; largest_ivs; max_ivs; maximal_ivs` |
+| Graph theory and combinatorics | Isomorphism and subgraph matching | [Automorphism group, count and canonical form](../measures/graph-theory-and-combinatorics/automorphisms.html) | [Automorphism group, count and canonical form](../measures/graph-theory-and-combinatorics/automorphisms.html#automorphisms) | · reported in docs | `automorphism_group; automorphisms; canonical_permutation; count_automorphisms` |
+| Graph theory and combinatorics | Isomorphism and subgraph matching | [Graph isomorphism](../measures/graph-theory-and-combinatorics/graph_isomorphism.html) | [Match vertices](../measures/graph-theory-and-combinatorics/graph_isomorphism.html#cat_match) | · reported in docs | `match_vertices` |
+| Graph theory and combinatorics | Isomorphism and subgraph matching | [Graph isomorphism](../measures/graph-theory-and-combinatorics/graph_isomorphism.html) | [Vf2pp](../measures/graph-theory-and-combinatorics/graph_isomorphism.html#vf2pp) | · reported in docs | `count_isomorphisms; count_subgraph_isomorphisms; is_isomorphic_to; is_subgraph_isomorphic_to; isomorphism_class; isomorphisms; subgraph_isomorphisms` |
+| Graph theory and combinatorics | Matching | [Bipartite maximum matching](../measures/graph-theory-and-combinatorics/bipartite_maximum_matching.html) | [Hopcroft karp](../measures/graph-theory-and-combinatorics/bipartite_maximum_matching.html#hopcroft_karp) | · reported in docs | `max_bipartite_match` |
+| Graph theory and combinatorics | Matching | [Matching and perfect-matching tests](../measures/graph-theory-and-combinatorics/matching_tests.html) | [Check matching](../measures/graph-theory-and-combinatorics/matching_tests.html#check_matching) | · reported in docs | `is_matching; is_max_matching` |
+| Graph theory and combinatorics | Similarity and link prediction | [Link prediction scores](../measures/graph-theory-and-combinatorics/link_prediction.html) | [Link prediction](../measures/graph-theory-and-combinatorics/link_prediction.html#link_prediction) | · reported in docs | `similarity` |
+| Graph theory and combinatorics | Spanners, contraction and reduction | [Node contraction](../measures/graph-theory-and-combinatorics/contracted_nodes.html) | [Contracted nodes](../measures/graph-theory-and-combinatorics/contracted_nodes.html#nxs_contracted_nodes) | · reported in docs | `contract` |
+| Graph theory and combinatorics | Triangles and local counts | [Scan statistic](../measures/graph-theory-and-combinatorics/scan_statistic.html) | [Local scan](../measures/graph-theory-and-combinatorics/scan_statistic.html#cat_local_scan) | · reported in docs | `local_scan` |
+| Graph theory and combinatorics | Triangles and local counts | [Scan statistic](../measures/graph-theory-and-combinatorics/scan_statistic.html) | [Scan stat](../measures/graph-theory-and-combinatorics/scan_statistic.html#cat_scan_stat) | · reported in docs | `scan_stat` |
+| Input and output | Edge-list and adjacency-list formats | [Edge-list and adjacency-list text formats](../measures/input-and-output/text_edge_list_io.html) | [Extra file formats: ncol, lgl, dimacs, graphdb, adjacency list](../measures/input-and-output/text_edge_list_io.html#io_text_formats) | · reported in docs |  |
+| Input and output | Graph description formats | [Graph description and exchange formats](../measures/input-and-output/graph_markup_io.html) | [GML read and write](../measures/input-and-output/graph_markup_io.html#io_gml) | · reported in docs |  |
+| Input and output | Graph description formats | [Graph description and exchange formats](../measures/input-and-output/graph_markup_io.html) | [GraphML read and write](../measures/input-and-output/graph_markup_io.html#io_graphml) | · reported in docs |  |
+| Input and output | Graph description formats | [Graph description and exchange formats](../measures/input-and-output/graph_markup_io.html) | [Pajek .net read and write](../measures/input-and-output/graph_markup_io.html#io_pajek) | · reported in docs |  |
+| Layout | Layout algorithms | [Force-directed layouts](../measures/layout/force_directed_layout.html) | [Davidson-Harel layout](../measures/layout/force_directed_layout.html#layout_dh) | · reported in docs | `layout_with_dh` |
+| Layout | Layout algorithms | [Force-directed layouts](../measures/layout/force_directed_layout.html) | [DrL (OpenOrd) layout](../measures/layout/force_directed_layout.html#layout_drl) | · reported in docs | `layout_with_drl` |
+| Layout | Layout algorithms | [Force-directed layouts](../measures/layout/force_directed_layout.html) | [Fruchterman-Reingold layout](../measures/layout/force_directed_layout.html#layout_fruchterman_reingold) | · reported in docs | `layout_nicely; layout_with_fr` |
+| Layout | Layout algorithms | [Force-directed layouts](../measures/layout/force_directed_layout.html) | [GEM layout](../measures/layout/force_directed_layout.html#layout_gem) | · reported in docs | `layout_with_gem` |
+| Layout | Layout algorithms | [Force-directed layouts](../measures/layout/force_directed_layout.html) | [Graphopt layout](../measures/layout/force_directed_layout.html#layout_graphopt) | · reported in docs | `layout_with_graphopt` |
+| Layout | Layout algorithms | [Force-directed layouts](../measures/layout/force_directed_layout.html) | [Kamada-Kawai layout](../measures/layout/force_directed_layout.html#layout_kamada_kawai) | · reported in docs | `layout_with_kk` |
+| Layout | Layout algorithms | [Force-directed layouts](../measures/layout/force_directed_layout.html) | [Large graph layout (LGL)](../measures/layout/force_directed_layout.html#layout_lgl) | · reported in docs | `layout_with_lgl` |
+| Layout | Layout algorithms | [Grid, random, circle and sphere layouts](../measures/layout/geometric_layout.html) | [Circle, tree and two-mode (barycenter) layouts](../measures/layout/geometric_layout.html#layout_simple) | · reported in docs | `layout_as_bipartite; layout_as_star; layout_as_tree; layout_in_circle` |
+| Layout | Layout algorithms | [Grid, random, circle and sphere layouts](../measures/layout/geometric_layout.html) | [Grid layout](../measures/layout/geometric_layout.html#layout_grid) | · reported in docs | `layout_on_grid` |
+| Layout | Layout algorithms | [Grid, random, circle and sphere layouts](../measures/layout/geometric_layout.html) | [Random layout](../measures/layout/geometric_layout.html#layout_random) | · reported in docs | `layout_randomly` |
+| Layout | Layout algorithms | [Grid, random, circle and sphere layouts](../measures/layout/geometric_layout.html) | [Sphere layout](../measures/layout/geometric_layout.html#layout_sphere) | · reported in docs | `layout_on_sphere` |
+| Layout | Layout algorithms | [Layered and tree layouts](../measures/layout/layered_layout.html) | [Sugiyama layered layout](../measures/layout/layered_layout.html#layout_sugiyama) | · reported in docs | `layout_with_sugiyama` |
+| Layout | Layout algorithms | [Spectral and MDS layouts](../measures/layout/spectral_mds_layout.html) | [Multidimensional scaling layout](../measures/layout/spectral_mds_layout.html#layout_mds) | · reported in docs | `layout_with_mds` |
+| Matrices and spectra | Graph matrices | [Adjacency matrix](../measures/matrices-and-spectra/adjacency_matrix.html) | [Adjacency](../measures/matrices-and-spectra/adjacency_matrix.html#gm_adjacency) | · reported in docs | `as_adjacency_matrix` |
+| Matrices and spectra | Graph matrices | [Incidence matrix](../measures/matrices-and-spectra/incidence_matrix.html) | [Incidence](../measures/matrices-and-spectra/incidence_matrix.html#gm_incidence) | · reported in docs | `as_biadjacency_matrix; as_incidence_matrix` |
+| Matrices and spectra | Graph matrices | [Laplacian matrix](../measures/matrices-and-spectra/laplacian_matrix.html) | [Gm laplacian](../measures/matrices-and-spectra/laplacian_matrix.html#gm_laplacian) | · reported in docs | `laplacian_matrix` |
+| Matrices and spectra | Graph matrices | [Modularity matrix](../measures/matrices-and-spectra/modularity_matrix.html) | [Gm modularity](../measures/matrices-and-spectra/modularity_matrix.html#gm_modularity) | · reported in docs | `modularity_matrix` |
+| Matrices and spectra | Graph matrices | [Stochastic matrix](../measures/matrices-and-spectra/stochastic_matrix.html) | [Stochastic matrix](../measures/matrices-and-spectra/stochastic_matrix.html#cat_matrix_stochastic) | · reported in docs | `stochastic_matrix` |
+| Matrices and spectra | Spectra | [Graph spectrum](../measures/matrices-and-spectra/graph_spectrum.html) | [Graph spectrum (eigenvalues of a graph matrix)](../measures/matrices-and-spectra/graph_spectrum.html#graph_spectrum) | · reported in docs | `embed_adjacency_matrix; embed_laplacian_matrix; spectrum` |
+| Mixing and assortativity | Assortativity | [Assortativity coefficient](../measures/mixing-and-assortativity/assortativity_coefficient.html) | [Assortativity degree](../measures/mixing-and-assortativity/assortativity_coefficient.html#assortativity_degree) | ∅ checked, no value on some inputs |  |
+| Mixing and assortativity | Assortativity | [Assortativity coefficient](../measures/mixing-and-assortativity/assortativity_coefficient.html) | [Assortativity nominal](../measures/mixing-and-assortativity/assortativity_coefficient.html#assortativity_nominal) | ∅ checked, no value on some inputs |  |
+| Mixing and assortativity | Assortativity | [Assortativity coefficient](../measures/mixing-and-assortativity/assortativity_coefficient.html) | [Assortativity values](../measures/mixing-and-assortativity/assortativity_coefficient.html#assortativity_values) | ∅ checked, no value on some inputs | `assortativity; assortativity_degree; assortativity_nominal` |
+| Mixing and assortativity | Assortativity | [Average neighbor degree and degree connectivity](../measures/mixing-and-assortativity/average_neighbor_degree.html) | [Knn](../measures/mixing-and-assortativity/average_neighbor_degree.html#cat_knn) | · reported in docs | `knn` |
+| Paths and distances | Distance summaries | [Diameter](../measures/paths-and-distances/diameter.html) | [Diameter](../measures/paths-and-distances/diameter.html#diameter) | ✓ checked, agrees | `diameter; get_diameter` |
+| Paths and distances | Distance summaries | [Eccentricity](../measures/paths-and-distances/eccentricity.html) | [Eccentricity](../measures/paths-and-distances/eccentricity.html#eccentricity) | ✓ checked, agrees | `eccentricity` |
+| Paths and distances | Distance summaries | [Graph center](../measures/paths-and-distances/graph_center.html) | [Center](../measures/paths-and-distances/graph_center.html#dm_center) | · reported in docs | `graph_center` |
+| Paths and distances | Distance summaries | [Mean distance](../measures/paths-and-distances/mean_distance.html) | [Mean distance](../measures/paths-and-distances/mean_distance.html#mean_distance) | ✓ checked, agrees | `mean_distance` |
+| Paths and distances | Distance summaries | [Radius](../measures/paths-and-distances/radius.html) | [Radius](../measures/paths-and-distances/radius.html#radius) | ✓ checked, agrees | `radius` |
+| Paths and distances | Efficiency and reachability | [Global and local efficiency](../measures/paths-and-distances/global_efficiency.html) | [Global and local efficiency](../measures/paths-and-distances/global_efficiency.html#efficiency_global) | · reported in docs | `average_local_efficiency; global_efficiency; local_efficiency` |
+| Paths and distances | Efficiency and reachability | [Reachability](../measures/paths-and-distances/reachability.html) | [Reachability](../measures/paths-and-distances/reachability.html#reachability) | ✓ checked, agrees |  |
+| Paths and distances | Path enumeration and counting | [All paths](../measures/paths-and-distances/all_paths.html) | [Paths simple](../measures/paths-and-distances/all_paths.html#paths_simple) | · reported in docs | `all_simple_paths` |
+| Paths and distances | Shortest paths | [All shortest paths](../measures/paths-and-distances/all_shortest_paths.html) | [Paths all shortest](../measures/paths-and-distances/all_shortest_paths.html#paths_all_shortest) | · reported in docs | `all_shortest_paths` |
+| Paths and distances | Shortest paths | [Geodesic distances](../measures/paths-and-distances/geodesic_distances.html) | [Distances](../measures/paths-and-distances/geodesic_distances.html#distances) | ✓ checked, agrees | `distances` |
+| Paths and distances | Shortest paths | [Geodesic distances](../measures/paths-and-distances/geodesic_distances.html) | [Paths all pairs](../measures/paths-and-distances/geodesic_distances.html#paths_all_pairs) | · reported in docs | `distance_table` |
+| Paths and distances | Shortest paths | [K shortest paths](../measures/paths-and-distances/k_shortest_paths.html) | [Paths k shortest](../measures/paths-and-distances/k_shortest_paths.html#paths_k_shortest) | · reported in docs | `k_shortest_paths` |
+| Paths and distances | Shortest paths | [Shortest paths (Dijkstra, Bellman-Ford, A\*, bidirectional)](../measures/paths-and-distances/shortest_paths.html) | [Paths sssp](../measures/paths-and-distances/shortest_paths.html#paths_sssp) | · reported in docs | `shortest_paths` |
+| Roles and positions | Structural holes and brokerage | [Burt constraint](../measures/roles-and-positions/burt_constraint.html) | [Constraint](../measures/roles-and-positions/burt_constraint.html#constraint) | ✓ checked, agrees | `constraint` |
+| Roles and positions | Structural holes and brokerage | [Hierarchy](../measures/roles-and-positions/hierarchy_krackhardt.html) | [Hierarchy](../measures/roles-and-positions/hierarchy_krackhardt.html#hierarchy) | · reported in docs | `hierarchy` |
+| Statistical fitting | Model fitting | [Hierarchical random graph](../measures/statistical-fitting/hrg.html) | [Hierarchical random graph (fit, sample, predict)](../measures/statistical-fitting/hrg.html#hrg) | · reported in docs | `fit_hrg; hrg; hrg_tree; predict_edges; sample_hrg` |
+| Statistical fitting | Model fitting | [Power-law fit of a degree distribution](../measures/statistical-fitting/power_law_fit.html) | [Power-law fit of a degree distribution](../measures/statistical-fitting/power_law_fit.html#power_law_fit) | · reported in docs | `fit_power_law` |
+| Temporal and events | Diffusion simulation | [Epidemic simulation (SIR, SEIR)](../measures/temporal-and-events/epidemic_simulation.html) | [Sir](../measures/temporal-and-events/epidemic_simulation.html#cat_sir) | · reported in docs | `sir` |
+| Traversal, trees and DAGs | DAGs and topological order | [DAG test](../measures/traversal-trees-and-dags/is_dag.html) | [Is dag](../measures/traversal-trees-and-dags/is_dag.html#is_dag) | · reported in docs | `is_acyclic; is_dag` |
+| Traversal, trees and DAGs | DAGs and topological order | [Topological sort](../measures/traversal-trees-and-dags/topological_sort.html) | [Topological sort](../measures/traversal-trees-and-dags/topological_sort.html#topological_sort) | · reported in docs | `topo_sort` |
+| Traversal, trees and DAGs | DAGs and topological order | [Transitive closure](../measures/traversal-trees-and-dags/transitive_closure.html) | [Closure](../measures/traversal-trees-and-dags/transitive_closure.html#closure) | · reported in docs | `transitive_closure` |
+| Traversal, trees and DAGs | Spanning trees and branchings | [Minimum spanning tree](../measures/traversal-trees-and-dags/minimum_spanning_tree.html) | [Spanning tree](../measures/traversal-trees-and-dags/minimum_spanning_tree.html#spanning_tree) | · reported in docs | `mst` |
+| Traversal, trees and DAGs | Spanning trees and branchings | [Random spanning tree](../measures/traversal-trees-and-dags/random_spanning_tree.html) | [Random spanning tree](../measures/traversal-trees-and-dags/random_spanning_tree.html#random_spanning_tree) | · reported in docs | `sample_spanning_tree` |
+| Traversal, trees and DAGs | Traversal and orderings | [Breadth-first search](../measures/traversal-trees-and-dags/breadth_first_search.html) | [Bfs edges](../measures/traversal-trees-and-dags/breadth_first_search.html#trav_bfs_edges) | · reported in docs | `bfs` |
+| Traversal, trees and DAGs | Traversal and orderings | [Depth-first search](../measures/traversal-trees-and-dags/depth_first_search.html) | [Edge dfs](../measures/traversal-trees-and-dags/depth_first_search.html#trav_edge_dfs) | · reported in docs | `dfs` |
+| Traversal, trees and DAGs | Traversal and orderings | [Random walks](../measures/traversal-trees-and-dags/random_walks.html) | [Random walks](../measures/traversal-trees-and-dags/random_walks.html#random_walk) | · reported in docs | `random_edge_walk; random_walk` |
+| Traversal, trees and DAGs | Tree structure and enumeration | [Consensus tree](../measures/traversal-trees-and-dags/consensus_tree.html) | [Consensus tree](../measures/traversal-trees-and-dags/consensus_tree.html#cat_consensus_tree) | · reported in docs | `consensus_tree` |
+| Traversal, trees and DAGs | Tree structure and enumeration | [Prufer sequences](../measures/traversal-trees-and-dags/prufer_sequence.html) | [From prufer](../measures/traversal-trees-and-dags/prufer_sequence.html#nxs_from_prufer) | · reported in docs | `make_from_prufer` |
+| Traversal, trees and DAGs | Tree structure and enumeration | [Tree, forest and arborescence tests](../measures/traversal-trees-and-dags/forest_tests.html) | [Forest flags](../measures/traversal-trees-and-dags/forest_tests.html#nxs_forest_flags) | · reported in docs | `is_forest; is_tree` |
+| Traversal, trees and DAGs | Tree structure and enumeration | [Unfold tree](../measures/traversal-trees-and-dags/tree_unfold.html) | [Unfold tree](../measures/traversal-trees-and-dags/tree_unfold.html#cat_tree_unfold) | · reported in docs | `unfold_tree` |
+| Two-mode and bipartite | Projection | [Bipartite projection](../measures/two-mode-and-bipartite/bipartite_projection.html) | [Project](../measures/two-mode-and-bipartite/bipartite_projection.html#project) | ∅ checked, no value on some inputs | `bipartite_projection; bipartite_projection_size` |
 
 ## Findings
 

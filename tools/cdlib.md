@@ -29,10 +29,10 @@ Imported in CPython; evaluation functions called on communities.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Communities | [Compare partitions](../measures/compare_partitions.html) | ≠ checked, differs by convention |  |
-| Communities | [Modularity](../measures/modularity.html) | ≠ checked, differs by convention |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Communities | Partition and cover quality | [Modularity](../measures/communities/modularity.html) | [Modularity](../measures/communities/modularity.html#modularity) | ≠ checked, differs by convention |  |
+| Communities | Partition comparison and operations | [Compare partitions](../measures/communities/compare_partitions.html) | [Compare partitions](../measures/communities/compare_partitions.html#compare_partitions) | ≠ checked, differs by convention |  |
 
 ## Findings
 

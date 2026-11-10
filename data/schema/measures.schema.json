@@ -9,6 +9,8 @@
    "id",
    "name",
    "family",
+   "concept",
+   "variant",
    "definition",
    "references"
   ],
@@ -22,7 +24,18 @@
     "minLength": 1
    },
    "family": {
-    "type": "string"
+    "type": "string",
+    "description": "Original catalogue family of the measure. Browsing families and subfamilies are those of the measure's concept in concepts.json."
+   },
+   "concept": {
+    "type": "string",
+    "pattern": "^[a-z][a-z0-9_]*$",
+    "description": "Id of the concept in concepts.json that groups this measure."
+   },
+   "variant": {
+    "type": "string",
+    "minLength": 1,
+    "description": "Short label of this measure within its concept; unique within the concept."
    },
    "definition": {
     "type": "string",

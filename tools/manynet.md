@@ -30,11 +30,11 @@ Called from R on igraph objects.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Roles and positions | [Constraint](../measures/constraint.html) | ✓ checked, agrees |  |
-| Roles and positions | [Effective size](../measures/effective_size.html) | ≠ checked, differs by convention |  |
-| Roles and positions | [Efficiency](../measures/efficiency.html) | ≠ checked, differs by convention |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Roles and positions | Structural holes and brokerage | [Burt constraint](../measures/roles-and-positions/burt_constraint.html) | [Constraint](../measures/roles-and-positions/burt_constraint.html#constraint) | ✓ checked, agrees |  |
+| Roles and positions | Structural holes and brokerage | [Burt efficiency](../measures/roles-and-positions/burt_efficiency.html) | [Efficiency](../measures/roles-and-positions/burt_efficiency.html#efficiency) | ≠ checked, differs by convention |  |
+| Roles and positions | Structural holes and brokerage | [Effective size](../measures/roles-and-positions/effective_size.html) | [Effective size](../measures/roles-and-positions/effective_size.html#effective_size) | ≠ checked, differs by convention |  |
 
 ## Findings
 

@@ -31,8 +31,8 @@ Capabilities listed by introspection of R package goldfish: exported functions a
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Statistical fitting | [Actor-oriented event models (DyNAM)](../measures/dynam.html) | · reported in docs |  |
-| Temporal and events | [Rem fit](../measures/rem_fit.html) | · reported in docs | `estimate` |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Statistical fitting | Model fitting | [Actor-oriented event models (DyNAM)](../measures/statistical-fitting/dynam.html) | [Actor-oriented event models (DyNAM)](../measures/statistical-fitting/dynam.html#dynam) | · reported in docs |  |
+| Temporal and events | Relational event models | [Relational event model fit](../measures/temporal-and-events/rem_fit.html) | [Rem fit](../measures/temporal-and-events/rem_fit.html#rem_fit) | · reported in docs | `estimate` |
 {% endraw %}

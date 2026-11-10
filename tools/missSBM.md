@@ -31,16 +31,16 @@ Capabilities listed by documentation of CRAN reference manual of missSBM 1.1.0: 
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Graph theory and combinatorics | [Block Dyad Sampler](../measures/cat_block_dyad_sampler.html) | · reported in docs | `blockDyadSampler` |
-| Graph theory and combinatorics | [Block Node Sampler](../measures/cat_block_sampler.html) | · reported in docs | `blockNodeSampler` |
-| Graph theory and combinatorics | [Degree Sampler](../measures/cat_degree_sampler.html) | · reported in docs | `degreeSampler` |
-| Graph theory and combinatorics | [Double Standard Sampler](../measures/cat_double_sampler_standard.html) | · reported in docs | `doubleStandardSampler` |
-| Graph theory and combinatorics | [Dyad Sampler](../measures/cat_dyad_sampler.html) | · reported in docs | `dyadSampler` |
-| Graph theory and combinatorics | [Node Sampler](../measures/cat_sampler.html) | · reported in docs | `nodeSampler` |
-| Graph theory and combinatorics | [Simple Dyad Sampler](../measures/cat_dyad_sampler_simple.html) | · reported in docs | `simpleDyadSampler` |
-| Graph theory and combinatorics | [Simple Node Sampler](../measures/cat_sampler_simple.html) | · reported in docs | `simpleNodeSampler` |
-| Graph theory and combinatorics | [Snowball Sampler](../measures/cat_sampler_snowball.html) | · reported in docs | `snowballSampler` |
-| Statistical fitting | [Stochastic block models for partially observed networks](../measures/sbm_missing.html) | · reported in docs | `SimpleSBM_fit_MNAR; SimpleSBM_fit_noCov; SimpleSBM_fit_withCov; estimateMissSBM` |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Statistical fitting | Missing data and observation sampling | [Observation sampling designs (missing data)](../measures/statistical-fitting/observation_sampling.html) | [Block Dyad Sampler](../measures/statistical-fitting/observation_sampling.html#cat_block_dyad_sampler) | · reported in docs | `blockDyadSampler` |
+| Statistical fitting | Missing data and observation sampling | [Observation sampling designs (missing data)](../measures/statistical-fitting/observation_sampling.html) | [Block Node Sampler](../measures/statistical-fitting/observation_sampling.html#cat_block_sampler) | · reported in docs | `blockNodeSampler` |
+| Statistical fitting | Missing data and observation sampling | [Observation sampling designs (missing data)](../measures/statistical-fitting/observation_sampling.html) | [Degree Sampler](../measures/statistical-fitting/observation_sampling.html#cat_degree_sampler) | · reported in docs | `degreeSampler` |
+| Statistical fitting | Missing data and observation sampling | [Observation sampling designs (missing data)](../measures/statistical-fitting/observation_sampling.html) | [Double Standard Sampler](../measures/statistical-fitting/observation_sampling.html#cat_double_sampler_standard) | · reported in docs | `doubleStandardSampler` |
+| Statistical fitting | Missing data and observation sampling | [Observation sampling designs (missing data)](../measures/statistical-fitting/observation_sampling.html) | [Dyad Sampler](../measures/statistical-fitting/observation_sampling.html#cat_dyad_sampler) | · reported in docs | `dyadSampler` |
+| Statistical fitting | Missing data and observation sampling | [Observation sampling designs (missing data)](../measures/statistical-fitting/observation_sampling.html) | [Node Sampler](../measures/statistical-fitting/observation_sampling.html#cat_sampler) | · reported in docs | `nodeSampler` |
+| Statistical fitting | Missing data and observation sampling | [Observation sampling designs (missing data)](../measures/statistical-fitting/observation_sampling.html) | [Simple Dyad Sampler](../measures/statistical-fitting/observation_sampling.html#cat_dyad_sampler_simple) | · reported in docs | `simpleDyadSampler` |
+| Statistical fitting | Missing data and observation sampling | [Observation sampling designs (missing data)](../measures/statistical-fitting/observation_sampling.html) | [Simple Node Sampler](../measures/statistical-fitting/observation_sampling.html#cat_sampler_simple) | · reported in docs | `simpleNodeSampler` |
+| Statistical fitting | Missing data and observation sampling | [Observation sampling designs (missing data)](../measures/statistical-fitting/observation_sampling.html) | [Snowball Sampler](../measures/statistical-fitting/observation_sampling.html#cat_sampler_snowball) | · reported in docs | `snowballSampler` |
+| Statistical fitting | Model fitting | [SBM for partially observed networks](../measures/statistical-fitting/sbm_missing.html) | [Stochastic block models for partially observed networks](../measures/statistical-fitting/sbm_missing.html#sbm_missing) | · reported in docs | `SimpleSBM_fit_MNAR; SimpleSBM_fit_noCov; SimpleSBM_fit_withCov; estimateMissSBM` |
 {% endraw %}

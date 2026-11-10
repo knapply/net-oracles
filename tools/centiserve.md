@@ -32,42 +32,42 @@ Capabilities listed by introspection of R package centiserve: exported functions
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Centrality | [Closeness](../measures/closeness.html) | · reported in docs | `closeness.freeman` |
-| Centrality | [Closeness latora](../measures/cat_closeness_latora.html) | · reported in docs | `closeness.latora` |
-| Centrality | [Closeness residual](../measures/cat_closeness_residual.html) | · reported in docs | `closeness.residual` |
-| Centrality | [Communicability betweenness](../measures/cx_communicability_betweenness.html) | ✓ checked, agrees | `communibet` |
-| Centrality | [Communitycent](../measures/cat_communitycent.html) | · reported in docs | `communitycent` |
-| Centrality | [Current flow closeness](../measures/cx_current_flow_closeness.html) | · reported in docs | `closeness.currentflow` |
-| Centrality | [Decay](../measures/cat_decay.html) | · reported in docs | `decay` |
-| Centrality | [Diffusion degree](../measures/cat_degree_diffusion.html) | · reported in docs | `diffusion.degree` |
-| Centrality | [Harmonic](../measures/harmonic.html) | ✓ checked, agrees |  |
-| Centrality | [Hubbell](../measures/cat_hubbell.html) | · reported in docs | `hubbell` |
-| Centrality | [Katz](../measures/katz.html) | ✓ checked, agrees | `katzcent` |
-| Centrality | [Leverage](../measures/cat_leverage.html) | · reported in docs | `leverage` |
-| Centrality | [Lincent](../measures/cat_lincent.html) | · reported in docs | `lincent` |
-| Centrality | [Lobby](../measures/cat_lobby.html) | · reported in docs | `lobby` |
-| Centrality | [Markovcent](../measures/cat_markovcent.html) | · reported in docs | `markovcent` |
-| Centrality | [Radiality](../measures/cat_radiality.html) | · reported in docs | `radiality` |
-| Centrality | [Salsa](../measures/cat_salsa.html) | · reported in docs | `salsa` |
-| Cohesion and subgroups | [Crossclique](../measures/cat_crossclique.html) | · reported in docs | `crossclique` |
-| Graph theory and combinatorics | [Averagedis](../measures/cat_averagedis.html) | · reported in docs | `averagedis` |
-| Graph theory and combinatorics | [Bottleneck](../measures/cat_bottleneck.html) | · reported in docs | `bottleneck` |
-| Graph theory and combinatorics | [Centroid](../measures/cat_centroid.html) | · reported in docs | `centroid` |
-| Graph theory and combinatorics | [Clusterrank](../measures/cat_clusterrank.html) | · reported in docs | `clusterrank` |
-| Graph theory and combinatorics | [Dmnc](../measures/cat_dmnc.html) | · reported in docs | `dmnc` |
-| Graph theory and combinatorics | [Entropy](../measures/cat_entropy.html) | · reported in docs | `entropy` |
-| Graph theory and combinatorics | [Epc](../measures/cat_epc.html) | · reported in docs | `epc` |
-| Graph theory and combinatorics | [Leaderrank](../measures/cat_leaderrank.html) | · reported in docs | `leaderrank` |
-| Graph theory and combinatorics | [Mnc](../measures/cat_mnc.html) | · reported in docs | `mnc` |
-| Graph theory and combinatorics | [Pairwisedis](../measures/cat_pairwisedis.html) | · reported in docs | `pairwisedis` |
-| Graph theory and combinatorics | [Semilocal](../measures/cat_semilocal.html) | · reported in docs | `semilocal` |
-| Graph theory and combinatorics | [Topocoefficient](../measures/cat_topocoefficient.html) | · reported in docs | `topocoefficient` |
-| Matrices and spectra | [Gm laplacian](../measures/gm_laplacian.html) | · reported in docs | `laplacian` |
-| Paths and distances | [Barycenter](../measures/dm_barycenter.html) | · reported in docs | `barycenter` |
-| Paths and distances | [Closeness vitality](../measures/dm_closeness_vitality.html) | · reported in docs | `closeness.vitality` |
-| Paths and distances | [Geokpath](../measures/cat_geokpath.html) | · reported in docs | `geokpath` |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Centrality | Betweenness, load and flow | [Communicability betweenness](../measures/centrality/communicability_betweenness.html) | [Communicability betweenness](../measures/centrality/communicability_betweenness.html#cx_communicability_betweenness) | ✓ checked, agrees | `communibet` |
+| Centrality | Betweenness, load and flow | [K-path centrality](../measures/centrality/k_path_centrality.html) | [Geokpath](../measures/centrality/k_path_centrality.html#cat_geokpath) | · reported in docs | `geokpath` |
+| Centrality | Distance-based | [Average distance centrality](../measures/centrality/average_distance_centrality.html) | [Averagedis](../measures/centrality/average_distance_centrality.html#cat_averagedis) | · reported in docs | `averagedis` |
+| Centrality | Distance-based | [Average distance centrality](../measures/centrality/average_distance_centrality.html) | [Pairwisedis](../measures/centrality/average_distance_centrality.html#cat_pairwisedis) | · reported in docs | `pairwisedis` |
+| Centrality | Distance-based | [Bottleneck centrality](../measures/centrality/bottleneck_centrality.html) | [Bottleneck](../measures/centrality/bottleneck_centrality.html#cat_bottleneck) | · reported in docs | `bottleneck` |
+| Centrality | Distance-based | [Centroid centrality](../measures/centrality/centroid_centrality.html) | [Centroid](../measures/centrality/centroid_centrality.html#cat_centroid) | · reported in docs | `centroid` |
+| Centrality | Distance-based | [Closeness](../measures/centrality/closeness.html) | [Closeness](../measures/centrality/closeness.html#closeness) | · reported in docs | `closeness.freeman` |
+| Centrality | Distance-based | [Closeness](../measures/centrality/closeness.html) | [Closeness latora](../measures/centrality/closeness.html#cat_closeness_latora) | · reported in docs | `closeness.latora` |
+| Centrality | Distance-based | [Closeness](../measures/centrality/closeness.html) | [Closeness residual](../measures/centrality/closeness.html#cat_closeness_residual) | · reported in docs | `closeness.residual` |
+| Centrality | Distance-based | [Decay centrality](../measures/centrality/decay_centrality.html) | [Decay](../measures/centrality/decay_centrality.html#cat_decay) | · reported in docs | `decay` |
+| Centrality | Distance-based | [Harmonic centrality](../measures/centrality/harmonic_centrality.html) | [Harmonic](../measures/centrality/harmonic_centrality.html#harmonic) | ✓ checked, agrees |  |
+| Centrality | Distance-based | [Radiality and integration](../measures/centrality/radiality.html) | [Radiality](../measures/centrality/radiality.html#cat_radiality) | · reported in docs | `radiality` |
+| Centrality | Local and structural scores | [Community-based centrality](../measures/centrality/community_centrality.html) | [Communitycent](../measures/centrality/community_centrality.html#cat_communitycent) | · reported in docs | `communitycent` |
+| Centrality | Local and structural scores | [Cross-clique centrality](../measures/centrality/cross_clique_centrality.html) | [Crossclique](../measures/centrality/cross_clique_centrality.html#cat_crossclique) | · reported in docs | `crossclique` |
+| Centrality | Local and structural scores | [Diffusion centrality and diffusion degree](../measures/centrality/diffusion_centrality.html) | [Diffusion degree](../measures/centrality/diffusion_centrality.html#cat_degree_diffusion) | · reported in docs | `diffusion.degree` |
+| Centrality | Local and structural scores | [Edge percolated component](../measures/centrality/epc.html) | [Epc](../measures/centrality/epc.html#cat_epc) | · reported in docs | `epc` |
+| Centrality | Local and structural scores | [Entropy centrality](../measures/centrality/entropy_centrality.html) | [Entropy](../measures/centrality/entropy_centrality.html#cat_entropy) | · reported in docs | `entropy` |
+| Centrality | Local and structural scores | [Leverage centrality](../measures/centrality/leverage_centrality.html) | [Leverage](../measures/centrality/leverage_centrality.html#cat_leverage) | · reported in docs | `leverage` |
+| Centrality | Local and structural scores | [Lin centrality](../measures/centrality/lin_centrality.html) | [Lincent](../measures/centrality/lin_centrality.html#cat_lincent) | · reported in docs | `lincent` |
+| Centrality | Local and structural scores | [Lobby index](../measures/centrality/lobby_index.html) | [Lobby](../measures/centrality/lobby_index.html#cat_lobby) | · reported in docs | `lobby` |
+| Centrality | Local and structural scores | [MNC and DMNC](../measures/centrality/mnc_dmnc.html) | [Dmnc](../measures/centrality/mnc_dmnc.html#cat_dmnc) | · reported in docs | `dmnc` |
+| Centrality | Local and structural scores | [MNC and DMNC](../measures/centrality/mnc_dmnc.html) | [Mnc](../measures/centrality/mnc_dmnc.html#cat_mnc) | · reported in docs | `mnc` |
+| Centrality | Local and structural scores | [Semi-local centrality](../measures/centrality/semilocal_centrality.html) | [Semilocal](../measures/centrality/semilocal_centrality.html#cat_semilocal) | · reported in docs | `semilocal` |
+| Centrality | Local and structural scores | [Topological coefficient](../measures/centrality/topological_coefficient.html) | [Topocoefficient](../measures/centrality/topological_coefficient.html#cat_topocoefficient) | · reported in docs | `topocoefficient` |
+| Centrality | Resistance and information | [Information centrality (current-flow closeness)](../measures/centrality/information_centrality.html) | [Current flow closeness](../measures/centrality/information_centrality.html#cx_current_flow_closeness) | · reported in docs | `closeness.currentflow` |
+| Centrality | Spectral and walk-based | [ClusterRank](../measures/centrality/clusterrank.html) | [Clusterrank](../measures/centrality/clusterrank.html#cat_clusterrank) | · reported in docs | `clusterrank` |
+| Centrality | Spectral and walk-based | [Hubbell centrality](../measures/centrality/hubbell_centrality.html) | [Hubbell](../measures/centrality/hubbell_centrality.html#cat_hubbell) | · reported in docs | `hubbell` |
+| Centrality | Spectral and walk-based | [Katz centrality](../measures/centrality/katz_centrality.html) | [Katz](../measures/centrality/katz_centrality.html#katz) | ✓ checked, agrees | `katzcent` |
+| Centrality | Spectral and walk-based | [LeaderRank](../measures/centrality/leaderrank.html) | [Leaderrank](../measures/centrality/leaderrank.html#cat_leaderrank) | · reported in docs | `leaderrank` |
+| Centrality | Spectral and walk-based | [Markov centrality](../measures/centrality/markov_centrality.html) | [Markovcent](../measures/centrality/markov_centrality.html#cat_markovcent) | · reported in docs | `markovcent` |
+| Centrality | Spectral and walk-based | [SALSA](../measures/centrality/salsa.html) | [Salsa](../measures/centrality/salsa.html#cat_salsa) | · reported in docs | `salsa` |
+| Matrices and spectra | Graph matrices | [Laplacian matrix](../measures/matrices-and-spectra/laplacian_matrix.html) | [Gm laplacian](../measures/matrices-and-spectra/laplacian_matrix.html#gm_laplacian) | · reported in docs | `laplacian` |
+| Paths and distances | Distance summaries | [Barycenter](../measures/paths-and-distances/barycenter.html) | [Barycenter](../measures/paths-and-distances/barycenter.html#dm_barycenter) | · reported in docs | `barycenter` |
+| Paths and distances | Distance summaries | [Closeness vitality](../measures/paths-and-distances/closeness_vitality.html) | [Closeness vitality](../measures/paths-and-distances/closeness_vitality.html#dm_closeness_vitality) | · reported in docs | `closeness.vitality` |
 
 ## Findings
 

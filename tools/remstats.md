@@ -30,8 +30,8 @@ Called from R on relational event sequences.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Temporal and events | [Rem fit](../measures/rem_fit.html) | ≠ checked, differs by convention |  |
-| Temporal and events | [Rem statistic](../measures/rem_statistic.html) | ✓ checked, agrees |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Temporal and events | Relational event models | [Relational event model fit](../measures/temporal-and-events/rem_fit.html) | [Rem fit](../measures/temporal-and-events/rem_fit.html#rem_fit) | ≠ checked, differs by convention |  |
+| Temporal and events | Relational event models | [Relational event statistics](../measures/temporal-and-events/rem_statistic.html) | [Rem statistic](../measures/temporal-and-events/rem_statistic.html#rem_statistic) | ✓ checked, agrees |  |
 {% endraw %}

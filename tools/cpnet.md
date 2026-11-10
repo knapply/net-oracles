@@ -29,8 +29,8 @@ Imported in CPython; algorithms called on graph objects.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Roles and positions | [Core periphery](../measures/core_periphery.html) | ✓ checked, agrees |  |
-| Roles and positions | [Core periphery continuous](../measures/core_periphery_continuous.html) | ✓ checked, agrees |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Roles and positions | Core-periphery | [Core-periphery (continuous)](../measures/roles-and-positions/core_periphery_continuous.html) | [Core periphery continuous](../measures/roles-and-positions/core_periphery_continuous.html#core_periphery_continuous) | ✓ checked, agrees |  |
+| Roles and positions | Core-periphery | [Core-periphery (discrete)](../measures/roles-and-positions/core_periphery.html) | [Core periphery](../measures/roles-and-positions/core_periphery.html#core_periphery) | ✓ checked, agrees |  |
 {% endraw %}

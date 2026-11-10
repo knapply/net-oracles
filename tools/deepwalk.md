@@ -31,14 +31,14 @@ Capabilities listed by documentation of DeepWalk README (phanein/deepwalk): the 
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Graph theory and combinatorics | [Adjlist input](../measures/cat_adjlist_input.html) | · reported in docs | `adjlist input` |
-| Graph theory and combinatorics | [Edgelist input](../measures/cat_edgelist_input.html) | · reported in docs | `edgelist input` |
-| Graph theory and combinatorics | [Mat input](../measures/cat_input_mat.html) | · reported in docs | `mat input` |
-| Graph theory and combinatorics | [Random walk corpus](../measures/cat_corpus_random_walk.html) | · reported in docs | `random walk corpus` |
-| Graph theory and combinatorics | [Word2vec output](../measures/cat_output_word2vec.html) | · reported in docs | `word2vec output` |
-| Layout | [Skip-gram embedding](../measures/cat_embedding_gram_skip.html) | · reported in docs | `skip-gram embedding` |
-| Matrices and spectra | [Walk corpora and skip-gram embeddings (DeepWalk)](../measures/walk_embeddings.html) | · reported in docs |  |
-| Paths and distances | [Deepwalk](../measures/cat_deepwalk.html) | · reported in docs | `deepwalk` |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Layout | Embeddings | [Walk corpora and skip-gram embeddings (DeepWalk)](../measures/layout/walk_embeddings.html) | [Adjlist input](../measures/layout/walk_embeddings.html#cat_adjlist_input) | · reported in docs | `adjlist input` |
+| Layout | Embeddings | [Walk corpora and skip-gram embeddings (DeepWalk)](../measures/layout/walk_embeddings.html) | [Deepwalk](../measures/layout/walk_embeddings.html#cat_deepwalk) | · reported in docs | `deepwalk` |
+| Layout | Embeddings | [Walk corpora and skip-gram embeddings (DeepWalk)](../measures/layout/walk_embeddings.html) | [Edgelist input](../measures/layout/walk_embeddings.html#cat_edgelist_input) | · reported in docs | `edgelist input` |
+| Layout | Embeddings | [Walk corpora and skip-gram embeddings (DeepWalk)](../measures/layout/walk_embeddings.html) | [Mat input](../measures/layout/walk_embeddings.html#cat_input_mat) | · reported in docs | `mat input` |
+| Layout | Embeddings | [Walk corpora and skip-gram embeddings (DeepWalk)](../measures/layout/walk_embeddings.html) | [Random walk corpus](../measures/layout/walk_embeddings.html#cat_corpus_random_walk) | · reported in docs | `random walk corpus` |
+| Layout | Embeddings | [Walk corpora and skip-gram embeddings (DeepWalk)](../measures/layout/walk_embeddings.html) | [Skip-gram embedding](../measures/layout/walk_embeddings.html#cat_embedding_gram_skip) | · reported in docs | `skip-gram embedding` |
+| Layout | Embeddings | [Walk corpora and skip-gram embeddings (DeepWalk)](../measures/layout/walk_embeddings.html) | [Walk corpora and skip-gram embeddings (DeepWalk)](../measures/layout/walk_embeddings.html#walk_embeddings) | · reported in docs |  |
+| Layout | Embeddings | [Walk corpora and skip-gram embeddings (DeepWalk)](../measures/layout/walk_embeddings.html) | [Word2vec output](../measures/layout/walk_embeddings.html#cat_output_word2vec) | · reported in docs | `word2vec output` |
 {% endraw %}

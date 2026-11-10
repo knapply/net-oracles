@@ -10,14 +10,14 @@ permalink: /
 
 A neutral, citable survey of network-analysis software: which tool implements which measure, how their conventions differ, which bugs and disagreements were found, and how the tools were benchmarked. Every claim carries a citation key; every table on these pages is generated from the machine-readable files in [`data/`](https://github.com/knapply/net-oracles/tree/main/data).
 
-**47 tools** (34 run and compared), **1635 measures** in 21 families, **2524 tool-by-measure entries** (671 checked by running the tool), **90 findings** about other tools' behaviour, and 1228 benchmark rows.
+**47 tools** (34 run and compared), **1635 measures** grouped into 702 concepts in 21 families, **2524 tool-by-measure entries** (671 checked by running the tool), **90 findings** about other tools' behaviour, and 1228 benchmark rows.
 
 ## Where to go
 
 | Page | What it holds |
 |---|---|
-| [Capability matrix](matrix.html) | Measure by tool, one section per family, with the state of each entry. |
-| [Measures](measures/) | One page per measure: who implements it, convention differences, tolerances, findings, citations. |
+| [Capability matrix](matrix.html) | Measure by tool, grouped by family, subfamily and concept, with the state of each entry. |
+| [Measures](measures/) | Families, subfamilies and one page per concept; each concept page has a section per measure (variant) with implementations, convention differences, tolerances, findings, citations. |
 | [Tools](tools/) | One page per tool: version tested, license, how it was run, coverage, findings. |
 | [Findings](findings.html) | Bugs, disagreements and limitations found in other tools, with reproductions where recorded. |
 | [Benchmarks](benchmarks.html) | Method and timing summaries for the other tools; raw rows are in `data/benchmarks/`. |

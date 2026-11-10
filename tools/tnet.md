@@ -32,26 +32,26 @@ Capabilities listed by introspection of R package tnet: exported functions and h
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Centrality | [Betweenness](../measures/betweenness.html) | ✓ checked, agrees | `betweenness_w` |
-| Centrality | [Closeness](../measures/closeness.html) | · reported in docs | `closeness_w` |
-| Centrality | [Opsahl alpha-tuned degree and closeness](../measures/opsahl_alpha.html) | · reported in docs |  |
-| Centrality | [Strength](../measures/strength.html) | ✓ checked, agrees |  |
-| Data transforms | [Dichotomise](../measures/cat_dichotomise.html) | · reported in docs | `dichotomise_tm; dichotomise_w` |
-| Descriptive statistics | [Clustering](../measures/clustering.html) | ✓ checked, agrees | `clustering_local_tm; clustering_local_w; clustering_tm; clustering_w` |
-| Descriptive statistics | [Degree](../measures/degree.html) | · reported in docs | `degree_tm; degree_w` |
-| Graph theory and combinatorics | [Growth](../measures/cat_growth.html) | · reported in docs | `growth_l` |
-| Graph theory and combinatorics | [Rg](../measures/cat_rg.html) | · reported in docs | `rg_tm; rg_w` |
-| Graph theory and combinatorics | [Rg reshuffling](../measures/cat_reshuffling_rg.html) | · reported in docs | `rg_reshuffling_l; rg_reshuffling_tm; rg_reshuffling_w` |
-| Graph theory and combinatorics | [Symmetrise](../measures/cat_symmetrise.html) | · reported in docs | `symmetrise_w` |
-| Graph theory and combinatorics | [Weighted richclub](../measures/cat_richclub_weighted.html) | · reported in docs | `weighted_richclub_tm; weighted_richclub_w` |
-| Graph theory and combinatorics | [Weighted richclub local](../measures/cat_local_richclub_weighted.html) | · reported in docs | `weighted_richclub_local_w` |
-| Layout | [Reinforcement](../measures/cat_reinforcement.html) | · reported in docs | `reinforcement_tm` |
-| Paths and distances | [Distances](../measures/distances.html) | · reported in docs | `distance_tm; distance_w` |
-| Two-mode and bipartite | [Project](../measures/project.html) | ✓ checked, agrees | `projecting_tm` |
-| Two-mode and bipartite | [Two-mode clustering coefficients (six-cycle)](../measures/twomode_cc.html) | · reported in docs |  |
-| Two-mode and bipartite | [Two-mode projection weights (covariance, correlation, Jaccard, Bonacich, cosine)](../measures/projection_weights.html) | · reported in docs |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Centrality | Betweenness, load and flow | [Betweenness](../measures/centrality/betweenness.html) | [Betweenness](../measures/centrality/betweenness.html#betweenness) | ✓ checked, agrees | `betweenness_w` |
+| Centrality | Degree and strength | [Alpha-tuned degree and closeness](../measures/centrality/weighted_degree_alpha.html) | [Opsahl alpha-tuned degree and closeness](../measures/centrality/weighted_degree_alpha.html#opsahl_alpha) | · reported in docs |  |
+| Centrality | Degree and strength | [Degree](../measures/centrality/degree.html) | [Degree](../measures/centrality/degree.html#degree) | · reported in docs | `degree_tm; degree_w` |
+| Centrality | Degree and strength | [Strength (weighted degree)](../measures/centrality/strength.html) | [Strength](../measures/centrality/strength.html#strength) | ✓ checked, agrees |  |
+| Centrality | Distance-based | [Closeness](../measures/centrality/closeness.html) | [Closeness](../measures/centrality/closeness.html#closeness) | · reported in docs | `closeness_w` |
+| Data transforms | Matrix and tie transformations | [Dichotomize](../measures/data-transforms/dichotomize.html) | [Dichotomise](../measures/data-transforms/dichotomize.html#cat_dichotomise) | · reported in docs | `dichotomise_tm; dichotomise_w` |
+| Data transforms | Matrix and tie transformations | [Symmetrize](../measures/data-transforms/symmetrize.html) | [Symmetrise](../measures/data-transforms/symmetrize.html#cat_symmetrise) | · reported in docs | `symmetrise_w` |
+| Descriptive statistics | Clustering and transitivity | [Local clustering coefficient](../measures/descriptive-statistics/local_clustering.html) | [Clustering](../measures/descriptive-statistics/local_clustering.html#clustering) | ✓ checked, agrees | `clustering_local_tm; clustering_local_w; clustering_tm; clustering_w` |
+| Generators and rewiring | Growth and attachment models | [Growth (tnet)](../measures/generators-and-rewiring/growth_tnet.html) | [Growth](../measures/generators-and-rewiring/growth_tnet.html#cat_growth) | · reported in docs | `growth_l` |
+| Generators and rewiring | Rewiring and randomization | [Reinforcement](../measures/generators-and-rewiring/reinforcement.html) | [Reinforcement](../measures/generators-and-rewiring/reinforcement.html#cat_reinforcement) | · reported in docs | `reinforcement_tm` |
+| Generators and rewiring | Rewiring and randomization | [Weighted reshuffling](../measures/generators-and-rewiring/weighted_reshuffling.html) | [Rg](../measures/generators-and-rewiring/weighted_reshuffling.html#cat_rg) | · reported in docs | `rg_tm; rg_w` |
+| Generators and rewiring | Rewiring and randomization | [Weighted reshuffling](../measures/generators-and-rewiring/weighted_reshuffling.html) | [Rg reshuffling](../measures/generators-and-rewiring/weighted_reshuffling.html#cat_reshuffling_rg) | · reported in docs | `rg_reshuffling_l; rg_reshuffling_tm; rg_reshuffling_w` |
+| Mixing and assortativity | Rich club | [Rich club](../measures/mixing-and-assortativity/rich_club.html) | [Weighted richclub](../measures/mixing-and-assortativity/rich_club.html#cat_richclub_weighted) | · reported in docs | `weighted_richclub_tm; weighted_richclub_w` |
+| Mixing and assortativity | Rich club | [Rich club](../measures/mixing-and-assortativity/rich_club.html) | [Weighted richclub local](../measures/mixing-and-assortativity/rich_club.html#cat_local_richclub_weighted) | · reported in docs | `weighted_richclub_local_w` |
+| Paths and distances | Shortest paths | [Geodesic distances](../measures/paths-and-distances/geodesic_distances.html) | [Distances](../measures/paths-and-distances/geodesic_distances.html#distances) | · reported in docs | `distance_tm; distance_w` |
+| Two-mode and bipartite | Bipartite structure | [Two-mode clustering coefficients (six-cycle)](../measures/two-mode-and-bipartite/twomode_clustering.html) | [Two-mode clustering coefficients (six-cycle)](../measures/two-mode-and-bipartite/twomode_clustering.html#twomode_cc) | · reported in docs |  |
+| Two-mode and bipartite | Projection | [Bipartite projection](../measures/two-mode-and-bipartite/bipartite_projection.html) | [Project](../measures/two-mode-and-bipartite/bipartite_projection.html#project) | ✓ checked, agrees | `projecting_tm` |
+| Two-mode and bipartite | Projection | [Bipartite projection](../measures/two-mode-and-bipartite/bipartite_projection.html) | [Two-mode projection weights (covariance, correlation, Jaccard, Bonacich, cosine)](../measures/two-mode-and-bipartite/bipartite_projection.html#projection_weights) | · reported in docs |  |
 
 ## Findings
 

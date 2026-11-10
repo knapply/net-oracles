@@ -31,11 +31,11 @@ Called from R on ego-centred data objects.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Ego networks | [Ego composition: alter shares, Blau and Shannon heterogeneity, IQV](../measures/ego_composition.html) | · reported in docs |  |
-| Mixing and assortativity | [Ei index](../measures/ei_index.html) | ≠ checked, differs by convention |  |
-| Two-mode and bipartite | [Ego\_summary / density](../measures/ego_summary-density.html) | ✓ checked, agrees |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Ego networks | Ego measures | [Ego composition and heterogeneity](../measures/ego-networks/ego_composition.html) | [Ego composition: alter shares, Blau and Shannon heterogeneity, IQV](../measures/ego-networks/ego_composition.html#ego_composition) | · reported in docs |  |
+| Ego networks | Ego measures | [Ego network density](../measures/ego-networks/ego_density.html) | [Ego\_summary / density](../measures/ego-networks/ego_density.html#ego_summary-density) | ✓ checked, agrees |  |
+| Mixing and assortativity | Segregation and homophily indices | [E-I index](../measures/mixing-and-assortativity/ei_index.html) | [Ei index](../measures/mixing-and-assortativity/ei_index.html#ei_index) | ≠ checked, differs by convention |  |
 
 ## Findings
 

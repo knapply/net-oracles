@@ -11,96 +11,96 @@ Bugs, disagreements and limitations observed in other tools. `kind` is *defect* 
 
 | Id | Tool | Version | Measure | Kind | Status | Title |
 |---|---|---|---|---|---|---|
-| [F001](#f001) | NetworkX | 3.7 | [Group / betweenness](measures/group-betweenness.html) | defect | reproduced | group\_betweenness\_centrality compares float path lengths exactly |
-| [F002](#f002) | NetworkX | 3.7 | [Prominent group](measures/nxo_prominent.html) | defect | reproduced | prominent\_group misses the best group on disconnected graphs |
-| [F003](#f003) | NetworkX | 3.7 | [Graph edit distance](measures/ged.html) | defect | reproduced | graph\_edit\_distance substitutes a self-loop for an ordinary edge at no cost |
-| [F004](#f004) | NetworkX | 3.7 | [Bellman ford](measures/ord_bellman_ford.html) | defect | observed | goldberg\_radzik raises NetworkXUnbounded for any negative self-loop |
-| [F005](#f005) | NetworkX | 3.7 | [Pagerank](measures/pagerank.html) | convention | observed | PageRank stops on an L1 change below n \* tol |
-| [F006](#f006) | rustworkx | 0.18.1 | [Pagerank](measures/pagerank.html) | convention | observed | PageRank stops on an L1 change below n \* tol |
-| [F007](#f007) | NetworkX | 3.7 | [Pagerank](measures/pagerank.html) | convention | observed | Undirected self-loop is one arc |
-| [F008](#f008) | rustworkx | 0.18.1 | [Pagerank](measures/pagerank.html) | convention | observed | Undirected self-loop is one arc |
-| [F009](#f009) | JGraphT | 1.5.2 | [Pagerank](measures/pagerank.html) | convention | observed | Undirected self-loop is one arc |
-| [F010](#f010) | igraph (R) | 2.3.4 | [Walktrap](measures/walktrap.html) | defect | observed | Walktrap skips minimal merge pairs on mid-size random networks |
-| [F011](#f011) | igraph (R) | 2.3.4 | [Leading eigen](measures/leading_eigen.html) | convention | observed | Leading-eigenvector modularity differs at 1e-6 through the ARPACK tolerance |
-| [F012](#f012) | keyplayer | 1.0.4 | [Kpp\_single / distance\_reach](measures/kpp_single-distance_reach.html) | defect | observed | Weighted distances (binary = FALSE) are not shortest-path lengths |
-| [F013](#f013) | centiserve | 1.0.0 | [Communicability betweenness](measures/cx_communicability_betweenness.html) | defect | reproduced | communibet() cannot find an installed expm |
-| [F014](#f014) | Gephi toolkit | 0.11.3 | [Eigenvector](measures/eigenvector.html) | defect | reproduced | Eigenvector centrality is not converged |
-| [F015](#f015) | Gephi toolkit | 0.11.3 | [Louvain quality](measures/louvain_quality.html) | defect | reproduced | Louvain with setRandom(false) is not reproducible |
-| [F016](#f016) | Gephi toolkit | 0.11.3 | [Louvain quality](measures/louvain_quality.html) | defect | reproduced | Louvain sometimes does not return |
-| [F017](#f017) | Gephi toolkit | 0.11.3 | [Pagerank](measures/pagerank.html) | defect | reproduced | PageRank loses probability mass at self-loops |
-| [F018](#f018) | Gephi toolkit | 0.11.3 | [Closeness](measures/closeness.html) | convention | observed | Closeness is reached/sum of distances; 0 for a node reaching nobody |
-| [F019](#f019) | Gephi toolkit | 0.11.3 | [Hits](measures/hits.html) | convention | observed | HITS uses unit Euclidean scaling and ignores self-loops |
-| [F020](#f020) | Gephi toolkit | 0.11.3 | [Degree](measures/degree.html) | convention | observed | Degree counts a self-loop twice |
-| [F021](#f021) | Gephi toolkit | 0.11.3 | [Average clustering](measures/average_clustering.html) | convention | observed | Average clustering leaves out nodes of degree below 2 |
-| [F022](#f022) | Gephi toolkit | 0.11.3 | [Louvain quality](measures/louvain_quality.html) | convention | observed | Louvain resolution acts as the reciprocal of gamma |
-| [F023](#f023) | NetworkX | 3.7 | [Index](measures/dm_index.html) | defect | observed | hyper\_wiener\_index is twice the published value |
-| [F024](#f024) | NetworkX | 3.7 | [Betweenness subset](measures/cx_betweenness_subset.html) | defect | observed | edge\_betweenness\_centrality\_subset deviates from its documented formula |
-| [F025](#f025) | NetworkX | 3.7 | [Effective size](measures/effective_size.html) | defect | observed | effective\_size is wrong for weighted or directed graphs on its vectorized path |
+| [F001](#f001) | NetworkX | 3.7 | [Group / betweenness](measures/centrality/group_betweenness.html#group-betweenness) | defect | reproduced | group\_betweenness\_centrality compares float path lengths exactly |
+| [F002](#f002) | NetworkX | 3.7 | [Prominent group](measures/centrality/group_prominence.html#nxo_prominent) | defect | reproduced | prominent\_group misses the best group on disconnected graphs |
+| [F003](#f003) | NetworkX | 3.7 | [Graph edit distance](measures/graph-theory-and-combinatorics/graph_edit_distance.html#ged) | defect | reproduced | graph\_edit\_distance substitutes a self-loop for an ordinary edge at no cost |
+| [F004](#f004) | NetworkX | 3.7 | [Bellman ford](measures/paths-and-distances/shortest_paths.html#ord_bellman_ford) | defect | observed | goldberg\_radzik raises NetworkXUnbounded for any negative self-loop |
+| [F005](#f005) | NetworkX | 3.7 | [Pagerank](measures/centrality/pagerank.html#pagerank) | convention | observed | PageRank stops on an L1 change below n \* tol |
+| [F006](#f006) | rustworkx | 0.18.1 | [Pagerank](measures/centrality/pagerank.html#pagerank) | convention | observed | PageRank stops on an L1 change below n \* tol |
+| [F007](#f007) | NetworkX | 3.7 | [Pagerank](measures/centrality/pagerank.html#pagerank) | convention | observed | Undirected self-loop is one arc |
+| [F008](#f008) | rustworkx | 0.18.1 | [Pagerank](measures/centrality/pagerank.html#pagerank) | convention | observed | Undirected self-loop is one arc |
+| [F009](#f009) | JGraphT | 1.5.2 | [Pagerank](measures/centrality/pagerank.html#pagerank) | convention | observed | Undirected self-loop is one arc |
+| [F010](#f010) | igraph (R) | 2.3.4 | [Walktrap](measures/communities/walktrap.html#walktrap) | defect | observed | Walktrap skips minimal merge pairs on mid-size random networks |
+| [F011](#f011) | igraph (R) | 2.3.4 | [Leading eigen](measures/communities/modularity_maximization.html#leading_eigen) | convention | observed | Leading-eigenvector modularity differs at 1e-6 through the ARPACK tolerance |
+| [F012](#f012) | keyplayer | 1.0.4 | [Kpp\_single / distance\_reach](measures/centrality/key_player_single.html#kpp_single-distance_reach) | defect | observed | Weighted distances (binary = FALSE) are not shortest-path lengths |
+| [F013](#f013) | centiserve | 1.0.0 | [Communicability betweenness](measures/centrality/communicability_betweenness.html#cx_communicability_betweenness) | defect | reproduced | communibet() cannot find an installed expm |
+| [F014](#f014) | Gephi toolkit | 0.11.3 | [Eigenvector](measures/centrality/eigenvector_centrality.html#eigenvector) | defect | reproduced | Eigenvector centrality is not converged |
+| [F015](#f015) | Gephi toolkit | 0.11.3 | [Louvain quality](measures/communities/modularity_maximization.html#louvain_quality) | defect | reproduced | Louvain with setRandom(false) is not reproducible |
+| [F016](#f016) | Gephi toolkit | 0.11.3 | [Louvain quality](measures/communities/modularity_maximization.html#louvain_quality) | defect | reproduced | Louvain sometimes does not return |
+| [F017](#f017) | Gephi toolkit | 0.11.3 | [Pagerank](measures/centrality/pagerank.html#pagerank) | defect | reproduced | PageRank loses probability mass at self-loops |
+| [F018](#f018) | Gephi toolkit | 0.11.3 | [Closeness](measures/centrality/closeness.html#closeness) | convention | observed | Closeness is reached/sum of distances; 0 for a node reaching nobody |
+| [F019](#f019) | Gephi toolkit | 0.11.3 | [Hits](measures/centrality/hits.html#hits) | convention | observed | HITS uses unit Euclidean scaling and ignores self-loops |
+| [F020](#f020) | Gephi toolkit | 0.11.3 | [Degree](measures/centrality/degree.html#degree) | convention | observed | Degree counts a self-loop twice |
+| [F021](#f021) | Gephi toolkit | 0.11.3 | [Average clustering](measures/descriptive-statistics/local_clustering.html#average_clustering) | convention | observed | Average clustering leaves out nodes of degree below 2 |
+| [F022](#f022) | Gephi toolkit | 0.11.3 | [Louvain quality](measures/communities/modularity_maximization.html#louvain_quality) | convention | observed | Louvain resolution acts as the reciprocal of gamma |
+| [F023](#f023) | NetworkX | 3.7 | [Index](measures/paths-and-distances/wiener_index.html#dm_index) | defect | observed | hyper\_wiener\_index is twice the published value |
+| [F024](#f024) | NetworkX | 3.7 | [Betweenness subset](measures/centrality/betweenness.html#cx_betweenness_subset) | defect | observed | edge\_betweenness\_centrality\_subset deviates from its documented formula |
+| [F025](#f025) | NetworkX | 3.7 | [Effective size](measures/roles-and-positions/effective_size.html#effective_size) | defect | observed | effective\_size is wrong for weighted or directed graphs on its vectorized path |
 | [F026](#f026) | NetworkX | 3.7 |  | defect | observed | Network simplex can misreport feasibility with float weights |
 | [F027](#f027) | NetworkX | 3.7 |  | defect | observed | maximum\_spanning\_arborescence occasionally misses the maximum |
-| [F028](#f028) | NetworkX | 3.7 | [K edge components](measures/k_edge_components.html) | limitation | observed | k\_edge\_components hits the recursion limit near n = 1000 |
-| [F029](#f029) | NetworkX | 3.7 | [Label propagation](measures/label_propagation.html) | convention | observed | Ties are broken by Python set or insertion order |
-| [F030](#f030) | NetworkX | 3.7 | [Group / betweenness](measures/group-betweenness.html) | defect | observed | group\_betweenness\_centrality can vary with PYTHONHASHSEED |
-| [F031](#f031) | NetworkX | 3.7 | [Node connectivity](measures/ap_node_connectivity.html) | defect | reproduced | approximation.node\_connectivity starts from a bound that can exceed the connectivity |
-| [F032](#f032) | NetworkX | 3.7 | [CD index](measures/nxs_cd_index.html) | convention | observed | cd\_index pools every citer of the references, whatever its time |
-| [F033](#f033) | NetworkX | 3.7 | [Betweenness](measures/betweenness.html) | convention | observed | Weighted betweenness counts one shortest path per neighbour pair with parallel edges |
-| [F034](#f034) | NetworkX | 3.7 | [Implicit family](measures/implicit_family.html) | convention | observed | hypercube\_graph nodes are bit tuples; dimension 0 is the null graph |
-| [F035](#f035) | NetworkX | 3.7 | [Modularity](measures/modularity.html) | convention | observed | Returns 0 for modularity, Louvain, density and nominal assortativity on edgeless input |
-| [F036](#f036) | igraph (R) | 2.3.4 | [Compare partitions](measures/compare_partitions.html) | convention | observed | Adjusted Rand index is NaN on all-singleton partitions |
-| [F037](#f037) | cdlib | 0.4.1 | [Compare partitions](measures/compare_partitions.html) | convention | observed | Adjusted Rand index is 1 on degenerate partitions |
-| [F038](#f038) | igraph (R) | 2.3.4 | [Spinglass](measures/spinglass.html) | convention | observed | Spinglass reads the network as simple |
-| [F039](#f039) | igraph (R) | 2.3.4 | [Triad census](measures/triad_census.html) | defect | observed | Triad census on multigraphs differs from the definition |
-| [F040](#f040) | igraph (R) | 2.3.4 | [Hits](measures/hits.html) | convention | observed | HITS returns 1 for an edgeless network |
-| [F041](#f041) | sna | 2.8 | [Information centrality](measures/information_centrality.html) | defect | observed | Information centrality fails on singular inputs |
-| [F042](#f042) | sna | 2.8 | [Degree](measures/degree.html) | convention | observed | Degree reads an adjacency matrix: parallel edges collapse and the diagonal is ignored by default |
-| [F043](#f043) | sna | 2.8 | [Closeness](measures/closeness.html) | convention | observed | Closeness and centralization normalizations differ from other tools |
-| [F044](#f044) | sna | 2.8 | [Reciprocity](measures/reciprocity.html) | convention | observed | Reciprocity correlation is 0 on a single arc |
-| [F045](#f045) | JGraphT | 1.5.2 | [Betweenness](measures/betweenness.html) | convention | observed | Normalized betweenness divides by (n-1)(n-2) in undirected graphs |
-| [F046](#f046) | Boost Graph Library | 1.90 | [Betweenness](measures/betweenness.html) | convention | observed | relative\_betweenness\_centrality is twice the standard value on directed graphs |
-| [F047](#f047) | JGraphT | 1.5.2 | [Closeness](measures/closeness.html) | convention | observed | Closeness is 0 for a node that cannot reach every other node |
-| [F048](#f048) | Boost Graph Library | 1.90 | [Closeness](measures/closeness.html) | convention | observed | Closeness is 1 / sum of distances, with DBL\_MAX for an unreachable pair |
-| [F049](#f049) | JGraphT | 1.5.2 | [Eccentricity](measures/eccentricity.html) | convention | observed | Eccentricity, radius and diameter follow edge direction and return Infinity when a node is unreachable |
-| [F050](#f050) | Boost Graph Library | 1.90 | [Eccentricity](measures/eccentricity.html) | convention | observed | Eccentricity, radius and diameter return DBL\_MAX when a node is unreachable |
-| [F051](#f051) | JGraphT | 1.5.2 | [Clustering](measures/clustering.html) | convention | observed | Local clustering counts ordered neighbour pairs on directed input; counts loops and parallel edges in pseudographs |
-| [F052](#f052) | Boost Graph Library | 1.90 | [Clustering](measures/clustering.html) | convention | observed | Clustering counts loops and parallel edges as extra neighbours |
-| [F053](#f053) | JGraphT | 1.5.2 | [Transitivity](measures/transitivity.html) | limitation | observed | Transitivity refuses directed input |
-| [F054](#f054) | JGraphT | 1.5.2 | [Coreness](measures/coreness.html) | limitation | observed | Coreness and clique finders refuse non-simple input |
-| [F055](#f055) | BCT (Octave) | 2019-03-03 | [Betweenness](measures/betweenness.html) | convention | observed | Betweenness counts ordered pairs on undirected networks |
-| [F056](#f056) | BCT (Octave) | 2019-03-03 | [Clustering](measures/clustering.html) | convention | observed | clustering\_coef\_bd and transitivity\_bd are Fagiolo's directed coefficients |
-| [F057](#f057) | BCT (Octave) | 2019-03-03 | [Eccentricity](measures/eccentricity.html) | convention | observed | charpath takes the longest finite distance; NaN for a node reaching nobody |
-| [F058](#f058) | BCT (Octave) | 2019-03-03 | [Assortativity degree](measures/assortativity_degree.html) | convention | observed | Degree assortativity is NaN for regular networks; the directed variant differs from the Pearson correlation of out-degree at the source and in-degree at the target |
-| [F059](#f059) | BCT (Octave) | 2019-03-03 | [Degree](measures/degree.html) | convention | observed | Matrix-input calls carry no loops or parallel edges |
-| [F060](#f060) | NetworKit | 11.2.2 | [Betweenness](measures/betweenness.html) | convention | observed | Undirected betweenness scores both orderings of a pair |
-| [F061](#f061) | NetworKit | 11.2.2 | [Closeness](measures/closeness.html) | convention | observed | Closeness returns (n-1)/sum of distances whatever normalized says |
-| [F062](#f062) | NetworKit | 11.2.2 | [Edge betweenness](measures/edge_betweenness.html) | convention | observed | edgeScores() follow NetworKit's own edge numbering |
-| [F063](#f063) | NetworKit | 11.2.2 | [Katz](measures/katz.html) | defect | observed | Katz and degree assortativity differ by 2% to 40% |
-| [F064](#f064) | NetworKit | 11.2.2 | [Eigenvector](measures/eigenvector.html) | defect | observed | Eigenvector power iteration stops near 1e-7 whatever tol is requested and oscillates on bipartite graphs |
-| [F065](#f065) | NetworKit | 11.2.2 | [Degree](measures/degree.html) | convention | observed | Loops, parallel edges and directed input are counted differently |
-| [F066](#f066) | NetworKit | 11.2.2 | [Max cliques](measures/max_cliques.html) | convention | observed | MaximalCliques omits a node without edges |
-| [F067](#f067) | NetworKit | 11.2.2 | [Diameter](measures/diameter.html) | defect | observed | Exact diameter on a weighted graph returns whole numbers; weighted Laplacian differs by 5% to 10% |
-| [F068](#f068) | NetworKit | 11.2.2 | [Pagerank](measures/pagerank.html) | convention | observed | Rank at isolated nodes is spread differently |
-| [F069](#f069) | NetworKit | 11.2.2 | [Strength](measures/strength.html) | convention | observed | weightedDegree counts out-edges only; a single node gets 0 |
-| [F070](#f070) | ergm (statnet) | 4.12.0 | [Density](measures/density.html) | convention | observed | A network object holds each tie once and no loops |
-| [F071](#f071) | nauty | 2.8.8 | [Vf2pp](measures/vf2pp.html) | limitation | observed | Parallel edges are not representable |
-| [F072](#f072) | graspologic | 3.4.4 | [Gm laplacian](measures/gm_laplacian.html) | convention | observed | The I-DAD normalized Laplacian normalizes by in-degrees on directed graphs |
-| [F073](#f073) | egor | 1.25.10 | [Ei index](measures/ei_index.html) | convention | observed | comp\_ei counts each neighbour once |
-| [F074](#f074) | igraph (Python) | 1.0.0 | [Assortativity nominal](measures/assortativity_nominal.html) | limitation | observed | assortativity\_nominal(normalized=False) raises SystemError; eigenvector\_centrality(directed=False) on a directed graph raises Invalid mode |
-| [F075](#f075) | igraph (Python) | 1.0.0 | [Katz](measures/katz.html) | limitation | observed | Alpha and power centrality exist only in the R binding |
-| [F076](#f076) | influenceR | 0.1.5 | [Betweenness](measures/betweenness.html) | convention | observed | influenceR betweenness counts both orderings of an undirected pair and reads directed graphs as undirected |
-| [F077](#f077) | centiserve | 1.0.0 | [Current flow closeness](measures/cx_current_flow_closeness.html) | convention | observed | Flow closeness is larger by a factor near n - 1; closeness vitality is twice the standard value on undirected networks |
-| [F078](#f078) | tnet | 3.0.16 | [Distances](measures/distances.html) | defect | observed | Weighted distance and closeness with the alpha exponent differ from the definition |
-| [F079](#f079) | netrankr | 2.0.0 | [Betweenness](measures/betweenness.html) | convention | observed | depend\_sp and depend\_curflow count both orderings of an unordered pair |
-| [F080](#f080) | netrankr | 2.0.0 | [Information centrality](measures/information_centrality.html) | convention | observed | dist\_resist with invsum is the standard value divided by n |
-| [F081](#f081) | netrankr | 2.0.0 | [Closeness](measures/closeness.html) | convention | observed | Empty distance sum inverts to 0 |
-| [F082](#f082) | manynet | 2.4.0 | [Effective size](measures/effective_size.html) | defect | observed | Effective size and efficiency differ on directed networks and multigraphs with loops |
-| [F083](#f083) | manynet | 2.4.0 | [Hierarchy](measures/hierarchy.html) | defect | observed | hierarchy differs from the definition on all 25 fixtures |
-| [F084](#f084) | blockmodeling | 1.1.8 | [Structural equivalence](measures/structural_equivalence.html) | convention | observed | Profiles keep the entries for the two nodes themselves on asymmetric matrices |
-| [F085](#f085) | RSiena | 1.6.6 | [Saom sim mean](measures/saom_sim_mean.html) | defect | observed | From a complete first wave the mean tie count stays at 5.0 |
-| [F086](#f086) | GraphBLAS algorithms | 2023.10.0 | [Katz](measures/katz.html) | defect | observed | Katz loses beta at nodes without in-links |
-| [F087](#f087) | scikit-network | 0.33.0 | [Pagerank](measures/pagerank.html) | defect | observed | PageRank restart vector departs from the definition |
-| [F088](#f088) | GAP Benchmark Suite | 941462c7c42e | [Pagerank](measures/pagerank.html) | convention | observed | Rank held by dangling vertices is not passed on |
-| [F089](#f089) | GAP Benchmark Suite | 941462c7c42e | [Betweenness](measures/betweenness.html) | convention | observed | The BC verifier uses a float-epsilon tolerance against its own float accumulation |
-| [F090](#f090) | graph-tool | 3.9 | [Betweenness](measures/betweenness.html) | convention | reported | Betweenness normalization can differ by a factor 2 from the Freeman convention |
+| [F028](#f028) | NetworkX | 3.7 | [K edge components](measures/components-and-connectivity/k_edge_components.html#k_edge_components) | limitation | observed | k\_edge\_components hits the recursion limit near n = 1000 |
+| [F029](#f029) | NetworkX | 3.7 | [Label propagation](measures/communities/label_propagation.html#label_propagation) | convention | observed | Ties are broken by Python set or insertion order |
+| [F030](#f030) | NetworkX | 3.7 | [Group / betweenness](measures/centrality/group_betweenness.html#group-betweenness) | defect | observed | group\_betweenness\_centrality can vary with PYTHONHASHSEED |
+| [F031](#f031) | NetworkX | 3.7 | [Node connectivity](measures/components-and-connectivity/node_connectivity.html#ap_node_connectivity) | defect | reproduced | approximation.node\_connectivity starts from a bound that can exceed the connectivity |
+| [F032](#f032) | NetworkX | 3.7 | [CD index](measures/traversal-trees-and-dags/cd_index.html#nxs_cd_index) | convention | observed | cd\_index pools every citer of the references, whatever its time |
+| [F033](#f033) | NetworkX | 3.7 | [Betweenness](measures/centrality/betweenness.html#betweenness) | convention | observed | Weighted betweenness counts one shortest path per neighbour pair with parallel edges |
+| [F034](#f034) | NetworkX | 3.7 | [Implicit family](measures/generators-and-rewiring/circulant_ring_graphs.html#implicit_family) | convention | observed | hypercube\_graph nodes are bit tuples; dimension 0 is the null graph |
+| [F035](#f035) | NetworkX | 3.7 | [Modularity](measures/communities/modularity.html#modularity) | convention | observed | Returns 0 for modularity, Louvain, density and nominal assortativity on edgeless input |
+| [F036](#f036) | igraph (R) | 2.3.4 | [Compare partitions](measures/communities/compare_partitions.html#compare_partitions) | convention | observed | Adjusted Rand index is NaN on all-singleton partitions |
+| [F037](#f037) | cdlib | 0.4.1 | [Compare partitions](measures/communities/compare_partitions.html#compare_partitions) | convention | observed | Adjusted Rand index is 1 on degenerate partitions |
+| [F038](#f038) | igraph (R) | 2.3.4 | [Spinglass](measures/communities/spinglass.html#spinglass) | convention | observed | Spinglass reads the network as simple |
+| [F039](#f039) | igraph (R) | 2.3.4 | [Triad census](measures/descriptive-statistics/triad_census.html#triad_census) | defect | observed | Triad census on multigraphs differs from the definition |
+| [F040](#f040) | igraph (R) | 2.3.4 | [Hits](measures/centrality/hits.html#hits) | convention | observed | HITS returns 1 for an edgeless network |
+| [F041](#f041) | sna | 2.8 | [Information centrality](measures/centrality/information_centrality.html#information_centrality) | defect | observed | Information centrality fails on singular inputs |
+| [F042](#f042) | sna | 2.8 | [Degree](measures/centrality/degree.html#degree) | convention | observed | Degree reads an adjacency matrix: parallel edges collapse and the diagonal is ignored by default |
+| [F043](#f043) | sna | 2.8 | [Closeness](measures/centrality/closeness.html#closeness) | convention | observed | Closeness and centralization normalizations differ from other tools |
+| [F044](#f044) | sna | 2.8 | [Reciprocity](measures/descriptive-statistics/reciprocity.html#reciprocity) | convention | observed | Reciprocity correlation is 0 on a single arc |
+| [F045](#f045) | JGraphT | 1.5.2 | [Betweenness](measures/centrality/betweenness.html#betweenness) | convention | observed | Normalized betweenness divides by (n-1)(n-2) in undirected graphs |
+| [F046](#f046) | Boost Graph Library | 1.90 | [Betweenness](measures/centrality/betweenness.html#betweenness) | convention | observed | relative\_betweenness\_centrality is twice the standard value on directed graphs |
+| [F047](#f047) | JGraphT | 1.5.2 | [Closeness](measures/centrality/closeness.html#closeness) | convention | observed | Closeness is 0 for a node that cannot reach every other node |
+| [F048](#f048) | Boost Graph Library | 1.90 | [Closeness](measures/centrality/closeness.html#closeness) | convention | observed | Closeness is 1 / sum of distances, with DBL\_MAX for an unreachable pair |
+| [F049](#f049) | JGraphT | 1.5.2 | [Eccentricity](measures/paths-and-distances/eccentricity.html#eccentricity) | convention | observed | Eccentricity, radius and diameter follow edge direction and return Infinity when a node is unreachable |
+| [F050](#f050) | Boost Graph Library | 1.90 | [Eccentricity](measures/paths-and-distances/eccentricity.html#eccentricity) | convention | observed | Eccentricity, radius and diameter return DBL\_MAX when a node is unreachable |
+| [F051](#f051) | JGraphT | 1.5.2 | [Clustering](measures/descriptive-statistics/local_clustering.html#clustering) | convention | observed | Local clustering counts ordered neighbour pairs on directed input; counts loops and parallel edges in pseudographs |
+| [F052](#f052) | Boost Graph Library | 1.90 | [Clustering](measures/descriptive-statistics/local_clustering.html#clustering) | convention | observed | Clustering counts loops and parallel edges as extra neighbours |
+| [F053](#f053) | JGraphT | 1.5.2 | [Transitivity](measures/descriptive-statistics/global_transitivity.html#transitivity) | limitation | observed | Transitivity refuses directed input |
+| [F054](#f054) | JGraphT | 1.5.2 | [Coreness](measures/cohesion-and-subgroups/k_core.html#coreness) | limitation | observed | Coreness and clique finders refuse non-simple input |
+| [F055](#f055) | BCT (Octave) | 2019-03-03 | [Betweenness](measures/centrality/betweenness.html#betweenness) | convention | observed | Betweenness counts ordered pairs on undirected networks |
+| [F056](#f056) | BCT (Octave) | 2019-03-03 | [Clustering](measures/descriptive-statistics/local_clustering.html#clustering) | convention | observed | clustering\_coef\_bd and transitivity\_bd are Fagiolo's directed coefficients |
+| [F057](#f057) | BCT (Octave) | 2019-03-03 | [Eccentricity](measures/paths-and-distances/eccentricity.html#eccentricity) | convention | observed | charpath takes the longest finite distance; NaN for a node reaching nobody |
+| [F058](#f058) | BCT (Octave) | 2019-03-03 | [Assortativity degree](measures/mixing-and-assortativity/assortativity_coefficient.html#assortativity_degree) | convention | observed | Degree assortativity is NaN for regular networks; the directed variant differs from the Pearson correlation of out-degree at the source and in-degree at the target |
+| [F059](#f059) | BCT (Octave) | 2019-03-03 | [Degree](measures/centrality/degree.html#degree) | convention | observed | Matrix-input calls carry no loops or parallel edges |
+| [F060](#f060) | NetworKit | 11.2.2 | [Betweenness](measures/centrality/betweenness.html#betweenness) | convention | observed | Undirected betweenness scores both orderings of a pair |
+| [F061](#f061) | NetworKit | 11.2.2 | [Closeness](measures/centrality/closeness.html#closeness) | convention | observed | Closeness returns (n-1)/sum of distances whatever normalized says |
+| [F062](#f062) | NetworKit | 11.2.2 | [Edge betweenness](measures/centrality/edge_betweenness.html#edge_betweenness) | convention | observed | edgeScores() follow NetworKit's own edge numbering |
+| [F063](#f063) | NetworKit | 11.2.2 | [Katz](measures/centrality/katz_centrality.html#katz) | defect | observed | Katz and degree assortativity differ by 2% to 40% |
+| [F064](#f064) | NetworKit | 11.2.2 | [Eigenvector](measures/centrality/eigenvector_centrality.html#eigenvector) | defect | observed | Eigenvector power iteration stops near 1e-7 whatever tol is requested and oscillates on bipartite graphs |
+| [F065](#f065) | NetworKit | 11.2.2 | [Degree](measures/centrality/degree.html#degree) | convention | observed | Loops, parallel edges and directed input are counted differently |
+| [F066](#f066) | NetworKit | 11.2.2 | [Max cliques](measures/cohesion-and-subgroups/maximal_cliques.html#max_cliques) | convention | observed | MaximalCliques omits a node without edges |
+| [F067](#f067) | NetworKit | 11.2.2 | [Diameter](measures/paths-and-distances/diameter.html#diameter) | defect | observed | Exact diameter on a weighted graph returns whole numbers; weighted Laplacian differs by 5% to 10% |
+| [F068](#f068) | NetworKit | 11.2.2 | [Pagerank](measures/centrality/pagerank.html#pagerank) | convention | observed | Rank at isolated nodes is spread differently |
+| [F069](#f069) | NetworKit | 11.2.2 | [Strength](measures/centrality/strength.html#strength) | convention | observed | weightedDegree counts out-edges only; a single node gets 0 |
+| [F070](#f070) | ergm (statnet) | 4.12.0 | [Density](measures/descriptive-statistics/density.html#density) | convention | observed | A network object holds each tie once and no loops |
+| [F071](#f071) | nauty | 2.8.8 | [Vf2pp](measures/graph-theory-and-combinatorics/graph_isomorphism.html#vf2pp) | limitation | observed | Parallel edges are not representable |
+| [F072](#f072) | graspologic | 3.4.4 | [Gm laplacian](measures/matrices-and-spectra/laplacian_matrix.html#gm_laplacian) | convention | observed | The I-DAD normalized Laplacian normalizes by in-degrees on directed graphs |
+| [F073](#f073) | egor | 1.25.10 | [Ei index](measures/mixing-and-assortativity/ei_index.html#ei_index) | convention | observed | comp\_ei counts each neighbour once |
+| [F074](#f074) | igraph (Python) | 1.0.0 | [Assortativity nominal](measures/mixing-and-assortativity/assortativity_coefficient.html#assortativity_nominal) | limitation | observed | assortativity\_nominal(normalized=False) raises SystemError; eigenvector\_centrality(directed=False) on a directed graph raises Invalid mode |
+| [F075](#f075) | igraph (Python) | 1.0.0 | [Katz](measures/centrality/katz_centrality.html#katz) | limitation | observed | Alpha and power centrality exist only in the R binding |
+| [F076](#f076) | influenceR | 0.1.5 | [Betweenness](measures/centrality/betweenness.html#betweenness) | convention | observed | influenceR betweenness counts both orderings of an undirected pair and reads directed graphs as undirected |
+| [F077](#f077) | centiserve | 1.0.0 | [Current flow closeness](measures/centrality/information_centrality.html#cx_current_flow_closeness) | convention | observed | Flow closeness is larger by a factor near n - 1; closeness vitality is twice the standard value on undirected networks |
+| [F078](#f078) | tnet | 3.0.16 | [Distances](measures/paths-and-distances/geodesic_distances.html#distances) | defect | observed | Weighted distance and closeness with the alpha exponent differ from the definition |
+| [F079](#f079) | netrankr | 2.0.0 | [Betweenness](measures/centrality/betweenness.html#betweenness) | convention | observed | depend\_sp and depend\_curflow count both orderings of an unordered pair |
+| [F080](#f080) | netrankr | 2.0.0 | [Information centrality](measures/centrality/information_centrality.html#information_centrality) | convention | observed | dist\_resist with invsum is the standard value divided by n |
+| [F081](#f081) | netrankr | 2.0.0 | [Closeness](measures/centrality/closeness.html#closeness) | convention | observed | Empty distance sum inverts to 0 |
+| [F082](#f082) | manynet | 2.4.0 | [Effective size](measures/roles-and-positions/effective_size.html#effective_size) | defect | observed | Effective size and efficiency differ on directed networks and multigraphs with loops |
+| [F083](#f083) | manynet | 2.4.0 | [Hierarchy](measures/roles-and-positions/hierarchy_krackhardt.html#hierarchy) | defect | observed | hierarchy differs from the definition on all 25 fixtures |
+| [F084](#f084) | blockmodeling | 1.1.8 | [Structural equivalence](measures/roles-and-positions/structural_equivalence.html#structural_equivalence) | convention | observed | Profiles keep the entries for the two nodes themselves on asymmetric matrices |
+| [F085](#f085) | RSiena | 1.6.6 | [Saom sim mean](measures/statistical-fitting/saom_simulated_mean.html#saom_sim_mean) | defect | observed | From a complete first wave the mean tie count stays at 5.0 |
+| [F086](#f086) | GraphBLAS algorithms | 2023.10.0 | [Katz](measures/centrality/katz_centrality.html#katz) | defect | observed | Katz loses beta at nodes without in-links |
+| [F087](#f087) | scikit-network | 0.33.0 | [Pagerank](measures/centrality/pagerank.html#pagerank) | defect | observed | PageRank restart vector departs from the definition |
+| [F088](#f088) | GAP Benchmark Suite | 941462c7c42e | [Pagerank](measures/centrality/pagerank.html#pagerank) | convention | observed | Rank held by dangling vertices is not passed on |
+| [F089](#f089) | GAP Benchmark Suite | 941462c7c42e | [Betweenness](measures/centrality/betweenness.html#betweenness) | convention | observed | The BC verifier uses a float-epsilon tolerance against its own float accumulation |
+| [F090](#f090) | graph-tool | 3.9 | [Betweenness](measures/centrality/betweenness.html#betweenness) | convention | reported | Betweenness normalization can differ by a factor 2 from the Freeman convention |
 
 ## F001 group\_betweenness\_centrality compares float path lengths exactly {#f001}
 

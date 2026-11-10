@@ -29,8 +29,8 @@ Not run. Capabilities are taken from the documentation.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Signed and multilayer | [Positive-negative centrality (signed ties)](../measures/pn_centrality.html) | · reported in docs |  |
-| Signed and multilayer | [Structural balance, frustration index, signed blockmodels](../measures/signed_balance.html) | · reported in docs |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Signed and multilayer | Signed networks | [Positive-negative centrality](../measures/signed-and-multilayer/pn_centrality.html) | [Positive-negative centrality (signed ties)](../measures/signed-and-multilayer/pn_centrality.html#pn_centrality) | · reported in docs |  |
+| Signed and multilayer | Signed networks | [Structural balance and frustration](../measures/signed-and-multilayer/structural_balance.html) | [Structural balance, frustration index, signed blockmodels](../measures/signed-and-multilayer/structural_balance.html#signed_balance) | · reported in docs |  |
 {% endraw %}

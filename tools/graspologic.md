@@ -29,10 +29,10 @@ Imported in CPython; functions called on NumPy matrices.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Communities | [Modularity](../measures/modularity.html) | ≠ checked, differs by convention |  |
-| Matrices and spectra | [Gm laplacian](../measures/gm_laplacian.html) | ≠ checked, differs by convention |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Communities | Partition and cover quality | [Modularity](../measures/communities/modularity.html) | [Modularity](../measures/communities/modularity.html#modularity) | ≠ checked, differs by convention |  |
+| Matrices and spectra | Graph matrices | [Laplacian matrix](../measures/matrices-and-spectra/laplacian_matrix.html) | [Gm laplacian](../measures/matrices-and-spectra/laplacian_matrix.html#gm_laplacian) | ≠ checked, differs by convention |  |
 
 ## Findings
 

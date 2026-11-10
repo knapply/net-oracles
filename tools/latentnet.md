@@ -29,8 +29,8 @@ Called from R on network objects; stochastic fits compared by objective.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Statistical fitting | [Latent loglik](../measures/latent_loglik.html) | ✓ checked, agrees |  |
-| Statistical fitting | [Latent move delta](../measures/latent_move_delta.html) | ✓ checked, agrees |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Statistical fitting | Model fitting | [Latent space log-likelihood](../measures/statistical-fitting/latent_loglik.html) | [Latent loglik](../measures/statistical-fitting/latent_loglik.html#latent_loglik) | ✓ checked, agrees |  |
+| Statistical fitting | Model fitting | [Latent space move delta](../measures/statistical-fitting/latent_move_delta.html) | [Latent move delta](../measures/statistical-fitting/latent_move_delta.html#latent_move_delta) | ✓ checked, agrees |  |
 {% endraw %}

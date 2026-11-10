@@ -31,17 +31,17 @@ Capabilities listed by documentation of CRAN reference manual of backbone 3.0.4:
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Graph theory and combinatorics | [Bicm](../measures/cat_bicm.html) | · reported in docs | `bicm` |
-| Graph theory and combinatorics | [Disparity](../measures/cat_disparity.html) | · reported in docs | `disparity` |
-| Graph theory and combinatorics | [Fastball](../measures/cat_fastball.html) | · reported in docs | `fastball` |
-| Graph theory and combinatorics | [Fdsm](../measures/cat_fdsm.html) | · reported in docs | `fdsm` |
-| Graph theory and combinatorics | [Fixedcol](../measures/cat_fixedcol.html) | · reported in docs | `fixedcol` |
-| Graph theory and combinatorics | [Fixedfill](../measures/cat_fixedfill.html) | · reported in docs | `fixedfill` |
-| Graph theory and combinatorics | [Fixedrow](../measures/cat_fixedrow.html) | · reported in docs | `fixedrow` |
-| Graph theory and combinatorics | [Lans](../measures/cat_lans.html) | · reported in docs | `lans` |
-| Graph theory and combinatorics | [Mlf](../measures/cat_mlf.html) | · reported in docs | `mlf` |
-| Graph theory and combinatorics | [Sdsm](../measures/cat_sdsm.html) | · reported in docs | `sdsm` |
-| Two-mode and bipartite | [Backbone extraction (SDSM/BiCM, FDSM, fixed-row/column/fill)](../measures/backbone_extraction.html) | · reported in docs |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Backbone extraction (SDSM/BiCM, FDSM, fixed-row/column/fill)](../measures/data-transforms/statistical_backbone.html#backbone_extraction) | · reported in docs |  |
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Bicm](../measures/data-transforms/statistical_backbone.html#cat_bicm) | · reported in docs | `bicm` |
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Disparity](../measures/data-transforms/statistical_backbone.html#cat_disparity) | · reported in docs | `disparity` |
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Fastball](../measures/data-transforms/statistical_backbone.html#cat_fastball) | · reported in docs | `fastball` |
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Fdsm](../measures/data-transforms/statistical_backbone.html#cat_fdsm) | · reported in docs | `fdsm` |
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Fixedcol](../measures/data-transforms/statistical_backbone.html#cat_fixedcol) | · reported in docs | `fixedcol` |
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Fixedfill](../measures/data-transforms/statistical_backbone.html#cat_fixedfill) | · reported in docs | `fixedfill` |
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Fixedrow](../measures/data-transforms/statistical_backbone.html#cat_fixedrow) | · reported in docs | `fixedrow` |
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Lans](../measures/data-transforms/statistical_backbone.html#cat_lans) | · reported in docs | `lans` |
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Mlf](../measures/data-transforms/statistical_backbone.html#cat_mlf) | · reported in docs | `mlf` |
+| Data transforms | Sparsification and backbones | [Statistical backbone extraction](../measures/data-transforms/statistical_backbone.html) | [Sdsm](../measures/data-transforms/statistical_backbone.html#cat_sdsm) | · reported in docs | `sdsm` |
 {% endraw %}

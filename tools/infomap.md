@@ -29,7 +29,7 @@ Imported in CPython; run on edge lists with several trials.
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Communities | [Infomap](../measures/infomap.html) | ✓ checked, agrees |  |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Communities | Other detection algorithms | [Infomap](../measures/communities/infomap.html) | [Infomap](../measures/communities/infomap.html#infomap) | ✓ checked, agrees |  |
 {% endraw %}

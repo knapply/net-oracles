@@ -31,9 +31,9 @@ Capabilities listed by documentation of GERGM manual pages (matthewjdenny/GERGM,
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Graph theory and combinatorics | [Hysteresis](../measures/cat_hysteresis.html) | · reported in docs | `hysteresis` |
-| Statistical fitting | [Conditional edge prediction](../measures/cat_conditional_edge_prediction.html) | · reported in docs | `conditional_edge_prediction` |
-| Statistical fitting | [Valued-network ERGM (GERGM)](../measures/gergm.html) | · reported in docs | `gergm` |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Statistical fitting | Model fitting | [Conditional edge prediction (GERGM)](../measures/statistical-fitting/conditional_edge_prediction.html) | [Conditional edge prediction](../measures/statistical-fitting/conditional_edge_prediction.html#cat_conditional_edge_prediction) | · reported in docs | `conditional_edge_prediction` |
+| Statistical fitting | Model fitting | [Hysteresis](../measures/statistical-fitting/hysteresis.html) | [Hysteresis](../measures/statistical-fitting/hysteresis.html#cat_hysteresis) | · reported in docs | `hysteresis` |
+| Statistical fitting | Model fitting | [Valued-network ERGM (GERGM)](../measures/statistical-fitting/gergm.html) | [Valued-network ERGM (GERGM)](../measures/statistical-fitting/gergm.html#gergm) | · reported in docs | `gergm` |
 {% endraw %}

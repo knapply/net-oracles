@@ -33,19 +33,19 @@ Capabilities listed by introspection of R package keyplayer: exported functions 
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Centrality | [Diffusion](../measures/cat_diffusion.html) | · reported in docs | `diffusion` |
-| Centrality | [Kpp\_optimum / distance\_fragmentation](../measures/kpp_optimum-distance_fragmentation.html) | ✓ checked, agrees |  |
-| Centrality | [Kpp\_optimum / distance\_reach](../measures/kpp_optimum-distance_reach.html) | ✓ checked, agrees |  |
-| Centrality | [Kpp\_optimum / m\_reach](../measures/kpp_optimum-m_reach.html) | ✓ checked, agrees | `kpcent` |
-| Centrality | [Kpp\_single / distance\_fragmentation](../measures/kpp_single-distance_fragmentation.html) | ≠ checked, differs by convention | `fragment` |
-| Centrality | [Kpp\_single / distance\_reach](../measures/kpp_single-distance_reach.html) | ≠ checked, differs by convention |  |
-| Centrality | [Kpp\_single / m\_reach](../measures/kpp_single-m_reach.html) | ✓ checked, agrees |  |
-| Centrality | [Mreach closeness](../measures/cat_closeness_mreach.html) | · reported in docs | `mreach.closeness` |
-| Graph theory and combinatorics | [Contracted nodes](../measures/nxs_contracted_nodes.html) | · reported in docs | `contract` |
-| Graph theory and combinatorics | [Kpset](../measures/cat_kpset.html) | · reported in docs | `kpset` |
-| Paths and distances | [Mreach degree](../measures/cat_degree_mreach.html) | · reported in docs | `mreach.degree` |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Centrality | Distance-based | [Reach and m-reach](../measures/centrality/reach_centrality.html) | [Mreach closeness](../measures/centrality/reach_centrality.html#cat_closeness_mreach) | · reported in docs | `mreach.closeness` |
+| Centrality | Distance-based | [Reach and m-reach](../measures/centrality/reach_centrality.html) | [Mreach degree](../measures/centrality/reach_centrality.html#cat_degree_mreach) | · reported in docs | `mreach.degree` |
+| Centrality | Key players | [Key player set (KPP)](../measures/centrality/key_player_set.html) | [Kpp\_optimum / distance\_fragmentation](../measures/centrality/key_player_set.html#kpp_optimum-distance_fragmentation) | ✓ checked, agrees |  |
+| Centrality | Key players | [Key player set (KPP)](../measures/centrality/key_player_set.html) | [Kpp\_optimum / distance\_reach](../measures/centrality/key_player_set.html#kpp_optimum-distance_reach) | ✓ checked, agrees |  |
+| Centrality | Key players | [Key player set (KPP)](../measures/centrality/key_player_set.html) | [Kpp\_optimum / m\_reach](../measures/centrality/key_player_set.html#kpp_optimum-m_reach) | ✓ checked, agrees | `kpcent` |
+| Centrality | Key players | [Key player set (KPP)](../measures/centrality/key_player_set.html) | [Kpset](../measures/centrality/key_player_set.html#cat_kpset) | · reported in docs | `kpset` |
+| Centrality | Key players | [Key player single-node scores (KPP)](../measures/centrality/key_player_single.html) | [Kpp\_single / distance\_fragmentation](../measures/centrality/key_player_single.html#kpp_single-distance_fragmentation) | ≠ checked, differs by convention | `fragment` |
+| Centrality | Key players | [Key player single-node scores (KPP)](../measures/centrality/key_player_single.html) | [Kpp\_single / distance\_reach](../measures/centrality/key_player_single.html#kpp_single-distance_reach) | ≠ checked, differs by convention |  |
+| Centrality | Key players | [Key player single-node scores (KPP)](../measures/centrality/key_player_single.html) | [Kpp\_single / m\_reach](../measures/centrality/key_player_single.html#kpp_single-m_reach) | ✓ checked, agrees |  |
+| Centrality | Local and structural scores | [Diffusion centrality and diffusion degree](../measures/centrality/diffusion_centrality.html) | [Diffusion](../measures/centrality/diffusion_centrality.html#cat_diffusion) | · reported in docs | `diffusion` |
+| Graph theory and combinatorics | Spanners, contraction and reduction | [Node contraction](../measures/graph-theory-and-combinatorics/contracted_nodes.html) | [Contracted nodes](../measures/graph-theory-and-combinatorics/contracted_nodes.html#nxs_contracted_nodes) | · reported in docs | `contract` |
 
 ## Findings
 

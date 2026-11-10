@@ -33,50 +33,50 @@ Capabilities listed by introspection of R package netrankr: exported functions a
 
 ## Measures
 
-| Family | Measure | State | API names |
-|---|---|---|---|
-| Centrality | [Betweenness](../measures/betweenness.html) | ≠ checked, differs by convention | `aggregate_positions` |
-| Centrality | [Closeness](../measures/closeness.html) | ≠ checked, differs by convention |  |
-| Centrality | [Communicability](../measures/cx_communicability.html) | ≠ checked, differs by convention | `indirect_relations` |
-| Centrality | [Current flow closeness](../measures/cx_current_flow_closeness.html) | ✓ checked, agrees |  |
-| Centrality | [Cx current flow](../measures/cx_current_flow.html) | ✓ checked, agrees |  |
-| Centrality | [Harmonic](../measures/harmonic.html) | ✓ checked, agrees |  |
-| Centrality | [Information centrality](../measures/information_centrality.html) | ✓ checked, agrees |  |
-| Centrality | [Neighborhood inclusion, positional dominance, rank intervals](../measures/partial_ranking.html) | · reported in docs |  |
-| Centrality | [Resistance](../measures/cx_resistance.html) | ✓ checked, agrees |  |
-| Centrality | [Swan closeness](../measures/cat_closeness_swan.html) | · reported in docs | `swan_closeness` |
-| Components and connectivity | [Swan connectivity](../measures/cat_connectivity_swan.html) | · reported in docs | `swan_connectivity` |
-| Descriptive statistics | [Swan efficiency](../measures/cat_efficiency_swan.html) | · reported in docs | `swan_efficiency` |
-| Generators and rewiring | [Dominance graph](../measures/cat_dominance.html) | · reported in docs | `dominance_graph` |
-| Generators and rewiring | [Hyperbolic index](../measures/cat_hyperbolic.html) | · reported in docs | `hyperbolic_index` |
-| Graph theory and combinatorics | [Approx rank expected](../measures/cat_approx_expected_rank.html) | · reported in docs | `approx_rank_expected` |
-| Graph theory and combinatorics | [Approx rank relative](../measures/cat_approx_rank_relative.html) | · reported in docs | `approx_rank_relative` |
-| Graph theory and combinatorics | [Comparable pairs](../measures/cat_comparable_pairs.html) | · reported in docs | `comparable_pairs` |
-| Graph theory and combinatorics | [Compare ranks](../measures/cat_compare_ranks.html) | · reported in docs | `compare_ranks` |
-| Graph theory and combinatorics | [Dist 2pow](../measures/cat_2pow_dist.html) | · reported in docs | `dist_2pow` |
-| Graph theory and combinatorics | [Dist dpow](../measures/cat_dist_dpow.html) | · reported in docs | `dist_dpow` |
-| Graph theory and combinatorics | [Dist inv](../measures/cat_dist_inv.html) | · reported in docs | `dist_inv` |
-| Graph theory and combinatorics | [Dist powd](../measures/cat_dist_powd.html) | · reported in docs | `dist_powd` |
-| Graph theory and combinatorics | [Exact rank prob](../measures/cat_exact_prob_rank.html) | · reported in docs | `exact_rank_prob` |
-| Graph theory and combinatorics | [Get rankings](../measures/cat_rankings.html) | · reported in docs | `get_rankings` |
-| Graph theory and combinatorics | [Incomparable pairs](../measures/cat_incomparable_pairs.html) | · reported in docs | `incomparable_pairs` |
-| Graph theory and combinatorics | [Index builder](../measures/cat_builder.html) | · reported in docs | `index_builder` |
-| Graph theory and combinatorics | [Is preserved](../measures/cat_is_preserved.html) | · reported in docs | `is_preserved` |
-| Graph theory and combinatorics | [Majorization gap](../measures/cat_gap_majorization.html) | · reported in docs | `majorization_gap` |
-| Graph theory and combinatorics | [Neighborhood inclusion](../measures/cat_inclusion_neighborhood.html) | · reported in docs | `neighborhood_inclusion` |
-| Graph theory and combinatorics | [Rank intervals](../measures/cat_intervals_rank.html) | · reported in docs | `rank_intervals` |
-| Graph theory and combinatorics | [Swan combinatory](../measures/cat_combinatory_swan.html) | · reported in docs | `swan_combinatory` |
-| Graph theory and combinatorics | [Threshold graphs](../measures/threshold_graph.html) | · reported in docs | `threshold_graph` |
-| Graph theory and combinatorics | [Walks attenuated](../measures/cat_attenuated_walk.html) | · reported in docs | `walks_attenuated` |
-| Graph theory and combinatorics | [Walks exp](../measures/cat_exp_walk.html) | · reported in docs | `walks_exp` |
-| Graph theory and combinatorics | [Walks exp even](../measures/cat_even_exp_walk.html) | · reported in docs | `walks_exp_even` |
-| Graph theory and combinatorics | [Walks exp odd](../measures/cat_exp_odd_walk.html) | · reported in docs | `walks_exp_odd` |
-| Graph theory and combinatorics | [Walks limit prop](../measures/cat_limit_prop_walk.html) | · reported in docs | `walks_limit_prop` |
-| Graph theory and combinatorics | [Walks uptok](../measures/cat_uptok_walk.html) | · reported in docs | `walks_uptok` |
-| Inference (QAP, null models) | [Mcmc rank prob](../measures/cat_mcmc_prob_rank.html) | · reported in docs | `mcmc_rank_prob` |
-| Matrices and spectra | [Spectral gap](../measures/cat_gap_spectral.html) | · reported in docs | `spectral_gap` |
-| Roles and positions | [Positional dominance](../measures/cat_dominance_positional.html) | · reported in docs | `positional_dominance` |
-| Traversal, trees and DAGs | [Reduction](../measures/reduction.html) | · reported in docs | `transitive_reduction` |
+| Family | Subfamily | Concept | Measure (variant) | State | API names |
+|---|---|---|---|---|---|
+| Centrality | Betweenness, load and flow | [Betweenness](../measures/centrality/betweenness.html) | [Betweenness](../measures/centrality/betweenness.html#betweenness) | ≠ checked, differs by convention | `aggregate_positions` |
+| Centrality | Betweenness, load and flow | [Current-flow betweenness](../measures/centrality/current_flow_betweenness.html) | [Cx current flow](../measures/centrality/current_flow_betweenness.html#cx_current_flow) | ✓ checked, agrees |  |
+| Centrality | Distance-based | [Closeness](../measures/centrality/closeness.html) | [Closeness](../measures/centrality/closeness.html#closeness) | ≠ checked, differs by convention |  |
+| Centrality | Distance-based | [Closeness](../measures/centrality/closeness.html) | [Swan closeness](../measures/centrality/closeness.html#cat_closeness_swan) | · reported in docs | `swan_closeness` |
+| Centrality | Distance-based | [Harmonic centrality](../measures/centrality/harmonic_centrality.html) | [Harmonic](../measures/centrality/harmonic_centrality.html#harmonic) | ✓ checked, agrees |  |
+| Centrality | Partial rankings (netrankr) | [Hyperbolic index](../measures/centrality/hyperbolic_index.html) | [Hyperbolic index](../measures/centrality/hyperbolic_index.html#cat_hyperbolic) | · reported in docs | `hyperbolic_index` |
+| Centrality | Partial rankings (netrankr) | [Neighborhood inclusion](../measures/centrality/neighborhood_inclusion.html) | [Neighborhood inclusion](../measures/centrality/neighborhood_inclusion.html#cat_inclusion_neighborhood) | · reported in docs | `neighborhood_inclusion` |
+| Centrality | Partial rankings (netrankr) | [Neighborhood inclusion](../measures/centrality/neighborhood_inclusion.html) | [Neighborhood inclusion, positional dominance, rank intervals](../measures/centrality/neighborhood_inclusion.html#partial_ranking) | · reported in docs |  |
+| Centrality | Partial rankings (netrankr) | [Positional dominance](../measures/centrality/positional_dominance.html) | [Positional dominance](../measures/centrality/positional_dominance.html#cat_dominance_positional) | · reported in docs | `positional_dominance` |
+| Centrality | Partial rankings (netrankr) | [Rank comparison and ordering](../measures/centrality/rank_comparison.html) | [Comparable pairs](../measures/centrality/rank_comparison.html#cat_comparable_pairs) | · reported in docs | `comparable_pairs` |
+| Centrality | Partial rankings (netrankr) | [Rank comparison and ordering](../measures/centrality/rank_comparison.html) | [Compare ranks](../measures/centrality/rank_comparison.html#cat_compare_ranks) | · reported in docs | `compare_ranks` |
+| Centrality | Partial rankings (netrankr) | [Rank comparison and ordering](../measures/centrality/rank_comparison.html) | [Get rankings](../measures/centrality/rank_comparison.html#cat_rankings) | · reported in docs | `get_rankings` |
+| Centrality | Partial rankings (netrankr) | [Rank comparison and ordering](../measures/centrality/rank_comparison.html) | [Incomparable pairs](../measures/centrality/rank_comparison.html#cat_incomparable_pairs) | · reported in docs | `incomparable_pairs` |
+| Centrality | Partial rankings (netrankr) | [Rank comparison and ordering](../measures/centrality/rank_comparison.html) | [Index builder](../measures/centrality/rank_comparison.html#cat_builder) | · reported in docs | `index_builder` |
+| Centrality | Partial rankings (netrankr) | [Rank comparison and ordering](../measures/centrality/rank_comparison.html) | [Is preserved](../measures/centrality/rank_comparison.html#cat_is_preserved) | · reported in docs | `is_preserved` |
+| Centrality | Partial rankings (netrankr) | [Rank comparison and ordering](../measures/centrality/rank_comparison.html) | [Majorization gap](../measures/centrality/rank_comparison.html#cat_gap_majorization) | · reported in docs | `majorization_gap` |
+| Centrality | Partial rankings (netrankr) | [Rank intervals](../measures/centrality/rank_intervals.html) | [Rank intervals](../measures/centrality/rank_intervals.html#cat_intervals_rank) | · reported in docs | `rank_intervals` |
+| Centrality | Partial rankings (netrankr) | [Rank probabilities and expected ranks](../measures/centrality/rank_probabilities.html) | [Approx rank expected](../measures/centrality/rank_probabilities.html#cat_approx_expected_rank) | · reported in docs | `approx_rank_expected` |
+| Centrality | Partial rankings (netrankr) | [Rank probabilities and expected ranks](../measures/centrality/rank_probabilities.html) | [Approx rank relative](../measures/centrality/rank_probabilities.html#cat_approx_rank_relative) | · reported in docs | `approx_rank_relative` |
+| Centrality | Partial rankings (netrankr) | [Rank probabilities and expected ranks](../measures/centrality/rank_probabilities.html) | [Exact rank prob](../measures/centrality/rank_probabilities.html#cat_exact_prob_rank) | · reported in docs | `exact_rank_prob` |
+| Centrality | Partial rankings (netrankr) | [Rank probabilities and expected ranks](../measures/centrality/rank_probabilities.html) | [Mcmc rank prob](../measures/centrality/rank_probabilities.html#cat_mcmc_prob_rank) | · reported in docs | `mcmc_rank_prob` |
+| Centrality | Resistance and information | [Information centrality (current-flow closeness)](../measures/centrality/information_centrality.html) | [Current flow closeness](../measures/centrality/information_centrality.html#cx_current_flow_closeness) | ✓ checked, agrees |  |
+| Centrality | Resistance and information | [Information centrality (current-flow closeness)](../measures/centrality/information_centrality.html) | [Information centrality](../measures/centrality/information_centrality.html#information_centrality) | ✓ checked, agrees |  |
+| Centrality | Spectral and walk-based | [Communicability](../measures/centrality/communicability.html) | [Communicability](../measures/centrality/communicability.html#cx_communicability) | ≠ checked, differs by convention | `indirect_relations` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Distance transformations for indices](../measures/centrality/distance_transform_indices.html) | [Dist 2pow](../measures/centrality/distance_transform_indices.html#cat_2pow_dist) | · reported in docs | `dist_2pow` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Distance transformations for indices](../measures/centrality/distance_transform_indices.html) | [Dist dpow](../measures/centrality/distance_transform_indices.html#cat_dist_dpow) | · reported in docs | `dist_dpow` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Distance transformations for indices](../measures/centrality/distance_transform_indices.html) | [Dist inv](../measures/centrality/distance_transform_indices.html#cat_dist_inv) | · reported in docs | `dist_inv` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Distance transformations for indices](../measures/centrality/distance_transform_indices.html) | [Dist powd](../measures/centrality/distance_transform_indices.html#cat_dist_powd) | · reported in docs | `dist_powd` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Distance transformations for indices](../measures/centrality/distance_transform_indices.html) | [Swan combinatory](../measures/centrality/distance_transform_indices.html#cat_combinatory_swan) | · reported in docs | `swan_combinatory` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Walk-based index components](../measures/centrality/walk_indices.html) | [Walks attenuated](../measures/centrality/walk_indices.html#cat_attenuated_walk) | · reported in docs | `walks_attenuated` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Walk-based index components](../measures/centrality/walk_indices.html) | [Walks exp](../measures/centrality/walk_indices.html#cat_exp_walk) | · reported in docs | `walks_exp` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Walk-based index components](../measures/centrality/walk_indices.html) | [Walks exp even](../measures/centrality/walk_indices.html#cat_even_exp_walk) | · reported in docs | `walks_exp_even` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Walk-based index components](../measures/centrality/walk_indices.html) | [Walks exp odd](../measures/centrality/walk_indices.html#cat_exp_odd_walk) | · reported in docs | `walks_exp_odd` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Walk-based index components](../measures/centrality/walk_indices.html) | [Walks limit prop](../measures/centrality/walk_indices.html#cat_limit_prop_walk) | · reported in docs | `walks_limit_prop` |
+| Centrality | Walk-based and distance-based indices (netrankr) | [Walk-based index components](../measures/centrality/walk_indices.html) | [Walks uptok](../measures/centrality/walk_indices.html#cat_uptok_walk) | · reported in docs | `walks_uptok` |
+| Components and connectivity | Connectivity numbers | [Swan connectivity](../measures/components-and-connectivity/connectivity_swan.html) | [Swan connectivity](../measures/components-and-connectivity/connectivity_swan.html#cat_connectivity_swan) | · reported in docs | `swan_connectivity` |
+| Generators and rewiring | Named and deterministic graphs | [Dominance graph](../measures/generators-and-rewiring/dominance_graph.html) | [Dominance graph](../measures/generators-and-rewiring/dominance_graph.html#cat_dominance) | · reported in docs | `dominance_graph` |
+| Graph theory and combinatorics | Chordal, perfect and special graph classes | [Threshold graphs](../measures/graph-theory-and-combinatorics/threshold_graph.html) | [Threshold graphs](../measures/graph-theory-and-combinatorics/threshold_graph.html#threshold_graph) | · reported in docs | `threshold_graph` |
+| Matrices and spectra | Spectra | [Spectral gap](../measures/matrices-and-spectra/spectral_gap.html) | [Spectral gap](../measures/matrices-and-spectra/spectral_gap.html#cat_gap_spectral) | · reported in docs | `spectral_gap` |
+| Paths and distances | Efficiency and reachability | [Global and local efficiency](../measures/paths-and-distances/global_efficiency.html) | [Swan efficiency](../measures/paths-and-distances/global_efficiency.html#cat_efficiency_swan) | · reported in docs | `swan_efficiency` |
+| Paths and distances | Resistance and spectral distances | [Resistance distance and effective resistance](../measures/paths-and-distances/resistance_distance.html) | [Resistance](../measures/paths-and-distances/resistance_distance.html#cx_resistance) | ✓ checked, agrees |  |
+| Traversal, trees and DAGs | DAGs and topological order | [Transitive reduction](../measures/traversal-trees-and-dags/transitive_reduction.html) | [Reduction](../measures/traversal-trees-and-dags/transitive_reduction.html#reduction) | · reported in docs | `transitive_reduction` |
 
 ## Findings
 
