@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Partition and cover quality. Conce
 
 Hub dominance. Entries grouped here: Cover Hub Dominance; Hub Dominance; Partition Hub Dominance.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworKit hub dominance), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Variants {#concept-variants}
 

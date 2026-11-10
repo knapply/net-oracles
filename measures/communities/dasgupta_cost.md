@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Other detection algorithms. Concep
 
 Dasgupta cost and score. Entries grouped here: Dasgupta cost; Dasgupta score.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (scikit-network Dasgupta cost and score), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Variants {#concept-variants}
 

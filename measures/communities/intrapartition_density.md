@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Partition and cover quality. Conce
 
 Intrapartition density. Entries grouped here: Intrapartition Density.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworKit intrapartition density), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Intrapartition Density {#cat_density_intrapartition}
 

@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Partition comparison and operation
 
 Partition mode and centroid state. Entries grouped here: Partition Centroid State; Partition Mode State.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (graph-tool partition mode and centroid states), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Variants {#concept-variants}
 

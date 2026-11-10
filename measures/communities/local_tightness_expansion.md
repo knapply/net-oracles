@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Partition and cover quality. Conce
 
 Local tightness expansion. Entries grouped here: Local Tightness Expansion.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (NetworKit local tightness expansion), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Local Tightness Expansion {#cat_expansion_local_tightness}
 

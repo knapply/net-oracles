@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Other detection algorithms. Concep
 
 K-spanning-tree clustering. Entries grouped here: KSpanning Tree Clustering.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (JGraphT k-spanning-tree clustering), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## KSpanning Tree Clustering {#cat_clustering_k_spanning_tree}
 

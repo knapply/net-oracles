@@ -16,7 +16,7 @@ Family: [Communities](index.html). Subfamily: Other detection algorithms. Concep
 
 Overlapping communities. Entries grouped here: Overlapping.
 
-*Definition not yet written.*
+*Definition not yet written.* Checked against NetworkX (overlapping\_modularity of a cover on the simple undirected graph), but the sources record no formula for it; the modularity-density extension of Chen, Kuzmin and Szymanski 2014 is a related but different quantity, so no definition is written.
 
 ## Overlapping {#cnx_overlapping}
 
