@@ -16,12 +16,11 @@ Family: [Temporal and events](index.html). Subfamily: Diffusion simulation. Conc
 
 Epidemic simulation (SIR, SEIR). Entries grouped here: Epidemic Simulation SEIR; Sir.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Epidemic Simulation SEIR](#cat_epidemic_seir_simulation) | `cat_epidemic_seir_simulation` | 1 |
-| [Sir](#cat_sir) | `cat_sir` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_epidemic_seir_simulation">Epidemic Simulation SEIR</a></td><td><code>cat_epidemic_seir_simulation</code></td><td>1</td></tr><tr><td><a href="#cat_sir">Sir</a></td><td><code>cat_sir</code></td><td>1</td></tr></tbody></table></div>
 
 ## Epidemic Simulation SEIR {#cat_epidemic_seir_simulation}
 
@@ -31,9 +30,7 @@ Measure id: `cat_epidemic_seir_simulation`. Original family: Graph theory and co
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_epidemic_seir_simulation-networkit) | `EpidemicSimulationSEIR` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_epidemic_seir_simulation-networkit">details</a></td><td><code>EpidemicSimulationSEIR</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `cat_sir`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_sir-igraph) | `sir` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_sir-igraph">details</a></td><td><code>sir</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

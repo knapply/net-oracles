@@ -16,6 +16,8 @@ Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutati
 
 QAP correlation. Entries grouped here: QAP correlation (Y-permutation, exact and Monte Carlo).
 
+*Definition not yet written.*
+
 ## QAP correlation (Y-permutation, exact and Monte Carlo) {#qap_correlation}
 
 Measure id: `qap_correlation`. Original family: Inference (QAP, null models).
@@ -24,10 +26,7 @@ Measure id: `qap_correlation`. Original family: Inference (QAP, null models).
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [sna](../../tools/sna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's documentation; no comparison set up for this measure yet. [details](#why-qap_correlation-sna) | `gcor; gcov; gscor; gscov; qaptest` | documentation |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-qap_correlation-ucinet) | `QAP; QAP correlation (2-tailed default since 6.839), QAP regression (MR-QAP rewritten 6.829; seed fix 6.805; "count in dyad" effect 6.833; FAQ on how coefficients ar; corr; corrmat; rectqap` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sna.html">sna</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's documentation; no comparison set up for this measure yet. <a href="#why-qap_correlation-sna">details</a></td><td><code>gcor; gcov; gscor; gscov; qaptest</code></td><td>documentation</td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-qap_correlation-ucinet">details</a></td><td><code>QAP; QAP correlation (2-tailed default since 6.839), QAP regression (MR-QAP rewritten 6.829; seed fix 6.805; "count in dyad" effect 6.833; FAQ on how coefficients ar; corr; corrmat; rectqap</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

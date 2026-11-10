@@ -16,16 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Isolate effects. Entries grouped here: Anti In Iso; Anti In Iso2; Isolate; Isolate Net; Out Iso; Out Isolate.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Anti In Iso](#cat_anti_iso) | `cat_anti_iso` | 1 |
-| [Anti In Iso2](#cat_anti_iso2) | `cat_anti_iso2` | 1 |
-| [Isolate](#cat_isolate) | `cat_isolate` | 1 |
-| [Isolate Net](#cat_isolate_net) | `cat_isolate_net` | 1 |
-| [Out Iso](#cat_iso_out) | `cat_iso_out` | 1 |
-| [Out Isolate](#cat_isolate_out) | `cat_isolate_out` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_anti_iso">Anti In Iso</a></td><td><code>cat_anti_iso</code></td><td>1</td></tr><tr><td><a href="#cat_anti_iso2">Anti In Iso2</a></td><td><code>cat_anti_iso2</code></td><td>1</td></tr><tr><td><a href="#cat_isolate">Isolate</a></td><td><code>cat_isolate</code></td><td>1</td></tr><tr><td><a href="#cat_isolate_net">Isolate Net</a></td><td><code>cat_isolate_net</code></td><td>1</td></tr><tr><td><a href="#cat_iso_out">Out Iso</a></td><td><code>cat_iso_out</code></td><td>1</td></tr><tr><td><a href="#cat_isolate_out">Out Isolate</a></td><td><code>cat_isolate_out</code></td><td>1</td></tr></tbody></table></div>
 
 ## Anti In Iso {#cat_anti_iso}
 
@@ -35,9 +30,7 @@ Measure id: `cat_anti_iso`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_anti_iso-rsiena) | `antiInIso; antiIso` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_anti_iso-rsiena">details</a></td><td><code>antiInIso; antiIso</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -53,9 +46,7 @@ Measure id: `cat_anti_iso2`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_anti_iso2-rsiena) | `antiInIso2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_anti_iso2-rsiena">details</a></td><td><code>antiInIso2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -71,9 +62,7 @@ Measure id: `cat_isolate`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_isolate-rsiena) | `isolate` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_isolate-rsiena">details</a></td><td><code>isolate</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -89,9 +78,7 @@ Measure id: `cat_isolate_net`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_isolate_net-rsiena) | `isolateNet` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_isolate_net-rsiena">details</a></td><td><code>isolateNet</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -107,9 +94,7 @@ Measure id: `cat_iso_out`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_iso_out-rsiena) | `outIso` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_iso_out-rsiena">details</a></td><td><code>outIso</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -125,9 +110,7 @@ Measure id: `cat_isolate_out`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_isolate_out-rsiena) | `outIsolate` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_isolate_out-rsiena">details</a></td><td><code>outIsolate</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

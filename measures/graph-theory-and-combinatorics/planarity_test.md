@@ -16,12 +16,11 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Planarity. Conc
 
 Planarity test. Entries grouped here: Planar; Planarity testing, embedding and straight-line drawing.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Planar](#st_planar) | `st_planar` | 4 |
-| [Planarity testing, embedding and straight-line drawing](#planarity) | `planarity` | 3 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#st_planar">Planar</a></td><td><code>st_planar</code></td><td>4</td></tr><tr><td><a href="#planarity">Planarity testing, embedding and straight-line drawing</a></td><td><code>planarity</code></td><td>3</td></tr></tbody></table></div>
 
 ## Planar {#st_planar}
 
@@ -31,12 +30,7 @@ Measure id: `st_planar`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `PlanarEmbedding; check_planarity; is_planar` |  |
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-st_planar-graphtool) | `is_planar` | API listing |
-| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-st_planar-rustworkx) | `is_planar` | API listing |
-| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-st_planar-boost) | `boyer_myrvold_planarity_test` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>PlanarEmbedding; check_planarity; is_planar</code></td><td></td></tr><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-st_planar-graphtool">details</a></td><td><code>is_planar</code></td><td>API listing</td></tr><tr><td><a href="../../tools/rustworkx.html">rustworkx</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-st_planar-rustworkx">details</a></td><td><code>is_planar</code></td><td>API listing</td></tr><tr><td><a href="../../tools/boost.html">Boost Graph Library</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-st_planar-boost">details</a></td><td><code>boyer_myrvold_planarity_test</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -46,9 +40,7 @@ Measure id: `st_planar`. Original family: Graph theory and combinatorics.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `st_planar` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.is_planar(G)` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>st_planar</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.is_planar(G)</code></td><td></td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [siek2002boost](../../references.html#siek2002boost), [tool_rustworkx](../../references.html#tool_rustworkx)
 
@@ -60,11 +52,7 @@ Measure id: `planarity`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-planarity-graphtool) | `make_maximal_planar` | API listing |
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-planarity-jgrapht) | `BoyerMyrvoldPlanarityInspector` | API listing |
-| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-planarity-boost) | `chrobak_payne_straight_line_drawing; is_kuratowski_subgraph; is_straight_line_drawing; make_biconnected_planar; make_maximal_planar; planar_canonical_ordering; planar_face_traversal` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-planarity-graphtool">details</a></td><td><code>make_maximal_planar</code></td><td>API listing</td></tr><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-planarity-jgrapht">details</a></td><td><code>BoyerMyrvoldPlanarityInspector</code></td><td>API listing</td></tr><tr><td><a href="../../tools/boost.html">Boost Graph Library</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-planarity-boost">details</a></td><td><code>chrobak_payne_straight_line_drawing; is_kuratowski_subgraph; is_straight_line_drawing; make_biconnected_planar; make_maximal_planar; planar_canonical_ordering; planar_face_traversal</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

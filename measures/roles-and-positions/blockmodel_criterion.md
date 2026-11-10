@@ -16,6 +16,8 @@ Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `
 
 Blockmodel criterion function. Entries grouped here: Crit Fun C.
 
+*Definition not yet written.*
+
 ## Crit Fun C {#cat_c_crit_fun}
 
 Measure id: `cat_c_crit_fun`. Original family: Graph theory and combinatorics.
@@ -24,9 +26,7 @@ Measure id: `cat_c_crit_fun`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [blockmodeling](../../tools/blockmodeling.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_c_crit_fun-blockmodeling) | `critFunC` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/blockmodeling.html">blockmodeling</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_c_crit_fun-blockmodeling">details</a></td><td><code>critFunC</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

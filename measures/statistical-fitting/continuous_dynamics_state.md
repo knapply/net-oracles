@@ -16,15 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: Dynamics states. Concept i
 
 Continuous dynamics states (Kuramoto, linear, normal, Lotka-Volterra). Entries grouped here: Kuramoto State; Linear Normal State; Linear State; LVState; Normal State.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Kuramoto State](#cat_kuramoto_state) | `cat_kuramoto_state` | 1 |
-| [Linear Normal State](#cat_linear_normal_state) | `cat_linear_normal_state` | 1 |
-| [Linear State](#cat_linear_state) | `cat_linear_state` | 1 |
-| [LVState](#cat_lv_state) | `cat_lv_state` | 1 |
-| [Normal State](#cat_normal_state) | `cat_normal_state` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_kuramoto_state">Kuramoto State</a></td><td><code>cat_kuramoto_state</code></td><td>1</td></tr><tr><td><a href="#cat_linear_normal_state">Linear Normal State</a></td><td><code>cat_linear_normal_state</code></td><td>1</td></tr><tr><td><a href="#cat_linear_state">Linear State</a></td><td><code>cat_linear_state</code></td><td>1</td></tr><tr><td><a href="#cat_lv_state">LVState</a></td><td><code>cat_lv_state</code></td><td>1</td></tr><tr><td><a href="#cat_normal_state">Normal State</a></td><td><code>cat_normal_state</code></td><td>1</td></tr></tbody></table></div>
 
 ## Kuramoto State {#cat_kuramoto_state}
 
@@ -34,9 +30,7 @@ Measure id: `cat_kuramoto_state`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_kuramoto_state-graphtool) | `KuramotoState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_kuramoto_state-graphtool">details</a></td><td><code>KuramotoState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -52,9 +46,7 @@ Measure id: `cat_linear_normal_state`. Original family: Graph theory and combina
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_linear_normal_state-graphtool) | `LinearNormalState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_linear_normal_state-graphtool">details</a></td><td><code>LinearNormalState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -70,9 +62,7 @@ Measure id: `cat_linear_state`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_linear_state-graphtool) | `LinearState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_linear_state-graphtool">details</a></td><td><code>LinearState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -88,9 +78,7 @@ Measure id: `cat_lv_state`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_lv_state-graphtool) | `LVState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_lv_state-graphtool">details</a></td><td><code>LVState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -106,9 +94,7 @@ Measure id: `cat_normal_state`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_normal_state-graphtool) | `NormalState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_normal_state-graphtool">details</a></td><td><code>NormalState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

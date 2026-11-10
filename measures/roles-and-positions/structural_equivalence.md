@@ -16,13 +16,11 @@ Family: [Roles and positions](index.html). Subfamily: Equivalence and clustering
 
 Pairwise structural equivalence of all nodes: Euclidean distance, correlation or Hamming distance between their tie profiles.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Structural equivalence](#structural_equivalence) | `structural_equivalence` | 3 |
-| [Equivalence measures: matches, positive matches, overlaps, cross-products, coverage](#equivalence_extra) | `equivalence_extra` | 1 |
-| [Structural equivalence: profile (correlation, Euclidean, etc ), similarities and distance measures (Jaccard, matches, Hamming, Manhattan), diagonal options (Row](#cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming_jaccard_manhattan_matches_measures_options_profile_row_similarities_structural) | `cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming_jaccard_manhattan_matches_measures_options_profile_row_similarities_structural` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#structural_equivalence">Structural equivalence</a></td><td><code>structural_equivalence</code></td><td>3</td></tr><tr><td><a href="#equivalence_extra">Equivalence measures: matches, positive matches, overlaps, cross-products, coverage</a></td><td><code>equivalence_extra</code></td><td>1</td></tr><tr><td><a href="#cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming_jaccard_manhattan_matches_measures_options_profile_row_similarities_structural">Structural equivalence: profile (correlation, Euclidean, etc ), similarities and distance measures (Jaccard, matches, Hamming, Manhattan), diagonal options (Row</a></td><td><code>cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming_jaccard_manhattan_matches_measures_options_profile_row_similarities_structural</code></td><td>1</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -36,11 +34,7 @@ Measure id: `structural_equivalence`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [sna](../../tools/sna.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `sedist` |  |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-structural_equivalence-ucinet) | `SE` | published documentation |
-| [blockmodeling](../../tools/blockmodeling.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (direction): On a symmetric matrix (every undirected fixture and complete5\_dir) blockmodeling::sedist agrees with the reference. [details](#why-structural_equivalence-blockmodeling) | `sedist` |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sna.html">sna</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>sedist</code></td><td></td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-structural_equivalence-ucinet">details</a></td><td><code>SE</code></td><td>published documentation</td></tr><tr><td><a href="../../tools/blockmodeling.html">blockmodeling</a></td><td><a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a></td><td>Differs by convention (direction): On a symmetric matrix (every undirected fixture and complete5_dir) blockmodeling::sedist agrees with the reference. <a href="#why-structural_equivalence-blockmodeling">details</a></td><td><code>sedist</code></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,20 +43,11 @@ Measure id: `structural_equivalence`. Original family: Roles and positions.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `structural_equivalence_correlation` | sna | any | no-value-on-some-inputs |  |  | abs 1e-12, rel 1e-12 | `sna::sedist(m, method = 'correlation')` | sna::sedist() fails on a network with one node. |
-| `structural_equivalence_euclidean` | sna | any | no-value-on-some-inputs |  |  | abs 1e-12, rel 1e-12 | `sna::sedist(m, method = 'euclidean')` | sna::sedist() fails on a network with one node. |
-| `structural_equivalence_euclidean` | blockmodeling | any | differs | directed | direction | abs 1e-12, rel 1e-12 | `blockmodeling::sedist(m, method = 'euclidean')` | On a symmetric matrix (every undirected fixture and complete5\_dir) blockmodeling::sedist agrees with the reference. On an asymmetric one it compares full row and column profiles including the entries for the two nodes themselves (k = i, j), where the reference, like sna::sedist, leaves them out; node 0 against node 1 on cycle7\_dir is 2 against sqrt(2), and on pair 0 against sqrt(2). The oracle script does not call blockmodeling on a network of one node: sedist compares pairs of nodes, and there is no pair. |
-| `structural_equivalence_euclidean_weighted` | sna | any | agrees |  |  | abs 1e-12, rel 1e-12 | `sna::sedist(valued m, method = 'euclidean')` |  |
-| `structural_equivalence_euclidean_weighted` | blockmodeling | any | differs | directed | direction | abs 1e-12, rel 1e-12 | `blockmodeling::sedist(W, method = 'euclidean')` | On a symmetric matrix (every undirected fixture and complete5\_dir) blockmodeling::sedist agrees with the reference. On an asymmetric one it compares full row and column profiles including the entries for the two nodes themselves (k = i, j), where the reference, like sna::sedist, leaves them out; node 0 against node 1 on cycle7\_dir is 2 against sqrt(2), and on pair 0 against sqrt(2). |
-| `structural_equivalence_hamming` | sna | any | no-value-on-some-inputs |  |  | abs 0, rel 0 | `sna::sedist(m, method = 'hamming')` | sna::sedist() fails on a network with one node. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>structural_equivalence_correlation</code></td><td>sna</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>sna::sedist(m, method = 'correlation')</code></td><td>sna::sedist() fails on a network with one node.</td></tr><tr><td><code>structural_equivalence_euclidean</code></td><td>sna</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>sna::sedist(m, method = 'euclidean')</code></td><td>sna::sedist() fails on a network with one node.</td></tr><tr><td><code>structural_equivalence_euclidean</code></td><td>blockmodeling</td><td>any</td><td>differs</td><td>directed</td><td>direction</td><td>abs 1e-12, rel 1e-12</td><td><code>blockmodeling::sedist(m, method = 'euclidean')</code></td><td>On a symmetric matrix (every undirected fixture and complete5_dir) blockmodeling::sedist agrees with the reference. On an asymmetric one it compares full row and column profiles including the entries for the two nodes themselves (k = i, j), where the reference, like sna::sedist, leaves them out; node 0 against node 1 on cycle7_dir is 2 against sqrt(2), and on pair 0 against sqrt(2). The oracle script does not call blockmodeling on a network of one node: sedist compares pairs of nodes, and there is no pair.</td></tr><tr><td><code>structural_equivalence_euclidean_weighted</code></td><td>sna</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>sna::sedist(valued m, method = 'euclidean')</code></td><td></td></tr><tr><td><code>structural_equivalence_euclidean_weighted</code></td><td>blockmodeling</td><td>any</td><td>differs</td><td>directed</td><td>direction</td><td>abs 1e-12, rel 1e-12</td><td><code>blockmodeling::sedist(W, method = 'euclidean')</code></td><td>On a symmetric matrix (every undirected fixture and complete5_dir) blockmodeling::sedist agrees with the reference. On an asymmetric one it compares full row and column profiles including the entries for the two nodes themselves (k = i, j), where the reference, like sna::sedist, leaves them out; node 0 against node 1 on cycle7_dir is 2 against sqrt(2), and on pair 0 against sqrt(2).</td></tr><tr><td><code>structural_equivalence_hamming</code></td><td>sna</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>sna::sedist(m, method = 'hamming')</code></td><td>sna::sedist() fails on a network with one node.</td></tr></tbody></table></div>
 
 **Findings**
 
-| Id | Tool | Kind | Title |
-|---|---|---|---|
-| [F084](../../findings.html#f084) | blockmodeling | convention | Profiles keep the entries for the two nodes themselves on asymmetric matrices |
+<div class="table-wrapper"><table><thead><tr><th>Id</th><th>Tool</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../../findings.html#f084">F084</a></td><td>blockmodeling</td><td>convention</td><td>Profiles keep the entries for the two nodes themselves on asymmetric matrices</td></tr></tbody></table></div>
 
 **References:** [breiger1975algorithm](../../references.html#breiger1975algorithm), [burt1976positions](../../references.html#burt1976positions), [lorrain1971structural](../../references.html#lorrain1971structural), [wasserman1994social](../../references.html#wasserman1994social)
 
@@ -76,9 +61,7 @@ Measure id: `equivalence_extra`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-equivalence_extra-ucinet) |  | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-equivalence_extra-ucinet">details</a></td><td></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -94,9 +77,7 @@ Measure id: `cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming_jaccard_manhattan_matches_measures_options_profile_row_similarities_structural-ucinet) | `Structural equivalence: profile (correlation, Euclidean, etc.), similarities and distance measures (Jaccard, matches, Hamming, Manhattan), diagonal options (Row` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-cat_correlation_diagonal_distance_equivalence_etc_euclidean_hamming_jaccard_manhattan_matches_measures_options_profile_row_similarities_structural-ucinet">details</a></td><td><code>Structural equivalence: profile (correlation, Euclidean, etc.), similarities and distance measures (Jaccard, matches, Hamming, Manhattan), diagonal options (Row</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

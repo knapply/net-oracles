@@ -16,6 +16,8 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Simulates periods of network change under a stochastic actor-oriented model (Snijders): actors take ministeps at a common rate and toggle one tie by a multinomial logit of the objective function; returns, per run, the target statistics followed by the changed ties, the ministeps taken and no networks. The effects are named from the SAOM vocabulary; the covariates are the columns of the call.
 
+*Definition not yet written.*
+
 ## Saom sim mean {#saom_sim_mean}
 
 Measure id: `saom_sim_mean`. Original family: Statistical fitting.
@@ -24,9 +26,7 @@ Measure id: `saom_sim_mean`. Original family: Statistical fitting.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (ties): From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value of the model, 5.4), where the reference value... *(reason incomplete)* [details](#why-saom_sim_mean-rsiena) | `siena07` |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a></td><td>Differs by convention (ties): From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value of the model, 5.4), where the reference value... <em>(reason incomplete)</em> <a href="#why-saom_sim_mean-rsiena">details</a></td><td><code>siena07</code></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -34,16 +34,11 @@ Measure id: `saom_sim_mean`. Original family: Statistical fitting.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `saom_sim_density` | RSiena | directed | differs |  | ties | abs 0.5, rel 0.02 | `RSiena siena07(simOnly = TRUE, returnDeps = TRUE, cond = FALSE, n3 = 8000) with density = -1 and basic rate 3, both fixed; the statistics are computed from the simulated networks` | From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value of the model, 5.4), where the reference and the exact definition oracle relax from 20 ties to 9.3 within the period. The same network with one tie removed gives 8.9 under RSiena (tools/probe\_rsiena.R), in line with the reference, so RSiena treats an all-ones first wave differently; the cause is not identified. RSiena needs at least three actors. |
-| `saom_sim_reciprocity` | RSiena | directed | differs |  | ties | abs 0.5, rel 0.02 | `RSiena siena07(simOnly = TRUE, returnDeps = TRUE, cond = FALSE, n3 = 8000) with density = -1, reciprocity = 1 and basic rate 3, all fixed; the statistics are computed from the simulated networks` | From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value of the model, 5.4), where the reference and the exact definition oracle relax from 20 ties to 9.3 within the period. The same network with one tie removed gives 8.9 under RSiena (tools/probe\_rsiena.R), in line with the reference, so RSiena treats an all-ones first wave differently; the cause is not identified. RSiena needs at least three actors. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>saom_sim_density</code></td><td>RSiena</td><td>directed</td><td>differs</td><td></td><td>ties</td><td>abs 0.5, rel 0.02</td><td><code>RSiena siena07(simOnly = TRUE, returnDeps = TRUE, cond = FALSE, n3 = 8000) with density = -1 and basic rate 3, both fixed; the statistics are computed from the simulated networks</code></td><td>From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value of the model, 5.4), where the reference and the exact definition oracle relax from 20 ties to 9.3 within the period. The same network with one tie removed gives 8.9 under RSiena (tools/probe_rsiena.R), in line with the reference, so RSiena treats an all-ones first wave differently; the cause is not identified. RSiena needs at least three actors.</td></tr><tr><td><code>saom_sim_reciprocity</code></td><td>RSiena</td><td>directed</td><td>differs</td><td></td><td>ties</td><td>abs 0.5, rel 0.02</td><td><code>RSiena siena07(simOnly = TRUE, returnDeps = TRUE, cond = FALSE, n3 = 8000) with density = -1, reciprocity = 1 and basic rate 3, all fixed; the statistics are computed from the simulated networks</code></td><td>From a complete starting network RSiena returns a mean tie count of about 5.0 (the stationary value of the model, 5.4), where the reference and the exact definition oracle relax from 20 ties to 9.3 within the period. The same network with one tie removed gives 8.9 under RSiena (tools/probe_rsiena.R), in line with the reference, so RSiena treats an all-ones first wave differently; the cause is not identified. RSiena needs at least three actors.</td></tr></tbody></table></div>
 
 **Findings**
 
-| Id | Tool | Kind | Title |
-|---|---|---|---|
-| [F085](../../findings.html#f085) | RSiena | defect | From a complete first wave the mean tie count stays at 5.0 |
+<div class="table-wrapper"><table><thead><tr><th>Id</th><th>Tool</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../../findings.html#f085">F085</a></td><td>RSiena</td><td>defect</td><td>From a complete first wave the mean tie count stays at 5.0</td></tr></tbody></table></div>
 
 **Tools cited:** [ripley2026manual](../../references.html#ripley2026manual)
 {% endraw %}

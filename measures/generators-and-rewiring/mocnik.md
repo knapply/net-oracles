@@ -16,12 +16,11 @@ Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment 
 
 Mocnik generator. Entries grouped here: Mocnik Generator; Mocnik Generator Basic.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Mocnik Generator](#cat_generator_mocnik) | `cat_generator_mocnik` | 1 |
-| [Mocnik Generator Basic](#cat_basic_generator_mocnik) | `cat_basic_generator_mocnik` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_generator_mocnik">Mocnik Generator</a></td><td><code>cat_generator_mocnik</code></td><td>1</td></tr><tr><td><a href="#cat_basic_generator_mocnik">Mocnik Generator Basic</a></td><td><code>cat_basic_generator_mocnik</code></td><td>1</td></tr></tbody></table></div>
 
 ## Mocnik Generator {#cat_generator_mocnik}
 
@@ -31,9 +30,7 @@ Measure id: `cat_generator_mocnik`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_generator_mocnik-networkit) | `MocnikGenerator` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_generator_mocnik-networkit">details</a></td><td><code>MocnikGenerator</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `cat_basic_generator_mocnik`. Original family: Generators and rewiri
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_basic_generator_mocnik-networkit) | `MocnikGeneratorBasic` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_basic_generator_mocnik-networkit">details</a></td><td><code>MocnikGeneratorBasic</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

@@ -16,29 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: Block model states. Concep
 
 Stochastic block model states. Entries grouped here: Draw Block State; EMBlock State; Latent Closure Block State; Latent Mask Block State; Latent Multigraph Block State; Layered Block State; and 13 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Draw Block State](#cat_block_draw_state) | `cat_block_draw_state` | 1 |
-| [EMBlock State](#cat_block_em_state) | `cat_block_em_state` | 1 |
-| [Latent Closure Block State](#cat_block_closure_latent_state) | `cat_block_closure_latent_state` | 1 |
-| [Latent Mask Block State](#cat_block_latent_mask_state) | `cat_block_latent_mask_state` | 1 |
-| [Latent Multigraph Block State](#cat_block_latent_multigraph_state) | `cat_block_latent_multigraph_state` | 1 |
-| [Layered Block State](#cat_block_layered_state) | `cat_block_layered_state` | 1 |
-| [Layered Overlap Block State](#cat_block_layered_overlap_state) | `cat_block_layered_overlap_state` | 1 |
-| [Layered Weighted Block State](#cat_block_layered_state_weighted) | `cat_block_layered_state_weighted` | 1 |
-| [Layered Weighted Overlap Block State](#cat_block_layered_overlap_state_weighted) | `cat_block_layered_overlap_state_weighted` | 1 |
-| [Measured Block State](#cat_block_measured_state) | `cat_block_measured_state` | 1 |
-| [Measured Closure Block State](#cat_block_closure_measured_state) | `cat_block_closure_measured_state` | 1 |
-| [Mixed Measured Block State](#cat_block_measured_mixed_state) | `cat_block_measured_mixed_state` | 1 |
-| [Nested Block State](#cat_block_nested_state) | `cat_block_nested_state` | 1 |
-| [Overlap Block State](#cat_block_overlap_state) | `cat_block_overlap_state` | 1 |
-| [PPBlock State](#cat_block_pp_state) | `cat_block_pp_state` | 1 |
-| [Ranked Block State](#cat_block_ranked_state) | `cat_block_ranked_state` | 1 |
-| [Uncertain Block State](#cat_block_state_uncertain) | `cat_block_state_uncertain` | 1 |
-| [Weighted Block State](#cat_block_state_weighted) | `cat_block_state_weighted` | 1 |
-| [Weighted Overlap Block State](#cat_block_overlap_state_weighted) | `cat_block_overlap_state_weighted` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_block_draw_state">Draw Block State</a></td><td><code>cat_block_draw_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_em_state">EMBlock State</a></td><td><code>cat_block_em_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_closure_latent_state">Latent Closure Block State</a></td><td><code>cat_block_closure_latent_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_latent_mask_state">Latent Mask Block State</a></td><td><code>cat_block_latent_mask_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_latent_multigraph_state">Latent Multigraph Block State</a></td><td><code>cat_block_latent_multigraph_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_layered_state">Layered Block State</a></td><td><code>cat_block_layered_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_layered_overlap_state">Layered Overlap Block State</a></td><td><code>cat_block_layered_overlap_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_layered_state_weighted">Layered Weighted Block State</a></td><td><code>cat_block_layered_state_weighted</code></td><td>1</td></tr><tr><td><a href="#cat_block_layered_overlap_state_weighted">Layered Weighted Overlap Block State</a></td><td><code>cat_block_layered_overlap_state_weighted</code></td><td>1</td></tr><tr><td><a href="#cat_block_measured_state">Measured Block State</a></td><td><code>cat_block_measured_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_closure_measured_state">Measured Closure Block State</a></td><td><code>cat_block_closure_measured_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_measured_mixed_state">Mixed Measured Block State</a></td><td><code>cat_block_measured_mixed_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_nested_state">Nested Block State</a></td><td><code>cat_block_nested_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_overlap_state">Overlap Block State</a></td><td><code>cat_block_overlap_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_pp_state">PPBlock State</a></td><td><code>cat_block_pp_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_ranked_state">Ranked Block State</a></td><td><code>cat_block_ranked_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_state_uncertain">Uncertain Block State</a></td><td><code>cat_block_state_uncertain</code></td><td>1</td></tr><tr><td><a href="#cat_block_state_weighted">Weighted Block State</a></td><td><code>cat_block_state_weighted</code></td><td>1</td></tr><tr><td><a href="#cat_block_overlap_state_weighted">Weighted Overlap Block State</a></td><td><code>cat_block_overlap_state_weighted</code></td><td>1</td></tr></tbody></table></div>
 
 ## Draw Block State {#cat_block_draw_state}
 
@@ -48,9 +30,7 @@ Measure id: `cat_block_draw_state`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_draw_state-graphtool) | `DrawBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_draw_state-graphtool">details</a></td><td><code>DrawBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -66,9 +46,7 @@ Measure id: `cat_block_em_state`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_em_state-graphtool) | `EMBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_em_state-graphtool">details</a></td><td><code>EMBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -84,9 +62,7 @@ Measure id: `cat_block_closure_latent_state`. Original family: Statistical fitti
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_closure_latent_state-graphtool) | `LatentClosureBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_closure_latent_state-graphtool">details</a></td><td><code>LatentClosureBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -102,9 +78,7 @@ Measure id: `cat_block_latent_mask_state`. Original family: Statistical fitting.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_latent_mask_state-graphtool) | `LatentMaskBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_latent_mask_state-graphtool">details</a></td><td><code>LatentMaskBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -120,9 +94,7 @@ Measure id: `cat_block_latent_multigraph_state`. Original family: Statistical fi
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_latent_multigraph_state-graphtool) | `LatentMultigraphBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_latent_multigraph_state-graphtool">details</a></td><td><code>LatentMultigraphBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -138,9 +110,7 @@ Measure id: `cat_block_layered_state`. Original family: Signed and multilayer.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_layered_state-graphtool) | `LayeredBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_layered_state-graphtool">details</a></td><td><code>LayeredBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -156,9 +126,7 @@ Measure id: `cat_block_layered_overlap_state`. Original family: Signed and multi
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_layered_overlap_state-graphtool) | `LayeredOverlapBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_layered_overlap_state-graphtool">details</a></td><td><code>LayeredOverlapBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -174,9 +142,7 @@ Measure id: `cat_block_layered_state_weighted`. Original family: Signed and mult
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_layered_state_weighted-graphtool) | `LayeredWeightedBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_layered_state_weighted-graphtool">details</a></td><td><code>LayeredWeightedBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -192,9 +158,7 @@ Measure id: `cat_block_layered_overlap_state_weighted`. Original family: Signed 
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_layered_overlap_state_weighted-graphtool) | `LayeredWeightedOverlapBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_layered_overlap_state_weighted-graphtool">details</a></td><td><code>LayeredWeightedOverlapBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -210,9 +174,7 @@ Measure id: `cat_block_measured_state`. Original family: Graph theory and combin
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_measured_state-graphtool) | `MeasuredBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_measured_state-graphtool">details</a></td><td><code>MeasuredBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -228,9 +190,7 @@ Measure id: `cat_block_closure_measured_state`. Original family: Graph theory an
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_closure_measured_state-graphtool) | `MeasuredClosureBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_closure_measured_state-graphtool">details</a></td><td><code>MeasuredClosureBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -246,9 +206,7 @@ Measure id: `cat_block_measured_mixed_state`. Original family: Graph theory and 
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_measured_mixed_state-graphtool) | `MixedMeasuredBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_measured_mixed_state-graphtool">details</a></td><td><code>MixedMeasuredBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -264,9 +222,7 @@ Measure id: `cat_block_nested_state`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_nested_state-graphtool) | `NestedBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_nested_state-graphtool">details</a></td><td><code>NestedBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -282,9 +238,7 @@ Measure id: `cat_block_overlap_state`. Original family: Graph theory and combina
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_overlap_state-graphtool) | `OverlapBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_overlap_state-graphtool">details</a></td><td><code>OverlapBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -300,9 +254,7 @@ Measure id: `cat_block_pp_state`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_pp_state-graphtool) | `PPBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_pp_state-graphtool">details</a></td><td><code>PPBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -318,9 +270,7 @@ Measure id: `cat_block_ranked_state`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_ranked_state-graphtool) | `RankedBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_ranked_state-graphtool">details</a></td><td><code>RankedBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -336,9 +286,7 @@ Measure id: `cat_block_state_uncertain`. Original family: Graph theory and combi
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_state_uncertain-graphtool) | `UncertainBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_state_uncertain-graphtool">details</a></td><td><code>UncertainBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -354,9 +302,7 @@ Measure id: `cat_block_state_weighted`. Original family: Graph theory and combin
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_state_weighted-graphtool) | `WeightedBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_state_weighted-graphtool">details</a></td><td><code>WeightedBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -372,9 +318,7 @@ Measure id: `cat_block_overlap_state_weighted`. Original family: Graph theory an
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_overlap_state_weighted-graphtool) | `WeightedOverlapBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_overlap_state_weighted-graphtool">details</a></td><td><code>WeightedOverlapBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

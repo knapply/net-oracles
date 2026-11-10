@@ -16,24 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Similarity effects. Entries grouped here: Av In Sim; Av Sim Alt X; Av Sim Ego X; Av Sim gmm; Av Sim Var Alt; Av Sim W; and 8 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Av In Sim](#cat_av_sim) | `cat_av_sim` | 1 |
-| [Av Sim Alt X](#cat_alt_av_sim_x) | `cat_alt_av_sim_x` | 1 |
-| [Av Sim Ego X](#cat_av_ego_sim_x) | `cat_av_ego_sim_x` | 1 |
-| [Av Sim gmm](#cat_av_gmm_sim) | `cat_av_gmm_sim` | 1 |
-| [Av Sim Var Alt](#cat_alt_av_sim_var) | `cat_alt_av_sim_var` | 1 |
-| [Av Sim W](#cat_av_sim_w) | `cat_av_sim_w` | 1 |
-| [Sim All Far](#cat_all_far_sim) | `cat_all_far_sim` | 1 |
-| [Sim All Near](#cat_all_near_sim) | `cat_all_near_sim` | 1 |
-| [Sim X](#cat_sim_x) | `cat_sim_x` | 1 |
-| [Sim X gmm](#cat_gmm_sim_x) | `cat_gmm_sim_x` | 1 |
-| [Tot In Sim](#cat_sim_tot) | `cat_sim_tot` | 1 |
-| [Tot Sim Alt X](#cat_alt_sim_tot_x) | `cat_alt_sim_tot_x` | 1 |
-| [Tot Sim Ego X](#cat_ego_sim_tot_x) | `cat_ego_sim_tot_x` | 1 |
-| [Tot Sim W](#cat_sim_tot_w) | `cat_sim_tot_w` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_av_sim">Av In Sim</a></td><td><code>cat_av_sim</code></td><td>1</td></tr><tr><td><a href="#cat_alt_av_sim_x">Av Sim Alt X</a></td><td><code>cat_alt_av_sim_x</code></td><td>1</td></tr><tr><td><a href="#cat_av_ego_sim_x">Av Sim Ego X</a></td><td><code>cat_av_ego_sim_x</code></td><td>1</td></tr><tr><td><a href="#cat_av_gmm_sim">Av Sim gmm</a></td><td><code>cat_av_gmm_sim</code></td><td>1</td></tr><tr><td><a href="#cat_alt_av_sim_var">Av Sim Var Alt</a></td><td><code>cat_alt_av_sim_var</code></td><td>1</td></tr><tr><td><a href="#cat_av_sim_w">Av Sim W</a></td><td><code>cat_av_sim_w</code></td><td>1</td></tr><tr><td><a href="#cat_all_far_sim">Sim All Far</a></td><td><code>cat_all_far_sim</code></td><td>1</td></tr><tr><td><a href="#cat_all_near_sim">Sim All Near</a></td><td><code>cat_all_near_sim</code></td><td>1</td></tr><tr><td><a href="#cat_sim_x">Sim X</a></td><td><code>cat_sim_x</code></td><td>1</td></tr><tr><td><a href="#cat_gmm_sim_x">Sim X gmm</a></td><td><code>cat_gmm_sim_x</code></td><td>1</td></tr><tr><td><a href="#cat_sim_tot">Tot In Sim</a></td><td><code>cat_sim_tot</code></td><td>1</td></tr><tr><td><a href="#cat_alt_sim_tot_x">Tot Sim Alt X</a></td><td><code>cat_alt_sim_tot_x</code></td><td>1</td></tr><tr><td><a href="#cat_ego_sim_tot_x">Tot Sim Ego X</a></td><td><code>cat_ego_sim_tot_x</code></td><td>1</td></tr><tr><td><a href="#cat_sim_tot_w">Tot Sim W</a></td><td><code>cat_sim_tot_w</code></td><td>1</td></tr></tbody></table></div>
 
 ## Av In Sim {#cat_av_sim}
 
@@ -43,9 +30,7 @@ Measure id: `cat_av_sim`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_sim-rsiena) | `avInSim; avSim` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_av_sim-rsiena">details</a></td><td><code>avInSim; avSim</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -61,9 +46,7 @@ Measure id: `cat_alt_av_sim_x`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_sim_x-rsiena) | `avSimAltX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_av_sim_x-rsiena">details</a></td><td><code>avSimAltX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -79,9 +62,7 @@ Measure id: `cat_av_ego_sim_x`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_ego_sim_x-rsiena) | `avSimEgoX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_av_ego_sim_x-rsiena">details</a></td><td><code>avSimEgoX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -97,9 +78,7 @@ Measure id: `cat_av_gmm_sim`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_gmm_sim-rsiena) | `avSim_gmm` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_av_gmm_sim-rsiena">details</a></td><td><code>avSim_gmm</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -115,9 +94,7 @@ Measure id: `cat_alt_av_sim_var`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_sim_var-rsiena) | `avSimVarAlt` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_av_sim_var-rsiena">details</a></td><td><code>avSimVarAlt</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -133,9 +110,7 @@ Measure id: `cat_av_sim_w`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_sim_w-rsiena) | `avSimW` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_av_sim_w-rsiena">details</a></td><td><code>avSimW</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -151,9 +126,7 @@ Measure id: `cat_all_far_sim`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_all_far_sim-rsiena) | `simAllFar` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_all_far_sim-rsiena">details</a></td><td><code>simAllFar</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -169,9 +142,7 @@ Measure id: `cat_all_near_sim`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_all_near_sim-rsiena) | `simAllNear` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_all_near_sim-rsiena">details</a></td><td><code>simAllNear</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -187,9 +158,7 @@ Measure id: `cat_sim_x`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_sim_x-rsiena) | `simX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_sim_x-rsiena">details</a></td><td><code>simX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -205,9 +174,7 @@ Measure id: `cat_gmm_sim_x`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_gmm_sim_x-rsiena) | `simX_gmm` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_gmm_sim_x-rsiena">details</a></td><td><code>simX_gmm</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -223,9 +190,7 @@ Measure id: `cat_sim_tot`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_sim_tot-rsiena) | `totInSim; totSim` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_sim_tot-rsiena">details</a></td><td><code>totInSim; totSim</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -241,9 +206,7 @@ Measure id: `cat_alt_sim_tot_x`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_sim_tot_x-rsiena) | `totSimAltX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_sim_tot_x-rsiena">details</a></td><td><code>totSimAltX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -259,9 +222,7 @@ Measure id: `cat_ego_sim_tot_x`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_ego_sim_tot_x-rsiena) | `totSimEgoX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_ego_sim_tot_x-rsiena">details</a></td><td><code>totSimEgoX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -277,9 +238,7 @@ Measure id: `cat_sim_tot_w`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_sim_tot_w-rsiena) | `totSimW` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_sim_tot_w-rsiena">details</a></td><td><code>totSimW</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

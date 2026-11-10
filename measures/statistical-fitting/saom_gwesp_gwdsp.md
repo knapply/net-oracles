@@ -16,21 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Geometrically weighted shared-partner effects. Entries grouped here: Gwdsp FB; Gwdsp FF; Gwesp BB; Gwesp BF; Gwesp FB; Gwesp FF; and 5 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Gwdsp FB](#cat_fb_gwdsp) | `cat_fb_gwdsp` | 1 |
-| [Gwdsp FF](#cat_ff_gwdsp) | `cat_ff_gwdsp` | 1 |
-| [Gwesp BB](#cat_bb_gwesp) | `cat_bb_gwesp` | 1 |
-| [Gwesp BF](#cat_bf_gwesp) | `cat_bf_gwesp` | 1 |
-| [Gwesp FB](#cat_fb_gwesp) | `cat_fb_gwesp` | 1 |
-| [Gwesp FF](#cat_ff_gwesp) | `cat_ff_gwesp` | 1 |
-| [Gwesp RR](#cat_gwesp_rr) | `cat_gwesp_rr` | 1 |
-| [Tot Gwdsp FBAlt](#cat_alt_fb_gwdsp_tot) | `cat_alt_fb_gwdsp_tot` | 1 |
-| [Tot Gwdsp FBAlt nc](#cat_alt_fb_gwdsp_nc_tot) | `cat_alt_fb_gwdsp_nc_tot` | 1 |
-| [Tot Gwdsp FFAlt](#cat_alt_ff_gwdsp_tot) | `cat_alt_ff_gwdsp_tot` | 1 |
-| [Tot Gwdsp FFAlt nc](#cat_alt_ff_gwdsp_nc_tot) | `cat_alt_ff_gwdsp_nc_tot` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_fb_gwdsp">Gwdsp FB</a></td><td><code>cat_fb_gwdsp</code></td><td>1</td></tr><tr><td><a href="#cat_ff_gwdsp">Gwdsp FF</a></td><td><code>cat_ff_gwdsp</code></td><td>1</td></tr><tr><td><a href="#cat_bb_gwesp">Gwesp BB</a></td><td><code>cat_bb_gwesp</code></td><td>1</td></tr><tr><td><a href="#cat_bf_gwesp">Gwesp BF</a></td><td><code>cat_bf_gwesp</code></td><td>1</td></tr><tr><td><a href="#cat_fb_gwesp">Gwesp FB</a></td><td><code>cat_fb_gwesp</code></td><td>1</td></tr><tr><td><a href="#cat_ff_gwesp">Gwesp FF</a></td><td><code>cat_ff_gwesp</code></td><td>1</td></tr><tr><td><a href="#cat_gwesp_rr">Gwesp RR</a></td><td><code>cat_gwesp_rr</code></td><td>1</td></tr><tr><td><a href="#cat_alt_fb_gwdsp_tot">Tot Gwdsp FBAlt</a></td><td><code>cat_alt_fb_gwdsp_tot</code></td><td>1</td></tr><tr><td><a href="#cat_alt_fb_gwdsp_nc_tot">Tot Gwdsp FBAlt nc</a></td><td><code>cat_alt_fb_gwdsp_nc_tot</code></td><td>1</td></tr><tr><td><a href="#cat_alt_ff_gwdsp_tot">Tot Gwdsp FFAlt</a></td><td><code>cat_alt_ff_gwdsp_tot</code></td><td>1</td></tr><tr><td><a href="#cat_alt_ff_gwdsp_nc_tot">Tot Gwdsp FFAlt nc</a></td><td><code>cat_alt_ff_gwdsp_nc_tot</code></td><td>1</td></tr></tbody></table></div>
 
 ## Gwdsp FB {#cat_fb_gwdsp}
 
@@ -40,9 +30,7 @@ Measure id: `cat_fb_gwdsp`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_fb_gwdsp-rsiena) | `gwdspFB` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_fb_gwdsp-rsiena">details</a></td><td><code>gwdspFB</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -58,9 +46,7 @@ Measure id: `cat_ff_gwdsp`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_ff_gwdsp-rsiena) | `gwdspFF` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_ff_gwdsp-rsiena">details</a></td><td><code>gwdspFF</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -76,9 +62,7 @@ Measure id: `cat_bb_gwesp`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_bb_gwesp-rsiena) | `gwespBB` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_bb_gwesp-rsiena">details</a></td><td><code>gwespBB</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -94,9 +78,7 @@ Measure id: `cat_bf_gwesp`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_bf_gwesp-rsiena) | `gwespBF` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_bf_gwesp-rsiena">details</a></td><td><code>gwespBF</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -112,9 +94,7 @@ Measure id: `cat_fb_gwesp`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_fb_gwesp-rsiena) | `gwespFB` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_fb_gwesp-rsiena">details</a></td><td><code>gwespFB</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -130,9 +110,7 @@ Measure id: `cat_ff_gwesp`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_ff_gwesp-rsiena) | `gwespFF` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_ff_gwesp-rsiena">details</a></td><td><code>gwespFF</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -148,9 +126,7 @@ Measure id: `cat_gwesp_rr`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_gwesp_rr-rsiena) | `gwespRR` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_gwesp_rr-rsiena">details</a></td><td><code>gwespRR</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -166,9 +142,7 @@ Measure id: `cat_alt_fb_gwdsp_tot`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_fb_gwdsp_tot-rsiena) | `totGwdspFBAlt` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_fb_gwdsp_tot-rsiena">details</a></td><td><code>totGwdspFBAlt</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -184,9 +158,7 @@ Measure id: `cat_alt_fb_gwdsp_nc_tot`. Original family: Graph theory and combina
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_fb_gwdsp_nc_tot-rsiena) | `totGwdspFBAlt_nc` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_fb_gwdsp_nc_tot-rsiena">details</a></td><td><code>totGwdspFBAlt_nc</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -202,9 +174,7 @@ Measure id: `cat_alt_ff_gwdsp_tot`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_ff_gwdsp_tot-rsiena) | `totGwdspFFAlt` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_ff_gwdsp_tot-rsiena">details</a></td><td><code>totGwdspFFAlt</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -220,9 +190,7 @@ Measure id: `cat_alt_ff_gwdsp_nc_tot`. Original family: Graph theory and combina
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_ff_gwdsp_nc_tot-rsiena) | `totGwdspFFAlt_nc` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_ff_gwdsp_nc_tot-rsiena">details</a></td><td><code>totGwdspFFAlt_nc</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

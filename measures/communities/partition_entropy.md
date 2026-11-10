@@ -16,6 +16,8 @@ Family: [Communities](index.html). Subfamily: Partition and cover quality. Conce
 
 Partition entropy. Entries grouped here: Partition entropy.
 
+*Definition not yet written.*
+
 ## Partition entropy {#cat_entropy_partition}
 
 Measure id: `cat_entropy_partition`. Original family: Communities.
@@ -24,9 +26,7 @@ Measure id: `cat_entropy_partition`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_entropy_partition-graphtool) | `partition_entropy` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_entropy_partition-graphtool">details</a></td><td><code>partition_entropy</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

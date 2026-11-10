@@ -16,12 +16,11 @@ Family: [Communities](index.html). Subfamily: Other detection algorithms. Concep
 
 Clique percolation communities: unions of maximal cliques of at least k nodes that share k - 1 nodes.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Clique communities](#cat_clique_community) | `cat_clique_community` | 1 |
-| [K clique](#cnx_k_clique) | `cnx_k_clique` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_clique_community">Clique communities</a></td><td><code>cat_clique_community</code></td><td>1</td></tr><tr><td><a href="#cnx_k_clique">K clique</a></td><td><code>cnx_k_clique</code></td><td>1</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -35,9 +34,7 @@ Measure id: `cat_clique_community`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_clique_community-bct) | `clique_communities` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_clique_community-bct">details</a></td><td><code>clique_communities</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -53,15 +50,11 @@ Measure id: `cnx_k_clique`. Original family: Communities.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `k_clique_communities` |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>k_clique_communities</code></td><td></td></tr></tbody></table></div>
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `nx_k_clique_communities` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.community.k_clique_communities(G, 3) on the simple undirected graph` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nx_k_clique_communities</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.community.k_clique_communities(G, 3) on the simple undirected graph</code></td><td></td></tr></tbody></table></div>
 
 **References:** [brandes2001faster](../../references.html#brandes2001faster), [chen2014extension](../../references.html#chen2014extension), [clauset2004finding](../../references.html#clauset2004finding), [cordasco2010community](../../references.html#cordasco2010community), [fortunato2010community](../../references.html#fortunato2010community), [girvan2002community](../../references.html#girvan2002community), [hagberg2008exploring](../../references.html#hagberg2008exploring), [kernighan1970efficient](../../references.html#kernighan1970efficient)
 

@@ -16,22 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Degree effects. Entries grouped here: Av Deg; Deg Abs Contr X; Deg Abs Diff X; Deg Neg Contr X; Deg Neg Diff X; Deg Pos Contr X; and 6 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Av Deg](#cat_av_deg) | `cat_av_deg` | 1 |
-| [Deg Abs Contr X](#cat_abs_contr_deg_x) | `cat_abs_contr_deg_x` | 1 |
-| [Deg Abs Diff X](#cat_abs_deg_diff_x) | `cat_abs_deg_diff_x` | 1 |
-| [Deg Neg Contr X](#cat_contr_deg_neg_x) | `cat_contr_deg_neg_x` | 1 |
-| [Deg Neg Diff X](#cat_deg_diff_neg_x) | `cat_deg_diff_neg_x` | 1 |
-| [Deg Pos Contr X](#cat_contr_deg_pos_x) | `cat_contr_deg_pos_x` | 1 |
-| [Deg Pos Diff X](#cat_deg_diff_pos_x) | `cat_deg_diff_pos_x` | 1 |
-| [In Is Degree](#cat_degree_is) | `cat_degree_is` | 1 |
-| [Indeg](#cat_indeg) | `cat_indeg` | 1 |
-| [Indeg Av Group](#cat_av_group_indeg) | `cat_av_group_indeg` | 1 |
-| [Indeg Tot Group](#cat_group_indeg_tot) | `cat_group_indeg_tot` | 1 |
-| [Outdeg](#cat_outdeg) | `cat_outdeg` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_av_deg">Av Deg</a></td><td><code>cat_av_deg</code></td><td>1</td></tr><tr><td><a href="#cat_abs_contr_deg_x">Deg Abs Contr X</a></td><td><code>cat_abs_contr_deg_x</code></td><td>1</td></tr><tr><td><a href="#cat_abs_deg_diff_x">Deg Abs Diff X</a></td><td><code>cat_abs_deg_diff_x</code></td><td>1</td></tr><tr><td><a href="#cat_contr_deg_neg_x">Deg Neg Contr X</a></td><td><code>cat_contr_deg_neg_x</code></td><td>1</td></tr><tr><td><a href="#cat_deg_diff_neg_x">Deg Neg Diff X</a></td><td><code>cat_deg_diff_neg_x</code></td><td>1</td></tr><tr><td><a href="#cat_contr_deg_pos_x">Deg Pos Contr X</a></td><td><code>cat_contr_deg_pos_x</code></td><td>1</td></tr><tr><td><a href="#cat_deg_diff_pos_x">Deg Pos Diff X</a></td><td><code>cat_deg_diff_pos_x</code></td><td>1</td></tr><tr><td><a href="#cat_degree_is">In Is Degree</a></td><td><code>cat_degree_is</code></td><td>1</td></tr><tr><td><a href="#cat_indeg">Indeg</a></td><td><code>cat_indeg</code></td><td>1</td></tr><tr><td><a href="#cat_av_group_indeg">Indeg Av Group</a></td><td><code>cat_av_group_indeg</code></td><td>1</td></tr><tr><td><a href="#cat_group_indeg_tot">Indeg Tot Group</a></td><td><code>cat_group_indeg_tot</code></td><td>1</td></tr><tr><td><a href="#cat_outdeg">Outdeg</a></td><td><code>cat_outdeg</code></td><td>1</td></tr></tbody></table></div>
 
 ## Av Deg {#cat_av_deg}
 
@@ -41,9 +30,7 @@ Measure id: `cat_av_deg`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_deg-rsiena) | `avDeg` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_av_deg-rsiena">details</a></td><td><code>avDeg</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -59,9 +46,7 @@ Measure id: `cat_abs_contr_deg_x`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_abs_contr_deg_x-rsiena) | `degAbsContrX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_abs_contr_deg_x-rsiena">details</a></td><td><code>degAbsContrX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -77,9 +62,7 @@ Measure id: `cat_abs_deg_diff_x`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_abs_deg_diff_x-rsiena) | `degAbsDiffX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_abs_deg_diff_x-rsiena">details</a></td><td><code>degAbsDiffX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -95,9 +78,7 @@ Measure id: `cat_contr_deg_neg_x`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_contr_deg_neg_x-rsiena) | `degNegContrX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_contr_deg_neg_x-rsiena">details</a></td><td><code>degNegContrX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -113,9 +94,7 @@ Measure id: `cat_deg_diff_neg_x`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_deg_diff_neg_x-rsiena) | `degNegDiffX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_deg_diff_neg_x-rsiena">details</a></td><td><code>degNegDiffX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -131,9 +110,7 @@ Measure id: `cat_contr_deg_pos_x`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_contr_deg_pos_x-rsiena) | `degPosContrX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_contr_deg_pos_x-rsiena">details</a></td><td><code>degPosContrX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -149,9 +126,7 @@ Measure id: `cat_deg_diff_pos_x`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_deg_diff_pos_x-rsiena) | `degPosDiffX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_deg_diff_pos_x-rsiena">details</a></td><td><code>degPosDiffX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -167,9 +142,7 @@ Measure id: `cat_degree_is`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_degree_is-rsiena) | `inIsDegree` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_degree_is-rsiena">details</a></td><td><code>inIsDegree</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -185,9 +158,7 @@ Measure id: `cat_indeg`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_indeg-rsiena) | `indeg` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_indeg-rsiena">details</a></td><td><code>indeg</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -203,9 +174,7 @@ Measure id: `cat_av_group_indeg`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_group_indeg-rsiena) | `indegAvGroup` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_av_group_indeg-rsiena">details</a></td><td><code>indegAvGroup</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -221,9 +190,7 @@ Measure id: `cat_group_indeg_tot`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_group_indeg_tot-rsiena) | `indegTotGroup` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_group_indeg_tot-rsiena">details</a></td><td><code>indegTotGroup</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -239,9 +206,7 @@ Measure id: `cat_outdeg`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_outdeg-rsiena) | `outdeg` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_outdeg-rsiena">details</a></td><td><code>outdeg</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

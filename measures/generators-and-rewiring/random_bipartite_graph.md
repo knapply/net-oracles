@@ -16,12 +16,11 @@ Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs.
 
 Random bipartite graph. Entries grouped here: Correlated and bipartite random graph generators; Random bipartite graph generator.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Correlated and bipartite random graph generators](#gen_correlated_bipartite) | `gen_correlated_bipartite` | 1 |
-| [Random bipartite graph generator](#gen_random_bipartite) | `gen_random_bipartite` | 4 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#gen_correlated_bipartite">Correlated and bipartite random graph generators</a></td><td><code>gen_correlated_bipartite</code></td><td>1</td></tr><tr><td><a href="#gen_random_bipartite">Random bipartite graph generator</a></td><td><code>gen_random_bipartite</code></td><td>4</td></tr></tbody></table></div>
 
 ## Correlated and bipartite random graph generators {#gen_correlated_bipartite}
 
@@ -31,9 +30,7 @@ Measure id: `gen_correlated_bipartite`. Original family: Generators and rewiring
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_correlated_bipartite-igraph) | `sample_bipartite_gnm; sample_bipartite_gnp; sample_correlated_gnp; sample_correlated_gnp_pair` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_correlated_bipartite-igraph">details</a></td><td><code>sample_bipartite_gnm; sample_bipartite_gnp; sample_correlated_gnp; sample_correlated_gnp_pair</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,12 +46,7 @@ Measure id: `gen_random_bipartite`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_random_bipartite-igraph) | `bipartite_gnm; bipartite_gnp; sample_bipartite` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_random_bipartite-pyigraph) | `Random_Bipartite` | API listing |
-| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_random_bipartite-rustworkx) | `directed_random_bipartite_graph; undirected_random_bipartite_graph` | API listing |
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_random_bipartite-jgrapht) | `GnmRandomBipartiteGraphGenerator; GnpRandomBipartiteGraphGenerator` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_random_bipartite-igraph">details</a></td><td><code>bipartite_gnm; bipartite_gnp; sample_bipartite</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_random_bipartite-pyigraph">details</a></td><td><code>Random_Bipartite</code></td><td>API listing</td></tr><tr><td><a href="../../tools/rustworkx.html">rustworkx</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_random_bipartite-rustworkx">details</a></td><td><code>directed_random_bipartite_graph; undirected_random_bipartite_graph</code></td><td>API listing</td></tr><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_random_bipartite-jgrapht">details</a></td><td><code>GnmRandomBipartiteGraphGenerator; GnpRandomBipartiteGraphGenerator</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

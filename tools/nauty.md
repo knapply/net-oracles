@@ -8,15 +8,7 @@ parent: Tools
 
 # nauty
 
-| Field | Value |
-|---|---|
-| Identifier | `nauty` |
-| Language | C (via pynauty) |
-| Version tested | 2.8.8 (pynauty 2.8.8.1) |
-| License | permissive (see the distribution COPYRIGHT file) |
-| Homepage | <https://pallini.di.uniroma1.it/> |
-| Role | checked |
-| Citation | [mckay2014practical](../references.html#mckay2014practical) |
+<div class="table-wrapper"><table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Identifier</td><td><code>nauty</code></td></tr><tr><td>Language</td><td>C (via pynauty)</td></tr><tr><td>Version tested</td><td>2.8.8 (pynauty 2.8.8.1)</td></tr><tr><td>License</td><td>permissive (see the distribution COPYRIGHT file)</td></tr><tr><td>Homepage</td><td><https://pallini.di.uniroma1.it/></td></tr><tr><td>Role</td><td>checked</td></tr><tr><td>Citation</td><td><a href="../references.html#mckay2014practical">mckay2014practical</a></td></tr></tbody></table></div>
 
 ## How it was run
 
@@ -24,22 +16,15 @@ Called through pynauty on graph adjacency dictionaries.
 
 ## Coverage
 
-| State | Measures |
-|---|---|
-| <a class="st st-t st-ok" href="../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> | 2 |
+<div class="table-wrapper"><table><thead><tr><th>State</th><th>Measures</th></tr></thead><tbody><tr><td><a class="st st-t st-ok" href="../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td>2</td></tr></tbody></table></div>
 
 Every state other than checked, agrees has a reason, shown in the last column and in full on the measure's page. The states are defined on [How entries are labelled](../method.html).
 
 ## Measures
 
-| Family | Subfamily | Concept | Measure (variant) | State | API names | Why, if not agrees |
-|---|---|---|---|---|---|---|
-| Graph theory and combinatorics | Isomorphism and subgraph matching | [Graph isomorphism](../measures/graph-theory-and-combinatorics/graph_isomorphism.html) | [Vf2pp](../measures/graph-theory-and-combinatorics/graph_isomorphism.html#vf2pp) | <a class="st st-t st-ok" href="../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |
-| Roles and positions | Equivalence and clustering | [Automorphic equivalence](../measures/roles-and-positions/automorphic_equivalence.html) | [Automorphic equivalence](../measures/roles-and-positions/automorphic_equivalence.html#automorphic_equivalence) | <a class="st st-t st-ok" href="../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Family</th><th>Subfamily</th><th>Concept</th><th>Measure (variant)</th><th>State</th><th>API names</th><th>Why, if not agrees</th></tr></thead><tbody><tr><td>Graph theory and combinatorics</td><td>Isomorphism and subgraph matching</td><td><a href="../measures/graph-theory-and-combinatorics/graph_isomorphism.html">Graph isomorphism</a></td><td><a href="../measures/graph-theory-and-combinatorics/graph_isomorphism.html#vf2pp">Vf2pp</a></td><td><a class="st st-t st-ok" href="../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td></tr><tr><td>Roles and positions</td><td>Equivalence and clustering</td><td><a href="../measures/roles-and-positions/automorphic_equivalence.html">Automorphic equivalence</a></td><td><a href="../measures/roles-and-positions/automorphic_equivalence.html#automorphic_equivalence">Automorphic equivalence</a></td><td><a class="st st-t st-ok" href="../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td></tr></tbody></table></div>
 
 ## Findings
 
-| Id | Kind | Title |
-|---|---|---|
-| [F071](../findings.html#f071) | limitation | Parallel edges are not representable |
+<div class="table-wrapper"><table><thead><tr><th>Id</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../findings.html#f071">F071</a></td><td>limitation</td><td>Parallel edges are not representable</td></tr></tbody></table></div>
 {% endraw %}

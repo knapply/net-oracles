@@ -16,18 +16,11 @@ Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `stress_
 
 Stress-majorization layout: two coordinates per node whose distances approximate the graph distances, on all pairs or on pivots.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Layout constrained stress](#cat_constrained_layout_stress) | `cat_constrained_layout_stress` | 1 |
-| [Layout constrained stress3 D](#cat_constrained_d_layout_stress3) | `cat_constrained_d_layout_stress3` | 1 |
-| [Layout stress quality](#layout_stress_quality) | `layout_stress_quality` | 1 |
-| [Layout stress value](#layout_stress_value) | `layout_stress_value` | 1 |
-| [Layout stress3 D](#cat_d_layout_stress3) | `cat_d_layout_stress3` | 1 |
-| [Maxent Stress](#cat_maxent_stress) | `cat_maxent_stress` | 1 |
-| [Sparse stress / pivot MDS layout](#layout_sparse_stress) | `layout_sparse_stress` | 1 |
-| [Stress-majorization layout (Kamada-Kawai energy)](#layout_stress) | `layout_stress` | 2 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_constrained_layout_stress">Layout constrained stress</a></td><td><code>cat_constrained_layout_stress</code></td><td>1</td></tr><tr><td><a href="#cat_constrained_d_layout_stress3">Layout constrained stress3 D</a></td><td><code>cat_constrained_d_layout_stress3</code></td><td>1</td></tr><tr><td><a href="#layout_stress_quality">Layout stress quality</a></td><td><code>layout_stress_quality</code></td><td>1</td></tr><tr><td><a href="#layout_stress_value">Layout stress value</a></td><td><code>layout_stress_value</code></td><td>1</td></tr><tr><td><a href="#cat_d_layout_stress3">Layout stress3 D</a></td><td><code>cat_d_layout_stress3</code></td><td>1</td></tr><tr><td><a href="#cat_maxent_stress">Maxent Stress</a></td><td><code>cat_maxent_stress</code></td><td>1</td></tr><tr><td><a href="#layout_sparse_stress">Sparse stress / pivot MDS layout</a></td><td><code>layout_sparse_stress</code></td><td>1</td></tr><tr><td><a href="#layout_stress">Stress-majorization layout (Kamada-Kawai energy)</a></td><td><code>layout_stress</code></td><td>2</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -41,9 +34,7 @@ Measure id: `cat_constrained_layout_stress`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graphlayouts](../../tools/graphlayouts.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: graphlayouts is documented-only in this survey; listed in its documentation. [details](#why-cat_constrained_layout_stress-graphlayouts) | `layout_constrained_stress` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphlayouts.html">graphlayouts</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: graphlayouts is documented-only in this survey; listed in its documentation. <a href="#why-cat_constrained_layout_stress-graphlayouts">details</a></td><td><code>layout_constrained_stress</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -59,9 +50,7 @@ Measure id: `cat_constrained_d_layout_stress3`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graphlayouts](../../tools/graphlayouts.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: graphlayouts is documented-only in this survey; listed in its documentation. [details](#why-cat_constrained_d_layout_stress3-graphlayouts) | `layout_constrained_stress3D` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphlayouts.html">graphlayouts</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: graphlayouts is documented-only in this survey; listed in its documentation. <a href="#why-cat_constrained_d_layout_stress3-graphlayouts">details</a></td><td><code>layout_constrained_stress3D</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -77,9 +66,7 @@ Measure id: `layout_stress_quality`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-nov" href="../../method.html#state-checked-no-value"><span class="g" aria-hidden="true">∅</span>checked, no value on some inputs</a> | Checked, no comparison counts recorded for this entry. *(reason incomplete)* [details](#why-layout_stress_quality-networkx) |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-nov" href="../../method.html#state-checked-no-value"><span class="g" aria-hidden="true">∅</span>checked, no value on some inputs</a></td><td>Checked, no comparison counts recorded for this entry. <em>(reason incomplete)</em> <a href="#why-layout_stress_quality-networkx">details</a></td><td></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -87,10 +74,7 @@ Measure id: `layout_stress_quality`. Original family: Layout.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `layout_stress_vs_kamada_kawai` | NetworkX | any | agrees |  |  | abs 1e-09, rel 0.02 | `optimally scaled stress of nx.kamada_kawai_layout of the largest component (0 below 3 nodes)` |  |
-| `layout_stress_vs_kamada_kawai_weighted` | NetworkX | any | agrees |  |  | abs 1e-09, rel 0.02 | `optimally scaled weighted stress of nx.kamada_kawai_layout(weight = 'weight') of the largest component` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>layout_stress_vs_kamada_kawai</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 0.02</td><td><code>optimally scaled stress of nx.kamada_kawai_layout of the largest component (0 below 3 nodes)</code></td><td></td></tr><tr><td><code>layout_stress_vs_kamada_kawai_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 0.02</td><td><code>optimally scaled weighted stress of nx.kamada_kawai_layout(weight = 'weight') of the largest component</code></td><td></td></tr></tbody></table></div>
 
 **References:** [brandes2007eigensolver](../../references.html#brandes2007eigensolver), [brandes2009experimental](../../references.html#brandes2009experimental), [gansner2005graph](../../references.html#gansner2005graph), [kamada1989algorithm](../../references.html#kamada1989algorithm), [mises1929praktische](../../references.html#mises1929praktische), [ortmann2017sparse](../../references.html#ortmann2017sparse)
 
@@ -104,9 +88,7 @@ Measure id: `layout_stress_value`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-nov" href="../../method.html#state-checked-no-value"><span class="g" aria-hidden="true">∅</span>checked, no value on some inputs</a> | Checked, no comparison counts recorded for this entry. *(reason incomplete)* [details](#why-layout_stress_value-networkx) |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-nov" href="../../method.html#state-checked-no-value"><span class="g" aria-hidden="true">∅</span>checked, no value on some inputs</a></td><td>Checked, no comparison counts recorded for this entry. <em>(reason incomplete)</em> <a href="#why-layout_stress_value-networkx">details</a></td><td></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -114,10 +96,7 @@ Measure id: `layout_stress_value`. Original family: Layout.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `layout_stress_value` | NetworkX | any | agrees |  |  | abs 1e-12, rel 1e-09 | `the stress sum with nx.all_pairs_shortest_path_length on the skeleton` |  |
-| `layout_stress_value_weighted` | NetworkX | any | agrees |  |  | abs 1e-12, rel 1e-09 | `the stress sum with nx.all_pairs_dijkstra_path_length on the skeleton` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>layout_stress_value</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>the stress sum with nx.all_pairs_shortest_path_length on the skeleton</code></td><td></td></tr><tr><td><code>layout_stress_value_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>the stress sum with nx.all_pairs_dijkstra_path_length on the skeleton</code></td><td></td></tr></tbody></table></div>
 
 **References:** [brandes2007eigensolver](../../references.html#brandes2007eigensolver), [brandes2009experimental](../../references.html#brandes2009experimental), [gansner2005graph](../../references.html#gansner2005graph), [kamada1989algorithm](../../references.html#kamada1989algorithm), [mises1929praktische](../../references.html#mises1929praktische), [ortmann2017sparse](../../references.html#ortmann2017sparse)
 
@@ -131,9 +110,7 @@ Measure id: `cat_d_layout_stress3`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graphlayouts](../../tools/graphlayouts.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: graphlayouts is documented-only in this survey; listed in its documentation. [details](#why-cat_d_layout_stress3-graphlayouts) | `layout_stress3D` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphlayouts.html">graphlayouts</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: graphlayouts is documented-only in this survey; listed in its documentation. <a href="#why-cat_d_layout_stress3-graphlayouts">details</a></td><td><code>layout_stress3D</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -149,9 +126,7 @@ Measure id: `cat_maxent_stress`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_maxent_stress-networkit) | `MaxentStress` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_maxent_stress-networkit">details</a></td><td><code>MaxentStress</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -167,9 +142,7 @@ Measure id: `layout_sparse_stress`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graphlayouts](../../tools/graphlayouts.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: graphlayouts is documented-only in this survey; listed in its documentation. [details](#why-layout_sparse_stress-graphlayouts) | `layout_sparse_stress` | documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphlayouts.html">graphlayouts</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: graphlayouts is documented-only in this survey; listed in its documentation. <a href="#why-layout_sparse_stress-graphlayouts">details</a></td><td><code>layout_sparse_stress</code></td><td>documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -185,10 +158,7 @@ Measure id: `layout_stress`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  | documentation |
-| [graphlayouts](../../tools/graphlayouts.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: graphlayouts is documented-only in this survey; listed in its documentation. [details](#why-layout_stress-graphlayouts) | `layout_stress` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td>documentation</td></tr><tr><td><a href="../../tools/graphlayouts.html">graphlayouts</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: graphlayouts is documented-only in this survey; listed in its documentation. <a href="#why-layout_stress-graphlayouts">details</a></td><td><code>layout_stress</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

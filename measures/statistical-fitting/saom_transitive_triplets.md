@@ -16,31 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Transitive triplets effects. Entries grouped here: Agreetrans; Diff XTrans Rec Trip; Diff XTrans Trip; Hom XTrans Rec Trip; Hom XTrans Trip; Jump XTrans Trip; and 15 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Agreetrans](#cat_agreetrans) | `cat_agreetrans` | 1 |
-| [Diff XTrans Rec Trip](#cat_diff_rec_trans_trip_x) | `cat_diff_rec_trans_trip_x` | 1 |
-| [Diff XTrans Trip](#cat_diff_trans_trip_x) | `cat_diff_trans_trip_x` | 1 |
-| [Hom XTrans Rec Trip](#cat_hom_rec_trans_trip_x) | `cat_hom_rec_trans_trip_x` | 1 |
-| [Hom XTrans Trip](#cat_hom_trans_trip_x) | `cat_hom_trans_trip_x` | 1 |
-| [Jump XTrans Trip](#cat_jump_trans_trip_x) | `cat_jump_trans_trip_x` | 1 |
-| [Realtrans](#cat_realtrans) | `cat_realtrans` | 1 |
-| [Same XTrans Rec Trip](#cat_rec_same_trans_trip_x) | `cat_rec_same_trans_trip_x` | 1 |
-| [Same XTrans Trip](#cat_same_trans_trip_x) | `cat_same_trans_trip_x` | 1 |
-| [Sim XTrans Trip](#cat_sim_trans_trip_x) | `cat_sim_trans_trip_x` | 1 |
-| [Trans Med Trip](#cat_med_trans_trip) | `cat_med_trans_trip` | 1 |
-| [Trans Rec Trip](#cat_rec_trans_trip) | `cat_rec_trans_trip` | 1 |
-| [Trans Rec Trip2](#cat_rec_trans_trip2) | `cat_rec_trans_trip2` | 1 |
-| [Trans Ties](#cat_ties_trans) | `cat_ties_trans` | 1 |
-| [Trans Trip](#cat_trans_trip) | `cat_trans_trip` | 1 |
-| [Trans Trip EE](#cat_ee_trans_trip) | `cat_ee_trans_trip` | 1 |
-| [Trans Trip FE](#cat_fe_trans_trip) | `cat_fe_trans_trip` | 1 |
-| [Trans Trip FR](#cat_fr_trans_trip) | `cat_fr_trans_trip` | 1 |
-| [Trans Trip X](#cat_trans_trip_x) | `cat_trans_trip_x` | 1 |
-| [Trans Trip1](#cat_trans_trip1) | `cat_trans_trip1` | 1 |
-| [Trans Trip2](#cat_trans_trip2) | `cat_trans_trip2` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_agreetrans">Agreetrans</a></td><td><code>cat_agreetrans</code></td><td>1</td></tr><tr><td><a href="#cat_diff_rec_trans_trip_x">Diff XTrans Rec Trip</a></td><td><code>cat_diff_rec_trans_trip_x</code></td><td>1</td></tr><tr><td><a href="#cat_diff_trans_trip_x">Diff XTrans Trip</a></td><td><code>cat_diff_trans_trip_x</code></td><td>1</td></tr><tr><td><a href="#cat_hom_rec_trans_trip_x">Hom XTrans Rec Trip</a></td><td><code>cat_hom_rec_trans_trip_x</code></td><td>1</td></tr><tr><td><a href="#cat_hom_trans_trip_x">Hom XTrans Trip</a></td><td><code>cat_hom_trans_trip_x</code></td><td>1</td></tr><tr><td><a href="#cat_jump_trans_trip_x">Jump XTrans Trip</a></td><td><code>cat_jump_trans_trip_x</code></td><td>1</td></tr><tr><td><a href="#cat_realtrans">Realtrans</a></td><td><code>cat_realtrans</code></td><td>1</td></tr><tr><td><a href="#cat_rec_same_trans_trip_x">Same XTrans Rec Trip</a></td><td><code>cat_rec_same_trans_trip_x</code></td><td>1</td></tr><tr><td><a href="#cat_same_trans_trip_x">Same XTrans Trip</a></td><td><code>cat_same_trans_trip_x</code></td><td>1</td></tr><tr><td><a href="#cat_sim_trans_trip_x">Sim XTrans Trip</a></td><td><code>cat_sim_trans_trip_x</code></td><td>1</td></tr><tr><td><a href="#cat_med_trans_trip">Trans Med Trip</a></td><td><code>cat_med_trans_trip</code></td><td>1</td></tr><tr><td><a href="#cat_rec_trans_trip">Trans Rec Trip</a></td><td><code>cat_rec_trans_trip</code></td><td>1</td></tr><tr><td><a href="#cat_rec_trans_trip2">Trans Rec Trip2</a></td><td><code>cat_rec_trans_trip2</code></td><td>1</td></tr><tr><td><a href="#cat_ties_trans">Trans Ties</a></td><td><code>cat_ties_trans</code></td><td>1</td></tr><tr><td><a href="#cat_trans_trip">Trans Trip</a></td><td><code>cat_trans_trip</code></td><td>1</td></tr><tr><td><a href="#cat_ee_trans_trip">Trans Trip EE</a></td><td><code>cat_ee_trans_trip</code></td><td>1</td></tr><tr><td><a href="#cat_fe_trans_trip">Trans Trip FE</a></td><td><code>cat_fe_trans_trip</code></td><td>1</td></tr><tr><td><a href="#cat_fr_trans_trip">Trans Trip FR</a></td><td><code>cat_fr_trans_trip</code></td><td>1</td></tr><tr><td><a href="#cat_trans_trip_x">Trans Trip X</a></td><td><code>cat_trans_trip_x</code></td><td>1</td></tr><tr><td><a href="#cat_trans_trip1">Trans Trip1</a></td><td><code>cat_trans_trip1</code></td><td>1</td></tr><tr><td><a href="#cat_trans_trip2">Trans Trip2</a></td><td><code>cat_trans_trip2</code></td><td>1</td></tr></tbody></table></div>
 
 ## Agreetrans {#cat_agreetrans}
 
@@ -50,9 +30,7 @@ Measure id: `cat_agreetrans`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_agreetrans-rsiena) | `agreetrans` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_agreetrans-rsiena">details</a></td><td><code>agreetrans</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -68,9 +46,7 @@ Measure id: `cat_diff_rec_trans_trip_x`. Original family: Graph theory and combi
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_diff_rec_trans_trip_x-rsiena) | `diffXTransRecTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_diff_rec_trans_trip_x-rsiena">details</a></td><td><code>diffXTransRecTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -86,9 +62,7 @@ Measure id: `cat_diff_trans_trip_x`. Original family: Graph theory and combinato
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_diff_trans_trip_x-rsiena) | `diffXTransTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_diff_trans_trip_x-rsiena">details</a></td><td><code>diffXTransTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -104,9 +78,7 @@ Measure id: `cat_hom_rec_trans_trip_x`. Original family: Graph theory and combin
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_hom_rec_trans_trip_x-rsiena) | `homXTransRecTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_hom_rec_trans_trip_x-rsiena">details</a></td><td><code>homXTransRecTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -122,9 +94,7 @@ Measure id: `cat_hom_trans_trip_x`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_hom_trans_trip_x-rsiena) | `homXTransTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_hom_trans_trip_x-rsiena">details</a></td><td><code>homXTransTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -140,9 +110,7 @@ Measure id: `cat_jump_trans_trip_x`. Original family: Graph theory and combinato
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_jump_trans_trip_x-rsiena) | `jumpXTransTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_jump_trans_trip_x-rsiena">details</a></td><td><code>jumpXTransTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -158,9 +126,7 @@ Measure id: `cat_realtrans`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_realtrans-rsiena) | `realtrans` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_realtrans-rsiena">details</a></td><td><code>realtrans</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -176,9 +142,7 @@ Measure id: `cat_rec_same_trans_trip_x`. Original family: Graph theory and combi
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_rec_same_trans_trip_x-rsiena) | `sameXTransRecTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_rec_same_trans_trip_x-rsiena">details</a></td><td><code>sameXTransRecTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -194,9 +158,7 @@ Measure id: `cat_same_trans_trip_x`. Original family: Graph theory and combinato
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_same_trans_trip_x-rsiena) | `sameXTransTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_same_trans_trip_x-rsiena">details</a></td><td><code>sameXTransTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -212,9 +174,7 @@ Measure id: `cat_sim_trans_trip_x`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_sim_trans_trip_x-rsiena) | `simXTransTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_sim_trans_trip_x-rsiena">details</a></td><td><code>simXTransTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -230,9 +190,7 @@ Measure id: `cat_med_trans_trip`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_med_trans_trip-rsiena) | `transMedTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_med_trans_trip-rsiena">details</a></td><td><code>transMedTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -248,9 +206,7 @@ Measure id: `cat_rec_trans_trip`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_rec_trans_trip-rsiena) | `transRecTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_rec_trans_trip-rsiena">details</a></td><td><code>transRecTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -266,9 +222,7 @@ Measure id: `cat_rec_trans_trip2`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_rec_trans_trip2-rsiena) | `transRecTrip2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_rec_trans_trip2-rsiena">details</a></td><td><code>transRecTrip2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -284,9 +238,7 @@ Measure id: `cat_ties_trans`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_ties_trans-rsiena) | `transTies` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_ties_trans-rsiena">details</a></td><td><code>transTies</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -302,9 +254,7 @@ Measure id: `cat_trans_trip`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_trans_trip-rsiena) | `transTrip` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_trans_trip-rsiena">details</a></td><td><code>transTrip</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -320,9 +270,7 @@ Measure id: `cat_ee_trans_trip`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_ee_trans_trip-rsiena) | `transTrip.EE` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_ee_trans_trip-rsiena">details</a></td><td><code>transTrip.EE</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -338,9 +286,7 @@ Measure id: `cat_fe_trans_trip`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_fe_trans_trip-rsiena) | `transTrip.FE` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_fe_trans_trip-rsiena">details</a></td><td><code>transTrip.FE</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -356,9 +302,7 @@ Measure id: `cat_fr_trans_trip`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_fr_trans_trip-rsiena) | `transTrip.FR` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_fr_trans_trip-rsiena">details</a></td><td><code>transTrip.FR</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -374,9 +318,7 @@ Measure id: `cat_trans_trip_x`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_trans_trip_x-rsiena) | `transTripX` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_trans_trip_x-rsiena">details</a></td><td><code>transTripX</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -392,9 +334,7 @@ Measure id: `cat_trans_trip1`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_trans_trip1-rsiena) | `transTrip1` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_trans_trip1-rsiena">details</a></td><td><code>transTrip1</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -410,9 +350,7 @@ Measure id: `cat_trans_trip2`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_trans_trip2-rsiena) | `transTrip2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_trans_trip2-rsiena">details</a></td><td><code>transTrip2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

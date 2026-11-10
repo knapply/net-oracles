@@ -16,12 +16,11 @@ Family: [Generators and rewiring](index.html). Subfamily: Classic random graphs.
 
 Random clustered graph. Entries grouped here: Clustering Generator; Random clustered graph.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Clustering Generator](#cat_clustering_generator) | `cat_clustering_generator` | 1 |
-| [Random clustered graph](#cat_clustered_random) | `cat_clustered_random` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_clustering_generator">Clustering Generator</a></td><td><code>cat_clustering_generator</code></td><td>1</td></tr><tr><td><a href="#cat_clustered_random">Random clustered graph</a></td><td><code>cat_clustered_random</code></td><td>1</td></tr></tbody></table></div>
 
 ## Clustering Generator {#cat_clustering_generator}
 
@@ -31,9 +30,7 @@ Measure id: `cat_clustering_generator`. Original family: Generators and rewiring
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_clustering_generator-networkit) | `ClusteringGenerator` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_clustering_generator-networkit">details</a></td><td><code>ClusteringGenerator</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `cat_clustered_random`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_clustered_random-networkx) | `random_clustered_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_clustered_random-networkx">details</a></td><td><code>random_clustered_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

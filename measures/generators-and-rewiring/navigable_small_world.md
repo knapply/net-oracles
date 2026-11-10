@@ -16,12 +16,11 @@ Family: [Generators and rewiring](index.html). Subfamily: Small-world, lattice a
 
 Navigable small-world graph. Entries grouped here: Navigable small world graph; Navigable small-world generator.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Navigable small world graph](#cat_navigable_small_world) | `cat_navigable_small_world` | 1 |
-| [Navigable small-world generator](#gen_navigable_small_world) | `gen_navigable_small_world` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_navigable_small_world">Navigable small world graph</a></td><td><code>cat_navigable_small_world</code></td><td>1</td></tr><tr><td><a href="#gen_navigable_small_world">Navigable small-world generator</a></td><td><code>gen_navigable_small_world</code></td><td>1</td></tr></tbody></table></div>
 
 ## Navigable small world graph {#cat_navigable_small_world}
 
@@ -31,9 +30,7 @@ Measure id: `cat_navigable_small_world`. Original family: Generators and rewirin
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_navigable_small_world-networkx) | `navigable_small_world_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_navigable_small_world-networkx">details</a></td><td><code>navigable_small_world_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `gen_navigable_small_world`. Original family: Generators and rewirin
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_navigable_small_world-jgrapht) | `KleinbergSmallWorldGraphGenerator` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_navigable_small_world-jgrapht">details</a></td><td><code>KleinbergSmallWorldGraphGenerator</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

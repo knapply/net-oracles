@@ -12,29 +12,7 @@ permalink: /measures/
 
 Measures are grouped into concepts (the same quantity, an alternative algorithm, a normalization, direction or weighting option, or one tool's function for it), concepts into subfamilies, and subfamilies into families. Each concept has one page with a section per measure (variant). The [capability matrix](../matrix.html) shows the same measures against all tools; `data/aliases.csv` maps every measure id to its concept page and anchor.
 
-| Family | Subfamilies | Concepts | Measures |
-|---|---|---|---|
-| [Centrality](centrality/) | 11 | 76 | 142 |
-| [Cohesion and subgroups](cohesion-and-subgroups/) | 4 | 29 | 41 |
-| [Communities](communities/) | 5 | 45 | 89 |
-| [Components and connectivity](components-and-connectivity/) | 7 | 39 | 68 |
-| [Data transforms](data-transforms/) | 4 | 23 | 53 |
-| [Descriptive statistics](descriptive-statistics/) | 4 | 28 | 37 |
-| [Ego networks](ego-networks/) | 1 | 8 | 9 |
-| [Generators and rewiring](generators-and-rewiring/) | 8 | 77 | 149 |
-| [Graph theory and combinatorics](graph-theory-and-combinatorics/) | 17 | 104 | 185 |
-| [Inference (QAP, null models)](inference-qap-null-models/) | 1 | 7 | 7 |
-| [Input and output](input-and-output/) | 5 | 5 | 41 |
-| [Layout](layout/) | 2 | 14 | 52 |
-| [Matrices and spectra](matrices-and-spectra/) | 2 | 16 | 17 |
-| [Mixing and assortativity](mixing-and-assortativity/) | 4 | 13 | 22 |
-| [Paths and distances](paths-and-distances/) | 6 | 39 | 65 |
-| [Roles and positions](roles-and-positions/) | 6 | 26 | 34 |
-| [Signed and multilayer](signed-and-multilayer/) | 2 | 3 | 3 |
-| [Statistical fitting](statistical-fitting/) | 8 | 80 | 505 |
-| [Temporal and events](temporal-and-events/) | 3 | 14 | 20 |
-| [Traversal, trees and DAGs](traversal-trees-and-dags/) | 4 | 46 | 82 |
-| [Two-mode and bipartite](two-mode-and-bipartite/) | 2 | 10 | 14 |
+<div class="table-wrapper"><table><thead><tr><th>Family</th><th>Subfamilies</th><th>Concepts</th><th>Measures</th></tr></thead><tbody><tr><td><a href="centrality/">Centrality</a></td><td>11</td><td>76</td><td>142</td></tr><tr><td><a href="cohesion-and-subgroups/">Cohesion and subgroups</a></td><td>4</td><td>29</td><td>41</td></tr><tr><td><a href="communities/">Communities</a></td><td>5</td><td>45</td><td>89</td></tr><tr><td><a href="components-and-connectivity/">Components and connectivity</a></td><td>7</td><td>39</td><td>68</td></tr><tr><td><a href="data-transforms/">Data transforms</a></td><td>4</td><td>23</td><td>53</td></tr><tr><td><a href="descriptive-statistics/">Descriptive statistics</a></td><td>4</td><td>28</td><td>37</td></tr><tr><td><a href="ego-networks/">Ego networks</a></td><td>1</td><td>8</td><td>9</td></tr><tr><td><a href="generators-and-rewiring/">Generators and rewiring</a></td><td>8</td><td>77</td><td>149</td></tr><tr><td><a href="graph-theory-and-combinatorics/">Graph theory and combinatorics</a></td><td>17</td><td>104</td><td>185</td></tr><tr><td><a href="inference-qap-null-models/">Inference (QAP, null models)</a></td><td>1</td><td>7</td><td>7</td></tr><tr><td><a href="input-and-output/">Input and output</a></td><td>5</td><td>5</td><td>41</td></tr><tr><td><a href="layout/">Layout</a></td><td>2</td><td>14</td><td>52</td></tr><tr><td><a href="matrices-and-spectra/">Matrices and spectra</a></td><td>2</td><td>16</td><td>17</td></tr><tr><td><a href="mixing-and-assortativity/">Mixing and assortativity</a></td><td>4</td><td>13</td><td>22</td></tr><tr><td><a href="paths-and-distances/">Paths and distances</a></td><td>6</td><td>39</td><td>65</td></tr><tr><td><a href="roles-and-positions/">Roles and positions</a></td><td>6</td><td>26</td><td>34</td></tr><tr><td><a href="signed-and-multilayer/">Signed and multilayer</a></td><td>2</td><td>3</td><td>3</td></tr><tr><td><a href="statistical-fitting/">Statistical fitting</a></td><td>8</td><td>80</td><td>505</td></tr><tr><td><a href="temporal-and-events/">Temporal and events</a></td><td>3</td><td>14</td><td>20</td></tr><tr><td><a href="traversal-trees-and-dags/">Traversal, trees and DAGs</a></td><td>4</td><td>46</td><td>82</td></tr><tr><td><a href="two-mode-and-bipartite/">Two-mode and bipartite</a></td><td>2</td><td>10</td><td>14</td></tr></tbody></table></div>
 
 ## Centrality
 

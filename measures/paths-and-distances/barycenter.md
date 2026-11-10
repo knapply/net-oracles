@@ -16,6 +16,8 @@ Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concep
 
 The nodes of smallest total distance to the others, and every node's total distance.
 
+*Definition not yet written.*
+
 ## References {#concept-references}
 
 [gutman1994selected](../../references.html#gutman1994selected), [hage1995eccentricity](../../references.html#hage1995eccentricity), [klein1995hyper](../../references.html#klein1995hyper), [koschutzki2005centrality](../../references.html#koschutzki2005centrality), [latora2001efficient](../../references.html#latora2001efficient), [marchiori2000harmony](../../references.html#marchiori2000harmony), [randic1993novel](../../references.html#randic1993novel), [schultz1989topological](../../references.html#schultz1989topological)
@@ -28,10 +30,7 @@ Measure id: `dm_barycenter`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
-| [centiserve](../../tools/centiserve.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-dm_barycenter-centiserve) | `barycenter` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td></td></tr><tr><td><a href="../../tools/centiserve.html">centiserve</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-dm_barycenter-centiserve">details</a></td><td><code>barycenter</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -39,10 +38,7 @@ Measure id: `dm_barycenter`. Original family: Paths and distances.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `dm_barycenter` | NetworkX | any | agrees |  |  | abs 1e-12, rel 1e-12 | `nx.barycenter(G) (empty on NetworkXNoPath)` |  |
-| `dm_barycenter_weighted` | NetworkX | any | differs | fractional\_weights | ties, weights | abs 1e-12, rel 1e-12 | `nx.barycenter(G, weight = 'weight')` | tie: exact compares floating-point sums exactly, as NetworkX does, but the sums are added in a different order, so a tie that is exact in real arithmetic can hold in one tool and not the other. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>dm_barycenter</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.barycenter(G) (empty on NetworkXNoPath)</code></td><td></td></tr><tr><td><code>dm_barycenter_weighted</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>fractional_weights</td><td>ties, weights</td><td>abs 1e-12, rel 1e-12</td><td><code>nx.barycenter(G, weight = 'weight')</code></td><td>tie: exact compares floating-point sums exactly, as NetworkX does, but the sums are added in a different order, so a tie that is exact in real arithmetic can hold in one tool and not the other.</td></tr></tbody></table></div>
 
 **References:** [gutman1994selected](../../references.html#gutman1994selected), [hage1995eccentricity](../../references.html#hage1995eccentricity), [klein1995hyper](../../references.html#klein1995hyper), [koschutzki2005centrality](../../references.html#koschutzki2005centrality), [latora2001efficient](../../references.html#latora2001efficient), [marchiori2000harmony](../../references.html#marchiori2000harmony), [randic1993novel](../../references.html#randic1993novel), [schultz1989topological](../../references.html#schultz1989topological)
 

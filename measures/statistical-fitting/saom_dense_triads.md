@@ -16,13 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Dense triads effect. Entries grouped here: Beh Dense Triads; Dense Triads; Sim Dense Triads.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Beh Dense Triads](#cat_beh_dense_triads) | `cat_beh_dense_triads` | 1 |
-| [Dense Triads](#cat_dense_triads) | `cat_dense_triads` | 1 |
-| [Sim Dense Triads](#cat_dense_sim_triads) | `cat_dense_sim_triads` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_beh_dense_triads">Beh Dense Triads</a></td><td><code>cat_beh_dense_triads</code></td><td>1</td></tr><tr><td><a href="#cat_dense_triads">Dense Triads</a></td><td><code>cat_dense_triads</code></td><td>1</td></tr><tr><td><a href="#cat_dense_sim_triads">Sim Dense Triads</a></td><td><code>cat_dense_sim_triads</code></td><td>1</td></tr></tbody></table></div>
 
 ## Beh Dense Triads {#cat_beh_dense_triads}
 
@@ -32,9 +30,7 @@ Measure id: `cat_beh_dense_triads`. Original family: Cohesion and subgroups.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_beh_dense_triads-rsiena) | `behDenseTriads` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_beh_dense_triads-rsiena">details</a></td><td><code>behDenseTriads</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -50,9 +46,7 @@ Measure id: `cat_dense_triads`. Original family: Cohesion and subgroups.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dense_triads-rsiena) | `denseTriads` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dense_triads-rsiena">details</a></td><td><code>denseTriads</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -68,9 +62,7 @@ Measure id: `cat_dense_sim_triads`. Original family: Cohesion and subgroups.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dense_sim_triads-rsiena) | `simDenseTriads` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dense_sim_triads-rsiena">details</a></td><td><code>simDenseTriads</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

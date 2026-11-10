@@ -16,6 +16,8 @@ Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homop
 
 Segregation matrix index. Entries grouped here: Segregation matrix index (SMI).
 
+*Definition not yet written.*
+
 ## Segregation matrix index (SMI) {#seg_smi}
 
 Measure id: `seg_smi`. Original family: Mixing and assortativity.
@@ -24,9 +26,7 @@ Measure id: `seg_smi`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [netseg](../../tools/netseg.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: netseg is documented-only in this survey; listed in its documentation. [details](#why-seg_smi-netseg) | `smi` | documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/netseg.html">netseg</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: netseg is documented-only in this survey; listed in its documentation. <a href="#why-seg_smi-netseg">details</a></td><td><code>smi</code></td><td>documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

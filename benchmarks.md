@@ -39,222 +39,41 @@ Results are single runs of a fixed protocol on one machine, not a statistical sa
 
 ## Summary by suite
 
-| Suite | Tool | Rows | Graphs | Measures | Over budget |
-|---|---|---|---|---|---|
-| gap-kernels | GAP Benchmark Suite | 24 | 4 | 6 | 0 |
-| networkx-backends | GraphBLAS algorithms | 60 | 7 | 10 | 0 |
-| networkx-backends | NetworkX | 347 | 14 | 57 | 52 |
-| networkx-backends | nx-parallel | 64 | 7 | 12 | 14 |
-| python-comparison | NetworKit | 8 | 3 | 7 | 0 |
-| python-comparison | NetworkX | 25 | 8 | 10 | 0 |
-| python-comparison | igraph (Python) | 19 | 8 | 9 | 0 |
-| r-comparison | igraph (R) | 25 | 7 | 10 | 0 |
-| r-comparison | sna | 6 | 2 | 6 | 0 |
-| size-ladder | GAP Benchmark Suite | 114 | 24 | 5 | 0 |
-| size-ladder | igraph (R) | 156 | 24 | 7 | 0 |
-| size-ladder | NetworKit | 155 | 24 | 7 | 0 |
-| size-ladder | NetworkX | 64 | 10 | 7 | 0 |
-| size-ladder-graph-tool | graph-tool | 161 | 24 | 7 | 0 |
+<div class="table-wrapper"><table><thead><tr><th>Suite</th><th>Tool</th><th>Rows</th><th>Graphs</th><th>Measures</th><th>Over budget</th></tr></thead><tbody><tr><td>gap-kernels</td><td>GAP Benchmark Suite</td><td>24</td><td>4</td><td>6</td><td>0</td></tr><tr><td>networkx-backends</td><td>GraphBLAS algorithms</td><td>60</td><td>7</td><td>10</td><td>0</td></tr><tr><td>networkx-backends</td><td>NetworkX</td><td>347</td><td>14</td><td>57</td><td>52</td></tr><tr><td>networkx-backends</td><td>nx-parallel</td><td>64</td><td>7</td><td>12</td><td>14</td></tr><tr><td>python-comparison</td><td>NetworKit</td><td>8</td><td>3</td><td>7</td><td>0</td></tr><tr><td>python-comparison</td><td>NetworkX</td><td>25</td><td>8</td><td>10</td><td>0</td></tr><tr><td>python-comparison</td><td>igraph (Python)</td><td>19</td><td>8</td><td>9</td><td>0</td></tr><tr><td>r-comparison</td><td>igraph (R)</td><td>25</td><td>7</td><td>10</td><td>0</td></tr><tr><td>r-comparison</td><td>sna</td><td>6</td><td>2</td><td>6</td><td>0</td></tr><tr><td>size-ladder</td><td>GAP Benchmark Suite</td><td>114</td><td>24</td><td>5</td><td>0</td></tr><tr><td>size-ladder</td><td>igraph (R)</td><td>156</td><td>24</td><td>7</td><td>0</td></tr><tr><td>size-ladder</td><td>NetworKit</td><td>155</td><td>24</td><td>7</td><td>0</td></tr><tr><td>size-ladder</td><td>NetworkX</td><td>64</td><td>10</td><td>7</td><td>0</td></tr><tr><td>size-ladder-graph-tool</td><td>graph-tool</td><td>161</td><td>24</td><td>7</td><td>0</td></tr></tbody></table></div>
 
 ## Median time per measure: gap-kernels
 
 Median over the graphs on which the tool finished within the budget; threads as in the data file.
 
-| Measure | Tool | Graphs | Finished | Median seconds | Median peak MB |
-|---|---|---|---|---|---|
-| betweenness (4 sources) | GAP Benchmark Suite | 4 | 4 | 4.421 | 629.5 |
-| bfs | GAP Benchmark Suite | 4 | 4 | 0.05286 | 568 |
-| [components](measures/components-and-connectivity/connected_components.html#components) | GAP Benchmark Suite | 4 | 4 | 0.09574 | 568.5 |
-| [pagerank](measures/centrality/pagerank.html#pagerank) | GAP Benchmark Suite | 4 | 4 | 0.9395 | 569 |
-| sssp | GAP Benchmark Suite | 4 | 4 | 0.5963 | 1141 |
-| triangle count | GAP Benchmark Suite | 4 | 4 | 8.89 | 877.5 |
+<div class="table-wrapper"><table><thead><tr><th>Measure</th><th>Tool</th><th>Graphs</th><th>Finished</th><th>Median seconds</th><th>Median peak MB</th></tr></thead><tbody><tr><td>betweenness (4 sources)</td><td>GAP Benchmark Suite</td><td>4</td><td>4</td><td>4.421</td><td>629.5</td></tr><tr><td>bfs</td><td>GAP Benchmark Suite</td><td>4</td><td>4</td><td>0.05286</td><td>568</td></tr><tr><td><a href="measures/components-and-connectivity/connected_components.html#components">components</a></td><td>GAP Benchmark Suite</td><td>4</td><td>4</td><td>0.09574</td><td>568.5</td></tr><tr><td><a href="measures/centrality/pagerank.html#pagerank">pagerank</a></td><td>GAP Benchmark Suite</td><td>4</td><td>4</td><td>0.9395</td><td>569</td></tr><tr><td>sssp</td><td>GAP Benchmark Suite</td><td>4</td><td>4</td><td>0.5963</td><td>1141</td></tr><tr><td>triangle count</td><td>GAP Benchmark Suite</td><td>4</td><td>4</td><td>8.89</td><td>877.5</td></tr></tbody></table></div>
 
 ## Median time per measure: networkx-backends
 
 Median over the graphs on which the tool finished within the budget; threads as in the data file.
 
-| Measure | Tool | Graphs | Finished | Median seconds | Median peak MB |
-|---|---|---|---|---|---|
-| adjacency\_matrix (weighted) | NetworkX | 7 | 7 | 0.0427 |  |
-| all\_pairs\_dijkstra\_path\_length (weighted) | NetworkX | 3 | 2 | 2.495 |  |
-| all\_pairs\_dijkstra\_path\_length (weighted) | nx-parallel | 3 | 2 | 2.5 |  |
-| all\_pairs\_shortest\_path\_length | GraphBLAS algorithms | 4 | 4 | 0.0389 |  |
-| all\_pairs\_shortest\_path\_length | NetworkX | 4 | 4 | 0.178 |  |
-| all\_pairs\_shortest\_path\_length | nx-parallel | 4 | 4 | 0.186 |  |
-| average\_neighbor\_degree | NetworkX | 7 | 7 | 0.00849 |  |
-| average\_neighbor\_degree | nx-parallel | 7 | 7 | 0.327 |  |
-| average\_shortest\_path\_length | NetworkX | 7 | 4 | 0.186 |  |
-| betweenness\_centrality | NetworkX | 6 | 3 | 1.95 |  |
-| betweenness\_centrality | nx-parallel | 6 | 3 | 0.424 |  |
-| betweenness\_centrality (weighted) | NetworkX | 6 | 2 | 4.245 |  |
-| betweenness\_centrality (weighted) | nx-parallel | 6 | 3 | 1.2 |  |
-| betweenness\_centrality\_subset | NetworkX | 6 | 6 | 1.377 |  |
-| bfs\_edges | NetworkX | 7 | 7 | 0.00123 |  |
-| biconnected\_components | NetworkX | 7 | 7 | 0.0369 |  |
-| closeness\_centrality | NetworkX | 7 | 4 | 0.1745 |  |
-| [clustering](measures/descriptive-statistics/local_clustering.html#clustering) | GraphBLAS algorithms | 7 | 7 | 0.00667 |  |
-| [clustering](measures/descriptive-statistics/local_clustering.html#clustering) | NetworkX | 7 | 6 | 0.4515 |  |
-| [clustering](measures/descriptive-statistics/local_clustering.html#clustering) | nx-parallel | 7 | 7 | 0.661 |  |
-| clustering (weighted) | GraphBLAS algorithms | 7 | 7 | 0.00819 |  |
-| clustering (weighted) | NetworkX | 7 | 6 | 0.798 |  |
-| clustering (weighted) | nx-parallel | 7 | 6 | 0.475 |  |
-| [condensation](measures/components-and-connectivity/condensation.html#condensation) | NetworkX | 7 | 7 | 0.0131 |  |
-| conductance | GraphBLAS algorithms | 7 | 7 | 0.0018 |  |
-| conductance | NetworkX | 7 | 7 | 0.0125 |  |
-| connected\_components | NetworkX | 7 | 7 | 0.000525 |  |
-| [constraint](measures/roles-and-positions/burt_constraint.html#constraint) | NetworkX | 7 | 7 | 0.116 |  |
-| core\_number | NetworkX | 7 | 7 | 0.0182 |  |
-| current\_flow\_betweenness\_centrality | NetworkX | 3 | 2 | 7.23 |  |
-| [cycle\_basis](measures/graph-theory-and-combinatorics/cycle_basis.html#cycle_basis) | NetworkX | 6 | 6 | 0.2318 |  |
-| degree\_assortativity\_coefficient | NetworkX | 7 | 7 | 0.0611 |  |
-| [diameter](measures/paths-and-distances/diameter.html#diameter) | NetworkX | 7 | 4 | 0.195 |  |
-| edge\_betweenness\_centrality | NetworkX | 6 | 2 | 3.015 |  |
-| edge\_betweenness\_centrality | nx-parallel | 6 | 3 | 0.988 |  |
-| edge\_connectivity | NetworkX | 4 | 4 | 0.4295 |  |
-| edge\_dfs | NetworkX | 7 | 7 | 0.573 |  |
-| edge\_disjoint\_paths | NetworkX | 7 | 7 | 0.301 |  |
-| edmonds\_karp (weighted) | NetworkX | 7 | 7 | 0.298 |  |
-| eigenvector\_centrality\_numpy | NetworkX | 7 | 7 | 0.0561 |  |
-| find\_cliques | NetworkX | 5 | 5 | 0.289 |  |
-| floyd\_warshall (weighted) | GraphBLAS algorithms | 3 | 3 | 3.26 |  |
-| floyd\_warshall (weighted) | NetworkX | 3 | 0 |  |  |
-| global\_efficiency | NetworkX | 7 | 4 | 0.1975 |  |
-| [greedy\_color](measures/graph-theory-and-combinatorics/vertex_coloring.html#greedy_color) | NetworkX | 7 | 7 | 0.00796 |  |
-| harmonic\_centrality | NetworkX | 7 | 4 | 0.256 |  |
-| harmonic\_centrality | nx-parallel | 7 | 6 | 3.776 |  |
-| [hits](measures/centrality/hits.html#hits) | NetworkX | 7 | 7 | 0.0695 |  |
-| hyper\_wiener\_index | NetworkX | 6 | 4 | 0.1915 |  |
-| jaccard\_coefficient | NetworkX | 4 | 3 | 2.18 |  |
-| jaccard\_coefficient | nx-parallel | 4 | 3 | 0.406 |  |
-| [k\_truss](measures/cohesion-and-subgroups/k_truss.html#k_truss) | GraphBLAS algorithms | 7 | 7 | 0.0083 |  |
-| [k\_truss](measures/cohesion-and-subgroups/k_truss.html#k_truss) | NetworkX | 7 | 6 | 0.3405 |  |
-| load\_centrality | NetworkX | 6 | 3 | 2.9 |  |
-| local\_efficiency | NetworkX | 3 | 2 | 0.4225 |  |
-| local\_efficiency | nx-parallel | 3 | 3 | 0.168 |  |
-| louvain\_communities | NetworkX | 7 | 7 | 0.997 |  |
-| maximum\_branching (weighted) | NetworkX | 4 | 1 | 11.1 |  |
-| minimum\_spanning\_tree (weighted) | NetworkX | 7 | 7 | 0.497 |  |
-| number\_of\_walks (length 3) | NetworkX | 3 | 3 | 6.07 |  |
-| onion\_layers | NetworkX | 7 | 7 | 0.0377 |  |
-| [pagerank](measures/centrality/pagerank.html#pagerank) | GraphBLAS algorithms | 7 | 7 | 0.0031 |  |
-| [pagerank](measures/centrality/pagerank.html#pagerank) | NetworkX | 7 | 7 | 0.0446 |  |
-| second\_order\_centrality | NetworkX | 3 | 3 | 7.07 |  |
-| shortest\_simple\_paths (20 paths) | NetworkX | 6 | 6 | 0.00226 |  |
-| single\_source\_bellman\_ford\_path\_length (weighted) | GraphBLAS algorithms | 7 | 7 | 0.00299 |  |
-| single\_source\_bellman\_ford\_path\_length (weighted) | NetworkX | 7 | 7 | 0.0476 |  |
-| single\_source\_dijkstra (weighted) | NetworkX | 7 | 7 | 0.0305 |  |
-| [square\_clustering](measures/descriptive-statistics/square_clustering.html#square_clustering) | GraphBLAS algorithms | 4 | 4 | 0.008435 |  |
-| [square\_clustering](measures/descriptive-statistics/square_clustering.html#square_clustering) | NetworkX | 4 | 3 | 0.32 |  |
-| [square\_clustering](measures/descriptive-statistics/square_clustering.html#square_clustering) | nx-parallel | 4 | 3 | 0.0681 |  |
-| strongly\_connected\_components | NetworkX | 7 | 7 | 0.00266 |  |
-| topological\_sort (DAG) | NetworkX | 7 | 7 | 0.0129 |  |
-| transitive\_reduction (DAG) | NetworkX | 4 | 4 | 0.005435 |  |
-| [transitivity](measures/descriptive-statistics/global_transitivity.html#transitivity) | GraphBLAS algorithms | 7 | 7 | 0.00403 |  |
-| [transitivity](measures/descriptive-statistics/global_transitivity.html#transitivity) | NetworkX | 7 | 6 | 0.604 |  |
-| triadic\_census | NetworkX | 7 | 3 | 3.65 |  |
-| vf2pp\_is\_isomorphic | NetworkX | 7 | 5 | 0.31 |  |
-| weisfeiler\_lehman\_graph\_hash | NetworkX | 7 | 7 | 0.0472 |  |
+<div class="table-wrapper"><table><thead><tr><th>Measure</th><th>Tool</th><th>Graphs</th><th>Finished</th><th>Median seconds</th><th>Median peak MB</th></tr></thead><tbody><tr><td>adjacency_matrix (weighted)</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0427</td><td></td></tr><tr><td>all_pairs_dijkstra_path_length (weighted)</td><td>NetworkX</td><td>3</td><td>2</td><td>2.495</td><td></td></tr><tr><td>all_pairs_dijkstra_path_length (weighted)</td><td>nx-parallel</td><td>3</td><td>2</td><td>2.5</td><td></td></tr><tr><td>all_pairs_shortest_path_length</td><td>GraphBLAS algorithms</td><td>4</td><td>4</td><td>0.0389</td><td></td></tr><tr><td>all_pairs_shortest_path_length</td><td>NetworkX</td><td>4</td><td>4</td><td>0.178</td><td></td></tr><tr><td>all_pairs_shortest_path_length</td><td>nx-parallel</td><td>4</td><td>4</td><td>0.186</td><td></td></tr><tr><td>average_neighbor_degree</td><td>NetworkX</td><td>7</td><td>7</td><td>0.00849</td><td></td></tr><tr><td>average_neighbor_degree</td><td>nx-parallel</td><td>7</td><td>7</td><td>0.327</td><td></td></tr><tr><td>average_shortest_path_length</td><td>NetworkX</td><td>7</td><td>4</td><td>0.186</td><td></td></tr><tr><td>betweenness_centrality</td><td>NetworkX</td><td>6</td><td>3</td><td>1.95</td><td></td></tr><tr><td>betweenness_centrality</td><td>nx-parallel</td><td>6</td><td>3</td><td>0.424</td><td></td></tr><tr><td>betweenness_centrality (weighted)</td><td>NetworkX</td><td>6</td><td>2</td><td>4.245</td><td></td></tr><tr><td>betweenness_centrality (weighted)</td><td>nx-parallel</td><td>6</td><td>3</td><td>1.2</td><td></td></tr><tr><td>betweenness_centrality_subset</td><td>NetworkX</td><td>6</td><td>6</td><td>1.377</td><td></td></tr><tr><td>bfs_edges</td><td>NetworkX</td><td>7</td><td>7</td><td>0.00123</td><td></td></tr><tr><td>biconnected_components</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0369</td><td></td></tr><tr><td>closeness_centrality</td><td>NetworkX</td><td>7</td><td>4</td><td>0.1745</td><td></td></tr><tr><td><a href="measures/descriptive-statistics/local_clustering.html#clustering">clustering</a></td><td>GraphBLAS algorithms</td><td>7</td><td>7</td><td>0.00667</td><td></td></tr><tr><td><a href="measures/descriptive-statistics/local_clustering.html#clustering">clustering</a></td><td>NetworkX</td><td>7</td><td>6</td><td>0.4515</td><td></td></tr><tr><td><a href="measures/descriptive-statistics/local_clustering.html#clustering">clustering</a></td><td>nx-parallel</td><td>7</td><td>7</td><td>0.661</td><td></td></tr><tr><td>clustering (weighted)</td><td>GraphBLAS algorithms</td><td>7</td><td>7</td><td>0.00819</td><td></td></tr><tr><td>clustering (weighted)</td><td>NetworkX</td><td>7</td><td>6</td><td>0.798</td><td></td></tr><tr><td>clustering (weighted)</td><td>nx-parallel</td><td>7</td><td>6</td><td>0.475</td><td></td></tr><tr><td><a href="measures/components-and-connectivity/condensation.html#condensation">condensation</a></td><td>NetworkX</td><td>7</td><td>7</td><td>0.0131</td><td></td></tr><tr><td>conductance</td><td>GraphBLAS algorithms</td><td>7</td><td>7</td><td>0.0018</td><td></td></tr><tr><td>conductance</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0125</td><td></td></tr><tr><td>connected_components</td><td>NetworkX</td><td>7</td><td>7</td><td>0.000525</td><td></td></tr><tr><td><a href="measures/roles-and-positions/burt_constraint.html#constraint">constraint</a></td><td>NetworkX</td><td>7</td><td>7</td><td>0.116</td><td></td></tr><tr><td>core_number</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0182</td><td></td></tr><tr><td>current_flow_betweenness_centrality</td><td>NetworkX</td><td>3</td><td>2</td><td>7.23</td><td></td></tr><tr><td><a href="measures/graph-theory-and-combinatorics/cycle_basis.html#cycle_basis">cycle_basis</a></td><td>NetworkX</td><td>6</td><td>6</td><td>0.2318</td><td></td></tr><tr><td>degree_assortativity_coefficient</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0611</td><td></td></tr><tr><td><a href="measures/paths-and-distances/diameter.html#diameter">diameter</a></td><td>NetworkX</td><td>7</td><td>4</td><td>0.195</td><td></td></tr><tr><td>edge_betweenness_centrality</td><td>NetworkX</td><td>6</td><td>2</td><td>3.015</td><td></td></tr><tr><td>edge_betweenness_centrality</td><td>nx-parallel</td><td>6</td><td>3</td><td>0.988</td><td></td></tr><tr><td>edge_connectivity</td><td>NetworkX</td><td>4</td><td>4</td><td>0.4295</td><td></td></tr><tr><td>edge_dfs</td><td>NetworkX</td><td>7</td><td>7</td><td>0.573</td><td></td></tr><tr><td>edge_disjoint_paths</td><td>NetworkX</td><td>7</td><td>7</td><td>0.301</td><td></td></tr><tr><td>edmonds_karp (weighted)</td><td>NetworkX</td><td>7</td><td>7</td><td>0.298</td><td></td></tr><tr><td>eigenvector_centrality_numpy</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0561</td><td></td></tr><tr><td>find_cliques</td><td>NetworkX</td><td>5</td><td>5</td><td>0.289</td><td></td></tr><tr><td>floyd_warshall (weighted)</td><td>GraphBLAS algorithms</td><td>3</td><td>3</td><td>3.26</td><td></td></tr><tr><td>floyd_warshall (weighted)</td><td>NetworkX</td><td>3</td><td>0</td><td></td><td></td></tr><tr><td>global_efficiency</td><td>NetworkX</td><td>7</td><td>4</td><td>0.1975</td><td></td></tr><tr><td><a href="measures/graph-theory-and-combinatorics/vertex_coloring.html#greedy_color">greedy_color</a></td><td>NetworkX</td><td>7</td><td>7</td><td>0.00796</td><td></td></tr><tr><td>harmonic_centrality</td><td>NetworkX</td><td>7</td><td>4</td><td>0.256</td><td></td></tr><tr><td>harmonic_centrality</td><td>nx-parallel</td><td>7</td><td>6</td><td>3.776</td><td></td></tr><tr><td><a href="measures/centrality/hits.html#hits">hits</a></td><td>NetworkX</td><td>7</td><td>7</td><td>0.0695</td><td></td></tr><tr><td>hyper_wiener_index</td><td>NetworkX</td><td>6</td><td>4</td><td>0.1915</td><td></td></tr><tr><td>jaccard_coefficient</td><td>NetworkX</td><td>4</td><td>3</td><td>2.18</td><td></td></tr><tr><td>jaccard_coefficient</td><td>nx-parallel</td><td>4</td><td>3</td><td>0.406</td><td></td></tr><tr><td><a href="measures/cohesion-and-subgroups/k_truss.html#k_truss">k_truss</a></td><td>GraphBLAS algorithms</td><td>7</td><td>7</td><td>0.0083</td><td></td></tr><tr><td><a href="measures/cohesion-and-subgroups/k_truss.html#k_truss">k_truss</a></td><td>NetworkX</td><td>7</td><td>6</td><td>0.3405</td><td></td></tr><tr><td>load_centrality</td><td>NetworkX</td><td>6</td><td>3</td><td>2.9</td><td></td></tr><tr><td>local_efficiency</td><td>NetworkX</td><td>3</td><td>2</td><td>0.4225</td><td></td></tr><tr><td>local_efficiency</td><td>nx-parallel</td><td>3</td><td>3</td><td>0.168</td><td></td></tr><tr><td>louvain_communities</td><td>NetworkX</td><td>7</td><td>7</td><td>0.997</td><td></td></tr><tr><td>maximum_branching (weighted)</td><td>NetworkX</td><td>4</td><td>1</td><td>11.1</td><td></td></tr><tr><td>minimum_spanning_tree (weighted)</td><td>NetworkX</td><td>7</td><td>7</td><td>0.497</td><td></td></tr><tr><td>number_of_walks (length 3)</td><td>NetworkX</td><td>3</td><td>3</td><td>6.07</td><td></td></tr><tr><td>onion_layers</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0377</td><td></td></tr><tr><td><a href="measures/centrality/pagerank.html#pagerank">pagerank</a></td><td>GraphBLAS algorithms</td><td>7</td><td>7</td><td>0.0031</td><td></td></tr><tr><td><a href="measures/centrality/pagerank.html#pagerank">pagerank</a></td><td>NetworkX</td><td>7</td><td>7</td><td>0.0446</td><td></td></tr><tr><td>second_order_centrality</td><td>NetworkX</td><td>3</td><td>3</td><td>7.07</td><td></td></tr><tr><td>shortest_simple_paths (20 paths)</td><td>NetworkX</td><td>6</td><td>6</td><td>0.00226</td><td></td></tr><tr><td>single_source_bellman_ford_path_length (weighted)</td><td>GraphBLAS algorithms</td><td>7</td><td>7</td><td>0.00299</td><td></td></tr><tr><td>single_source_bellman_ford_path_length (weighted)</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0476</td><td></td></tr><tr><td>single_source_dijkstra (weighted)</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0305</td><td></td></tr><tr><td><a href="measures/descriptive-statistics/square_clustering.html#square_clustering">square_clustering</a></td><td>GraphBLAS algorithms</td><td>4</td><td>4</td><td>0.008435</td><td></td></tr><tr><td><a href="measures/descriptive-statistics/square_clustering.html#square_clustering">square_clustering</a></td><td>NetworkX</td><td>4</td><td>3</td><td>0.32</td><td></td></tr><tr><td><a href="measures/descriptive-statistics/square_clustering.html#square_clustering">square_clustering</a></td><td>nx-parallel</td><td>4</td><td>3</td><td>0.0681</td><td></td></tr><tr><td>strongly_connected_components</td><td>NetworkX</td><td>7</td><td>7</td><td>0.00266</td><td></td></tr><tr><td>topological_sort (DAG)</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0129</td><td></td></tr><tr><td>transitive_reduction (DAG)</td><td>NetworkX</td><td>4</td><td>4</td><td>0.005435</td><td></td></tr><tr><td><a href="measures/descriptive-statistics/global_transitivity.html#transitivity">transitivity</a></td><td>GraphBLAS algorithms</td><td>7</td><td>7</td><td>0.00403</td><td></td></tr><tr><td><a href="measures/descriptive-statistics/global_transitivity.html#transitivity">transitivity</a></td><td>NetworkX</td><td>7</td><td>6</td><td>0.604</td><td></td></tr><tr><td>triadic_census</td><td>NetworkX</td><td>7</td><td>3</td><td>3.65</td><td></td></tr><tr><td>vf2pp_is_isomorphic</td><td>NetworkX</td><td>7</td><td>5</td><td>0.31</td><td></td></tr><tr><td>weisfeiler_lehman_graph_hash</td><td>NetworkX</td><td>7</td><td>7</td><td>0.0472</td><td></td></tr></tbody></table></div>
 
 ## Median time per measure: python-comparison
 
 Median over the graphs on which the tool finished within the budget; threads as in the data file.
 
-| Measure | Tool | Graphs | Finished | Median seconds | Median peak MB |
-|---|---|---|---|---|---|
-| [betweenness](measures/centrality/betweenness.html#betweenness) | NetworKit | 2 | 2 | 0.2638 |  |
-| [betweenness](measures/centrality/betweenness.html#betweenness) | NetworkX | 6 | 6 | 14.62 |  |
-| [betweenness](measures/centrality/betweenness.html#betweenness) | igraph (Python) | 6 | 6 | 0.4909 |  |
-| [closeness](measures/centrality/closeness.html#closeness) | NetworkX | 6 | 6 | 5.667 |  |
-| [components](measures/components-and-connectivity/connected_components.html#components) | NetworKit | 1 | 1 | 0.003536 |  |
-| [components](measures/components-and-connectivity/connected_components.html#components) | NetworkX | 1 | 1 | 0.05599 |  |
-| [components](measures/components-and-connectivity/connected_components.html#components) | igraph (Python) | 1 | 1 | 0.001698 |  |
-| [constraint](measures/roles-and-positions/burt_constraint.html#constraint) | NetworkX | 1 | 1 | 0.01158 |  |
-| [constraint](measures/roles-and-positions/burt_constraint.html#constraint) | igraph (Python) | 1 | 1 | 0.001109 |  |
-| eigenvector centrality | NetworKit | 1 | 1 | 0.02026 |  |
-| eigenvector centrality | NetworkX | 1 | 1 | 0.5315 |  |
-| eigenvector centrality | igraph (Python) | 1 | 1 | 0.2807 |  |
-| harmonic centrality | NetworKit | 1 | 1 | 0.2209 |  |
-| harmonic centrality | NetworkX | 6 | 6 | 7.065 |  |
-| harmonic centrality | igraph (Python) | 6 | 6 | 0.3796 |  |
-| k-cores | NetworKit | 1 | 1 | 0.002369 |  |
-| k-cores | NetworkX | 1 | 1 | 0.4322 |  |
-| k-cores | igraph (Python) | 1 | 1 | 0.005781 |  |
-| Louvain communities | NetworKit | 1 | 1 | 0.1101 |  |
-| Louvain communities | NetworkX | 1 | 1 | 151.8 |  |
-| Louvain communities | igraph (Python) | 1 | 1 | 11.34 |  |
-| maximal cliques | NetworKit | 1 | 1 | 0.08979 |  |
-| maximal cliques | NetworkX | 1 | 1 | 1.133 |  |
-| maximal cliques | igraph (Python) | 1 | 1 | 1.045 |  |
-| triad census | NetworkX | 1 | 1 | 0.7426 |  |
-| triad census | igraph (Python) | 1 | 1 | 0.01508 |  |
+<div class="table-wrapper"><table><thead><tr><th>Measure</th><th>Tool</th><th>Graphs</th><th>Finished</th><th>Median seconds</th><th>Median peak MB</th></tr></thead><tbody><tr><td><a href="measures/centrality/betweenness.html#betweenness">betweenness</a></td><td>NetworKit</td><td>2</td><td>2</td><td>0.2638</td><td></td></tr><tr><td><a href="measures/centrality/betweenness.html#betweenness">betweenness</a></td><td>NetworkX</td><td>6</td><td>6</td><td>14.62</td><td></td></tr><tr><td><a href="measures/centrality/betweenness.html#betweenness">betweenness</a></td><td>igraph (Python)</td><td>6</td><td>6</td><td>0.4909</td><td></td></tr><tr><td><a href="measures/centrality/closeness.html#closeness">closeness</a></td><td>NetworkX</td><td>6</td><td>6</td><td>5.667</td><td></td></tr><tr><td><a href="measures/components-and-connectivity/connected_components.html#components">components</a></td><td>NetworKit</td><td>1</td><td>1</td><td>0.003536</td><td></td></tr><tr><td><a href="measures/components-and-connectivity/connected_components.html#components">components</a></td><td>NetworkX</td><td>1</td><td>1</td><td>0.05599</td><td></td></tr><tr><td><a href="measures/components-and-connectivity/connected_components.html#components">components</a></td><td>igraph (Python)</td><td>1</td><td>1</td><td>0.001698</td><td></td></tr><tr><td><a href="measures/roles-and-positions/burt_constraint.html#constraint">constraint</a></td><td>NetworkX</td><td>1</td><td>1</td><td>0.01158</td><td></td></tr><tr><td><a href="measures/roles-and-positions/burt_constraint.html#constraint">constraint</a></td><td>igraph (Python)</td><td>1</td><td>1</td><td>0.001109</td><td></td></tr><tr><td>eigenvector centrality</td><td>NetworKit</td><td>1</td><td>1</td><td>0.02026</td><td></td></tr><tr><td>eigenvector centrality</td><td>NetworkX</td><td>1</td><td>1</td><td>0.5315</td><td></td></tr><tr><td>eigenvector centrality</td><td>igraph (Python)</td><td>1</td><td>1</td><td>0.2807</td><td></td></tr><tr><td>harmonic centrality</td><td>NetworKit</td><td>1</td><td>1</td><td>0.2209</td><td></td></tr><tr><td>harmonic centrality</td><td>NetworkX</td><td>6</td><td>6</td><td>7.065</td><td></td></tr><tr><td>harmonic centrality</td><td>igraph (Python)</td><td>6</td><td>6</td><td>0.3796</td><td></td></tr><tr><td>k-cores</td><td>NetworKit</td><td>1</td><td>1</td><td>0.002369</td><td></td></tr><tr><td>k-cores</td><td>NetworkX</td><td>1</td><td>1</td><td>0.4322</td><td></td></tr><tr><td>k-cores</td><td>igraph (Python)</td><td>1</td><td>1</td><td>0.005781</td><td></td></tr><tr><td>Louvain communities</td><td>NetworKit</td><td>1</td><td>1</td><td>0.1101</td><td></td></tr><tr><td>Louvain communities</td><td>NetworkX</td><td>1</td><td>1</td><td>151.8</td><td></td></tr><tr><td>Louvain communities</td><td>igraph (Python)</td><td>1</td><td>1</td><td>11.34</td><td></td></tr><tr><td>maximal cliques</td><td>NetworKit</td><td>1</td><td>1</td><td>0.08979</td><td></td></tr><tr><td>maximal cliques</td><td>NetworkX</td><td>1</td><td>1</td><td>1.133</td><td></td></tr><tr><td>maximal cliques</td><td>igraph (Python)</td><td>1</td><td>1</td><td>1.045</td><td></td></tr><tr><td>triad census</td><td>NetworkX</td><td>1</td><td>1</td><td>0.7426</td><td></td></tr><tr><td>triad census</td><td>igraph (Python)</td><td>1</td><td>1</td><td>0.01508</td><td></td></tr></tbody></table></div>
 
 ## Median time per measure: r-comparison
 
 Median over the graphs on which the tool finished within the budget; threads as in the data file.
 
-| Measure | Tool | Graphs | Finished | Median seconds | Median peak MB |
-|---|---|---|---|---|---|
-| [betweenness](measures/centrality/betweenness.html#betweenness) | igraph (R) | 6 | 6 | 4.486 |  |
-| [betweenness](measures/centrality/betweenness.html#betweenness) | sna | 1 | 1 | 1.615 |  |
-| [brokerage](measures/roles-and-positions/brokerage.html#brokerage) | sna | 1 | 1 | 0.1033 |  |
-| [closeness](measures/centrality/closeness.html#closeness) | igraph (R) | 6 | 6 | 2.664 |  |
-| [components](measures/components-and-connectivity/connected_components.html#components) | igraph (R) | 1 | 1 | 0.0003 |  |
-| [constraint](measures/roles-and-positions/burt_constraint.html#constraint) | igraph (R) | 1 | 1 | 0.0067 |  |
-| eigenvector centrality | igraph (R) | 1 | 1 | 0.197 |  |
-| harmonic centrality | igraph (R) | 6 | 6 | 2.623 |  |
-| k-cores | igraph (R) | 1 | 1 | 0.007 |  |
-| Louvain communities | igraph (R) | 1 | 1 | 15.67 |  |
-| maximal cliques | igraph (R) | 1 | 1 | 3.486 |  |
-| MRQAP (DSP) | sna | 1 | 1 | 21.67 |  |
-| QAP correlation | sna | 1 | 1 | 0.618 |  |
-| structural equivalence | sna | 1 | 1 | 121.8 |  |
-| triad census | igraph (R) | 1 | 1 | 0.0352 |  |
-| triad census | sna | 1 | 1 | 140.8 |  |
+<div class="table-wrapper"><table><thead><tr><th>Measure</th><th>Tool</th><th>Graphs</th><th>Finished</th><th>Median seconds</th><th>Median peak MB</th></tr></thead><tbody><tr><td><a href="measures/centrality/betweenness.html#betweenness">betweenness</a></td><td>igraph (R)</td><td>6</td><td>6</td><td>4.486</td><td></td></tr><tr><td><a href="measures/centrality/betweenness.html#betweenness">betweenness</a></td><td>sna</td><td>1</td><td>1</td><td>1.615</td><td></td></tr><tr><td><a href="measures/roles-and-positions/brokerage.html#brokerage">brokerage</a></td><td>sna</td><td>1</td><td>1</td><td>0.1033</td><td></td></tr><tr><td><a href="measures/centrality/closeness.html#closeness">closeness</a></td><td>igraph (R)</td><td>6</td><td>6</td><td>2.664</td><td></td></tr><tr><td><a href="measures/components-and-connectivity/connected_components.html#components">components</a></td><td>igraph (R)</td><td>1</td><td>1</td><td>0.0003</td><td></td></tr><tr><td><a href="measures/roles-and-positions/burt_constraint.html#constraint">constraint</a></td><td>igraph (R)</td><td>1</td><td>1</td><td>0.0067</td><td></td></tr><tr><td>eigenvector centrality</td><td>igraph (R)</td><td>1</td><td>1</td><td>0.197</td><td></td></tr><tr><td>harmonic centrality</td><td>igraph (R)</td><td>6</td><td>6</td><td>2.623</td><td></td></tr><tr><td>k-cores</td><td>igraph (R)</td><td>1</td><td>1</td><td>0.007</td><td></td></tr><tr><td>Louvain communities</td><td>igraph (R)</td><td>1</td><td>1</td><td>15.67</td><td></td></tr><tr><td>maximal cliques</td><td>igraph (R)</td><td>1</td><td>1</td><td>3.486</td><td></td></tr><tr><td>MRQAP (DSP)</td><td>sna</td><td>1</td><td>1</td><td>21.67</td><td></td></tr><tr><td>QAP correlation</td><td>sna</td><td>1</td><td>1</td><td>0.618</td><td></td></tr><tr><td>structural equivalence</td><td>sna</td><td>1</td><td>1</td><td>121.8</td><td></td></tr><tr><td>triad census</td><td>igraph (R)</td><td>1</td><td>1</td><td>0.0352</td><td></td></tr><tr><td>triad census</td><td>sna</td><td>1</td><td>1</td><td>140.8</td><td></td></tr></tbody></table></div>
 
 ## Median time per measure: size-ladder
 
 Median over the graphs on which the tool finished within the budget; threads as in the data file.
 
-| Measure | Tool | Graphs | Finished | Median seconds | Median peak MB |
-|---|---|---|---|---|---|
-| betweenness (16 sources) | GAP Benchmark Suite | 24 | 24 | 0.01828 | 7.3 |
-| betweenness (16 sources) | igraph (R) | 24 | 24 | 0.03139 | 28.65 |
-| betweenness (16 sources) | NetworKit | 24 | 24 | 0.03223 | 99.75 |
-| betweenness (16 sources) | NetworkX | 10 | 10 | 0.2733 | 32.6 |
-| bfs | GAP Benchmark Suite | 24 | 24 | 0.0002 | 6.5 |
-| bfs | igraph (R) | 24 | 24 | 0.001472 | 26.25 |
-| bfs | NetworKit | 24 | 24 | 0.0008986 | 15.25 |
-| bfs | NetworkX | 10 | 10 | 0.002831 | 15.6 |
-| [closeness](measures/centrality/closeness.html#closeness) | igraph (R) | 12 | 12 | 5.72 | 8.4 |
-| [closeness](measures/centrality/closeness.html#closeness) | NetworKit | 17 | 17 | 0.4045 | 50 |
-| [closeness](measures/centrality/closeness.html#closeness) | NetworkX | 4 | 4 | 5.703 | 25.75 |
-| [components](measures/components-and-connectivity/connected_components.html#components) | GAP Benchmark Suite | 24 | 24 | 0.00072 | 6.45 |
-| [components](measures/components-and-connectivity/connected_components.html#components) | igraph (R) | 24 | 24 | 0.001454 | 26.3 |
-| [components](measures/components-and-connectivity/connected_components.html#components) | NetworKit | 24 | 24 | 0.002213 | 15.4 |
-| [components](measures/components-and-connectivity/connected_components.html#components) | NetworkX | 10 | 10 | 0.003709 | 15.45 |
-| load (read and build; memory = resident graph) | igraph (R) | 24 | 24 | 0.04654 | 26.21 |
-| load (read and build; memory = resident graph) | NetworKit | 24 | 24 | 0.01752 | 15.01 |
-| load (read and build; memory = resident graph) | NetworkX | 10 | 10 | 0.02982 | 15.2 |
-| [pagerank](measures/centrality/pagerank.html#pagerank) | GAP Benchmark Suite | 24 | 24 | 0.004435 | 6.65 |
-| [pagerank](measures/centrality/pagerank.html#pagerank) | igraph (R) | 24 | 24 | 0.0133 | 28.55 |
-| [pagerank](measures/centrality/pagerank.html#pagerank) | NetworKit | 24 | 24 | 0.002163 | 15.85 |
-| [pagerank](measures/centrality/pagerank.html#pagerank) | NetworkX | 10 | 10 | 0.03558 | 34.1 |
-| triangles | GAP Benchmark Suite | 18 | 18 | 0.00102 | 7.1 |
-| triangles | igraph (R) | 24 | 24 | 0.01993 | 28.65 |
-| triangles | NetworKit | 18 | 18 | 0.003354 | 9.65 |
-| triangles | NetworkX | 10 | 10 | 0.03577 | 31.25 |
+<div class="table-wrapper"><table><thead><tr><th>Measure</th><th>Tool</th><th>Graphs</th><th>Finished</th><th>Median seconds</th><th>Median peak MB</th></tr></thead><tbody><tr><td>betweenness (16 sources)</td><td>GAP Benchmark Suite</td><td>24</td><td>24</td><td>0.01828</td><td>7.3</td></tr><tr><td>betweenness (16 sources)</td><td>igraph (R)</td><td>24</td><td>24</td><td>0.03139</td><td>28.65</td></tr><tr><td>betweenness (16 sources)</td><td>NetworKit</td><td>24</td><td>24</td><td>0.03223</td><td>99.75</td></tr><tr><td>betweenness (16 sources)</td><td>NetworkX</td><td>10</td><td>10</td><td>0.2733</td><td>32.6</td></tr><tr><td>bfs</td><td>GAP Benchmark Suite</td><td>24</td><td>24</td><td>0.0002</td><td>6.5</td></tr><tr><td>bfs</td><td>igraph (R)</td><td>24</td><td>24</td><td>0.001472</td><td>26.25</td></tr><tr><td>bfs</td><td>NetworKit</td><td>24</td><td>24</td><td>0.0008986</td><td>15.25</td></tr><tr><td>bfs</td><td>NetworkX</td><td>10</td><td>10</td><td>0.002831</td><td>15.6</td></tr><tr><td><a href="measures/centrality/closeness.html#closeness">closeness</a></td><td>igraph (R)</td><td>12</td><td>12</td><td>5.72</td><td>8.4</td></tr><tr><td><a href="measures/centrality/closeness.html#closeness">closeness</a></td><td>NetworKit</td><td>17</td><td>17</td><td>0.4045</td><td>50</td></tr><tr><td><a href="measures/centrality/closeness.html#closeness">closeness</a></td><td>NetworkX</td><td>4</td><td>4</td><td>5.703</td><td>25.75</td></tr><tr><td><a href="measures/components-and-connectivity/connected_components.html#components">components</a></td><td>GAP Benchmark Suite</td><td>24</td><td>24</td><td>0.00072</td><td>6.45</td></tr><tr><td><a href="measures/components-and-connectivity/connected_components.html#components">components</a></td><td>igraph (R)</td><td>24</td><td>24</td><td>0.001454</td><td>26.3</td></tr><tr><td><a href="measures/components-and-connectivity/connected_components.html#components">components</a></td><td>NetworKit</td><td>24</td><td>24</td><td>0.002213</td><td>15.4</td></tr><tr><td><a href="measures/components-and-connectivity/connected_components.html#components">components</a></td><td>NetworkX</td><td>10</td><td>10</td><td>0.003709</td><td>15.45</td></tr><tr><td>load (read and build; memory = resident graph)</td><td>igraph (R)</td><td>24</td><td>24</td><td>0.04654</td><td>26.21</td></tr><tr><td>load (read and build; memory = resident graph)</td><td>NetworKit</td><td>24</td><td>24</td><td>0.01752</td><td>15.01</td></tr><tr><td>load (read and build; memory = resident graph)</td><td>NetworkX</td><td>10</td><td>10</td><td>0.02982</td><td>15.2</td></tr><tr><td><a href="measures/centrality/pagerank.html#pagerank">pagerank</a></td><td>GAP Benchmark Suite</td><td>24</td><td>24</td><td>0.004435</td><td>6.65</td></tr><tr><td><a href="measures/centrality/pagerank.html#pagerank">pagerank</a></td><td>igraph (R)</td><td>24</td><td>24</td><td>0.0133</td><td>28.55</td></tr><tr><td><a href="measures/centrality/pagerank.html#pagerank">pagerank</a></td><td>NetworKit</td><td>24</td><td>24</td><td>0.002163</td><td>15.85</td></tr><tr><td><a href="measures/centrality/pagerank.html#pagerank">pagerank</a></td><td>NetworkX</td><td>10</td><td>10</td><td>0.03558</td><td>34.1</td></tr><tr><td>triangles</td><td>GAP Benchmark Suite</td><td>18</td><td>18</td><td>0.00102</td><td>7.1</td></tr><tr><td>triangles</td><td>igraph (R)</td><td>24</td><td>24</td><td>0.01993</td><td>28.65</td></tr><tr><td>triangles</td><td>NetworKit</td><td>18</td><td>18</td><td>0.003354</td><td>9.65</td></tr><tr><td>triangles</td><td>NetworkX</td><td>10</td><td>10</td><td>0.03577</td><td>31.25</td></tr></tbody></table></div>
 
 ## Median time per measure: size-ladder-graph-tool
 
 Median over the graphs on which the tool finished within the budget; threads as in the data file.
 
-| Measure | Tool | Graphs | Finished | Median seconds | Median peak MB |
-|---|---|---|---|---|---|
-| betweenness (16 sources) | graph-tool | 24 | 24 | 0.0294 | 38.8 |
-| bfs | graph-tool | 24 | 24 | 0.001123 | 3.55 |
-| [closeness](measures/centrality/closeness.html#closeness) | graph-tool | 17 | 17 | 3.258 | 21.4 |
-| [components](measures/components-and-connectivity/connected_components.html#components) | graph-tool | 24 | 24 | 0.002662 | 3.7 |
-| load (read and build; memory = resident graph) | graph-tool | 24 | 24 | 0.03632 | 1.469 |
-| [pagerank](measures/centrality/pagerank.html#pagerank) | graph-tool | 24 | 24 | 0.01643 | 4.6 |
-| triangles | graph-tool | 24 | 24 | 0.01899 | 6.75 |
+<div class="table-wrapper"><table><thead><tr><th>Measure</th><th>Tool</th><th>Graphs</th><th>Finished</th><th>Median seconds</th><th>Median peak MB</th></tr></thead><tbody><tr><td>betweenness (16 sources)</td><td>graph-tool</td><td>24</td><td>24</td><td>0.0294</td><td>38.8</td></tr><tr><td>bfs</td><td>graph-tool</td><td>24</td><td>24</td><td>0.001123</td><td>3.55</td></tr><tr><td><a href="measures/centrality/closeness.html#closeness">closeness</a></td><td>graph-tool</td><td>17</td><td>17</td><td>3.258</td><td>21.4</td></tr><tr><td><a href="measures/components-and-connectivity/connected_components.html#components">components</a></td><td>graph-tool</td><td>24</td><td>24</td><td>0.002662</td><td>3.7</td></tr><tr><td>load (read and build; memory = resident graph)</td><td>graph-tool</td><td>24</td><td>24</td><td>0.03632</td><td>1.469</td></tr><tr><td><a href="measures/centrality/pagerank.html#pagerank">pagerank</a></td><td>graph-tool</td><td>24</td><td>24</td><td>0.01643</td><td>4.6</td></tr><tr><td>triangles</td><td>graph-tool</td><td>24</td><td>24</td><td>0.01899</td><td>6.75</td></tr></tbody></table></div>
 {% endraw %}

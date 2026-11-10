@@ -16,13 +16,11 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Cycles. Concept
 
 A minimum cycle basis of an undirected network and the weight of each cycle (de Pina).
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Mcb weight](#gb_mcb_weight) | `gb_mcb_weight` | 1 |
-| [Min basis](#min_basis) | `min_basis` | 1 |
-| [Min basis weights](#min_basis_weights) | `min_basis_weights` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#gb_mcb_weight">Mcb weight</a></td><td><code>gb_mcb_weight</code></td><td>1</td></tr><tr><td><a href="#min_basis">Min basis</a></td><td><code>min_basis</code></td><td>1</td></tr><tr><td><a href="#min_basis_weights">Min basis weights</a></td><td><code>min_basis_weights</code></td><td>1</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -36,15 +34,11 @@ Measure id: `gb_mcb_weight`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td></td></tr></tbody></table></div>
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `gb_mcb_weight` | NetworkX | undirected | no-value-on-some-inputs | (no value) multi\_edges | multi\_edges | abs 1e-09, rel 1e-09 | `total weight of nx.minimum_cycle_basis(G, weight)` | NetworkX's minimum\_cycle\_basis rejects multigraphs. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>gb_mcb_weight</code></td><td>NetworkX</td><td>undirected</td><td>no-value-on-some-inputs</td><td>(no value) multi_edges</td><td>multi_edges</td><td>abs 1e-09, rel 1e-09</td><td><code>total weight of nx.minimum_cycle_basis(G, weight)</code></td><td>NetworkX's minimum_cycle_basis rejects multigraphs.</td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -56,9 +50,7 @@ Measure id: `min_basis`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (multi-edges): as for cyc\_basis. [details](#why-min_basis-networkx) |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a></td><td>Differs by convention (multi-edges): as for cyc_basis. <a href="#why-min_basis-networkx">details</a></td><td></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -66,9 +58,7 @@ Measure id: `min_basis`. Original family: Graph theory and combinatorics.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `cyc_min_basis_check` | NetworkX | undirected | differs | multi\_edges | multi\_edges | abs 0, rel 0 | `the count and the cycle/independence tests of nx.minimum_cycle_basis(G)` | as for cyc\_basis |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>cyc_min_basis_check</code></td><td>NetworkX</td><td>undirected</td><td>differs</td><td>multi_edges</td><td>multi_edges</td><td>abs 0, rel 0</td><td><code>the count and the cycle/independence tests of nx.minimum_cycle_basis(G)</code></td><td>as for cyc_basis</td></tr></tbody></table></div>
 
 **References:** [depina1995applications](../../references.html#depina1995applications), [dias2013efficient](../../references.html#dias2013efficient), [gupta2021finding](../../references.html#gupta2021finding), [hagberg2008exploring](../../references.html#hagberg2008exploring), [itai1978finding](../../references.html#itai1978finding), [johnson1975finding](../../references.html#johnson1975finding), [kavitha2009cycle](../../references.html#kavitha2009cycle), [kirchhoff1847ueber](../../references.html#kirchhoff1847ueber)
 
@@ -82,9 +72,7 @@ Measure id: `min_basis_weights`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (multi-edges, self-loops and weights): as for cyc\_basis. [details](#why-min_basis_weights-networkx) |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a></td><td>Differs by convention (multi-edges, self-loops and weights): as for cyc_basis. <a href="#why-min_basis_weights-networkx">details</a></td><td></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -92,10 +80,7 @@ Measure id: `min_basis_weights`. Original family: Graph theory and combinatorics
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `cyc_min_basis_weights` | NetworkX | undirected | differs | multi\_edges | multi\_edges | abs 1e-12, rel 1e-12 | `weights of the cycles of nx.minimum_cycle_basis(G)` | as for cyc\_basis |
-| `cyc_min_basis_weights_weighted` | NetworkX | undirected | differs | multi\_edges | multi\_edges, self\_loops, weights | abs 1e-12, rel 1e-12 | `weights of the cycles of nx.minimum_cycle_basis(G, weight = 'weight')` | Two parallel edges form a cycle of their total weight for the reference and the definition (two parallel loops, two cycles); NetworkX's simple graph keeps one edge per pair and has no such cycle. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>cyc_min_basis_weights</code></td><td>NetworkX</td><td>undirected</td><td>differs</td><td>multi_edges</td><td>multi_edges</td><td>abs 1e-12, rel 1e-12</td><td><code>weights of the cycles of nx.minimum_cycle_basis(G)</code></td><td>as for cyc_basis</td></tr><tr><td><code>cyc_min_basis_weights_weighted</code></td><td>NetworkX</td><td>undirected</td><td>differs</td><td>multi_edges</td><td>multi_edges, self_loops, weights</td><td>abs 1e-12, rel 1e-12</td><td><code>weights of the cycles of nx.minimum_cycle_basis(G, weight = 'weight')</code></td><td>Two parallel edges form a cycle of their total weight for the reference and the definition (two parallel loops, two cycles); NetworkX's simple graph keeps one edge per pair and has no such cycle.</td></tr></tbody></table></div>
 
 **References:** [depina1995applications](../../references.html#depina1995applications), [dias2013efficient](../../references.html#dias2013efficient), [gupta2021finding](../../references.html#gupta2021finding), [hagberg2008exploring](../../references.html#hagberg2008exploring), [itai1978finding](../../references.html#itai1978finding), [johnson1975finding](../../references.html#johnson1975finding), [kavitha2009cycle](../../references.html#kavitha2009cycle), [kirchhoff1847ueber](../../references.html#kirchhoff1847ueber)
 

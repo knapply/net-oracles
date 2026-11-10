@@ -15,49 +15,17 @@ permalink: /measures/descriptive-statistics/
 
 ## Clustering and transitivity
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Global transitivity](global_transitivity.html) | 2 | 13 | Transitivity of the simple undirected reading of the network: closed triples over connected triples. |
-| [Local clustering coefficient](local_clustering.html) | 4 | 14 | Mean local clustering coefficient over the nodes. |
-| [Normalized reciprocity, DKS transitivity and cyclicity](ucinet_cohesion_variants.html) | 1 | 1 | Normalized reciprocity, DKS transitivity and cyclicity. Entries grouped here: Normalized reciprocity and transitivity, DKS transitivity, cyclicity. |
-| [Small-world quotient](small_world_index.html) | 2 | 2 | Small-world coefficient omega of a connected undirected network against random and lattice references (Telesford et al.). |
-| [Square clustering](square_clustering.html) | 2 | 3 | Square clustering of every node: the share of possible squares through it that exist. |
-| [Successor transitivity](successor_transitivity.html) | 1 | 1 | Successor transitivity. Entries grouped here: Successor transitivity. |
-| [Triangle count](triangle_count.html) | 1 | 7 | Number of triangles at each node of the simple undirected reading of the network. |
-| [Trust transitivity](trust_transitivity.html) | 1 | 1 | Trust transitivity. Entries grouped here: Trust transitivity. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="global_transitivity.html">Global transitivity</a></td><td>2</td><td>13</td><td>not yet written</td><td>Transitivity of the simple undirected reading of the network: closed triples over connected triples.</td></tr><tr><td><a href="local_clustering.html">Local clustering coefficient</a></td><td>4</td><td>14</td><td>not yet written</td><td>Mean local clustering coefficient over the nodes.</td></tr><tr><td><a href="ucinet_cohesion_variants.html">Normalized reciprocity, DKS transitivity and cyclicity</a></td><td>1</td><td>1</td><td>not yet written</td><td>Normalized reciprocity, DKS transitivity and cyclicity. Entries grouped here: Normalized reciprocity and transitivity, DKS transitivity, cyclicity.</td></tr><tr><td><a href="small_world_index.html">Small-world quotient</a></td><td>2</td><td>2</td><td>not yet written</td><td>Small-world coefficient omega of a connected undirected network against random and lattice references (Telesford et al.).</td></tr><tr><td><a href="square_clustering.html">Square clustering</a></td><td>2</td><td>3</td><td>not yet written</td><td>Square clustering of every node: the share of possible squares through it that exist.</td></tr><tr><td><a href="successor_transitivity.html">Successor transitivity</a></td><td>1</td><td>1</td><td>not yet written</td><td>Successor transitivity. Entries grouped here: Successor transitivity.</td></tr><tr><td><a href="triangle_count.html">Triangle count</a></td><td>1</td><td>7</td><td>not yet written</td><td>Number of triangles at each node of the simple undirected reading of the network.</td></tr><tr><td><a href="trust_transitivity.html">Trust transitivity</a></td><td>1</td><td>1</td><td>not yet written</td><td>Trust transitivity. Entries grouped here: Trust transitivity.</td></tr></tbody></table></div>
 
 ## Density and degree distribution
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Central graph](central_graph.html) | 1 | 1 | Central graph. Entries grouped here: Centralgraph. |
-| [Central point dominance](central_point_dominance.html) | 1 | 1 | Central point dominance. Entries grouped here: Central point dominance. |
-| [Cycle probability](cycle_probability.html) | 1 | 1 | Cycle probability. Entries grouped here: Cycprob. |
-| [Degree distribution and summary statistics](degree_distribution.html) | 1 | 1 | Degree distribution and summary statistics. Entries grouped here: Degree distribution and its summary statistics. |
-| [Density](density.html) | 2 | 11 | Density. Entries grouped here: Density; Twomode / density. |
-| [Diversity index](diversity_index.html) | 1 | 2 | Diversity index. Entries grouped here: Diversity. |
-| [Edge average](edge_average.html) | 1 | 1 | Edge average. Entries grouped here: Edge average. |
-| [Group density](group_density.html) | 1 | 1 | Group density. Entries grouped here: Groupden. |
-| [Joint degree distribution](joint_degree_distribution.html) | 1 | 1 | Joint degree distribution. Entries grouped here: Jdegree. |
-| [Non-randomness](non_randomness.html) | 1 | 1 | Non-randomness. Entries grouped here: Non randomness. |
-| [Number of ties](tie_count.html) | 1 | 1 | Number of ties. Entries grouped here: Numties. |
-| [Rentian scaling](rentian_scaling.html) | 1 | 1 | Rentian scaling. Entries grouped here: Rentian scaling. |
-| [Structure statistics](structure_statistics.html) | 1 | 1 | Structure statistics. Entries grouped here: Structure statistics. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="central_graph.html">Central graph</a></td><td>1</td><td>1</td><td>not yet written</td><td>Central graph. Entries grouped here: Centralgraph.</td></tr><tr><td><a href="central_point_dominance.html">Central point dominance</a></td><td>1</td><td>1</td><td>not yet written</td><td>Central point dominance. Entries grouped here: Central point dominance.</td></tr><tr><td><a href="cycle_probability.html">Cycle probability</a></td><td>1</td><td>1</td><td>not yet written</td><td>Cycle probability. Entries grouped here: Cycprob.</td></tr><tr><td><a href="degree_distribution.html">Degree distribution and summary statistics</a></td><td>1</td><td>1</td><td>not yet written</td><td>Degree distribution and summary statistics. Entries grouped here: Degree distribution and its summary statistics.</td></tr><tr><td><a href="density.html">Density</a></td><td>2</td><td>11</td><td>not yet written</td><td>Density. Entries grouped here: Density; Twomode / density.</td></tr><tr><td><a href="diversity_index.html">Diversity index</a></td><td>1</td><td>2</td><td>not yet written</td><td>Diversity index. Entries grouped here: Diversity.</td></tr><tr><td><a href="edge_average.html">Edge average</a></td><td>1</td><td>1</td><td>not yet written</td><td>Edge average. Entries grouped here: Edge average.</td></tr><tr><td><a href="group_density.html">Group density</a></td><td>1</td><td>1</td><td>not yet written</td><td>Group density. Entries grouped here: Groupden.</td></tr><tr><td><a href="joint_degree_distribution.html">Joint degree distribution</a></td><td>1</td><td>1</td><td>not yet written</td><td>Joint degree distribution. Entries grouped here: Jdegree.</td></tr><tr><td><a href="non_randomness.html">Non-randomness</a></td><td>1</td><td>1</td><td>not yet written</td><td>Non-randomness. Entries grouped here: Non randomness.</td></tr><tr><td><a href="tie_count.html">Number of ties</a></td><td>1</td><td>1</td><td>not yet written</td><td>Number of ties. Entries grouped here: Numties.</td></tr><tr><td><a href="rentian_scaling.html">Rentian scaling</a></td><td>1</td><td>1</td><td>not yet written</td><td>Rentian scaling. Entries grouped here: Rentian scaling.</td></tr><tr><td><a href="structure_statistics.html">Structure statistics</a></td><td>1</td><td>1</td><td>not yet written</td><td>Structure statistics. Entries grouped here: Structure statistics.</td></tr></tbody></table></div>
 
 ## Efficiency, compactness and hierarchy
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Compactness](compactness.html) | 1 | 3 | Compactness. Entries grouped here: Compactness. |
-| [Krackhardt graph-theoretic dimensions](krackhardt_dimensions.html) | 1 | 2 | Krackhardt graph-theoretic dimensions. Entries grouped here: Krackhardt graph-theoretic dimensions (connectedness, hierarchy, efficiency, LUBness). |
-| [Resource efficiency](resource_efficiency.html) | 1 | 1 | Resource efficiency. Entries grouped here: Resource efficiency. |
-| [Routing efficiency](routing_efficiency.html) | 1 | 1 | Routing efficiency. Entries grouped here: Rout efficiency. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="compactness.html">Compactness</a></td><td>1</td><td>3</td><td>not yet written</td><td>Compactness. Entries grouped here: Compactness.</td></tr><tr><td><a href="krackhardt_dimensions.html">Krackhardt graph-theoretic dimensions</a></td><td>1</td><td>2</td><td>not yet written</td><td>Krackhardt graph-theoretic dimensions. Entries grouped here: Krackhardt graph-theoretic dimensions (connectedness, hierarchy, efficiency, LUBness).</td></tr><tr><td><a href="resource_efficiency.html">Resource efficiency</a></td><td>1</td><td>1</td><td>not yet written</td><td>Resource efficiency. Entries grouped here: Resource efficiency.</td></tr><tr><td><a href="routing_efficiency.html">Routing efficiency</a></td><td>1</td><td>1</td><td>not yet written</td><td>Routing efficiency. Entries grouped here: Rout efficiency.</td></tr></tbody></table></div>
 
 ## Reciprocity, dyad and triad census
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Dyad census](dyad_census.html) | 1 | 4 | Dyad census. Entries grouped here: Dyad census (mutual, asymmetric, null). |
-| [Reciprocity](reciprocity.html) | 2 | 8 | Reciprocity. Entries grouped here: Reciprocity; Node reciprocity. |
-| [Triad census](triad_census.html) | 2 | 7 | The 16 triad counts in MAN order (Holland and Leinhardt), one value per triad type. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="dyad_census.html">Dyad census</a></td><td>1</td><td>4</td><td>not yet written</td><td>Dyad census. Entries grouped here: Dyad census (mutual, asymmetric, null).</td></tr><tr><td><a href="reciprocity.html">Reciprocity</a></td><td>2</td><td>8</td><td>not yet written</td><td>Reciprocity. Entries grouped here: Reciprocity; Node reciprocity.</td></tr><tr><td><a href="triad_census.html">Triad census</a></td><td>2</td><td>7</td><td>not yet written</td><td>The 16 triad counts in MAN order (Holland and Leinhardt), one value per triad type.</td></tr></tbody></table></div>
 {% endraw %}

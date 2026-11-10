@@ -15,75 +15,29 @@ permalink: /measures/components-and-connectivity/
 
 ## Articulation points, bridges and biconnected components
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Biconnected components](biconnected_components.html) | 2 | 10 | Biconnected components. Entries grouped here: Bicomponents; Biconnected. |
-| [Bridge components](bridge_components.html) | 1 | 1 | Bridge components. Entries grouped here: Bridge components (connectivity). |
-| [Bridges](bridges.html) | 1 | 4 | Bridges. Entries grouped here: Bridges. |
-| [Cut points (articulation points)](cut_points.html) | 1 | 7 | Cut points (articulation points). Entries grouped here: Cut points. |
-| [Local bridges](local_bridges.html) | 1 | 1 | Local bridges. Entries grouped here: Local bridges. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="biconnected_components.html">Biconnected components</a></td><td>2</td><td>10</td><td>not yet written</td><td>Biconnected components. Entries grouped here: Bicomponents; Biconnected.</td></tr><tr><td><a href="bridge_components.html">Bridge components</a></td><td>1</td><td>1</td><td>not yet written</td><td>Bridge components. Entries grouped here: Bridge components (connectivity).</td></tr><tr><td><a href="bridges.html">Bridges</a></td><td>1</td><td>4</td><td>not yet written</td><td>Bridges. Entries grouped here: Bridges.</td></tr><tr><td><a href="cut_points.html">Cut points (articulation points)</a></td><td>1</td><td>7</td><td>not yet written</td><td>Cut points (articulation points). Entries grouped here: Cut points.</td></tr><tr><td><a href="local_bridges.html">Local bridges</a></td><td>1</td><td>1</td><td>not yet written</td><td>Local bridges. Entries grouped here: Local bridges.</td></tr></tbody></table></div>
 
 ## Connected components
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Attracting components](attracting_components.html) | 4 | 1 | Attracting components. Entries grouped here: Attracting; Attracting flags; Is attracting component; Number attracting components. |
-| [Condensation of strong components](condensation.html) | 1 | 4 | Condensation of strong components. Entries grouped here: Condensation. |
-| [Connected components](connected_components.html) | 5 | 13 | Weak or strong components: a label for every node and the size of each component. |
-| [Fragmentation](fragmentation.html) | 1 | 2 | Fragmentation. Entries grouped here: Fragmentation. |
-| [K-components](k_components.html) | 1 | 1 | K-components. Entries grouped here: K components. |
-| [K-connectivity tests](k_connected_tests.html) | 2 | 1 | K-connectivity tests. Entries grouped here: Is kl connected; Is locally k edge connected (connectivity). |
-| [K-edge subgraphs](k_edge_subgraphs.html) | 1 | 1 | K-edge subgraphs. Entries grouped here: K edge subgraphs. |
-| [K-edge-connected components](k_edge_components.html) | 1 | 1 | K-edge-connected components. Entries grouped here: K edge components. |
-| [Semiconnected graphs](semiconnected.html) | 2 | 2 | Semiconnected graphs. Entries grouped here: Semiconnected; Is semi connected. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="attracting_components.html">Attracting components</a></td><td>4</td><td>1</td><td>not yet written</td><td>Attracting components. Entries grouped here: Attracting; Attracting flags; Is attracting component; Number attracting components.</td></tr><tr><td><a href="condensation.html">Condensation of strong components</a></td><td>1</td><td>4</td><td>not yet written</td><td>Condensation of strong components. Entries grouped here: Condensation.</td></tr><tr><td><a href="connected_components.html">Connected components</a></td><td>5</td><td>13</td><td>not yet written</td><td>Weak or strong components: a label for every node and the size of each component.</td></tr><tr><td><a href="fragmentation.html">Fragmentation</a></td><td>1</td><td>2</td><td>not yet written</td><td>Fragmentation. Entries grouped here: Fragmentation.</td></tr><tr><td><a href="k_components.html">K-components</a></td><td>1</td><td>1</td><td>not yet written</td><td>K-components. Entries grouped here: K components.</td></tr><tr><td><a href="k_connected_tests.html">K-connectivity tests</a></td><td>2</td><td>1</td><td>not yet written</td><td>K-connectivity tests. Entries grouped here: Is kl connected; Is locally k edge connected (connectivity).</td></tr><tr><td><a href="k_edge_subgraphs.html">K-edge subgraphs</a></td><td>1</td><td>1</td><td>not yet written</td><td>K-edge subgraphs. Entries grouped here: K edge subgraphs.</td></tr><tr><td><a href="k_edge_components.html">K-edge-connected components</a></td><td>1</td><td>1</td><td>not yet written</td><td>K-edge-connected components. Entries grouped here: K edge components.</td></tr><tr><td><a href="semiconnected.html">Semiconnected graphs</a></td><td>2</td><td>2</td><td>not yet written</td><td>Semiconnected graphs. Entries grouped here: Semiconnected; Is semi connected.</td></tr></tbody></table></div>
 
 ## Connectivity numbers
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Approximate node connectivity](node_connectivity.html) | 1 | 1 | Approximate node connectivity of the whole network by greedy node-disjoint shortest paths. |
-| [Disjoint paths](disjoint_paths.html) | 2 | 3 | Disjoint paths. Entries grouped here: Disjoint paths; Gb disjoint paths. |
-| [Dynamic tree connectivity](dynamic_tree_connectivity.html) | 1 | 1 | Dynamic tree connectivity. Entries grouped here: Tree Dynamic Connectivity. |
-| [Edge connectivity](edge_connectivity.html) | 1 | 5 | Global edge connectivity: the fewest edges whose removal disconnects the network. |
-| [K-connectivity by flow](connectivity_flow_k.html) | 1 | 1 | K-connectivity by flow. Entries grouped here: KConnectivity Flow Algorithm. |
-| [Local node connectivity](local_node_connectivity.html) | 4 | 2 | Local node connectivity of every ordered pair, as an n-by-n matrix. |
-| [Swan connectivity](connectivity_swan.html) | 1 | 1 | Swan connectivity. Entries grouped here: Swan connectivity. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="node_connectivity.html">Approximate node connectivity</a></td><td>1</td><td>1</td><td>not yet written</td><td>Approximate node connectivity of the whole network by greedy node-disjoint shortest paths.</td></tr><tr><td><a href="disjoint_paths.html">Disjoint paths</a></td><td>2</td><td>3</td><td>not yet written</td><td>Disjoint paths. Entries grouped here: Disjoint paths; Gb disjoint paths.</td></tr><tr><td><a href="dynamic_tree_connectivity.html">Dynamic tree connectivity</a></td><td>1</td><td>1</td><td>not yet written</td><td>Dynamic tree connectivity. Entries grouped here: Tree Dynamic Connectivity.</td></tr><tr><td><a href="edge_connectivity.html">Edge connectivity</a></td><td>1</td><td>5</td><td>not yet written</td><td>Global edge connectivity: the fewest edges whose removal disconnects the network.</td></tr><tr><td><a href="connectivity_flow_k.html">K-connectivity by flow</a></td><td>1</td><td>1</td><td>not yet written</td><td>K-connectivity by flow. Entries grouped here: KConnectivity Flow Algorithm.</td></tr><tr><td><a href="local_node_connectivity.html">Local node connectivity</a></td><td>4</td><td>2</td><td>not yet written</td><td>Local node connectivity of every ordered pair, as an n-by-n matrix.</td></tr><tr><td><a href="connectivity_swan.html">Swan connectivity</a></td><td>1</td><td>1</td><td>not yet written</td><td>Swan connectivity. Entries grouped here: Swan connectivity.</td></tr></tbody></table></div>
 
 ## Cuts and separators
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [All minimum s-t cuts](st_min_cuts.html) | 1 | 1 | All minimum s-t cuts. Entries grouped here: St Mincuts. |
-| [All node cuts](all_node_cuts.html) | 1 | 1 | All node cuts. Entries grouped here: All node cuts (connectivity). |
-| [D-separators](d_separator.html) | 3 | 1 | D-separators. Entries grouped here: D separated; Find minimal d separator; Is minimal d separator. |
-| [Global minimum cut](global_min_cut.html) | 3 | 7 | Minimum cut between a set of sources and a set of sinks: its capacity, the source side and the crossing edges. |
-| [K-edge augmentation](edge_augmentation.html) | 1 | 1 | K-edge augmentation. Entries grouped here: K edge augmentation (connectivity). |
-| [Minimum edge cut](minimum_edge_cut.html) | 2 | 2 | A smallest set of edges whose removal disconnects the network. |
-| [Minimum node cut](minimum_node_cut.html) | 3 | 3 | A smallest set of nodes whose removal disconnects the network. |
-| [Minimum odd cutset (Padberg-Rao)](odd_min_cutset.html) | 1 | 1 | Minimum odd cutset (Padberg-Rao). Entries grouped here: Padberg Rao Odd Minimum Cutset. |
-| [Normalized cut state](normalized_cut_state.html) | 1 | 1 | Normalized cut state. Entries grouped here: Norm Cut State. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="st_min_cuts.html">All minimum s-t cuts</a></td><td>1</td><td>1</td><td>not yet written</td><td>All minimum s-t cuts. Entries grouped here: St Mincuts.</td></tr><tr><td><a href="all_node_cuts.html">All node cuts</a></td><td>1</td><td>1</td><td>not yet written</td><td>All node cuts. Entries grouped here: All node cuts (connectivity).</td></tr><tr><td><a href="d_separator.html">D-separators</a></td><td>3</td><td>1</td><td>not yet written</td><td>D-separators. Entries grouped here: D separated; Find minimal d separator; Is minimal d separator.</td></tr><tr><td><a href="global_min_cut.html">Global minimum cut</a></td><td>3</td><td>7</td><td>not yet written</td><td>Minimum cut between a set of sources and a set of sinks: its capacity, the source side and the crossing edges.</td></tr><tr><td><a href="edge_augmentation.html">K-edge augmentation</a></td><td>1</td><td>1</td><td>not yet written</td><td>K-edge augmentation. Entries grouped here: K edge augmentation (connectivity).</td></tr><tr><td><a href="minimum_edge_cut.html">Minimum edge cut</a></td><td>2</td><td>2</td><td>not yet written</td><td>A smallest set of edges whose removal disconnects the network.</td></tr><tr><td><a href="minimum_node_cut.html">Minimum node cut</a></td><td>3</td><td>3</td><td>not yet written</td><td>A smallest set of nodes whose removal disconnects the network.</td></tr><tr><td><a href="odd_min_cutset.html">Minimum odd cutset (Padberg-Rao)</a></td><td>1</td><td>1</td><td>not yet written</td><td>Minimum odd cutset (Padberg-Rao). Entries grouped here: Padberg Rao Odd Minimum Cutset.</td></tr><tr><td><a href="normalized_cut_state.html">Normalized cut state</a></td><td>1</td><td>1</td><td>not yet written</td><td>Normalized cut state. Entries grouped here: Norm Cut State.</td></tr></tbody></table></div>
 
 ## Dominators
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Dominators and dominance frontiers](dominators.html) | 3 | 6 | Immediate dominator of every node reachable from the start node (the start's is itself); unreachable nodes get the none mark u32::MAX. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="dominators.html">Dominators and dominance frontiers</a></td><td>3</td><td>6</td><td>not yet written</td><td>Immediate dominator of every node reachable from the start node (the start's is itself); unreachable nodes get the none mark u32::MAX.</td></tr></tbody></table></div>
 
 ## Flows and flow trees
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Experience flows](experience_flows.html) | 1 | 1 | Experience flows. Entries grouped here: Experienceflows. |
-| [Flow coefficient](flow_coefficient.html) | 1 | 1 | Flow coefficient. Entries grouped here: Flow coef. |
-| [Flow similarity](flow_similarity.html) | 1 | 1 | Flow similarity. Entries grouped here: Flowsim. |
-| [Gomory-Hu and equivalent-flow trees](gomory_hu_tree.html) | 3 | 3 | The Gomory-Hu tree of an undirected network: each node's parent and the minimum cut value to it (Gusfield). |
-| [Maximum flow](max_flow.html) | 2 | 7 | Maximum flow from a set of sources to a set of sinks (Dinic), with the flow on every edge. |
-| [Minimum-cost flow](min_cost_flow.html) | 4 | 3 | A maximum flow of least cost between two nodes, with its value. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="experience_flows.html">Experience flows</a></td><td>1</td><td>1</td><td>not yet written</td><td>Experience flows. Entries grouped here: Experienceflows.</td></tr><tr><td><a href="flow_coefficient.html">Flow coefficient</a></td><td>1</td><td>1</td><td>not yet written</td><td>Flow coefficient. Entries grouped here: Flow coef.</td></tr><tr><td><a href="flow_similarity.html">Flow similarity</a></td><td>1</td><td>1</td><td>not yet written</td><td>Flow similarity. Entries grouped here: Flowsim.</td></tr><tr><td><a href="gomory_hu_tree.html">Gomory-Hu and equivalent-flow trees</a></td><td>3</td><td>3</td><td>not yet written</td><td>The Gomory-Hu tree of an undirected network: each node's parent and the minimum cut value to it (Gusfield).</td></tr><tr><td><a href="max_flow.html">Maximum flow</a></td><td>2</td><td>7</td><td>not yet written</td><td>Maximum flow from a set of sources to a set of sinks (Dinic), with the flow on every edge.</td></tr><tr><td><a href="min_cost_flow.html">Minimum-cost flow</a></td><td>4</td><td>3</td><td>not yet written</td><td>A maximum flow of least cost between two nodes, with its value.</td></tr></tbody></table></div>
 
 ## Robustness and percolation
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Edge percolation](edge_percolation.html) | 1 | 1 | Edge percolation. Entries grouped here: Edge percolation. |
-| [KL-connected subgraph](kl_connected_subgraph.html) | 1 | 1 | KL-connected subgraph. Entries grouped here: Kl. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="edge_percolation.html">Edge percolation</a></td><td>1</td><td>1</td><td>not yet written</td><td>Edge percolation. Entries grouped here: Edge percolation.</td></tr><tr><td><a href="kl_connected_subgraph.html">KL-connected subgraph</a></td><td>1</td><td>1</td><td>not yet written</td><td>KL-connected subgraph. Entries grouped here: Kl.</td></tr></tbody></table></div>
 {% endraw %}

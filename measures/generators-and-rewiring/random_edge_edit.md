@@ -16,12 +16,11 @@ Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomiza
 
 Random edge addition and removal. Entries grouped here: Random edge addition and removal; Random k lift.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Random edge addition and removal](#random_edge_edit) | `random_edge_edit` | 1 |
-| [Random k lift](#cat_k_lift_random) | `cat_k_lift_random` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#random_edge_edit">Random edge addition and removal</a></td><td><code>random_edge_edit</code></td><td>1</td></tr><tr><td><a href="#cat_k_lift_random">Random k lift</a></td><td><code>cat_k_lift_random</code></td><td>1</td></tr></tbody></table></div>
 
 ## Random edge addition and removal {#random_edge_edit}
 
@@ -31,9 +30,7 @@ Measure id: `random_edge_edit`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-random_edge_edit-graphtool) | `add_random_edges; remove_random_edges` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-random_edge_edit-graphtool">details</a></td><td><code>add_random_edges; remove_random_edges</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `cat_k_lift_random`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_k_lift_random-networkx) | `random_k_lift` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_k_lift_random-networkx">details</a></td><td><code>random_k_lift</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

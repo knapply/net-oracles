@@ -16,12 +16,11 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Cores, trusses and cohe
 
 Cohesive blocking (Moody-White). Entries grouped here: Cohesive blocking (Moody-White); Cohesive blocks.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Cohesive blocking (Moody-White)](#cohesive_blocking) | `cohesive_blocking` | 1 |
-| [Cohesive blocks](#cat_blocks_cohesive) | `cat_blocks_cohesive` | 2 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cohesive_blocking">Cohesive blocking (Moody-White)</a></td><td><code>cohesive_blocking</code></td><td>1</td></tr><tr><td><a href="#cat_blocks_cohesive">Cohesive blocks</a></td><td><code>cat_blocks_cohesive</code></td><td>2</td></tr></tbody></table></div>
 
 ## Cohesive blocking (Moody-White) {#cohesive_blocking}
 
@@ -31,9 +30,7 @@ Measure id: `cohesive_blocking`. Original family: Components and connectivity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's documentation; no comparison set up for this measure yet. [details](#why-cohesive_blocking-igraph) |  | documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's documentation; no comparison set up for this measure yet. <a href="#why-cohesive_blocking-igraph">details</a></td><td></td><td>documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,10 +46,7 @@ Measure id: `cat_blocks_cohesive`. Original family: Cohesion and subgroups.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_blocks_cohesive-igraph) | `cohesive_blocks` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_blocks_cohesive-pyigraph) | `cohesive_blocks` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_blocks_cohesive-igraph">details</a></td><td><code>cohesive_blocks</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_blocks_cohesive-pyigraph">details</a></td><td><code>cohesive_blocks</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

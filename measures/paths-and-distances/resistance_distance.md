@@ -16,13 +16,11 @@ Family: [Paths and distances](index.html). Subfamily: Resistance and spectral di
 
 Resistance distance between every pair of nodes, infinite across components (Klein and Randic 1993).
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Effective resistance](#cx_effective_resistance) | `cx_effective_resistance` | 1 |
-| [Resistance](#cx_resistance) | `cx_resistance` | 2 |
-| [Resistance-based and spectral edge/vertex scores](#resistance_based) | `resistance_based` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cx_effective_resistance">Effective resistance</a></td><td><code>cx_effective_resistance</code></td><td>1</td></tr><tr><td><a href="#cx_resistance">Resistance</a></td><td><code>cx_resistance</code></td><td>2</td></tr><tr><td><a href="#resistance_based">Resistance-based and spectral edge/vertex scores</a></td><td><code>resistance_based</code></td><td>1</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -36,16 +34,11 @@ Measure id: `cx_effective_resistance`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `effective_graph_resistance` |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>effective_graph_resistance</code></td><td></td></tr></tbody></table></div>
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `cx_effective_resistance` | NetworkX | undirected | agrees |  |  | abs 1e-14, rel 1e-12 | `nx.effective_graph_resistance(G)` |  |
-| `cx_effective_resistance_weighted` | NetworkX | undirected | agrees |  |  | abs 1e-14, rel 1e-12 | `nx.effective_graph_resistance(G, weight = 'weight')` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>cx_effective_resistance</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-14, rel 1e-12</td><td><code>nx.effective_graph_resistance(G)</code></td><td></td></tr><tr><td><code>cx_effective_resistance_weighted</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-14, rel 1e-12</td><td><code>nx.effective_graph_resistance(G, weight = 'weight')</code></td><td></td></tr></tbody></table></div>
 
 **References:** [brandes2005centrality](../../references.html#brandes2005centrality), [ellens2011effective](../../references.html#ellens2011effective), [hestenes1952methods](../../references.html#hestenes1952methods), [kermarrec2011second](../../references.html#kermarrec2011second), [klein1993resistance](../../references.html#klein1993resistance), [levene2002kemeny](../../references.html#levene2002kemeny), [newman2005measure](../../references.html#newman2005measure), [stephenson1989rethinking](../../references.html#stephenson1989rethinking)
 
@@ -59,18 +52,11 @@ Measure id: `cx_resistance`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `resistance_distance` |  |
-| [netrankr](../../tools/netrankr.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>resistance_distance</code></td><td></td></tr><tr><td><a href="../../tools/netrankr.html">netrankr</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td></td></tr></tbody></table></div>
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `cx_resistance` | NetworkX | undirected | no-value-on-some-inputs | (no value) disconnected | defaults, normalization | abs 1e-14, rel 1e-12 | `nx.resistance_distance(G)` | NetworkX's resistance\_distance and kemeny\_constant raise an error on disconnected graphs; the reference gives infinite resistance between components and NaN for Kemeny's constant. |
-| `cx_resistance` | netrankr | undirected | differs | loops, multi\_edges, (no value) directed, (no value) disconnected | defaults, direction, multi\_edges, self\_loops, weights | abs 1e-14, rel 1e-12 | `indirect_relations(g, 'dist_resist')` | netrankr reads the network as undirected, unweighted and simple, so parallel edges count once and self-loops not at all; networks without them agree. netrankr reads the network as undirected, unweighted and simple and has no value for a single node; its resistance distance (type = "dist\_resist", "depend\_curflow") is defined only for connected graphs and raises an error otherwise. |
-| `cx_resistance_weighted` | NetworkX | undirected | no-value-on-some-inputs | (no value) disconnected | defaults, normalization | abs 1e-14, rel 1e-12 | `nx.resistance_distance(G, weight = 'weight', invert_weight = True)` | NetworkX's resistance\_distance and kemeny\_constant raise an error on disconnected graphs; the reference gives infinite resistance between components and NaN for Kemeny's constant. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>cx_resistance</code></td><td>NetworkX</td><td>undirected</td><td>no-value-on-some-inputs</td><td>(no value) disconnected</td><td>defaults, normalization</td><td>abs 1e-14, rel 1e-12</td><td><code>nx.resistance_distance(G)</code></td><td>NetworkX's resistance_distance and kemeny_constant raise an error on disconnected graphs; the reference gives infinite resistance between components and NaN for Kemeny's constant.</td></tr><tr><td><code>cx_resistance</code></td><td>netrankr</td><td>undirected</td><td>differs</td><td>loops, multi_edges, (no value) directed, (no value) disconnected</td><td>defaults, direction, multi_edges, self_loops, weights</td><td>abs 1e-14, rel 1e-12</td><td><code>indirect_relations(g, 'dist_resist')</code></td><td>netrankr reads the network as undirected, unweighted and simple, so parallel edges count once and self-loops not at all; networks without them agree. netrankr reads the network as undirected, unweighted and simple and has no value for a single node; its resistance distance (type = "dist_resist", "depend_curflow") is defined only for connected graphs and raises an error otherwise.</td></tr><tr><td><code>cx_resistance_weighted</code></td><td>NetworkX</td><td>undirected</td><td>no-value-on-some-inputs</td><td>(no value) disconnected</td><td>defaults, normalization</td><td>abs 1e-14, rel 1e-12</td><td><code>nx.resistance_distance(G, weight = 'weight', invert_weight = True)</code></td><td>NetworkX's resistance_distance and kemeny_constant raise an error on disconnected graphs; the reference gives infinite resistance between components and NaN for Kemeny's constant.</td></tr></tbody></table></div>
 
 **References:** [brandes2005centrality](../../references.html#brandes2005centrality), [ellens2011effective](../../references.html#ellens2011effective), [hestenes1952methods](../../references.html#hestenes1952methods), [kermarrec2011second](../../references.html#kermarrec2011second), [klein1993resistance](../../references.html#klein1993resistance), [levene2002kemeny](../../references.html#levene2002kemeny), [newman2005measure](../../references.html#newman2005measure), [stephenson1989rethinking](../../references.html#stephenson1989rethinking)
 
@@ -84,9 +70,7 @@ Measure id: `resistance_based`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-resistance_based-networkit) | `AlgebraicDistance; ApproxElectricalCloseness; ApproxSpanningEdge; CommuteTimeDistance; ForestCentrality; SpanningEdgeCentrality` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-resistance_based-networkit">details</a></td><td><code>AlgebraicDistance; ApproxElectricalCloseness; ApproxSpanningEdge; CommuteTimeDistance; ForestCentrality; SpanningEdgeCentrality</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

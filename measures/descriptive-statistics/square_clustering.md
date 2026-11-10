@@ -16,12 +16,11 @@ Family: [Descriptive statistics](index.html). Subfamily: Clustering and transiti
 
 Square clustering of every node: the share of possible squares through it that exist.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Square clustering](#square_clustering) | `square_clustering` | 2 |
-| [Local Square Clustering Coefficient](#cat_clustering_coefficient_local_square) | `cat_clustering_coefficient_local_square` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#square_clustering">Square clustering</a></td><td><code>square_clustering</code></td><td>2</td></tr><tr><td><a href="#cat_clustering_coefficient_local_square">Local Square Clustering Coefficient</a></td><td><code>cat_clustering_coefficient_local_square</code></td><td>1</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -35,10 +34,7 @@ Measure id: `square_clustering`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `square_clustering` |  |
-| [GraphBLAS algorithms](../../tools/graphblas.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (direction, multi-edges and weights): graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins). [details](#why-square_clustering-graphblas) |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>square_clustering</code></td><td></td></tr><tr><td><a href="../../tools/graphblas.html">GraphBLAS algorithms</a></td><td><a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a></td><td>Differs by convention (direction, multi-edges and weights): graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins). <a href="#why-square_clustering-graphblas">details</a></td><td></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -46,10 +42,7 @@ Measure id: `square_clustering`. Original family: Descriptive statistics.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `square_clustering` | NetworkX | any | agrees |  |  | abs 1e-12, rel 1e-12 | `nx.square_clustering(G)` |  |
-| `square_clustering` | GraphBLAS algorithms | any | differs | multi\_edges, (no value) directed | direction, multi\_edges, weights | abs 1e-12, rel 1e-12 | `nx.square_clustering(G simple, backend = 'graphblas')` | graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins); the reference counts each edge. graphblas-algorithms' square\_clustering fails on a DiGraph (KeyError 'degrees+'). |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>square_clustering</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.square_clustering(G)</code></td><td></td></tr><tr><td><code>square_clustering</code></td><td>GraphBLAS algorithms</td><td>any</td><td>differs</td><td>multi_edges, (no value) directed</td><td>direction, multi_edges, weights</td><td>abs 1e-12, rel 1e-12</td><td><code>nx.square_clustering(G simple, backend = 'graphblas')</code></td><td>graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins); the reference counts each edge. graphblas-algorithms' square_clustering fails on a DiGraph (KeyError 'degrees+').</td></tr></tbody></table></div>
 
 **References:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [lind2005cycles](../../references.html#lind2005cycles), [zhang2008clustering](../../references.html#zhang2008clustering), [zlatic2012networks](../../references.html#zlatic2012networks)
 
@@ -63,9 +56,7 @@ Measure id: `cat_clustering_coefficient_local_square`. Original family: Generato
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_clustering_coefficient_local_square-networkit) | `LocalSquareClusteringCoefficient` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_clustering_coefficient_local_square-networkit">details</a></td><td><code>LocalSquareClusteringCoefficient</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

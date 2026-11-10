@@ -16,15 +16,11 @@ Family: [Input and output](index.html). Subfamily: Partition and cover formats. 
 
 Partition and cover file formats. Entries grouped here: BINARYEDGELISTPARTITION read and write; BINARYPARTITION read and write; EDGELISTCOVER read and write; EDGELISTPARTITION read and write; SNAPEDGELISTPARTITION read and write.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [BINARYEDGELISTPARTITION read and write](#io_binaryedgelistpartition) | `io_binaryedgelistpartition` | 1 |
-| [BINARYPARTITION read and write](#io_binarypartition) | `io_binarypartition` | 1 |
-| [EDGELISTCOVER read and write](#io_edgelistcover) | `io_edgelistcover` | 1 |
-| [EDGELISTPARTITION read and write](#io_edgelistpartition) | `io_edgelistpartition` | 1 |
-| [SNAPEDGELISTPARTITION read and write](#io_snapedgelistpartition) | `io_snapedgelistpartition` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#io_binaryedgelistpartition">BINARYEDGELISTPARTITION read and write</a></td><td><code>io_binaryedgelistpartition</code></td><td>1</td></tr><tr><td><a href="#io_binarypartition">BINARYPARTITION read and write</a></td><td><code>io_binarypartition</code></td><td>1</td></tr><tr><td><a href="#io_edgelistcover">EDGELISTCOVER read and write</a></td><td><code>io_edgelistcover</code></td><td>1</td></tr><tr><td><a href="#io_edgelistpartition">EDGELISTPARTITION read and write</a></td><td><code>io_edgelistpartition</code></td><td>1</td></tr><tr><td><a href="#io_snapedgelistpartition">SNAPEDGELISTPARTITION read and write</a></td><td><code>io_snapedgelistpartition</code></td><td>1</td></tr></tbody></table></div>
 
 ## BINARYEDGELISTPARTITION read and write {#io_binaryedgelistpartition}
 
@@ -34,9 +30,7 @@ Measure id: `io_binaryedgelistpartition`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_binaryedgelistpartition-networkit) | `BinaryEdgeListPartitionReader; BinaryEdgeListPartitionWriter` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-io_binaryedgelistpartition-networkit">details</a></td><td><code>BinaryEdgeListPartitionReader; BinaryEdgeListPartitionWriter</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -52,9 +46,7 @@ Measure id: `io_binarypartition`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_binarypartition-networkit) | `BinaryPartitionReader; BinaryPartitionWriter` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-io_binarypartition-networkit">details</a></td><td><code>BinaryPartitionReader; BinaryPartitionWriter</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -70,9 +62,7 @@ Measure id: `io_edgelistcover`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_edgelistcover-networkit) | `EdgeListCoverReader` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-io_edgelistcover-networkit">details</a></td><td><code>EdgeListCoverReader</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -88,9 +78,7 @@ Measure id: `io_edgelistpartition`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_edgelistpartition-networkit) | `EdgeListPartitionReader` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-io_edgelistpartition-networkit">details</a></td><td><code>EdgeListPartitionReader</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -106,9 +94,7 @@ Measure id: `io_snapedgelistpartition`. Original family: Input and output.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-io_snapedgelistpartition-networkit) | `SNAPEdgeListPartitionReader` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-io_snapedgelistpartition-networkit">details</a></td><td><code>SNAPEdgeListPartitionReader</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

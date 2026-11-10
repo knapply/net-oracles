@@ -16,26 +16,11 @@ Family: [Data transforms](index.html). Subfamily: Sparsification and backbones. 
 
 Graph sparsification (score-based edge filtering). Entries grouped here: Algebraic Distance Sparsifier; Degree Multiscale Sparsifier; Forest Fire Sparsifier; Global Threshold Filter; Jaccard Similarity Sparsifier; Local Degree Sparsifier; and 10 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Algebraic Distance Sparsifier](#cat_algebraic_distance_sparsifier) | `cat_algebraic_distance_sparsifier` | 1 |
-| [Degree Multiscale Sparsifier](#cat_degree_multiscale_sparsifier) | `cat_degree_multiscale_sparsifier` | 1 |
-| [Forest Fire Sparsifier](#cat_fire_forest_sparsifier) | `cat_fire_forest_sparsifier` | 1 |
-| [Global Threshold Filter](#cat_filter_global_threshold) | `cat_filter_global_threshold` | 1 |
-| [Jaccard Similarity Sparsifier](#cat_jaccard_similarity_sparsifier) | `cat_jaccard_similarity_sparsifier` | 1 |
-| [Local Degree Sparsifier](#cat_degree_local_sparsifier) | `cat_degree_local_sparsifier` | 1 |
-| [Local Similarity Sparsifier](#cat_local_similarity_sparsifier) | `cat_local_similarity_sparsifier` | 1 |
-| [Local sparsification (L-Spar)](#local_sparsification) | `local_sparsification` | 1 |
-| [Multiscale Sparsifier](#cat_multiscale_sparsifier) | `cat_multiscale_sparsifier` | 1 |
-| [Quadrilateral Simmelian Sparsifier](#cat_quadrilateral_simmelian_sparsifier) | `cat_quadrilateral_simmelian_sparsifier` | 1 |
-| [Random Edge Sparsifier](#cat_edge_random_sparsifier) | `cat_edge_random_sparsifier` | 1 |
-| [SCANSparsifier](#cat_scan_sparsifier) | `cat_scan_sparsifier` | 1 |
-| [Simmelian Multiscale Sparsifier](#cat_multiscale_simmelian_sparsifier) | `cat_multiscale_simmelian_sparsifier` | 1 |
-| [Simmelian Sparsifier Non Parametric](#cat_non_parametric_simmelian_sparsifier) | `cat_non_parametric_simmelian_sparsifier` | 1 |
-| [Simmelian Sparsifier Parametric](#cat_parametric_simmelian_sparsifier) | `cat_parametric_simmelian_sparsifier` | 1 |
-| [Triangle Sparsifier](#cat_sparsifier_triangle) | `cat_sparsifier_triangle` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_algebraic_distance_sparsifier">Algebraic Distance Sparsifier</a></td><td><code>cat_algebraic_distance_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_degree_multiscale_sparsifier">Degree Multiscale Sparsifier</a></td><td><code>cat_degree_multiscale_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_fire_forest_sparsifier">Forest Fire Sparsifier</a></td><td><code>cat_fire_forest_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_filter_global_threshold">Global Threshold Filter</a></td><td><code>cat_filter_global_threshold</code></td><td>1</td></tr><tr><td><a href="#cat_jaccard_similarity_sparsifier">Jaccard Similarity Sparsifier</a></td><td><code>cat_jaccard_similarity_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_degree_local_sparsifier">Local Degree Sparsifier</a></td><td><code>cat_degree_local_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_local_similarity_sparsifier">Local Similarity Sparsifier</a></td><td><code>cat_local_similarity_sparsifier</code></td><td>1</td></tr><tr><td><a href="#local_sparsification">Local sparsification (L-Spar)</a></td><td><code>local_sparsification</code></td><td>1</td></tr><tr><td><a href="#cat_multiscale_sparsifier">Multiscale Sparsifier</a></td><td><code>cat_multiscale_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_quadrilateral_simmelian_sparsifier">Quadrilateral Simmelian Sparsifier</a></td><td><code>cat_quadrilateral_simmelian_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_edge_random_sparsifier">Random Edge Sparsifier</a></td><td><code>cat_edge_random_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_scan_sparsifier">SCANSparsifier</a></td><td><code>cat_scan_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_multiscale_simmelian_sparsifier">Simmelian Multiscale Sparsifier</a></td><td><code>cat_multiscale_simmelian_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_non_parametric_simmelian_sparsifier">Simmelian Sparsifier Non Parametric</a></td><td><code>cat_non_parametric_simmelian_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_parametric_simmelian_sparsifier">Simmelian Sparsifier Parametric</a></td><td><code>cat_parametric_simmelian_sparsifier</code></td><td>1</td></tr><tr><td><a href="#cat_sparsifier_triangle">Triangle Sparsifier</a></td><td><code>cat_sparsifier_triangle</code></td><td>1</td></tr></tbody></table></div>
 
 ## Algebraic Distance Sparsifier {#cat_algebraic_distance_sparsifier}
 
@@ -45,9 +30,7 @@ Measure id: `cat_algebraic_distance_sparsifier`. Original family: Paths and dist
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_algebraic_distance_sparsifier-networkit) | `AlgebraicDistanceSparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_algebraic_distance_sparsifier-networkit">details</a></td><td><code>AlgebraicDistanceSparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -63,9 +46,7 @@ Measure id: `cat_degree_multiscale_sparsifier`. Original family: Graph theory an
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_degree_multiscale_sparsifier-networkit) | `DegreeMultiscaleSparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_degree_multiscale_sparsifier-networkit">details</a></td><td><code>DegreeMultiscaleSparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -81,9 +62,7 @@ Measure id: `cat_fire_forest_sparsifier`. Original family: Generators and rewiri
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_fire_forest_sparsifier-networkit) | `ForestFireSparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_fire_forest_sparsifier-networkit">details</a></td><td><code>ForestFireSparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -99,9 +78,7 @@ Measure id: `cat_filter_global_threshold`. Original family: Graph theory and com
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_filter_global_threshold-networkit) | `GlobalThresholdFilter` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_filter_global_threshold-networkit">details</a></td><td><code>GlobalThresholdFilter</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -117,9 +94,7 @@ Measure id: `cat_jaccard_similarity_sparsifier`. Original family: Graph theory a
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_jaccard_similarity_sparsifier-networkit) | `JaccardSimilaritySparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_jaccard_similarity_sparsifier-networkit">details</a></td><td><code>JaccardSimilaritySparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -135,9 +110,7 @@ Measure id: `cat_degree_local_sparsifier`. Original family: Graph theory and com
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_degree_local_sparsifier-networkit) | `LocalDegreeSparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_degree_local_sparsifier-networkit">details</a></td><td><code>LocalDegreeSparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -153,9 +126,7 @@ Measure id: `cat_local_similarity_sparsifier`. Original family: Graph theory and
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_local_similarity_sparsifier-networkit) | `LocalSimilaritySparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_local_similarity_sparsifier-networkit">details</a></td><td><code>LocalSimilaritySparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -171,9 +142,7 @@ Measure id: `local_sparsification`. Original family: Data transforms.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-local_sparsification-ucinet) | `Local sparsification (6.831); lspar` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-local_sparsification-ucinet">details</a></td><td><code>Local sparsification (6.831); lspar</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -189,9 +158,7 @@ Measure id: `cat_multiscale_sparsifier`. Original family: Graph theory and combi
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_multiscale_sparsifier-networkit) | `MultiscaleSparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_multiscale_sparsifier-networkit">details</a></td><td><code>MultiscaleSparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -207,9 +174,7 @@ Measure id: `cat_quadrilateral_simmelian_sparsifier`. Original family: Graph the
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_quadrilateral_simmelian_sparsifier-networkit) | `QuadrilateralSimmelianSparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_quadrilateral_simmelian_sparsifier-networkit">details</a></td><td><code>QuadrilateralSimmelianSparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -225,9 +190,7 @@ Measure id: `cat_edge_random_sparsifier`. Original family: Graph theory and comb
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_edge_random_sparsifier-networkit) | `RandomEdgeSparsifier; RandomNodeEdgeSparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_edge_random_sparsifier-networkit">details</a></td><td><code>RandomEdgeSparsifier; RandomNodeEdgeSparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -243,9 +206,7 @@ Measure id: `cat_scan_sparsifier`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_scan_sparsifier-networkit) | `SCANSparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_scan_sparsifier-networkit">details</a></td><td><code>SCANSparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -261,9 +222,7 @@ Measure id: `cat_multiscale_simmelian_sparsifier`. Original family: Graph theory
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_multiscale_simmelian_sparsifier-networkit) | `SimmelianMultiscaleSparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_multiscale_simmelian_sparsifier-networkit">details</a></td><td><code>SimmelianMultiscaleSparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -279,9 +238,7 @@ Measure id: `cat_non_parametric_simmelian_sparsifier`. Original family: Graph th
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_non_parametric_simmelian_sparsifier-networkit) | `SimmelianSparsifierNonParametric` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_non_parametric_simmelian_sparsifier-networkit">details</a></td><td><code>SimmelianSparsifierNonParametric</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -297,9 +254,7 @@ Measure id: `cat_parametric_simmelian_sparsifier`. Original family: Graph theory
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_parametric_simmelian_sparsifier-networkit) | `SimmelianSparsifierParametric` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_parametric_simmelian_sparsifier-networkit">details</a></td><td><code>SimmelianSparsifierParametric</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -315,9 +270,7 @@ Measure id: `cat_sparsifier_triangle`. Original family: Graph theory and combina
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_sparsifier_triangle-networkit) | `TriangleSparsifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_sparsifier_triangle-networkit">details</a></td><td><code>TriangleSparsifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

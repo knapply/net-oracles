@@ -16,16 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: Prediction and classificat
 
 Node classification. Entries grouped here: Diffusion Classifier; GNNClassifier; NNClassifier; Page Rank Classifier; Propagation; Rank Classifier.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Diffusion Classifier](#cat_classifier_diffusion) | `cat_classifier_diffusion` | 1 |
-| [GNNClassifier](#cat_classifier_gnn) | `cat_classifier_gnn` | 1 |
-| [NNClassifier](#cat_classifier_nn) | `cat_classifier_nn` | 1 |
-| [Page Rank Classifier](#cat_classifier_page_rank) | `cat_classifier_page_rank` | 1 |
-| [Propagation](#cat_propagation) | `cat_propagation` | 1 |
-| [Rank Classifier](#cat_classifier_rank) | `cat_classifier_rank` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_classifier_diffusion">Diffusion Classifier</a></td><td><code>cat_classifier_diffusion</code></td><td>1</td></tr><tr><td><a href="#cat_classifier_gnn">GNNClassifier</a></td><td><code>cat_classifier_gnn</code></td><td>1</td></tr><tr><td><a href="#cat_classifier_nn">NNClassifier</a></td><td><code>cat_classifier_nn</code></td><td>1</td></tr><tr><td><a href="#cat_classifier_page_rank">Page Rank Classifier</a></td><td><code>cat_classifier_page_rank</code></td><td>1</td></tr><tr><td><a href="#cat_propagation">Propagation</a></td><td><code>cat_propagation</code></td><td>1</td></tr><tr><td><a href="#cat_classifier_rank">Rank Classifier</a></td><td><code>cat_classifier_rank</code></td><td>1</td></tr></tbody></table></div>
 
 ## Diffusion Classifier {#cat_classifier_diffusion}
 
@@ -35,9 +30,7 @@ Measure id: `cat_classifier_diffusion`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_classifier_diffusion-sknetwork) | `DiffusionClassifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sknetwork.html">scikit-network</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_classifier_diffusion-sknetwork">details</a></td><td><code>DiffusionClassifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -53,9 +46,7 @@ Measure id: `cat_classifier_gnn`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_classifier_gnn-sknetwork) | `GNNClassifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sknetwork.html">scikit-network</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_classifier_gnn-sknetwork">details</a></td><td><code>GNNClassifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -71,9 +62,7 @@ Measure id: `cat_classifier_nn`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_classifier_nn-sknetwork) | `NNClassifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sknetwork.html">scikit-network</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_classifier_nn-sknetwork">details</a></td><td><code>NNClassifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -89,9 +78,7 @@ Measure id: `cat_classifier_page_rank`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_classifier_page_rank-sknetwork) | `PageRankClassifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sknetwork.html">scikit-network</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_classifier_page_rank-sknetwork">details</a></td><td><code>PageRankClassifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -107,9 +94,7 @@ Measure id: `cat_propagation`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_propagation-sknetwork) | `Propagation` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sknetwork.html">scikit-network</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_propagation-sknetwork">details</a></td><td><code>Propagation</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -125,9 +110,7 @@ Measure id: `cat_classifier_rank`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_classifier_rank-sknetwork) | `RankClassifier` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sknetwork.html">scikit-network</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_classifier_rank-sknetwork">details</a></td><td><code>RankClassifier</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

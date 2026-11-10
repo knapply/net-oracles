@@ -16,6 +16,8 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Independent set
 
 Metric closure. Entries grouped here: Metric closure (approximate).
 
+*Definition not yet written.*
+
 ## Metric closure (approximate) {#cat_closure_metric-approximate}
 
 Measure id: `cat_closure_metric@approximate`. Original family: Graph theory and combinatorics.
@@ -24,9 +26,7 @@ Measure id: `cat_closure_metric@approximate`. Original family: Graph theory and 
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_closure_metric-approximate-networkx) | `metric_closure` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_closure_metric-approximate-networkx">details</a></td><td><code>metric_closure</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

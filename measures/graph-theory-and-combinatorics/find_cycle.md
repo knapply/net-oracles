@@ -16,12 +16,11 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Cycles. Concept
 
 Find a cycle. Entries grouped here: Find cycle; Nxs find cycle.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Find cycle](#find_cycle) | `find_cycle` | 5 |
-| [Nxs find cycle](#nxs_find_cycle) | `nxs_find_cycle` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#find_cycle">Find cycle</a></td><td><code>find_cycle</code></td><td>5</td></tr><tr><td><a href="#nxs_find_cycle">Nxs find cycle</a></td><td><code>nxs_find_cycle</code></td><td>1</td></tr></tbody></table></div>
 
 ## Find cycle {#find_cycle}
 
@@ -31,13 +30,7 @@ Measure id: `find_cycle`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `find_cycle` |  |
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-find_cycle-igraph) | `find_cycle` | API listing |
-| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-find_cycle-rustworkx) | `digraph_find_cycle` | API listing |
-| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-find_cycle-sknetwork) | `get_cycles` | API listing |
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-find_cycle-jgrapht) | `CycleDetector` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>find_cycle</code></td><td></td></tr><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-find_cycle-igraph">details</a></td><td><code>find_cycle</code></td><td>API listing</td></tr><tr><td><a href="../../tools/rustworkx.html">rustworkx</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-find_cycle-rustworkx">details</a></td><td><code>digraph_find_cycle</code></td><td>API listing</td></tr><tr><td><a href="../../tools/sknetwork.html">scikit-network</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-find_cycle-sknetwork">details</a></td><td><code>get_cycles</code></td><td>API listing</td></tr><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-find_cycle-jgrapht">details</a></td><td><code>CycleDetector</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -48,11 +41,7 @@ Measure id: `find_cycle`. Original family: Graph theory and combinatorics.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `cyc_find_cycle` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.find_cycle(M) as (key, 0) pairs, nothing on NetworkXNoCycle` |  |
-| `cyc_find_cycle_ignore` | NetworkX | directed | agrees |  |  | abs 0, rel 0 | `nx.find_cycle(M, orientation = 'ignore') as (key, reversed) pairs` |  |
-| `cyc_find_cycle_reverse` | NetworkX | directed | agrees |  |  | abs 0, rel 0 | `nx.find_cycle(M, orientation = 'reverse') as (key, reversed) pairs` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>cyc_find_cycle</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cycle(M) as (key, 0) pairs, nothing on NetworkXNoCycle</code></td><td></td></tr><tr><td><code>cyc_find_cycle_ignore</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cycle(M, orientation = 'ignore') as (key, reversed) pairs</code></td><td></td></tr><tr><td><code>cyc_find_cycle_reverse</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cycle(M, orientation = 'reverse') as (key, reversed) pairs</code></td><td></td></tr></tbody></table></div>
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht), [tool_rustworkx](../../references.html#tool_rustworkx), [tool_sknetwork](../../references.html#tool_sknetwork)
 
@@ -64,21 +53,11 @@ Measure id: `nxs_find_cycle`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td></td></tr></tbody></table></div>
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `nxs_find_cycle_ignore` | NetworkX | directed | agrees |  |  | abs 0, rel 0 | `nx.find_cycle(D, orientation = 'ignore'), with 1 for an edge reported 'reverse'` |  |
-| `nxs_find_cycle_ignore_source` | NetworkX | directed | agrees |  |  | abs 0, rel 0 | `nx.find_cycle(D, source = n // 2, orientation = 'ignore')` |  |
-| `nxs_find_cycle_none` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.find_cycle(G) on the simple graph with loops (the cycle's edges; (-1, -1) if none)` |  |
-| `nxs_find_cycle_none_source` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.find_cycle(G, source = n // 2)` |  |
-| `nxs_find_cycle_original` | NetworkX | directed | agrees |  |  | abs 0, rel 0 | `nx.find_cycle(D, orientation = 'original')` |  |
-| `nxs_find_cycle_reverse` | NetworkX | directed | agrees |  |  | abs 0, rel 0 | `nx.find_cycle(D, orientation = 'reverse'), with 1 for an edge reported 'reverse'` |  |
-| `nxs_find_cycle_reverse_source` | NetworkX | directed | agrees |  |  | abs 0, rel 0 | `nx.find_cycle(D, source = n // 2, orientation = 'reverse')` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nxs_find_cycle_ignore</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cycle(D, orientation = 'ignore'), with 1 for an edge reported 'reverse'</code></td><td></td></tr><tr><td><code>nxs_find_cycle_ignore_source</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cycle(D, source = n // 2, orientation = 'ignore')</code></td><td></td></tr><tr><td><code>nxs_find_cycle_none</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cycle(G) on the simple graph with loops (the cycle's edges; (-1, -1) if none)</code></td><td></td></tr><tr><td><code>nxs_find_cycle_none_source</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cycle(G, source = n // 2)</code></td><td></td></tr><tr><td><code>nxs_find_cycle_original</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cycle(D, orientation = 'original')</code></td><td></td></tr><tr><td><code>nxs_find_cycle_reverse</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cycle(D, orientation = 'reverse'), with 1 for an edge reported 'reverse'</code></td><td></td></tr><tr><td><code>nxs_find_cycle_reverse_source</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cycle(D, source = n // 2, orientation = 'reverse')</code></td><td></td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

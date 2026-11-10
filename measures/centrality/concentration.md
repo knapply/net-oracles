@@ -16,6 +16,8 @@ Family: [Centrality](index.html). Subfamily: Local and structural scores. Concep
 
 Concentration. Entries grouped here: Concent.
 
+*Definition not yet written.* UCINET's concentration entry is documented-only and the sources record only its name.
+
 ## Concent {#cat_concent}
 
 Measure id: `cat_concent`. Original family: Centrality.
@@ -24,9 +26,7 @@ Measure id: `cat_concent`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-cat_concent-ucinet) | `concent` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-cat_concent-ucinet">details</a></td><td><code>concent</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

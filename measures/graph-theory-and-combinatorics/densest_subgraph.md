@@ -16,15 +16,11 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Independent set
 
 Densest subgraph of a simple undirected network by Greedy++ peeling, as the best density and its nodes.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Densest](#ap_densest) | `ap_densest` | 1 |
-| [Goldberg Maximum Density Subgraph Algorithm](#cat_density_goldberg_maximum_subgraph) | `cat_density_goldberg_maximum_subgraph` | 1 |
-| [Goldberg Maximum Density Subgraph Algorithm Base](#cat_base_density_goldberg_maximum_subgraph) | `cat_base_density_goldberg_maximum_subgraph` | 1 |
-| [Goldberg Maximum Density Subgraph Algorithm Node Weight Per Edge Weight](#cat_density_edge_goldberg_maximum_per_subgraph_weight) | `cat_density_edge_goldberg_maximum_per_subgraph_weight` | 1 |
-| [Goldberg Maximum Density Subgraph Algorithm Node Weights](#cat_density_goldberg_maximum_subgraph_weights) | `cat_density_goldberg_maximum_subgraph_weights` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#ap_densest">Densest</a></td><td><code>ap_densest</code></td><td>1</td></tr><tr><td><a href="#cat_density_goldberg_maximum_subgraph">Goldberg Maximum Density Subgraph Algorithm</a></td><td><code>cat_density_goldberg_maximum_subgraph</code></td><td>1</td></tr><tr><td><a href="#cat_base_density_goldberg_maximum_subgraph">Goldberg Maximum Density Subgraph Algorithm Base</a></td><td><code>cat_base_density_goldberg_maximum_subgraph</code></td><td>1</td></tr><tr><td><a href="#cat_density_edge_goldberg_maximum_per_subgraph_weight">Goldberg Maximum Density Subgraph Algorithm Node Weight Per Edge Weight</a></td><td><code>cat_density_edge_goldberg_maximum_per_subgraph_weight</code></td><td>1</td></tr><tr><td><a href="#cat_density_goldberg_maximum_subgraph_weights">Goldberg Maximum Density Subgraph Algorithm Node Weights</a></td><td><code>cat_density_goldberg_maximum_subgraph_weights</code></td><td>1</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -38,15 +34,11 @@ Measure id: `ap_densest`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `densest_subgraph` |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>densest_subgraph</code></td><td></td></tr></tbody></table></div>
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `ap_densest` | NetworkX | any | agrees |  |  | abs 0, rel 1e-15 | `nx.approximation.densest_subgraph(G_sorted, 2, method = 'greedy++'): (density, size)` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ap_densest</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-15</td><td><code>nx.approximation.densest_subgraph(G_sorted, 2, method = 'greedy++'): (density, size)</code></td><td></td></tr></tbody></table></div>
 
 **References:** [baryehuda1985local](../../references.html#baryehuda1985local), [bodlaender2010treewidth](../../references.html#bodlaender2010treewidth), [boob2020flowless](../../references.html#boob2020flowless), [boppana1992approximating](../../references.html#boppana1992approximating), [hagberg2008exploring](../../references.html#hagberg2008exploring), [vazirani2001approximation](../../references.html#vazirani2001approximation), [white2001fast](../../references.html#white2001fast)
 
@@ -60,9 +52,7 @@ Measure id: `cat_density_goldberg_maximum_subgraph`. Original family: Inference 
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_density_goldberg_maximum_subgraph-jgrapht) | `GoldbergMaximumDensitySubgraphAlgorithm` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_density_goldberg_maximum_subgraph-jgrapht">details</a></td><td><code>GoldbergMaximumDensitySubgraphAlgorithm</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -78,9 +68,7 @@ Measure id: `cat_base_density_goldberg_maximum_subgraph`. Original family: Infer
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_base_density_goldberg_maximum_subgraph-jgrapht) | `GoldbergMaximumDensitySubgraphAlgorithmBase` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_base_density_goldberg_maximum_subgraph-jgrapht">details</a></td><td><code>GoldbergMaximumDensitySubgraphAlgorithmBase</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -96,9 +84,7 @@ Measure id: `cat_density_edge_goldberg_maximum_per_subgraph_weight`. Original fa
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_density_edge_goldberg_maximum_per_subgraph_weight-jgrapht) | `GoldbergMaximumDensitySubgraphAlgorithmNodeWeightPerEdgeWeight` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_density_edge_goldberg_maximum_per_subgraph_weight-jgrapht">details</a></td><td><code>GoldbergMaximumDensitySubgraphAlgorithmNodeWeightPerEdgeWeight</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -114,9 +100,7 @@ Measure id: `cat_density_goldberg_maximum_subgraph_weights`. Original family: In
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_density_goldberg_maximum_subgraph_weights-jgrapht) | `GoldbergMaximumDensitySubgraphAlgorithmNodeWeights` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_density_goldberg_maximum_subgraph_weights-jgrapht">details</a></td><td><code>GoldbergMaximumDensitySubgraphAlgorithmNodeWeights</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

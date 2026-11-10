@@ -16,13 +16,11 @@ Family: [Communities](index.html). Subfamily: Partition and cover quality. Conce
 
 Hub dominance. Entries grouped here: Cover Hub Dominance; Hub Dominance; Partition Hub Dominance.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Cover Hub Dominance](#cat_cover_dominance_hub) | `cat_cover_dominance_hub` | 1 |
-| [Hub Dominance](#cat_dominance_hub) | `cat_dominance_hub` | 1 |
-| [Partition Hub Dominance](#cat_dominance_hub_partition) | `cat_dominance_hub_partition` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_cover_dominance_hub">Cover Hub Dominance</a></td><td><code>cat_cover_dominance_hub</code></td><td>1</td></tr><tr><td><a href="#cat_dominance_hub">Hub Dominance</a></td><td><code>cat_dominance_hub</code></td><td>1</td></tr><tr><td><a href="#cat_dominance_hub_partition">Partition Hub Dominance</a></td><td><code>cat_dominance_hub_partition</code></td><td>1</td></tr></tbody></table></div>
 
 ## Cover Hub Dominance {#cat_cover_dominance_hub}
 
@@ -32,9 +30,7 @@ Measure id: `cat_cover_dominance_hub`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_cover_dominance_hub-networkit) | `CoverHubDominance` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_cover_dominance_hub-networkit">details</a></td><td><code>CoverHubDominance</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -50,9 +46,7 @@ Measure id: `cat_dominance_hub`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dominance_hub-networkit) | `HubDominance` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dominance_hub-networkit">details</a></td><td><code>HubDominance</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -68,9 +62,7 @@ Measure id: `cat_dominance_hub_partition`. Original family: Centrality.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dominance_hub_partition-networkit) | `PartitionHubDominance` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dominance_hub_partition-networkit">details</a></td><td><code>PartitionHubDominance</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

@@ -16,6 +16,8 @@ Family: [Descriptive statistics](index.html). Subfamily: Clustering and transiti
 
 Normalized reciprocity, DKS transitivity and cyclicity. Entries grouped here: Normalized reciprocity and transitivity, DKS transitivity, cyclicity.
 
+*Definition not yet written.*
+
 ## Normalized reciprocity and transitivity, DKS transitivity, cyclicity {#ucinet_cohesion_variants}
 
 Measure id: `ucinet_cohesion_variants`. Original family: Descriptive statistics.
@@ -24,9 +26,7 @@ Measure id: `ucinet_cohesion_variants`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-ucinet_cohesion_variants-ucinet) |  | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-ucinet_cohesion_variants-ucinet">details</a></td><td></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

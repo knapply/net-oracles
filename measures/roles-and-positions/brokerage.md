@@ -16,6 +16,8 @@ Family: [Roles and positions](index.html). Subfamily: Structural holes and broke
 
 Brokerage. Entries grouped here: Brokerage.
 
+*Definition not yet written.*
+
 ## Brokerage {#brokerage}
 
 Measure id: `brokerage`. Original family: Roles and positions.
@@ -24,10 +26,7 @@ Measure id: `brokerage`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [sna](../../tools/sna.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `brokerage` |  |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-brokerage-ucinet) | `Brokerage: Gould-Fernandez roles (five or six); brokerageconcentration` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sna.html">sna</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>brokerage</code></td><td></td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-brokerage-ucinet">details</a></td><td><code>Brokerage: Gould-Fernandez roles (five or six); brokerageconcentration</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -35,9 +34,7 @@ Measure id: `brokerage`. Original family: Roles and positions.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `brokerage` | sna | any | agrees |  |  | abs 0, rel 0 | `sna::brokerage(m, cl = (0:(n - 1)) %% 3)$raw.nli` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>brokerage</code></td><td>sna</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>sna::brokerage(m, cl = (0:(n - 1)) %% 3)$raw.nli</code></td><td></td></tr></tbody></table></div>
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [butts2008sna](../../references.html#butts2008sna)
 {% endraw %}

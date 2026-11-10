@@ -16,6 +16,8 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Spanning trees and b
 
 Number of spanning trees (arborescences rooted at the root for a directed network) by the matrix-tree theorem.
 
+*Definition not yet written.*
+
 ## References {#concept-references}
 
 [kirchhoff1847ueber](../../references.html#kirchhoff1847ueber), [tutte1948dissection](../../references.html#tutte1948dissection)
@@ -28,15 +30,11 @@ Measure id: `gb_spanning_trees`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `number_of_spanning_trees` |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>number_of_spanning_trees</code></td><td></td></tr></tbody></table></div>
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `gb_spanning_trees` | NetworkX | undirected | agrees |  |  | abs 1e-09, rel 1e-09 | `nx.number_of_spanning_trees(M)` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>gb_spanning_trees</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>nx.number_of_spanning_trees(M)</code></td><td></td></tr></tbody></table></div>
 
 **References:** [kirchhoff1847ueber](../../references.html#kirchhoff1847ueber), [tutte1948dissection](../../references.html#tutte1948dissection)
 

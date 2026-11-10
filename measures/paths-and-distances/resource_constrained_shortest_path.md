@@ -16,6 +16,8 @@ Family: [Paths and distances](index.html). Subfamily: Shortest paths. Concept id
 
 Resource-constrained shortest path. Entries grouped here: R c shortest paths.
 
+*Definition not yet written.*
+
 ## R c shortest paths {#cat_c_path_r_shortest}
 
 Measure id: `cat_c_path_r_shortest`. Original family: Paths and distances.
@@ -24,9 +26,7 @@ Measure id: `cat_c_path_r_shortest`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_c_path_r_shortest-boost) | `r_c_shortest_paths` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/boost.html">Boost Graph Library</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_c_path_r_shortest-boost">details</a></td><td><code>r_c_shortest_paths</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

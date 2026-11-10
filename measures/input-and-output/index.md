@@ -15,31 +15,21 @@ permalink: /measures/input-and-output/
 
 ## Binary and serialization formats
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Binary and serialization formats](binary_io.html) | 4 | 2 | Binary and serialization formats. Entries grouped here: GRAPHTOOLBINARY read and write; NETWORKITBINARY read and write; PICKLE read and write;... |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="binary_io.html">Binary and serialization formats</a></td><td>4</td><td>2</td><td>not yet written</td><td>Binary and serialization formats. Entries grouped here: GRAPHTOOLBINARY read and write; NETWORKITBINARY read and write; PICKLE read and write;...</td></tr></tbody></table></div>
 
 ## Edge-list and adjacency-list formats
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Edge-list and adjacency-list text formats](text_edge_list_io.html) | 9 | 5 | Edge-list and adjacency-list text formats. Entries grouped here: ADJACENCY read and write; CSV read and write; EDGELIST read and write; Extra file formats:... |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="text_edge_list_io.html">Edge-list and adjacency-list text formats</a></td><td>9</td><td>5</td><td>not yet written</td><td>Edge-list and adjacency-list text formats. Entries grouped here: ADJACENCY read and write; CSV read and write; EDGELIST read and write; Extra file formats:...</td></tr></tbody></table></div>
 
 ## Graph description formats
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Graph description and exchange formats](graph_markup_io.html) | 14 | 7 | Graph description and exchange formats. Entries grouped here: DIMACS read and write; GEXF read and write; GML read and write; GRAPH6 read and write; GRAPHDB... |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="graph_markup_io.html">Graph description and exchange formats</a></td><td>14</td><td>7</td><td>not yet written</td><td>Graph description and exchange formats. Entries grouped here: DIMACS read and write; GEXF read and write; GML read and write; GRAPH6 read and write; GRAPHDB...</td></tr></tbody></table></div>
 
 ## Matrix and spreadsheet formats
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Matrix and spreadsheet formats](matrix_file_io.html) | 9 | 5 | Matrix and spreadsheet formats. Entries grouped here: Excel (xlsx) reader and writer; MATLAB read and write; MATRIX read and write; MATRIXMARKET read and... |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="matrix_file_io.html">Matrix and spreadsheet formats</a></td><td>9</td><td>5</td><td>not yet written</td><td>Matrix and spreadsheet formats. Entries grouped here: Excel (xlsx) reader and writer; MATLAB read and write; MATRIX read and write; MATRIXMARKET read and...</td></tr></tbody></table></div>
 
 ## Partition and cover formats
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Partition and cover file formats](partition_cover_io.html) | 5 | 1 | Partition and cover file formats. Entries grouped here: BINARYEDGELISTPARTITION read and write; BINARYPARTITION read and write; EDGELISTCOVER read and... |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="partition_cover_io.html">Partition and cover file formats</a></td><td>5</td><td>1</td><td>not yet written</td><td>Partition and cover file formats. Entries grouped here: BINARYEDGELISTPARTITION read and write; BINARYPARTITION read and write; EDGELISTCOVER read and...</td></tr></tbody></table></div>
 {% endraw %}

@@ -6,7 +6,7 @@
 
 Standard library only.
 """
-import csv, io, json, os, re, sys, statistics, collections
+import csv, io, json, os, re, sys, statistics, collections, glob, html
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -72,6 +72,12 @@ def load_all():
         "reasons": load_json("reasons.json"), "fixtures": load_json("fixtures.json"),
         "bib": parse_bib(open(os.path.join(DATA, "references.bib"), encoding="utf-8").read()),
     }
+    d["vocabulary"] = load_json("definitions/_vocabulary.json")["cases"]
+    d["definitions"] = {}
+    for fp in sorted(glob.glob(os.path.join(DATA, "definitions", "*.json"))):
+        fn = os.path.basename(fp)
+        if fn.startswith("_"): continue
+        d["definitions"][fn] = load_json("definitions/" + fn)
     return d
 
 
@@ -140,6 +146,87 @@ def check_data(d):
             if k not in bib: errs.append("fixtures: missing bib key " + k)
     if len({fx["name"] for fx in d["fixtures"]}) != len(d["fixtures"]): errs.append("duplicate fixture names")
     errs += check_reasons(d)
+    errs += check_definitions(d)
+    return errs
+
+
+def balanced(latex):
+    """Braces of a LaTeX string balance (escaped braces are skipped) and no brace closes before it opens."""
+    depth = 0; i = 0
+    while i < len(latex):
+        c = latex[i]
+        if c == "\\": i += 2; continue
+        if c == "{": depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth < 0: return False
+        i += 1
+    return depth == 0
+
+
+def check_definitions(d):
+    """definitions/<family-slug>.json: structure, vocabulary, tool ids, measure ids, bibliography keys, LaTeX braces."""
+    errs = []
+    fam_slug = lambda f: re.sub(r"[^a-z0-9]+", "-", f.lower()).strip("-")
+    schema = load_json("schema/definitions.schema.json")
+    vocab = d["vocabulary"]
+    for k, v in vocab.items():
+        if not re.fullmatch(r"[a-z][a-z0-9_]*", k): errs.append("vocabulary: bad id " + k)
+        if not v.get("label") or len(v.get("description", "")) < 20: errs.append("vocabulary: %s needs a label and a description" % k)
+    tools = {t["id"] for t in d["tools"]}; bib = set(d["bib"]); findings = {f["id"] for f in d["findings"]}
+    meas_of = collections.defaultdict(set); fam_of = {}
+    for m in d["measures"]: meas_of[m["concept"]].add(m["id"])
+    for c in d["concepts"]: fam_of[c["id"]] = c["family"]
+    rsn = {(r["measure"], r["tool"]) for r in d["reasons"]}
+    tools_of = collections.defaultdict(set)
+    mconcept = {m["id"]: m["concept"] for m in d["measures"]}
+    for r in d["capabilities"]: tools_of[mconcept[r["measure"]]].add(r["tool"])
+    for fn, df in d["definitions"].items():
+        w = "definitions/" + fn
+        errs += validate(df, schema, w)
+        if not isinstance(df, dict) or "family" not in df: continue
+        if fn != fam_slug(df["family"]) + ".json": errs.append("%s: file name must be %s.json for family %r" % (w, fam_slug(df["family"]), df["family"]))
+        if df["family"] not in set(fam_of.values()): errs.append("%s: unknown family %r" % (w, df["family"]))
+        for cid, c in df["concepts"].items():
+            w2 = "%s %s" % (w, cid)
+            if cid not in fam_of: errs.append(w2 + ": unknown concept"); continue
+            if fam_of[cid] != df["family"]: errs.append(w2 + ": concept belongs to family %r" % fam_of[cid])
+            st = c["status"]
+            if st != "complete" and not c.get("note", "").strip(): errs.append(w2 + ": a note is required for status " + st)
+            if st == "name_only" and (c.get("formulas") or c.get("edge_cases")): errs.append(w2 + ": name_only concepts carry no formulas or edge cases")
+            if st == "complete":
+                if not c.get("notation"): errs.append(w2 + ": complete needs a notation")
+                if not c.get("formulas"): errs.append(w2 + ": complete needs formulas")
+                if not c.get("edge_cases"): errs.append(w2 + ": complete needs edge cases")
+                missing = meas_of[cid] - set(c.get("variants", {}))
+                if missing: errs.append("%s: no variants entry for %s" % (w2, ", ".join(sorted(missing))))
+            for k in c.get("variants", {}):
+                if k not in meas_of[cid]: errs.append("%s: variants key %s is not a measure of the concept" % (w2, k))
+            for i, f in enumerate(c.get("formulas", [])):
+                if not f["latex"].strip(): errs.append("%s formulas[%d]: empty latex" % (w2, i))
+                elif not balanced(f["latex"]): errs.append("%s formulas[%d] (%s): unbalanced braces" % (w2, i, f["name"]))
+            for i, n in enumerate(c.get("notation", [])):
+                if not n["symbol"].strip() or not balanced(n["symbol"]): errs.append("%s notation[%d]: empty or unbalanced symbol" % (w2, i))
+            texts = [n["meaning"] for n in c.get("notation", [])] + [f["where"] for f in c.get("formulas", [])] + list(c.get("variants", {}).values()) + [e["definition_gives"] for e in c.get("edge_cases", [])]
+            for t in texts:
+                if t.count("\\(") != t.count("\\)"): errs.append("%s: unbalanced inline math in %r" % (w2, t[:50]))
+            seen = set()
+            for e in c.get("edge_cases", []):
+                if e["case"] not in vocab: errs.append("%s: unknown edge case %r" % (w2, e["case"]))
+                if e["case"] in seen: errs.append("%s: edge case %s listed twice" % (w2, e["case"]))
+                seen.add(e["case"])
+                for t, x in e.get("tools", {}).items():
+                    w3 = "%s %s/%s" % (w2, e["case"], t)
+                    if t not in tools: errs.append(w3 + ": unknown tool"); continue
+                    if t not in tools_of[cid]: errs.append(w3 + ": tool has no entry for this concept")
+                    for f in ("status", "behaviour", "source"):
+                        if f not in x or not str(x[f]).strip(): errs.append("%s: missing %s" % (w3, f))
+                    if x.get("status") not in ("agrees", "differs", "no_value", "documented", "not_recorded"): errs.append(w3 + ": bad status")
+                    if "measure" in x and (x["measure"], t) not in rsn: errs.append("%s: no reason entry for %s/%s" % (w3, x["measure"], t))
+                    if "measure" in x and mconcept.get(x["measure"]) != cid: errs.append("%s: measure %s is not in the concept" % (w3, x["measure"]))
+                    if "finding" in x and x["finding"] not in findings: errs.append("%s: unknown finding %s" % (w3, x["finding"]))
+            for k in c.get("references", []):
+                if k not in bib: errs.append("%s: missing bib key %s" % (w2, k))
     return errs
 
 
@@ -249,10 +336,39 @@ def code(s):
     return "`%s`" % s if s else ""
 
 
-def table(head, rows):
-    out = ["| " + " | ".join(head) + " |", "|" + "|".join("---" for _ in head) + "|"]
-    for r in rows: out.append("| " + " | ".join(str(c) for c in r) + " |")
+def md_inline(s):
+    """Cell text written as inline markdown (links, code spans, emphasis, backslash escapes from esc()) to HTML; HTML already in the text passes through."""
+    codes = []
+    def keep(m):
+        codes.append("<code>%s</code>" % re.sub(r"&(?!(?:lt|gt|amp|quot|#\d+);)", "&amp;", m.group(1).replace("\\|", "|")).replace("<", "&lt;").replace(">", "&gt;"))
+        return "\x00%d\x00" % (len(codes) - 1)
+    s = re.sub(r"`([^`]*)`", keep, str(s))
+    s = re.sub(r"&(?!(?:lt|gt|amp|quot|#\d+);)", "&amp;", s)
+    s = re.sub(r"(?<!\\)\[((?:[^\]\\]|\\.)*)\]\(([^)\s]*)\)", lambda m: '<a href="%s">%s</a>' % (m.group(2), m.group(1)), s)
+    s = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", s)
+    s = re.sub(r"(?<![\\*])\*([^*\s][^*]*)\*(?!\*)", r"<em>\1</em>", s)
+    s = re.sub(r"\\([\\*\[\]_|`])", r"\1", s)
+    return re.sub("\x00(\\d+)\x00", lambda m: codes[int(m.group(1))], s)
+
+
+def pipe_tables_to_html(text):
+    """Markdown pipe tables inside hand-written text (data/method.md, benchmarks/method.md) to the HTML tables of table()."""
+    lines = text.split("\n"); out = []; i = 0
+    cells = lambda l: [c.strip() for c in re.split(r"(?<!\\)\|", l.strip().strip("|"))]
+    while i < len(lines):
+        if lines[i].startswith("|") and i + 1 < len(lines) and re.match(r"^\|[\s:|-]+\|$", lines[i + 1]):
+            head = cells(lines[i]); i += 2; rows = []
+            while i < len(lines) and lines[i].startswith("|"): rows.append(cells(lines[i])); i += 1
+            out.append(table(head, rows))
+        else: out.append(lines[i]); i += 1
     return "\n".join(out)
+
+
+def table(head, rows):
+    """An HTML table in the theme's table wrapper (cells are inline markdown), so that the site search shows text and not pipe syntax."""
+    out = ["<tr>" + "".join("<th>%s</th>" % md_inline(h) for h in head) + "</tr>"]
+    body = ["<tr>" + "".join("<td>%s</td>" % md_inline(c) for c in r) + "</tr>" for r in rows]
+    return '<div class="table-wrapper"><table><thead>%s</thead><tbody>%s</tbody></table></div>' % (out[0], "".join(body))
 
 
 def page(front, body):
@@ -312,6 +428,68 @@ def harness_links(conv_rows, tool_ids, rel="../"):
     return out
 
 
+# ---------------------------------------------------------------- definitions (rendering)
+def hx(s): return html.escape(str(s), quote=False)
+def hq(s): return html.escape(re.sub(r"\s+", " ", str(s)).strip(), quote=True)
+
+
+EDGE_STATUS = {"agrees": ("ok", "agrees"), "differs": ("conv", "differs"), "no_value": ("nov", "no value"), "documented": ("docs", "documented")}
+
+
+def render_definition(c, entry, ms_, tid, tool_order, caps_by_m, vocab, fam_findings=None):
+    """HTML/markdown sections of one concept page from its definitions entry (None: not written)."""
+    out = {"notation": "", "formulas": "", "variants": None, "edge": ""}
+    if entry is None or entry["status"] == "name_only":
+        out["formulas"] = "\n*Definition not yet written.*" + (" " + esc(entry["note"]) if entry else "") + "\n"
+        return out
+    if entry["status"] == "partial":
+        out["formulas"] += "\n*Definition partly written:* " + esc(entry["note"]) + "\n"
+    elif entry.get("note"):
+        out["formulas"] += "\n*Note:* " + esc(entry["note"]) + "\n"
+    if entry.get("notation"):
+        rows = "".join("<tr><td>\\(%s\\)</td><td>%s</td></tr>" % (hx(n["symbol"]), hx(n["meaning"])) for n in entry["notation"])
+        out["notation"] = '\n<div class="table-wrapper"><table class="notation"><thead><tr><th>Symbol</th><th>Meaning</th></tr></thead><tbody>%s</tbody></table></div>\n' % rows
+    for f in entry.get("formulas", []):
+        out["formulas"] += ('\n<div class="formula-block"><p class="formula-name"><strong>%s</strong> <span class="applies">applies to: %s</span></p>'
+                            '<div class="formula">\\[%s\\]</div><p class="formula-where">%s</p></div>\n') % (hx(f["name"]), hx(", ".join(f["applies_to"])), hx(f["latex"]), hx(f["where"]))
+    if entry.get("variants") is not None and entry["variants"]:
+        rows = ""
+        for m in ms_:
+            if m["id"] not in entry["variants"]: continue
+            ntools = len({r["tool"] for r in caps_by_m[m["id"]]})
+            rows += '<tr><td><a href="#%s">%s</a></td><td><code>%s</code></td><td>%d</td><td>%s</td></tr>' % (slug(m["id"]), hx(m["variant"]), hx(m["id"]), ntools, hx(entry["variants"][m["id"]]))
+        out["variants"] = '\n<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody>%s</tbody></table></div>\n' % rows
+    cases = entry.get("edge_cases", [])
+    if cases:
+        ctools = [t for t in tool_order if any(r["tool"] == t for m in ms_ for r in caps_by_m[m["id"]])]
+        head = "<tr><th>Case</th><th>The published definition gives</th>" + "".join('<th><a href="../../tools/%s.html">%s</a></th>' % (t, hx(tid[t]["name"])) for t in ctools) + "</tr>"
+        body = ""; det = ""
+        for e in cases:
+            v = vocab[e["case"]]
+            row = '<tr><td title="%s"><strong>%s</strong></td><td class="def">%s</td>' % (hq(v["description"]), hx(v["label"]), hx(e["definition_gives"]))
+            lis = ""
+            for t in ctools:
+                x = e.get("tools", {}).get(t)
+                if not x or x["status"] == "not_recorded":
+                    row += '<td><span class="nr" title="%s">not recorded</span></td>' % hq(x["behaviour"] if x else "The sources do not record this tool's behaviour on this input.")
+                    if x: lis += "<li><strong>%s</strong>: not recorded. %s <em>(%s)</em></li>" % (hx(tid[t]["name"]), hx(x["behaviour"]), hx(x["source"]))
+                    continue
+                cls, word = EDGE_STATUS[x["status"]]
+                href = ""
+                if x.get("finding"): href = "../../findings.html#" + x["finding"].lower()
+                elif x.get("measure"): href = "#why-%s-%s" % (slug(x["measure"]), t)
+                badge = '<span class="st st-w st-%s">%s</span>' % (cls, word)
+                if href: badge = '<a class="st st-w st-%s" href="%s" title="%s">%s</a>' % (cls, href, hq(x["behaviour"]), word)
+                else: badge = '<span class="st st-w st-%s" title="%s">%s</span>' % (cls, hq(x["behaviour"]), word)
+                row += "<td>%s</td>" % badge
+                lis += "<li><strong>%s</strong>: %s. %s <em>(%s)</em></li>" % (hx(tid[t]["name"]), word, hx(x["behaviour"]), hx(x["source"]))
+            body += row + "</tr>"
+            det += "<details><summary>%s</summary><ul>%s</ul></details>" % (hx(v["label"]), lis or "<li>No tool entries.</li>")
+        out["edge"] = ('\n<div class="table-wrapper edge-wrap"><table class="edge-cases"><thead>%s</thead><tbody>%s</tbody></table></div>\n'
+                       '\n**Behaviour by case.** What each tool does, as observed (run entries) or documented (documented entries), with the source of the statement.\n\n<div class="edge-details">%s</div>\n') % (head, body, det)
+    return out
+
+
 # ---------------------------------------------------------------- pages
 def build(d):
     files = {}
@@ -347,6 +525,8 @@ def build(d):
         href = ("" if rel is None else curl(cid_[mid[m_]["concept"]], rel)) + "#" + why_id(m_, t_)
         return "%s%s [details](%s)" % (esc(r["short"]), " *(reason incomplete)*" if r["reason_incomplete"] else "", href)
     families = sorted({c["family"] for c in concepts})
+    defs_of = {}
+    for df in d["definitions"].values(): defs_of.update(df["concepts"])
     tool_order = [t["id"] for t in tools]
     n_checked = sum(1 for r in d["capabilities"] if r["state"].startswith("checked"))
     cite = lambda k, rel: "[%s](%sreferences.html#%s)" % (k, rel, k)
@@ -402,6 +582,7 @@ A tool marked *documented-only* was never run: its entries come from its documen
         ("conventions.json", "Per measure, variant and tool: scope, call, outcome, differing conditions, normalization/direction/weights/self-loops/ties/defaults dimensions, note, tolerance."),
         ("findings.json", "Bugs, disagreements and limitations in other tools."),
         ("benchmarks/results.csv", "Timing and memory of other tools; method in `data/benchmarks/method.md`."),
+        ("definitions/<family-slug>.json", "Precise definitions per concept of a family: notation, LaTeX formulas, variants per measure, edge cases (what the published definition gives and what each tool does). Cases are defined in `definitions/_vocabulary.json`; procedure in `data/definitions/README.md`."),
         ("references.bib", "BibTeX for every cited key.")]]
     body = "# Data and schemas\n\n" + table(["File", "Content"], schema_rows) + """
 
@@ -475,16 +656,22 @@ Every entry that is not `checked-agrees` has a reason in `reasons.json`. `build.
         body = "# %s\n\n%d measures in %d concepts and %d subfamilies. Each concept page has a section per measure (variant); the anchor of a section is the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens).\n" % (esc(f), nm, len(cs), len(subs))
         for sf, sc in subs.items():
             body += "\n## %s\n\n" % esc(sf)
-            body += table(["Concept", "Measures", "Tools", "Definition"], [[
-                "[%s](%s.html)" % (esc(c["name"]), c["id"]), len(mem[c["id"]]), len({r["tool"] for m in mem[c["id"]] for r in caps_by_m[m["id"]]}), esc(c["definition"] if len(c["definition"]) <= 160 else c["definition"][:157].rsplit(" ", 1)[0] + "...")] for c in sc]) + "\n"
+            body += table(["Concept", "Measures", "Tools", "Formulas", "Definition"], [[
+                "[%s](%s.html)" % (esc(c["name"]), c["id"]), len(mem[c["id"]]), len({r["tool"] for m in mem[c["id"]] for r in caps_by_m[m["id"]]}), {"complete": "written", "partial": "partly written", "name_only": "not yet written"}[defs_of[c["id"]]["status"]] if c["id"] in defs_of else "not yet written", esc(c["definition"] if len(c["definition"]) <= 160 else c["definition"][:157].rsplit(" ", 1)[0] + "...")] for c in sc]) + "\n"
         files["measures/%s/index.md" % fam_slug(f)] = page({"title": yq(f), "layout": "default", "parent": "Measures", "has_children": "true", "nav_order": fi + 1, "permalink": "/measures/%s/" % fam_slug(f)}, body)
     for c in concepts:
         ms_ = mem[c["id"]]
-        body = "# %s {#concept-top}\n\nFamily: [%s](index.html). Subfamily: %s. Concept id: %s. %d measure%s.\n\n## Definition {#concept-definition}\n\n%s\n" % (
-            esc(c["name"]), esc(c["family"]), esc(c["subfamily"]), code(c["id"]), len(ms_), "" if len(ms_) == 1 else "s", esc(c["definition"]))
-        if len(ms_) > 1:
+        dent = defs_of.get(c["id"])
+        dr = render_definition(c, dent, ms_, tid, tool_order, caps_by_m, d["vocabulary"])
+        body = "# %s {#concept-top}\n\nFamily: [%s](index.html). Subfamily: %s. Concept id: %s. %d measure%s.\n" % (
+            esc(c["name"]), esc(c["family"]), esc(c["subfamily"]), code(c["id"]), len(ms_), "" if len(ms_) == 1 else "s")
+        if dr["notation"]: body += "\n## Notation {#concept-notation}\n" + dr["notation"]
+        body += "\n## Definition {#concept-definition}\n\n%s\n" % esc(c["definition"]) + dr["formulas"]
+        if dr["variants"]: body += "\n## Variants {#concept-variants}\n" + dr["variants"]
+        elif len(ms_) > 1:
             body += "\n## Variants {#concept-variants}\n\n" + table(["Variant", "Measure id", "Tools"], [
                 ["[%s](#%s)" % (esc(m["variant"]), slug(m["id"])), code(m["id"]), len({r["tool"] for r in caps_by_m[m["id"]]})] for m in ms_]) + "\n"
+        if dr["edge"]: body += "\n## Edge cases {#concept-edge-cases}\n" + dr["edge"]
         if c["references"]:
             body += "\n## References {#concept-references}\n\n" + ", ".join(cite(k, "../../") for k in c["references"]) + "\n"
         for m in ms_:
@@ -549,7 +736,7 @@ Every entry that is not `checked-agrees` has a reason in `reasons.json`. `build.
 
 
     # method: how entries are labelled
-    mtxt = open(os.path.join(DATA, "method.md"), encoding="utf-8").read().strip()
+    mtxt = pipe_tables_to_html(open(os.path.join(DATA, "method.md"), encoding="utf-8").read().strip())
     mtxt = re.sub(r"^# .*\n", "", mtxt)
     ncap = collections.Counter(r["state"] for r in d["capabilities"])
     nwhy = collections.Counter(r["why_not_run"] for r in d["reasons"] if r["state"] == "reported-in-docs")
@@ -603,7 +790,7 @@ Every entry that is not `checked-agrees` has a reason in `reasons.json`. `build.
     files["findings.md"] = page({"title": "Findings", "layout": "default", "nav_order": 6}, body)
 
     # benchmarks
-    method = open(os.path.join(DATA, "benchmarks", "method.md"), encoding="utf-8").read().strip()
+    method = pipe_tables_to_html(open(os.path.join(DATA, "benchmarks", "method.md"), encoding="utf-8").read().strip())
     method = re.sub(r"^# .*\n", "", method)
     body = "# Benchmarks\n\nTimings and memory of other tools only. Raw rows: `data/benchmarks/results.csv`. Method:\n\n" + method.replace("\n#", "\n##") + "\n"
     R = d["results"]
@@ -668,11 +855,12 @@ Source of truth is data/. Pages are generated from it by scripts/build.py (pytho
 - data/conventions.json (data/schema/conventions.schema.json): array of records per measure, variant and tool. Fields: measure, variant, manifest, tool, scope (any | directed | undirected), weights_required, call (how the tool was invoked), outcome (agrees | differs | no-value-on-some-inputs | documented), differs_when and undefined_when (structural conditions such as loops, multi_edges, directed, disconnected, ties), only_on, dimensions (normalization, direction, weights, self_loops, multi_edges, ties, defaults), note, tolerance {{abs, rel}} (0 means exact), optional differs_on_inputs, no_value_on_inputs, reference.
 - data/findings.json (data/schema/findings.schema.json): array of findings. Fields: id, tool, version, measure (nullable), kind (defect | convention | limitation), status (reproduced | observed | reported), title, reproduction, observed, expected, evidence, references.
 - data/benchmarks/results.csv (data/schema/benchmarks-results.schema.json): timing rows of other tools. Columns: suite, graph, nodes, edges, measure, tool, tool_version, seconds (empty when over budget), peak_megabytes, threads, status. Method: data/benchmarks/method.md.
+- data/definitions/<family-slug>.json (data/schema/definitions.schema.json): one file per family with the precise definitions of its concepts, keyed by concept id. Per concept: status (complete | partial | name_only), note, notation (symbol, meaning), formulas (name, latex, applies_to, where), variants (measure id -> what changes in the formula), edge_cases (case, definition_gives, tools: tool id -> status agrees | differs | no_value | documented | not_recorded, behaviour, source, optional measure and finding), references (BibTeX keys). The edge-case ids and their meaning are in data/definitions/_vocabulary.json. Procedure: data/definitions/README.md.
 - data/references.bib: BibTeX for every key used above.
 
 ## Joins
 
-reasons.measure/tool -> capabilities.measure/tool; measures.concept -> concepts.id; aliases.measure -> measures.id; aliases.concept -> concepts.id; capabilities.measure -> measures.id; capabilities.tool -> tools.id; conventions.measure/tool -> measures.id/tools.id; findings.tool -> tools.id; findings.measure -> measures.id (nullable); benchmarks.tool -> tools.id; every citation key -> references.bib. Page for a concept: measures/<family-slug>/<concept id>.html, where family-slug is the family name in lower case with runs of other characters replaced by a hyphen (see aliases.csv, column page). Each measure is a section of its concept page with anchor = the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens), so the page of a measure is aliases.page + "#" + aliases.anchor. Family overview: measures/<family-slug>/. Page for a tool: tools/<id>.html. To join a measure-level table to concepts: join on measure id with measures.json (concept, variant) and then with concepts.json (family, subfamily).
+reasons.measure/tool -> capabilities.measure/tool; measures.concept -> concepts.id; aliases.measure -> measures.id; aliases.concept -> concepts.id; capabilities.measure -> measures.id; capabilities.tool -> tools.id; conventions.measure/tool -> measures.id/tools.id; findings.tool -> tools.id; findings.measure -> measures.id (nullable); benchmarks.tool -> tools.id; every citation key -> references.bib; definitions concept key -> concepts.id, variants key -> measures.id, edge_cases[].case -> definitions/_vocabulary.json, edge_cases[].tools key -> tools.id. Page for a concept: measures/<family-slug>/<concept id>.html, where family-slug is the family name in lower case with runs of other characters replaced by a hyphen (see aliases.csv, column page). Each measure is a section of its concept page with anchor = the measure id (characters other than letters, digits, underscore, dot and hyphen become hyphens), so the page of a measure is aliases.page + "#" + aliases.anchor. Family overview: measures/<family-slug>/. Page for a tool: tools/<id>.html. To join a measure-level table to concepts: join on measure id with measures.json (concept, variant) and then with concepts.json (family, subfamily).
 
 ## Conventions of the data
 

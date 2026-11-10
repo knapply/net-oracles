@@ -16,12 +16,11 @@ Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment 
 
 Dorogovtsev-Goltsev-Mendes graph. Entries grouped here: Dorogovtsev goltsev mendes graph; Dorogovtsev-Goltsev-Mendes graph.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Dorogovtsev goltsev mendes graph](#cat_dorogovtsev_goltsev_mendes) | `cat_dorogovtsev_goltsev_mendes` | 2 |
-| [Dorogovtsev-Goltsev-Mendes graph](#dorogovtsev_goltsev_mendes_graph) | `dorogovtsev_goltsev_mendes_graph` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_dorogovtsev_goltsev_mendes">Dorogovtsev goltsev mendes graph</a></td><td><code>cat_dorogovtsev_goltsev_mendes</code></td><td>2</td></tr><tr><td><a href="#dorogovtsev_goltsev_mendes_graph">Dorogovtsev-Goltsev-Mendes graph</a></td><td><code>dorogovtsev_goltsev_mendes_graph</code></td><td>1</td></tr></tbody></table></div>
 
 ## Dorogovtsev goltsev mendes graph {#cat_dorogovtsev_goltsev_mendes}
 
@@ -31,10 +30,7 @@ Measure id: `cat_dorogovtsev_goltsev_mendes`. Original family: Generators and re
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dorogovtsev_goltsev_mendes-networkx) | `dorogovtsev_goltsev_mendes_graph` | API listing |
-| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dorogovtsev_goltsev_mendes-rustworkx) | `dorogovtsev_goltsev_mendes_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dorogovtsev_goltsev_mendes-networkx">details</a></td><td><code>dorogovtsev_goltsev_mendes_graph</code></td><td>API listing</td></tr><tr><td><a href="../../tools/rustworkx.html">rustworkx</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dorogovtsev_goltsev_mendes-rustworkx">details</a></td><td><code>dorogovtsev_goltsev_mendes_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -51,9 +47,7 @@ Measure id: `dorogovtsev_goltsev_mendes_graph`. Original family: Generators and 
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-dorogovtsev_goltsev_mendes_graph-networkit) | `DorogovtsevMendesGenerator; DynamicDorogovtsevMendesGenerator` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-dorogovtsev_goltsev_mendes_graph-networkit">details</a></td><td><code>DorogovtsevMendesGenerator; DynamicDorogovtsevMendesGenerator</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

@@ -16,35 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: SAOM effects. Concept id: 
 
 Distance-two effects. Entries grouped here: Alt Dist2; Any In Exposure Dist2; Av Alt Dist2; Av In Alt Dist2 nc; Av In Sim Dist2; Av TAlt Dist2; and 19 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Alt Dist2](#cat_alt_dist2) | `cat_alt_dist2` | 1 |
-| [Any In Exposure Dist2](#cat_any_dist2_exposure) | `cat_any_dist2_exposure` | 1 |
-| [Av Alt Dist2](#cat_alt_av_dist2) | `cat_alt_av_dist2` | 1 |
-| [Av In Alt Dist2 nc](#cat_alt_av_dist2_nc) | `cat_alt_av_dist2_nc` | 1 |
-| [Av In Sim Dist2](#cat_av_dist2_sim) | `cat_av_dist2_sim` | 1 |
-| [Av TAlt Dist2](#cat_alt_av_dist2_t) | `cat_alt_av_dist2_t` | 1 |
-| [Av TIn Alt Dist2 nc](#cat_alt_av_dist2_nc_t) | `cat_alt_av_dist2_nc_t` | 1 |
-| [Av Tin Exposure Dist2](#cat_av_dist2_exposure_tin) | `cat_av_dist2_exposure_tin` | 1 |
-| [Av TXAlt Dist2](#cat_alt_av_dist2_tx) | `cat_alt_av_dist2_tx` | 1 |
-| [Av XAlt Dist2](#cat_alt_av_dist2_x) | `cat_alt_av_dist2_x` | 1 |
-| [Nbr Dist2](#cat_dist2_nbr) | `cat_dist2_nbr` | 1 |
-| [Nbr Dist2twice](#cat_dist2twice_nbr) | `cat_dist2twice_nbr` | 1 |
-| [Same Ego Dist2](#cat_dist2_ego_same) | `cat_dist2_ego_same` | 1 |
-| [Sim Dist2](#cat_dist2_sim) | `cat_dist2_sim` | 1 |
-| [Sim Ego Dist2](#cat_dist2_ego_sim) | `cat_dist2_ego_sim` | 1 |
-| [Tot AAlt Dist2](#cat_a_alt_dist2_tot) | `cat_a_alt_dist2_tot` | 1 |
-| [Tot AIn Alt Dist2 nc](#cat_a_alt_dist2_nc_tot) | `cat_a_alt_dist2_nc_tot` | 1 |
-| [Tot AIn Exposure Dist2](#cat_a_dist2_exposure_tot) | `cat_a_dist2_exposure_tot` | 1 |
-| [Tot Alt Dist2](#cat_alt_dist2_tot) | `cat_alt_dist2_tot` | 1 |
-| [Tot AXAlt Dist2](#cat_alt_ax_dist2_tot) | `cat_alt_ax_dist2_tot` | 1 |
-| [Tot Dist2](#cat_dist2_tot) | `cat_dist2_tot` | 1 |
-| [Tot In Alt Dist2 nc](#cat_alt_dist2_nc_tot) | `cat_alt_dist2_nc_tot` | 1 |
-| [Tot In Exposure Dist2](#cat_dist2_exposure_tot) | `cat_dist2_exposure_tot` | 1 |
-| [Tot In Sim Dist2](#cat_dist2_sim_tot) | `cat_dist2_sim_tot` | 1 |
-| [Tot XAlt Dist2](#cat_alt_dist2_tot_x) | `cat_alt_dist2_tot_x` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_alt_dist2">Alt Dist2</a></td><td><code>cat_alt_dist2</code></td><td>1</td></tr><tr><td><a href="#cat_any_dist2_exposure">Any In Exposure Dist2</a></td><td><code>cat_any_dist2_exposure</code></td><td>1</td></tr><tr><td><a href="#cat_alt_av_dist2">Av Alt Dist2</a></td><td><code>cat_alt_av_dist2</code></td><td>1</td></tr><tr><td><a href="#cat_alt_av_dist2_nc">Av In Alt Dist2 nc</a></td><td><code>cat_alt_av_dist2_nc</code></td><td>1</td></tr><tr><td><a href="#cat_av_dist2_sim">Av In Sim Dist2</a></td><td><code>cat_av_dist2_sim</code></td><td>1</td></tr><tr><td><a href="#cat_alt_av_dist2_t">Av TAlt Dist2</a></td><td><code>cat_alt_av_dist2_t</code></td><td>1</td></tr><tr><td><a href="#cat_alt_av_dist2_nc_t">Av TIn Alt Dist2 nc</a></td><td><code>cat_alt_av_dist2_nc_t</code></td><td>1</td></tr><tr><td><a href="#cat_av_dist2_exposure_tin">Av Tin Exposure Dist2</a></td><td><code>cat_av_dist2_exposure_tin</code></td><td>1</td></tr><tr><td><a href="#cat_alt_av_dist2_tx">Av TXAlt Dist2</a></td><td><code>cat_alt_av_dist2_tx</code></td><td>1</td></tr><tr><td><a href="#cat_alt_av_dist2_x">Av XAlt Dist2</a></td><td><code>cat_alt_av_dist2_x</code></td><td>1</td></tr><tr><td><a href="#cat_dist2_nbr">Nbr Dist2</a></td><td><code>cat_dist2_nbr</code></td><td>1</td></tr><tr><td><a href="#cat_dist2twice_nbr">Nbr Dist2twice</a></td><td><code>cat_dist2twice_nbr</code></td><td>1</td></tr><tr><td><a href="#cat_dist2_ego_same">Same Ego Dist2</a></td><td><code>cat_dist2_ego_same</code></td><td>1</td></tr><tr><td><a href="#cat_dist2_sim">Sim Dist2</a></td><td><code>cat_dist2_sim</code></td><td>1</td></tr><tr><td><a href="#cat_dist2_ego_sim">Sim Ego Dist2</a></td><td><code>cat_dist2_ego_sim</code></td><td>1</td></tr><tr><td><a href="#cat_a_alt_dist2_tot">Tot AAlt Dist2</a></td><td><code>cat_a_alt_dist2_tot</code></td><td>1</td></tr><tr><td><a href="#cat_a_alt_dist2_nc_tot">Tot AIn Alt Dist2 nc</a></td><td><code>cat_a_alt_dist2_nc_tot</code></td><td>1</td></tr><tr><td><a href="#cat_a_dist2_exposure_tot">Tot AIn Exposure Dist2</a></td><td><code>cat_a_dist2_exposure_tot</code></td><td>1</td></tr><tr><td><a href="#cat_alt_dist2_tot">Tot Alt Dist2</a></td><td><code>cat_alt_dist2_tot</code></td><td>1</td></tr><tr><td><a href="#cat_alt_ax_dist2_tot">Tot AXAlt Dist2</a></td><td><code>cat_alt_ax_dist2_tot</code></td><td>1</td></tr><tr><td><a href="#cat_dist2_tot">Tot Dist2</a></td><td><code>cat_dist2_tot</code></td><td>1</td></tr><tr><td><a href="#cat_alt_dist2_nc_tot">Tot In Alt Dist2 nc</a></td><td><code>cat_alt_dist2_nc_tot</code></td><td>1</td></tr><tr><td><a href="#cat_dist2_exposure_tot">Tot In Exposure Dist2</a></td><td><code>cat_dist2_exposure_tot</code></td><td>1</td></tr><tr><td><a href="#cat_dist2_sim_tot">Tot In Sim Dist2</a></td><td><code>cat_dist2_sim_tot</code></td><td>1</td></tr><tr><td><a href="#cat_alt_dist2_tot_x">Tot XAlt Dist2</a></td><td><code>cat_alt_dist2_tot_x</code></td><td>1</td></tr></tbody></table></div>
 
 ## Alt Dist2 {#cat_alt_dist2}
 
@@ -54,9 +30,7 @@ Measure id: `cat_alt_dist2`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_dist2-rsiena) | `altDist2; altInDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_dist2-rsiena">details</a></td><td><code>altDist2; altInDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -72,9 +46,7 @@ Measure id: `cat_any_dist2_exposure`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_any_dist2_exposure-rsiena) | `anyInExposureDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_any_dist2_exposure-rsiena">details</a></td><td><code>anyInExposureDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -90,9 +62,7 @@ Measure id: `cat_alt_av_dist2`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2-rsiena) | `avAltDist2; avInAltDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_av_dist2-rsiena">details</a></td><td><code>avAltDist2; avInAltDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -108,9 +78,7 @@ Measure id: `cat_alt_av_dist2_nc`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2_nc-rsiena) | `avInAltDist2_nc` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_av_dist2_nc-rsiena">details</a></td><td><code>avInAltDist2_nc</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -126,9 +94,7 @@ Measure id: `cat_av_dist2_sim`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_dist2_sim-rsiena) | `avInSimDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_av_dist2_sim-rsiena">details</a></td><td><code>avInSimDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -144,9 +110,7 @@ Measure id: `cat_alt_av_dist2_t`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2_t-rsiena) | `avTAltDist2; avTInAltDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_av_dist2_t-rsiena">details</a></td><td><code>avTAltDist2; avTInAltDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -162,9 +126,7 @@ Measure id: `cat_alt_av_dist2_nc_t`. Original family: Graph theory and combinato
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2_nc_t-rsiena) | `avTInAltDist2_nc` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_av_dist2_nc_t-rsiena">details</a></td><td><code>avTInAltDist2_nc</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -180,9 +142,7 @@ Measure id: `cat_av_dist2_exposure_tin`. Original family: Graph theory and combi
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_av_dist2_exposure_tin-rsiena) | `avTinExposureDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_av_dist2_exposure_tin-rsiena">details</a></td><td><code>avTinExposureDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -198,9 +158,7 @@ Measure id: `cat_alt_av_dist2_tx`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2_tx-rsiena) | `avTXAltDist2; avTXInAltDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_av_dist2_tx-rsiena">details</a></td><td><code>avTXAltDist2; avTXInAltDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -216,9 +174,7 @@ Measure id: `cat_alt_av_dist2_x`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_av_dist2_x-rsiena) | `avXAltDist2; avXInAltDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_av_dist2_x-rsiena">details</a></td><td><code>avXAltDist2; avXInAltDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -234,9 +190,7 @@ Measure id: `cat_dist2_nbr`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_nbr-rsiena) | `nbrDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dist2_nbr-rsiena">details</a></td><td><code>nbrDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -252,9 +206,7 @@ Measure id: `cat_dist2twice_nbr`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2twice_nbr-rsiena) | `nbrDist2twice` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dist2twice_nbr-rsiena">details</a></td><td><code>nbrDist2twice</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -270,9 +222,7 @@ Measure id: `cat_dist2_ego_same`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_ego_same-rsiena) | `sameEgoDist2; sameEgoInDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dist2_ego_same-rsiena">details</a></td><td><code>sameEgoDist2; sameEgoInDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -288,9 +238,7 @@ Measure id: `cat_dist2_sim`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_sim-rsiena) | `simDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dist2_sim-rsiena">details</a></td><td><code>simDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -306,9 +254,7 @@ Measure id: `cat_dist2_ego_sim`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_ego_sim-rsiena) | `simEgoDist2; simEgoInDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dist2_ego_sim-rsiena">details</a></td><td><code>simEgoDist2; simEgoInDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -324,9 +270,7 @@ Measure id: `cat_a_alt_dist2_tot`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_a_alt_dist2_tot-rsiena) | `totAAltDist2; totAInAltDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_a_alt_dist2_tot-rsiena">details</a></td><td><code>totAAltDist2; totAInAltDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -342,9 +286,7 @@ Measure id: `cat_a_alt_dist2_nc_tot`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_a_alt_dist2_nc_tot-rsiena) | `totAInAltDist2_nc` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_a_alt_dist2_nc_tot-rsiena">details</a></td><td><code>totAInAltDist2_nc</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -360,9 +302,7 @@ Measure id: `cat_a_dist2_exposure_tot`. Original family: Graph theory and combin
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_a_dist2_exposure_tot-rsiena) | `totAInExposureDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_a_dist2_exposure_tot-rsiena">details</a></td><td><code>totAInExposureDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -378,9 +318,7 @@ Measure id: `cat_alt_dist2_tot`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_dist2_tot-rsiena) | `totAltDist2; totInAltDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_dist2_tot-rsiena">details</a></td><td><code>totAltDist2; totInAltDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -396,9 +334,7 @@ Measure id: `cat_alt_ax_dist2_tot`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_ax_dist2_tot-rsiena) | `totAXAltDist2; totAXInAltDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_ax_dist2_tot-rsiena">details</a></td><td><code>totAXAltDist2; totAXInAltDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -414,9 +350,7 @@ Measure id: `cat_dist2_tot`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_tot-rsiena) | `totDist2; totInDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dist2_tot-rsiena">details</a></td><td><code>totDist2; totInDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -432,9 +366,7 @@ Measure id: `cat_alt_dist2_nc_tot`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_dist2_nc_tot-rsiena) | `totInAltDist2_nc` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_dist2_nc_tot-rsiena">details</a></td><td><code>totInAltDist2_nc</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -450,9 +382,7 @@ Measure id: `cat_dist2_exposure_tot`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_exposure_tot-rsiena) | `totInExposureDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dist2_exposure_tot-rsiena">details</a></td><td><code>totInExposureDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -468,9 +398,7 @@ Measure id: `cat_dist2_sim_tot`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dist2_sim_tot-rsiena) | `totInSimDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dist2_sim_tot-rsiena">details</a></td><td><code>totInSimDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -486,9 +414,7 @@ Measure id: `cat_alt_dist2_tot_x`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_alt_dist2_tot_x-rsiena) | `totXAltDist2; totXInAltDist2` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_alt_dist2_tot_x-rsiena">details</a></td><td><code>totXAltDist2; totXInAltDist2</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

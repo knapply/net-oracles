@@ -16,13 +16,11 @@ Family: [Generators and rewiring](index.html). Subfamily: Named and deterministi
 
 Expander graphs. Entries grouped here: Margulis gabber galil graph; Maybe regular expander graph; Random regular expander graph.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Margulis gabber galil graph](#cat_gabber_galil_margulis) | `cat_gabber_galil_margulis` | 1 |
-| [Maybe regular expander graph](#cat_expander_maybe_regular) | `cat_expander_maybe_regular` | 1 |
-| [Random regular expander graph](#cat_expander_random_regular) | `cat_expander_random_regular` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_gabber_galil_margulis">Margulis gabber galil graph</a></td><td><code>cat_gabber_galil_margulis</code></td><td>1</td></tr><tr><td><a href="#cat_expander_maybe_regular">Maybe regular expander graph</a></td><td><code>cat_expander_maybe_regular</code></td><td>1</td></tr><tr><td><a href="#cat_expander_random_regular">Random regular expander graph</a></td><td><code>cat_expander_random_regular</code></td><td>1</td></tr></tbody></table></div>
 
 ## Margulis gabber galil graph {#cat_gabber_galil_margulis}
 
@@ -32,9 +30,7 @@ Measure id: `cat_gabber_galil_margulis`. Original family: Generators and rewirin
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_gabber_galil_margulis-networkx) | `margulis_gabber_galil_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_gabber_galil_margulis-networkx">details</a></td><td><code>margulis_gabber_galil_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -50,9 +46,7 @@ Measure id: `cat_expander_maybe_regular`. Original family: Generators and rewiri
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_expander_maybe_regular-networkx) | `maybe_regular_expander_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_expander_maybe_regular-networkx">details</a></td><td><code>maybe_regular_expander_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -68,9 +62,7 @@ Measure id: `cat_expander_random_regular`. Original family: Generators and rewir
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_expander_random_regular-networkx) | `random_regular_expander_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_expander_random_regular-networkx">details</a></td><td><code>random_regular_expander_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

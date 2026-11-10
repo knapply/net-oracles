@@ -16,12 +16,11 @@ Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Con
 
 Statistics over time (ergm, sna). Entries grouped here: T Ergm Stats; T Sna Stats.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [T Ergm Stats](#cat_ergm_stats_t) | `cat_ergm_stats_t` | 1 |
-| [T Sna Stats](#cat_sna_stats_t) | `cat_sna_stats_t` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_ergm_stats_t">T Ergm Stats</a></td><td><code>cat_ergm_stats_t</code></td><td>1</td></tr><tr><td><a href="#cat_sna_stats_t">T Sna Stats</a></td><td><code>cat_sna_stats_t</code></td><td>1</td></tr></tbody></table></div>
 
 ## T Ergm Stats {#cat_ergm_stats_t}
 
@@ -31,9 +30,7 @@ Measure id: `cat_ergm_stats_t`. Original family: Temporal and events.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [tsna / networkDynamic](../../tools/tsna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_ergm_stats_t-tsna) | `tErgmStats` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/tsna.html">tsna / networkDynamic</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_ergm_stats_t-tsna">details</a></td><td><code>tErgmStats</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `cat_sna_stats_t`. Original family: Temporal and events.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [tsna / networkDynamic](../../tools/tsna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_sna_stats_t-tsna) | `tSnaStats` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/tsna.html">tsna / networkDynamic</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_sna_stats_t-tsna">details</a></td><td><code>tSnaStats</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

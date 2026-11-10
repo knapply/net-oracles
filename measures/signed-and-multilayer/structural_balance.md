@@ -16,6 +16,8 @@ Family: [Signed and multilayer](index.html). Subfamily: Signed networks. Concept
 
 Structural balance and frustration. Entries grouped here: Structural balance, frustration index, signed blockmodels.
 
+*Definition not yet written.*
+
 ## Structural balance, frustration index, signed blockmodels {#signed_balance}
 
 Measure id: `signed_balance`. Original family: Signed and multilayer.
@@ -24,9 +26,7 @@ Measure id: `signed_balance`. Original family: Signed and multilayer.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [signnet](../../tools/signnet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: signnet is documented-only in this survey; listed in its documentation. [details](#why-signed_balance-signnet) |  | documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/signnet.html">signnet</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: signnet is documented-only in this survey; listed in its documentation. <a href="#why-signed_balance-signnet">details</a></td><td></td><td>documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

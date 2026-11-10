@@ -16,19 +16,11 @@ Family: [Generators and rewiring](index.html). Subfamily: Named and deterministi
 
 Circulant and ring graphs (ladder, chordal, Petersen, Harary). Entries grouped here: Chordal cycle graph; Chordal ring generator; Circulant graph generator; Circular ladder graph; Generalized petersen graph; Generalized Petersen graph generator; and 3 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Chordal cycle graph](#cat_chordal_cycle) | `cat_chordal_cycle` | 1 |
-| [Chordal ring generator](#gen_chordal_ring) | `gen_chordal_ring` | 1 |
-| [Circulant graph generator](#gen_circulant) | `gen_circulant` | 2 |
-| [Circular ladder graph](#cat_circular_ladder) | `cat_circular_ladder` | 1 |
-| [Generalized petersen graph](#cat_generalized_petersen) | `cat_generalized_petersen` | 2 |
-| [Generalized Petersen graph generator](#gen_generalized_petersen) | `gen_generalized_petersen` | 1 |
-| [Hkn harary graph](#cat_harary_hkn) | `cat_harary_hkn` | 1 |
-| [Hnm harary graph](#cat_harary_hnm) | `cat_harary_hnm` | 1 |
-| [Implicit family](#implicit_family) | `implicit_family` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_chordal_cycle">Chordal cycle graph</a></td><td><code>cat_chordal_cycle</code></td><td>1</td></tr><tr><td><a href="#gen_chordal_ring">Chordal ring generator</a></td><td><code>gen_chordal_ring</code></td><td>1</td></tr><tr><td><a href="#gen_circulant">Circulant graph generator</a></td><td><code>gen_circulant</code></td><td>2</td></tr><tr><td><a href="#cat_circular_ladder">Circular ladder graph</a></td><td><code>cat_circular_ladder</code></td><td>1</td></tr><tr><td><a href="#cat_generalized_petersen">Generalized petersen graph</a></td><td><code>cat_generalized_petersen</code></td><td>2</td></tr><tr><td><a href="#gen_generalized_petersen">Generalized Petersen graph generator</a></td><td><code>gen_generalized_petersen</code></td><td>1</td></tr><tr><td><a href="#cat_harary_hkn">Hkn harary graph</a></td><td><code>cat_harary_hkn</code></td><td>1</td></tr><tr><td><a href="#cat_harary_hnm">Hnm harary graph</a></td><td><code>cat_harary_hnm</code></td><td>1</td></tr><tr><td><a href="#implicit_family">Implicit family</a></td><td><code>implicit_family</code></td><td>1</td></tr></tbody></table></div>
 
 ## Chordal cycle graph {#cat_chordal_cycle}
 
@@ -38,9 +30,7 @@ Measure id: `cat_chordal_cycle`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_chordal_cycle-networkx) | `chordal_cycle_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_chordal_cycle-networkx">details</a></td><td><code>chordal_cycle_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -56,9 +46,7 @@ Measure id: `gen_chordal_ring`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_chordal_ring-igraph) | `chordal_ring; make_chordal_ring` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_chordal_ring-igraph">details</a></td><td><code>chordal_ring; make_chordal_ring</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -74,10 +62,7 @@ Measure id: `gen_circulant`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_circulant-networkx) | `circulant_graph` | API listing |
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_circulant-igraph) | `circulant; make_circulant` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_circulant-networkx">details</a></td><td><code>circulant_graph</code></td><td>API listing</td></tr><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_circulant-igraph">details</a></td><td><code>circulant; make_circulant</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -94,9 +79,7 @@ Measure id: `cat_circular_ladder`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_circular_ladder-networkx) | `circular_ladder_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_circular_ladder-networkx">details</a></td><td><code>circular_ladder_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -112,10 +95,7 @@ Measure id: `cat_generalized_petersen`. Original family: Generators and rewiring
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_generalized_petersen-networkx) | `generalized_petersen_graph` | API listing |
-| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_generalized_petersen-rustworkx) | `generalized_petersen_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_generalized_petersen-networkx">details</a></td><td><code>generalized_petersen_graph</code></td><td>API listing</td></tr><tr><td><a href="../../tools/rustworkx.html">rustworkx</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_generalized_petersen-rustworkx">details</a></td><td><code>generalized_petersen_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -132,9 +112,7 @@ Measure id: `gen_generalized_petersen`. Original family: Generators and rewiring
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_generalized_petersen-jgrapht) | `GeneralizedPetersenGraphGenerator` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_generalized_petersen-jgrapht">details</a></td><td><code>GeneralizedPetersenGraphGenerator</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -150,9 +128,7 @@ Measure id: `cat_harary_hkn`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_harary_hkn-networkx) | `hkn_harary_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_harary_hkn-networkx">details</a></td><td><code>hkn_harary_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -168,9 +144,7 @@ Measure id: `cat_harary_hnm`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_harary_hnm-networkx) | `hnm_harary_graph` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_harary_hnm-networkx">details</a></td><td><code>hnm_harary_graph</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -186,9 +160,7 @@ Measure id: `implicit_family`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-nov" href="../../method.html#state-checked-no-value"><span class="g" aria-hidden="true">∅</span>checked, no value on some inputs</a> | Checked, no comparison counts recorded for this entry. *(reason incomplete)* [details](#why-implicit_family-networkx) |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-nov" href="../../method.html#state-checked-no-value"><span class="g" aria-hidden="true">∅</span>checked, no value on some inputs</a></td><td>Checked, no comparison counts recorded for this entry. <em>(reason incomplete)</em> <a href="#why-implicit_family-networkx">details</a></td><td></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -196,25 +168,11 @@ Measure id: `implicit_family`. Original family: Graph theory and combinatorics.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `implicit_circulant` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.circulant_graph(n, offsets)` |  |
-| `implicit_complete_bipartite` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.complete_bipartite_graph(a, b)` |  |
-| `implicit_complete_bipartite_dir` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.complete_bipartite_graph(a, b), oriented from the first part` |  |
-| `implicit_complete_multipartite` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.complete_multipartite_graph(*sizes)` |  |
-| `implicit_de_bruijn` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `iterated nx.line_graph of the complete digraph with loops` |  |
-| `implicit_hypercube` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.hypercube_graph(d), tuple read as an integer` |  |
-| `implicit_kautz` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `iterated nx.line_graph of the complete digraph` |  |
-| `implicit_path` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.path_graph(n)` |  |
-| `implicit_path_dir` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.path_graph(n, create_using=nx.DiGraph)` |  |
-| `implicit_star` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.star_graph(n)` |  |
-| `implicit_wheel` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `nx.wheel_graph(n)` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>implicit_circulant</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.circulant_graph(n, offsets)</code></td><td></td></tr><tr><td><code>implicit_complete_bipartite</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.complete_bipartite_graph(a, b)</code></td><td></td></tr><tr><td><code>implicit_complete_bipartite_dir</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.complete_bipartite_graph(a, b), oriented from the first part</code></td><td></td></tr><tr><td><code>implicit_complete_multipartite</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.complete_multipartite_graph(*sizes)</code></td><td></td></tr><tr><td><code>implicit_de_bruijn</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>iterated nx.line_graph of the complete digraph with loops</code></td><td></td></tr><tr><td><code>implicit_hypercube</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.hypercube_graph(d), tuple read as an integer</code></td><td></td></tr><tr><td><code>implicit_kautz</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>iterated nx.line_graph of the complete digraph</code></td><td></td></tr><tr><td><code>implicit_path</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.path_graph(n)</code></td><td></td></tr><tr><td><code>implicit_path_dir</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.path_graph(n, create_using=nx.DiGraph)</code></td><td></td></tr><tr><td><code>implicit_star</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.star_graph(n)</code></td><td></td></tr><tr><td><code>implicit_wheel</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.wheel_graph(n)</code></td><td></td></tr></tbody></table></div>
 
 **Findings**
 
-| Id | Tool | Kind | Title |
-|---|---|---|---|
-| [F034](../../findings.html#f034) | NetworkX | convention | hypercube\_graph nodes are bit tuples; dimension 0 is the null graph |
+<div class="table-wrapper"><table><thead><tr><th>Id</th><th>Tool</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../../findings.html#f034">F034</a></td><td>NetworkX</td><td>convention</td><td>hypercube_graph nodes are bit tuples; dimension 0 is the null graph</td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

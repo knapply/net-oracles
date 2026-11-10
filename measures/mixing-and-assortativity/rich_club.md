@@ -16,13 +16,11 @@ Family: [Mixing and assortativity](index.html). Subfamily: Rich club. Concept id
 
 Rich-club coefficient of an undirected network for every degree, optionally normalized by degree-preserving randomizations.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Rich club](#rich_club) | `rich_club` | 2 |
-| [Weighted richclub](#cat_richclub_weighted) | `cat_richclub_weighted` | 1 |
-| [Weighted richclub local](#cat_local_richclub_weighted) | `cat_local_richclub_weighted` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#rich_club">Rich club</a></td><td><code>rich_club</code></td><td>2</td></tr><tr><td><a href="#cat_richclub_weighted">Weighted richclub</a></td><td><code>cat_richclub_weighted</code></td><td>1</td></tr><tr><td><a href="#cat_local_richclub_weighted">Weighted richclub local</a></td><td><code>cat_local_richclub_weighted</code></td><td>1</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -36,10 +34,7 @@ Measure id: `rich_club`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `rich_club_coefficient` |  |
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-rich_club-bct) | `rich_club_bd; rich_club_bu; rich_club_wd; rich_club_wu` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>rich_club_coefficient</code></td><td></td></tr><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-rich_club-bct">details</a></td><td><code>rich_club_bd; rich_club_bu; rich_club_wd; rich_club_wu</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -47,10 +42,7 @@ Measure id: `rich_club`. Original family: Generators and rewiring.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `rich_club` | NetworkX | undirected | agrees |  |  | abs 1e-12, rel 1e-12 | `nx.rich_club_coefficient(G, normalized = False); -1 where it raises (self-loops)` |  |
-| `rich_club_normalized` | NetworkX | undirected | no-value-on-some-inputs |  | normalization | abs 0.02, rel 0.1 | `nx.rich_club_coefficient(G, normalized = True, Q = 20, n_samples = 200, seed = 7); -1 where it raises` | as for small\_world\_sigma (the normalization averages 200 rewired graphs) |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>rich_club</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.rich_club_coefficient(G, normalized = False); -1 where it raises (self-loops)</code></td><td></td></tr><tr><td><code>rich_club_normalized</code></td><td>NetworkX</td><td>undirected</td><td>no-value-on-some-inputs</td><td></td><td>normalization</td><td>abs 0.02, rel 0.1</td><td><code>nx.rich_club_coefficient(G, normalized = True, Q = 20, n_samples = 200, seed = 7); -1 where it raises</code></td><td>as for small_world_sigma (the normalization averages 200 rewired graphs)</td></tr></tbody></table></div>
 
 **References:** [colizza2006detecting](../../references.html#colizza2006detecting), [erdos2010simple](../../references.html#erdos2010simple), [hagberg2008exploring](../../references.html#hagberg2008exploring), [humphries2008network](../../references.html#humphries2008network), [maslov2002specificity](../../references.html#maslov2002specificity), [sporns2004small](../../references.html#sporns2004small), [telesford2011ubiquity](../../references.html#telesford2011ubiquity), [zhou2004rich](../../references.html#zhou2004rich)
 
@@ -64,9 +56,7 @@ Measure id: `cat_richclub_weighted`. Original family: Graph theory and combinato
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [tnet](../../tools/tnet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_richclub_weighted-tnet) | `weighted_richclub_tm; weighted_richclub_w` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/tnet.html">tnet</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_richclub_weighted-tnet">details</a></td><td><code>weighted_richclub_tm; weighted_richclub_w</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -82,9 +72,7 @@ Measure id: `cat_local_richclub_weighted`. Original family: Graph theory and com
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [tnet](../../tools/tnet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_local_richclub_weighted-tnet) | `weighted_richclub_local_w` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/tnet.html">tnet</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_local_richclub_weighted-tnet">details</a></td><td><code>weighted_richclub_local_w</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

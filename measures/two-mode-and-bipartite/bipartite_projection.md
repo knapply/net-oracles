@@ -16,13 +16,11 @@ Family: [Two-mode and bipartite](index.html). Subfamily: Projection. Concept id:
 
 One-mode projection of a two-mode network onto either mode, with count, Newman or product weights.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Project](#project) | `project` | 6 |
-| [Projection](#projection) | `projection` | 2 |
-| [Two-mode projection weights (covariance, correlation, Jaccard, Bonacich, cosine)](#projection_weights) | `projection_weights` | 2 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#project">Project</a></td><td><code>project</code></td><td>6</td></tr><tr><td><a href="#projection">Projection</a></td><td><code>projection</code></td><td>2</td></tr><tr><td><a href="#projection_weights">Two-mode projection weights (covariance, correlation, Jaccard, Bonacich, cosine)</a></td><td><code>projection_weights</code></td><td>2</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -36,14 +34,7 @@ Measure id: `project`. Original family: Two-mode and bipartite.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `collaboration_weighted_projected_graph; generic_weighted_projected_graph; overlap_weighted_projected_graph; projected_graph; weighted_projected_graph` |  |
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `bipartite_projection; bipartite_projection_size` |  |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-project-pyigraph) | `bipartite_projection; bipartite_projection_size` | API listing |
-| [ergm (statnet)](../../tools/ergm.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-project-ergm) | `Project` | API listing |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-project-ucinet) | `Affiliations (2-mode to 1-mode): co-membership values 0-4; cosine similarity (6.833); old routine "to avoid"; bprod; bxtx; bxxt; xtx; xxt` | published documentation |
-| [tnet](../../tools/tnet.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `projecting_tm` |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>collaboration_weighted_projected_graph; generic_weighted_projected_graph; overlap_weighted_projected_graph; projected_graph; weighted_projected_graph</code></td><td></td></tr><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>bipartite_projection; bipartite_projection_size</code></td><td></td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-project-pyigraph">details</a></td><td><code>bipartite_projection; bipartite_projection_size</code></td><td>API listing</td></tr><tr><td><a href="../../tools/ergm.html">ergm (statnet)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-project-ergm">details</a></td><td><code>Project</code></td><td>API listing</td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-project-ucinet">details</a></td><td><code>Affiliations (2-mode to 1-mode): co-membership values 0-4; cosine similarity (6.833); old routine "to avoid"; bprod; bxtx; bxxt; xtx; xxt</code></td><td>published documentation</td></tr><tr><td><a href="../../tools/tnet.html">tnet</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>projecting_tm</code></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -53,19 +44,7 @@ Measure id: `project`. Original family: Two-mode and bipartite.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `project_first` | NetworkX | any | no-value-on-some-inputs |  |  | abs 0, rel 0 | `nx.bipartite.weighted_projected_graph(G, first_mode_nodes)` | one-mode fixture (no node types) |
-| `project_first` | igraph (R) | any | no-value-on-some-inputs |  |  | abs 0, rel 0 | `igraph::bipartite_projection(g, types, multiplicity = TRUE)$proj1` | one-mode fixture (no node types) |
-| `project_first` | tnet | any | agrees |  |  | abs 0, rel 0 | `tnet::projecting_tm(two-mode list, method = 'sum')` |  |
-| `project_first_newman` | NetworkX | any | no-value-on-some-inputs |  |  | abs 0, rel 1e-12 | `nx.bipartite.collaboration_weighted_projected_graph(G, first_mode_nodes)` | one-mode fixture (no node types) |
-| `project_first_newman` | tnet | any | agrees |  |  | abs 0, rel 1e-12 | `tnet::projecting_tm(two-mode list, method = 'Newman')` |  |
-| `project_first_product` | NetworkX | any | no-value-on-some-inputs |  |  | abs 0, rel 1e-12 | `nx.bipartite.generic_weighted_projected_graph(G, first_mode_nodes, sum of w_ue w_ve)` | one-mode fixture (no node types) |
-| `project_second` | NetworkX | any | no-value-on-some-inputs |  |  | abs 0, rel 0 | `nx.bipartite.weighted_projected_graph(G, second_mode_nodes)` | one-mode fixture (no node types) |
-| `project_second` | igraph (R) | any | no-value-on-some-inputs |  |  | abs 0, rel 0 | `igraph::bipartite_projection(g, types, multiplicity = TRUE)$proj2` | one-mode fixture (no node types) |
-| `project_second` | tnet | any | agrees |  |  | abs 0, rel 0 | `tnet::projecting_tm(two-mode list, method = 'sum')` |  |
-| `project_second_newman` | NetworkX | any | no-value-on-some-inputs |  |  | abs 0, rel 1e-12 | `nx.bipartite.collaboration_weighted_projected_graph(G, second_mode_nodes)` | one-mode fixture (no node types) |
-| `project_second_newman` | tnet | any | agrees |  |  | abs 0, rel 1e-12 | `tnet::projecting_tm(two-mode list, method = 'Newman')` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>project_first</code></td><td>NetworkX</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.bipartite.weighted_projected_graph(G, first_mode_nodes)</code></td><td>one-mode fixture (no node types)</td></tr><tr><td><code>project_first</code></td><td>igraph (R)</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>igraph::bipartite_projection(g, types, multiplicity = TRUE)$proj1</code></td><td>one-mode fixture (no node types)</td></tr><tr><td><code>project_first</code></td><td>tnet</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>tnet::projecting_tm(two-mode list, method = 'sum')</code></td><td></td></tr><tr><td><code>project_first_newman</code></td><td>NetworkX</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.bipartite.collaboration_weighted_projected_graph(G, first_mode_nodes)</code></td><td>one-mode fixture (no node types)</td></tr><tr><td><code>project_first_newman</code></td><td>tnet</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>tnet::projecting_tm(two-mode list, method = 'Newman')</code></td><td></td></tr><tr><td><code>project_first_product</code></td><td>NetworkX</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.bipartite.generic_weighted_projected_graph(G, first_mode_nodes, sum of w_ue w_ve)</code></td><td>one-mode fixture (no node types)</td></tr><tr><td><code>project_second</code></td><td>NetworkX</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.bipartite.weighted_projected_graph(G, second_mode_nodes)</code></td><td>one-mode fixture (no node types)</td></tr><tr><td><code>project_second</code></td><td>igraph (R)</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>igraph::bipartite_projection(g, types, multiplicity = TRUE)$proj2</code></td><td>one-mode fixture (no node types)</td></tr><tr><td><code>project_second</code></td><td>tnet</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>tnet::projecting_tm(two-mode list, method = 'sum')</code></td><td></td></tr><tr><td><code>project_second_newman</code></td><td>NetworkX</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.bipartite.collaboration_weighted_projected_graph(G, second_mode_nodes)</code></td><td>one-mode fixture (no node types)</td></tr><tr><td><code>project_second_newman</code></td><td>tnet</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>tnet::projecting_tm(two-mode list, method = 'Newman')</code></td><td></td></tr></tbody></table></div>
 
 **References:** [bonacich1972factoring](../../references.html#bonacich1972factoring), [bonacich1987power](../../references.html#bonacich1987power), [borgatti1997network](../../references.html#borgatti1997network), [borgatti2011analyzing](../../references.html#borgatti2011analyzing), [breiger1974duality](../../references.html#breiger1974duality), [collatz1942einschliessungssatz](../../references.html#collatz1942einschliessungssatz), [daniel1976reorthogonalization](../../references.html#daniel1976reorthogonalization), [everett2013dual](../../references.html#everett2013dual)
 
@@ -79,10 +58,7 @@ Measure id: `projection`. Original family: Two-mode and bipartite.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-projection-graphtool) | `graph_projection` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td></td></tr><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-projection-graphtool">details</a></td><td><code>graph_projection</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -90,12 +66,7 @@ Measure id: `projection`. Original family: Two-mode and bipartite.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `projection_count` | NetworkX | any | no-value-on-some-inputs |  |  | abs 0, rel 0 | `nx.bipartite.weighted_projected_graph(G, top)` | NetworkX raises when no node lies outside `top` |
-| `projection_jaccard` | NetworkX | any | agrees |  |  | abs 0, rel 1e-15 | `nx.bipartite.overlap_weighted_projected_graph(G, top)` |  |
-| `projection_min` | NetworkX | any | agrees |  |  | abs 0, rel 1e-15 | `nx.bipartite.overlap_weighted_projected_graph(G, top, jaccard = False)` |  |
-| `projection_newman` | NetworkX | any | agrees |  |  | abs 1e-14, rel 1e-12 | `nx.bipartite.collaboration_weighted_projected_graph(G, top)` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>projection_count</code></td><td>NetworkX</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.bipartite.weighted_projected_graph(G, top)</code></td><td>NetworkX raises when no node lies outside <code>top</code></td></tr><tr><td><code>projection_jaccard</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-15</td><td><code>nx.bipartite.overlap_weighted_projected_graph(G, top)</code></td><td></td></tr><tr><td><code>projection_min</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-15</td><td><code>nx.bipartite.overlap_weighted_projected_graph(G, top, jaccard = False)</code></td><td></td></tr><tr><td><code>projection_newman</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-14, rel 1e-12</td><td><code>nx.bipartite.collaboration_weighted_projected_graph(G, top)</code></td><td></td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 
@@ -107,10 +78,7 @@ Measure id: `projection_weights`. Original family: Two-mode and bipartite.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-projection_weights-ucinet) |  | published documentation |
-| [tnet](../../tools/tnet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's documentation; no comparison set up for this measure yet. [details](#why-projection_weights-tnet) |  | documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-projection_weights-ucinet">details</a></td><td></td><td>published documentation</td></tr><tr><td><a href="../../tools/tnet.html">tnet</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's documentation; no comparison set up for this measure yet. <a href="#why-projection_weights-tnet">details</a></td><td></td><td>documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

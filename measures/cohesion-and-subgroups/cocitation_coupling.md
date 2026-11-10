@@ -16,6 +16,8 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and loca
 
 Cocitation and bibliographic coupling. Entries grouped here: Cocitation and bibliographic coupling.
 
+*Definition not yet written.*
+
 ## Cocitation and bibliographic coupling {#cocitation}
 
 Measure id: `cocitation`. Original family: Cohesion and subgroups.
@@ -24,10 +26,7 @@ Measure id: `cocitation`. Original family: Cohesion and subgroups.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cocitation-igraph) | `bibcoupling; cocitation` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cocitation-pyigraph) | `bibcoupling; cocitation` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cocitation-igraph">details</a></td><td><code>bibcoupling; cocitation</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cocitation-pyigraph">details</a></td><td><code>bibcoupling; cocitation</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

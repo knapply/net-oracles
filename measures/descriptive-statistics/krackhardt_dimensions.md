@@ -16,6 +16,8 @@ Family: [Descriptive statistics](index.html). Subfamily: Efficiency, compactness
 
 Krackhardt graph-theoretic dimensions. Entries grouped here: Krackhardt graph-theoretic dimensions (connectedness, hierarchy, efficiency, LUBness).
 
+*Definition not yet written.*
+
 ## Krackhardt graph-theoretic dimensions (connectedness, hierarchy, efficiency, LUBness) {#krackhardt_dimensions}
 
 Measure id: `krackhardt_dimensions`. Original family: Descriptive statistics.
@@ -24,10 +26,7 @@ Measure id: `krackhardt_dimensions`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [sna](../../tools/sna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's documentation; no comparison set up for this measure yet. [details](#why-krackhardt_dimensions-sna) | `connectedness; lubness` | documentation |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-krackhardt_dimensions-ucinet) | `Fragmentation, Krackhardt graph-theoretic dimensions (connectedness, hierarchy, efficiency, LUBness)` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sna.html">sna</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's documentation; no comparison set up for this measure yet. <a href="#why-krackhardt_dimensions-sna">details</a></td><td><code>connectedness; lubness</code></td><td>documentation</td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-krackhardt_dimensions-ucinet">details</a></td><td><code>Fragmentation, Krackhardt graph-theoretic dimensions (connectedness, hierarchy, efficiency, LUBness)</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

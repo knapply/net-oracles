@@ -16,19 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: Missing data and observati
 
 Observation sampling designs (missing data). Entries grouped here: Block Dyad Sampler; Block Node Sampler; Degree Sampler; Double Standard Sampler; Dyad Sampler; Node Sampler; and 3 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Block Dyad Sampler](#cat_block_dyad_sampler) | `cat_block_dyad_sampler` | 1 |
-| [Block Node Sampler](#cat_block_sampler) | `cat_block_sampler` | 1 |
-| [Degree Sampler](#cat_degree_sampler) | `cat_degree_sampler` | 1 |
-| [Double Standard Sampler](#cat_double_sampler_standard) | `cat_double_sampler_standard` | 1 |
-| [Dyad Sampler](#cat_dyad_sampler) | `cat_dyad_sampler` | 1 |
-| [Node Sampler](#cat_sampler) | `cat_sampler` | 1 |
-| [Simple Dyad Sampler](#cat_dyad_sampler_simple) | `cat_dyad_sampler_simple` | 1 |
-| [Simple Node Sampler](#cat_sampler_simple) | `cat_sampler_simple` | 1 |
-| [Snowball Sampler](#cat_sampler_snowball) | `cat_sampler_snowball` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_block_dyad_sampler">Block Dyad Sampler</a></td><td><code>cat_block_dyad_sampler</code></td><td>1</td></tr><tr><td><a href="#cat_block_sampler">Block Node Sampler</a></td><td><code>cat_block_sampler</code></td><td>1</td></tr><tr><td><a href="#cat_degree_sampler">Degree Sampler</a></td><td><code>cat_degree_sampler</code></td><td>1</td></tr><tr><td><a href="#cat_double_sampler_standard">Double Standard Sampler</a></td><td><code>cat_double_sampler_standard</code></td><td>1</td></tr><tr><td><a href="#cat_dyad_sampler">Dyad Sampler</a></td><td><code>cat_dyad_sampler</code></td><td>1</td></tr><tr><td><a href="#cat_sampler">Node Sampler</a></td><td><code>cat_sampler</code></td><td>1</td></tr><tr><td><a href="#cat_dyad_sampler_simple">Simple Dyad Sampler</a></td><td><code>cat_dyad_sampler_simple</code></td><td>1</td></tr><tr><td><a href="#cat_sampler_simple">Simple Node Sampler</a></td><td><code>cat_sampler_simple</code></td><td>1</td></tr><tr><td><a href="#cat_sampler_snowball">Snowball Sampler</a></td><td><code>cat_sampler_snowball</code></td><td>1</td></tr></tbody></table></div>
 
 ## Block Dyad Sampler {#cat_block_dyad_sampler}
 
@@ -38,9 +30,7 @@ Measure id: `cat_block_dyad_sampler`. Original family: Graph theory and combinat
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_block_dyad_sampler-missSBM) | `blockDyadSampler` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/missSBM.html">missSBM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: missSBM is documented-only in this survey; listed in its documentation. <a href="#why-cat_block_dyad_sampler-missSBM">details</a></td><td><code>blockDyadSampler</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -56,9 +46,7 @@ Measure id: `cat_block_sampler`. Original family: Graph theory and combinatorics
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_block_sampler-missSBM) | `blockNodeSampler` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/missSBM.html">missSBM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: missSBM is documented-only in this survey; listed in its documentation. <a href="#why-cat_block_sampler-missSBM">details</a></td><td><code>blockNodeSampler</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -74,9 +62,7 @@ Measure id: `cat_degree_sampler`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_degree_sampler-missSBM) | `degreeSampler` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/missSBM.html">missSBM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: missSBM is documented-only in this survey; listed in its documentation. <a href="#why-cat_degree_sampler-missSBM">details</a></td><td><code>degreeSampler</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -92,9 +78,7 @@ Measure id: `cat_double_sampler_standard`. Original family: Graph theory and com
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_double_sampler_standard-missSBM) | `doubleStandardSampler` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/missSBM.html">missSBM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: missSBM is documented-only in this survey; listed in its documentation. <a href="#why-cat_double_sampler_standard-missSBM">details</a></td><td><code>doubleStandardSampler</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -110,9 +94,7 @@ Measure id: `cat_dyad_sampler`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_dyad_sampler-missSBM) | `dyadSampler` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/missSBM.html">missSBM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: missSBM is documented-only in this survey; listed in its documentation. <a href="#why-cat_dyad_sampler-missSBM">details</a></td><td><code>dyadSampler</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -128,9 +110,7 @@ Measure id: `cat_sampler`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_sampler-missSBM) | `nodeSampler` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/missSBM.html">missSBM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: missSBM is documented-only in this survey; listed in its documentation. <a href="#why-cat_sampler-missSBM">details</a></td><td><code>nodeSampler</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -146,9 +126,7 @@ Measure id: `cat_dyad_sampler_simple`. Original family: Graph theory and combina
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_dyad_sampler_simple-missSBM) | `simpleDyadSampler` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/missSBM.html">missSBM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: missSBM is documented-only in this survey; listed in its documentation. <a href="#why-cat_dyad_sampler_simple-missSBM">details</a></td><td><code>simpleDyadSampler</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -164,9 +142,7 @@ Measure id: `cat_sampler_simple`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_sampler_simple-missSBM) | `simpleNodeSampler` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/missSBM.html">missSBM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: missSBM is documented-only in this survey; listed in its documentation. <a href="#why-cat_sampler_simple-missSBM">details</a></td><td><code>simpleNodeSampler</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -182,9 +158,7 @@ Measure id: `cat_sampler_snowball`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-cat_sampler_snowball-missSBM) | `snowballSampler` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/missSBM.html">missSBM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: missSBM is documented-only in this survey; listed in its documentation. <a href="#why-cat_sampler_snowball-missSBM">details</a></td><td><code>snowballSampler</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

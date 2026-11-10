@@ -16,12 +16,11 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and e
 
 Random rooted forests. Entries grouped here: Random labeled rooted forest; Random unlabeled rooted forest.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Random labeled rooted forest](#cat_forest_labeled_random_rooted) | `cat_forest_labeled_random_rooted` | 1 |
-| [Random unlabeled rooted forest](#cat_forest_random_rooted_unlabeled) | `cat_forest_random_rooted_unlabeled` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_forest_labeled_random_rooted">Random labeled rooted forest</a></td><td><code>cat_forest_labeled_random_rooted</code></td><td>1</td></tr><tr><td><a href="#cat_forest_random_rooted_unlabeled">Random unlabeled rooted forest</a></td><td><code>cat_forest_random_rooted_unlabeled</code></td><td>1</td></tr></tbody></table></div>
 
 ## Random labeled rooted forest {#cat_forest_labeled_random_rooted}
 
@@ -31,9 +30,7 @@ Measure id: `cat_forest_labeled_random_rooted`. Original family: Traversal, tree
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_forest_labeled_random_rooted-networkx) | `random_labeled_rooted_forest` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_forest_labeled_random_rooted-networkx">details</a></td><td><code>random_labeled_rooted_forest</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `cat_forest_random_rooted_unlabeled`. Original family: Traversal, tr
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_forest_random_rooted_unlabeled-networkx) | `random_unlabeled_rooted_forest` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_forest_random_rooted_unlabeled-networkx">details</a></td><td><code>random_unlabeled_rooted_forest</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

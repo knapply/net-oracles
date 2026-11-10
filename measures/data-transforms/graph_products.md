@@ -16,6 +16,8 @@ Family: [Data transforms](index.html). Subfamily: Graph operators. Concept id: `
 
 Graph products. Entries grouped here: Graph products.
 
+*Definition not yet written.*
+
 ## Graph products {#op_graph_product}
 
 Measure id: `op_graph_product`. Original family: Data transforms.
@@ -24,10 +26,7 @@ Measure id: `op_graph_product`. Original family: Data transforms.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-op_graph_product-networkx) | `cartesian_product; corona_product; lexicographic_product; modular_product; rooted_product; strong_product; tensor_product` | API listing |
-| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-op_graph_product-rustworkx) | `cartesian_product; digraph_cartesian_product; digraph_tensor_product; graph_cartesian_product; graph_tensor_product; tensor_product` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-op_graph_product-networkx">details</a></td><td><code>cartesian_product; corona_product; lexicographic_product; modular_product; rooted_product; strong_product; tensor_product</code></td><td>API listing</td></tr><tr><td><a href="../../tools/rustworkx.html">rustworkx</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-op_graph_product-rustworkx">details</a></td><td><code>cartesian_product; digraph_cartesian_product; digraph_tensor_product; graph_cartesian_product; graph_tensor_product; tensor_product</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

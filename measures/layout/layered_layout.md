@@ -16,15 +16,11 @@ Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `layered
 
 Layered and tree layouts. Entries grouped here: Barycenter Greedy Two Layered Bipartite Layout2 D; Layout tree unrooted; Median Greedy Two Layered Bipartite Layout2 D; Sugiyama layered layout; Two Layered Bipartite Layout2 D.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Barycenter Greedy Two Layered Bipartite Layout2 D](#cat_barycenter_bipartite_d_greedy_layered_layout2_two) | `cat_barycenter_bipartite_d_greedy_layered_layout2_two` | 1 |
-| [Layout tree unrooted](#cat_layout_tree_unrooted) | `cat_layout_tree_unrooted` | 1 |
-| [Median Greedy Two Layered Bipartite Layout2 D](#cat_bipartite_d_greedy_layered_layout2_median_two) | `cat_bipartite_d_greedy_layered_layout2_median_two` | 1 |
-| [Sugiyama layered layout](#layout_sugiyama) | `layout_sugiyama` | 2 |
-| [Two Layered Bipartite Layout2 D](#cat_bipartite_d_layered_layout2_two) | `cat_bipartite_d_layered_layout2_two` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_barycenter_bipartite_d_greedy_layered_layout2_two">Barycenter Greedy Two Layered Bipartite Layout2 D</a></td><td><code>cat_barycenter_bipartite_d_greedy_layered_layout2_two</code></td><td>1</td></tr><tr><td><a href="#cat_layout_tree_unrooted">Layout tree unrooted</a></td><td><code>cat_layout_tree_unrooted</code></td><td>1</td></tr><tr><td><a href="#cat_bipartite_d_greedy_layered_layout2_median_two">Median Greedy Two Layered Bipartite Layout2 D</a></td><td><code>cat_bipartite_d_greedy_layered_layout2_median_two</code></td><td>1</td></tr><tr><td><a href="#layout_sugiyama">Sugiyama layered layout</a></td><td><code>layout_sugiyama</code></td><td>2</td></tr><tr><td><a href="#cat_bipartite_d_layered_layout2_two">Two Layered Bipartite Layout2 D</a></td><td><code>cat_bipartite_d_layered_layout2_two</code></td><td>1</td></tr></tbody></table></div>
 
 ## Barycenter Greedy Two Layered Bipartite Layout2 D {#cat_barycenter_bipartite_d_greedy_layered_layout2_two}
 
@@ -34,9 +30,7 @@ Measure id: `cat_barycenter_bipartite_d_greedy_layered_layout2_two`. Original fa
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_barycenter_bipartite_d_greedy_layered_layout2_two-jgrapht) | `BarycenterGreedyTwoLayeredBipartiteLayout2D` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_barycenter_bipartite_d_greedy_layered_layout2_two-jgrapht">details</a></td><td><code>BarycenterGreedyTwoLayeredBipartiteLayout2D</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -52,9 +46,7 @@ Measure id: `cat_layout_tree_unrooted`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graphlayouts](../../tools/graphlayouts.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: graphlayouts is documented-only in this survey; listed in its documentation. [details](#why-cat_layout_tree_unrooted-graphlayouts) | `layout_tree_unrooted` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphlayouts.html">graphlayouts</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: graphlayouts is documented-only in this survey; listed in its documentation. <a href="#why-cat_layout_tree_unrooted-graphlayouts">details</a></td><td><code>layout_tree_unrooted</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -70,9 +62,7 @@ Measure id: `cat_bipartite_d_greedy_layered_layout2_median_two`. Original family
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_bipartite_d_greedy_layered_layout2_median_two-jgrapht) | `MedianGreedyTwoLayeredBipartiteLayout2D` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_bipartite_d_greedy_layered_layout2_median_two-jgrapht">details</a></td><td><code>MedianGreedyTwoLayeredBipartiteLayout2D</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -88,10 +78,7 @@ Measure id: `layout_sugiyama`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-layout_sugiyama-igraph) | `layout_with_sugiyama` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-layout_sugiyama-pyigraph) | `layout_sugiyama` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-layout_sugiyama-igraph">details</a></td><td><code>layout_with_sugiyama</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-layout_sugiyama-pyigraph">details</a></td><td><code>layout_sugiyama</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -108,9 +95,7 @@ Measure id: `cat_bipartite_d_layered_layout2_two`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_bipartite_d_layered_layout2_two-jgrapht) | `TwoLayeredBipartiteLayout2D` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_bipartite_d_layered_layout2_two-jgrapht">details</a></td><td><code>TwoLayeredBipartiteLayout2D</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

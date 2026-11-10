@@ -16,6 +16,8 @@ Family: [Matrices and spectra](index.html). Subfamily: Graph matrices. Concept i
 
 Sparse-matrix orderings and bandwidth. Entries grouped here: Sparse-matrix orderings and bandwidth/wavefront.
 
+*Definition not yet written.*
+
 ## Sparse-matrix orderings and bandwidth/wavefront {#matrix_bandwidth}
 
 Measure id: `matrix_bandwidth`. Original family: Matrices and spectra.
@@ -24,9 +26,7 @@ Measure id: `matrix_bandwidth`. Original family: Matrices and spectra.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-matrix_bandwidth-boost) | `aver_wavefront; bandwidth; cuthill_mckee_ordering; ith_bandwidth; ith_wavefront; king_ordering; max_wavefront; minimum_degree_ordering; rms_wavefront; sloan_ordering` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/boost.html">Boost Graph Library</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-matrix_bandwidth-boost">details</a></td><td><code>aver_wavefront; bandwidth; cuthill_mckee_ordering; ith_bandwidth; ith_wavefront; king_ordering; max_wavefront; minimum_degree_ordering; rms_wavefront; sloan_ordering</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

@@ -16,6 +16,8 @@ Family: [Mixing and assortativity](index.html). Subfamily: Segregation and homop
 
 Coleman homophily index. Entries grouped here: Coleman.
 
+*Definition not yet written.*
+
 ## Coleman {#cat_coleman}
 
 Measure id: `cat_coleman`. Original family: Mixing and assortativity.
@@ -24,9 +26,7 @@ Measure id: `cat_coleman`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [netseg](../../tools/netseg.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: netseg is documented-only in this survey; listed in its documentation. [details](#why-cat_coleman-netseg) | `coleman` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/netseg.html">netseg</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: netseg is documented-only in this survey; listed in its documentation. <a href="#why-cat_coleman-netseg">details</a></td><td><code>coleman</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

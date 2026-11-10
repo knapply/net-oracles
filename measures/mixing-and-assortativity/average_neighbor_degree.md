@@ -16,13 +16,11 @@ Family: [Mixing and assortativity](index.html). Subfamily: Assortativity. Concep
 
 Average neighbor degree and degree connectivity. Entries grouped here: Avg deg conn; Avg nbr deg; Knn.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Avg deg conn](#avg_deg_conn) | `avg_deg_conn` | 1 |
-| [Avg nbr deg](#avg_nbr_deg) | `avg_nbr_deg` | 1 |
-| [Knn](#cat_knn) | `cat_knn` | 2 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#avg_deg_conn">Avg deg conn</a></td><td><code>avg_deg_conn</code></td><td>1</td></tr><tr><td><a href="#avg_nbr_deg">Avg nbr deg</a></td><td><code>avg_nbr_deg</code></td><td>1</td></tr><tr><td><a href="#cat_knn">Knn</a></td><td><code>cat_knn</code></td><td>2</td></tr></tbody></table></div>
 
 ## Avg deg conn {#avg_deg_conn}
 
@@ -32,9 +30,7 @@ Measure id: `avg_deg_conn`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (multi-edges and normalization): On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity. [details](#why-avg_deg_conn-networkx) | `average_degree_connectivity` |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a></td><td>Differs by convention (multi-edges and normalization): On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity. <a href="#why-avg_deg_conn-networkx">details</a></td><td><code>average_degree_connectivity</code></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -42,13 +38,7 @@ Measure id: `avg_deg_conn`. Original family: Mixing and assortativity.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `avg_deg_conn` | NetworkX | any | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_degree_connectivity(G)` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
-| `avg_deg_conn_in_in` | NetworkX | directed | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_degree_connectivity(G, source = 'in', target = 'in')` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
-| `avg_deg_conn_out_out` | NetworkX | directed | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_degree_connectivity(G, source = 'out', target = 'out')` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
-| `avg_deg_conn_subset` | NetworkX | any | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_degree_connectivity(G, nodes = even nodes)` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
-| `avg_deg_conn_weighted` | NetworkX | any | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_degree_connectivity(G, weight = 'weight')` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>avg_deg_conn</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_degree_connectivity(G)</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr><tr><td><code>avg_deg_conn_in_in</code></td><td>NetworkX</td><td>directed</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_degree_connectivity(G, source = 'in', target = 'in')</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr><tr><td><code>avg_deg_conn_out_out</code></td><td>NetworkX</td><td>directed</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_degree_connectivity(G, source = 'out', target = 'out')</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr><tr><td><code>avg_deg_conn_subset</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_degree_connectivity(G, nodes = even nodes)</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr><tr><td><code>avg_deg_conn_weighted</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_degree_connectivity(G, weight = 'weight')</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -60,9 +50,7 @@ Measure id: `avg_nbr_deg`. Original family: Mixing and assortativity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (multi-edges and normalization): On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity. [details](#why-avg_nbr_deg-networkx) | `average_neighbor_degree` |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a></td><td>Differs by convention (multi-edges and normalization): On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity. <a href="#why-avg_nbr_deg-networkx">details</a></td><td><code>average_neighbor_degree</code></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -70,14 +58,7 @@ Measure id: `avg_nbr_deg`. Original family: Mixing and assortativity.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `avg_nbr_deg` | NetworkX | any | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_neighbor_degree(G)` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
-| `avg_nbr_deg_in_in` | NetworkX | directed | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_neighbor_degree(G, source = 'in', target = 'in')` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
-| `avg_nbr_deg_out_in` | NetworkX | directed | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_neighbor_degree(G, source = 'out', target = 'in')` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
-| `avg_nbr_deg_subset` | NetworkX | any | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_neighbor_degree(G, nodes = even nodes)` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
-| `avg_nbr_deg_total` | NetworkX | directed | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_neighbor_degree(G, source = 'in+out', target = 'in+out')` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
-| `avg_nbr_deg_weighted` | NetworkX | any | differs | multi\_edges | multi\_edges, normalization | abs 1e-12, rel 1e-09 | `nx.average_neighbor_degree(G, weight = 'weight')` | On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>avg_nbr_deg</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_neighbor_degree(G)</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr><tr><td><code>avg_nbr_deg_in_in</code></td><td>NetworkX</td><td>directed</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_neighbor_degree(G, source = 'in', target = 'in')</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr><tr><td><code>avg_nbr_deg_out_in</code></td><td>NetworkX</td><td>directed</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_neighbor_degree(G, source = 'out', target = 'in')</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr><tr><td><code>avg_nbr_deg_subset</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_neighbor_degree(G, nodes = even nodes)</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr><tr><td><code>avg_nbr_deg_total</code></td><td>NetworkX</td><td>directed</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_neighbor_degree(G, source = 'in+out', target = 'in+out')</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr><tr><td><code>avg_nbr_deg_weighted</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>multi_edges</td><td>multi_edges, normalization</td><td>abs 1e-12, rel 1e-09</td><td><code>nx.average_neighbor_degree(G, weight = 'weight')</code></td><td>On a multigraph NetworkX sums over distinct neighbours while dividing by the degree with multiplicity; the reference counts every parallel edge in both.</td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -89,10 +70,7 @@ Measure id: `cat_knn`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_knn-igraph) | `knn` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_knn-pyigraph) | `knn` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_knn-igraph">details</a></td><td><code>knn</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_knn-pyigraph">details</a></td><td><code>knn</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

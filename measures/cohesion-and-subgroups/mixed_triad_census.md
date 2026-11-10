@@ -16,6 +16,8 @@ Family: [Cohesion and subgroups](index.html). Subfamily: Triads, motifs and loca
 
 Mixed triad census. Entries grouped here: Mixed Triad Census.
 
+*Definition not yet written.*
+
 ## Mixed Triad Census {#cat_census_mixed_triad}
 
 Measure id: `cat_census_mixed_triad`. Original family: Cohesion and subgroups.
@@ -24,9 +26,7 @@ Measure id: `cat_census_mixed_triad`. Original family: Cohesion and subgroups.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [RSiena](../../tools/rsiena.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_census_mixed_triad-rsiena) | `mixedTriadCensus` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rsiena.html">RSiena</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_census_mixed_triad-rsiena">details</a></td><td><code>mixedTriadCensus</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

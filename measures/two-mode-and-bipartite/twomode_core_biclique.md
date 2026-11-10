@@ -16,6 +16,8 @@ Family: [Two-mode and bipartite](index.html). Subfamily: Bipartite structure. Co
 
 Two-mode core-periphery and bi-cliques. Entries grouped here: Two-mode core-periphery, bi-cliques, two-mode equivalence.
 
+*Definition not yet written.*
+
 ## Two-mode core-periphery, bi-cliques, two-mode equivalence {#twomode_core_biclique}
 
 Measure id: `twomode_core_biclique`. Original family: Two-mode and bipartite.
@@ -24,9 +26,7 @@ Measure id: `twomode_core_biclique`. Original family: Two-mode and bipartite.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-twomode_core_biclique-ucinet) | `Two-mode core-periphery, bi-cliques, factions; biclique` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-twomode_core_biclique-ucinet">details</a></td><td><code>Two-mode core-periphery, bi-cliques, factions; biclique</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

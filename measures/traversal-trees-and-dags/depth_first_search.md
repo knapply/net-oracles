@@ -16,13 +16,11 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Traversal and orderi
 
 Depth-first search. Entries grouped here: Dfs events; Dfs iterator; Edge dfs.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Dfs events](#trav_dfs_events) | `trav_dfs_events` | 2 |
-| [Dfs iterator](#cat_dfs_iterator) | `cat_dfs_iterator` | 1 |
-| [Edge dfs](#trav_edge_dfs) | `trav_edge_dfs` | 6 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#trav_dfs_events">Dfs events</a></td><td><code>trav_dfs_events</code></td><td>2</td></tr><tr><td><a href="#cat_dfs_iterator">Dfs iterator</a></td><td><code>cat_dfs_iterator</code></td><td>1</td></tr><tr><td><a href="#trav_edge_dfs">Edge dfs</a></td><td><code>trav_edge_dfs</code></td><td>6</td></tr></tbody></table></div>
 
 ## Dfs events {#trav_dfs_events}
 
@@ -32,10 +30,7 @@ Measure id: `trav_dfs_events`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `dfs_labeled_edges` |  |
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_dfs_events-jgrapht) | `DepthFirstIterator` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>dfs_labeled_edges</code></td><td></td></tr><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-trav_dfs_events-jgrapht">details</a></td><td><code>DepthFirstIterator</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -43,9 +38,7 @@ Measure id: `trav_dfs_events`. Original family: Traversal, trees and DAGs.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `trav_dfs_events` | NetworkX | any | agrees |  |  | abs 0, rel 1e-12 | `nx.dfs_labeled_edges(M)` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>trav_dfs_events</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.dfs_labeled_edges(M)</code></td><td></td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht)
 
@@ -57,9 +50,7 @@ Measure id: `cat_dfs_iterator`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_dfs_iterator-graphtool) | `dfs_iterator` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_dfs_iterator-graphtool">details</a></td><td><code>dfs_iterator</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -75,14 +66,7 @@ Measure id: `trav_edge_dfs`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `dfs_edges; dfs_postorder_nodes; dfs_predecessors; dfs_preorder_nodes; dfs_successors; dfs_tree; edge_dfs` |  |
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_edge_dfs-igraph) | `dfs` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_edge_dfs-pyigraph) | `dfs; dfsiter` | API listing |
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_edge_dfs-graphtool) | `dfs_search` | API listing |
-| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_edge_dfs-rustworkx) | `dfs_edges; dfs_search; digraph_dfs_edges; digraph_dfs_search; graph_dfs_edges; graph_dfs_search` | API listing |
-| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-trav_edge_dfs-boost) | `depth_first_search; undirected_dfs` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>dfs_edges; dfs_postorder_nodes; dfs_predecessors; dfs_preorder_nodes; dfs_successors; dfs_tree; edge_dfs</code></td><td></td></tr><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-trav_edge_dfs-igraph">details</a></td><td><code>dfs</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-trav_edge_dfs-pyigraph">details</a></td><td><code>dfs; dfsiter</code></td><td>API listing</td></tr><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-trav_edge_dfs-graphtool">details</a></td><td><code>dfs_search</code></td><td>API listing</td></tr><tr><td><a href="../../tools/rustworkx.html">rustworkx</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-trav_edge_dfs-rustworkx">details</a></td><td><code>dfs_edges; dfs_search; digraph_dfs_edges; digraph_dfs_search; graph_dfs_edges; graph_dfs_search</code></td><td>API listing</td></tr><tr><td><a href="../../tools/boost.html">Boost Graph Library</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-trav_edge_dfs-boost">details</a></td><td><code>depth_first_search; undirected_dfs</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -94,11 +78,7 @@ Measure id: `trav_edge_dfs`. Original family: Traversal, trees and DAGs.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `trav_edge_dfs` | NetworkX | any | agrees |  |  | abs 0, rel 1e-12 | `nx.edge_dfs(M)` |  |
-| `trav_edge_dfs_ignore` | NetworkX | directed | agrees |  |  | abs 0, rel 1e-12 | `nx.edge_dfs(M, orientation = 'ignore')` |  |
-| `trav_edge_dfs_reverse` | NetworkX | directed | agrees |  |  | abs 0, rel 1e-12 | `nx.edge_dfs(M, orientation = 'reverse')` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>trav_edge_dfs</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.edge_dfs(M)</code></td><td></td></tr><tr><td><code>trav_edge_dfs_ignore</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.edge_dfs(M, orientation = 'ignore')</code></td><td></td></tr><tr><td><code>trav_edge_dfs_reverse</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.edge_dfs(M, orientation = 'reverse')</code></td><td></td></tr></tbody></table></div>
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [siek2002boost](../../references.html#siek2002boost), [tool_rustworkx](../../references.html#tool_rustworkx)
 {% endraw %}

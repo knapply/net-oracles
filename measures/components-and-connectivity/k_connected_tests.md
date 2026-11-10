@@ -16,12 +16,11 @@ Family: [Components and connectivity](index.html). Subfamily: Connected componen
 
 K-connectivity tests. Entries grouped here: Is kl connected; Is locally k edge connected (connectivity).
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Is kl connected](#cat_connected_is_kl) | `cat_connected_is_kl` | 1 |
-| [Is locally k edge connected (connectivity)](#cat_connected_edge_is_k_locally-connectivity) | `cat_connected_edge_is_k_locally@connectivity` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_connected_is_kl">Is kl connected</a></td><td><code>cat_connected_is_kl</code></td><td>1</td></tr><tr><td><a href="#cat_connected_edge_is_k_locally-connectivity">Is locally k edge connected (connectivity)</a></td><td><code>cat_connected_edge_is_k_locally@connectivity</code></td><td>1</td></tr></tbody></table></div>
 
 ## Is kl connected {#cat_connected_is_kl}
 
@@ -31,9 +30,7 @@ Measure id: `cat_connected_is_kl`. Original family: Components and connectivity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_connected_is_kl-networkx) | `is_kl_connected` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_connected_is_kl-networkx">details</a></td><td><code>is_kl_connected</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `cat_connected_edge_is_k_locally@connectivity`. Original family: Com
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_connected_edge_is_k_locally-connectivity-networkx) | `is_locally_k_edge_connected` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_connected_edge_is_k_locally-connectivity-networkx">details</a></td><td><code>is_locally_k_edge_connected</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

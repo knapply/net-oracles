@@ -16,6 +16,8 @@ Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutati
 
 MR-QAP regression. Entries grouped here: MR-QAP regression (Y-permutation, double semi-partialling).
 
+*Definition not yet written.*
+
 ## MR-QAP regression (Y-permutation, double semi-partialling) {#qap_regression}
 
 Measure id: `qap_regression`. Original family: Inference (QAP, null models).
@@ -24,10 +26,7 @@ Measure id: `qap_regression`. Original family: Inference (QAP, null models).
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [sna](../../tools/sna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's documentation; no comparison set up for this measure yet. [details](#why-qap_regression-sna) | `netlm` | documentation |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-qap_regression-ucinet) | `Logistic regression with 2-tailed tests (6.751), OLS regression, univariate statistics, correlation, ANOVA/density-by-group (blocks), contingency tables with od; logistic; regress` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sna.html">sna</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's documentation; no comparison set up for this measure yet. <a href="#why-qap_regression-sna">details</a></td><td><code>netlm</code></td><td>documentation</td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-qap_regression-ucinet">details</a></td><td><code>Logistic regression with 2-tailed tests (6.751), OLS regression, univariate statistics, correlation, ANOVA/density-by-group (blocks), contingency tables with od; logistic; regress</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

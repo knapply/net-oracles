@@ -16,6 +16,8 @@ Family: [Paths and distances](index.html). Subfamily: Path enumeration and count
 
 K-path census. Entries grouped here: Kpath census.
 
+*Definition not yet written.*
+
 ## Kpath census {#cat_census_kpath}
 
 Measure id: `cat_census_kpath`. Original family: Paths and distances.
@@ -24,9 +26,7 @@ Measure id: `cat_census_kpath`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [sna](../../tools/sna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_census_kpath-sna) | `kpath.census` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sna.html">sna</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_census_kpath-sna">details</a></td><td><code>kpath.census</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

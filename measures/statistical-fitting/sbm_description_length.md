@@ -16,6 +16,8 @@ Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id:
 
 SBM description length. Entries grouped here: Sbm description length.
 
+*Definition not yet written.*
+
 ## Sbm description length {#sbm_description_length}
 
 Measure id: `sbm_description_length`. Original family: Statistical fitting.
@@ -24,22 +26,11 @@ Measure id: `sbm_description_length`. Original family: Statistical fitting.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `BlockState` |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>BlockState</code></td><td></td></tr></tbody></table></div>
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `sbm_dl_b1` | graph-tool | any | no-value-on-some-inputs |  |  | abs 1e-09, rel 1e-09 |  | The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node). |
-| `sbm_dl_b2` | graph-tool | any | no-value-on-some-inputs |  |  | abs 1e-09, rel 1e-09 |  | The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node). |
-| `sbm_dl_b3` | graph-tool | any | no-value-on-some-inputs |  |  | abs 1e-09, rel 1e-09 |  | The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node). |
-| `sbm_dl_b5` | graph-tool | any | no-value-on-some-inputs |  |  | abs 1e-09, rel 1e-09 |  | The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node). |
-| `sbm_dl_dc_b1` | graph-tool | any | no-value-on-some-inputs |  |  | abs 1e-09, rel 1e-09 |  | The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node). |
-| `sbm_dl_dc_b2` | graph-tool | any | no-value-on-some-inputs |  |  | abs 1e-09, rel 1e-09 |  | The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node). |
-| `sbm_dl_dc_b3` | graph-tool | any | no-value-on-some-inputs |  |  | abs 1e-09, rel 1e-09 |  | The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node). |
-| `sbm_dl_dc_b5` | graph-tool | any | no-value-on-some-inputs |  |  | abs 1e-09, rel 1e-09 |  | The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node). |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>sbm_dl_b1</code></td><td>graph-tool</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td></td><td>The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).</td></tr><tr><td><code>sbm_dl_b2</code></td><td>graph-tool</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td></td><td>The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).</td></tr><tr><td><code>sbm_dl_b3</code></td><td>graph-tool</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td></td><td>The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).</td></tr><tr><td><code>sbm_dl_b5</code></td><td>graph-tool</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td></td><td>The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).</td></tr><tr><td><code>sbm_dl_dc_b1</code></td><td>graph-tool</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td></td><td>The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).</td></tr><tr><td><code>sbm_dl_dc_b2</code></td><td>graph-tool</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td></td><td>The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).</td></tr><tr><td><code>sbm_dl_dc_b3</code></td><td>graph-tool</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td></td><td>The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).</td></tr><tr><td><code>sbm_dl_dc_b5</code></td><td>graph-tool</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td></td><td>The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).</td></tr></tbody></table></div>
 
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 {% endraw %}

@@ -16,6 +16,8 @@ Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id:
 
 Valued-network ERGM (GERGM). Entries grouped here: Valued-network ERGM (GERGM).
 
+*Definition not yet written.*
+
 ## Valued-network ERGM (GERGM) {#gergm}
 
 Measure id: `gergm`. Original family: Statistical fitting.
@@ -24,9 +26,7 @@ Measure id: `gergm`. Original family: Statistical fitting.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [GERGM](../../tools/gergm.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: GERGM is documented-only in this survey; listed in its documentation. [details](#why-gergm-gergm) | `gergm` | documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/gergm.html">GERGM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: GERGM is documented-only in this survey; listed in its documentation. <a href="#why-gergm-gergm">details</a></td><td><code>gergm</code></td><td>documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

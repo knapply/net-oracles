@@ -16,12 +16,11 @@ Family: [Roles and positions](index.html). Subfamily: Scaling and clustering. Co
 
 Multidimensional scaling. Entries grouped here: Classical mds; Non-metric MDS with stress-1.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Classical mds](#classical_mds) | `classical_mds` | 1 |
-| [Non-metric MDS with stress-1](#mds_nonmetric) | `mds_nonmetric` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#classical_mds">Classical mds</a></td><td><code>classical_mds</code></td><td>1</td></tr><tr><td><a href="#mds_nonmetric">Non-metric MDS with stress-1</a></td><td><code>mds_nonmetric</code></td><td>1</td></tr></tbody></table></div>
 
 ## Classical mds {#classical_mds}
 
@@ -31,9 +30,7 @@ Measure id: `classical_mds`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-classical_mds-ucinet) | `MDS (metric, classic, non-metric), Guttman scaling (6.831), correspondence analysis, factor analysis; classicmds` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-classical_mds-ucinet">details</a></td><td><code>MDS (metric, classic, non-metric), Guttman scaling (6.831), correspondence analysis, factor analysis; classicmds</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `mds_nonmetric`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-mds_nonmetric-ucinet) |  | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-mds_nonmetric-ucinet">details</a></td><td></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

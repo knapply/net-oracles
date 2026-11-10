@@ -15,34 +15,17 @@ permalink: /measures/mixing-and-assortativity/
 
 ## Assortativity
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Assortativity coefficient](assortativity_coefficient.html) | 4 | 9 | Assortativity coefficient. Entries grouped here: Assort; Assortativity degree; Assortativity nominal; Assortativity values. |
-| [Average neighbor degree and degree connectivity](average_neighbor_degree.html) | 3 | 3 | Average neighbor degree and degree connectivity. Entries grouped here: Avg deg conn; Avg nbr deg; Knn. |
-| [Degree and property correlation histograms](correlation_histograms.html) | 1 | 1 | Degree and property correlation histograms. Entries grouped here: Degree and property correlation histograms. |
-| [Local assortativity](local_assortativity.html) | 1 | 1 | Local assortativity. Entries grouped here: Local assortativity. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="assortativity_coefficient.html">Assortativity coefficient</a></td><td>4</td><td>9</td><td>not yet written</td><td>Assortativity coefficient. Entries grouped here: Assort; Assortativity degree; Assortativity nominal; Assortativity values.</td></tr><tr><td><a href="average_neighbor_degree.html">Average neighbor degree and degree connectivity</a></td><td>3</td><td>3</td><td>not yet written</td><td>Average neighbor degree and degree connectivity. Entries grouped here: Avg deg conn; Avg nbr deg; Knn.</td></tr><tr><td><a href="correlation_histograms.html">Degree and property correlation histograms</a></td><td>1</td><td>1</td><td>not yet written</td><td>Degree and property correlation histograms. Entries grouped here: Degree and property correlation histograms.</td></tr><tr><td><a href="local_assortativity.html">Local assortativity</a></td><td>1</td><td>1</td><td>not yet written</td><td>Local assortativity. Entries grouped here: Local assortativity.</td></tr></tbody></table></div>
 
 ## Mixing matrices
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Mixing matrices](mixing_matrix.html) | 3 | 2 | Mixing matrices. Entries grouped here: Attribute mixing matrix; Degree mixing matrix; Mixing. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="mixing_matrix.html">Mixing matrices</a></td><td>3</td><td>2</td><td>not yet written</td><td>Mixing matrices. Entries grouped here: Attribute mixing matrix; Degree mixing matrix; Mixing.</td></tr></tbody></table></div>
 
 ## Rich club
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Rich club](rich_club.html) | 3 | 3 | Rich-club coefficient of an undirected network for every degree, optionally normalized by degree-preserving randomizations. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="rich_club.html">Rich club</a></td><td>3</td><td>3</td><td>not yet written</td><td>Rich-club coefficient of an undirected network for every degree, optionally normalized by degree-preserving randomizations.</td></tr></tbody></table></div>
 
 ## Segregation and homophily indices
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Coleman homophily index](coleman_homophily.html) | 1 | 1 | Coleman homophily index. Entries grouped here: Coleman. |
-| [E-I index](ei_index.html) | 1 | 3 | E-I index. Entries grouped here: Ei index. |
-| [Freeman segregation index](freeman_segregation.html) | 1 | 1 | Freeman segregation index. Entries grouped here: Freeman's segregation index. |
-| [Gupta-Anderson-May mixing coefficient](gupta_anderson_may.html) | 1 | 1 | Gupta-Anderson-May mixing coefficient. Entries grouped here: Gupta-Anderson-May mixing coefficient. |
-| [Odds ratio of within-group ties](orwg.html) | 1 | 1 | Odds ratio of within-group ties. Entries grouped here: Odds ratio of within-group ties (ORWG). |
-| [Segregation matrix index](segregation_matrix_index.html) | 1 | 1 | Segregation matrix index. Entries grouped here: Segregation matrix index (SMI). |
-| [Spectral segregation index](spectral_segregation_index.html) | 1 | 1 | Spectral segregation index. Entries grouped here: Spectral segregation index (SSI). |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="coleman_homophily.html">Coleman homophily index</a></td><td>1</td><td>1</td><td>not yet written</td><td>Coleman homophily index. Entries grouped here: Coleman.</td></tr><tr><td><a href="ei_index.html">E-I index</a></td><td>1</td><td>3</td><td>not yet written</td><td>E-I index. Entries grouped here: Ei index.</td></tr><tr><td><a href="freeman_segregation.html">Freeman segregation index</a></td><td>1</td><td>1</td><td>not yet written</td><td>Freeman segregation index. Entries grouped here: Freeman's segregation index.</td></tr><tr><td><a href="gupta_anderson_may.html">Gupta-Anderson-May mixing coefficient</a></td><td>1</td><td>1</td><td>not yet written</td><td>Gupta-Anderson-May mixing coefficient. Entries grouped here: Gupta-Anderson-May mixing coefficient.</td></tr><tr><td><a href="orwg.html">Odds ratio of within-group ties</a></td><td>1</td><td>1</td><td>not yet written</td><td>Odds ratio of within-group ties. Entries grouped here: Odds ratio of within-group ties (ORWG).</td></tr><tr><td><a href="segregation_matrix_index.html">Segregation matrix index</a></td><td>1</td><td>1</td><td>not yet written</td><td>Segregation matrix index. Entries grouped here: Segregation matrix index (SMI).</td></tr><tr><td><a href="spectral_segregation_index.html">Spectral segregation index</a></td><td>1</td><td>1</td><td>not yet written</td><td>Spectral segregation index. Entries grouped here: Spectral segregation index (SSI).</td></tr></tbody></table></div>
 {% endraw %}

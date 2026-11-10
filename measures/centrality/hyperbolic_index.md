@@ -16,6 +16,8 @@ Family: [Centrality](index.html). Subfamily: Partial rankings (netrankr). Concep
 
 Hyperbolic index. Entries grouped here: Hyperbolic index.
 
+*Definition not yet written.* The documentation says it considers all closed walks of even or odd length on the induced neighbourhoods of a vertex and calls the index illustrative; it gives no formula and no reference.
+
 ## Hyperbolic index {#cat_hyperbolic}
 
 Measure id: `cat_hyperbolic`. Original family: Generators and rewiring.
@@ -24,9 +26,7 @@ Measure id: `cat_hyperbolic`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [netrankr](../../tools/netrankr.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_hyperbolic-netrankr) | `hyperbolic_index` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/netrankr.html">netrankr</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_hyperbolic-netrankr">details</a></td><td><code>hyperbolic_index</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

@@ -16,22 +16,11 @@ Family: [Data transforms](index.html). Subfamily: Sparsification and backbones. 
 
 Statistical backbone extraction. Entries grouped here: Backbone; Backbone extraction (SDSM/BiCM, FDSM, fixed-row/column/fill); Bicm; Disparity; Fastball; Fdsm; and 6 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Backbone](#cat_backbone) | `cat_backbone` | 1 |
-| [Backbone extraction (SDSM/BiCM, FDSM, fixed-row/column/fill)](#backbone_extraction) | `backbone_extraction` | 1 |
-| [Bicm](#cat_bicm) | `cat_bicm` | 1 |
-| [Disparity](#cat_disparity) | `cat_disparity` | 1 |
-| [Fastball](#cat_fastball) | `cat_fastball` | 1 |
-| [Fdsm](#cat_fdsm) | `cat_fdsm` | 1 |
-| [Fixedcol](#cat_fixedcol) | `cat_fixedcol` | 1 |
-| [Fixedfill](#cat_fixedfill) | `cat_fixedfill` | 1 |
-| [Fixedrow](#cat_fixedrow) | `cat_fixedrow` | 1 |
-| [Lans](#cat_lans) | `cat_lans` | 1 |
-| [Mlf](#cat_mlf) | `cat_mlf` | 1 |
-| [Sdsm](#cat_sdsm) | `cat_sdsm` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_backbone">Backbone</a></td><td><code>cat_backbone</code></td><td>1</td></tr><tr><td><a href="#backbone_extraction">Backbone extraction (SDSM/BiCM, FDSM, fixed-row/column/fill)</a></td><td><code>backbone_extraction</code></td><td>1</td></tr><tr><td><a href="#cat_bicm">Bicm</a></td><td><code>cat_bicm</code></td><td>1</td></tr><tr><td><a href="#cat_disparity">Disparity</a></td><td><code>cat_disparity</code></td><td>1</td></tr><tr><td><a href="#cat_fastball">Fastball</a></td><td><code>cat_fastball</code></td><td>1</td></tr><tr><td><a href="#cat_fdsm">Fdsm</a></td><td><code>cat_fdsm</code></td><td>1</td></tr><tr><td><a href="#cat_fixedcol">Fixedcol</a></td><td><code>cat_fixedcol</code></td><td>1</td></tr><tr><td><a href="#cat_fixedfill">Fixedfill</a></td><td><code>cat_fixedfill</code></td><td>1</td></tr><tr><td><a href="#cat_fixedrow">Fixedrow</a></td><td><code>cat_fixedrow</code></td><td>1</td></tr><tr><td><a href="#cat_lans">Lans</a></td><td><code>cat_lans</code></td><td>1</td></tr><tr><td><a href="#cat_mlf">Mlf</a></td><td><code>cat_mlf</code></td><td>1</td></tr><tr><td><a href="#cat_sdsm">Sdsm</a></td><td><code>cat_sdsm</code></td><td>1</td></tr></tbody></table></div>
 
 ## Backbone {#cat_backbone}
 
@@ -41,9 +30,7 @@ Measure id: `cat_backbone`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_backbone-bct) | `backbone_wu` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_backbone-bct">details</a></td><td><code>backbone_wu</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -59,9 +46,7 @@ Measure id: `backbone_extraction`. Original family: Two-mode and bipartite.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-backbone_extraction-backbone) |  | documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-backbone_extraction-backbone">details</a></td><td></td><td>documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -77,9 +62,7 @@ Measure id: `cat_bicm`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_bicm-backbone) | `bicm` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-cat_bicm-backbone">details</a></td><td><code>bicm</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -95,9 +78,7 @@ Measure id: `cat_disparity`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_disparity-backbone) | `disparity` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-cat_disparity-backbone">details</a></td><td><code>disparity</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -113,9 +94,7 @@ Measure id: `cat_fastball`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_fastball-backbone) | `fastball` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-cat_fastball-backbone">details</a></td><td><code>fastball</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -131,9 +110,7 @@ Measure id: `cat_fdsm`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_fdsm-backbone) | `fdsm` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-cat_fdsm-backbone">details</a></td><td><code>fdsm</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -149,9 +126,7 @@ Measure id: `cat_fixedcol`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_fixedcol-backbone) | `fixedcol` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-cat_fixedcol-backbone">details</a></td><td><code>fixedcol</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -167,9 +142,7 @@ Measure id: `cat_fixedfill`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_fixedfill-backbone) | `fixedfill` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-cat_fixedfill-backbone">details</a></td><td><code>fixedfill</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -185,9 +158,7 @@ Measure id: `cat_fixedrow`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_fixedrow-backbone) | `fixedrow` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-cat_fixedrow-backbone">details</a></td><td><code>fixedrow</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -203,9 +174,7 @@ Measure id: `cat_lans`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_lans-backbone) | `lans` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-cat_lans-backbone">details</a></td><td><code>lans</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -221,9 +190,7 @@ Measure id: `cat_mlf`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_mlf-backbone) | `mlf` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-cat_mlf-backbone">details</a></td><td><code>mlf</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -239,9 +206,7 @@ Measure id: `cat_sdsm`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [backbone](../../tools/backbone.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: backbone is documented-only in this survey; listed in its documentation. [details](#why-cat_sdsm-backbone) | `sdsm` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/backbone.html">backbone</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: backbone is documented-only in this survey; listed in its documentation. <a href="#why-cat_sdsm-backbone">details</a></td><td><code>sdsm</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

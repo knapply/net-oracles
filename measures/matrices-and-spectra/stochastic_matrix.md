@@ -16,6 +16,8 @@ Family: [Matrices and spectra](index.html). Subfamily: Graph matrices. Concept i
 
 Stochastic matrix. Entries grouped here: Stochastic matrix.
 
+*Definition not yet written.*
+
 ## Stochastic matrix {#cat_matrix_stochastic}
 
 Measure id: `cat_matrix_stochastic`. Original family: Matrices and spectra.
@@ -24,9 +26,7 @@ Measure id: `cat_matrix_stochastic`. Original family: Matrices and spectra.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_matrix_stochastic-igraph) | `stochastic_matrix` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_matrix_stochastic-igraph">details</a></td><td><code>stochastic_matrix</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

@@ -16,13 +16,11 @@ Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models
 
 Deterministic degree-sequence realization. Entries grouped here: Bipartite degree-sequence realization; Deterministic realisation of a degree sequence; Havel Hakimi Generator.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Bipartite degree-sequence realization](#gen_realize_bipartite) | `gen_realize_bipartite` | 2 |
-| [Deterministic realisation of a degree sequence](#gen_degree_realization) | `gen_degree_realization` | 3 |
-| [Havel Hakimi Generator](#cat_generator_hakimi_havel) | `cat_generator_hakimi_havel` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#gen_realize_bipartite">Bipartite degree-sequence realization</a></td><td><code>gen_realize_bipartite</code></td><td>2</td></tr><tr><td><a href="#gen_degree_realization">Deterministic realisation of a degree sequence</a></td><td><code>gen_degree_realization</code></td><td>3</td></tr><tr><td><a href="#cat_generator_hakimi_havel">Havel Hakimi Generator</a></td><td><code>cat_generator_hakimi_havel</code></td><td>1</td></tr></tbody></table></div>
 
 ## Bipartite degree-sequence realization {#gen_realize_bipartite}
 
@@ -32,10 +30,7 @@ Measure id: `gen_realize_bipartite`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_realize_bipartite-igraph) | `realize_bipartite_degseq` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_realize_bipartite-pyigraph) | `Realize_Bipartite_Degree_Sequence` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_realize_bipartite-igraph">details</a></td><td><code>realize_bipartite_degseq</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_realize_bipartite-pyigraph">details</a></td><td><code>Realize_Bipartite_Degree_Sequence</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -52,11 +47,7 @@ Measure id: `gen_degree_realization`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_degree_realization-networkx) | `alternating_havel_hakimi_graph; directed_havel_hakimi_graph; havel_hakimi_graph; reverse_havel_hakimi_graph` | API listing |
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_degree_realization-igraph) | `realize_degseq` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_degree_realization-pyigraph) | `Realize_Degree_Sequence` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_degree_realization-networkx">details</a></td><td><code>alternating_havel_hakimi_graph; directed_havel_hakimi_graph; havel_hakimi_graph; reverse_havel_hakimi_graph</code></td><td>API listing</td></tr><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_degree_realization-igraph">details</a></td><td><code>realize_degseq</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_degree_realization-pyigraph">details</a></td><td><code>Realize_Degree_Sequence</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -74,9 +65,7 @@ Measure id: `cat_generator_hakimi_havel`. Original family: Generators and rewiri
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_generator_hakimi_havel-networkit) | `HavelHakimiGenerator` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_generator_hakimi_havel-networkit">details</a></td><td><code>HavelHakimiGenerator</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

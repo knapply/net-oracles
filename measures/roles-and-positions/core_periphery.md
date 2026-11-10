@@ -16,12 +16,11 @@ Family: [Roles and positions](index.html). Subfamily: Core-periphery. Concept id
 
 Discrete core-periphery fit: the core membership that best matches the ideal pattern, by tabu search from random starts.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Core periphery](#core_periphery) | `core_periphery` | 3 |
-| [Estevez-Nordlund variant](#core_periphery_en) | `core_periphery_en` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#core_periphery">Core periphery</a></td><td><code>core_periphery</code></td><td>3</td></tr><tr><td><a href="#core_periphery_en">Estevez-Nordlund variant</a></td><td><code>core_periphery_en</code></td><td>1</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -35,11 +34,7 @@ Measure id: `core_periphery`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-core_periphery-bct) | `core_periphery_dir` | API listing |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-core_periphery-ucinet) | `Core/periphery: categorical (Borgatti-Everett), continuous coreness, Estevez-Nordlund variant (6.833); catcp` | published documentation |
-| [cpnet](../../tools/cpnet.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-core_periphery-bct">details</a></td><td><code>core_periphery_dir</code></td><td>API listing</td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-core_periphery-ucinet">details</a></td><td><code>Core/periphery: categorical (Borgatti-Everett), continuous coreness, Estevez-Nordlund variant (6.833); catcp</code></td><td>published documentation</td></tr><tr><td><a href="../../tools/cpnet.html">cpnet</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -48,12 +43,7 @@ Measure id: `core_periphery`. Original family: Roles and positions.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `core_periphery_ones_vs_cpnet` | cpnet | any | agrees |  |  | abs 1e-09, rel 1e-09 | `correlation, core-periphery pairs expected tied, of the core set of cpnet.BE().detect(G)` |  |
-| `core_periphery_vs_cpnet` | cpnet | any | agrees |  |  | abs 1e-09, rel 1e-09 | `correlation, links 'missing', of the core set of cpnet.BE().detect(G) (undirected, unweighted, no loops)` |  |
-| `core_periphery_weighted_vs_cpnet` | cpnet | any | agrees |  |  | abs 1e-09, rel 1e-09 | `correlation with weighted values of the core set of cpnet.BE().detect(G) (unweighted)` |  |
-| `core_periphery_zeros_vs_cpnet` | cpnet | any | agrees |  |  | abs 1e-09, rel 1e-09 | `correlation, core-periphery pairs expected untied, of the core set of cpnet.BE().detect(G)` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>core_periphery_ones_vs_cpnet</code></td><td>cpnet</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>correlation, core-periphery pairs expected tied, of the core set of cpnet.BE().detect(G)</code></td><td></td></tr><tr><td><code>core_periphery_vs_cpnet</code></td><td>cpnet</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>correlation, links 'missing', of the core set of cpnet.BE().detect(G) (undirected, unweighted, no loops)</code></td><td></td></tr><tr><td><code>core_periphery_weighted_vs_cpnet</code></td><td>cpnet</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>correlation with weighted values of the core set of cpnet.BE().detect(G) (unweighted)</code></td><td></td></tr><tr><td><code>core_periphery_zeros_vs_cpnet</code></td><td>cpnet</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>correlation, core-periphery pairs expected untied, of the core set of cpnet.BE().detect(G)</code></td><td></td></tr></tbody></table></div>
 
 **References:** [borgatti1999models](../../references.html#borgatti1999models), [glover1989tabu](../../references.html#glover1989tabu)
 
@@ -67,9 +57,7 @@ Measure id: `core_periphery_en`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-core_periphery_en-ucinet) | `enordcp` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-core_periphery_en-ucinet">details</a></td><td><code>enordcp</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

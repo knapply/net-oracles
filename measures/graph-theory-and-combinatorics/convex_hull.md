@@ -16,6 +16,8 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Geometry. Conce
 
 Convex hull. Entries grouped here: Convex hull.
 
+*Definition not yet written.*
+
 ## Convex hull {#cat_convex_hull}
 
 Measure id: `cat_convex_hull`. Original family: Graph theory and combinatorics.
@@ -24,9 +26,7 @@ Measure id: `cat_convex_hull`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_convex_hull-pyigraph) | `convex_hull` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_convex_hull-pyigraph">details</a></td><td><code>convex_hull</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

@@ -16,12 +16,11 @@ Family: [Components and connectivity](index.html). Subfamily: Flows and flow tre
 
 Maximum flow from a set of sources to a set of sinks (Dinic), with the flow on every edge.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Max flow](#max_flow) | `max_flow` | 7 |
-| [Maxflow](#gb_maxflow) | `gb_maxflow` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#max_flow">Max flow</a></td><td><code>max_flow</code></td><td>7</td></tr><tr><td><a href="#gb_maxflow">Maxflow</a></td><td><code>gb_maxflow</code></td><td>1</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -35,15 +34,7 @@ Measure id: `max_flow`. Original family: Components and connectivity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `boykov_kolmogorov; capacity_scaling; dinitz; edmonds_karp; maximum_flow; maximum_flow_value; preflow_push; shortest_augmenting_path` |  |
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-max_flow-igraph) | `max_flow` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-max_flow-pyigraph) | `maxflow; maxflow_value` | API listing |
-| [sna](../../tools/sna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-max_flow-sna) | `maxflow` | API listing |
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-max_flow-graphtool) | `boykov_kolmogorov_max_flow; edmonds_karp_max_flow; push_relabel_max_flow` | API listing |
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-max_flow-networkit) | `EdmondsKarp` | API listing |
-| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-max_flow-boost) | `boykov_kolmogorov_max_flow; edmonds_karp_max_flow; push_relabel_max_flow` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>boykov_kolmogorov; capacity_scaling; dinitz; edmonds_karp; maximum_flow; maximum_flow_value; preflow_push; shortest_augmenting_path</code></td><td></td></tr><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-max_flow-igraph">details</a></td><td><code>max_flow</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-max_flow-pyigraph">details</a></td><td><code>maxflow; maxflow_value</code></td><td>API listing</td></tr><tr><td><a href="../../tools/sna.html">sna</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-max_flow-sna">details</a></td><td><code>maxflow</code></td><td>API listing</td></tr><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-max_flow-graphtool">details</a></td><td><code>boykov_kolmogorov_max_flow; edmonds_karp_max_flow; push_relabel_max_flow</code></td><td>API listing</td></tr><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-max_flow-networkit">details</a></td><td><code>EdmondsKarp</code></td><td>API listing</td></tr><tr><td><a href="../../tools/boost.html">Boost Graph Library</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-max_flow-boost">details</a></td><td><code>boykov_kolmogorov_max_flow; edmonds_karp_max_flow; push_relabel_max_flow</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -56,12 +47,7 @@ Measure id: `max_flow`. Original family: Components and connectivity.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `flow_max_flow_valid` | NetworkX | any | agrees |  |  | abs 1e-09, rel 1e-09 | `[nx.maximum_flow_value(G, 0, n - 1), 1]: the reference value's edge flows must respect capacities, conserve flow, and carry the maximum value` |  |
-| `flow_max_flow_valid_multi` | NetworkX | any | agrees |  |  | abs 1e-09, rel 1e-09 | `[nx.maximum_flow_value(H, 'S', 'T'), 1] with H as for flow_max_value_multi` |  |
-| `flow_max_value` | NetworkX | any | agrees |  |  | abs 1e-12, rel 1e-12 | `nx.maximum_flow_value(G, 0, n - 1, capacity = 'capacity')` |  |
-| `flow_max_value_multi` | NetworkX | any | agrees |  |  | abs 1e-12, rel 1e-12 | `nx.maximum_flow_value(H, 'S', 'T'), H = G plus arcs S -> 0, S -> 1, n - 2 -> T, n - 1 -> T without a capacity (infinite)` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>flow_max_flow_valid</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>[nx.maximum_flow_value(G, 0, n - 1), 1]: the reference value's edge flows must respect capacities, conserve flow, and carry the maximum value</code></td><td></td></tr><tr><td><code>flow_max_flow_valid_multi</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>[nx.maximum_flow_value(H, 'S', 'T'), 1] with H as for flow_max_value_multi</code></td><td></td></tr><tr><td><code>flow_max_value</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.maximum_flow_value(G, 0, n - 1, capacity = 'capacity')</code></td><td></td></tr><tr><td><code>flow_max_value_multi</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.maximum_flow_value(H, 'S', 'T'), H = G plus arcs S -&gt; 0, S -&gt; 1, n - 2 -&gt; T, n - 1 -&gt; T without a capacity (infinite)</code></td><td></td></tr></tbody></table></div>
 
 **References:** [dinic1970algorithm](../../references.html#dinic1970algorithm), [ford1956maximal](../../references.html#ford1956maximal), [ford1962flows](../../references.html#ford1962flows), [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -75,15 +61,11 @@ Measure id: `gb_maxflow`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td></td></tr></tbody></table></div>
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `gb_maxflow` | NetworkX | any | agrees |  |  | abs 1e-12, rel 1e-09 | `nx.maximum_flow_value(D, 0, n - 1, flow_func=edmonds_karp), D the simple graph with capacity = weight` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>gb_maxflow</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>nx.maximum_flow_value(D, 0, n - 1, flow_func=edmonds_karp), D the simple graph with capacity = weight</code></td><td></td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

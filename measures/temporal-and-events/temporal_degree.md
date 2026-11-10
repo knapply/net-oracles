@@ -16,12 +16,11 @@ Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Con
 
 Temporal degree. Entries grouped here: Dynamic Degree; T Degree.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Dynamic Degree](#cat_degree_dynamic) | `cat_degree_dynamic` | 1 |
-| [T Degree](#cat_degree_t) | `cat_degree_t` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_degree_dynamic">Dynamic Degree</a></td><td><code>cat_degree_dynamic</code></td><td>1</td></tr><tr><td><a href="#cat_degree_t">T Degree</a></td><td><code>cat_degree_t</code></td><td>1</td></tr></tbody></table></div>
 
 ## Dynamic Degree {#cat_degree_dynamic}
 
@@ -31,9 +30,7 @@ Measure id: `cat_degree_dynamic`. Original family: Temporal and events.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [Gephi toolkit](../../tools/gephi.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_degree_dynamic-gephi) | `DynamicDegree` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/gephi.html">Gephi toolkit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_degree_dynamic-gephi">details</a></td><td><code>DynamicDegree</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `cat_degree_t`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [tsna / networkDynamic](../../tools/tsna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_degree_t-tsna) | `tDegree` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/tsna.html">tsna / networkDynamic</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_degree_t-tsna">details</a></td><td><code>tDegree</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

@@ -16,6 +16,8 @@ Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomiza
 
 Lattice-preserving rewiring. Entries grouped here: Lattice-preserving rewiring.
 
+*Definition not yet written.*
+
 ## Lattice-preserving rewiring {#rewire_lattice}
 
 Measure id: `rewire_lattice`. Original family: Generators and rewiring.
@@ -24,9 +26,7 @@ Measure id: `rewire_lattice`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-rewire_lattice-bct) | `latmio_dir; latmio_dir_connected; latmio_und; latmio_und_connected` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-rewire_lattice-bct">details</a></td><td><code>latmio_dir; latmio_dir_connected; latmio_und; latmio_und_connected</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

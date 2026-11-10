@@ -16,6 +16,8 @@ Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutati
 
 Group-level permutation tests. Entries grouped here: Group-level permutation tests.
 
+*Definition not yet written.*
+
 ## Group-level permutation tests {#node_permutation_tests}
 
 Measure id: `node_permutation_tests`. Original family: Inference (QAP, null models).
@@ -24,9 +26,7 @@ Measure id: `node_permutation_tests`. Original family: Inference (QAP, null mode
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-node_permutation_tests-ucinet) | `Network-level hypothesis tests: t-test on densities, bootstrap, permutation of node labels` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-node_permutation_tests-ucinet">details</a></td><td><code>Network-level hypothesis tests: t-test on densities, bootstrap, permutation of node labels</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

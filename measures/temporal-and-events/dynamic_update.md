@@ -16,6 +16,8 @@ Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Con
 
 Incremental maintenance on a changing graph. Entries grouped here: Incremental maintenance on a changing graph.
 
+*Definition not yet written.*
+
 ## Incremental maintenance on a changing graph {#dynamic_update}
 
 Measure id: `dynamic_update`. Original family: Temporal and events.
@@ -24,9 +26,7 @@ Measure id: `dynamic_update`. Original family: Temporal and events.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-dynamic_update-networkit) | `DynBFS; DynBetweenness; DynBetweennessOneNode; DynConnectedComponents; DynKatzCentrality; DynPrunedLandmarkLabeling; DynWeaklyConnectedComponents` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-dynamic_update-networkit">details</a></td><td><code>DynBFS; DynBetweenness; DynBetweennessOneNode; DynConnectedComponents; DynKatzCentrality; DynPrunedLandmarkLabeling; DynWeaklyConnectedComponents</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

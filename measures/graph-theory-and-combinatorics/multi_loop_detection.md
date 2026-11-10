@@ -16,6 +16,8 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Degree sequence
 
 Loop and multi-edge detection. Entries grouped here: Loop and multi-edge detection.
 
+*Definition not yet written.*
+
 ## Loop and multi-edge detection {#multi_loop_detection}
 
 Measure id: `multi_loop_detection`. Original family: Graph theory and combinatorics.
@@ -24,9 +26,7 @@ Measure id: `multi_loop_detection`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-multi_loop_detection-igraph) | `any_loop; any_multiple; count_loops; count_multiple; is_simple; which_loop; which_multiple; which_mutual` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-multi_loop_detection-igraph">details</a></td><td><code>any_loop; any_multiple; count_loops; count_multiple; is_simple; which_loop; which_multiple; which_mutual</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

@@ -16,14 +16,11 @@ Family: [Components and connectivity](index.html). Subfamily: Flows and flow tre
 
 A maximum flow of least cost between two nodes, with its value.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Ahuja Orlin Sharma Cyclic Exchange Local Augmentation](#cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma) | `cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma` | 1 |
-| [Capacity Scaling Minimum Cost Flow](#cat_capacity_cost_flow_minimum_scaling) | `cat_capacity_cost_flow_minimum_scaling` | 1 |
-| [Max flow min cost](#max_flow_min_cost) | `max_flow_min_cost` | 2 |
-| [Mincost](#gb_mincost) | `gb_mincost` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma">Ahuja Orlin Sharma Cyclic Exchange Local Augmentation</a></td><td><code>cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma</code></td><td>1</td></tr><tr><td><a href="#cat_capacity_cost_flow_minimum_scaling">Capacity Scaling Minimum Cost Flow</a></td><td><code>cat_capacity_cost_flow_minimum_scaling</code></td><td>1</td></tr><tr><td><a href="#max_flow_min_cost">Max flow min cost</a></td><td><code>max_flow_min_cost</code></td><td>2</td></tr><tr><td><a href="#gb_mincost">Mincost</a></td><td><code>gb_mincost</code></td><td>1</td></tr></tbody></table></div>
 
 ## References {#concept-references}
 
@@ -37,9 +34,7 @@ Measure id: `cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma`. Origina
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma-jgrapht) | `AhujaOrlinSharmaCyclicExchangeLocalAugmentation` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_ahuja_augmentation_cyclic_exchange_local_orlin_sharma-jgrapht">details</a></td><td><code>AhujaOrlinSharmaCyclicExchangeLocalAugmentation</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -55,9 +50,7 @@ Measure id: `cat_capacity_cost_flow_minimum_scaling`. Original family: Component
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_capacity_cost_flow_minimum_scaling-jgrapht) | `CapacityScalingMinimumCostFlow` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_capacity_cost_flow_minimum_scaling-jgrapht">details</a></td><td><code>CapacityScalingMinimumCostFlow</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -73,10 +66,7 @@ Measure id: `max_flow_min_cost`. Original family: Components and connectivity.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `cost_of_flow; max_flow_min_cost; min_cost_flow; min_cost_flow_cost; network_simplex` |  |
-| [Boost Graph Library](../../tools/boost.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-max_flow_min_cost-boost) | `cycle_canceling; successive_shortest_path_nonnegative_weights` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>cost_of_flow; max_flow_min_cost; min_cost_flow; min_cost_flow_cost; network_simplex</code></td><td></td></tr><tr><td><a href="../../tools/boost.html">Boost Graph Library</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-max_flow_min_cost-boost">details</a></td><td><code>cycle_canceling; successive_shortest_path_nonnegative_weights</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -84,9 +74,7 @@ Measure id: `max_flow_min_cost`. Original family: Components and connectivity.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `flow_max_flow_min_cost` | NetworkX | directed | no-value-on-some-inputs |  | weights | abs 1e-09, rel 1e-09 | `F = nx.maximum_flow_value(G, 0, n - 1); nx.min_cost_flow_cost(M) on the multigraph M with demand -F at 0 and F at n - 1` | NetworkX's network simplex reports this real-valued problem infeasible (NetworkXUnfeasible): its documentation warns that it may fail on floating-point capacities and suggests integers. The linear program of the definition oracle confirms the reference value's value and cost. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>flow_max_flow_min_cost</code></td><td>NetworkX</td><td>directed</td><td>no-value-on-some-inputs</td><td></td><td>weights</td><td>abs 1e-09, rel 1e-09</td><td><code>F = nx.maximum_flow_value(G, 0, n - 1); nx.min_cost_flow_cost(M) on the multigraph M with demand -F at 0 and F at n - 1</code></td><td>NetworkX's network simplex reports this real-valued problem infeasible (NetworkXUnfeasible): its documentation warns that it may fail on floating-point capacities and suggests integers. The linear program of the definition oracle confirms the reference value's value and cost.</td></tr></tbody></table></div>
 
 **References:** [ahuja1993network](../../references.html#ahuja1993network), [cunningham1976network](../../references.html#cunningham1976network), [dantzig1951application](../../references.html#dantzig1951application), [grigoriadis1986efficient](../../references.html#grigoriadis1986efficient), [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -100,15 +88,11 @@ Measure id: `gb_mincost`. Original family: Traversal, trees and DAGs.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td></td></tr></tbody></table></div>
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `gb_mincost` | NetworkX | directed | agrees |  |  | abs 1e-12, rel 1e-09 | `nx.network_simplex(M) with demand -1 at 0 and 1 at n - 1` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>gb_mincost</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>nx.network_simplex(M) with demand -1 at 0 and 1 at n - 1</code></td><td></td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

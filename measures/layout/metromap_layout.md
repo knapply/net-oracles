@@ -16,6 +16,8 @@ Family: [Layout](index.html). Subfamily: Layout algorithms. Concept id: `metroma
 
 Metro-map layout. Entries grouped here: Layout as metromap.
 
+*Definition not yet written.*
+
 ## Layout as metromap {#cat_as_layout_metromap}
 
 Measure id: `cat_as_layout_metromap`. Original family: Layout.
@@ -24,9 +26,7 @@ Measure id: `cat_as_layout_metromap`. Original family: Layout.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graphlayouts](../../tools/graphlayouts.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: graphlayouts is documented-only in this survey; listed in its documentation. [details](#why-cat_as_layout_metromap-graphlayouts) | `layout_as_metromap` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphlayouts.html">graphlayouts</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: graphlayouts is documented-only in this survey; listed in its documentation. <a href="#why-cat_as_layout_metromap-graphlayouts">details</a></td><td><code>layout_as_metromap</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

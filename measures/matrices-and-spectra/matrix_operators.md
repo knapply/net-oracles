@@ -16,6 +16,8 @@ Family: [Matrices and spectra](index.html). Subfamily: Graph matrices. Concept i
 
 Graph matrix operators. Entries grouped here: Graph matrix operators (adjacency, Laplacian, Hashimoto, incidence).
 
+*Definition not yet written.*
+
 ## Graph matrix operators (adjacency, Laplacian, Hashimoto, incidence) {#matrix_operators}
 
 Measure id: `matrix_operators`. Original family: Matrices and spectra.
@@ -24,10 +26,7 @@ Measure id: `matrix_operators`. Original family: Matrices and spectra.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-matrix_operators-graphtool) | `AdjacencyOperator; CompactHashimotoOperator; HashimotoOperator; IncidenceOperator; LaplacianOperator; TransitionOperator; hashimoto; transition` | API listing |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-matrix_operators-ucinet) | `transition` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-matrix_operators-graphtool">details</a></td><td><code>AdjacencyOperator; CompactHashimotoOperator; HashimotoOperator; IncidenceOperator; LaplacianOperator; TransitionOperator; hashimoto; transition</code></td><td>API listing</td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-matrix_operators-ucinet">details</a></td><td><code>transition</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

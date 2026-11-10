@@ -35,6 +35,10 @@ Measures whose only description in the source is a name that does not say what i
 
 Families with more than about 40 concepts are split into subfamilies by the kind of object or task. "Graph theory and combinatorics" has isomorphism and subgraph matching, matching, coloring, independent sets and approximation, covers and dominating sets, cycles, Eulerian paths, Hamiltonian paths and tours, planarity, chordal, perfect and special graph classes, degree sequences and predicates, spanners, contraction and reduction, tree decomposition, triangles and local counts, similarity and link prediction, distances between graphs, geometry and unclassified procedures. "Generators and rewiring" is split by model kind: classic random graphs, degree-sequence models, growth and attachment models, small-world, lattice and geometric models, block models, named and deterministic graphs, random trees and forests, rewiring and randomization. Measures that were listed under "Graph theory and combinatorics" but are model terms, layout methods, sparsifiers, centralities or similar were moved to the family that describes them (their original family is kept on the measure).
 
+## Definitions
+
+`definitions/<family-slug>.json` holds the precise definition of every concept of a family (notation, formulas, variants per measure, edge cases with what each tool does); the procedure, the quality bar and an example are in `definitions/README.md`, the edge-case vocabulary in `definitions/_vocabulary.json`.
+
 ## Anchors
 
 The anchor of a measure on its concept page is its id with every character other than letters, digits, underscore, dot and hyphen replaced by a hyphen (for example `twomode:degree` becomes `twomode-degree`). Anchors beginning with `concept-` are reserved for the page's own headings.

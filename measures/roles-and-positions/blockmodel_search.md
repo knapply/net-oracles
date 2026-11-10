@@ -16,6 +16,8 @@ Family: [Roles and positions](index.html). Subfamily: Blockmodels. Concept id: `
 
 Direct blockmodel search. Entries grouped here: Direct blockmodel search (structural, regular, generalised block types).
 
+*Definition not yet written.*
+
 ## Direct blockmodel search (structural, regular, generalised block types) {#blockmodel_search}
 
 Measure id: `blockmodel_search`. Original family: Roles and positions.
@@ -24,10 +26,7 @@ Measure id: `blockmodel_search`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-blockmodel_search-ucinet) |  | published documentation |
-| [blockmodeling](../../tools/blockmodeling.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's documentation; no comparison set up for this measure yet. [details](#why-blockmodel_search-blockmodeling) | `optParC; optRandomParC` | documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-blockmodel_search-ucinet">details</a></td><td></td><td>published documentation</td></tr><tr><td><a href="../../tools/blockmodeling.html">blockmodeling</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's documentation; no comparison set up for this measure yet. <a href="#why-blockmodel_search-blockmodeling">details</a></td><td><code>optParC; optRandomParC</code></td><td>documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

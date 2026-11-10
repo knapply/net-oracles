@@ -15,14 +15,5 @@ permalink: /measures/ego-networks/
 
 ## Ego measures
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Ego betweenness](ego_betweenness.html) | 1 | 3 | Ego betweenness. Entries grouped here: Ego\_summary / betweenness. |
-| [Ego composition and heterogeneity](ego_composition.html) | 1 | 2 | Ego composition and heterogeneity. Entries grouped here: Ego composition: alter shares, Blau and Shannon heterogeneity, IQV. |
-| [Ego network components](ego_components.html) | 1 | 2 | Ego network components. Entries grouped here: Ego\_summary / components. |
-| [Ego network density](ego_density.html) | 1 | 4 | Ego network density. Entries grouped here: Ego\_summary / density. |
-| [Ego network extraction](ego_extraction.html) | 2 | 1 | Ego network extraction. Entries grouped here: Egotize (6 750), Ego network extraction with tab "Ego"; Makeegonets. |
-| [Ego network members](ego_members.html) | 1 | 3 | Ego network members. Entries grouped here: Ego members. |
-| [Ego network ties](ego_ties.html) | 1 | 3 | Ego network ties. Entries grouped here: Ego\_summary / ties. |
-| [Ego size](ego_size.html) | 1 | 3 | Number of nodes within a range of steps from each node (ego included when the range starts at 0). |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="ego_betweenness.html">Ego betweenness</a></td><td>1</td><td>3</td><td>not yet written</td><td>Ego betweenness. Entries grouped here: Ego_summary / betweenness.</td></tr><tr><td><a href="ego_composition.html">Ego composition and heterogeneity</a></td><td>1</td><td>2</td><td>not yet written</td><td>Ego composition and heterogeneity. Entries grouped here: Ego composition: alter shares, Blau and Shannon heterogeneity, IQV.</td></tr><tr><td><a href="ego_components.html">Ego network components</a></td><td>1</td><td>2</td><td>not yet written</td><td>Ego network components. Entries grouped here: Ego_summary / components.</td></tr><tr><td><a href="ego_density.html">Ego network density</a></td><td>1</td><td>4</td><td>not yet written</td><td>Ego network density. Entries grouped here: Ego_summary / density.</td></tr><tr><td><a href="ego_extraction.html">Ego network extraction</a></td><td>2</td><td>1</td><td>not yet written</td><td>Ego network extraction. Entries grouped here: Egotize (6 750), Ego network extraction with tab "Ego"; Makeegonets.</td></tr><tr><td><a href="ego_members.html">Ego network members</a></td><td>1</td><td>3</td><td>not yet written</td><td>Ego network members. Entries grouped here: Ego members.</td></tr><tr><td><a href="ego_ties.html">Ego network ties</a></td><td>1</td><td>3</td><td>not yet written</td><td>Ego network ties. Entries grouped here: Ego_summary / ties.</td></tr><tr><td><a href="ego_size.html">Ego size</a></td><td>1</td><td>3</td><td>not yet written</td><td>Number of nodes within a range of steps from each node (ego included when the range starts at 0).</td></tr></tbody></table></div>
 {% endraw %}

@@ -16,12 +16,11 @@ Family: [Traversal, trees and DAGs](index.html). Subfamily: Tree structure and e
 
 Random power-law trees. Entries grouped here: Random powerlaw tree; Random powerlaw tree sequence.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Random powerlaw tree](#cat_powerlaw_random_tree) | `cat_powerlaw_random_tree` | 1 |
-| [Random powerlaw tree sequence](#cat_powerlaw_random_sequence_tree) | `cat_powerlaw_random_sequence_tree` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_powerlaw_random_tree">Random powerlaw tree</a></td><td><code>cat_powerlaw_random_tree</code></td><td>1</td></tr><tr><td><a href="#cat_powerlaw_random_sequence_tree">Random powerlaw tree sequence</a></td><td><code>cat_powerlaw_random_sequence_tree</code></td><td>1</td></tr></tbody></table></div>
 
 ## Random powerlaw tree {#cat_powerlaw_random_tree}
 
@@ -31,9 +30,7 @@ Measure id: `cat_powerlaw_random_tree`. Original family: Traversal, trees and DA
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_powerlaw_random_tree-networkx) | `random_powerlaw_tree` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_powerlaw_random_tree-networkx">details</a></td><td><code>random_powerlaw_tree</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,9 +46,7 @@ Measure id: `cat_powerlaw_random_sequence_tree`. Original family: Traversal, tre
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_powerlaw_random_sequence_tree-networkx) | `random_powerlaw_tree_sequence` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_powerlaw_random_sequence_tree-networkx">details</a></td><td><code>random_powerlaw_tree_sequence</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

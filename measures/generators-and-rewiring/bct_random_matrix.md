@@ -16,16 +16,11 @@ Family: [Generators and rewiring](index.html). Subfamily: Rewiring and randomiza
 
 Random matrix generators (density, even degree, fractal, Toeplitz). Entries grouped here: Generate fc; Makeeven CIJ; Makefractal CIJ; Makerand CIJ; Makerand CIJdegreesfixed; Maketoeplitz CIJ.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Generate fc](#cat_fc_generate) | `cat_fc_generate` | 1 |
-| [Makeeven CIJ](#cat_cij_makeeven) | `cat_cij_makeeven` | 1 |
-| [Makefractal CIJ](#cat_cij_makefractal) | `cat_cij_makefractal` | 1 |
-| [Makerand CIJ](#cat_cij_makerand) | `cat_cij_makerand` | 1 |
-| [Makerand CIJdegreesfixed](#cat_ci_jdegreesfixed_makerand) | `cat_ci_jdegreesfixed_makerand` | 1 |
-| [Maketoeplitz CIJ](#cat_cij_maketoeplitz) | `cat_cij_maketoeplitz` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_fc_generate">Generate fc</a></td><td><code>cat_fc_generate</code></td><td>1</td></tr><tr><td><a href="#cat_cij_makeeven">Makeeven CIJ</a></td><td><code>cat_cij_makeeven</code></td><td>1</td></tr><tr><td><a href="#cat_cij_makefractal">Makefractal CIJ</a></td><td><code>cat_cij_makefractal</code></td><td>1</td></tr><tr><td><a href="#cat_cij_makerand">Makerand CIJ</a></td><td><code>cat_cij_makerand</code></td><td>1</td></tr><tr><td><a href="#cat_ci_jdegreesfixed_makerand">Makerand CIJdegreesfixed</a></td><td><code>cat_ci_jdegreesfixed_makerand</code></td><td>1</td></tr><tr><td><a href="#cat_cij_maketoeplitz">Maketoeplitz CIJ</a></td><td><code>cat_cij_maketoeplitz</code></td><td>1</td></tr></tbody></table></div>
 
 ## Generate fc {#cat_fc_generate}
 
@@ -35,9 +30,7 @@ Measure id: `cat_fc_generate`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_fc_generate-bct) | `generate_fc` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_fc_generate-bct">details</a></td><td><code>generate_fc</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -53,9 +46,7 @@ Measure id: `cat_cij_makeeven`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_cij_makeeven-bct) | `makeevenCIJ` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_cij_makeeven-bct">details</a></td><td><code>makeevenCIJ</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -71,9 +62,7 @@ Measure id: `cat_cij_makefractal`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_cij_makefractal-bct) | `makefractalCIJ` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_cij_makefractal-bct">details</a></td><td><code>makefractalCIJ</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -89,9 +78,7 @@ Measure id: `cat_cij_makerand`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_cij_makerand-bct) | `makerandCIJ_dir; makerandCIJ_und` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_cij_makerand-bct">details</a></td><td><code>makerandCIJ_dir; makerandCIJ_und</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -107,9 +94,7 @@ Measure id: `cat_ci_jdegreesfixed_makerand`. Original family: Graph theory and c
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_ci_jdegreesfixed_makerand-bct) | `makerandCIJdegreesfixed` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_ci_jdegreesfixed_makerand-bct">details</a></td><td><code>makerandCIJdegreesfixed</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -125,9 +110,7 @@ Measure id: `cat_cij_maketoeplitz`. Original family: Graph theory and combinator
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_cij_maketoeplitz-bct) | `maketoeplitzCIJ` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_cij_maketoeplitz-bct">details</a></td><td><code>maketoeplitzCIJ</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

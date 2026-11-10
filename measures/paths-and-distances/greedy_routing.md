@@ -16,13 +16,11 @@ Family: [Paths and distances](index.html). Subfamily: Distance summaries. Concep
 
 Greedy routing and navigation. Entries grouped here: Hyperbolic greedy routing; Hyperbolic greedy success rate; Navigation.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Hyperbolic greedy routing](#cat_greedy_hyperbolic_routing) | `cat_greedy_hyperbolic_routing` | 1 |
-| [Hyperbolic greedy success rate](#cat_greedy_hyperbolic_rate_success) | `cat_greedy_hyperbolic_rate_success` | 1 |
-| [Navigation](#cat_navigation) | `cat_navigation` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_greedy_hyperbolic_routing">Hyperbolic greedy routing</a></td><td><code>cat_greedy_hyperbolic_routing</code></td><td>1</td></tr><tr><td><a href="#cat_greedy_hyperbolic_rate_success">Hyperbolic greedy success rate</a></td><td><code>cat_greedy_hyperbolic_rate_success</code></td><td>1</td></tr><tr><td><a href="#cat_navigation">Navigation</a></td><td><code>cat_navigation</code></td><td>1</td></tr></tbody></table></div>
 
 ## Hyperbolic greedy routing {#cat_greedy_hyperbolic_routing}
 
@@ -32,9 +30,7 @@ Measure id: `cat_greedy_hyperbolic_routing`. Original family: Generators and rew
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_greedy_hyperbolic_routing-rustworkx) | `hyperbolic_greedy_routing` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rustworkx.html">rustworkx</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_greedy_hyperbolic_routing-rustworkx">details</a></td><td><code>hyperbolic_greedy_routing</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -50,9 +46,7 @@ Measure id: `cat_greedy_hyperbolic_rate_success`. Original family: Generators an
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_greedy_hyperbolic_rate_success-rustworkx) | `hyperbolic_greedy_success_rate` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/rustworkx.html">rustworkx</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_greedy_hyperbolic_rate_success-rustworkx">details</a></td><td><code>hyperbolic_greedy_success_rate</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -68,9 +62,7 @@ Measure id: `cat_navigation`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_navigation-bct) | `navigation_wu` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_navigation-bct">details</a></td><td><code>navigation_wu</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

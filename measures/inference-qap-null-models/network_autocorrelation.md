@@ -16,6 +16,8 @@ Family: [Inference (QAP, null models)](index.html). Subfamily: QAP and permutati
 
 Network autocorrelation. Entries grouped here: Network autocorrelation: lag/error model, Moran, Geary.
 
+*Definition not yet written.*
+
 ## Network autocorrelation: lag/error model, Moran, Geary {#network_autocorrelation}
 
 Measure id: `network_autocorrelation`. Original family: Inference (QAP, null models).
@@ -24,10 +26,7 @@ Measure id: `network_autocorrelation`. Original family: Inference (QAP, null mod
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [sna](../../tools/sna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's documentation; no comparison set up for this measure yet. [details](#why-network_autocorrelation-sna) | `lnam; nacf` | documentation |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-network_autocorrelation-ucinet) | `Geary; Network autocorrelation (continuous, 6.753): Moran, Geary; lautocorr` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sna.html">sna</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's documentation; no comparison set up for this measure yet. <a href="#why-network_autocorrelation-sna">details</a></td><td><code>lnam; nacf</code></td><td>documentation</td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-network_autocorrelation-ucinet">details</a></td><td><code>Geary; Network autocorrelation (continuous, 6.753): Moran, Geary; lautocorr</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

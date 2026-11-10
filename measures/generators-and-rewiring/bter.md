@@ -16,6 +16,8 @@ Family: [Generators and rewiring](index.html). Subfamily: Growth and attachment 
 
 BTER replicator. Entries grouped here: BTERReplicator.
 
+*Definition not yet written.*
+
 ## BTERReplicator {#cat_bter_replicator}
 
 Measure id: `cat_bter_replicator`. Original family: Graph theory and combinatorics.
@@ -24,9 +26,7 @@ Measure id: `cat_bter_replicator`. Original family: Graph theory and combinatori
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_bter_replicator-networkit) | `BTERReplicator` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_bter_replicator-networkit">details</a></td><td><code>BTERReplicator</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

@@ -1,0 +1,81 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "definitions/<family-slug>.json",
+ "description": "One file per family. Each file holds the precise definitions of the concepts of that family, so that every difference between tools can be read off the formulas. build.py --check validates the structure (this schema), the vocabulary of edge cases (definitions/_vocabulary.json), every tool id (tools.json), every measure id in 'variants' (measures.json), every bibliography key (references.bib), that every latex string is non-empty with balanced braces, and that every concept of the family has an entry or is shown as 'Definition not yet written'. Maps keyed by id (concepts, variants, tools) are checked by build.py, not by this schema.",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["family", "concepts"],
+ "properties": {
+  "family": {"type": "string", "description": "Family name exactly as in concepts.json, for example Centrality. The file name is the family slug, for example centrality.json."},
+  "concepts": {
+   "type": "object",
+   "description": "Keyed by concept id (concepts.json). A concept of the family that has no key is treated as status name_only.",
+   "additionalProperties": {"$ref": "#/$defs/concept"}
+  }
+ },
+ "$defs": {
+  "concept": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": ["status"],
+   "properties": {
+    "status": {"enum": ["complete", "partial", "name_only"], "description": "complete: notation, formulas, a variants entry for every measure of the concept and the edge cases that apply are written. partial: some of that is written and `note` says what is missing. name_only: the sources do not state the definition; `note` says why."},
+    "note": {"type": "string", "description": "Required for partial and name_only: what is missing or why the definition is not written. Optional otherwise (a caveat that applies to the whole concept)."},
+    "notation": {
+     "type": "array",
+     "description": "Every symbol used in the formulas, each defined once.",
+     "items": {
+      "type": "object", "additionalProperties": false, "required": ["symbol", "meaning"],
+      "properties": {
+       "symbol": {"type": "string", "minLength": 1, "description": "LaTeX, without delimiters."},
+       "meaning": {"type": "string", "minLength": 3, "description": "Plain text; inline math between backslash-parenthesis delimiters is allowed."}
+      }
+     }
+    },
+    "formulas": {
+     "type": "array",
+     "description": "The published definition and each published form of it (raw, normalized, directed, weighted, ...), in the order a reader needs them.",
+     "items": {
+      "type": "object", "additionalProperties": false, "required": ["name", "latex", "applies_to", "where"],
+      "properties": {
+       "name": {"type": "string", "minLength": 1},
+       "latex": {"type": "string", "minLength": 1, "description": "LaTeX of one display formula, without delimiters, with balanced braces. KaTeX 0.16 syntax."},
+       "applies_to": {"type": "array", "minItems": 1, "items": {"enum": ["any", "undirected", "directed", "weighted", "unweighted", "normalized", "raw", "connected", "simple", "multigraph", "bipartite", "two_mode", "group", "edge", "pair"]}},
+       "where": {"type": "string", "minLength": 3, "description": "Plain-text explanation of the terms, the domain (what the formula needs to be defined) and where it comes from (citation keys are given in `references`; mention the paper by author and year)."}
+      }
+     }
+    },
+    "variants": {
+     "type": "object",
+     "description": "Keyed by measure id of this concept: what changes in the formula for that measure (normalization constant, direction, weights, a parameter, a different object scored). Every measure of the concept needs a key when the status is complete.",
+     "additionalProperties": {"type": "string", "minLength": 10}
+    },
+    "edge_cases": {
+     "type": "array",
+     "items": {
+      "type": "object", "additionalProperties": false, "required": ["case", "definition_gives"],
+      "properties": {
+       "case": {"type": "string", "description": "An id of definitions/_vocabulary.json."},
+       "definition_gives": {"type": "string", "minLength": 10, "description": "What the published definition yields on this input, with the justification (the formula term that decides it), or 'not defined' with the reason. Never what a tool does."},
+       "tools": {
+        "type": "object",
+        "description": "Keyed by tool id (tools.json). Only tools that have an entry for some measure of the concept appear. A tool that is left out (or has status not_recorded) is shown as 'not recorded'; use not_recorded with a behaviour text only when the sources say something useful about why nothing is recorded.",
+        "additionalProperties": {
+         "type": "object", "additionalProperties": false, "required": ["status", "behaviour", "source"],
+         "properties": {
+          "status": {"enum": ["agrees", "differs", "no_value", "documented", "not_recorded"], "description": "agrees: equal to the reference value on the compared inputs of this kind. differs: a different value by a documented convention or a defect. no_value: error, NaN or no result where the definition gives a value (or where it is undefined and the tool differs). documented: stated in the tool's documentation, the tool was not run. not_recorded: the sources do not say."},
+          "behaviour": {"type": "string", "minLength": 3, "description": "What the tool does, as observed (run entries) or documented (documented entries)."},
+          "source": {"type": "string", "minLength": 3, "description": "Where the statement comes from: a convention record (conventions.json measure/variant), a reasons.json record, a finding id, or the tool's documentation."},
+          "measure": {"type": "string", "description": "Measure id whose reason entry (reasons.json) explains the entry; the cell links to its anchor on this page. Omit when no reason entry exists."},
+          "finding": {"type": "string", "description": "Finding id (findings.json) when one exists."}
+         }
+        }
+       }
+      }
+     }
+    },
+    "references": {"type": "array", "description": "BibTeX keys (references.bib) of the papers the formulas come from.", "items": {"type": "string"}}
+   }
+  }
+ }
+}

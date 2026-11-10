@@ -15,190 +15,69 @@ permalink: /measures/graph-theory-and-combinatorics/
 
 ## Chordal, perfect and special graph classes
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Asteroidal triples and AT-free graphs](asteroidal_triples.html) | 2 | 1 | Asteroidal triples and AT-free graphs. Entries grouped here: Asteroidal; At free. |
-| [Chordal graphs](chordal_graphs.html) | 4 | 4 | Chordal graphs. Entries grouped here: Chordal order; Chordal-graph tests and algorithms; Fill; St chordal. |
-| [Distance-regular intersection array](intersection_array.html) | 1 | 1 | Distance-regular intersection array. Entries grouped here: Intersection. |
-| [Distance-regular test](distance_regular.html) | 1 | 1 | Distance-regular test. Entries grouped here: Is distance regular. |
-| [Junction tree](junction_tree.html) | 1 | 1 | Junction tree. Entries grouped here: Junction. |
-| [Perfect graphs](perfect_graph.html) | 2 | 2 | Perfect graphs. Entries grouped here: Perfect-graph (Berge) tests; Perfect. |
-| [Threshold graphs](threshold_graph.html) | 1 | 2 | Threshold graphs. Entries grouped here: Threshold graphs. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="asteroidal_triples.html">Asteroidal triples and AT-free graphs</a></td><td>2</td><td>1</td><td>not yet written</td><td>Asteroidal triples and AT-free graphs. Entries grouped here: Asteroidal; At free.</td></tr><tr><td><a href="chordal_graphs.html">Chordal graphs</a></td><td>4</td><td>4</td><td>not yet written</td><td>Chordal graphs. Entries grouped here: Chordal order; Chordal-graph tests and algorithms; Fill; St chordal.</td></tr><tr><td><a href="intersection_array.html">Distance-regular intersection array</a></td><td>1</td><td>1</td><td>not yet written</td><td>Distance-regular intersection array. Entries grouped here: Intersection.</td></tr><tr><td><a href="distance_regular.html">Distance-regular test</a></td><td>1</td><td>1</td><td>not yet written</td><td>Distance-regular test. Entries grouped here: Is distance regular.</td></tr><tr><td><a href="junction_tree.html">Junction tree</a></td><td>1</td><td>1</td><td>not yet written</td><td>Junction tree. Entries grouped here: Junction.</td></tr><tr><td><a href="perfect_graph.html">Perfect graphs</a></td><td>2</td><td>2</td><td>not yet written</td><td>Perfect graphs. Entries grouped here: Perfect-graph (Berge) tests; Perfect.</td></tr><tr><td><a href="threshold_graph.html">Threshold graphs</a></td><td>1</td><td>2</td><td>not yet written</td><td>Threshold graphs. Entries grouped here: Threshold graphs.</td></tr></tbody></table></div>
 
 ## Coloring
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Bipartite coloring and test](bipartite_coloring.html) | 3 | 7 | Bipartite coloring and test. Entries grouped here: Bipartite; Bipartite color; Is bipartite node set (bipartite). |
-| [Chromatic and Tutte polynomials](graph_polynomials.html) | 2 | 1 | Chromatic and Tutte polynomials. Entries grouped here: Chromatic polynomial; Polynomials. |
-| [Edge coloring](edge_coloring.html) | 3 | 1 | Edge coloring. Entries grouped here: Bipartite edge color; Greedy edge color; Misra gries edge color. |
-| [Vertex coloring](vertex_coloring.html) | 2 | 8 | A greedy colouring: the colour of every node, from 0, by one of seven node-order strategies. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="bipartite_coloring.html">Bipartite coloring and test</a></td><td>3</td><td>7</td><td>not yet written</td><td>Bipartite coloring and test. Entries grouped here: Bipartite; Bipartite color; Is bipartite node set (bipartite).</td></tr><tr><td><a href="graph_polynomials.html">Chromatic and Tutte polynomials</a></td><td>2</td><td>1</td><td>not yet written</td><td>Chromatic and Tutte polynomials. Entries grouped here: Chromatic polynomial; Polynomials.</td></tr><tr><td><a href="edge_coloring.html">Edge coloring</a></td><td>3</td><td>1</td><td>not yet written</td><td>Edge coloring. Entries grouped here: Bipartite edge color; Greedy edge color; Misra gries edge color.</td></tr><tr><td><a href="vertex_coloring.html">Vertex coloring</a></td><td>2</td><td>8</td><td>not yet written</td><td>A greedy colouring: the colour of every node, from 0, by one of seven node-order strategies.</td></tr></tbody></table></div>
 
 ## Covers and dominating sets
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Connected dominating set](connected_dominating_set.html) | 1 | 1 | Connected dominating set. Entries grouped here: Cds. |
-| [Dominating set](dominating_set.html) | 3 | 1 | Greedy dominating set of least node weight (weight per newly covered node), as node ids in the order chosen. |
-| [Edge cover](edge_cover.html) | 2 | 1 | Edge cover. Entries grouped here: Edge cover; St edge cover. |
-| [K-factor](k_factor.html) | 2 | 1 | K-factor. Entries grouped here: Kfactor; Kfactor edges. |
-| [Vertex cover](vertex_cover.html) | 2 | 2 | Local-ratio vertex cover of least node cost (2-approximation), as node ids. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="connected_dominating_set.html">Connected dominating set</a></td><td>1</td><td>1</td><td>not yet written</td><td>Connected dominating set. Entries grouped here: Cds.</td></tr><tr><td><a href="dominating_set.html">Dominating set</a></td><td>3</td><td>1</td><td>not yet written</td><td>Greedy dominating set of least node weight (weight per newly covered node), as node ids in the order chosen.</td></tr><tr><td><a href="edge_cover.html">Edge cover</a></td><td>2</td><td>1</td><td>not yet written</td><td>Edge cover. Entries grouped here: Edge cover; St edge cover.</td></tr><tr><td><a href="k_factor.html">K-factor</a></td><td>2</td><td>1</td><td>not yet written</td><td>K-factor. Entries grouped here: Kfactor; Kfactor edges.</td></tr><tr><td><a href="vertex_cover.html">Vertex cover</a></td><td>2</td><td>2</td><td>not yet written</td><td>Local-ratio vertex cover of least node cost (2-approximation), as node ids.</td></tr></tbody></table></div>
 
 ## Cycles
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Chordless cycles](chordless_cycles.html) | 1 | 1 | Every chordless (induced) cycle. |
-| [Cycle basis](cycle_basis.html) | 3 | 3 | Cycle basis. Entries grouped here: Cycle basis; Basis; Nxs cycle basis. |
-| [Cycle census and count](cycle_census.html) | 2 | 3 | Cycle census and count. Entries grouped here: Cycle count; Kcycle census. |
-| [Feedback arc and vertex sets](feedback_sets.html) | 2 | 3 | Feedback arc and vertex sets. Entries grouped here: Feedback arc and vertex sets; Break cycles. |
-| [Find a cycle](find_cycle.html) | 2 | 5 | Find a cycle. Entries grouped here: Find cycle; Nxs find cycle. |
-| [Girth](girth.html) | 1 | 3 | Girth. Entries grouped here: Girth. |
-| [Minimum cycle basis](minimum_cycle_basis.html) | 3 | 1 | A minimum cycle basis of an undirected network and the weight of each cycle (de Pina). |
-| [Recursive cycles](recursive_cycles.html) | 1 | 1 | Recursive cycles. Entries grouped here: Recursive cycles. |
-| [Simple cycles](simple_cycles.html) | 1 | 7 | Every simple cycle, by Johnson's search or a bounded depth-first search. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="chordless_cycles.html">Chordless cycles</a></td><td>1</td><td>1</td><td>not yet written</td><td>Every chordless (induced) cycle.</td></tr><tr><td><a href="cycle_basis.html">Cycle basis</a></td><td>3</td><td>3</td><td>not yet written</td><td>Cycle basis. Entries grouped here: Cycle basis; Basis; Nxs cycle basis.</td></tr><tr><td><a href="cycle_census.html">Cycle census and count</a></td><td>2</td><td>3</td><td>not yet written</td><td>Cycle census and count. Entries grouped here: Cycle count; Kcycle census.</td></tr><tr><td><a href="feedback_sets.html">Feedback arc and vertex sets</a></td><td>2</td><td>3</td><td>not yet written</td><td>Feedback arc and vertex sets. Entries grouped here: Feedback arc and vertex sets; Break cycles.</td></tr><tr><td><a href="find_cycle.html">Find a cycle</a></td><td>2</td><td>5</td><td>not yet written</td><td>Find a cycle. Entries grouped here: Find cycle; Nxs find cycle.</td></tr><tr><td><a href="girth.html">Girth</a></td><td>1</td><td>3</td><td>not yet written</td><td>Girth. Entries grouped here: Girth.</td></tr><tr><td><a href="minimum_cycle_basis.html">Minimum cycle basis</a></td><td>3</td><td>1</td><td>not yet written</td><td>A minimum cycle basis of an undirected network and the weight of each cycle (de Pina).</td></tr><tr><td><a href="recursive_cycles.html">Recursive cycles</a></td><td>1</td><td>1</td><td>not yet written</td><td>Recursive cycles. Entries grouped here: Recursive cycles.</td></tr><tr><td><a href="simple_cycles.html">Simple cycles</a></td><td>1</td><td>7</td><td>not yet written</td><td>Every simple cycle, by Johnson's search or a bounded depth-first search.</td></tr></tbody></table></div>
 
 ## Degree sequences and predicates
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Complete graph test](is_complete.html) | 1 | 2 | Complete graph test. Entries grouped here: Is complete. |
-| [Flow hierarchy](flow_hierarchy.html) | 1 | 1 | Flow hierarchy. Entries grouped here: Flow hierarchy. |
-| [Generalized degree](generalized_degree.html) | 1 | 2 | Generalized degree. Entries grouped here: Generalized degree. |
-| [Graphical and bigraphical degree-sequence tests](degree_sequence_tests.html) | 4 | 3 | Graphical and bigraphical degree-sequence tests. Entries grouped here: Degree sequence test; Is bigraphical; Is degseq; Is graphical. |
-| [Hierarchy test](is_hierarchical.html) | 1 | 1 | Hierarchy test. Entries grouped here: Is hierarchical. |
-| [Isolates](isolates.html) | 2 | 4 | Isolates. Entries grouped here: Is isolate; Isolates. |
-| [Loop and multi-edge detection](multi_loop_detection.html) | 1 | 1 | Loop and multi-edge detection. Entries grouped here: Loop and multi-edge detection. |
-| [Regular expander test](is_regular_expander.html) | 1 | 1 | Regular expander test. Entries grouped here: Is regular expander. |
-| [Regular graph tests](is_regular.html) | 3 | 1 | Regular graph tests. Entries grouped here: Is k regular; Is strongly regular; Regular. |
-| [S-metric](s_metric.html) | 1 | 1 | S-metric. Entries grouped here: S metric. |
-| [Simple path test](simple_path_test.html) | 1 | 1 | Simple path test. Entries grouped here: Is simple path. |
-| [Tournament score sequence](tournament_score_sequence.html) | 1 | 1 | Tournament score sequence. Entries grouped here: Score sequence. |
-| [Tournament tests](tournament_tests.html) | 1 | 1 | Tournament tests. Entries grouped here: Tournament. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="is_complete.html">Complete graph test</a></td><td>1</td><td>2</td><td>not yet written</td><td>Complete graph test. Entries grouped here: Is complete.</td></tr><tr><td><a href="flow_hierarchy.html">Flow hierarchy</a></td><td>1</td><td>1</td><td>not yet written</td><td>Flow hierarchy. Entries grouped here: Flow hierarchy.</td></tr><tr><td><a href="generalized_degree.html">Generalized degree</a></td><td>1</td><td>2</td><td>not yet written</td><td>Generalized degree. Entries grouped here: Generalized degree.</td></tr><tr><td><a href="degree_sequence_tests.html">Graphical and bigraphical degree-sequence tests</a></td><td>4</td><td>3</td><td>not yet written</td><td>Graphical and bigraphical degree-sequence tests. Entries grouped here: Degree sequence test; Is bigraphical; Is degseq; Is graphical.</td></tr><tr><td><a href="is_hierarchical.html">Hierarchy test</a></td><td>1</td><td>1</td><td>not yet written</td><td>Hierarchy test. Entries grouped here: Is hierarchical.</td></tr><tr><td><a href="isolates.html">Isolates</a></td><td>2</td><td>4</td><td>not yet written</td><td>Isolates. Entries grouped here: Is isolate; Isolates.</td></tr><tr><td><a href="multi_loop_detection.html">Loop and multi-edge detection</a></td><td>1</td><td>1</td><td>not yet written</td><td>Loop and multi-edge detection. Entries grouped here: Loop and multi-edge detection.</td></tr><tr><td><a href="is_regular_expander.html">Regular expander test</a></td><td>1</td><td>1</td><td>not yet written</td><td>Regular expander test. Entries grouped here: Is regular expander.</td></tr><tr><td><a href="is_regular.html">Regular graph tests</a></td><td>3</td><td>1</td><td>not yet written</td><td>Regular graph tests. Entries grouped here: Is k regular; Is strongly regular; Regular.</td></tr><tr><td><a href="s_metric.html">S-metric</a></td><td>1</td><td>1</td><td>not yet written</td><td>S-metric. Entries grouped here: S metric.</td></tr><tr><td><a href="simple_path_test.html">Simple path test</a></td><td>1</td><td>1</td><td>not yet written</td><td>Simple path test. Entries grouped here: Is simple path.</td></tr><tr><td><a href="tournament_score_sequence.html">Tournament score sequence</a></td><td>1</td><td>1</td><td>not yet written</td><td>Tournament score sequence. Entries grouped here: Score sequence.</td></tr><tr><td><a href="tournament_tests.html">Tournament tests</a></td><td>1</td><td>1</td><td>not yet written</td><td>Tournament tests. Entries grouped here: Tournament.</td></tr></tbody></table></div>
 
 ## Distances between graphs
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Distances between graphs (Hamming, structural)](graph_distance.html) | 3 | 1 | Distances between graphs (Hamming, structural). Entries grouped here: Hdist; Sdmat; Structdist. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="graph_distance.html">Distances between graphs (Hamming, structural)</a></td><td>3</td><td>1</td><td>not yet written</td><td>Distances between graphs (Hamming, structural). Entries grouped here: Hdist; Sdmat; Structdist.</td></tr></tbody></table></div>
 
 ## Eulerian paths, Hamiltonian paths and tours
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Chinese postman](chinese_postman.html) | 1 | 1 | Chinese postman. Entries grouped here: Chinese Postman. |
-| [Eulerian circuits and paths](eulerian.html) | 4 | 3 | Eulerian circuits and paths. Entries grouped here: Eulerian circuits and paths; Euler; Euler circuit; Is eulerian. |
-| [Hamiltonian paths and cycles](hamiltonian.html) | 2 | 2 | Hamiltonian paths and cycles. Entries grouped here: Hampath; Palmer Hamiltonian Cycle. |
-| [Traveling salesman](traveling_salesman.html) | 3 | 5 | Traveling salesman. Entries grouped here: St tsp; Traveling salesman (exact and heuristic); Tsp tour. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="chinese_postman.html">Chinese postman</a></td><td>1</td><td>1</td><td>not yet written</td><td>Chinese postman. Entries grouped here: Chinese Postman.</td></tr><tr><td><a href="eulerian.html">Eulerian circuits and paths</a></td><td>4</td><td>3</td><td>not yet written</td><td>Eulerian circuits and paths. Entries grouped here: Eulerian circuits and paths; Euler; Euler circuit; Is eulerian.</td></tr><tr><td><a href="hamiltonian.html">Hamiltonian paths and cycles</a></td><td>2</td><td>2</td><td>not yet written</td><td>Hamiltonian paths and cycles. Entries grouped here: Hampath; Palmer Hamiltonian Cycle.</td></tr><tr><td><a href="traveling_salesman.html">Traveling salesman</a></td><td>3</td><td>5</td><td>not yet written</td><td>Traveling salesman. Entries grouped here: St tsp; Traveling salesman (exact and heuristic); Tsp tour.</td></tr></tbody></table></div>
 
 ## Geometry
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Convex hull](convex_hull.html) | 1 | 1 | Convex hull. Entries grouped here: Convex hull. |
-| [Farthest vertices](farthest_vertices.html) | 2 | 2 | Farthest vertices. Entries grouped here: Farthest points; Farthest vertices. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="convex_hull.html">Convex hull</a></td><td>1</td><td>1</td><td>not yet written</td><td>Convex hull. Entries grouped here: Convex hull.</td></tr><tr><td><a href="farthest_vertices.html">Farthest vertices</a></td><td>2</td><td>2</td><td>not yet written</td><td>Farthest vertices. Entries grouped here: Farthest points; Farthest vertices.</td></tr></tbody></table></div>
 
 ## Independent sets and approximation
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Approximate clique and independent set (Ramsey, clique removal)](approx_clique_independent_set.html) | 3 | 1 | Ramsey-based clique removal: a large independent set and the disjoint cliques removed. |
-| [Approximation heuristics (annealing, random)](approx_misc.html) | 2 | 2 | Approximation heuristics (annealing, random). Entries grouped here: Nx anneal; Nx random. |
-| [Densest subgraph](densest_subgraph.html) | 5 | 2 | Densest subgraph of a simple undirected network by Greedy++ peeling, as the best density and its nodes. |
-| [K-center and Gon heuristic](k_center.html) | 2 | 2 | K-center and Gon heuristic. Entries grouped here: Gon Heuristic; KCenters. |
-| [Maximal independent set](independent_set.html) | 3 | 4 | A random maximal independent set containing the start nodes (or one random node), nodes in increasing order. |
-| [Metric closure](metric_closure.html) | 1 | 1 | Metric closure. Entries grouped here: Metric closure (approximate). |
-| [One-exchange approximation](max_cut_approximation.html) | 1 | 1 | One-exchange approximation. Entries grouped here: One exchange (approximate). |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="approx_clique_independent_set.html">Approximate clique and independent set (Ramsey, clique removal)</a></td><td>3</td><td>1</td><td>not yet written</td><td>Ramsey-based clique removal: a large independent set and the disjoint cliques removed.</td></tr><tr><td><a href="approx_misc.html">Approximation heuristics (annealing, random)</a></td><td>2</td><td>2</td><td>not yet written</td><td>Approximation heuristics (annealing, random). Entries grouped here: Nx anneal; Nx random.</td></tr><tr><td><a href="densest_subgraph.html">Densest subgraph</a></td><td>5</td><td>2</td><td>not yet written</td><td>Densest subgraph of a simple undirected network by Greedy++ peeling, as the best density and its nodes.</td></tr><tr><td><a href="k_center.html">K-center and Gon heuristic</a></td><td>2</td><td>2</td><td>not yet written</td><td>K-center and Gon heuristic. Entries grouped here: Gon Heuristic; KCenters.</td></tr><tr><td><a href="independent_set.html">Maximal independent set</a></td><td>3</td><td>4</td><td>not yet written</td><td>A random maximal independent set containing the start nodes (or one random node), nodes in increasing order.</td></tr><tr><td><a href="metric_closure.html">Metric closure</a></td><td>1</td><td>1</td><td>not yet written</td><td>Metric closure. Entries grouped here: Metric closure (approximate).</td></tr><tr><td><a href="max_cut_approximation.html">One-exchange approximation</a></td><td>1</td><td>1</td><td>not yet written</td><td>One-exchange approximation. Entries grouped here: One exchange (approximate).</td></tr></tbody></table></div>
 
 ## Isomorphism and subgraph matching
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Automorphism group, count and canonical form](automorphisms.html) | 1 | 2 | Automorphism group, count and canonical form. Entries grouped here: Automorphism group, count and canonical form. |
-| [Graph edit distance](graph_edit_distance.html) | 2 | 3 | Graph edit distance. Entries grouped here: Ged Walk; Graph edit distance. |
-| [Graph isomorphism](graph_isomorphism.html) | 7 | 9 | Graph isomorphism. Entries grouped here: Could be iso; Di Graph Matcher; Graph Matcher; Match vertices; Multi Di Graph Matcher; Multi Graph Matcher; and 1 more. |
-| [Maximum bisimulation](bisimulation.html) | 1 | 1 | Maximum bisimulation. Entries grouped here: Maximum bisimulation. |
-| [McGregor common subgraphs](common_subgraphs.html) | 1 | 1 | McGregor common subgraphs. Entries grouped here: Mcgregor common subgraphs. |
-| [Node and edge attribute match functions](attribute_match_functions.html) | 9 | 1 | Node and edge attribute match functions. Entries grouped here: Categorical edge match; Categorical multiedge match; Categorical node match; Generic edge... |
-| [Subgraph isomorphism (ISMAGS)](subgraph_isomorphism_ismags.html) | 1 | 1 | Subgraph isomorphism (ISMAGS). Entries grouped here: ISMAGS. |
-| [Time-respecting graph matching](isomorphism_time_respecting.html) | 2 | 1 | Time-respecting graph matching. Entries grouped here: Time Respecting Di Graph Matcher; Time Respecting Graph Matcher. |
-| [Tree isomorphism](tree_isomorphism.html) | 1 | 1 | Tree isomorphism. Entries grouped here: Tree iso. |
-| [Weisfeiler-Lehman graph and subgraph hash](isomorphism_hash.html) | 2 | 3 | Weisfeiler-Lehman graph and subgraph hash. Entries grouped here: Wl hash; Wl subgraph. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="automorphisms.html">Automorphism group, count and canonical form</a></td><td>1</td><td>2</td><td>not yet written</td><td>Automorphism group, count and canonical form. Entries grouped here: Automorphism group, count and canonical form.</td></tr><tr><td><a href="graph_edit_distance.html">Graph edit distance</a></td><td>2</td><td>3</td><td>not yet written</td><td>Graph edit distance. Entries grouped here: Ged Walk; Graph edit distance.</td></tr><tr><td><a href="graph_isomorphism.html">Graph isomorphism</a></td><td>7</td><td>9</td><td>not yet written</td><td>Graph isomorphism. Entries grouped here: Could be iso; Di Graph Matcher; Graph Matcher; Match vertices; Multi Di Graph Matcher; Multi Graph Matcher; and 1 more.</td></tr><tr><td><a href="bisimulation.html">Maximum bisimulation</a></td><td>1</td><td>1</td><td>not yet written</td><td>Maximum bisimulation. Entries grouped here: Maximum bisimulation.</td></tr><tr><td><a href="common_subgraphs.html">McGregor common subgraphs</a></td><td>1</td><td>1</td><td>not yet written</td><td>McGregor common subgraphs. Entries grouped here: Mcgregor common subgraphs.</td></tr><tr><td><a href="attribute_match_functions.html">Node and edge attribute match functions</a></td><td>9</td><td>1</td><td>not yet written</td><td>Node and edge attribute match functions. Entries grouped here: Categorical edge match; Categorical multiedge match; Categorical node match; Generic edge...</td></tr><tr><td><a href="subgraph_isomorphism_ismags.html">Subgraph isomorphism (ISMAGS)</a></td><td>1</td><td>1</td><td>not yet written</td><td>Subgraph isomorphism (ISMAGS). Entries grouped here: ISMAGS.</td></tr><tr><td><a href="isomorphism_time_respecting.html">Time-respecting graph matching</a></td><td>2</td><td>1</td><td>not yet written</td><td>Time-respecting graph matching. Entries grouped here: Time Respecting Di Graph Matcher; Time Respecting Graph Matcher.</td></tr><tr><td><a href="tree_isomorphism.html">Tree isomorphism</a></td><td>1</td><td>1</td><td>not yet written</td><td>Tree isomorphism. Entries grouped here: Tree iso.</td></tr><tr><td><a href="isomorphism_hash.html">Weisfeiler-Lehman graph and subgraph hash</a></td><td>2</td><td>3</td><td>not yet written</td><td>Weisfeiler-Lehman graph and subgraph hash. Entries grouped here: Wl hash; Wl subgraph.</td></tr></tbody></table></div>
 
 ## Matching
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Approximate and b-matching](approximate_matching.html) | 1 | 2 | Approximate and b-matching. Entries grouped here: Approximate and b-matching. |
-| [Bipartite maximum matching](bipartite_maximum_matching.html) | 4 | 5 | A maximum matching of a bipartite graph as each node's mate (-1 if unmatched), by Hopcroft and Karp. |
-| [Dulmage-Mendelsohn decomposition](dulmage_mendelsohn.html) | 1 | 1 | Dulmage-Mendelsohn decomposition. Entries grouped here: Dulmage Mendelsohn Decomposition. |
-| [Matching and perfect-matching tests](matching_tests.html) | 1 | 4 | Matching and perfect-matching tests. Entries grouped here: Check matching. |
-| [Maximal extendability](matching_extendability.html) | 1 | 1 | Maximal extendability. Entries grouped here: Maximal extendability. |
-| [Maximal matching](maximal_matching.html) | 2 | 1 | Maximal matching. Entries grouped here: Maximal matching; Min maximal matching (approximate). |
-| [Maximum-weight matching](maximum_weight_matching.html) | 3 | 5 | A maximum-weight matching of an undirected network, as input edge positions (blossom algorithm). |
-| [Minimum-weight matching](minimum_weight_matching.html) | 2 | 1 | A matching of least total weight among the matchings of largest size, as input edge positions. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="approximate_matching.html">Approximate and b-matching</a></td><td>1</td><td>2</td><td>not yet written</td><td>Approximate and b-matching. Entries grouped here: Approximate and b-matching.</td></tr><tr><td><a href="bipartite_maximum_matching.html">Bipartite maximum matching</a></td><td>4</td><td>5</td><td>not yet written</td><td>A maximum matching of a bipartite graph as each node's mate (-1 if unmatched), by Hopcroft and Karp.</td></tr><tr><td><a href="dulmage_mendelsohn.html">Dulmage-Mendelsohn decomposition</a></td><td>1</td><td>1</td><td>not yet written</td><td>Dulmage-Mendelsohn decomposition. Entries grouped here: Dulmage Mendelsohn Decomposition.</td></tr><tr><td><a href="matching_tests.html">Matching and perfect-matching tests</a></td><td>1</td><td>4</td><td>not yet written</td><td>Matching and perfect-matching tests. Entries grouped here: Check matching.</td></tr><tr><td><a href="matching_extendability.html">Maximal extendability</a></td><td>1</td><td>1</td><td>not yet written</td><td>Maximal extendability. Entries grouped here: Maximal extendability.</td></tr><tr><td><a href="maximal_matching.html">Maximal matching</a></td><td>2</td><td>1</td><td>not yet written</td><td>Maximal matching. Entries grouped here: Maximal matching; Min maximal matching (approximate).</td></tr><tr><td><a href="maximum_weight_matching.html">Maximum-weight matching</a></td><td>3</td><td>5</td><td>not yet written</td><td>A maximum-weight matching of an undirected network, as input edge positions (blossom algorithm).</td></tr><tr><td><a href="minimum_weight_matching.html">Minimum-weight matching</a></td><td>2</td><td>1</td><td>not yet written</td><td>A matching of least total weight among the matchings of largest size, as input edge positions.</td></tr></tbody></table></div>
 
 ## Planarity
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Kuratowski subgraph and counterexample](kuratowski_subgraph.html) | 2 | 1 | Kuratowski subgraph and counterexample. Entries grouped here: Counterexample; Kuratowski. |
-| [Planar embedding](planar_embedding.html) | 2 | 1 | Planar embedding. Entries grouped here: Embedding; Embedding euler. |
-| [Planarity test](planarity_test.html) | 2 | 5 | Planarity test. Entries grouped here: Planar; Planarity testing, embedding and straight-line drawing. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="kuratowski_subgraph.html">Kuratowski subgraph and counterexample</a></td><td>2</td><td>1</td><td>not yet written</td><td>Kuratowski subgraph and counterexample. Entries grouped here: Counterexample; Kuratowski.</td></tr><tr><td><a href="planar_embedding.html">Planar embedding</a></td><td>2</td><td>1</td><td>not yet written</td><td>Planar embedding. Entries grouped here: Embedding; Embedding euler.</td></tr><tr><td><a href="planarity_test.html">Planarity test</a></td><td>2</td><td>5</td><td>not yet written</td><td>Planarity test. Entries grouped here: Planar; Planarity testing, embedding and straight-line drawing.</td></tr></tbody></table></div>
 
 ## Similarity and link prediction
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Dice similarity](dice_similarity.html) | 1 | 1 | Dice similarity. Entries grouped here: Dice pairwise. |
-| [Edge neighborhood overlap](edge_neighborhood_overlap.html) | 1 | 1 | Edge neighborhood overlap. Entries grouped here: Edge nei overlap. |
-| [Generalized topological overlap](topological_overlap.html) | 1 | 1 | Generalized topological overlap. Entries grouped here: Gtom. |
-| [Link prediction scores](link_prediction.html) | 1 | 7 | Link prediction score of each listed pair of nodes: common neighbors, Jaccard, Adamic-Adar and the other neighborhood indices. |
-| [Matching index](matching_index.html) | 1 | 1 | Matching index. Entries grouped here: Matching ind. |
-| [Panther](panther.html) | 1 | 1 | The k nodes most similar to a source by Panther: how often random paths contain both (Zhang et al. 2015). |
-| [SimRank](simrank.html) | 1 | 1 | SimRank similarity of every pair of nodes: two nodes are similar when their in-neighbors are (Jeh and Widom 2002). |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="dice_similarity.html">Dice similarity</a></td><td>1</td><td>1</td><td>not yet written</td><td>Dice similarity. Entries grouped here: Dice pairwise.</td></tr><tr><td><a href="edge_neighborhood_overlap.html">Edge neighborhood overlap</a></td><td>1</td><td>1</td><td>not yet written</td><td>Edge neighborhood overlap. Entries grouped here: Edge nei overlap.</td></tr><tr><td><a href="topological_overlap.html">Generalized topological overlap</a></td><td>1</td><td>1</td><td>not yet written</td><td>Generalized topological overlap. Entries grouped here: Gtom.</td></tr><tr><td><a href="link_prediction.html">Link prediction scores</a></td><td>1</td><td>7</td><td>not yet written</td><td>Link prediction score of each listed pair of nodes: common neighbors, Jaccard, Adamic-Adar and the other neighborhood indices.</td></tr><tr><td><a href="matching_index.html">Matching index</a></td><td>1</td><td>1</td><td>not yet written</td><td>Matching index. Entries grouped here: Matching ind.</td></tr><tr><td><a href="panther.html">Panther</a></td><td>1</td><td>1</td><td>not yet written</td><td>The k nodes most similar to a source by Panther: how often random paths contain both (Zhang et al. 2015).</td></tr><tr><td><a href="simrank.html">SimRank</a></td><td>1</td><td>1</td><td>not yet written</td><td>SimRank similarity of every pair of nodes: two nodes are similar when their in-neighbors are (Jeh and Widom 2002).</td></tr></tbody></table></div>
 
 ## Spanners, contraction and reduction
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Dedensify and compression](dedensify.html) | 3 | 1 | Dedensify and compression. Entries grouped here: Dedensify; Quotient internal; Snap groups. |
-| [Node boundary](node_boundary.html) | 1 | 1 | Node boundary. Entries grouped here: Node boundary. |
-| [Node contraction](contracted_nodes.html) | 1 | 5 | Node contraction. Entries grouped here: Contracted nodes. |
-| [Pruned landmark labeling](landmark_labeling.html) | 1 | 1 | Pruned landmark labeling. Entries grouped here: Pruned Landmark Labeling. |
-| [Spanners](spanners.html) | 2 | 2 | Spanners. Entries grouped here: Greedy Multiplicative Spanner; Spanner ok. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="dedensify.html">Dedensify and compression</a></td><td>3</td><td>1</td><td>not yet written</td><td>Dedensify and compression. Entries grouped here: Dedensify; Quotient internal; Snap groups.</td></tr><tr><td><a href="node_boundary.html">Node boundary</a></td><td>1</td><td>1</td><td>not yet written</td><td>Node boundary. Entries grouped here: Node boundary.</td></tr><tr><td><a href="contracted_nodes.html">Node contraction</a></td><td>1</td><td>5</td><td>not yet written</td><td>Node contraction. Entries grouped here: Contracted nodes.</td></tr><tr><td><a href="landmark_labeling.html">Pruned landmark labeling</a></td><td>1</td><td>1</td><td>not yet written</td><td>Pruned landmark labeling. Entries grouped here: Pruned Landmark Labeling.</td></tr><tr><td><a href="spanners.html">Spanners</a></td><td>2</td><td>2</td><td>not yet written</td><td>Spanners. Entries grouped here: Greedy Multiplicative Spanner; Spanner ok.</td></tr></tbody></table></div>
 
 ## Tree decomposition
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Tree decomposition and treewidth](tree_decomposition.html) | 2 | 1 | Tree decomposition of a simple undirected network by an elimination heuristic: the bags, the edges between bags and the width. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="tree_decomposition.html">Tree decomposition and treewidth</a></td><td>2</td><td>1</td><td>not yet written</td><td>Tree decomposition of a simple undirected network by an elimination heuristic: the bags, the edges between bags and the width.</td></tr></tbody></table></div>
 
 ## Triangles and local counts
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Convergence degree and field size](convergence_degree.html) | 2 | 1 | Convergence degree and field size. Entries grouped here: Convergence degree; Convergence field size. |
-| [Scan statistic](scan_statistic.html) | 2 | 1 | Scan statistic. Entries grouped here: Local scan; Scan stat. |
-| [Triangle listing](triangle_list.html) | 1 | 1 | Triangle listing. Entries grouped here: Triangle list. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="convergence_degree.html">Convergence degree and field size</a></td><td>2</td><td>1</td><td>not yet written</td><td>Convergence degree and field size. Entries grouped here: Convergence degree; Convergence field size.</td></tr><tr><td><a href="scan_statistic.html">Scan statistic</a></td><td>2</td><td>1</td><td>not yet written</td><td>Scan statistic. Entries grouped here: Local scan; Scan stat.</td></tr><tr><td><a href="triangle_list.html">Triangle listing</a></td><td>1</td><td>1</td><td>not yet written</td><td>Triangle listing. Entries grouped here: Triangle list.</td></tr></tbody></table></div>
 
 ## Unclassified procedures
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Congru](congru.html) | 1 | 1 | Congru. Entries grouped here: Congru. |
-| [CPA](cpa.html) | 1 | 1 | CPA. Entries grouped here: Cpa. |
-| [Dlbet](dlbet.html) | 1 | 1 | Dlbet. Entries grouped here: Dlbet. |
-| [FACD](facd.html) | 1 | 1 | FACD. Entries grouped here: Facd. |
-| [Makeup](makeup.html) | 1 | 1 | Makeup. Entries grouped here: Makeup. |
-| [OPP](opp.html) | 1 | 1 | OPP. Entries grouped here: Opp. |
-| [PSI](psi.html) | 1 | 1 | PSI. Entries grouped here: Psi. |
-| [Rowlas](rowlas.html) | 1 | 1 | Rowlas. Entries grouped here: Rowlas. |
-| [RSH](rsh.html) | 1 | 1 | RSH. Entries grouped here: Rsh. |
-| [Runtime parallelism context](runtime_context.html) | 1 | 1 | Runtime parallelism context. Entries grouped here: Openmp context. |
-| [RWB](rwb.html) | 1 | 1 | RWB. Entries grouped here: Rwb. |
-| [Score](score.html) | 1 | 1 | Score. Entries grouped here: Score. |
-| [Sfigality](sfigality.html) | 1 | 1 | Sfigality. Entries grouped here: Sfigality. |
-| [SPSP](spsp.html) | 1 | 1 | SPSP. Entries grouped here: SPSP. |
-| [TCE](tce.html) | 1 | 1 | TCE. Entries grouped here: TCE. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="congru.html">Congru</a></td><td>1</td><td>1</td><td>not yet written</td><td>Congru. Entries grouped here: Congru.</td></tr><tr><td><a href="cpa.html">CPA</a></td><td>1</td><td>1</td><td>not yet written</td><td>CPA. Entries grouped here: Cpa.</td></tr><tr><td><a href="dlbet.html">Dlbet</a></td><td>1</td><td>1</td><td>not yet written</td><td>Dlbet. Entries grouped here: Dlbet.</td></tr><tr><td><a href="facd.html">FACD</a></td><td>1</td><td>1</td><td>not yet written</td><td>FACD. Entries grouped here: Facd.</td></tr><tr><td><a href="makeup.html">Makeup</a></td><td>1</td><td>1</td><td>not yet written</td><td>Makeup. Entries grouped here: Makeup.</td></tr><tr><td><a href="opp.html">OPP</a></td><td>1</td><td>1</td><td>not yet written</td><td>OPP. Entries grouped here: Opp.</td></tr><tr><td><a href="psi.html">PSI</a></td><td>1</td><td>1</td><td>not yet written</td><td>PSI. Entries grouped here: Psi.</td></tr><tr><td><a href="rowlas.html">Rowlas</a></td><td>1</td><td>1</td><td>not yet written</td><td>Rowlas. Entries grouped here: Rowlas.</td></tr><tr><td><a href="rsh.html">RSH</a></td><td>1</td><td>1</td><td>not yet written</td><td>RSH. Entries grouped here: Rsh.</td></tr><tr><td><a href="runtime_context.html">Runtime parallelism context</a></td><td>1</td><td>1</td><td>not yet written</td><td>Runtime parallelism context. Entries grouped here: Openmp context.</td></tr><tr><td><a href="rwb.html">RWB</a></td><td>1</td><td>1</td><td>not yet written</td><td>RWB. Entries grouped here: Rwb.</td></tr><tr><td><a href="score.html">Score</a></td><td>1</td><td>1</td><td>not yet written</td><td>Score. Entries grouped here: Score.</td></tr><tr><td><a href="sfigality.html">Sfigality</a></td><td>1</td><td>1</td><td>not yet written</td><td>Sfigality. Entries grouped here: Sfigality.</td></tr><tr><td><a href="spsp.html">SPSP</a></td><td>1</td><td>1</td><td>not yet written</td><td>SPSP. Entries grouped here: SPSP.</td></tr><tr><td><a href="tce.html">TCE</a></td><td>1</td><td>1</td><td>not yet written</td><td>TCE. Entries grouped here: TCE.</td></tr></tbody></table></div>
 {% endraw %}

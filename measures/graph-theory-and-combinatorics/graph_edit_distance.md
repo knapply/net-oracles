@@ -16,12 +16,11 @@ Family: [Graph theory and combinatorics](index.html). Subfamily: Isomorphism and
 
 Graph edit distance. Entries grouped here: Ged Walk; Graph edit distance.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Ged Walk](#cat_ged_walk) | `cat_ged_walk` | 1 |
-| [Graph edit distance](#ged) | `ged` | 2 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_ged_walk">Ged Walk</a></td><td><code>cat_ged_walk</code></td><td>1</td></tr><tr><td><a href="#ged">Graph edit distance</a></td><td><code>ged</code></td><td>2</td></tr></tbody></table></div>
 
 ## Ged Walk {#cat_ged_walk}
 
@@ -31,9 +30,7 @@ Measure id: `cat_ged_walk`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_ged_walk-networkit) | `GedWalk` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_ged_walk-networkit">details</a></td><td><code>GedWalk</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -49,10 +46,7 @@ Measure id: `ged`. Original family: Graph theory and combinatorics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `graph_edit_distance; optimal_edit_paths; optimize_edit_paths; optimize_graph_edit_distance` |  |
-| [JGraphT](../../tools/jgrapht.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-ged-jgrapht) | `ZhangShashaTreeEditDistance` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>graph_edit_distance; optimal_edit_paths; optimize_edit_paths; optimize_graph_edit_distance</code></td><td></td></tr><tr><td><a href="../../tools/jgrapht.html">JGraphT</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-ged-jgrapht">details</a></td><td><code>ZhangShashaTreeEditDistance</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -60,17 +54,11 @@ Measure id: `ged`. Original family: Graph theory and combinatorics.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `ged` | NetworkX | any | differs | loops | self\_loops | abs 0, rel 0 | `nx.graph_edit_distance(G1, G2) with G2 = ged_pair(fixture)` | NetworkX's graph\_edit\_distance substitutes a self-loop for an ordinary edge at no cost when the loop's node is mapped onto one endpoint ((1, 1) against (0, 1), edit distance 0); the reference and the definition count deleting the loop and inserting the edge (2). exact edit distance is exponential; networks of at most 10 nodes |
-| `ged_labels` | NetworkX | any | no-value-on-some-inputs |  |  | abs 0, rel 0 | `nx.graph_edit_distance(G1, G2, node_match = equal labels, edge_match = equal labels) with G2 = ged_pair(fixture)` | exact edit distance is exponential; networks of at most 10 nodes |
-| `ged_node_labels` | NetworkX | any | differs | loops | self\_loops | abs 0, rel 0 | `nx.graph_edit_distance(G1, G2, node_match = equal labels) with G2 = ged_pair(fixture)` | NetworkX's graph\_edit\_distance substitutes a self-loop for an ordinary edge at no cost when the loop's node is mapped onto one endpoint ((1, 1) against (0, 1), edit distance 0); the reference and the definition count deleting the loop and inserting the edge (2). exact edit distance is exponential; networks of at most 10 nodes |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ged</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>loops</td><td>self_loops</td><td>abs 0, rel 0</td><td><code>nx.graph_edit_distance(G1, G2) with G2 = ged_pair(fixture)</code></td><td>NetworkX's graph_edit_distance substitutes a self-loop for an ordinary edge at no cost when the loop's node is mapped onto one endpoint ((1, 1) against (0, 1), edit distance 0); the reference and the definition count deleting the loop and inserting the edge (2). exact edit distance is exponential; networks of at most 10 nodes</td></tr><tr><td><code>ged_labels</code></td><td>NetworkX</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.graph_edit_distance(G1, G2, node_match = equal labels, edge_match = equal labels) with G2 = ged_pair(fixture)</code></td><td>exact edit distance is exponential; networks of at most 10 nodes</td></tr><tr><td><code>ged_node_labels</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>loops</td><td>self_loops</td><td>abs 0, rel 0</td><td><code>nx.graph_edit_distance(G1, G2, node_match = equal labels) with G2 = ged_pair(fixture)</code></td><td>NetworkX's graph_edit_distance substitutes a self-loop for an ordinary edge at no cost when the loop's node is mapped onto one endpoint ((1, 1) against (0, 1), edit distance 0); the reference and the definition count deleting the loop and inserting the edge (2). exact edit distance is exponential; networks of at most 10 nodes</td></tr></tbody></table></div>
 
 **Findings**
 
-| Id | Tool | Kind | Title |
-|---|---|---|---|
-| [F003](../../findings.html#f003) | NetworkX | defect | graph\_edit\_distance substitutes a self-loop for an ordinary edge at no cost |
+<div class="table-wrapper"><table><thead><tr><th>Id</th><th>Tool</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../../findings.html#f003">F003</a></td><td>NetworkX</td><td>defect</td><td>graph_edit_distance substitutes a self-loop for an ordinary edge at no cost</td></tr></tbody></table></div>
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht)
 {% endraw %}

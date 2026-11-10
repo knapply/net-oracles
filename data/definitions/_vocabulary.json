@@ -1,0 +1,85 @@
+{
+ "description": "Edge cases used in definitions/<family-slug>.json. Each id is defined once here; a concept's edge_cases list uses these ids only. Add a case here (id, label, description) only when no existing case fits, and keep descriptions about the input, never about a tool.",
+ "cases": {
+  "empty_graph": {
+   "label": "Empty graph",
+   "description": "The graph has no nodes (n = 0)."
+  },
+  "edgeless": {
+   "label": "Edgeless graph",
+   "description": "The graph has nodes but no edges (m = 0)."
+  },
+  "single_node": {
+   "label": "Single node",
+   "description": "The graph has exactly one node (n = 1), with or without a self-loop."
+  },
+  "two_nodes": {
+   "label": "Two nodes",
+   "description": "The graph has exactly two nodes."
+  },
+  "small_n": {
+   "label": "Too few nodes for the formula",
+   "description": "The graph has fewer nodes than a normalizing constant or a term of the formula needs (for example n < 3 when dividing by (n-1)(n-2)), so a division by zero or an empty sum arises."
+  },
+  "isolates": {
+   "label": "Isolated nodes",
+   "description": "At least one node has no edge to any other node (degree 0), in a graph that has other edges."
+  },
+  "self_loops": {
+   "label": "Self-loops",
+   "description": "An edge whose source and target are the same node."
+  },
+  "multi_edges": {
+   "label": "Parallel edges",
+   "description": "Several edges with the same source and target (same endpoints, for undirected edges)."
+  },
+  "disconnected": {
+   "label": "Disconnected graph",
+   "description": "An undirected graph with more than one connected component, or a directed graph that is not weakly connected: some pairs of nodes have no path."
+  },
+  "directed_unreachable": {
+   "label": "Directed graph, unreachable pairs",
+   "description": "A directed graph in which some node cannot reach another along edge directions although the graph may be weakly connected (not strongly connected)."
+  },
+  "direction": {
+   "label": "Undirected versus directed input",
+   "description": "The same measure applied to an undirected graph (each edge usable both ways) and to a directed graph (edges usable from source to target only), including which degree or distance direction is scored."
+  },
+  "weights": {
+   "label": "Edge weights",
+   "description": "How edge weights enter: as lengths (costs) in path measures, as strengths (capacities, tie intensities) in degree, flow and spectral measures, or ignored."
+  },
+  "zero_weights": {
+   "label": "Zero weights",
+   "description": "Edges with weight 0."
+  },
+  "negative_weights": {
+   "label": "Negative weights",
+   "description": "Edges with a negative weight."
+  },
+  "ties": {
+   "label": "Ties and equal values",
+   "description": "Several shortest paths of equal length, equal scores, or equal eigenvalues, including ties that arise only in floating point (for example equal sums of reciprocals)."
+  },
+  "complete_graph": {
+   "label": "Complete graph",
+   "description": "Every pair of distinct nodes is joined by an edge. All nodes are structurally equivalent."
+  },
+  "star": {
+   "label": "Star",
+   "description": "One centre joined to every other node and no other edges."
+  },
+  "bipartite": {
+   "label": "Bipartite or two-mode graph",
+   "description": "The node set splits into two classes with edges only between classes (periodic structure; two-mode data)."
+  },
+  "parameter_domain": {
+   "label": "Parameter outside its valid range",
+   "description": "A free parameter (attenuation, damping, decay, exponent, walk length) outside the range for which the series or fixed point is defined or convergent."
+  },
+  "group_input": {
+   "label": "Degenerate group or subset input",
+   "description": "A group, source set, target set or sample that is empty, a single node, or the whole node set."
+  }
+ }
+}

@@ -16,6 +16,8 @@ Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id:
 
 Actor-oriented event models (DyNAM). Entries grouped here: Actor-oriented event models (DyNAM).
 
+*Definition not yet written.*
+
 ## Actor-oriented event models (DyNAM) {#dynam}
 
 Measure id: `dynam`. Original family: Statistical fitting.
@@ -24,9 +26,7 @@ Measure id: `dynam`. Original family: Statistical fitting.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [goldfish](../../tools/goldfish.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: goldfish is documented-only in this survey; listed in its documentation. [details](#why-dynam-goldfish) |  | documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/goldfish.html">goldfish</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: goldfish is documented-only in this survey; listed in its documentation. <a href="#why-dynam-goldfish">details</a></td><td></td><td>documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

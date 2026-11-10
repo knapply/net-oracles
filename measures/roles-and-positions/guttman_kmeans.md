@@ -16,6 +16,8 @@ Family: [Roles and positions](index.html). Subfamily: Scaling and clustering. Co
 
 Guttman scaling, K-means and quick clustering. Entries grouped here: Guttman scaling, K-means and quick clustering.
 
+*Definition not yet written.*
+
 ## Guttman scaling, K-means and quick clustering {#guttman_kmeans}
 
 Measure id: `guttman_kmeans`. Original family: Roles and positions.
@@ -24,9 +26,7 @@ Measure id: `guttman_kmeans`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-guttman_kmeans-ucinet) | `K-means, quick clustering (quickclus, 6.770); guttman; kmeans; quickclus` | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-guttman_kmeans-ucinet">details</a></td><td><code>K-means, quick clustering (quickclus, 6.770); guttman; kmeans; quickclus</code></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

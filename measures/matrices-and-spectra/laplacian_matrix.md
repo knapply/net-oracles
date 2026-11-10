@@ -16,12 +16,11 @@ Family: [Matrices and spectra](index.html). Subfamily: Graph matrices. Concept i
 
 Laplacian matrix. Entries grouped here: Gm laplacian; Magnetic laplacian matrix.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Gm laplacian](#gm_laplacian) | `gm_laplacian` | 8 |
-| [Magnetic laplacian matrix](#cat_laplacian_magnetic_matrix) | `cat_laplacian_magnetic_matrix` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#gm_laplacian">Gm laplacian</a></td><td><code>gm_laplacian</code></td><td>8</td></tr><tr><td><a href="#cat_laplacian_magnetic_matrix">Magnetic laplacian matrix</a></td><td><code>cat_laplacian_magnetic_matrix</code></td><td>1</td></tr></tbody></table></div>
 
 ## Gm laplacian {#gm_laplacian}
 
@@ -31,16 +30,7 @@ Measure id: `gm_laplacian`. Original family: Matrices and spectra.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `directed_combinatorial_laplacian_matrix; directed_laplacian_matrix; laplacian_matrix; normalized_laplacian_matrix` |  |
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gm_laplacian-igraph) | `laplacian_matrix` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gm_laplacian-pyigraph) | `laplacian` | API listing |
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gm_laplacian-graphtool) | `laplacian` | API listing |
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gm_laplacian-networkit) | `laplacianMatrix` | API listing |
-| [scikit-network](../../tools/sknetwork.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gm_laplacian-sknetwork) | `Laplacian` | API listing |
-| [centiserve](../../tools/centiserve.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gm_laplacian-centiserve) | `laplacian` | API listing |
-| [graspologic](../../tools/graspologic.html) | <a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a> | Differs by convention (direction): For a directed graph graspologic's 'I-DAD' form is D\_in^-1/2 (D\_in - A) D\_in^-1/2 with in-degrees (graspologic/utils/utils.py, to\_laplacian), and a... [details](#why-gm_laplacian-graspologic) |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>directed_combinatorial_laplacian_matrix; directed_laplacian_matrix; laplacian_matrix; normalized_laplacian_matrix</code></td><td></td></tr><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gm_laplacian-igraph">details</a></td><td><code>laplacian_matrix</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gm_laplacian-pyigraph">details</a></td><td><code>laplacian</code></td><td>API listing</td></tr><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gm_laplacian-graphtool">details</a></td><td><code>laplacian</code></td><td>API listing</td></tr><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gm_laplacian-networkit">details</a></td><td><code>laplacianMatrix</code></td><td>API listing</td></tr><tr><td><a href="../../tools/sknetwork.html">scikit-network</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gm_laplacian-sknetwork">details</a></td><td><code>Laplacian</code></td><td>API listing</td></tr><tr><td><a href="../../tools/centiserve.html">centiserve</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gm_laplacian-centiserve">details</a></td><td><code>laplacian</code></td><td>API listing</td></tr><tr><td><a href="../../tools/graspologic.html">graspologic</a></td><td><a class="st st-t st-conv" href="../../method.html#state-checked-convention"><span class="g" aria-hidden="true">≠</span>checked, differs by convention</a></td><td>Differs by convention (direction): For a directed graph graspologic's 'I-DAD' form is D_in^-1/2 (D_in - A) D_in^-1/2 with in-degrees (graspologic/utils/utils.py, to_laplacian), and a... <a href="#why-gm_laplacian-graspologic">details</a></td><td></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -54,20 +44,11 @@ Measure id: `gm_laplacian`. Original family: Matrices and spectra.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `gm_laplacian` | NetworkX | any | agrees |  |  | abs 1e-12, rel 1e-12 | `nx.laplacian_matrix(G, weight = None).toarray()` |  |
-| `gm_laplacian_weighted` | NetworkX | any | agrees |  |  | abs 1e-12, rel 1e-12 | `nx.laplacian_matrix(G, weight = 'weight').toarray()` |  |
-| `gm_normalized_laplacian` | NetworkX | any | agrees |  |  | abs 1e-14, rel 1e-12 | `nx.normalized_laplacian_matrix(G, weight = None).toarray()` |  |
-| `gm_normalized_laplacian` | graspologic | any | differs | directed | direction | abs 1e-14, rel 1e-12 | `graspologic.utils.to_laplacian(A, form = 'I-DAD')` | Undirected fixtures agree. |
-| `gm_normalized_laplacian_weighted` | NetworkX | any | agrees |  |  | abs 1e-14, rel 1e-12 | `nx.normalized_laplacian_matrix(G, weight = 'weight').toarray()` |  |
-| `gm_normalized_laplacian_weighted` | graspologic | any | differs | directed | direction | abs 1e-14, rel 1e-12 | `graspologic.utils.to_laplacian(W, form = 'I-DAD')` | Undirected fixtures agree. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>gm_laplacian</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.laplacian_matrix(G, weight = None).toarray()</code></td><td></td></tr><tr><td><code>gm_laplacian_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.laplacian_matrix(G, weight = 'weight').toarray()</code></td><td></td></tr><tr><td><code>gm_normalized_laplacian</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-14, rel 1e-12</td><td><code>nx.normalized_laplacian_matrix(G, weight = None).toarray()</code></td><td></td></tr><tr><td><code>gm_normalized_laplacian</code></td><td>graspologic</td><td>any</td><td>differs</td><td>directed</td><td>direction</td><td>abs 1e-14, rel 1e-12</td><td><code>graspologic.utils.to_laplacian(A, form = 'I-DAD')</code></td><td>Undirected fixtures agree.</td></tr><tr><td><code>gm_normalized_laplacian_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-14, rel 1e-12</td><td><code>nx.normalized_laplacian_matrix(G, weight = 'weight').toarray()</code></td><td></td></tr><tr><td><code>gm_normalized_laplacian_weighted</code></td><td>graspologic</td><td>any</td><td>differs</td><td>directed</td><td>direction</td><td>abs 1e-14, rel 1e-12</td><td><code>graspologic.utils.to_laplacian(W, form = 'I-DAD')</code></td><td>Undirected fixtures agree.</td></tr></tbody></table></div>
 
 **Findings**
 
-| Id | Tool | Kind | Title |
-|---|---|---|---|
-| [F072](../../findings.html#f072) | graspologic | convention | The I-DAD normalized Laplacian normalizes by in-degrees on directed graphs |
+<div class="table-wrapper"><table><thead><tr><th>Id</th><th>Tool</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../../findings.html#f072">F072</a></td><td>graspologic</td><td>convention</td><td>The I-DAD normalized Laplacian normalizes by in-degrees on directed graphs</td></tr></tbody></table></div>
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [jalili2015centiserver](../../references.html#jalili2015centiserver), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [staudt2016networkit](../../references.html#staudt2016networkit), [tool_graspologic](../../references.html#tool_graspologic), [tool_sknetwork](../../references.html#tool_sknetwork)
 
@@ -79,9 +60,7 @@ Measure id: `cat_laplacian_magnetic_matrix`. Original family: Matrices and spect
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_laplacian_magnetic_matrix-networkx) | `magnetic_laplacian_matrix` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_laplacian_magnetic_matrix-networkx">details</a></td><td><code>magnetic_laplacian_matrix</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

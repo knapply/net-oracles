@@ -16,12 +16,11 @@ Family: [Roles and positions](index.html). Subfamily: Equivalence and clustering
 
 Regular equivalence (REGE, CATREGE). Entries grouped here: Regular equivalence; Automorphic (Max Sim) and regular equivalence (REGE, CATREGE).
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Regular equivalence](#regular_equivalence) | `regular_equivalence` | 3 |
-| [Automorphic (Max Sim) and regular equivalence (REGE, CATREGE)](#cat_automorphic_catrege_equivalence_max_rege_regular_sim) | `cat_automorphic_catrege_equivalence_max_rege_regular_sim` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#regular_equivalence">Regular equivalence</a></td><td><code>regular_equivalence</code></td><td>3</td></tr><tr><td><a href="#cat_automorphic_catrege_equivalence_max_rege_regular_sim">Automorphic (Max Sim) and regular equivalence (REGE, CATREGE)</a></td><td><code>cat_automorphic_catrege_equivalence_max_rege_regular_sim</code></td><td>1</td></tr></tbody></table></div>
 
 ## Regular equivalence {#regular_equivalence}
 
@@ -31,11 +30,7 @@ Measure id: `regular_equivalence`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [sna](../../tools/sna.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `redist` |  |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-regular_equivalence-ucinet) |  | published documentation |
-| [blockmodeling](../../tools/blockmodeling.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-regular_equivalence-blockmodeling) | `REGD.for; REGD.ne.for; REGD.ow.for; REGE; REGE.FC; REGE.FC.ow; REGE.for; REGE.ne.for; REGE.nm.diag.for; REGE.nm.for; REGE.nm.ne.for; REGE.ow` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/sna.html">sna</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>redist</code></td><td></td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-regular_equivalence-ucinet">details</a></td><td></td><td>published documentation</td></tr><tr><td><a href="../../tools/blockmodeling.html">blockmodeling</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-regular_equivalence-blockmodeling">details</a></td><td><code>REGD.for; REGD.ne.for; REGD.ow.for; REGE; REGE.FC; REGE.FC.ow; REGE.for; REGE.ne.for; REGE.nm.diag.for; REGE.nm.for; REGE.nm.ne.for; REGE.ow</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -44,10 +39,7 @@ Measure id: `regular_equivalence`. Original family: Roles and positions.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `regular_equivalence` | sna | any | no-value-on-some-inputs |  |  | abs 0, rel 0 | `classes at distance 0 in sna::redist(m, method = 'catrege')` | sna fails on a network with a single node. |
-| `regular_equivalence_seed` | sna | any | no-value-on-some-inputs |  |  | abs 0, rel 0 | `sna::redist(m, method = 'catrege', seed.partition = v %% 3), distance 0` | sna fails on a network with a single node. |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>regular_equivalence</code></td><td>sna</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>classes at distance 0 in sna::redist(m, method = 'catrege')</code></td><td>sna fails on a network with a single node.</td></tr><tr><td><code>regular_equivalence_seed</code></td><td>sna</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>sna::redist(m, method = 'catrege', seed.partition = v %% 3), distance 0</code></td><td>sna fails on a network with a single node.</td></tr></tbody></table></div>
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [butts2008sna](../../references.html#butts2008sna), [ziberna2007generalized](../../references.html#ziberna2007generalized)
 
@@ -59,9 +51,7 @@ Measure id: `cat_automorphic_catrege_equivalence_max_rege_regular_sim`. Original
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-cat_automorphic_catrege_equivalence_max_rege_regular_sim-ucinet) | `Automorphic (MaxSim) and regular equivalence (REGE, CATREGE)` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-cat_automorphic_catrege_equivalence_max_rege_regular_sim-ucinet">details</a></td><td><code>Automorphic (MaxSim) and regular equivalence (REGE, CATREGE)</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

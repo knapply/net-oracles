@@ -16,6 +16,8 @@ Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Con
 
 Temporal edge density. Entries grouped here: T Edge Density.
 
+*Definition not yet written.*
+
 ## T Edge Density {#cat_density_edge_t}
 
 Measure id: `cat_density_edge_t`. Original family: Descriptive statistics.
@@ -24,9 +26,7 @@ Measure id: `cat_density_edge_t`. Original family: Descriptive statistics.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [tsna / networkDynamic](../../tools/tsna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_density_edge_t-tsna) | `tEdgeDensity` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/tsna.html">tsna / networkDynamic</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_density_edge_t-tsna">details</a></td><td><code>tEdgeDensity</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

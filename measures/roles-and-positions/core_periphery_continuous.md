@@ -16,6 +16,8 @@ Family: [Roles and positions](index.html). Subfamily: Core-periphery. Concept id
 
 Continuous core-periphery fit: a coreness score per node by MINRES or by correlation with the pattern c\_i c\_j.
 
+*Definition not yet written.*
+
 ## References {#concept-references}
 
 [borgatti1999models](../../references.html#borgatti1999models), [boyd2010computing](../../references.html#boyd2010computing), [comrey1962minimum](../../references.html#comrey1962minimum), [nocedal2006numerical](../../references.html#nocedal2006numerical)
@@ -28,10 +30,7 @@ Measure id: `core_periphery_continuous`. Original family: Roles and positions.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-core_periphery_continuous-ucinet) | `contcp` | published documentation |
-| [cpnet](../../tools/cpnet.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-core_periphery_continuous-ucinet">details</a></td><td><code>contcp</code></td><td>published documentation</td></tr><tr><td><a href="../../tools/cpnet.html">cpnet</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td></td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -39,9 +38,7 @@ Measure id: `core_periphery_continuous`. Original family: Roles and positions.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `core_periphery_minres_vs_cpnet` | cpnet | any | agrees |  |  | abs 1e-09, rel 1e-09 | `smallest residual sum of squares sum (a_ij - c_i c_j)^2 over the coreness vectors of cpnet.MINRES, Rombach and Rossa (those installed)` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>core_periphery_minres_vs_cpnet</code></td><td>cpnet</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>smallest residual sum of squares sum (a_ij - c_i c_j)^2 over the coreness vectors of cpnet.MINRES, Rombach and Rossa (those installed)</code></td><td></td></tr></tbody></table></div>
 
 **References:** [borgatti1999models](../../references.html#borgatti1999models), [boyd2010computing](../../references.html#boyd2010computing), [comrey1962minimum](../../references.html#comrey1962minimum), [nocedal2006numerical](../../references.html#nocedal2006numerical)
 

@@ -16,6 +16,8 @@ Family: [Data transforms](index.html). Subfamily: Graph operators. Concept id: `
 
 Graph symmetric difference. Entries grouped here: Graph sym difference.
 
+*Definition not yet written.*
+
 ## Graph sym difference {#cat_difference_sym}
 
 Measure id: `cat_difference_sym`. Original family: Data transforms.
@@ -24,9 +26,7 @@ Measure id: `cat_difference_sym`. Original family: Data transforms.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_difference_sym-graphtool) | `graph_sym_difference` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_difference_sym-graphtool">details</a></td><td><code>graph_sym_difference</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

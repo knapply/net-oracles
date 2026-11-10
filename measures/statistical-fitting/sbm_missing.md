@@ -16,6 +16,8 @@ Family: [Statistical fitting](index.html). Subfamily: Model fitting. Concept id:
 
 SBM for partially observed networks. Entries grouped here: Stochastic block models for partially observed networks.
 
+*Definition not yet written.*
+
 ## Stochastic block models for partially observed networks {#sbm_missing}
 
 Measure id: `sbm_missing`. Original family: Statistical fitting.
@@ -24,9 +26,7 @@ Measure id: `sbm_missing`. Original family: Statistical fitting.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [missSBM](../../tools/missSBM.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: missSBM is documented-only in this survey; listed in its documentation. [details](#why-sbm_missing-missSBM) | `SimpleSBM_fit_MNAR; SimpleSBM_fit_noCov; SimpleSBM_fit_withCov; estimateMissSBM` | documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/missSBM.html">missSBM</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: missSBM is documented-only in this survey; listed in its documentation. <a href="#why-sbm_missing-missSBM">details</a></td><td><code>SimpleSBM_fit_MNAR; SimpleSBM_fit_noCov; SimpleSBM_fit_withCov; estimateMissSBM</code></td><td>documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

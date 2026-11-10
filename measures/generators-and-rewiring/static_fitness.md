@@ -16,6 +16,8 @@ Family: [Generators and rewiring](index.html). Subfamily: Degree-sequence models
 
 Static fitness and static power-law models. Entries grouped here: Static fitness and static power-law generators.
 
+*Definition not yet written.*
+
 ## Static fitness and static power-law generators {#gen_static_fitness}
 
 Measure id: `gen_static_fitness`. Original family: Generators and rewiring.
@@ -24,10 +26,7 @@ Measure id: `gen_static_fitness`. Original family: Generators and rewiring.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_static_fitness-igraph) | `sample_fitness; sample_fitness_pl` | API listing |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-gen_static_fitness-pyigraph) | `Static_Fitness; Static_Power_Law` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_static_fitness-igraph">details</a></td><td><code>sample_fitness; sample_fitness_pl</code></td><td>API listing</td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-gen_static_fitness-pyigraph">details</a></td><td><code>Static_Fitness; Static_Power_Law</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

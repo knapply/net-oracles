@@ -15,50 +15,17 @@ permalink: /measures/cohesion-and-subgroups/
 
 ## Cliques
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [All cliques (not only maximal)](all_cliques.html) | 2 | 1 | All cliques (not only maximal). Entries grouped here: All cliques; Nx cliques order. |
-| [Clique census](clique_census.html) | 1 | 1 | Clique census. Entries grouped here: Clique census. |
-| [Clique co-membership and overlap](clique_overlap.html) | 1 | 1 | Clique co-membership and overlap. Entries grouped here: Clique co-membership and overlap matrices. |
-| [Clique decomposition state](clique_state.html) | 1 | 1 | Clique decomposition state. Entries grouped here: Clique State. |
-| [Clique number](clique_number.html) | 2 | 5 | Size of the largest clique. |
-| [Clique test](is_clique.html) | 1 | 2 | Clique test. Entries grouped here: Is clique. |
-| [Maximal cliques](maximal_cliques.html) | 2 | 9 | Every maximal clique with at least min\_size members, in lexicographic order. |
-| [Maximum cohesion](max_cohesion.html) | 1 | 1 | Maximum cohesion. Entries grouped here: Maxcohesion. |
-| [Maximum-weight clique](max_weight_clique.html) | 3 | 2 | Maximum-weight clique. Entries grouped here: Max weight clique; Largest weighted cliques; Max weight clique nodes. |
-| [Number of largest cliques](largest_clique_count.html) | 1 | 1 | Number of largest cliques. Entries grouped here: Count max cliques. |
-| [Weighted cliques](weighted_cliques.html) | 1 | 1 | Weighted cliques. Entries grouped here: Weighted cliques. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="all_cliques.html">All cliques (not only maximal)</a></td><td>2</td><td>1</td><td>not yet written</td><td>All cliques (not only maximal). Entries grouped here: All cliques; Nx cliques order.</td></tr><tr><td><a href="clique_census.html">Clique census</a></td><td>1</td><td>1</td><td>not yet written</td><td>Clique census. Entries grouped here: Clique census.</td></tr><tr><td><a href="clique_overlap.html">Clique co-membership and overlap</a></td><td>1</td><td>1</td><td>not yet written</td><td>Clique co-membership and overlap. Entries grouped here: Clique co-membership and overlap matrices.</td></tr><tr><td><a href="clique_state.html">Clique decomposition state</a></td><td>1</td><td>1</td><td>not yet written</td><td>Clique decomposition state. Entries grouped here: Clique State.</td></tr><tr><td><a href="clique_number.html">Clique number</a></td><td>2</td><td>5</td><td>not yet written</td><td>Size of the largest clique.</td></tr><tr><td><a href="is_clique.html">Clique test</a></td><td>1</td><td>2</td><td>not yet written</td><td>Clique test. Entries grouped here: Is clique.</td></tr><tr><td><a href="maximal_cliques.html">Maximal cliques</a></td><td>2</td><td>9</td><td>not yet written</td><td>Every maximal clique with at least min_size members, in lexicographic order.</td></tr><tr><td><a href="max_cohesion.html">Maximum cohesion</a></td><td>1</td><td>1</td><td>not yet written</td><td>Maximum cohesion. Entries grouped here: Maxcohesion.</td></tr><tr><td><a href="max_weight_clique.html">Maximum-weight clique</a></td><td>3</td><td>2</td><td>not yet written</td><td>Maximum-weight clique. Entries grouped here: Max weight clique; Largest weighted cliques; Max weight clique nodes.</td></tr><tr><td><a href="largest_clique_count.html">Number of largest cliques</a></td><td>1</td><td>1</td><td>not yet written</td><td>Number of largest cliques. Entries grouped here: Count max cliques.</td></tr><tr><td><a href="weighted_cliques.html">Weighted cliques</a></td><td>1</td><td>1</td><td>not yet written</td><td>Weighted cliques. Entries grouped here: Weighted cliques.</td></tr></tbody></table></div>
 
 ## Cores, trusses and cohesive blocks
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Cohesive blocking (Moody-White)](cohesive_blocking.html) | 2 | 2 | Cohesive blocking (Moody-White). Entries grouped here: Cohesive blocking (Moody-White); Cohesive blocks. |
-| [K-core decomposition](k_core.html) | 3 | 13 | K-core decomposition. Entries grouped here: Core Decomposition Sequence; Core subset; Coreness. |
-| [K-truss](k_truss.html) | 2 | 1 | The k-truss: the edges in at least k - 2 triangles of the subgraph, and the nodes they touch. |
-| [Onion decomposition](onion_decomposition.html) | 1 | 1 | Onion layer of every node, from 1: the round of the core peeling in which it is removed. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="cohesive_blocking.html">Cohesive blocking (Moody-White)</a></td><td>2</td><td>2</td><td>not yet written</td><td>Cohesive blocking (Moody-White). Entries grouped here: Cohesive blocking (Moody-White); Cohesive blocks.</td></tr><tr><td><a href="k_core.html">K-core decomposition</a></td><td>3</td><td>13</td><td>not yet written</td><td>K-core decomposition. Entries grouped here: Core Decomposition Sequence; Core subset; Coreness.</td></tr><tr><td><a href="k_truss.html">K-truss</a></td><td>2</td><td>1</td><td>not yet written</td><td>The k-truss: the edges in at least k - 2 triangles of the subgraph, and the nodes they touch.</td></tr><tr><td><a href="onion_decomposition.html">Onion decomposition</a></td><td>1</td><td>1</td><td>not yet written</td><td>Onion layer of every node, from 1: the round of the core peeling in which it is removed.</td></tr></tbody></table></div>
 
 ## Relaxed cliques and subgroups
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Cut quality (conductance, expansion, boundary)](cut_quality.html) | 1 | 2 | Cut quality (conductance, expansion, boundary). Entries grouped here: Cut quality (conductance, expansion, boundary). |
-| [Factions](factions.html) | 2 | 1 | Factions: a partition into k groups that best fits the ideal pattern of ties inside groups only, by tabu search from random starts. |
-| [K-plexes](k_plexes.html) | 1 | 1 | Maximal k-plexes: node sets in which each member has at most k - 1 non-neighbours among the others. |
-| [Lambda connectivity matrix](lambda_connectivity.html) | 1 | 2 | Edge connectivity between every pair of nodes, read off Gusfield's flow tree. |
-| [Lambda sets](lambda_sets.html) | 1 | 2 | Gusfield's equivalent flow tree: each node's parent and the edge connectivity to it (n - 1 maximum flows). |
-| [N-clans](n_clans.html) | 1 | 2 | n-clans: the n-cliques whose induced subgraph also has diameter at most n. |
-| [N-cliques](n_cliques.html) | 1 | 2 | n-cliques: maximal sets whose members are all within distance n of each other in the whole network. |
-| [Simmelian ties](simmelian_ties.html) | 1 | 3 | Simmelian ties. Entries grouped here: Simmelian ties. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="cut_quality.html">Cut quality (conductance, expansion, boundary)</a></td><td>1</td><td>2</td><td>not yet written</td><td>Cut quality (conductance, expansion, boundary). Entries grouped here: Cut quality (conductance, expansion, boundary).</td></tr><tr><td><a href="factions.html">Factions</a></td><td>2</td><td>1</td><td>not yet written</td><td>Factions: a partition into k groups that best fits the ideal pattern of ties inside groups only, by tabu search from random starts.</td></tr><tr><td><a href="k_plexes.html">K-plexes</a></td><td>1</td><td>1</td><td>not yet written</td><td>Maximal k-plexes: node sets in which each member has at most k - 1 non-neighbours among the others.</td></tr><tr><td><a href="lambda_connectivity.html">Lambda connectivity matrix</a></td><td>1</td><td>2</td><td>not yet written</td><td>Edge connectivity between every pair of nodes, read off Gusfield's flow tree.</td></tr><tr><td><a href="lambda_sets.html">Lambda sets</a></td><td>1</td><td>2</td><td>not yet written</td><td>Gusfield's equivalent flow tree: each node's parent and the edge connectivity to it (n - 1 maximum flows).</td></tr><tr><td><a href="n_clans.html">N-clans</a></td><td>1</td><td>2</td><td>not yet written</td><td>n-clans: the n-cliques whose induced subgraph also has diameter at most n.</td></tr><tr><td><a href="n_cliques.html">N-cliques</a></td><td>1</td><td>2</td><td>not yet written</td><td>n-cliques: maximal sets whose members are all within distance n of each other in the whole network.</td></tr><tr><td><a href="simmelian_ties.html">Simmelian ties</a></td><td>1</td><td>3</td><td>not yet written</td><td>Simmelian ties. Entries grouped here: Simmelian ties.</td></tr></tbody></table></div>
 
 ## Triads, motifs and local structure
 
-| Concept | Measures | Tools | Definition |
-|---|---|---|---|
-| [Cocitation and bibliographic coupling](cocitation_coupling.html) | 1 | 2 | Cocitation and bibliographic coupling. Entries grouped here: Cocitation and bibliographic coupling. |
-| [Graphlets](graphlets.html) | 1 | 1 | Graphlets. Entries grouped here: Graphlet basis and projection. |
-| [Mixed triad census](mixed_triad_census.html) | 1 | 1 | Mixed triad census. Entries grouped here: Mixed Triad Census. |
-| [Motif census](motif_census.html) | 1 | 4 | Motif census. Entries grouped here: Motif census. |
-| [Triad enumeration](triad_enumeration.html) | 2 | 2 | Triad enumeration. Entries grouped here: All triads; Liststriads. |
-| [Triad type classification](triad_type.html) | 2 | 1 | Triad type classification. Entries grouped here: Triad type; Triads by type. |
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="cocitation_coupling.html">Cocitation and bibliographic coupling</a></td><td>1</td><td>2</td><td>not yet written</td><td>Cocitation and bibliographic coupling. Entries grouped here: Cocitation and bibliographic coupling.</td></tr><tr><td><a href="graphlets.html">Graphlets</a></td><td>1</td><td>1</td><td>not yet written</td><td>Graphlets. Entries grouped here: Graphlet basis and projection.</td></tr><tr><td><a href="mixed_triad_census.html">Mixed triad census</a></td><td>1</td><td>1</td><td>not yet written</td><td>Mixed triad census. Entries grouped here: Mixed Triad Census.</td></tr><tr><td><a href="motif_census.html">Motif census</a></td><td>1</td><td>4</td><td>not yet written</td><td>Motif census. Entries grouped here: Motif census.</td></tr><tr><td><a href="triad_enumeration.html">Triad enumeration</a></td><td>2</td><td>2</td><td>not yet written</td><td>Triad enumeration. Entries grouped here: All triads; Liststriads.</td></tr><tr><td><a href="triad_type.html">Triad type classification</a></td><td>2</td><td>1</td><td>not yet written</td><td>Triad type classification. Entries grouped here: Triad type; Triads by type.</td></tr></tbody></table></div>
 {% endraw %}

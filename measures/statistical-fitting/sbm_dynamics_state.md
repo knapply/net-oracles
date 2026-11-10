@@ -16,21 +16,11 @@ Family: [Statistical fitting](index.html). Subfamily: Block model states. Concep
 
 Block states for dynamics inference. Entries grouped here: CIsing Glauber Block State; Epidemics Block State; Ising Glauber Block State; Linear Normal Block State; LVBlock State; Normal Glauber Block State; and 5 more.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [CIsing Glauber Block State](#cat_block_c_glauber_ising_state) | `cat_block_c_glauber_ising_state` | 1 |
-| [Epidemics Block State](#cat_block_epidemics_state) | `cat_block_epidemics_state` | 1 |
-| [Ising Glauber Block State](#cat_block_glauber_ising_state) | `cat_block_glauber_ising_state` | 1 |
-| [Linear Normal Block State](#cat_block_linear_normal_state) | `cat_block_linear_normal_state` | 1 |
-| [LVBlock State](#cat_block_lv_state) | `cat_block_lv_state` | 1 |
-| [Normal Glauber Block State](#cat_block_glauber_normal_state) | `cat_block_glauber_normal_state` | 1 |
-| [Potts Glauber Block State](#cat_block_glauber_potts_state) | `cat_block_glauber_potts_state` | 1 |
-| [Pseudo CIsing Block State](#cat_block_c_ising_pseudo_state) | `cat_block_c_ising_pseudo_state` | 1 |
-| [Pseudo Ising Block State](#cat_block_ising_pseudo_state) | `cat_block_ising_pseudo_state` | 1 |
-| [Pseudo Normal Block State](#cat_block_normal_pseudo_state) | `cat_block_normal_pseudo_state` | 1 |
-| [Pseudo Potts Block State](#cat_block_potts_pseudo_state) | `cat_block_potts_pseudo_state` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cat_block_c_glauber_ising_state">CIsing Glauber Block State</a></td><td><code>cat_block_c_glauber_ising_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_epidemics_state">Epidemics Block State</a></td><td><code>cat_block_epidemics_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_glauber_ising_state">Ising Glauber Block State</a></td><td><code>cat_block_glauber_ising_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_linear_normal_state">Linear Normal Block State</a></td><td><code>cat_block_linear_normal_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_lv_state">LVBlock State</a></td><td><code>cat_block_lv_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_glauber_normal_state">Normal Glauber Block State</a></td><td><code>cat_block_glauber_normal_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_glauber_potts_state">Potts Glauber Block State</a></td><td><code>cat_block_glauber_potts_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_c_ising_pseudo_state">Pseudo CIsing Block State</a></td><td><code>cat_block_c_ising_pseudo_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_ising_pseudo_state">Pseudo Ising Block State</a></td><td><code>cat_block_ising_pseudo_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_normal_pseudo_state">Pseudo Normal Block State</a></td><td><code>cat_block_normal_pseudo_state</code></td><td>1</td></tr><tr><td><a href="#cat_block_potts_pseudo_state">Pseudo Potts Block State</a></td><td><code>cat_block_potts_pseudo_state</code></td><td>1</td></tr></tbody></table></div>
 
 ## CIsing Glauber Block State {#cat_block_c_glauber_ising_state}
 
@@ -40,9 +30,7 @@ Measure id: `cat_block_c_glauber_ising_state`. Original family: Graph theory and
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_c_glauber_ising_state-graphtool) | `CIsingGlauberBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_c_glauber_ising_state-graphtool">details</a></td><td><code>CIsingGlauberBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -58,9 +46,7 @@ Measure id: `cat_block_epidemics_state`. Original family: Graph theory and combi
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_epidemics_state-graphtool) | `EpidemicsBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_epidemics_state-graphtool">details</a></td><td><code>EpidemicsBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -76,9 +62,7 @@ Measure id: `cat_block_glauber_ising_state`. Original family: Graph theory and c
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_glauber_ising_state-graphtool) | `IsingGlauberBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_glauber_ising_state-graphtool">details</a></td><td><code>IsingGlauberBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -94,9 +78,7 @@ Measure id: `cat_block_linear_normal_state`. Original family: Graph theory and c
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_linear_normal_state-graphtool) | `LinearNormalBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_linear_normal_state-graphtool">details</a></td><td><code>LinearNormalBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -112,9 +94,7 @@ Measure id: `cat_block_lv_state`. Original family: Graph theory and combinatoric
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_lv_state-graphtool) | `LVBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_lv_state-graphtool">details</a></td><td><code>LVBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -130,9 +110,7 @@ Measure id: `cat_block_glauber_normal_state`. Original family: Graph theory and 
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_glauber_normal_state-graphtool) | `NormalGlauberBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_glauber_normal_state-graphtool">details</a></td><td><code>NormalGlauberBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -148,9 +126,7 @@ Measure id: `cat_block_glauber_potts_state`. Original family: Graph theory and c
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_glauber_potts_state-graphtool) | `PottsGlauberBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_glauber_potts_state-graphtool">details</a></td><td><code>PottsGlauberBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -166,9 +142,7 @@ Measure id: `cat_block_c_ising_pseudo_state`. Original family: Graph theory and 
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_c_ising_pseudo_state-graphtool) | `PseudoCIsingBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_c_ising_pseudo_state-graphtool">details</a></td><td><code>PseudoCIsingBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -184,9 +158,7 @@ Measure id: `cat_block_ising_pseudo_state`. Original family: Graph theory and co
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_ising_pseudo_state-graphtool) | `PseudoIsingBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_ising_pseudo_state-graphtool">details</a></td><td><code>PseudoIsingBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -202,9 +174,7 @@ Measure id: `cat_block_normal_pseudo_state`. Original family: Graph theory and c
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_normal_pseudo_state-graphtool) | `PseudoNormalBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_normal_pseudo_state-graphtool">details</a></td><td><code>PseudoNormalBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -220,9 +190,7 @@ Measure id: `cat_block_potts_pseudo_state`. Original family: Graph theory and co
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [graph-tool](../../tools/graphtool.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_block_potts_pseudo_state-graphtool) | `PseudoPottsBlockState` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/graphtool.html">graph-tool</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_block_potts_pseudo_state-graphtool">details</a></td><td><code>PseudoPottsBlockState</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

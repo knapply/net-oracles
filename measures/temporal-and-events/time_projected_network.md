@@ -16,6 +16,8 @@ Family: [Temporal and events](index.html). Subfamily: Temporal descriptives. Con
 
 Time-projected network. Entries grouped here: Time Projected Network.
 
+*Definition not yet written.*
+
 ## Time Projected Network {#cat_projected_time}
 
 Measure id: `cat_projected_time`. Original family: Temporal and events.
@@ -24,9 +26,7 @@ Measure id: `cat_projected_time`. Original family: Temporal and events.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [tsna / networkDynamic](../../tools/tsna.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_projected_time-tsna) | `timeProjectedNetwork` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/tsna.html">tsna / networkDynamic</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_projected_time-tsna">details</a></td><td><code>timeProjectedNetwork</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 

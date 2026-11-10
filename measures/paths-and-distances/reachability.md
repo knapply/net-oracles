@@ -16,13 +16,11 @@ Family: [Paths and distances](index.html). Subfamily: Efficiency and reachabilit
 
 Reachability. Entries grouped here: Reachability; Reachable Nodes; Reachdist.
 
+*Definition not yet written.*
+
 ## Variants {#concept-variants}
 
-| Variant | Measure id | Tools |
-|---|---|---|
-| [Reachability](#reachability) | `reachability` | 5 |
-| [Reachable Nodes](#cat_reachable) | `cat_reachable` | 1 |
-| [Reachdist](#cat_reachdist) | `cat_reachdist` | 1 |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#reachability">Reachability</a></td><td><code>reachability</code></td><td>5</td></tr><tr><td><a href="#cat_reachable">Reachable Nodes</a></td><td><code>cat_reachable</code></td><td>1</td></tr><tr><td><a href="#cat_reachdist">Reachdist</a></td><td><code>cat_reachdist</code></td><td>1</td></tr></tbody></table></div>
 
 ## Reachability {#reachability}
 
@@ -32,13 +30,7 @@ Measure id: `reachability`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworkX](../../tools/networkx.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `has_path; is_reachable` |  |
-| [igraph (R)](../../tools/igraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  |  |  |
-| [igraph (Python)](../../tools/pyigraph.html) | <a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> |  | `neighborhood_size` |  |
-| [rustworkx](../../tools/rustworkx.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-reachability-rustworkx) | `digraph_has_path; graph_has_path; has_path` | API listing |
-| [UCINET](../../tools/ucinet.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. [details](#why-reachability-ucinet) |  | published documentation |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkx.html">NetworkX</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>has_path; is_reachable</code></td><td></td></tr><tr><td><a href="../../tools/igraph.html">igraph (R)</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td></td><td></td></tr><tr><td><a href="../../tools/pyigraph.html">igraph (Python)</a></td><td><a class="st st-t st-ok" href="../../method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a></td><td></td><td><code>neighborhood_size</code></td><td></td></tr><tr><td><a href="../../tools/rustworkx.html">rustworkx</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-reachability-rustworkx">details</a></td><td><code>digraph_has_path; graph_has_path; has_path</code></td><td>API listing</td></tr><tr><td><a href="../../tools/ucinet.html">UCINET</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: UCINET is proprietary Windows software, never run here; listed in its documentation. <a href="#why-reachability-ucinet">details</a></td><td></td><td>published documentation</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -47,17 +39,7 @@ Measure id: `reachability`. Original family: Paths and distances.
 
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
-| Variant | Tool | Scope | Outcome | Differs when | Conventions | Tolerance | Call | Note |
-|---|---|---|---|---|---|---|---|---|
-| `reachability` | NetworkX | any | agrees |  |  | abs 0, rel 0 | `len(nx.descendants(G, v)), or len(nx.node_connected_component(G, v)) - 1 if undirected` |  |
-| `reachability` | igraph (R) | any | agrees |  |  | abs 0, rel 0 | `igraph::ego_size(g, order = vcount(g), mode = 'out') - 1` |  |
-| `reachability` | igraph (Python) | any | agrees |  |  | abs 0, rel 0 | `python-igraph: [x - 1 for x in gu.neighborhood_size(order=everything, mode="out")]` |  |
-| `reachability_all` | NetworkX | directed | agrees |  |  | abs 0, rel 0 | `len(nx.node_connected_component(G.to_undirected(), v)) - 1` |  |
-| `reachability_all` | igraph (R) | directed | agrees |  |  | abs 0, rel 0 | `igraph::ego_size(g, order = vcount(g), mode = 'all') - 1` |  |
-| `reachability_all` | igraph (Python) | directed | agrees |  |  | abs 0, rel 0 | `python-igraph: [x - 1 for x in gu.neighborhood_size(order=everything, mode="all")]` |  |
-| `reachability_in` | NetworkX | directed | agrees |  |  | abs 0, rel 0 | `len(nx.ancestors(G, v))` |  |
-| `reachability_in` | igraph (R) | directed | agrees |  |  | abs 0, rel 0 | `igraph::ego_size(g, order = vcount(g), mode = 'in') - 1` |  |
-| `reachability_in` | igraph (Python) | directed | agrees |  |  | abs 0, rel 0 | `python-igraph: [x - 1 for x in gu.neighborhood_size(order=everything, mode="in")]` |  |
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>reachability</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>len(nx.descendants(G, v)), or len(nx.node_connected_component(G, v)) - 1 if undirected</code></td><td></td></tr><tr><td><code>reachability</code></td><td>igraph (R)</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>igraph::ego_size(g, order = vcount(g), mode = 'out') - 1</code></td><td></td></tr><tr><td><code>reachability</code></td><td>igraph (Python)</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>python-igraph: [x - 1 for x in gu.neighborhood_size(order=everything, mode="out")]</code></td><td></td></tr><tr><td><code>reachability_all</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>len(nx.node_connected_component(G.to_undirected(), v)) - 1</code></td><td></td></tr><tr><td><code>reachability_all</code></td><td>igraph (R)</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>igraph::ego_size(g, order = vcount(g), mode = 'all') - 1</code></td><td></td></tr><tr><td><code>reachability_all</code></td><td>igraph (Python)</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>python-igraph: [x - 1 for x in gu.neighborhood_size(order=everything, mode="all")]</code></td><td></td></tr><tr><td><code>reachability_in</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>len(nx.ancestors(G, v))</code></td><td></td></tr><tr><td><code>reachability_in</code></td><td>igraph (R)</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>igraph::ego_size(g, order = vcount(g), mode = 'in') - 1</code></td><td></td></tr><tr><td><code>reachability_in</code></td><td>igraph (Python)</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>python-igraph: [x - 1 for x in gu.neighborhood_size(order=everything, mode="in")]</code></td><td></td></tr></tbody></table></div>
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [tool_rustworkx](../../references.html#tool_rustworkx)
 
@@ -69,9 +51,7 @@ Measure id: `cat_reachable`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [NetworKit](../../tools/networkit.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_reachable-networkit) | `ReachableNodes` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/networkit.html">NetworKit</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_reachable-networkit">details</a></td><td><code>ReachableNodes</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
@@ -87,9 +67,7 @@ Measure id: `cat_reachdist`. Original family: Paths and distances.
 
 **Implementations**
 
-| Tool | State | Why, if not agrees | API names | Source |
-|---|---|---|---|---|
-| [BCT (Octave)](../../tools/bct.html) | <a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> | Not run: listed in the tool's public API listing; no comparison set up for this measure yet. [details](#why-cat_reachdist-bct) | `reachdist` | API listing |
+<div class="table-wrapper"><table><thead><tr><th>Tool</th><th>State</th><th>Why, if not agrees</th><th>API names</th><th>Source</th></tr></thead><tbody><tr><td><a href="../../tools/bct.html">BCT (Octave)</a></td><td><a class="st st-t st-docs" href="../../method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a></td><td>Not run: listed in the tool's public API listing; no comparison set up for this measure yet. <a href="#why-cat_reachdist-bct">details</a></td><td><code>reachdist</code></td><td>API listing</td></tr></tbody></table></div>
 
 **Why these entries are not checked, agrees.** States are defined on [How entries are labelled](../../method.html).
 
