@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Efficiency, compactness
 
 Resource efficiency. Entries grouped here: Resource efficiency.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT resource efficiency), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Resource efficiency {#cat_efficiency_resource}
 

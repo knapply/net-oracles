@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Density and degree dist
 
 Cycle probability. Entries grouped here: Cycprob.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT cycprob), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Cycprob {#cat_cycprob}
 

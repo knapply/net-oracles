@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Density and degree dist
 
 Structure statistics. Entries grouped here: Structure statistics.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (sna structure.statistics), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Structure statistics {#cat_statistics_structure}
 

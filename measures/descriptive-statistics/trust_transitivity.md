@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Clustering and transiti
 
 Trust transitivity. Entries grouped here: Trust transitivity.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (graph-tool), never run; the sources give a function name and no formula.
 
 ## Trust transitivity {#cat_transitivity_trust}
 

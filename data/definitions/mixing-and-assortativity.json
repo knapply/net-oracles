@@ -584,7 +584,7 @@
     },
     {
      "case": "edgeless",
-     "definition_gives": "No node has degree above any \\(k\\ge0\\) except none: \\(N_{>k}=0\\): not defined for every \\(k\\)."
+     "definition_gives": "No node has degree above 0: \\(N_{>k}=0\\) for every \\(k\\ge0\\): not defined."
     },
     {
      "case": "self_loops",

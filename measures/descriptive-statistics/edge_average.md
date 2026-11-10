@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Density and degree dist
 
 Edge average. Entries grouped here: Edge average.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (graph-tool edge\_average), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Edge average {#cat_average_edge}
 

@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Density and degree dist
 
 Diversity index. Entries grouped here: Diversity.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (igraph diversity), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Diversity {#cat_diversity}
 

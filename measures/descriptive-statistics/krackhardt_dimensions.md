@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Efficiency, compactness
 
 Krackhardt graph-theoretic dimensions. Entries grouped here: Krackhardt graph-theoretic dimensions (connectedness, hierarchy, efficiency, LUBness).
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (sna and UCINET Krackhardt graph-theoretic dimensions), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Krackhardt graph-theoretic dimensions (connectedness, hierarchy, efficiency, LUBness) {#krackhardt_dimensions}
 

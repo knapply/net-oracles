@@ -16,7 +16,7 @@ Family: [Descriptive statistics](index.html). Subfamily: Density and degree dist
 
 Joint degree distribution. Entries grouped here: Jdegree.
 
-*Definition not yet written.*
+*Definition not yet written.* Documented only (BCT jdegree), never run; the sources give the name and the tool's function, not a formula, and no verified bibliography entry for the original definition is available.
 
 ## Jdegree {#cat_jdegree}
 
