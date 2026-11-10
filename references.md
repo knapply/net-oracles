@@ -114,6 +114,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="even1975algorithm"></a>`even1975algorithm` Even, S. (1975) An Algorithm for Determining Whether the Connectivity of a Graph is at Least $k$. \*SIAM Journal on Computing\*, 4(3), 393–396. doi:10.1137/0204034
 - <a id="even1975network"></a>`even1975network` Even, S.; Tarjan, R.E. (1975) Network Flow and Testing Graph Connectivity. \*SIAM Journal on Computing\*, 4(4), 507–518. doi:10.1137/0204043
 - <a id="everett1999centrality"></a>`everett1999centrality` Everett, M.G.; Borgatti, S.P. (1999) The Centrality of Groups and Classes. \*Journal of Mathematical Sociology\*, 23(3), 181–201. doi:10.1080/0022250X.1999.9990219
+- <a id="everett2005ego"></a>`everett2005ego` Everett, M.; Borgatti, S.P. (2005) Ego Network Betweenness. \*Social Networks\*, 27(1), 31–38. doi:10.1016/j.socnet.2004.11.007
 - <a id="everett2010induced"></a>`everett2010induced` Everett, M.G.; Borgatti, S.P. (2010) Induced, Endogenous and Exogenous Centrality. \*Social Networks\*, 32(4), 339–344. doi:10.1016/j.socnet.2010.06.004
 - <a id="everett2013dual"></a>`everett2013dual` Everett, M.G.; Borgatti, S.P. (2013) The Dual-Projection Approach for Two-Mode Networks. \*Social Networks\*, 35(2), 204–210. doi:10.1016/j.socnet.2012.05.004
 - <a id="everton2012disrupting"></a>`everton2012disrupting` Everton, S.F. (2012) Disrupting Dark Networks. doi:10.1017/CBO9781139136877
@@ -239,6 +240,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="pares2018fluid"></a>`pares2018fluid` Parés, F.; Garcia-Gasulla, D.; Vilalta, A.; Moreno, J.; Ayguadé, E.; Labarta, J. et al. (2018) Fluid Communities: A Competitive, Scalable and Diverse Community Detection Algorithm. \*Complex Networks & Their Applications VI (COMPLEX NETWORKS 2017)\*, 689, 229–240. doi:10.1007/978-3-319-72150-7\_19
 - <a id="pebesma2018sf"></a>`pebesma2018sf` Pebesma, E. (2018) Simple Features for R: Standardized Support for Spatial Vector Data. \*The R Journal\*, 10(1), 439–446. doi:10.32614/RJ-2018-009
 - <a id="peixoto2014graphtool"></a>`peixoto2014graphtool` Peixoto, T.P. (2014) The graph-tool python library. doi:10.6084/m9.figshare.1164194
+- <a id="perry2018egocentric"></a>`perry2018egocentric` Perry, B.L.; Pescosolido, B.A.; Borgatti, S.P. (2018) Egocentric Network Analysis: Foundations, Methods, and Models. doi:10.1017/9781316443255
 - <a id="piraveenan2013percolation"></a>`piraveenan2013percolation` Piraveenan, M.; Prokopenko, M.; Hossain, L. (2013) Percolation Centrality: Quantifying Graph-Theoretic Impact of Nodes during Percolation in Networks. \*PLoS ONE\*, 8(1), e53095. doi:10.1371/journal.pone.0053095
 - <a id="pons2006computing"></a>`pons2006computing` Pons, P.; Latapy, M. (2006) Computing Communities in Large Networks Using Random Walks. \*Journal of Graph Algorithms and Applications\*, 10(2), 191–218. doi:10.7155/jgaa.00124
 - <a id="potapov2008pairwise"></a>`potapov2008pairwise` Potapov, A.P.; Goemann, B.; Wingender, E. (2008) The Pairwise Disconnectivity Index as a New Metric for the Topological Analysis of Regulatory Networks. \*BMC Bioinformatics\*, 9, 227. doi:10.1186/1471-2105-9-227

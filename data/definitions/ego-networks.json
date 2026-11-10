@@ -1,0 +1,982 @@
+{
+ "family": "Ego networks",
+ "concepts": {
+  "ego_size": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple graph (parallel edges merged, loops dropped) with node set \\(V\\); each edge has a source and a target"
+    },
+    {
+     "symbol": "v",
+     "meaning": "the ego, a node of \\(V\\)"
+    },
+    {
+     "symbol": "N_k(v)",
+     "meaning": "alters of \\(v\\) within \\(k\\) steps: \\(\\{u\\ne v: d(v,u)\\le k\\}\\); for a directed graph the steps follow edge directions out of \\(v\\) (out version), into \\(v\\) (in version) or ignore direction"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Ego size",
+     "latex": "s_k(v)=|N_k(v)|\\;(+\\,1\\text{ when the ego is counted})",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Number of alters within k steps (k=1: the neighbours). Whether the ego itself is counted is a reporting choice, so both values are stated; defined for every node, 0 alters for an isolate."
+    }
+   ],
+   "variants": {
+    "ego_size": "The measure scores the number of nodes within a given range of steps, ego included when the range starts at 0: \\(|N_k(v)|+1\\) in the forms ego_size (k=1, direction ignored), ego_size_out and ego_size_in (directed steps) and ego_size_order2 (k=2)."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "An isolated ego has \\(N_k(v)=\\emptyset\\): 0 alters, or 1 node when the ego is counted.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "No alters within any k, so the size is 0 alters (1 with the ego).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "edgeless",
+     "definition_gives": "Every node is isolated: 0 alters (1 with the ego).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop does not add an alter, since \\(u\\ne v\\) in \\(N_k(v)\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges lead to the same alter: the set size is unchanged.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Out, in and direction-ignoring versions use different step relations and can differ on a directed graph; on an undirected graph they coincide.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "directed_unreachable",
+     "definition_gives": "Nodes that cannot be reached by directed steps from \\(v\\) are not alters in the out version.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (gnp_dir_sparse, weighted_dir, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "perry2018egocentric"
+   ]
+  },
+  "ego_members": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple graph (parallel edges merged, loops dropped) with node set \\(V\\); each edge has a source and a target"
+    },
+    {
+     "symbol": "v",
+     "meaning": "the ego, a node of \\(V\\)"
+    },
+    {
+     "symbol": "N_k(v)",
+     "meaning": "alters of \\(v\\) within \\(k\\) steps: \\(\\{u\\ne v: d(v,u)\\le k\\}\\); for a directed graph the steps follow edge directions out of \\(v\\) (out version), into \\(v\\) (in version) or ignore direction"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Ego members",
+     "latex": "M_k(v)=N_k(v)\\;\\bigl(\\cup\\{v\\}\\text{ if the ego is included}\\bigr)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "The set of alters (node identities) within k steps; k=1 are the neighbours."
+    }
+   ],
+   "variants": {
+    "ego_members": "Returns the set \\(M_k(v)\\) itself rather than its size; the forms checked are the neighbours in either direction (k=1, ego excluded) and the nodes one or two outgoing steps away (k=2, out, ego excluded)."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "An isolated ego has an empty alter set.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolated node has an empty set and is never in anyone else's set.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "A loop is not an alter relation (\\(u\\ne v\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges give the same set; the set has no multiplicity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Out, in and ignoring direction give different sets on a directed graph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "perry2018egocentric"
+   ]
+  },
+  "ego_ties": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple graph (parallel edges merged, loops dropped) with node set \\(V\\); each edge has a source and a target"
+    },
+    {
+     "symbol": "v",
+     "meaning": "the ego, a node of \\(V\\)"
+    },
+    {
+     "symbol": "N_k(v)",
+     "meaning": "alters of \\(v\\) within \\(k\\) steps: \\(\\{u\\ne v: d(v,u)\\le k\\}\\); for a directed graph the steps follow edge directions out of \\(v\\) (out version), into \\(v\\) (in version) or ignore direction"
+    },
+    {
+     "symbol": "G_k(v)",
+     "meaning": "ego network: the subgraph induced by \\(N_k(v)\\) (alters only) or by \\(N_k(v)\\cup\\{v\\}\\) (ego included), as stated in each formula"
+    },
+    {
+     "symbol": "a_{ij}",
+     "meaning": "1 if \\(i\\) and \\(j\\) are joined by an edge (from \\(i\\) to \\(j\\) for directed graphs), else 0"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Ties among alters",
+     "latex": "t_k(v)=\\sum_{\\{i,j\\}\\subseteq N_k(v)}a_{ij}\\;\\text{(undirected)},\\qquad t_k(v)=\\sum_{i\\ne j\\in N_k(v)}a_{ij}\\;\\text{(directed)}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Number of distinct ties in the ego network without the ego, counted on the simple graph: each pair once (undirected) or each ordered pair once (directed). Ties from the ego to alters are excluded."
+    }
+   ],
+   "variants": {
+    "ego_summary:ties": "Counts the distinct ties among the alters (ego excluded) for k=1 with direction ignored (ego_ties), among successors only (ego_ties_out) and among the nodes within two steps (ego_ties_order2)."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "No alters, so the sum is empty: 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An ego without alters has an empty sum: 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are removed before counting (the sum is over \\(i\\ne j\\)).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges count once because \\(a_{ij}\\) is 0 or 1.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "An undirected tie is one pair; a directed graph counts each direction separately in the directed form.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "everett2005ego",
+    "perry2018egocentric"
+   ]
+  },
+  "ego_density": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple graph (parallel edges merged, loops dropped) with node set \\(V\\); each edge has a source and a target"
+    },
+    {
+     "symbol": "v",
+     "meaning": "the ego, a node of \\(V\\)"
+    },
+    {
+     "symbol": "N_k(v)",
+     "meaning": "alters of \\(v\\) within \\(k\\) steps: \\(\\{u\\ne v: d(v,u)\\le k\\}\\); for a directed graph the steps follow edge directions out of \\(v\\) (out version), into \\(v\\) (in version) or ignore direction"
+    },
+    {
+     "symbol": "t_k(v)",
+     "meaning": "number of ties among the alters, as in the ties entry"
+    },
+    {
+     "symbol": "s=|N_k(v)|",
+     "meaning": "number of alters"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Ego network density",
+     "latex": "\\Delta(v)=\\frac{t_1(v)}{\\binom{s}{2}}\\;\\text{(undirected)},\\qquad \\Delta(v)=\\frac{t_1(v)}{s(s-1)}\\;\\text{(directed)}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Fraction of possible ties among the alters that are present (ego excluded); defined only for \\(s\\ge 2\\), since the denominator is 0 for fewer than two alters."
+    }
+   ],
+   "variants": {
+    "ego_summary:density": "The density of the ego network of alters (ego excluded), k=1; the checked forms are direction-ignoring (ego_density) and out-neighbours with directed ties (ego_density_out)."
+   },
+   "edge_cases": [
+    {
+     "case": "small_n",
+     "definition_gives": "With \\(s<2\\) alters the denominator is 0: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "egor": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair, single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "single_node",
+     "definition_gives": "An isolated ego has no alters: not defined (0/0).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "egor": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An isolated ego has \\(s=0\\) alters: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "egor": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "two_nodes",
+     "definition_gives": "One alter gives \\(\\binom{1}{2}=0\\) possible ties: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "egor": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are not possible ties (\\(i\\ne j\\)); not counted in the numerator.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "egor": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Distinct ties only: parallel edges count once.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "egor": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "The directed form divides by \\(s(s-1)\\), twice the undirected pair count.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "egor": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Every alter pair is joined, so the density is 1 for \\(s\\ge2\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "egor": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "Alters of the centre share no ties: 0; for a leaf there is one alter: not defined.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "egor": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "everett2005ego",
+    "perry2018egocentric"
+   ]
+  },
+  "ego_components": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple graph (parallel edges merged, loops dropped) with node set \\(V\\); each edge has a source and a target"
+    },
+    {
+     "symbol": "v",
+     "meaning": "the ego, a node of \\(V\\)"
+    },
+    {
+     "symbol": "N_k(v)",
+     "meaning": "alters of \\(v\\) within \\(k\\) steps: \\(\\{u\\ne v: d(v,u)\\le k\\}\\); for a directed graph the steps follow edge directions out of \\(v\\) (out version), into \\(v\\) (in version) or ignore direction"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Components of the ego network without ego",
+     "latex": "c_k(v)=\\#\\,\\mathrm{components}\\bigl(G[N_k(v)]\\bigr)",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Number of (weakly, for directed graphs) connected components of the subgraph induced by the alters, ego removed. 0 when there are no alters."
+    }
+   ],
+   "variants": {
+    "ego_summary:components": "The count of weakly connected components of the ego network with the ego removed, k=1 with direction ignored (ego_components) and among in-neighbours (ego_components_in)."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "No alters: the empty subgraph has 0 components.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An ego without alters has 0 components.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops do not join distinct alters.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges do not change connectivity.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Weak components ignore direction inside the alter set; the in version uses predecessors as the alter set.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "Alters are mutually joined: 1 component.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "The alters of the centre are pairwise unjoined: as many components as alters.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "everett2005ego",
+    "perry2018egocentric"
+   ]
+  },
+  "ego_betweenness": {
+   "status": "complete",
+   "notation": [
+    {
+     "symbol": "G=(V,E)",
+     "meaning": "simple graph (parallel edges merged, loops dropped) with node set \\(V\\); each edge has a source and a target"
+    },
+    {
+     "symbol": "v",
+     "meaning": "the ego, a node of \\(V\\)"
+    },
+    {
+     "symbol": "A",
+     "meaning": "adjacency matrix of the ego network including the ego (symmetric, simple)"
+    },
+    {
+     "symbol": "N(v)",
+     "meaning": "neighbours of \\(v\\)"
+    },
+    {
+     "symbol": "g_{jk}",
+     "meaning": "number of shortest paths between \\(j,k\\) in the ego network; for non-adjacent alters \\(g_{jk}=(A^2)_{jk}\\)"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Ego betweenness (Everett and Borgatti 2005)",
+     "latex": "C_E(v)=\\sum_{\\substack{\\{j,k\\}\\subseteq N(v)\\\\ a_{jk}=0}}\\frac{1}{(A^2)_{jk}}",
+     "applies_to": [
+      "undirected",
+      "simple"
+     ],
+     "where": "Betweenness of the ego within its own ego network: for each non-adjacent pair of alters the ego lies on the share \\(1/g_{jk}\\) of the shortest paths, and all such paths have length 2. Equals the usual betweenness of \\(v\\) in \\(G[N(v)\\cup\\{v\\}]\\), raw (unnormalized)."
+    }
+   ],
+   "variants": {
+    "ego_summary:betweenness": "Betweenness of the ego in the subgraph induced by the ego and its alters within k steps: k=1 undirected (ego_betweenness), k=1 over successors with directed paths (ego_betweenness_out), k=2 (ego_betweenness_order2, ordinary shortest-path betweenness of the ego in a larger induced subgraph, no longer the matrix form)."
+   },
+   "edge_cases": [
+    {
+     "case": "single_node",
+     "definition_gives": "No alters, so no pair: the sum is empty, 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (single_node).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "isolates",
+     "definition_gives": "An ego without alters or with one alter has no pair: 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (empty, single_node, two_triangles_isolate, gnp_und_sparse).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "self_loops",
+     "definition_gives": "Loops are dropped: \\(A\\) is of the simple graph.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "multi_edges",
+     "definition_gives": "Parallel edges are merged in the simple graph \\(A\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (multi_loops_und, multi_loops_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "direction",
+     "definition_gives": "Defined here on undirected ties; the out version restricts to the induced subgraph of ego and successors and counts directed shortest paths.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (karate, gnp_dir_dense).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "complete_graph",
+     "definition_gives": "All alters are adjacent: no pair has \\(a_{jk}=0\\): 0.",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (complete6, complete5_dir).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    },
+    {
+     "case": "star",
+     "definition_gives": "For the centre every pair of the \\(s\\) leaves has the single shortest path via the centre: \\(\\binom{s}{2}\\).",
+     "tools": {
+      "networkx": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      },
+      "igraph": {
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (star8).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
+      }
+     }
+    }
+   ],
+   "references": [
+    "everett2005ego"
+   ]
+  },
+  "ego_extraction": {
+   "status": "name_only",
+   "note": "Documented-only (a UCINET procedure that builds the ego networks of all nodes as separate datasets); the sources give no formula beyond the construction of the ego networks, whose node sets and induced ties are defined under ego members and ego ties."
+  },
+  "ego_composition": {
+   "status": "partial",
+   "note": "Documented only (egor, UCINET), never run. Formulas for alter shares, the Blau index and Shannon entropy are the standard definitions; the measure's own variants (index of qualitative variation normalisation, handling of missing attribute values) are not recorded in the sources.",
+   "notation": [
+    {
+     "symbol": "A_v",
+     "meaning": "set of alters of ego \\(v\\), with \\(|A_v|=s\\)"
+    },
+    {
+     "symbol": "p_c",
+     "meaning": "share of alters in category \\(c\\) of a categorical attribute: \\(|\\{u\\in A_v: x_u=c\\}|/s\\)"
+    },
+    {
+     "symbol": "K",
+     "meaning": "number of categories"
+    }
+   ],
+   "formulas": [
+    {
+     "name": "Blau heterogeneity",
+     "latex": "H_{\\mathrm{Blau}}=1-\\sum_{c=1}^{K}p_c^2",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Probability that two randomly drawn alters (with replacement) are in different categories; needs \\(s\\ge1\\)."
+    },
+    {
+     "name": "Shannon heterogeneity",
+     "latex": "H_{\\mathrm{Shannon}}=-\\sum_{c:\\,p_c>0}p_c\\ln p_c",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Entropy of the alter composition; 0 for a single category."
+    },
+    {
+     "name": "Index of qualitative variation",
+     "latex": "\\mathrm{IQV}=\\frac{1-\\sum_c p_c^2}{1-1/K}",
+     "applies_to": [
+      "any"
+     ],
+     "where": "Blau index divided by its maximum \\(1-1/K\\); needs \\(K\\ge2\\)."
+    }
+   ],
+   "variants": {
+    "ego_composition": "The alter category shares \\(p_c\\) and the three heterogeneity indices above, computed for one categorical attribute of the alters."
+   },
+   "references": [
+    "perry2018egocentric"
+   ]
+  }
+ }
+}
