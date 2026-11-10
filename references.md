@@ -395,7 +395,7 @@ Every cited package and paper. Keys match `data/references.bib`.
 - <a id="shi2000normalized"></a>`shi2000normalized` Shi, J.; Malik, J. (2000) Normalized Cuts and Image Segmentation. \*IEEE Transactions on Pattern Analysis and Machine Intelligence\*, 22(8), 888–905. doi:10.1109/34.868688
 - <a id="shimbel1953structural"></a>`shimbel1953structural` Shimbel, A. (1953) Structural Parameters of Communication Networks. \*The Bulletin of Mathematical Biophysics\*, 15(4), 501–507. doi:10.1007/BF02476438
 - <a id="siek2002boost"></a>`siek2002boost` Siek, J.G.; Lee, L.Q.; Lumsdaine, A. (2002) The Boost Graph Library: User Guide and Reference Manual.
-- <a id="sinclair2007centralization"></a>`sinclair2007centralization` Sinclair, P.A. (2007) Network Centralization with the Gil Schmidt Power Centrality Index. \*Social Networks\*, 29(1), 81–92.
+- <a id="sinclair2007centralization"></a>`sinclair2007centralization` Sinclair, P.A. (2009) Network Centralization with the Gil Schmidt Power Centrality Index. \*Social Networks\*, 31(3), 214–219. doi:10.1016/j.socnet.2009.04.004
 - <a id="sinnott1984virtues"></a>`sinnott1984virtues` Sinnott, R.W. (1984) Virtues of the haversine. \*Sky and Telescope\*, 68(2), 159.
 - <a id="slater1981information"></a>`slater1981information` Slater, P.J.; Cockayne, E.J.; Hedetniemi, S.T. (1981) Information Dissemination in Trees. \*SIAM Journal on Computing\*, 10(4), 692–701. doi:10.1137/0210052
 - <a id="smart1999center"></a>`smart1999center` Smart, C.; Slater, P.J. (1999) Center, Median, and Centroid Subgraphs. \*Networks\*, 34(4), 303–311. doi:10.1002/(SICI)1097-0037(199912)34:4&lt;303::AID-NET10&gt;3.0.CO;2-#
