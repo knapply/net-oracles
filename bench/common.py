@@ -114,7 +114,7 @@ def sig(x, digits=6):
 
 def vec(values):
     """Digest of a per-node vector: its sum and maximum."""
-    vals = [float(x) for x in values]
+    vals = [float(x) for x in values if math.isfinite(float(x))]  # isolated nodes give nan in some tools
     return {"sum": sig(sum(vals)), "max": sig(max(vals)) if vals else 0.0}
 
 

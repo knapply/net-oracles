@@ -17,6 +17,6 @@ bench_main(
     pagerank = function(G, ctx) vec(page_rank(G, damping = 0.85)$vector),
     triangles = function(G, ctx) list(clustering_mean = sig(mean(transitivity(G, type = "local", isolates = "zero")))),
     betweenness = function(G, ctx) unsupported("no source subset in the R interface"),
-    closeness = function(G, ctx) vec(closeness(G))
+    closeness = function(G, ctx) vec(closeness(G, normalized = TRUE))
   )
 )
