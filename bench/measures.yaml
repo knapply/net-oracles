@@ -1,0 +1,97 @@
+# Benchmark measure ids, the label written to results.csv, repeats, and the call each adapter makes.
+# The calls are documentation of what the adapter files do (run.py check compares the ids).
+version: 1
+# Size gates: the runner skips a (tool, graph) pair above these instead of timing it out.
+limits:
+  max_edges: {networkx: 200000, sna: 200000, graphblas: 2000000}
+  closeness_max_nodes_times_edges: {default: 10000000000, networkit: 60000000000, graphtool: 60000000000, gapbs: 0, networkx: 300000000}
+measures:
+  load:
+    label: "load (read and build; memory = resident graph)"
+    reps: 3
+    what: Build the tool's graph from the edge arrays already in memory; memory is the resident graph.
+    calls:
+      networkx: "G = Graph(); G.add_nodes_from(range(n)); G.add_edges_from(edges)"
+      pyigraph: "Graph(n=n, edges=edges, directed=d)"
+      networkit: "Graph(n); G.addEdges((u, v))"
+      graphtool: "Graph(); G.add_vertex(n); G.add_edge_list(edges)"
+      igraph: "make_empty_graph(n); add_edges(g, e)"
+      sna: "two-column edge list with attribute n"
+  bfs:
+    label: bfs
+    reps: 3
+    what: Breadth-first search from the first of 16 seeded sources (the same for every tool).
+    calls:
+      networkx: "single_source_shortest_path_length(G, s)"
+      pyigraph: "G.bfs(s)"
+      networkit: "distance.BFS(G, s, storePaths=False).run()"
+      graphtool: "shortest_distance(G, source=s)"
+      igraph: "bfs(g, s, mode='out', unreachable=FALSE)"
+      gapbs: "bfs -r s (the suite's own timer)"
+      nx-parallel: "single_source_shortest_path_length(G, s)"
+      graphblas: "single_source_shortest_path_length(G, s)"
+  components:
+    label: components
+    reps: 3
+    what: Number of weakly connected components.
+    calls:
+      networkx: "number_connected_components(G) (number_weakly_connected_components if directed)"
+      pyigraph: "G.connected_components(mode='weak')"
+      networkit: "components.ConnectedComponents(G).run()"
+      graphtool: "label_components(G, directed=False)"
+      igraph: "components(g, mode='weak')"
+      sna: "component.dist(el, connected='weak')"
+      gapbs: "cc"
+      nx-parallel: "number_connected_components(G, backend='parallel')"
+      graphblas: "number_connected_components(G, backend='graphblas')"
+  pagerank:
+    label: pagerank
+    reps: 3
+    what: PageRank, damping 0.85, tolerance 1e-6 and at most 100 iterations where the tool takes them.
+    calls:
+      networkx: "pagerank(G, alpha=0.85, tol=1e-6, max_iter=100)"
+      pyigraph: "G.pagerank(damping=0.85)"
+      networkit: "centrality.PageRank(G, damp=0.85, tol=1e-6).run()"
+      graphtool: "pagerank(G, damping=0.85, epsilon=1e-6, max_iter=100)"
+      igraph: "page_rank(g, damping=0.85)"
+      gapbs: "pr (the suite's defaults)"
+      graphblas: "pagerank(G, backend='graphblas')"
+      nx-parallel: "pagerank(G, backend='parallel')"
+  triangles:
+    label: triangles
+    reps: 3
+    what: Per-node triangle counts (clustering coefficient where the tool offers only that); the digest says which.
+    calls:
+      networkx: "triangles(G)"
+      pyigraph: "G.transitivity_local_undirected(mode='zero')"
+      networkit: "centrality.LocalClusteringCoefficient(G, turbo=True).run()"
+      graphtool: "local_clustering(G, undirected=True)"
+      igraph: "transitivity(g, type='local', isolates='zero')"
+      gapbs: "tc"
+      graphblas: "triangles(G, backend='graphblas')"
+      nx-parallel: "triangles(G, backend='parallel')"
+  betweenness:
+    label: "betweenness (16 sources)"
+    reps: 1
+    what: "Betweenness summed over 16 seeded sources (tools without a source list: 16 random samples, or unsupported)."
+    calls:
+      networkx: "betweenness_centrality_subset(G, sources, nodes)"
+      pyigraph: "G.betweenness(sources=sources)"
+      networkit: "centrality.EstimateBetweenness(G, 16, False, True).run()"
+      graphtool: "betweenness(G, pivots=sources)"
+      gapbs: "bc -i 16"
+      nx-parallel: "betweenness_centrality(G, k=16, backend='parallel')"
+      graphblas: "betweenness_centrality(G, k=16, backend='graphblas')"
+  closeness:
+    label: closeness
+    reps: 1
+    what: Closeness of every node (skipped by the runner above a size gate).
+    calls:
+      networkx: "closeness_centrality(G)"
+      pyigraph: "G.closeness()"
+      networkit: "centrality.Closeness(G, False, GENERALIZED).run()"
+      graphtool: "closeness(G)"
+      igraph: "closeness(g)"
+      sna: "closeness(el, cmode='undirected')"
+      nx-parallel: "closeness_centrality(G, backend='parallel')"
+      graphblas: "closeness_centrality(G, backend='graphblas')"

@@ -1,0 +1,47 @@
+# Graph suites for bench/run.py. Generated graphs are rebuilt from the seed
+# (graphs.py); downloads are checked against sha256 before use.
+version: 1
+seed: 20261028          # a generated graph of scale S uses seed + S
+
+graphs:
+  kron8:   {family: kron,  scale: 8}
+  urand8:  {family: urand, scale: 8}
+  road8:   {family: road,  scale: 8}
+  kron10:  {family: kron,  scale: 10}
+  urand10: {family: urand, scale: 10}
+  road10:  {family: road,  scale: 10}
+  kron12:  {family: kron,  scale: 12}
+  urand12: {family: urand, scale: 12}
+  road12:  {family: road,  scale: 12}
+  lfr12:   {family: lfr,   scale: 12}
+  kron14:  {family: kron,  scale: 14}
+  urand14: {family: urand, scale: 14}
+  road14:  {family: road,  scale: 14}
+  lfr14:   {family: lfr,   scale: 14}
+  kron16:  {family: kron,  scale: 16}
+  urand16: {family: urand, scale: 16}
+  road16:  {family: road,  scale: 16}
+  lfr16:   {family: lfr,   scale: 16}
+  kron18:  {family: kron,  scale: 18}
+  urand18: {family: urand, scale: 18}
+  road18:  {family: road,  scale: 18}
+  lfr18:   {family: lfr,   scale: 18}
+  kron20:  {family: kron,  scale: 20}
+  urand20: {family: urand, scale: 20}
+  kron22:  {family: kron,  scale: 22}
+  urand22: {family: urand, scale: 22}
+  # A download: pin sha256 of the file as served (run.py prints it with --allow-unpinned).
+  ca-grqc:
+    download: {url: "https://snap.stanford.edu/data/ca-GrQc.txt.gz", sha256: "", directed: false}
+
+# tag: the `suite` column of the rows written to results.csv (--suite-tag overrides it).
+# budget: seconds per (tool, graph, measure) before the process is killed (status over-budget).
+suites:
+  tiny:          {tag: tiny,         budget: 60,   graphs: [kron8, urand8, road8]}
+  smoke:         {tag: tiny,         budget: 60,   graphs: [kron10, urand10, road10]}
+  ladder-small:  {tag: size-ladder,  budget: 240,  graphs: [kron12, urand12, road12, kron14, urand14, road14]}
+  ladder-mid:    {tag: size-ladder,  budget: 240,  graphs: [kron16, urand16, road16, kron18, urand18, road18]}
+  ladder-full:   {tag: size-ladder,  budget: 240,  graphs: [kron12, urand12, road12, lfr12, kron14, urand14, road14, lfr14,
+                                                           kron16, urand16, road16, lfr16, kron18, urand18, road18, lfr18]}
+  gap-reduced:   {tag: gap-kernels,  budget: 120,  graphs: [kron20, urand20]}
+  gap-full:      {tag: gap-kernels,  budget: 600,  graphs: [kron22, urand22]}
