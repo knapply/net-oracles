@@ -1,0 +1,662 @@
+# Routines that reproduce NetworkX's results and order (the engine side of
+# its tree, branching, cycle, DAG and small structural functions), checked
+# against NetworkX itself for the exact sequence and against the definition
+# for the set of results. Format: see ../README.md; runners and encodings in
+# ../bindings/nx_shims.py, derived inputs in ../derived/nx_shims.py; oracles
+# nx_shims_networkx_oracle.py and nx_shims_definition_oracle.py.
+#
+# Each entry runs on a graph derived from the fixture by fixed rules (the
+# breadth-first tree of the component of node 0, the simple digraph of the
+# distinct arcs, ...), described in derived/nx_shims.py. Results that
+# NetworkX orders (edges of a Pruefer decoding, pairs of a lowest common
+# ancestor search) are compared in that order with NetworkX and as sets with
+# the definition (`ordered: false`).
+#
+# Engine options: fn (a runner of bindings/nx_shims.py), kind (max | min),
+# ordered (the engine's order, default) or as a sorted set, order (input |
+# networkx: contracted_nodes), window (paper | networkx: cd_index).
+
+nxs_forest_counts:
+  params: {fn: nxs_forest_counts}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "nodes, edges, weakly connected components by union-find, largest in-degree"
+
+nxs_forest_flags:
+  params: {fn: nxs_forest_flags}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "acyclic by union-find (a loop or second path is a cycle), one component, at most one parent per node"
+    networkx:
+      call: "nx.is_tree, nx.is_forest, nx.is_arborescence, nx.is_branching on the multigraph"
+
+nxs_tree_centroid:
+  params: {fn: nxs_tree_centroid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the nodes whose removal leaves the smallest largest component"
+    networkx:
+      call: "sorted(nx.centroid(T))"
+
+nxs_prufer:
+  params: {fn: nxs_prufer}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "remove the smallest leaf n - 2 times, recording its neighbour"
+    networkx:
+      call: "nx.to_prufer_sequence(T) (nothing below three nodes)"
+
+nxs_from_prufer:
+  params: {fn: nxs_from_prufer, ordered: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "[tuple(T.adj[v]) for v in T] for T = nx.from_prufer_sequence(seq): the neighbour order of each node, which records the order of adding edges"
+
+nxs_from_prufer_edges:
+  params: {fn: nxs_from_prufer, ordered: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the standard decoding (smallest leaf joined to each label), sorted"
+    networkx:
+      call: "sorted (min, max) pairs of nx.from_prufer_sequence(seq).edges()"
+
+nxs_tree_lca:
+  params: {fn: nxs_tree_lca, ordered: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "[(u, v, a) for (u, v), a in nx.tree_all_pairs_lowest_common_ancestor(T, root = 0)], in its order"
+
+nxs_tree_lca_set:
+  params: {fn: nxs_tree_lca, ordered: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "for every pair u <= v the first ancestor of u that is an ancestor of v, sorted"
+
+nxs_greedy_branching_max:
+  params: {fn: nxs_greedy_branching, kind: max}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "sort the arcs by weight, then source, then target, all descending (NetworkX's tie rule); keep an arc whose target has no parent and whose source is not reachable from the target through kept arcs"
+    networkx:
+      call: "sorted(greedy_branching(D, attr = 'weight', kind = 'max').edges())"
+
+nxs_greedy_branching_min:
+  params: {fn: nxs_greedy_branching, kind: min}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "sort the arcs by weight, then source, then target, all ascending; keep an arc whose target has no parent and whose source is not reachable from the target through kept arcs"
+    networkx:
+      call: "sorted(greedy_branching(D, attr = 'weight', kind = 'min').edges())"
+
+nxs_is_simple_path:
+  params: {fn: nxs_is_simple_path}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "distinct nodes in range, each consecutive pair joined by an arc (a nonempty sequence)"
+    networkx:
+      call: "nx.is_simple_path(G, seq) for each sequence of derived/nx_shims.py path_sequences"
+
+# ---- cycles ------------------------------------------------------------------
+#
+# Cycle enumerations run on fixtures of at most twelve nodes (dense networks
+# have exponentially many cycles); larger fixtures give an empty result on
+# every side. `ordered: false` rotates each cycle to start at its smallest
+# node and sorts. find_cycle: orientation (original | reverse | ignore; none
+# is NetworkX's default and reads like original), source (-1: every node in
+# turn; 0: the node n // 2 of the fixture). An undirected edge of a cycle is
+# written in the direction of travel; a directed one as stored, with a third
+# value 1 when travelled against its direction (reverse and ignore).
+
+nxs_recursive_cycles:
+  params: {fn: nxs_recursive_cycles, ordered: true}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "list(nx.recursive_simple_cycles(D)) on the simple digraph with loops, in its order and rotation"
+
+nxs_recursive_cycles_set:
+  params: {fn: nxs_recursive_cycles, ordered: false}
+  applies_to: directed
+  compare: sorted
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "depth-first search from each start over larger nodes only; every closed simple path"
+
+nxs_cycle_basis:
+  params: {fn: nxs_cycle_basis}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.cycle_basis(G) on the simple graph, in its order"
+
+nxs_cycle_basis_check:
+  params: {fn: nxs_cycle_basis_check}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "a basis has m - n + c cycles, each a simple cycle of the graph, independent over GF(2) (rank = m - n + c)"
+
+nxs_find_cycle_none:
+  params: {fn: nxs_find_cycle, orientation: 0, orientation_name: none, source: -1}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.find_cycle(G) on the simple graph with loops (the cycle's edges; (-1, -1) if none)"
+
+nxs_find_cycle_none_source:
+  params: {fn: nxs_find_cycle, orientation: 0, orientation_name: none, source: 0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.find_cycle(G, source = n // 2)"
+
+nxs_find_cycle_original:
+  params: {fn: nxs_find_cycle, orientation: 0, orientation_name: original, source: -1}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.find_cycle(D, orientation = 'original')"
+
+nxs_find_cycle_reverse:
+  params: {fn: nxs_find_cycle, orientation: 1, orientation_name: reverse, source: -1}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.find_cycle(D, orientation = 'reverse'), with 1 for an edge reported 'reverse'"
+
+nxs_find_cycle_reverse_source:
+  params: {fn: nxs_find_cycle, orientation: 1, orientation_name: reverse, source: 0}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.find_cycle(D, source = n // 2, orientation = 'reverse')"
+
+nxs_find_cycle_ignore:
+  params: {fn: nxs_find_cycle, orientation: 2, orientation_name: ignore, source: -1}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.find_cycle(D, orientation = 'ignore'), with 1 for an edge reported 'reverse'"
+
+nxs_find_cycle_ignore_source:
+  params: {fn: nxs_find_cycle, orientation: 2, orientation_name: ignore, source: 0}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.find_cycle(D, source = n // 2, orientation = 'ignore')"
+
+nxs_find_cycle_check_none:
+  params: {fn: nxs_find_cycle_check, orientation: 0, orientation_name: none, source: -1}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "found = the graph has a cycle (loop, repeated pair or directed cycle); the walk returned is closed, has distinct edges, follows the orientation"
+
+nxs_find_cycle_check_none_source:
+  params: {fn: nxs_find_cycle_check, orientation: 0, orientation_name: none, source: 0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "found = a cycle among the nodes reached from n // 2 along arcs (or edges); the walk returned is closed, has distinct edges, follows the orientation"
+
+nxs_find_cycle_check_original:
+  params: {fn: nxs_find_cycle_check, orientation: 0, orientation_name: original, source: -1}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "found = a directed cycle exists (nodes without in-arcs removed repeatedly); walk checks as above"
+
+nxs_find_cycle_check_reverse:
+  params: {fn: nxs_find_cycle_check, orientation: 1, orientation_name: reverse, source: -1}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "found = a directed cycle exists; every edge travelled against its direction"
+
+nxs_find_cycle_check_reverse_source:
+  params: {fn: nxs_find_cycle_check, orientation: 1, orientation_name: reverse, source: 0}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "found = a directed cycle among the nodes that reach n // 2; every edge travelled against its direction"
+
+nxs_find_cycle_check_ignore:
+  params: {fn: nxs_find_cycle_check, orientation: 2, orientation_name: ignore, source: -1}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "found = the underlying undirected multigraph has a cycle (union-find: an antiparallel pair is one); walk checks as above"
+
+nxs_find_cycle_check_ignore_source:
+  params: {fn: nxs_find_cycle_check, orientation: 2, orientation_name: ignore, source: 0}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "found = a cycle in the undirected component of n // 2; walk checks as above"
+
+# ---- contraction, citation index, triangles ----------------------------------
+#
+# contracted_nodes merges node n - 1 into node 0 of the simple graph with
+# loops. The engine lists the edges in the order of the input edge list by
+# default (those not touching the merged node, then the merged node's edges
+# renamed; the `_input` entries, against the definition); `order: networkx`
+# lists them as NetworkX's G.edges() does, node by node (the `_order`
+# entries, against NetworkX). The sets of edges agree everywhere (the `_set`
+# entries, an undirected edge as (smaller, larger)).
+#
+# cd_index: node times (7 v mod 11) and weights (1 + 3 v mod 5), delta as
+# given; -999 where the index is undefined. The engine follows Funk and
+# Owen-Smith: the papers published after the focal paper and at most delta
+# after it, in the sum and in the pool n. NetworkX sums over every citer up
+# to the end of the window (earlier ones too) and pools every citer of a
+# reference whatever its time; `window: networkx` reproduces it (the
+# convention checks in presets.yaml). NetworkX rounds to two decimals
+# (tolerance 0.005).
+
+nxs_contracted_loops_set:
+  params: {fn: nxs_contracted_nodes, self_loops: true, ordered: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "rename n - 1 to 0 in every edge, the edge between them becomes a loop at 0, keep one edge per pair, sorted"
+    networkx:
+      call: "sorted edges of nx.contracted_nodes(G, 0, n - 1, self_loops = True)"
+
+nxs_contracted_noloops_set:
+  params: {fn: nxs_contracted_nodes, self_loops: false, ordered: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "rename n - 1 to 0 in every edge, drop the edge between them, keep one edge per pair, sorted"
+    networkx:
+      call: "sorted edges of nx.contracted_nodes(G, 0, n - 1, self_loops = False)"
+
+nxs_contracted_loops_input:
+  params: {fn: nxs_contracted_nodes, self_loops: true, ordered: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the edges not touching n - 1 in file order, then its edges (in-edges before out-edges when directed) in file order, renamed to 0, each pair once"
+
+nxs_contracted_noloops_input:
+  params: {fn: nxs_contracted_nodes, self_loops: false, ordered: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as nxs_contracted_loops_input, the edges between 0 and n - 1 dropped"
+
+nxs_contracted_loops_order:
+  params: {fn: nxs_contracted_nodes, self_loops: true, ordered: true, order: networkx}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "list(nx.contracted_nodes(G, 0, n - 1, self_loops = True).edges()), in its order"
+
+nxs_contracted_noloops_order:
+  params: {fn: nxs_contracted_nodes, self_loops: false, ordered: true, order: networkx}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "list(nx.contracted_nodes(G, 0, n - 1, self_loops = False).edges()), in its order"
+
+nxs_cd_index_delta1:
+  params: {fn: nxs_cd_index, delta: 1}
+  applies_to: directed
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "mean over the papers published after the node and at most delta after it that cite the node or a reference of it: -1 (cites the node and a reference), +1 (the node only), 0 (a reference only)"
+    networkx:
+      call: "nx.cd_index(G, v, time_delta = 1, time = 'time'), -999 if it raises"
+      differs_when: [directed]
+      reason: >-
+        NetworkX sums over every citer published up to the end of the window,
+        including citers published before the focal node, and counts in the
+        pool n every citer of a reference whatever its time; Funk and
+        Owen-Smith (and the engine's default) count only the papers published
+        after the focal paper and at most delta after it. Reproduced by
+        window: networkx (presets.yaml), which matches NetworkX on every
+        fixture. Publication times are a fixed function of the node id
+        (derived/nx_shims.py), so any arc can bring in a citer outside the
+        window: declared for every directed network (a two-node network
+        with the arc 0 -> 1 already differs: NetworkX 1, engine undefined,
+        since the only citer predates the focal paper). The tolerance is
+        NetworkX's rounding of the index to two decimals.
+      tolerance: {rel: 0, abs: 0.0050001}
+
+nxs_cd_index_delta3_weighted:
+  params: {fn: nxs_cd_index, delta: 3, weighted: true}
+  applies_to: directed
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as nxs_cd_index_delta1 with each term divided by the citer's weight"
+    networkx:
+      call: "nx.cd_index(G, v, time_delta = 3, time = 'time', weight = 'w')"
+      differs_when: [directed]
+      reason: >-
+        NetworkX sums over every citer published up to the end of the window,
+        including citers published before the focal node, and counts in the
+        pool n every citer of a reference whatever its time; Funk and
+        Owen-Smith (and the engine's default) count only the papers published
+        after the focal paper and at most delta after it. Reproduced by
+        window: networkx (presets.yaml), which matches NetworkX on every
+        fixture. Publication times are a fixed function of the node id
+        (derived/nx_shims.py), so any arc can bring in a citer outside the
+        window: declared for every directed network (a two-node network
+        with the arc 0 -> 1 already differs: NetworkX 1, engine undefined,
+        since the only citer predates the focal paper). The tolerance is
+        NetworkX's rounding of the index to two decimals.
+      tolerance: {rel: 0, abs: 0.0050001}
+
+nxs_cd_index_delta0:
+  params: {fn: nxs_cd_index, delta: 0}
+  applies_to: directed
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as nxs_cd_index_delta1, window of length 0"
+    networkx:
+      call: "nx.cd_index(G, v, time_delta = 0, time = 'time')"
+      differs_when: [directed]
+      reason: >-
+        NetworkX sums over every citer published up to the end of the window,
+        including citers published before the focal node, and counts in the
+        pool n every citer of a reference whatever its time; Funk and
+        Owen-Smith (and the engine's default) count only the papers published
+        after the focal paper and at most delta after it. Reproduced by
+        window: networkx (presets.yaml), which matches NetworkX on every
+        fixture. Publication times are a fixed function of the node id
+        (derived/nx_shims.py), so any arc can bring in a citer outside the
+        window: declared for every directed network (a two-node network
+        with the arc 0 -> 1 already differs: NetworkX 1, engine undefined,
+        since the only citer predates the focal paper). The tolerance is
+        NetworkX's rounding of the index to two decimals.
+      tolerance: {rel: 0, abs: 0.0050001}
+
+nxs_triangle_list:
+  params: {fn: nxs_triangle_list}
+  applies_to: undirected
+  compare: sorted
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "triples a < b < c of mutually adjacent nodes of the simple graph, sorted"
+    networkx:
+      call: "sorted(nx.all_triangles(G)) (NetworkX's order follows Python set order and is not compared)"
+
+# ---- degree sequences, all-pairs distances, DAGs, Eulerian circuits ----------
+#
+# Degree sequences: derived/nx_shims.py sequence_cases (the fixture's own
+# degrees and perturbations of them; for digraphical, (in, out) pairs). One
+# 1 or 0 per sequence.
+
+nxs_graphical_eg:
+  params: {fn: nxs_degree_sequence_test, test: 0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "Erdos-Gallai inequalities"
+    networkx:
+      call: "nx.is_graphical(seq, method = 'eg')"
+
+nxs_graphical_hh:
+  params: {fn: nxs_degree_sequence_test, test: 1}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "Havel-Hakimi elimination"
+    networkx:
+      call: "nx.is_graphical(seq, method = 'hh')"
+
+nxs_multigraphical:
+  params: {fn: nxs_degree_sequence_test, test: 2}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "Hakimi: even sum, largest degree at most the sum of the others"
+    networkx:
+      call: "nx.is_multigraphical(seq)"
+
+nxs_pseudographical:
+  params: {fn: nxs_degree_sequence_test, test: 3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "even sum of non-negative degrees"
+    networkx:
+      call: "nx.is_pseudographical(seq)"
+
+nxs_digraphical:
+  params: {fn: nxs_degree_sequence_test, test: 4}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "Fulkerson-Chen-Anstee inequalities"
+    networkx:
+      call: "nx.is_digraphical(in_seq, out_seq)"
+
+# floyd_warshall_tree: the simple digraph with the fixture's weights
+# (`negative: false`) or the DAG with negative lengths. dist: sorted
+# (u, v, distance) of reachable pairs; pred: sorted (u, v, predecessor of v
+# on the path from u) as NetworkX picks them; valid: one flag per reachable
+# pair of distinct nodes that the predecessor is an in-neighbour on a
+# shortest path and the distance equals plain Floyd-Warshall's.
+
+nxs_fw_tree_dist:
+  params: {fn: nxs_fw_tree, part: dist, negative: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "plain Floyd-Warshall"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    networkx:
+      call: "nx.floyd_warshall_tree(G): finite distances, sorted"
+
+nxs_fw_tree_pred:
+  params: {fn: nxs_fw_tree, part: pred, negative: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.floyd_warshall_tree(G): predecessor entries, sorted"
+
+nxs_fw_tree_valid:
+  params: {fn: nxs_fw_tree_valid, negative: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "one 1 per reachable pair of distinct nodes (checked against plain Floyd-Warshall)"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+
+nxs_fw_tree_dist_negative:
+  params: {fn: nxs_fw_tree, part: dist, negative: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "plain Floyd-Warshall on the DAG with negative lengths"
+    networkx:
+      call: "nx.floyd_warshall_tree(DAG): finite distances, sorted"
+
+nxs_fw_tree_pred_negative:
+  params: {fn: nxs_fw_tree, part: pred, negative: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.floyd_warshall_tree(DAG): predecessor entries, sorted"
+
+nxs_fw_tree_valid_negative:
+  params: {fn: nxs_fw_tree_valid, negative: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "one 1 per reachable pair of distinct nodes (checked against plain Floyd-Warshall)"
+
+nxs_johnson_lengths:
+  params: {fn: nxs_johnson_lengths}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "l(u, v) + h(u) - h(v) per arc of the DAG with negative lengths, h(v) the shortest distance to v from any node (Floyd-Warshall)"
+    networkx:
+      call: "the same from nx.single_source_bellman_ford_path_length on the graph with a zero-length source arc to every node"
+
+nxs_dag_reachability:
+  params: {fn: nxs_dag_reachability}
+  applies_to: any
+  compare: sorted
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "reachability of the derived DAG by a sweep from the last node"
+    networkx:
+      call: "(u, v) for v in nx.descendants(DAG, u)"
+
+# topological orders of the derived DAG on fixtures of at most twelve nodes.
+# The ordered entry compares the first 2000 orders with NetworkX's
+# generator; the set entry compares all (at most 5000) with the definition.
+
+nxs_topological_sorts:
+  params: {fn: nxs_topological_sorts, limit: 2000, ordered: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "first 2000 of nx.all_topological_sorts(DAG), in its order"
+
+nxs_topological_sorts_set:
+  params: {fn: nxs_topological_sorts, limit: 5000, ordered: false}
+  applies_to: any
+  compare: sorted
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "recurse on any node whose predecessors are all placed; all orders (undefined above 5000)"
+      undefined_on: [star8]
+      undefined_reason: more than 5000 orders; the definition lists them all
+
+nxs_colliders_order:
+  params: {fn: nxs_colliders, v_structures: false, ordered: true}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "list(nx.dag.colliders(D)), in its order"
+
+nxs_colliders_set:
+  params: {fn: nxs_colliders, v_structures: false, ordered: false}
+  applies_to: directed
+  compare: sorted
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(a, c, b) with a < b two distinct parents of c, sorted"
+
+nxs_v_structures_order:
+  params: {fn: nxs_colliders, v_structures: true, ordered: true}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "list(nx.dag.v_structures(D)), in its order"
+
+nxs_v_structures_set:
+  params: {fn: nxs_colliders, v_structures: true, ordered: false}
+  applies_to: directed
+  compare: sorted
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "colliders whose two parents are not adjacent, sorted"
+
+# Eulerian circuit of the multigraph with every edge doubled (undirected) or
+# given its reverse (directed), from node 0: (source, target, key) per step in
+# NetworkX's order. NetworkX refuses a graph that is not connected; those
+# fixtures have no golden value.
+
+nxs_euler_circuit:
+  params: {fn: nxs_euler_circuit}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "list(nx.eulerian_circuit(G, source = 0, keys = True))"
+      undefined_on: [empty, gnp_und_sparse, multi_loops_und, two_triangles_isolate]
+      undefined_reason: NetworkX refuses a graph that is not connected (or has no node)
+
+nxs_euler_valid:
+  params: {fn: nxs_euler_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[every edge used once, each step starts where the last ended, the walk starts and ends at node 0]"
+      undefined_on: [two_triangles_isolate]
+      undefined_reason: >-
+        edges in a second component are never reached from node 0, so no
+        circuit from node 0 covers all edges

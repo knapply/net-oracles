@@ -1,0 +1,23 @@
+{
+ "inputs": "6af4be409ff1c561e97f912bfc9b1e0bb4d003a1a408d094fc0679c07924f998",
+ "oracles": [
+  "bct",
+  "cdlib",
+  "cpnet",
+  "definition",
+  "ergm",
+  "graphblas",
+  "graspologic",
+  "igraph",
+  "infomap",
+  "jgrapht",
+  "nauty",
+  "networkx",
+  "powerlaw",
+  "published",
+  "pyigraph",
+  "remstats",
+  "rsiena",
+  "sknetwork"
+ ]
+}

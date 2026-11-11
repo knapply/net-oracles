@@ -61,6 +61,8 @@ Measure id: `max_flow`. Original family: Components and connectivity.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>flow_max_flow_valid</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>[nx.maximum_flow_value(G, 0, n - 1), 1]: the reference value's edge flows must respect capacities, conserve flow, and carry the maximum value</code></td><td></td></tr><tr><td><code>flow_max_flow_valid_multi</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>[nx.maximum_flow_value(H, 'S', 'T'), 1] with H as for flow_max_value_multi</code></td><td></td></tr><tr><td><code>flow_max_value</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.maximum_flow_value(G, 0, n - 1, capacity = 'capacity')</code></td><td></td></tr><tr><td><code>flow_max_value_multi</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.maximum_flow_value(H, 'S', 'T'), H = G plus arcs S -&gt; 0, S -&gt; 1, n - 2 -&gt; T, n - 1 -&gt; T without a capacity (infinite)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/flow.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/flow.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [dinic1970algorithm](../../references.html#dinic1970algorithm), [ford1956maximal](../../references.html#ford1956maximal), [ford1962flows](../../references.html#ford1962flows), [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 **Tools cited:** [butts2008sna](../../references.html#butts2008sna), [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [siek2002boost](../../references.html#siek2002boost), [staudt2016networkit](../../references.html#staudt2016networkit)
@@ -78,6 +80,8 @@ Measure id: `gb_maxflow`. Original family: Traversal, trees and DAGs.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>gb_maxflow</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>nx.maximum_flow_value(D, 0, n - 1, flow_func=edmonds_karp), D the simple graph with capacity = weight</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/traversal_b.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/traversal_b.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

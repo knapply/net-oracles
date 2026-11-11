@@ -1,0 +1,17 @@
+{
+ "inputs": "29b8772b76f0eecf2c9915abe0d84b315ebc65f2871d45a4994dc3e516c73234",
+ "oracles": [
+  "centiserve",
+  "definition",
+  "homophily",
+  "igraph",
+  "networkit",
+  "networkx",
+  "pyigraph",
+  "s2",
+  "sf",
+  "sna",
+  "stats",
+  "tnet"
+ ]
+}

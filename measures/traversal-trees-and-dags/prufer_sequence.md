@@ -56,6 +56,8 @@ Measure id: `nxs_from_prufer`. Original family: Graph theory and combinatorics.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nxs_from_prufer</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>[tuple(T.adj[v]) for v in T] for T = nx.from_prufer_sequence(seq): the neighbour order of each node, which records the order of adding edges</code></td><td></td></tr><tr><td><code>nxs_from_prufer_edges</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>sorted (min, max) pairs of nx.from_prufer_sequence(seq).edges()</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/nx_shims.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/nx_shims.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht)
 
 ## Prufer {#nxs_prufer}
@@ -75,6 +77,8 @@ Measure id: `nxs_prufer`. Original family: Graph theory and combinatorics.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nxs_prufer</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.to_prufer_sequence(T) (nothing below three nodes)</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/nx_shims.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/nx_shims.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

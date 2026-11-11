@@ -50,6 +50,8 @@ Measure id: `max_weight_clique`. Original family: Cohesion and subgroups.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>max_weight_clique</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.max_weight_clique(G) with node attribute weight = (7 v mod 5) - 1: (weight, 1 if the nodes form a clique)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/combinatorial.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/combinatorial.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Largest weighted cliques {#cat_clique_largest_weighted}
@@ -81,6 +83,8 @@ Measure id: `max_weight_clique_nodes`. Original family: Cohesion and subgroups.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>max_weight_clique_nodes</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.max_weight_clique(G)[0] (members in the order NetworkX's branch and bound adds them)</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/combinatorial.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/combinatorial.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

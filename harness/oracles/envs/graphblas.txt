@@ -1,0 +1,6 @@
+# graphblas-algorithms oracle (graphblas_oracle.py); NetworkX only dispatches
+graphblas-algorithms
+networkx>=3.2,<3.3
+numpy
+scipy
+pyyaml

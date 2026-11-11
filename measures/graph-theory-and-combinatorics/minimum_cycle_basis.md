@@ -52,6 +52,8 @@ Measure id: `gb_mcb_weight`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>gb_mcb_weight</code></td><td>NetworkX</td><td>undirected</td><td>no-value-on-some-inputs</td><td>(no value) multi_edges</td><td>multi_edges</td><td>abs 1e-09, rel 1e-09</td><td><code>total weight of nx.minimum_cycle_basis(G, weight)</code></td><td>NetworkX's minimum_cycle_basis rejects multigraphs.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/traversal_b.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/traversal_b.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Min basis {#min_basis}
@@ -71,6 +73,8 @@ Measure id: `min_basis`. Original family: Graph theory and combinatorics.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>cyc_min_basis_check</code></td><td>NetworkX</td><td>undirected</td><td>differs</td><td>multi_edges</td><td>multi_edges</td><td>abs 0, rel 0</td><td><code>the count and the cycle/independence tests of nx.minimum_cycle_basis(G)</code></td><td>as for cyc_basis</td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/cycles.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/cycles.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **References:** [depina1995applications](../../references.html#depina1995applications), [dias2013efficient](../../references.html#dias2013efficient), [gupta2021finding](../../references.html#gupta2021finding), [hagberg2008exploring](../../references.html#hagberg2008exploring), [itai1978finding](../../references.html#itai1978finding), [johnson1975finding](../../references.html#johnson1975finding), [kavitha2009cycle](../../references.html#kavitha2009cycle), [kirchhoff1847ueber](../../references.html#kirchhoff1847ueber)
 
@@ -93,6 +97,8 @@ Measure id: `min_basis_weights`. Original family: Graph theory and combinatorics
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>cyc_min_basis_weights</code></td><td>NetworkX</td><td>undirected</td><td>differs</td><td>multi_edges</td><td>multi_edges</td><td>abs 1e-12, rel 1e-12</td><td><code>weights of the cycles of nx.minimum_cycle_basis(G)</code></td><td>as for cyc_basis</td></tr><tr><td><code>cyc_min_basis_weights_weighted</code></td><td>NetworkX</td><td>undirected</td><td>differs</td><td>multi_edges</td><td>multi_edges, self_loops, weights</td><td>abs 1e-12, rel 1e-12</td><td><code>weights of the cycles of nx.minimum_cycle_basis(G, weight = 'weight')</code></td><td>Two parallel edges form a cycle of their total weight for the reference and the definition (two parallel loops, two cycles); NetworkX's simple graph keeps one edge per pair and has no such cycle.</td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/cycles.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/cycles.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **References:** [depina1995applications](../../references.html#depina1995applications), [dias2013efficient](../../references.html#dias2013efficient), [gupta2021finding](../../references.html#gupta2021finding), [hagberg2008exploring](../../references.html#hagberg2008exploring), [itai1978finding](../../references.html#itai1978finding), [johnson1975finding](../../references.html#johnson1975finding), [kavitha2009cycle](../../references.html#kavitha2009cycle), [kirchhoff1847ueber](../../references.html#kirchhoff1847ueber)
 

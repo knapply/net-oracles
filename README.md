@@ -41,6 +41,32 @@ measures = json.load(open("data/measures.json"))
 by_family = [m["id"] for m in measures if concepts[m["concept"]]["family"] == "Centrality"]
 ```
 
+## Run the oracles
+
+`harness/` holds everything needed to reproduce the reference values: the
+test graphs (`fixtures/`, `fixtures-extra/`, `derived/`), one manifest per
+measure area (`manifest/`, each entry naming its parameters, the inputs it
+applies to and the tools that compute it), the oracle scripts (`oracles/`,
+Python and R, each tool treated as a black box), the reference outputs they
+produced (`golden/<tool>/`, plus `golden-sized/` for the larger graphs) and
+the runner.
+
+```sh
+cd harness
+bash tools/oracle_envs.sh           # one isolated Python environment per tool
+python3 run_oracles.py              # reruns only scripts whose inputs changed
+python3 run_oracles.py --all        # every script
+python3 run_oracles.py networkx     # scripts matching a word
+```
+
+A script reruns when its own code, the shared helpers, the test graphs, its
+manifest or the installed version of the tool it calls change; the input hash
+of each script is kept in `golden/.hashes/`. Scripts whose tool is not
+installed are skipped and keep their committed outputs. To compare another
+implementation, compute the same entries on the same graphs and compare with
+`golden/<tool>/` using the tolerances in each manifest entry and the method
+in the "How entries are labelled" page.
+
 ## Cite
 
 ```bibtex

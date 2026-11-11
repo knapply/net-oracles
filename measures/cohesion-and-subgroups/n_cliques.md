@@ -56,6 +56,8 @@ Measure id: `n_cliques`. Original family: Cohesion and subgroups.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>n_cliques_2</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cliques on the graph joining nodes at distance &lt;= 2 (single_source_shortest_path_length, cutoff 2)</code></td><td></td></tr><tr><td><code>n_cliques_3_min4</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_cliques on the distance-3 power graph, keeping cliques of at least 4</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/groups.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/groups.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [alba1973graph](../../references.html#alba1973graph), [luce1950connectivity](../../references.html#luce1950connectivity), [mokken1979cliques](../../references.html#mokken1979cliques)
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [hagberg2008exploring](../../references.html#hagberg2008exploring)

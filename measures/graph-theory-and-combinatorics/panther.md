@@ -52,6 +52,8 @@ Measure id: `panther`. Original family: Graph theory and combinatorics.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>panther</code></td><td>NetworkX</td><td>undirected</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0.015, rel 0</td><td><code>nx.panther_similarity(G, hub, k = (non-isolated nodes) - 1, eps = 0.01, seed = 1)</code></td><td>as for the definition oracle</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/similarity.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/similarity.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [jeh2002simrank](../../references.html#jeh2002simrank), [zhang2015panther](../../references.html#zhang2015panther)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)

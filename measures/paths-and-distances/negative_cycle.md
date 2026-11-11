@@ -52,5 +52,7 @@ Measure id: `paths_negative_cycle`. Original family: Paths and distances.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>paths_negative_cycle_potential</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.negative_edge_cycle(G, weight = 'len')</code></td><td></td></tr><tr><td><code>paths_negative_cycle_shift</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.negative_edge_cycle(G, weight = 'len')</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/paths.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/paths.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [tool_rustworkx](../../references.html#tool_rustworkx)
 {% endraw %}

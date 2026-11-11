@@ -1,0 +1,246 @@
+# Graph matrices and spectra as registry measures: `graph_matrix` (adjacency,
+# Laplacian, normalized Laplacian, signless Laplacian, incidence, oriented
+# incidence, the Hashimoto non-backtracking operator, modularity matrix and
+# transition matrix, as dense matrices) and `graph_spectrum` (their
+# eigenvalues). Format: see ../README.md; runners in
+# ../bindings/spectral_matrices.py (through the generic net_run), definition
+# oracle spectral_matrices_definition_oracle.py, NetworkX oracle
+# spectral_matrices_networkx_oracle.py.
+#
+# The matrix builders are those the C entry points of graph_matrices.yaml
+# call; these entries check the registry measure's output with the same
+# oracles (exact fractions; NetworkX 3.x linalg, parallel edges read as a
+# multigraph, so they add up) and add the matrices NetworkX has no function
+# for. The Hashimoto operator is checked against its definition and, through
+# a theorem, against the adjacency side: the Ihara-Bass formula
+# det(I - uB) = (1 - u^2)^(m - n) det(I - uA + u^2 (D - I)) for simple
+# undirected networks. Spectra: numpy's LAPACK eigensolver on the definition
+# matrices and NetworkX's own spectrum functions, against the engine's
+# tridiagonal-QL solver; eigenvalues agree to 1e-9 (absolute and relative) on
+# networks of up to a few hundred nodes, a loose bound only in comparison
+# with the 1e-12 of exact matrices, justified by the solver's accuracy of
+# about machine epsilon times the matrix norm times n.
+#
+# Conventions. An undirected loop is one diagonal entry of A (NetworkX's
+# convention), so D = row sums of A counts it once and L has a zero
+# diagonal entry there. The normalized Laplacian has 0 on the diagonal for a
+# node of zero degree. The non-backtracking operator forbids returning to
+# the previous node (w != u), parallel edges being distinct arcs; undirected
+# self-loops are two arcs v -> v that never follow each other.
+#
+# Engine options:
+#   fn      matrix_operators (the measure graph_matrix) | graph_spectrum
+#   kind    see the measures (matrix kinds; spectrum kinds)
+#   weighted  use edge weights
+#   stat    graph_matrix: matrix (default) | ihara
+
+gmx_adjacency:
+  params: {fn: matrix_operators, kind: adjacency}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "A[u][v] += 1 per edge (both ways when undirected; an undirected self-loop once)"
+    networkx:
+      call: "nx.adjacency_matrix(G, weight = None).toarray()"
+
+gmx_adjacency_weighted:
+  params: {fn: matrix_operators, kind: adjacency, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "A[u][v] += w per edge"
+    networkx:
+      call: "nx.adjacency_matrix(G, weight = 'weight').toarray()"
+
+gmx_laplacian:
+  params: {fn: matrix_operators, kind: laplacian}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "D - A with D the row sums of A"
+    networkx:
+      call: "nx.laplacian_matrix(G, weight = None).toarray()"
+
+gmx_laplacian_weighted:
+  params: {fn: matrix_operators, kind: laplacian, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "D - A with weights"
+    networkx:
+      call: "nx.laplacian_matrix(G, weight = 'weight').toarray()"
+
+gmx_normalized_laplacian:
+  params: {fn: matrix_operators, kind: normalized_laplacian}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "D^-1/2 (D - A) D^-1/2, 0 for zero degrees"
+    networkx:
+      call: "nx.normalized_laplacian_matrix(G, weight = None).toarray()"
+
+gmx_normalized_laplacian_weighted:
+  params: {fn: matrix_operators, kind: normalized_laplacian, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "D^-1/2 (D - A) D^-1/2 with weights"
+    networkx:
+      call: "nx.normalized_laplacian_matrix(G, weight = 'weight').toarray()"
+
+gmx_incidence:
+  params: {fn: matrix_operators, kind: incidence}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "1 at both endpoints of each edge's column; self-loops empty"
+    networkx:
+      call: "nx.incidence_matrix(G, edgelist = the fixture's edges in order).toarray()"
+
+gmx_incidence_oriented_weighted:
+  params: {fn: matrix_operators, kind: oriented_incidence, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "-w at the source and w at the target of each edge's column"
+    networkx:
+      call: "nx.incidence_matrix(G, edgelist = the fixture's edges, oriented = True, weight = 'weight').toarray()"
+
+gmx_modularity:
+  params: {fn: matrix_operators, kind: modularity}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "A - k k' / 2m (A - k_out k_in' / m when directed); NaN without edges"
+    networkx:
+      call: "nx.modularity_matrix(G) or nx.directed_modularity_matrix(G)"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement the modularity matrices for multigraphs.
+
+gmx_modularity_weighted:
+  params: {fn: matrix_operators, kind: modularity, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as gmx_modularity with weights"
+    networkx:
+      call: "nx.modularity_matrix(G, weight = 'weight') or the directed version"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement the modularity matrices for multigraphs.
+
+gmx_signless:
+  params: {fn: matrix_operators, kind: signless_laplacian}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "D + A with D the row sums of A"
+
+gmx_signless_weighted:
+  params: {fn: matrix_operators, kind: signless_laplacian, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "D + A with weights"
+
+gmx_transition:
+  params: {fn: matrix_operators, kind: transition}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "A[u][v] / (row sum of A at u); a row without weight stays 0"
+
+gmx_non_backtracking:
+  params: {fn: matrix_operators, kind: non_backtracking}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "arcs numbered by edge (2e: source -> target, 2e + 1: target -> source when undirected); 1 from u -> v to v -> w with w != u"
+
+gmx_ihara_bass:
+  params: {fn: matrix_operators, kind: non_backtracking, stat: ihara}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-09, abs: 1.0e-09}
+  oracles:
+    definition:
+      call: "sign and log |(1 - u^2)^(m - n) det(I - uA + u^2 (D - I))| at u = 0.1, 0.2 (Ihara-Bass); simple networks only"
+
+gsp_adjacency:
+  params: {fn: graph_spectrum, kind: adjacency}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-09, abs: 1.0e-09}
+  oracles:
+    definition:
+      call: "numpy.linalg.eigvalsh of A"
+    networkx:
+      call: "np.sort(np.real(nx.adjacency_spectrum(G)))"
+
+gsp_laplacian:
+  params: {fn: graph_spectrum, kind: laplacian}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-09, abs: 1.0e-09}
+  oracles:
+    definition:
+      call: "numpy.linalg.eigvalsh of D - A"
+    networkx:
+      call: "nx.laplacian_spectrum(G, weight = None)"
+
+gsp_laplacian_weighted:
+  params: {fn: graph_spectrum, kind: laplacian, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-09, abs: 1.0e-09}
+  oracles:
+    definition:
+      call: "numpy.linalg.eigvalsh of the weighted D - A"
+    networkx:
+      call: "nx.laplacian_spectrum(G, weight = 'weight')"
+
+gsp_normalized_laplacian:
+  params: {fn: graph_spectrum, kind: normalized_laplacian}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-09, abs: 1.0e-09}
+  oracles:
+    definition:
+      call: "numpy.linalg.eigvalsh of D^-1/2 (D - A) D^-1/2"
+    networkx:
+      call: "nx.normalized_laplacian_spectrum(G, weight = None)"
+
+gsp_modularity:
+  params: {fn: graph_spectrum, kind: modularity}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-09, abs: 1.0e-09}
+  oracles:
+    definition:
+      call: "numpy.linalg.eigvalsh of A - k k' / 2m; nothing without edges"
+    networkx:
+      call: "np.sort(np.real(nx.modularity_spectrum(G)))"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement the modularity matrices for multigraphs.
+
+gsp_signless_laplacian:
+  params: {fn: graph_spectrum, kind: signless_laplacian}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-09, abs: 1.0e-09}
+  oracles:
+    definition:
+      call: "numpy.linalg.eigvalsh of D + A"

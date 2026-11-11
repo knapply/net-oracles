@@ -1,0 +1,14 @@
+{
+  "n": 20,
+  "directed": false,
+  "weighted": false,
+  "tags": [
+    "disconnected",
+    "isolates",
+    "loops",
+    "multi_edges",
+    "onemode",
+    "unsorted_edges"
+  ],
+  "source": "random multigraph n=20, m=72, seed 18"
+}

@@ -1,0 +1,238 @@
+# Triangle counts, Kosaraju components and biconnected component edges in
+# NetworkX's search order, flow hierarchy (Luo and Magee 2011), and
+# NetworkX's node classification (harmonic function, local and global
+# consistency). Format: see ../README.md; runners and encodings in
+# ../bindings/nx_order.py.
+#
+# Oracles: `definition` is nx_order_definition_oracle.py (triangle
+# enumeration; mutual reachability for flow hierarchy); `networkx` is
+# nx_order_networkx_oracle.py, on graphs built so that NetworkX's adjacency
+# order is the edge order.
+
+nxo_triangles:
+  params: {fn: nxo_triangles}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "triples of mutually adjacent nodes of the simple graph"
+    networkx:
+      call: "nx.triangles(nx.Graph(G))"
+    graphblas:
+      call: "nx.triangles(G simple without loops, backend = 'graphblas')"
+
+# The same counts as nxo_triangles, compared as a multiset: a tool that returns
+# the counts in an order of its own (Gephi, nodes by decreasing degree).
+nxo_triangles_sorted:
+  params: {fn: nxo_triangles}
+  applies_to: undirected
+  compare: sorted
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: ClusteringCoefficient.getTriangesReuslts() (setDirected(false)), sorted: the array is in an internal node order (oracles/system/gephi/Oracle.java)"
+      differs_on: [multi_loops_und]
+      reason: "Gephi counts a self-loop in a node's neighbourhood: with the loops removed (parallel edges kept) its coefficients and triangle counts equal the simple-graph definition, which this engine and the definition oracle follow; parallel edges do not change them (checked on multi_loops_und and multi_loops_dir)."
+
+nxo_kosaraju:
+  params: {fn: nxo_kosaraju}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.kosaraju_strongly_connected_components(G), components in order"
+      undefined_when: [multi_edges]
+      undefined_reason: >-
+        The backend leaves multigraphs to NetworkX (their adjacency order is
+        not the edge order); the engine's components are the same sets.
+
+nxo_biconnected:
+  params: {fn: nxo_biconnected}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.biconnected_component_edges(G), components in order, (parent, child) edges"
+      undefined_when: [multi_edges]
+      undefined_reason: >-
+        The backend leaves multigraphs to NetworkX (their adjacency order is
+        not the edge order).
+
+nxo_flow_hierarchy:
+  params: {fn: nxo_flow_hierarchy}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "1 - (arcs inside strongly connected components) / arcs"
+    networkx:
+      call: "nx.flow_hierarchy(G)"
+
+nxo_flow_hierarchy_weighted:
+  params: {fn: nxo_flow_hierarchy, weighted: true}
+  applies_to: directed
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "1 - (weight inside strongly connected components) / total weight"
+    networkx:
+      call: "nx.flow_hierarchy(G, weight = 'weight')"
+
+# Label spreading: NetworkX takes argmax of float scores that NumPy and SciPy
+# evaluate with platform-dependent rounding (fused multiply-add, vendor
+# BLAS), so where the best two class scores agree to a relative 1e-9 its
+# label differs between Linux and macOS. Both sides write -1 for such nodes
+# (the engine from its tie flags, the oracle from the published iteration
+# in floating point), so those nodes compare as equal and every other node
+# is compared exactly.
+nxo_harmonic_function:
+  params: {fn: nxo_label_spreading, method: harmonic}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.node_classification.harmonic_function(G), labels (v // 4) % 3 on nodes v % 4 == 0 (graph without weights)"
+
+nxo_local_global_weighted:
+  params: {fn: nxo_label_spreading, method: consistency, alpha: 0.9, max_iter: 12, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.node_classification.local_and_global_consistency(G, alpha = 0.9, max_iter = 12)"
+
+nxo_directed_clustering:
+  params: {fn: nxo_directed_clustering}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Fagiolo's count of directed triangles over 2 (d (d - 1) - 2 b), parallel arcs once"
+    networkx:
+      call: "nx.clustering(nx.DiGraph(G))"
+    graphblas:
+      call: "nx.clustering(DiGraph, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+    bctpy:
+      call: "bct.clustering_coef_bd(A binary, no diagonal)"
+
+nxo_directed_clustering_weighted:
+  params: {fn: nxo_directed_clustering, weighted: true}
+  applies_to: directed
+  requires_weights: true
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as nxo_directed_clustering with cube roots of weight products over the largest weight"
+    networkx:
+      call: "nx.clustering(nx.DiGraph(G), weight = 'weight')"
+      differs_when: [multi_edges]
+      reason: >-
+        nx.DiGraph(G) keeps the last of a pair's parallel arcs (and its
+        weight); the engine keeps the first.
+    graphblas:
+      call: "nx.clustering(DiGraph, weight = 'weight', backend = 'graphblas')"
+      differs_when: [multi_edges]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+    bctpy:
+      call: "bct.clustering_coef_wd(W / max(W))"
+
+nxo_successor_transitivity:
+  params: {fn: nxo_successor_transitivity}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum over v and successors w of |S(v) and S(w)| over sum |S(v)| (|S(v)| - 1)"
+    networkx:
+      call: "nx.transitivity(nx.DiGraph(G)) (triangles over successors)"
+
+nxo_node_reciprocity:
+  params: {fn: nxo_node_reciprocity}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "2 |pred and succ| / (|pred| + |succ|) per node, distinct neighbours, exact fractions"
+    networkx:
+      call: "nx.reciprocity(nx.DiGraph(G), nodes = every node)"
+    graphblas:
+      call: "nx.reciprocity(DiGraph, nodes, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+
+# The prominent group (Puzis, Elovici, and Dolev 2007) of k = 2 nodes:
+# NetworkX's value (rounded to two decimals as NetworkX reports it), then
+# the group in the order found. -999 where NetworkX has no answer: fewer
+# than k + 2 nodes (it divides by zero) or a directed graph that is not
+# strongly connected (it looks up distances that do not exist).
+nxo_prominent_value:
+  params: {fn: nxo_prominent, k: 2, value_only: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: >-
+        largest, over all 2-node groups C, of the sum over ordered pairs s != t
+        outside C of the fraction of shortest s-t paths through C, over
+        (n - 2)(n - 3); exact fractions, rounded to two decimals
+    networkx:
+      call: "nx.prominent_group(G, 2)[0]"
+      differs_when: [disconnected]
+      reason: >-
+        NetworkX's exact search maximizes the group betweenness with endpoints
+        and subtracts the endpoint terms afterwards; on a disconnected graph
+        those terms depend on the group, so NetworkX can return a group that
+        is not the best (a NetworkX defect,
+        docs/drafts/correctness_findings.md), and between equally good groups
+        the two searches, pruned differently, can stop at different ones. The
+        engine searches the value without endpoints; the definition oracle
+        checks it.
+
+nxo_prominent_group:
+  params: {fn: nxo_prominent, k: 2}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.prominent_group(G, 2), value then group"
+      differs_when: [disconnected]
+      reason: >-
+        NetworkX's exact search maximizes the group betweenness with endpoints
+        and subtracts the endpoint terms afterwards; on a disconnected graph
+        those terms depend on the group, so NetworkX can return a group that
+        is not the best (a NetworkX defect,
+        docs/drafts/correctness_findings.md), and between equally good groups
+        the two searches, pruned differently, can stop at different ones. The
+        engine searches the value without endpoints; the definition oracle
+        checks it.
+
+nxo_prominent_group_options:
+  params: {fn: nxo_prominent, k: 3, endpoints: true, normalized: false, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.prominent_group(G, 3, weight = 'weight', endpoints = True, normalized = False)"
+      undefined_when: [multi_edges]
+      undefined_reason: >-
+        NetworkX takes the smallest weight of parallel edges; the engine
+        reads the first (the backend leaves multigraphs to NetworkX).
+
+nxo_prominent_greedy:
+  params: {fn: nxo_prominent, k: 3, greedy: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.prominent_group(G, 3, greedy = True)"

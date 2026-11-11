@@ -12,6 +12,7 @@ aux_links:
   Repository:
     - https://github.com/knapply/net-oracles
 exclude:
+  - harness/
   - scripts/
   - README.md
   - CITATION.cff

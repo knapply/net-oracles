@@ -48,6 +48,8 @@ Measure id: `st_embedding`. Original family: Graph theory and combinatorics.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>st_embedding</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>check_planarity(G)[1].get_data(): each node's neighbours clockwise, flat with a count first; [-1] if not planar</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/structure_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/structure_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Embedding euler {#st_embedding_euler}
@@ -63,6 +65,8 @@ Measure id: `st_embedding_euler`. Original family: Graph theory and combinatoric
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>st_embedding_euler</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>1 if the faces of check_planarity(G)[1] satisfy V - E + F = 1 + C, -1 if not planar</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/structure_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/structure_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

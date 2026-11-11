@@ -52,5 +52,7 @@ Measure id: `sbm_fit`. Original family: Statistical fitting.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>sbm_fit_dc_vs_graphtool</code></td><td>graph-tool</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td></td><td>The oracle script does not run graph-tool on a network with fewer than two nodes or without edges.</td></tr><tr><td><code>sbm_fit_vs_graphtool</code></td><td>graph-tool</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td></td><td>The oracle script does not run graph-tool on a network with fewer than two nodes or without edges.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/models_fit.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/models_fit.yaml); [harness/golden/graphtool/](https://github.com/knapply/net-oracles/tree/main/harness/golden/graphtool/)
+
 **Tools cited:** [peixoto2014graphtool](../../references.html#peixoto2014graphtool)
 {% endraw %}

@@ -1,0 +1,5 @@
+# bctpy oracle (bctpy_oracle.py)
+bctpy
+numpy
+scipy
+pyyaml

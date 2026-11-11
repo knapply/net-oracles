@@ -1,0 +1,5 @@
+# cdlib oracle (cdlib_oracle.py)
+cdlib
+clusim
+networkx
+pyyaml

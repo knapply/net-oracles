@@ -1,0 +1,9 @@
+{
+ "inputs": "b090222c9983f8b34c2d6a44195d5f00a3e49ba9996a3b69ca6167d9daa3e4f2",
+ "oracles": [
+  "cdlib",
+  "ergm",
+  "graspologic",
+  "networkx"
+ ]
+}

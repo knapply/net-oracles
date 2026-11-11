@@ -1,0 +1,174 @@
+# Bayesian stochastic block models: the microcanonical description length
+# of a partition and its incremental change under a node move (Peixoto
+# 2017, `peixoto2017nonparametric`; degree correction after Karrer and
+# Newman 2011, `karrer2011stochastic`). Format: see ../README.md.
+#
+# Every fixture is read as a multigraph (weights ignored, parallel edges
+# with multiplicity) with the partitions of derived/models.py:
+# node i in block (7 i + 3) mod k. The engine runners are in
+# bindings/models.py; the oracle oracles/
+# sbm_definition_oracle.py evaluates the formulas on dense matrices with
+# math.lgamma and, for moves, recomputes the whole description length.
+#
+# sbm_description_length results: total, adjacency (-ln P(A|e,b) or
+# -ln P(A|k,e,b)), partition (-ln P(b)), edges (-ln P(e)), degrees
+# (-ln P(k|e,b), uniform prior; 0 without degree correction), in nats.
+# sbm_move_delta results: the change in the total when node 0 moves to
+# block (b_0 + 1) mod k, or to a new block when k = 1.
+#
+# Engine options:
+#   fn                sbm_description_length | sbm_move_delta
+#   blocks            k, the number of labels of the partition
+#   degree_corrected  degree-corrected model (default false)
+#
+# graph-tool (`peixoto2014graphtool`), the reference implementation, runs on
+# the heavy runner pool (oracles/graphtool_oracle.py) and gives the
+# same description lengths and move deltas. Fitted partitions are checked by
+# planted partition recovery on the engine's SBM and LFR generators and by
+# exact posterior sampling on all partitions of five nodes (crates/engine/src/
+# sbm/tests.rs).
+
+sbm_dl_b1:
+  params: {fn: sbm_description_length, blocks: 1, degree_corrected: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense formulas of Peixoto (2017) (sbm_definition_oracle.py)"
+    graphtool:
+      call: 'graph-tool BlockState(g, b, deg_corr = False).entropy() with its terms switched on one at a time (degree_dl_kind = \"uniform\"); graphtool_oracle.py'
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_dl_b2:
+  params: {fn: sbm_description_length, blocks: 2, degree_corrected: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense formulas of Peixoto (2017) (sbm_definition_oracle.py)"
+    graphtool:
+      call: 'graph-tool BlockState(g, b, deg_corr = False).entropy() with its terms switched on one at a time (degree_dl_kind = \"uniform\"); graphtool_oracle.py'
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_dl_b3:
+  params: {fn: sbm_description_length, blocks: 3, degree_corrected: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense formulas of Peixoto (2017) (sbm_definition_oracle.py)"
+    graphtool:
+      call: 'graph-tool BlockState(g, b, deg_corr = False).entropy() with its terms switched on one at a time (degree_dl_kind = \"uniform\"); graphtool_oracle.py'
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_dl_b5:
+  params: {fn: sbm_description_length, blocks: 5, degree_corrected: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense formulas of Peixoto (2017) (sbm_definition_oracle.py)"
+    graphtool:
+      call: 'graph-tool BlockState(g, b, deg_corr = False).entropy() with its terms switched on one at a time (degree_dl_kind = \"uniform\"); graphtool_oracle.py'
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_move_delta_b1:
+  params: {fn: sbm_move_delta, blocks: 1, degree_corrected: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "description length after the move minus before (sbm_definition_oracle.py)"
+    graphtool:
+      call: "graph-tool entropy of the partition after the move minus before (graphtool_oracle.py)"
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_move_delta_b3:
+  params: {fn: sbm_move_delta, blocks: 3, degree_corrected: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "description length after the move minus before (sbm_definition_oracle.py)"
+    graphtool:
+      call: "graph-tool entropy of the partition after the move minus before (graphtool_oracle.py)"
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_dl_dc_b1:
+  params: {fn: sbm_description_length, blocks: 1, degree_corrected: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense formulas of Peixoto (2017) (sbm_definition_oracle.py)"
+    graphtool:
+      call: 'graph-tool BlockState(g, b, deg_corr = True).entropy() with its terms switched on one at a time (degree_dl_kind = \"uniform\"); graphtool_oracle.py'
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_dl_dc_b2:
+  params: {fn: sbm_description_length, blocks: 2, degree_corrected: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense formulas of Peixoto (2017) (sbm_definition_oracle.py)"
+    graphtool:
+      call: 'graph-tool BlockState(g, b, deg_corr = True).entropy() with its terms switched on one at a time (degree_dl_kind = \"uniform\"); graphtool_oracle.py'
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_dl_dc_b3:
+  params: {fn: sbm_description_length, blocks: 3, degree_corrected: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense formulas of Peixoto (2017) (sbm_definition_oracle.py)"
+    graphtool:
+      call: 'graph-tool BlockState(g, b, deg_corr = True).entropy() with its terms switched on one at a time (degree_dl_kind = \"uniform\"); graphtool_oracle.py'
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_dl_dc_b5:
+  params: {fn: sbm_description_length, blocks: 5, degree_corrected: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense formulas of Peixoto (2017) (sbm_definition_oracle.py)"
+    graphtool:
+      call: 'graph-tool BlockState(g, b, deg_corr = True).entropy() with its terms switched on one at a time (degree_dl_kind = \"uniform\"); graphtool_oracle.py'
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_move_delta_dc_b1:
+  params: {fn: sbm_move_delta, blocks: 1, degree_corrected: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "description length after the move minus before (sbm_definition_oracle.py)"
+    graphtool:
+      call: "graph-tool entropy of the partition after the move minus before (graphtool_oracle.py)"
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+
+sbm_move_delta_dc_b3:
+  params: {fn: sbm_move_delta, blocks: 3, degree_corrected: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "description length after the move minus before (sbm_definition_oracle.py)"
+    graphtool:
+      call: "graph-tool entropy of the partition after the move minus before (graphtool_oracle.py)"
+      undefined_on: [single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network of fewer than two nodes (no node to move, a one-block partition of one node).
+

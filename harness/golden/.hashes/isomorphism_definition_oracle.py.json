@@ -1,0 +1,10 @@
+{
+ "inputs": "90b143c7fea8e5bfd1602f1db10f39307804bc8d1b42d279a1402dfbe8b3e302",
+ "oracles": [
+  "definition",
+  "homophily",
+  "igraph",
+  "networkx",
+  "sna"
+ ]
+}

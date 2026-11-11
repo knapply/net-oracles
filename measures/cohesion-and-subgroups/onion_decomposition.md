@@ -52,6 +52,8 @@ Measure id: `onion`. Original family: Cohesion and subgroups.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>onion_layers</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.onion_layers(G), G the simple undirected graph without loops</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/cores.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/cores.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [batagelj2003algorithm](../../references.html#batagelj2003algorithm), [carmi2007model](../../references.html#carmi2007model), [goltsev2006k](../../references.html#goltsev2006k), [hagberg2008exploring](../../references.html#hagberg2008exploring), [hebertdufresne2016multi](../../references.html#hebertdufresne2016multi), [seidman1983network](../../references.html#seidman1983network), [wang2012truss](../../references.html#wang2012truss)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)

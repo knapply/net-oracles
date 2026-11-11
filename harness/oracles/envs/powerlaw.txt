@@ -1,0 +1,7 @@
+# powerlaw oracle (graph_theory_powerlaw_oracle.py)
+powerlaw
+numpy
+scipy
+mpmath
+matplotlib
+pyyaml

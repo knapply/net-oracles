@@ -1,0 +1,14 @@
+{
+  "n": 7,
+  "directed": false,
+  "weighted": false,
+  "tags": [
+    "disconnected",
+    "edge_case",
+    "isolates",
+    "onemode",
+    "symmetric_nodes",
+    "unsorted_edges"
+  ],
+  "source": "synthetic"
+}

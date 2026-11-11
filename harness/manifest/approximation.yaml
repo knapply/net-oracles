@@ -1,0 +1,234 @@
+# NetworkX's approximation package as NetworkX 3.7 computes it: greedy
+# disjoint-path node connectivity (White and Newman 2001,
+# `white2001fast`), the greedy weighted dominating set (Vazirani 2001,
+# `vazirani2001approximation`), the local-ratio vertex cover (Bar-Yehuda
+# and Even 1985, `baryehuda1985local`), minimum-fill-in tree decompositions
+# (Bodlaender and Koster 2010, `bodlaender2010treewidth`), Greedy++ densest
+# subgraphs (Boob et al. 2020, `boob2020flowless`), Ramsey clique removal
+# (Boppana and Halldorsson 1992, `boppana1992approximating`), and the
+# greedy clique size bound. Format: see ../README.md; runners, inputs, and
+# encodings in ../bindings/approximation.py. Engine and oracles read the
+# simple undirected graph with edges sorted by (u, v), where NetworkX's
+# adjacency and set orders are node order.
+ap_node_connectivity:
+  params: {fn: ap_node_connectivity}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "nx.approximation.node_connectivity(G_sorted)"
+
+ap_local_connectivity:
+  params: {fn: ap_local_connectivity}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "[local_node_connectivity(G_sorted, 0, n - 1), local_node_connectivity(G_sorted, n - 1, 1, cutoff = 2)]"
+
+ap_dominating_set:
+  params: {fn: ap_dominating_set}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "sorted(nx.approximation.min_weighted_dominating_set(G_sorted, weight = 'w')) with w(v) = v mod 3"
+
+ap_vertex_cover:
+  params: {fn: ap_vertex_cover}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "sorted(nx.approximation.min_weighted_vertex_cover(G_sorted, weight = 'w')) with w(v) = v mod 4 + 1"
+
+ap_treewidth:
+  params: {fn: ap_treewidth}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "(width, bags) of nx.approximation.treewidth_min_fill_in(G_sorted)"
+
+ap_densest:
+  params: {fn: ap_densest}
+  applies_to: any
+  tolerance: {rel: 1.0e-15, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "nx.approximation.densest_subgraph(G_sorted, 2, method = 'greedy++'): (density, size)"
+
+ap_clique_removal:
+  params: {fn: ap_clique_removal}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "nx.approximation.clique_removal(G_sorted): (size of the independent set, number of cliques)"
+      reason: >-
+        NetworkX's ramsey_R2 recurses on subgraphs whose nodes come in Python
+        set order, so its arbitrary node, and the cliques and independent sets
+        it finds, differ from the engine's, which takes the first node in node
+        order; any graph with a choice can differ. ap_clique_removal_valid
+        checks the engine's sets, and the convention check
+        ap_clique_removal__networkx reproduces NetworkX through the engine's
+        set-order kernel.
+      differs_when: [directed, undirected]
+
+ap_clique_removal_valid:
+  params: {fn: ap_clique_removal_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 for each check: the engine's clique_removal set is independent; its cliques are disjoint cliques covering the nodes"
+
+ap_large_clique_size:
+  params: {fn: ap_large_clique_size}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the clique number by enumeration (the greedy bound is exact on these fixtures where it starts from a node of a largest clique)"
+      compare: le
+      note: >-
+        The greedy procedure gives a lower bound on the clique number
+        (compare: le); it undershoots on some graphs, gnp_dir_dense among the
+        corpus.
+    networkx:
+      call: "nx.approximation.large_clique_size(G_sorted)"
+      reason: >-
+        NetworkX picks the candidate of largest degree from a Python set, so
+        ties go to a different node than the engine's first in node order, on
+        any graph with tied degrees.
+      differs_when: [directed, undirected]
+
+# The Ramsey-based procedures as NetworkX runs them (Boppana and Halldórsson
+# 1992, `boppana1992approximating`), in its Python set order (the fixture
+# labels are integers, whose hash is the value), and its greedy clique
+# bound.
+ap_nx_ramsey:
+  params: {fn: ap_nx_ramsey}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (the sets are defined by NetworkX's recursion order)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which clique and independent sets are found follows NetworkX's iteration over Python sets; ap_nx_ramsey_valid checks them
+    networkx:
+      call: "ramsey_R2, clique_removal, max_clique, maximum_independent_set, large_clique_size on G_sorted: each set sorted with its size first"
+
+ap_nx_ramsey_valid:
+  params: {fn: ap_nx_ramsey_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 for each check: ramsey clique is a clique, its independent set independent, clique_removal's cliques are disjoint cliques covering the nodes and its set independent, max_clique a clique, maximum_independent_set independent"
+    networkx:
+      call: "the same checks on NetworkX's results"
+
+# Procedures that draw from Python's random generator, with seed 7 (the
+# engine replays Python's Mersenne Twister, `matsumoto1998mersenne`, from
+# random.Random(7).getstate()): a random maximal independent set
+# (`luby1986simple`), the sampled average clustering
+# (`schank2005approximating`, 200 trials), the two-sweep diameter bound
+# (`magnien2009fast`), and the max-cut heuristics.
+ap_nx_random:
+  params: {fn: ap_nx_random}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (each result is defined by NetworkX's draws)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the results are defined by the draws of NetworkX's generator; ap_nx_random_valid checks them
+    networkx:
+      call: "with seed=7: maximal_independent_set, average_clustering(trials=200) closed pairs, diameter (-1 if disconnected), randomized_partitioning and one_exchange (cut size, then the sorted cut)"
+
+ap_nx_random_valid:
+  params: {fn: ap_nx_random_valid}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 for each check: the set is independent and maximal; the estimate lies in [0, 1]; the bound is at most the diameter (or the graph is disconnected); each cut size is the number of edges leaving the cut"
+    networkx:
+      call: "the same checks on NetworkX's results"
+
+# Simulated annealing (`kirkpatrick1983optimization`) and threshold
+# accepting (`dueck1990threshold`) tours as NetworkX runs them, with seed 7,
+# on the complete graph over a connected fixture's nodes weighted by hop
+# distance, from NetworkX's greedy tour (both moves).
+ap_nx_anneal:
+  params: {fn: ap_nx_anneal}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (the tours are defined by NetworkX's draws)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the tours are defined by the draws of NetworkX's generator; ap_nx_anneal_valid checks them
+    networkx:
+      call: "simulated_annealing_tsp and threshold_accepting_tsp(K, 'greedy', move='1-1' and '1-0', seed=7), each tour with its length first; [-1] if disconnected or under three nodes"
+
+ap_nx_anneal_valid:
+  params: {fn: ap_nx_anneal_valid}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 for each tour that starts and ends at the same node and visits every node once; [-1] if disconnected or under three nodes"
+    networkx:
+      call: "the same checks on NetworkX's tours"
+
+ap_tw_min_degree:
+  params: {fn: ap_tw_min_degree}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (which decomposition follows NetworkX's set order; ap_tw_min_degree_valid checks it)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the elimination order breaks degree ties by NetworkX's Python set order
+    networkx:
+      call: "nx.approximation.treewidth_min_degree(G_sorted): the width, the bags in decomposition order (sorted), then (-1, i, j) per edge"
+
+ap_tw_min_degree_valid:
+  params: {fn: ap_tw_min_degree_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1, 1, 1]: every node and edge in a bag, the bags holding each node form a subtree, width = largest bag - 1"
+    networkx:
+      call: "the same checks on NetworkX's decomposition"

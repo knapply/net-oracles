@@ -48,5 +48,7 @@ Measure id: `nxs_triangle_list`. Original family: Graph theory and combinatorics
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nxs_triangle_list</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>sorted(nx.all_triangles(G)) (NetworkX's order follows Python set order and is not compared)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/nx_shims.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/nx_shims.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

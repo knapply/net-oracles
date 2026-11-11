@@ -70,6 +70,8 @@ Measure id: `cnx_k_clique`. Original family: Communities.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nx_k_clique_communities</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.community.k_clique_communities(G, 3) on the simple undirected graph</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/community_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/community_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [brandes2001faster](../../references.html#brandes2001faster), [chen2014extension](../../references.html#chen2014extension), [clauset2004finding](../../references.html#clauset2004finding), [cordasco2010community](../../references.html#cordasco2010community), [fortunato2010community](../../references.html#fortunato2010community), [girvan2002community](../../references.html#girvan2002community), [hagberg2008exploring](../../references.html#hagberg2008exploring), [kernighan1970efficient](../../references.html#kernighan1970efficient)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)

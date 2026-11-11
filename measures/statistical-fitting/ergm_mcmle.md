@@ -52,5 +52,7 @@ Measure id: `ergm_mcmle`. Original family: Statistical fitting.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ergm_mcmle_dyadind</code></td><td>ergm (statnet)</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0.015, rel 0</td><td><code>coef(ergm(nw ~ edges + nodematch("mod3")))</code></td><td></td></tr><tr><td><code>ergm_mcmle_gwesp</code></td><td>ergm (statnet)</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0.02, rel 0</td><td><code>coef(ergm(nw ~ edges + gwesp(0.5, fixed = TRUE, cutoff = 100), control = control.ergm(seed = 1, MCMC.samplesize = 4096)))</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/ergm.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/ergm.yaml); [harness/golden/ergm/](https://github.com/knapply/net-oracles/tree/main/harness/golden/ergm/)
+
 **Tools cited:** [hunter2008ergm](../../references.html#hunter2008ergm)
 {% endraw %}

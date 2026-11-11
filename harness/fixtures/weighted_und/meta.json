@@ -1,0 +1,11 @@
+{
+  "n": 50,
+  "directed": false,
+  "weighted": true,
+  "tags": [
+    "integer_weights",
+    "onemode",
+    "weighted"
+  ],
+  "source": "G(n=50, p=0.1), seed 16"
+}

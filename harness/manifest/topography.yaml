@@ -1,0 +1,923 @@
+# Density, components, fragmentation, centralization, closeness, harmonic
+# centrality, and eigenvector centrality. Format: see ../README.md.
+#
+# Undefined results (NaN) are written as -1 by the engine runner and by
+# every oracle, since none of these measures can be negative.
+#
+# Engine options beyond the common keys:
+#   simple: true      run on the adjacency-matrix reading of the network
+#                     (parallel edges collapsed, self-loops dropped), which
+#                     is how sna and UCINET's documentation read a network.
+#   symmetrize: true  as simple, and directed ties symmetrized by maximum
+#                     (UCINET's eigenvector routine).
+#   degree_simple, betweenness_simple: degree and betweenness of the
+#                     simplified network, keeping the largest (simple: max)
+#                     or smallest (simple: min, NetworkX's shortest parallel
+#                     edge) weight of parallel edges. These validate the
+#                     `convention` argument of degree() and betweenness() in R.
+#
+# Entries named *_ucinet check the convention that follows UCINET's published
+# documentation (see crates/engine/src/conventions.rs) against the definition
+# oracle; UCINET is never run (docs/drafts/direction.md).
+
+degree_sna:
+  params: {fn: degree_simple, mode: all, simple: max}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "degree in the adjacency matrix without its diagonal (convention = 'sna' or 'ucinet' in R)"
+    sna:
+      call: "sna::degree(m, gmode, cmode = 'freeman' | 'indegree')"
+
+betweenness_networkx:
+  params: {fn: betweenness_simple, weighted: false, normalized: false, simple: min}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "Freeman betweenness with parallel edges counted once (convention = 'networkx', 'sna', or 'ucinet' in R)"
+    networkx:
+      call: "nx.betweenness_centrality(MultiGraph/MultiDiGraph, normalized = False)"
+    sna:
+      call: "sna::betweenness(m, gmode, cmode = 'directed' | 'undirected')"
+
+betweenness_networkx_weighted:
+  params: {fn: betweenness_simple, weighted: true, normalized: false, simple: min}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    networkx:
+      call: "nx.betweenness_centrality(MultiGraph/MultiDiGraph, weight = 'weight', normalized = False), which uses the lightest parallel edge"
+
+density:
+  params: {fn: density, loops: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDensity.getDensity() (setDirected as the network) (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "edges / possible edges, counted directly (density_definition_oracle.py)"
+    networkx:
+      call: "nx.density(MultiGraph/MultiDiGraph)"
+      differs_when: [edge_case]
+      reason: >-
+        NetworkX returns 0 for a graph with one node, where there are no
+        possible edges; igraph, sna, and this engine report the density as
+        undefined.
+    igraph:
+      call: "igraph::edge_density(g, loops = FALSE)"
+    sna:
+      call: "sna::gden(m, mode = 'digraph' | 'graph', diag = FALSE)"
+      differs_when: [loops, multi_edges]
+      reason: >-
+        sna works on adjacency matrices, so parallel edges collapse to one
+        and self-loops are ignored; the engine's density of the simplified
+        network (density_simple) matches it.
+    pyigraph:
+      call: "python-igraph: [g.density(loops=False)]"
+    ergm:
+      call: "summary(nw ~ edges) / possible pairs"
+      differs_when: [loops, multi_edges]
+      reason: >-
+        A network object holds each tie once and no loops (multiple = FALSE,
+        loops = FALSE), so the edge count drops parallel edges and loops that
+        this engine's edge count keeps.
+      undefined_on: [single_node]
+      undefined_reason: >-
+        ergm gives no density for a network of one node.
+    published:
+      call: density of the karate club as reported (0.139)
+      only_on: [karate]
+      tolerance: {rel: 0, abs: 0.0006}
+      note: >-
+        Rounding of the published values: the tables print three decimals, so half a unit in the last place is 5e-4; largest difference seen 3.7e-5.
+      undefined_reason: the literature value is printed for the karate club only
+
+density_loops:
+  params: {fn: density, loops: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "edges / possible edges including the n possible loops"
+    igraph:
+      call: "igraph::edge_density(g, loops = TRUE)"
+    pyigraph:
+      call: "python-igraph: [g.density(loops=True)]"
+
+density_simple:
+  params: {fn: density, loops: false, simple: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "distinct non-loop dyads (or arcs) / possible ones"
+    networkx:
+      call: "nx.density(nx.Graph/DiGraph without self-loops)"
+      differs_when: [edge_case]
+      reason: NetworkX returns 0 for a graph with one node.
+    sna:
+      call: "sna::gden(m, mode = 'digraph' | 'graph', diag = FALSE)"
+    ergm:
+      call: "summary(nw ~ edges) / possible pairs"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        ergm gives no density for a network of one node.
+    networkit:
+      call: "nk.graphtools.density(G simple)"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    bctpy:
+      call: "bct.density_und(A binary) (density_dir when directed)"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        density_und() divides by n (n - 1) / 2 = 0 for one node
+        (ZeroDivisionError).
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: density_und / density_dir, on the
+        binary adjacency matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - single_node
+      reason: 'The density of a one-node network is undefined (0/0): BCT returns NaN and the engine
+        its undefined marker -1.'
+
+components_weak:
+  params: {fn: components, kind: weak}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: ConnectedComponents, node column 'componentnumber' (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "transitive closure of the symmetrized adjacency (density_definition_oracle.py)"
+    networkx:
+      call: "nx.weakly_connected_components / nx.connected_components"
+    igraph:
+      call: "igraph::components(g, mode = 'weak')$membership"
+    pyigraph:
+      call: "python-igraph: g.connected_components(mode=\"weak\").membership"
+    networkit:
+      call: "nk.components.WeaklyConnectedComponents(G) (ConnectedComponents when undirected)"
+    rustworkx:
+      call: "rx.weakly_connected_components(G) (connected_components when undirected)"
+    sknetwork:
+      call: "sknetwork.topology.get_connected_components(A, connection = 'weak')"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input
+        matrix is empty').
+
+components_strong:
+  params: {fn: components, kind: strong}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: ConnectedComponents, node column 'strongcompnum' (directed networks; 'componentnumber' for undirected) (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "mutual reachability from the transitive closure"
+    networkx:
+      call: "nx.strongly_connected_components / nx.connected_components"
+    igraph:
+      call: "igraph::components(g, mode = 'strong')$membership"
+    pyigraph:
+      call: "python-igraph: g.connected_components(mode=\"strong\").membership"
+    networkit:
+      call: "nk.components.StronglyConnectedComponents(G) (ConnectedComponents when undirected)"
+    rustworkx:
+      call: "rx.strongly_connected_components(G) (connected_components when undirected)"
+    sknetwork:
+      call: "sknetwork.topology.get_connected_components(A, connection = 'strong')"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input
+        matrix is empty').
+
+fragmentation:
+  params: {fn: fragmentation, kind: weak}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "proportion of ordered pairs with no path either way, from the transitive closure (Borgatti 2006)"
+    igraph:
+      tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+      note: >-
+        igraph returns 1 - x with x of order 1 computed in floating point, so a value near
+        zero carries an absolute error of about 2e-14 (0.0008 against 0.0008000000000000229
+        on a 2500-node network); the engine's value is exact to rounding.
+      call: "1 - sum(s (s - 1)) / (n (n - 1)) over the sizes s of igraph::components(g, mode = 'weak')$csize"
+
+fragmentation_strong:
+  params: {fn: fragmentation, kind: strong}
+  applies_to: directed
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "proportion of ordered pairs not mutually reachable"
+    igraph:
+      tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+      note: >-
+        igraph returns 1 - x with x of order 1 computed in floating point, so a value near
+        zero carries an absolute error of about 2e-14 (0.0008 against 0.0008000000000000229
+        on a 2500-node network); the engine's value is exact to rounding.
+      call: "1 - sum(s (s - 1)) / (n (n - 1)) over the sizes s of igraph::components(g, mode = 'strong')$csize"
+
+closeness:
+  params: {fn: closeness, mode: out, normalized: false, unreachable: ignore}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "1 / sum of exact distances to reachable nodes (closeness_definition_oracle.py)"
+    igraph:
+      call: "igraph::closeness(g, mode = 'out', weights = NA, normalized = FALSE)"
+    pyigraph:
+      call: "python-igraph: g.closeness(mode=\"out\", weights=None, normalized=False)"
+    netrankr:
+      call: "aggregate_positions(indirect_relations(g, 'dist_sp'), 'invsum') on the undirected simple reading"
+      undefined_when: [directed]
+      undefined_on: [single_node]
+      undefined_reason: >-
+        netrankr reads the network as undirected, unweighted and simple (the
+        oracle writes nothing for a directed fixture) and has no value for a
+        single node.
+      reason: >-
+        netrankr takes 1 over the sum of the finite and infinite distances, so
+        a node that does not reach every other node gets 0 (an isolated node
+        too); the engine (and igraph) sum over the nodes reached, and leave a
+        node that reaches none undefined.
+      differs_when: [disconnected]
+    networkit:
+      call: "nk.centrality.Closeness(G, True, ClosenessVariant.STANDARD) divided by n - 1 (NetworKit 11 returns the normalized value whatever the flag says)"
+      undefined_on: [empty, gnp_dir_sparse, gnp_und_sparse, multi_loops_dir, multi_loops_und, pair, single_node, two_triangles_isolate, weighted_dir]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    jgrapht:
+      call: 'JGraphT 1.5.2: new ClosenessCentrality<>(g, false, false) on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+      differs_on:
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - pair
+      - single_node
+      - two_triangles_isolate
+      - weighted_dir
+      reason: 'JGraphT''s closeness is exactly 0 for a node that does not reach every other node,
+        and Infinity for the lone node of a one-node network (checked on all 1534 node values
+        of the corpus); the engine uses the reachable nodes only (unreachable: ignore) and marks
+        a node reaching no other as undefined. Fixtures listed are those with such nodes.'
+    boost:
+      call: 'Boost Graph Library all_closeness_centralities over Floyd-Warshall distances: 1 /
+        (sum of distances) (oracles/system/boost/oracle.cpp)'
+      differs_on:
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - pair
+      - single_node
+      - two_triangles_isolate
+      - weighted_dir
+      reason: 'BGL''s closeness is 1 / (sum of distances) with DBL_MAX standing in for an unreachable
+        distance, so a node that cannot reach every other node gets about 5.6e-309 (effectively
+        0), and the lone node of a one-node network gets Infinity (1/0); the engine uses the reachable
+        nodes only (unreachable: ignore) and marks a node reaching no other as undefined. Listed
+        fixtures contain such nodes.'
+
+closeness_normalized:
+  params: {fn: closeness, mode: out, normalized: true, unreachable: ignore}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDistance, node column 'closnesscentrality' (identical with setNormalized(true) or (false)) (oracles/system/gephi/Oracle.java)"
+      differs_on: [empty, gnp_dir_sparse, gnp_und_sparse, multi_loops_und, pair, single_node, two_triangles_isolate, weighted_dir]
+      reason: "Gephi's closeness is (nodes reached) / (sum of distances to them), the engine's unreachable: ignore reading, but it gives 0 to a node that reaches no other node (isolated, or a sink in a directed network); the engine leaves closeness undefined there (reported -1). setNormalized does not change it."
+    definition:
+      call: "reached / sum of exact distances"
+    igraph:
+      call: "igraph::closeness(g, mode = 'out', weights = NA, normalized = TRUE)"
+    pyigraph:
+      call: "python-igraph: g.closeness(mode=\"out\", weights=None, normalized=True)"
+    networkit:
+      call: "nk.centrality.Closeness(G, True, ClosenessVariant.STANDARD)"
+      undefined_on: [empty, gnp_dir_sparse, gnp_und_sparse, multi_loops_dir, multi_loops_und, pair, single_node, two_triangles_isolate, weighted_dir]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    sknetwork:
+      call: "sknetwork.ranking.Closeness(method = 'exact').fit_predict(A simple)"
+      differs_on: [gnp_dir_sparse, multi_loops_dir, pair, weighted_dir]
+      reason: >-
+        Closeness() sets the score of every node that does not reach all others
+        to 0 (ranking/closeness.py); the engine ignores unreachable nodes and
+        leaves a node that reaches none undefined.
+      undefined_on: [empty, gnp_und_sparse, multi_loops_und, single_node, two_triangles_isolate]
+      undefined_reason: >-
+        Closeness() requires a connected graph ('The graph is expected to be
+        connected') or rejects an empty matrix.
+    published:
+      call: closeness as printed (Krackhardt 1990; Zachary karate; Florentine)
+      only_on: [kite, karate, florentine]
+      partial: true
+      tolerance: {rel: 0, abs: 0.0006}
+      note: >-
+        Rounding of the published values: the tables print three decimals, so half a unit in the last place is 5e-4; largest difference seen 4.3e-4.
+      undefined_reason: the literature tables cover only the classic networks
+    jgrapht:
+      call: 'JGraphT 1.5.2: new ClosenessCentrality<>(g, false, true) on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+      differs_on:
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - pair
+      - two_triangles_isolate
+      - weighted_dir
+      reason: 'JGraphT''s closeness is exactly 0 for a node that does not reach every other node,
+        and Infinity for the lone node of a one-node network (checked on all 1534 node values
+        of the corpus); the engine uses the reachable nodes only (unreachable: ignore) and marks
+        a node reaching no other as undefined. Fixtures listed are those with such nodes.'
+
+closeness_in:
+  params: {fn: closeness, mode: in, normalized: true, unreachable: ignore}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "reached / sum of exact distances from other nodes"
+    igraph:
+      call: "igraph::closeness(g, mode = 'in', weights = NA, normalized = TRUE)"
+    pyigraph:
+      call: "python-igraph: g.closeness(mode=\"in\", weights=None, normalized=True)"
+    networkit:
+      call: "nk.centrality.Closeness(reversed G, True, ClosenessVariant.STANDARD)"
+      undefined_on: [empty, gnp_dir_sparse, multi_loops_dir, pair, weighted_dir]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    jgrapht:
+      call: 'JGraphT 1.5.2: new ClosenessCentrality<>(g, true, true) on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+      differs_on:
+      - empty
+      - gnp_dir_sparse
+      - multi_loops_dir
+      - pair
+      - weighted_dir
+      reason: 'JGraphT''s closeness is exactly 0 for a node that does not reach every other node,
+        and Infinity for the lone node of a one-node network (checked on all 1534 node values
+        of the corpus); the engine uses the reachable nodes only (unreachable: ignore) and marks
+        a node reaching no other as undefined. Fixtures listed are those with such nodes.'
+
+closeness_all:
+  params: {fn: closeness, mode: all, normalized: true, unreachable: ignore}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDistance (setNormalized(true), setDirected(false)), node column 'closnesscentrality' (oracles/system/gephi/Oracle.java)"
+      differs_on: [empty]
+      reason: "Gephi gives 0 to a node that reaches no other node; the engine leaves closeness undefined there (reported -1)."
+    definition:
+      call: "reached / sum of exact distances, direction ignored"
+    igraph:
+      call: "igraph::closeness(g, mode = 'all', weights = NA, normalized = TRUE)"
+    pyigraph:
+      call: "python-igraph: g.closeness(mode=\"all\", weights=None, normalized=True)"
+    networkit:
+      call: "nk.centrality.Closeness(undirected G, True, ClosenessVariant.STANDARD)"
+      undefined_on: [empty]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+
+closeness_wf:
+  params: {fn: closeness, mode: in, normalized: true, unreachable: wasserman_faust}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "(reached / sum)(reached / (n - 1)), Wasserman and Faust (1994, p. 201)"
+    networkx:
+      call: "nx.closeness_centrality(G) (wf_improved = True, the default)"
+    networkit:
+      call: "nk.centrality.Closeness(reversed G, True, ClosenessVariant.GENERALIZED)"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    rustworkx:
+      call: "rx.closeness_centrality(G, wf_improved = True)"
+
+closeness_sna:
+  params: {fn: closeness, mode: out, normalized: true, unreachable: zero, simple: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "(n - 1) / sum of distances, 0 if any node is unreachable"
+    sna:
+      call: "sna::closeness(m, gmode, cmode = 'directed' | 'undirected')"
+
+closeness_ucinet:
+  params: {fn: closeness, mode: out, normalized: true, unreachable: max_plus_one, simple: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "(n - 1) / sum of distances, unreachable distances set to the largest observed distance plus 1"
+
+closeness_ucinet_in:
+  params: {fn: closeness, mode: in, normalized: true, unreachable: max_plus_one, simple: true}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "as closeness_ucinet, on distances from other nodes"
+
+closeness_weighted:
+  params: {fn: closeness, mode: out, weighted: true, normalized: true, unreachable: ignore}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "reached / sum of exact weighted distances"
+    igraph:
+      call: "igraph::closeness(g, mode = 'out', weights = E(g)$weight, normalized = TRUE)"
+    pyigraph:
+      call: "python-igraph: g.closeness(mode=\"out\", weights=w, normalized=True)"
+    networkit:
+      call: "nk.centrality.Closeness(G_weighted, True, ClosenessVariant.STANDARD)"
+      undefined_on: [weighted_dir]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    jgrapht:
+      call: 'JGraphT 1.5.2: new ClosenessCentrality<>(g_weighted, false, true) on a pseudograph
+        (oracles/system/jgrapht/Oracle.java)'
+      differs_on:
+      - weighted_dir
+      reason: 'JGraphT''s closeness is exactly 0 for a node that does not reach every other node,
+        and Infinity for the lone node of a one-node network (checked on all 1534 node values
+        of the corpus); the engine uses the reachable nodes only (unreachable: ignore) and marks
+        a node reaching no other as undefined. Fixtures listed are those with such nodes.'
+
+closeness_wf_weighted:
+  params: {fn: closeness, mode: in, weighted: true, normalized: true, unreachable: wasserman_faust}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Wasserman-Faust closeness on exact weighted distances from other nodes"
+    networkx:
+      call: "nx.closeness_centrality(G, distance = 'weight')"
+    networkit:
+      call: "nk.centrality.Closeness(reversed G_weighted, True, ClosenessVariant.GENERALIZED)"
+
+closeness_weighted_strength:
+  params: {fn: closeness, mode: out, weighted: true, weights_as: strength, normalized: true, unreachable: ignore}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "reached / sum of exact distances with lengths 1/w"
+    igraph:
+      call: "igraph::closeness(g, mode = 'out', weights = 1 / E(g)$weight, normalized = TRUE)"
+    pyigraph:
+      call: "python-igraph: g.closeness( mode=\"out\", weights=[1 / x for x in g.es[\"weight\"]], normalized=True)"
+harmonic:
+  params: {fn: harmonic, mode: out, normalized: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum of 1 / exact distance over other nodes (closeness_definition_oracle.py)"
+    networkx:
+      call: "nx.harmonic_centrality(G.reverse())"
+    igraph:
+      call: "igraph::harmonic_centrality(g, mode = 'out', weights = NA, normalized = FALSE)"
+    pyigraph:
+      call: "python-igraph: g.harmonic_centrality(mode=\"out\", weights=None, normalized=False)"
+    netrankr:
+      call: "aggregate_positions(indirect_relations(g, 'dist_sp', FUN = dist_inv), 'sum')"
+      undefined_when: [directed]
+      undefined_on: [single_node]
+      undefined_reason: >-
+        netrankr reads the network as undirected, unweighted and simple (the
+        oracle writes nothing for a directed fixture) and has no value for a
+        single node.
+    centiserve:
+      call: "centiserve::closeness.latora(g, mode = 'out', normalized = FALSE)"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        centiserve rejects a graph of one node.
+    networkit:
+      call: "nk.centrality.HarmonicCloseness(G, normalized = False)"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    jgrapht:
+      call: 'JGraphT 1.5.2: new HarmonicCentrality<>(g, false, false) on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+
+harmonic_normalized:
+  params: {fn: harmonic, mode: out, normalized: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDistance, node column 'harmonicclosnesscentrality' (identical with setNormalized(true) or (false)) (oracles/system/gephi/Oracle.java)"
+      differs_on: [gnp_dir_sparse, gnp_und_sparse, multi_loops_dir, multi_loops_und, two_triangles_isolate]
+      reason: "Gephi divides the sum of 1/d by the number of nodes the node reaches (0 if none), the engine by n - 1 (the standard normalization); the two agree when every node reaches every other. Checked to 1e-15 on the five fixtures. setNormalized does not change it. A preset is proposed in docs/drafts/correctness_findings.md."
+    definition:
+      call: "sum of 1 / distance, divided by n - 1"
+    igraph:
+      call: "igraph::harmonic_centrality(g, mode = 'out', weights = NA, normalized = TRUE)"
+    sna:
+      call: "sna::closeness(m, gmode, cmode = 'suminvdir' | 'suminvundir')"
+      differs_when: [edge_case]
+      reason: >-
+        For a single node sna divides 0 by n - 1 = 0 and reports NaN; igraph
+        and this engine report 0, since there are no other nodes.
+    pyigraph:
+      call: "python-igraph: g.harmonic_centrality(mode=\"out\", weights=None, normalized=True)"
+    networkit:
+      call: "nk.centrality.HarmonicCloseness(G, normalized = True)"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+
+harmonic_in:
+  params: {fn: harmonic, mode: in, normalized: false}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum of 1 / distance from other nodes"
+    networkx:
+      call: "nx.harmonic_centrality(G)"
+    igraph:
+      call: "igraph::harmonic_centrality(g, mode = 'in', weights = NA)"
+    pyigraph:
+      call: "python-igraph: g.harmonic_centrality(mode=\"in\", weights=None, normalized=False)"
+    centiserve:
+      call: "centiserve::closeness.latora(g, mode = 'in', normalized = FALSE)"
+    networkit:
+      call: "nk.centrality.HarmonicCloseness(reversed G, normalized = False)"
+    jgrapht:
+      call: 'JGraphT 1.5.2: new HarmonicCentrality<>(g, true, false) on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+
+harmonic_weighted:
+  params: {fn: harmonic, mode: out, weighted: true, normalized: false}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum of 1 / exact weighted distance"
+    networkx:
+      call: "nx.harmonic_centrality(G.reverse(), distance = 'weight')"
+    igraph:
+      call: "igraph::harmonic_centrality(g, mode = 'out', weights = E(g)$weight)"
+    pyigraph:
+      call: "python-igraph: g.harmonic_centrality(mode=\"out\", weights=w, normalized=False)"
+    centiserve:
+      call: "centiserve::closeness.latora(g, mode = 'out', weights = E(g)$weight, normalized = FALSE)"
+    networkit:
+      call: "nk.centrality.HarmonicCloseness(G_weighted, normalized = False)"
+
+eigenvector:
+  params: {fn: eigenvector, mode: in, scale: max, loops: twice}
+  applies_to: any
+  tolerance: {rel: 2.0e-10, abs: 2.0e-11}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: EigenvectorCentrality (setNumRuns(1000000)), node column 'eigencentrality' (oracles/system/gephi/Oracle.java)"
+      tolerance: {"rel": 0, "abs": 0.02}
+      differs_when: [edgeless]
+      differs_on: [multi_loops_und]
+      reason: "Gephi runs a fixed number of power-iteration steps (setNumRuns, here 10^6) without a convergence test, and its result is not the converged eigenvector (about 1e-3 away on most of the corpus, 1.3e-2 on les_miserables), so it is compared to 0.02 (docs/drafts/correctness_findings.md). On a network without edges Gephi returns 0 where the engine returns the all-ones vector (any vector is an eigenvector of the zero matrix). Gephi counts an undirected self-loop once in the adjacency matrix; the engine's default counts it twice (loops: once reproduces Gephi to 1.3e-3 on multi_loops_und)."
+    definition:
+      call: "dense eigendecomposition of the adjacency matrix with numpy (eigenvector_definition_oracle.py)"
+      undefined_on: [two_triangles_isolate]
+      undefined_reason: >-
+        Two components share the largest eigenvalue, so there is no unique
+        leading eigenvector.
+    igraph:
+      call: "igraph::eigen_centrality(g, directed = TRUE, weights = NA)$vector"
+      differs_when: [disconnected, not_strongly_connected]
+      reason: >-
+        When several components (strong components of a digraph) share the
+        largest eigenvalue the principal eigenvector is not unique, and the
+        split between them depends on the starting vector (all ones here,
+        degree-based in igraph's ARPACK call), or the engine declines. Graphs
+        where the leading eigenvalue is simple must match.
+    pyigraph:
+      call: "python-igraph: g.eigenvector_centrality(directed=True, weights=None)"
+      differs_when: [disconnected, not_strongly_connected]
+      reason: >-
+        When several components (strong components of a digraph) share the
+        largest eigenvalue the principal eigenvector is not unique, and the
+        split between them depends on the starting vector (all ones here,
+        degree-based in igraph's ARPACK call), or the engine declines. Graphs
+        where the leading eigenvalue is simple must match.
+eigenvector_networkx:
+  params: {fn: eigenvector, mode: in, scale: unit, loops: once}
+  applies_to: any
+  tolerance: {rel: 5.0e-9, abs: 5.0e-10}
+  oracles:
+    definition:
+      call: "dense eigendecomposition with loops counted once, unit norm"
+      undefined_on: [two_triangles_isolate]
+      undefined_reason: >-
+        Two components share the largest eigenvalue, so there is no unique
+        leading eigenvector.
+    networkx:
+      call: "nx.eigenvector_centrality_numpy(G); it refuses graphs that are not (strongly) connected, which are then not run"
+      undefined_on: [empty, gnp_dir_sparse, gnp_und_sparse, multi_loops_dir, multi_loops_und, pair, single_node, two_triangles_isolate, weighted_dir]
+      undefined_reason: >-
+        NetworkX raises an error: its power iteration does not converge on
+        these networks (disconnected, or without a unique leading
+        eigenvector).
+    rustworkx:
+      call: "rx.eigenvector_centrality(G, max_iter = 100000, tol = 1e-14)"
+      undefined_on: [pair]
+      undefined_reason: >-
+        The pair fixture is one arc, so A is nilpotent and rustworkx's shifted
+        power iteration x <- x + A^T x (rustworkx-core centrality.rs) converges
+        only like 1/k; at tol = 1e-14 it raises FailedToConverge after
+        max_iter = 100000 steps.
+    graphblas:
+      call: "nx.eigenvector_centrality(G simple, tol = 1e-14, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+      undefined_on: [pair]
+      undefined_reason: >-
+        On the single arc A is nilpotent and the power iteration converges only
+        like 1/k; PowerIterationFailedConvergence at tol 1e-14.
+
+eigenvector_weighted:
+  params: {fn: eigenvector, mode: in, weighted: true, scale: max, loops: twice}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 5.0e-12, abs: 5.0e-13}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: EigenvectorCentrality (setNumRuns(1000000)) on the weighted network, node column 'eigencentrality' (oracles/system/gephi/Oracle.java)"
+      tolerance: {"rel": 0, "abs": 0.02}
+      differs_when: [weighted]
+      reason: "EigenvectorCentrality has no weighted mode: its values on the weighted network equal its values on the unweighted network, so it ignores edge weights."
+    definition:
+      call: "dense eigendecomposition of the weighted adjacency matrix"
+    igraph:
+      call: "igraph::eigen_centrality(g, directed = TRUE, weights = E(g)$weight)$vector"
+      differs_when: [disconnected, not_strongly_connected]
+      reason: >-
+        When several components (strong components of a digraph) share the
+        largest eigenvalue the principal eigenvector is not unique, and the
+        split between them depends on the starting vector (all ones here,
+        degree-based in igraph's ARPACK call), or the engine declines. Graphs
+        where the leading eigenvalue is simple must match.
+    pyigraph:
+      call: "python-igraph: g.eigenvector_centrality(directed=True, weights=w)"
+      differs_when: [disconnected, not_strongly_connected]
+      reason: >-
+        When several components (strong components of a digraph) share the
+        largest eigenvalue the principal eigenvector is not unique, and the
+        split between them depends on the starting vector (all ones here,
+        degree-based in igraph's ARPACK call), or the engine declines. Graphs
+        where the leading eigenvalue is simple must match.
+eigenvector_weighted_networkx:
+  params: {fn: eigenvector, mode: in, weighted: true, scale: unit, loops: once}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "dense eigendecomposition of the weighted adjacency matrix, unit norm"
+    networkx:
+      call: "nx.eigenvector_centrality_numpy(G, weight = 'weight')"
+      undefined_on: [weighted_dir]
+      undefined_reason: >-
+        NetworkX's power iteration does not converge on this network.
+    rustworkx:
+      call: "rx.eigenvector_centrality(G, weight_fn = float, max_iter = 100000, tol = 1e-14)"
+    graphblas:
+      call: "nx.eigenvector_centrality(G simple, weight = 'weight', tol = 1e-14, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+
+eigenvector_undirected:
+  params: {fn: eigenvector, mode: all, scale: max, loops: twice}
+  applies_to: directed
+  tolerance: {rel: 5.0e-12, abs: 1.0e-13}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: EigenvectorCentrality (setNumRuns(1000000), setDirected(false)), node column 'eigencentrality' (oracles/system/gephi/Oracle.java)"
+      tolerance: {"rel": 0, "abs": 0.02}
+      differs_when: [edgeless]
+      differs_on: [gnp_dir_dense, gnp_dir_sparse, multi_loops_dir, real_weights_dir, weighted_dir]
+      reason: "Gephi's undirected view of a directed network merges a pair of opposite arcs into one edge; the engine's undirected reading counts each arc (the symmetric reading reproduces Gephi, a convention check, except on multi_loops_dir, where Gephi also counts the loops once). The iteration is not converged (see eigenvector), so values are compared to 0.02; on a network without edges Gephi returns 0, the engine the all-ones vector."
+    definition:
+      call: "dense eigendecomposition of A + A^T"
+    igraph:
+      call: "igraph::eigen_centrality(g, directed = FALSE, weights = NA)$vector (the R default)"
+      differs_when: [disconnected]
+      reason: Not unique when components share the largest eigenvalue (see eigenvector).
+eigenvector_sna:
+  params: {fn: eigenvector, mode: out, scale: unit, loops: ignore, simple: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "dense eigendecomposition of the binary adjacency matrix (right eigenvector), unit norm"
+      undefined_on: [two_triangles_isolate]
+      undefined_reason: >-
+        Two components share the largest eigenvalue, so there is no unique
+        leading eigenvector.
+    sna:
+      call: >-
+        sna::evcent(m, gmode = 'digraph', diag = FALSE) for directed networks;
+        sna::evcent(m, gmode = 'graph', diag = FALSE, use.eigen = TRUE) for
+        undirected ones, with the sign chosen so the scores sum to a positive
+        number (sna leaves the sign of the eigenvector arbitrary)
+      undefined_on: [empty, pair]
+      undefined_reason: >-
+        sna returns missing values when the leading eigenvector is
+        undefined.
+      differs_when: [disconnected, edge_case]
+      reason: >-
+        sna's default iteration is plain power iteration on A, which does
+        not converge on periodic graphs (it alternates on bipartite ones,
+        hence use.eigen = TRUE for undirected networks), and returns NaN for
+        a graph without cycles. When several components share the largest
+        eigenvalue the eigenvector is not unique.
+
+eigenvector_ucinet:
+  params: {fn: eigenvector, mode: all, scale: unit, loops: ignore, symmetrize: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-13}
+  oracles:
+    definition:
+      call: "dense eigendecomposition of the binary adjacency matrix symmetrized by maximum, unit norm"
+      undefined_on: [two_triangles_isolate]
+      undefined_reason: >-
+        Two components share the largest eigenvalue, so there is no unique
+        leading eigenvector.
+
+centralization_degree:
+  params: {fn: centralization, measure: degree, mode: all, loops: true, convention: igraph}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Freeman's sum of differences from the maximum degree, over igraph's maximum (centralization_definition_oracle.py)"
+    igraph:
+      call: "igraph::centr_degree(g, mode = 'all', loops = TRUE, normalized = TRUE)$centralization"
+
+centralization_degree_in:
+  params: {fn: centralization, measure: degree, mode: in, loops: true, convention: igraph}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "as centralization_degree, in-degree"
+    igraph:
+      call: "igraph::centr_degree(g, mode = 'in', loops = TRUE, normalized = TRUE)$centralization"
+
+centralization_degree_sna:
+  params: {fn: centralization, measure: degree, mode: all, convention: sna}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Freeman centralization of adjacency-matrix degree over sna's maximum"
+    sna:
+      call: "sna::centralization(m, sna::degree, mode = gmode, cmode = 'freeman' | 'indegree')"
+    published:
+      call: 'Freeman (1979): the star has degree centralization 1, the complete graph 0'
+      only_on: [star8, complete6]
+      tolerance: {rel: 0, abs: 1.0e-12}
+      undefined_reason: Freeman's extreme cases are the star and the complete graph
+
+centralization_degree_ucinet:
+  params: {fn: centralization, measure: degree, mode: out, convention: ucinet}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Freeman centralization of adjacency-matrix out-degree (degree, if undirected) over (n-1)^2 or (n-1)(n-2)"
+
+centralization_betweenness:
+  params: {fn: centralization, measure: betweenness, convention: igraph}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Freeman centralization of exact betweenness over (n-1)^2 (n-2), halved if undirected"
+    igraph:
+      call: "igraph::centr_betw(g, directed = TRUE, normalized = TRUE)$centralization"
+    sna:
+      call: "sna::centralization(m, sna::betweenness, mode = gmode)"
+      differs_when: [multi_edges]
+      reason: sna collapses parallel edges, which changes shortest-path counts.
+    published:
+      call: 'Freeman (1979): star 1, complete graph 0'
+      only_on: [star8, complete6]
+      tolerance: {rel: 0, abs: 1.0e-12}
+      undefined_reason: Freeman's extreme cases are the star and the complete graph
+
+centralization_closeness:
+  params: {fn: centralization, measure: closeness, mode: out, convention: igraph}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Freeman centralization of normalized reachable-only closeness over igraph's maximum; undefined if a node reaches no other"
+    igraph:
+      call: "igraph::centr_clo(g, mode = 'out', normalized = TRUE)$centralization"
+    published:
+      call: 'Freeman (1979): star 1, complete graph 0'
+      only_on: [star8, complete6]
+      tolerance: {rel: 0, abs: 1.0e-12}
+      undefined_reason: Freeman's extreme cases are the star and the complete graph
+
+centralization_closeness_sna:
+  params: {fn: centralization, measure: closeness, mode: out, convention: sna}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Freeman centralization of sna closeness (0 when any node is unreachable) over sna's maximum"
+    sna:
+      call: "sna::centralization(m, sna::closeness, mode = gmode)"
+
+centralization_closeness_ucinet:
+  params: {fn: centralization, measure: closeness, mode: out, convention: ucinet}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Freeman centralization of closeness over (n-1)(n-2)/(2n-3); undefined unless every node reaches every other"
+
+# ---- parameter values other than the defaults (second audit) -----------------
+
+harmonic_weighted_strength:
+  params: {fn: harmonic, mode: out, weighted: true, weights_as: strength, normalized: false}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum of 1 / exact distance, arc lengths 1 / weight (the strongest of parallel edges is the shortest)"
+    networkx:
+      call: "nx.harmonic_centrality(G.reverse(), distance = 'weight') with weight set to 1 / w"
+
+harmonic_all_undirected:
+  params: {fn: harmonic, mode: all, normalized: false}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum of 1 / exact distance over other nodes (closeness_definition_oracle.py)"
+    networkx:
+      call: "nx.harmonic_centrality(G)"

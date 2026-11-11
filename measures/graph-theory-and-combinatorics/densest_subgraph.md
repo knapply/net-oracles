@@ -56,6 +56,8 @@ Measure id: `ap_densest`. Original family: Graph theory and combinatorics.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ap_densest</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-15</td><td><code>nx.approximation.densest_subgraph(G_sorted, 2, method = 'greedy++'): (density, size)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/approximation.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/approximation.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [baryehuda1985local](../../references.html#baryehuda1985local), [bodlaender2010treewidth](../../references.html#bodlaender2010treewidth), [boob2020flowless](../../references.html#boob2020flowless), [boppana1992approximating](../../references.html#boppana1992approximating), [hagberg2008exploring](../../references.html#hagberg2008exploring), [vazirani2001approximation](../../references.html#vazirani2001approximation), [white2001fast](../../references.html#white2001fast)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)

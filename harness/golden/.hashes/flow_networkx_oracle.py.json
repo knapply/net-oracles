@@ -1,0 +1,13 @@
+{
+ "inputs": "02e216536b1760e2454b33b5ee593d3f60e9741dd27d154b2492b07491052bf5",
+ "oracles": [
+  "bctpy",
+  "definition",
+  "igraph",
+  "networkx",
+  "published",
+  "rustworkx",
+  "sna",
+  "tsna"
+ ]
+}

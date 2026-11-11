@@ -48,5 +48,7 @@ Measure id: `nxo_flow_hierarchy`. Original family: Graph theory and combinatoric
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nxo_flow_hierarchy</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 1e-14, rel 1e-12</td><td><code>nx.flow_hierarchy(G)</code></td><td></td></tr><tr><td><code>nxo_flow_hierarchy_weighted</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 1e-14, rel 1e-12</td><td><code>nx.flow_hierarchy(G, weight = 'weight')</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/nx_order.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/nx_order.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

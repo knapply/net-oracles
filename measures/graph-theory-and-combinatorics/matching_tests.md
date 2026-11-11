@@ -54,5 +54,7 @@ Measure id: `check_matching`. Original family: Graph theory and combinatorics.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>matching_check_candidate</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.is_matching, nx.is_maximal_matching, nx.is_perfect_matching of the candidate pairs</code></td><td></td></tr><tr><td><code>matching_check_maximal</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>the tests on nx.maximal_matching(G)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/matching.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/matching.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [staudt2016networkit](../../references.html#staudt2016networkit), [tool_rustworkx](../../references.html#tool_rustworkx)
 {% endraw %}

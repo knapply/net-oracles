@@ -55,5 +55,7 @@ Measure id: `paths_k_shortest`. Original family: Paths and distances.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>paths_k_shortest_unweighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>lengths of the first 10 paths of nx.shortest_simple_paths(H, 0, n - 1), H the simple graph</code></td><td></td></tr><tr><td><code>paths_k_shortest_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.path_weight of the first 10 paths of nx.shortest_simple_paths(H, 0, n - 1, weight = 'weight'), H the simple graph keeping the lightest parallel edge</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/paths.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/paths.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht), [tool_rustworkx](../../references.html#tool_rustworkx)
 {% endraw %}

@@ -54,6 +54,8 @@ Measure id: `butterflies`. Original family: Two-mode and bipartite.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>butterflies</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.bipartite.butterflies(G)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/bipartite_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/bipartite_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [barber2007modularity](../../references.html#barber2007modularity), [estrada2005spectral](../../references.html#estrada2005spectral), [hagberg2008exploring](../../references.html#hagberg2008exploring), [he2017birank](../../references.html#he2017birank), [hopcroft1973algorithm](../../references.html#hopcroft1973algorithm), [kuhn1955hungarian](../../references.html#kuhn1955hungarian), [lakhal1998polynomial](../../references.html#lakhal1998polynomial), [latapy2008basic](../../references.html#latapy2008basic)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)

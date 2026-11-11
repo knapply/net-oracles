@@ -58,5 +58,7 @@ Measure id: `line_graph`. Original family: Data transforms.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>construct_line_graph</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.line_graph(G) with each node (edge) replaced by its rank in the sorted edge list; edges sorted</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/construct.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/construct.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [tool_rustworkx](../../references.html#tool_rustworkx)
 {% endraw %}

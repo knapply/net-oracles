@@ -1,0 +1,4 @@
+# NetworKit oracle (networkit_oracle.py)
+networkit
+numpy
+pyyaml

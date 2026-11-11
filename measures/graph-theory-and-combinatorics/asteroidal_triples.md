@@ -50,6 +50,8 @@ Measure id: `st_asteroidal`. Original family: Graph theory and combinatorics.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>st_asteroidal</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.find_asteroidal_triple(G): the triple, or [-1]</code></td><td></td></tr><tr><td><code>st_asteroidal_valid</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>1 if nx.find_asteroidal_triple(G) returns a triple, else -1</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/structure_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/structure_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## At free {#st_at_free}
@@ -65,6 +67,8 @@ Measure id: `st_at_free`. Original family: Graph theory and combinatorics.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>st_at_free</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.is_at_free(G)</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/structure_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/structure_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

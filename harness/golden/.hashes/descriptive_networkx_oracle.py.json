@@ -1,0 +1,8 @@
+{
+ "inputs": "3adc864b3ec5905ed605ee06bcc6e609ebb00084b16274a5be5639108c9b8014",
+ "oracles": [
+  "definition",
+  "influencer",
+  "networkx"
+ ]
+}

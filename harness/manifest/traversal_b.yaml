@@ -1,0 +1,394 @@
+# DAG orders, Euler tests, spanning trees and branchings, NetworkX-order
+# flows, cycle searches, disjoint paths, global cuts, d-separation and
+# small structural routines (the engine side of NetworkX's group B
+# functions). Format: see ../README.md; runners in
+# ../bindings/traversal_b.py.
+#
+# NetworkX runs on the fixture's multigraph (nodes 0..n - 1, then the edges
+# in file order keyed by position, weights as "weight"), or on the simple
+# graph NetworkX builds from it where a function rejects multigraphs. The
+# engine reads the same adjacency order. Unweighted fixtures use weight 1.
+#
+# Encodings (one value per line):
+#   gb_topo_levels       topological generation index per node; -1 if the
+#                        graph has a cycle (also for the other DAG measures)
+#   gb_lex_topo          the lexicographic topological order (key = node)
+#   gb_longest_path_len  edges on a longest path (unit lengths)
+#   gb_aperiodic         1 or 0; -1 when NetworkX rejects the graph (not
+#                        strongly connected, or empty)
+#   gb_antichain_width   size of a largest antichain
+#   gb_is_eulerian       1 or 0
+#   gb_spanning_trees    number of spanning trees (loops ignored)
+#   gb_mst_weight        weight of a minimum spanning forest
+#   gb_branching_weight  weight of a maximum branching
+#   gb_maxflow           maximum flow from node 0 to node n - 1 (capacities
+#                        are the weights; edmonds_karp's residual network)
+#   gb_mincost           cost of sending one unit from 0 to n - 1 (network
+#                        simplex, infinite capacities); -1 if infeasible and
+#                        on fixtures with non-integer weights, where
+#                        NetworkX's network simplex never stops (rounding
+#                        keeps reduced costs below zero; the engine stops
+#                        with an error after a pivot limit)
+#   gb_cycle_count       number of simple cycles (fixtures of at most 12
+#                        nodes; -1 beyond)
+#   gb_mcb_weight        total weight of a minimum cycle basis
+#   gb_edge_disjoint     number of edge-disjoint paths from 0 to n - 1
+#   gb_node_disjoint     number of node-disjoint paths from 0 to n - 1
+#   gb_stoer_wagner      weight of a global minimum cut; -1 if disconnected
+#   gb_d_separated       whether {1} d-separates {0} and {n - 1}
+#   gb_quotient_internal edges inside each block of the partition by
+#                        node mod 3 (blocks in order)
+#   gb_isolates          isolated nodes in order
+#   gb_walks             walks of length 2, row-major (n <= 40; -1 beyond)
+#   gb_chain_count       number of chains of a chain decomposition
+#   gb_broadcast_time    broadcast time of a tree; -1 if not a tree
+#   gb_moral_edges       edges of the moral graph (distinct pairs)
+#   gb_node_boundary     node boundary of {0, 1, 2}, sorted
+#   gb_dedensify         groups compressed by dedensify with threshold 2
+#   gb_snap_groups       SNAP groups with degree parity as the node type
+#   gb_spanner_ok        1 if the 3-spanner keeps every edge within stretch 3
+#   gb_k_edge_subgraphs  part of each node among the maximal 2-edge-connected
+#                        node sets (compared as a partition)
+#
+# Undefined values are -1 (all these measures are otherwise non-negative).
+# Definition oracles that enumerate (cuts, subsets, cycles) run on fixtures
+# of up to 12 nodes and 16 edges; the larger fixtures are listed as
+# undefined for them.
+
+gb_topo_levels:
+  params: {fn: gb_topo_levels}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "longest path from any source to each node, by relaxation (traversal_b_definition_oracle.py)"
+    networkx:
+      call: "nx.topological_generations(M)"
+
+gb_lex_topo:
+  params: {fn: gb_lex_topo}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "repeatedly take the least node without remaining in-edges"
+    networkx:
+      call: "nx.lexicographical_topological_sort(M)"
+
+gb_longest_path_len:
+  params: {fn: gb_longest_path_len}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "longest path by dynamic programming over a topological order"
+    networkx:
+      call: "len(nx.dag_longest_path(M, weight=None)) - 1"
+
+gb_aperiodic:
+  params: {fn: gb_aperiodic}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "gcd of the lengths of all simple cycles, for strongly connected graphs"
+      undefined_on: &big [gnp_dir_dense, gnp_dir_sparse, multi_loops_dir, real_weights_dir,
+                          weighted_dir]
+      undefined_reason: >-
+        Enumerating every simple cycle is not run on fixtures of more than 12
+        nodes.
+    networkx:
+      call: "nx.is_aperiodic(M)"
+
+gb_antichain_width:
+  params: {fn: gb_antichain_width}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "largest set of pairwise unreachable nodes, by enumeration"
+      undefined_on: *big
+      undefined_reason: >-
+        Enumerating node subsets is not run on fixtures of more than 12
+        nodes.
+    networkx:
+      call: "nx.algorithms.dag.antichain_width(M)"
+
+gb_is_eulerian:
+  params: {fn: gb_is_eulerian}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "even degrees (in = out) and one connected (strongly connected) graph"
+    networkx:
+      call: "nx.is_eulerian(M)"
+
+gb_spanning_trees:
+  params: {fn: gb_spanning_trees}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "Kirchhoff's matrix-tree theorem, exact rational determinant"
+      undefined_when: [null_graph]
+      undefined_reason: >-
+        The engine rejects a network without nodes.
+    networkx:
+      call: "nx.number_of_spanning_trees(M)"
+
+gb_mst_weight:
+  params: {fn: gb_mst_weight}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Prim's algorithm on every component"
+    networkx:
+      call: "sum of weights over nx.minimum_spanning_edges(M)"
+
+gb_branching_weight:
+  params: {fn: gb_branching_weight}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "heaviest edge subset with in-degrees at most 1 and no cycle, by enumeration"
+      undefined_on: &bigedges [complete5_dir, gnp_dir_dense, gnp_dir_sparse, multi_loops_dir,
+                               real_weights_dir, weighted_dir]
+      undefined_reason: >-
+        Enumerating edge subsets is not run on fixtures of more than 16
+        edges.
+    networkx:
+      call: "nx.maximum_branching(M, preserve_attrs=True)"
+
+gb_maxflow:
+  params: {fn: gb_maxflow, flow: edmonds_karp}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "minimum cut capacity over all node bipartitions"
+      undefined_on: &bigcut [davis_twomode, florentine, gnp_dir_dense, gnp_dir_sparse,
+                             gnp_und_dense, gnp_und_sparse, karate, les_miserables,
+                             multi_loops_dir, multi_loops_und, real_weights_dir,
+                             real_weights_und, southern_women, twomode_random,
+                             twomode_weighted, uniform_weights, weighted_dir, weighted_und]
+      undefined_reason: >-
+        Enumerating bipartitions is not run on fixtures of more than 12
+        nodes.
+    networkx:
+      call: "nx.maximum_flow_value(D, 0, n - 1, flow_func=edmonds_karp), D the simple graph with capacity = weight"
+
+gb_mincost:
+  params: {fn: gb_mincost}
+  applies_to: directed
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "shortest path weight from 0 to n - 1 (Bellman-Ford), since capacities are infinite"
+    networkx:
+      call: "nx.network_simplex(M) with demand -1 at 0 and 1 at n - 1"
+
+gb_cycle_count:
+  params: {fn: gb_cycle_count, max_nodes: 12}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "depth-first enumeration of cycles from their least node"
+    networkx:
+      call: "len(list(nx.simple_cycles(M)))"
+    ergm:
+      call: "sum(summary(nw ~ cycle(2:n))) directed, cycle(3:n) undirected"
+
+gb_mcb_weight:
+  params: {fn: gb_mcb_weight}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "greedy independent set (over GF(2)) of all simple cycles by weight"
+      undefined_on: *bigcut
+      undefined_reason: >-
+        Enumerating every cycle is not run on fixtures of more than 12
+        nodes.
+    networkx:
+      call: "total weight of nx.minimum_cycle_basis(G, weight)"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX's minimum_cycle_basis rejects multigraphs.
+
+gb_edge_disjoint:
+  params: {fn: gb_disjoint_paths, nodes: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "minimum edge cut between 0 and n - 1 over all bipartitions (Menger)"
+      undefined_on: *bigcut
+      undefined_reason: >-
+        Enumerating bipartitions is not run on fixtures of more than 12
+        nodes.
+    networkx:
+      call: "len(list(nx.edge_disjoint_paths(M, 0, n - 1)))"
+
+gb_node_disjoint:
+  params: {fn: gb_disjoint_paths, nodes: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "minimum vertex separator between 0 and n - 1 over all node subsets (Menger)"
+      undefined_on: *bigcut
+      undefined_reason: >-
+        Enumerating node subsets is not run on fixtures of more than 12
+        nodes.
+    networkx:
+      call: "len(list(nx.node_disjoint_paths(M, 0, n - 1)))"
+
+gb_stoer_wagner:
+  params: {fn: gb_stoer_wagner}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "minimum cut weight over all bipartitions"
+      undefined_on: *bigcut
+      undefined_reason: >-
+        Enumerating bipartitions is not run on fixtures of more than 12
+        nodes.
+    networkx:
+      call: "nx.stoer_wagner(nx.Graph(M))"
+
+gb_d_separated:
+  params: {fn: gb_d_separated}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "separation in the moralized ancestral graph (Lauritzen's criterion)"
+    networkx:
+      call: "nx.is_d_separator(M, 0, n - 1, {1})"
+
+gb_quotient_internal:
+  params: {fn: gb_quotient_internal}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "edges with both ends in each block"
+    networkx:
+      call: "nedges of each block of nx.quotient_graph(M, parts)"
+
+gb_isolates:
+  params: {fn: gb_isolates}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "nodes without incident edges"
+    networkx:
+      call: "list(nx.isolates(M))"
+
+gb_walks:
+  params: {fn: gb_walks, k: 2}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "square of the adjacency matrix in integers"
+    networkx:
+      call: "nx.number_of_walks(M, 2)"
+
+gb_chain_count:
+  params: {fn: gb_chain_count}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "cyclomatic number m - n + c (one chain per back edge)"
+    networkx:
+      call: "len(list(nx.chain_decomposition(M)))"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX's chain_decomposition rejects multigraphs.
+
+gb_broadcast_time:
+  params: {fn: gb_broadcast_time}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "largest minimum broadcast time from any node, by dynamic programming over the rooted tree"
+      undefined_when: [null_graph]
+      undefined_reason: >-
+        A network without nodes has no broadcast center.
+    networkx:
+      call: "nx.tree_broadcast_time(nx.Graph(M))"
+
+gb_moral_edges:
+  params: {fn: gb_moral_edges}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "edges without direction plus every pair of parents"
+    networkx:
+      call: "distinct pairs of nx.moral_graph(M)"
+
+gb_node_boundary:
+  params: {fn: gb_node_boundary}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "neighbours (successors) of {0, 1, 2} outside the set"
+    networkx:
+      call: "sorted(nx.node_boundary(M, {0, 1, 2}))"
+
+gb_dedensify:
+  params: {fn: gb_dedensify, threshold: 2}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "groups of nodes with the same high-degree neighbours where compression saves edges"
+    networkx:
+      call: "len(nx.dedensify(M, 2)[1])"
+
+gb_snap_groups:
+  params: {fn: gb_snap_groups}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "coarsest refinement of the degree-parity groups with equal neighbour groups"
+    networkx:
+      call: "nx.snap_aggregation(M, node_attributes=('parity',)).number_of_nodes()"
+
+gb_spanner_ok:
+  params: {fn: gb_spanner_ok, stretch: 3}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "a 3-spanner always exists (the graph itself); the runner checks the stretch"
+    networkx:
+      call: "stretch check of nx.spanner(nx.Graph(M), 3, seed=1)"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX's spanner rejects multigraphs.
+
+gb_k_edge_subgraphs:
+  params: {fn: gb_k_edge_subgraphs, k: 2}
+  applies_to: undirected
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "split each part along any cut of fewer than k edges (enumerated) until none is left"
+      undefined_on: *bigcut
+      undefined_reason: >-
+        Enumerating cuts is not run on fixtures of more than 12 nodes.
+    networkx:
+      call: "nx.k_edge_subgraphs(G, 2)"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX's k_edge_subgraphs rejects multigraphs.

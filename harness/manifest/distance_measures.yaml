@@ -1,0 +1,339 @@
+# Center, periphery, barycenter; the Wiener, Schultz, Gutman, and
+# hyper-Wiener indices; harmonic diameter; global and local efficiency; and
+# closeness vitality. Format: see ../README.md; engine runners in
+# ../bindings/distance_measures.py.
+#
+# Node sets are compared as sorted node indices (empty when a measure needs
+# a strongly connected network). NaN is written as -999, infinity as -1000,
+# and minus infinity as -1001, by the runner and every oracle.
+#
+# Oracles: `definition` is distance_measures_definition_oracle.py (exact
+# distances by Floyd-Warshall in rational arithmetic); `networkx` is
+# distance_measures_networkx_oracle.py.
+
+dm_center:
+  params: {fn: dm_center}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "nodes of smallest eccentricity from exact distances; empty unless strongly connected"
+    networkx:
+      call: "nx.center(G) (empty when NetworkX raises on a disconnected network)"
+
+dm_center_weighted:
+  params: {fn: dm_center, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_center with weighted lengths"
+    networkx:
+      call: "nx.center(G, weight = 'weight')"
+
+dm_center_reachable:
+  params: {fn: dm_center, reachable: ignore}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "smallest eccentricity over the nodes each node reaches"
+
+dm_periphery:
+  params: {fn: dm_periphery}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "nodes of largest eccentricity; empty unless strongly connected"
+    networkx:
+      call: "nx.periphery(G)"
+
+dm_periphery_weighted:
+  params: {fn: dm_periphery, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_periphery with weighted lengths"
+      differs_when: [fractional_weights]
+      reason: >-
+        Eccentricities are compared exactly in floating point (as NetworkX
+        does); two that are equal in exact arithmetic can differ in the last
+        bit, so the engine lists one node where the exact oracle lists both.
+    networkx:
+      call: "nx.periphery(G, weight = 'weight')"
+
+dm_periphery_reachable:
+  params: {fn: dm_periphery, reachable: ignore}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "largest eccentricity over the nodes each node reaches"
+
+dm_barycenter:
+  params: {fn: dm_barycenter, tie: exact}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "nodes of smallest total distance; empty unless strongly connected"
+    networkx:
+      call: "nx.barycenter(G) (empty on NetworkXNoPath)"
+
+dm_barycenter_weighted:
+  params: {fn: dm_barycenter, tie: exact, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_barycenter with weighted lengths"
+      differs_when: [fractional_weights]
+      reason: >-
+        tie: exact compares the floating-point distance sums exactly, as
+        NetworkX does; two nodes whose sums are equal in exact arithmetic
+        (weighted path 2-1-0-7-5-4-3-6: nodes 5 and 7) can differ in the last
+        bit, so the engine lists one where the exact oracle lists both. tie:
+        relative applies the project's 1e-9 rule.
+    networkx:
+      call: "nx.barycenter(G, weight = 'weight')"
+      differs_when: [fractional_weights]
+      reason: >-
+        tie: exact compares floating-point sums exactly, as NetworkX does, but
+        the sums are added in a different order, so a tie that is exact in
+        real arithmetic can hold in one tool and not the other.
+
+dm_wiener:
+  params: {fn: dm_index, index: wiener}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "sum of exact distances over unordered (directed: ordered) pairs; Inf unless strongly connected"
+    networkx:
+      call: "nx.wiener_index(G)"
+
+dm_wiener_weighted:
+  params: {fn: dm_index, index: wiener, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_wiener with weighted lengths"
+    networkx:
+      call: "nx.wiener_index(G, weight = 'weight')"
+
+dm_wiener_strength:
+  params: {fn: dm_index, index: wiener, weighted: true, weights_as: strength}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_wiener with lengths 1/w"
+    networkx:
+      call: "nx.wiener_index(G, weight = 'length') with length = 1 / weight"
+
+dm_schultz:
+  params: {fn: dm_index, index: schultz}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "sum over unordered pairs of (deg u + deg v) d(u, v)"
+    networkx:
+      call: "nx.schultz_index(G)"
+      undefined_when: [multi_edges]
+      undefined_reason: >-
+        NetworkX's schultz_index, gutman_index, and hyper_wiener_index are
+        not implemented for multigraphs.
+
+dm_schultz_weighted:
+  params: {fn: dm_index, index: schultz, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_schultz with weighted distances and vertex degrees"
+    networkx:
+      call: "nx.schultz_index(G, weight = 'weight')"
+      undefined_when: [multi_edges]
+      undefined_reason: >-
+        NetworkX's schultz_index, gutman_index, and hyper_wiener_index are
+        not implemented for multigraphs.
+
+dm_gutman:
+  params: {fn: dm_index, index: gutman}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "sum over unordered pairs of deg u deg v d(u, v)"
+    networkx:
+      call: "nx.gutman_index(G)"
+      undefined_when: [multi_edges]
+      undefined_reason: >-
+        NetworkX's schultz_index, gutman_index, and hyper_wiener_index are
+        not implemented for multigraphs.
+
+dm_gutman_weighted:
+  params: {fn: dm_index, index: gutman, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_gutman with weighted distances and vertex degrees"
+    networkx:
+      call: "nx.gutman_index(G, weight = 'weight')"
+      undefined_when: [multi_edges]
+      undefined_reason: >-
+        NetworkX's schultz_index, gutman_index, and hyper_wiener_index are
+        not implemented for multigraphs.
+
+dm_hyper_wiener:
+  params: {fn: dm_index, index: hyper_wiener}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "(1/2) sum over unordered pairs of d + d^2 (Randic 1993; Klein, Lukovits, and Gutman 1995)"
+    networkx:
+      call: "0.5 * nx.hyper_wiener_index(G)"
+      undefined_when: [multi_edges]
+      undefined_reason: >-
+        NetworkX's hyper_wiener_index is not implemented for multigraphs.
+      # NetworkX sums d + d^2 over unordered pairs, which is twice the
+      # published index (see dm_hyper_wiener_networkx, which checks that
+      # value as NetworkX defines it); the call halves it.
+
+dm_hyper_wiener_networkx:
+  params: {fn: dm_index, index: hyper_wiener_networkx}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "sum over unordered pairs of d + d^2"
+    networkx:
+      call: "nx.hyper_wiener_index(G)"
+      undefined_when: [multi_edges]
+      undefined_reason: >-
+        NetworkX's schultz_index, gutman_index, and hyper_wiener_index are
+        not implemented for multigraphs.
+
+dm_harmonic_diameter:
+  params: {fn: dm_index, index: harmonic_diameter}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "n(n - 1) / sum over ordered pairs of 1/d"
+    networkx:
+      call: "nx.harmonic_diameter(G)"
+
+dm_harmonic_diameter_weighted:
+  params: {fn: dm_index, index: harmonic_diameter, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_harmonic_diameter with weighted lengths"
+    networkx:
+      call: "nx.harmonic_diameter(G, weight = 'weight')"
+
+dm_global_efficiency:
+  params: {fn: dm_index, index: global_efficiency}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "mean of 1/d over ordered pairs of distinct nodes"
+    networkx:
+      call: "nx.global_efficiency(G)"
+      undefined_when: [directed]
+      undefined_reason: >-
+        NetworkX's global_efficiency is not implemented for directed graphs.
+    bctpy:
+      call: "bct.efficiency_bin(A binary, local = False)"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        With one node efficiency_bin() divides by n (n - 1) = 0 and returns
+        NaN; the engine (like NetworkX) returns 0.
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: efficiency_bin, on the binary adjacency
+        matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - single_node
+      reason: 'The efficiency of a one-node network is 0/0: BCT returns NaN, the engine 0.'
+
+dm_global_efficiency_weighted:
+  params: {fn: dm_index, index: global_efficiency, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_global_efficiency with weighted lengths"
+    bctpy:
+      call: "bct.efficiency_wei(W summed, local = False)"
+
+dm_local_efficiency:
+  params: {fn: dm_local_efficiency, loop_is_neighbor: true}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "mean over nodes of the global efficiency of the subgraph induced by its neighbors, a looped node among its own neighbors"
+    networkx:
+      call: "nx.local_efficiency(G)"
+    bctpy:
+      call: "bct.efficiency_bin(A binary, local = True)"
+      differs_when: [loops]
+      reason: >-
+        This variant follows NetworkX in counting a self-loop as making a node
+        its own neighbour; BCT's matrix has no diagonal.
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: mean(efficiency_bin(A, 1)), on the
+        binary adjacency matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - multi_loops_und
+      reason: 'A bct call takes a binary adjacency matrix, which cannot carry loops or parallel
+        edges: the driver keeps one arc per ordered pair and drops loops, while the engine counts
+        every edge.'
+
+dm_local_efficiency_definition:
+  params: {fn: dm_local_efficiency}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_local_efficiency with neighbors other than the node itself"
+    bctpy:
+      call: "bct.efficiency_bin(A binary, local = True)"
+
+dm_closeness_vitality:
+  params: {fn: dm_closeness_vitality}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Wiener index of G minus that of G without the node, from exact distances"
+    networkx:
+      call: "nx.closeness_vitality(G) (an error is undefined)"
+dm_closeness_vitality_weighted:
+  params: {fn: dm_closeness_vitality, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as dm_closeness_vitality with weighted lengths"
+    networkx:
+      call: "nx.closeness_vitality(G, weight = 'weight')"

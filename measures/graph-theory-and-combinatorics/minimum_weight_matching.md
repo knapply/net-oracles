@@ -54,6 +54,8 @@ Measure id: `min_weight_full_matching`. Original family: Two-mode and bipartite.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>min_weight_full_matching</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-12</td><td><code>nx.bipartite.minimum_weight_full_matching(G, top, weight = c): (total cost, 1 if it covers the smaller side); -1 where it raises</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/bipartite_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/bipartite_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [jonker1987shortest](../../references.html#jonker1987shortest), [kuhn1955hungarian](../../references.html#kuhn1955hungarian)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
@@ -71,6 +73,8 @@ Measure id: `min_weight_matching`. Original family: Graph theory and combinatori
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>matching_min_weight</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.min_weight_matching(G, weight = 'weight')</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/matching.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/matching.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **References:** [edmonds1965maximum](../../references.html#edmonds1965maximum), [edmonds1965paths](../../references.html#edmonds1965paths), [galil1986efficient](../../references.html#galil1986efficient), [hagberg2008exploring](../../references.html#hagberg2008exploring)
 

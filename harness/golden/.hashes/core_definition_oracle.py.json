@@ -1,0 +1,11 @@
+{
+ "inputs": "c022ee7b9ad82bd9203959f1f962da8b89695fb23a73186523aef7b2f7a583e6",
+ "oracles": [
+  "definition",
+  "egor",
+  "igraph",
+  "influencer",
+  "networkx",
+  "rustworkx"
+ ]
+}

@@ -1,0 +1,768 @@
+# Community detection: Walktrap, label propagation, Infomap, Leiden,
+# spinglass, exact maximum modularity, fluid communities, Voronoi
+# communities; partition comparison; dendrogram cuts.
+#
+# Deterministic methods (Walktrap, semi-synchronous label propagation,
+# exact maximum modularity, Voronoi communities, the map equation of a
+# fixed partition, the comparison measures) are compared exactly or
+# within rounding. Randomized methods are checked two ways: the quality
+# the engine reports for its own partition is recomputed from the
+# definition, and the mean quality over seeds is compared with each
+# tool's own implementation, with a tolerance that only asserts that
+# neither is meaningfully better (implementations visit nodes in
+# different orders and reach different local optima).
+
+# ---- Walktrap ---------------------------------------------------------------
+# The definition oracle runs Walktrap in exact rational arithmetic, with
+# exact ties broken by the engine's documented rule (smallest group names
+# first). Networks with structurally equivalent nodes have such ties;
+# igraph documents no tie rule, so on those fixtures it may merge in
+# another order.
+#
+# Pons and Latapy (2006) merge, at every step, the two adjacent groups
+# whose merge increases sigma least (smallest delta sigma). igraph
+# sometimes does not. On weighted_und (t = 4) its third merge joins 25 and
+# 30 (exact delta sigma 2.648e-6), although groups 1 and {23, 35} are
+# adjacent with 2.130e-6, a gap of 20% and far beyond rounding; igraph
+# merges that pair two steps later. On twomode_weighted (t = 2) its fourth
+# and ninth merges skip pairs whose delta sigma is 29% and 5% smaller. On
+# weighted_und the skipped pair joins node 1 to the group {23, 35} formed
+# by the previous merge, of which node 1 touches only 23 (so its delta
+# sigma cannot come from the paper's update formula for a group adjacent
+# to both merged groups and must be computed from the merged probability
+# vector). The exact merge
+# sequence is computed independently by the definition oracle, which the
+# engine matches; these departures are listed as documented differences.
+# The same happens on the seeded mid-size random networks (finding
+# F-SIZES-1, replayed with sizes/walktrap_replay.R).
+
+walktrap:
+  params: {fn: walktrap, steps: 4}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Pons and Latapy (2006) in exact arithmetic; exact modularity of the best level"
+    igraph:
+      call: "max(modularity(cluster_walktrap(g, weights = NULL, steps = 4)))"
+      differs_when: &walktrap_ties [symmetric_nodes]
+      differs_on: [mid_gnm_und_2000, mid_gnm_und_int_2500, mid_sbm_und_4000, mid_dense_und_1000]
+      reason: &walktrap_tie_reason >-
+        exact ties between pairs of groups occur during the merges, which
+        the engine breaks by group names and igraph by an undocumented
+        rule; on the seeded mid-size random networks listed by name igraph
+        merges pairs that do not have the smallest delta sigma (finding
+        F-SIZES-1), which leads to a different best level
+      undefined_when: [loops, multi_edges]
+      undefined_reason: >-
+        igraph's treatment of parallel edges and self-loops in the walk is
+        not documented
+
+walktrap_membership:
+  params: {fn: walktrap, steps: 4, output: membership}
+  applies_to: undirected
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the level of highest exact modularity of the exact merge sequence"
+    igraph:
+      call: "membership(cluster_walktrap(g, weights = NULL, steps = 4))"
+      differs_when: *walktrap_ties
+      differs_on: [mid_gnm_und_2000, mid_gnm_und_int_2500, mid_sbm_und_4000, mid_dense_und_1000]
+      reason: *walktrap_tie_reason
+      undefined_when: [loops, multi_edges]
+      undefined_reason: as for walktrap
+
+walktrap_merges:
+  params: {fn: walktrap, steps: 4, output: merges}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the exact merge sequence, in igraph's numbering (merge i creates group n + i)"
+    igraph:
+      call: "cluster_walktrap(g, weights = NULL, steps = 4)$merges - 1"
+      differs_when: [symmetric_nodes]
+      differs_on: [weighted_und, mid_gnm_und_2000, mid_gnm_und_int_2500, mid_sbm_und_4000, mid_dense_und_1000]
+      reason: &walktrap_order_reason >-
+        exact ties between pairs of groups (symmetric positions) occur
+        during the merges, which the engine breaks by group names and igraph
+        by an undocumented rule; on weighted_und igraph merges a pair that
+        does not have the smallest delta sigma (see the note above the
+        Walktrap entries), an igraph exception listed by name; the same on
+        the mid-size random networks listed by name (finding F-SIZES-1)
+      undefined_when: [loops, multi_edges, disconnected]
+      undefined_reason: >-
+        loops and parallel edges as for walktrap; on disconnected networks igraph completes the
+        dendrogram by joining components, which the engine (like the
+        paper) does not
+
+walktrap_steps2:
+  params: {fn: walktrap, steps: 2}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Pons and Latapy (2006) with t = 2 in exact arithmetic"
+    igraph:
+      call: "max(modularity(cluster_walktrap(g, weights = NULL, steps = 2)))"
+      differs_when: [symmetric_nodes]
+      differs_on: [twomode_weighted, mid_gnm_und_2000, mid_gnm_und_int_2500, mid_sbm_und_4000, mid_dense_und_1000]
+      reason: >-
+        as for walktrap_merges: ties broken differently, and on
+        twomode_weighted igraph merges pairs that do not have the smallest
+        delta sigma, which leads to a different best level; the same on the
+        mid-size random networks listed by name (finding F-SIZES-1)
+      undefined_when: [loops, multi_edges]
+      undefined_reason: as for walktrap
+
+walktrap_weighted:
+  params: {fn: walktrap, steps: 4, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Pons and Latapy (2006) with weights, in exact arithmetic"
+    igraph:
+      call: "max(modularity(cluster_walktrap(g, weights = E(g)$weight, steps = 4)))"
+      differs_when: *walktrap_ties
+      differs_on: [mid_gnm_und_2000, mid_gnm_und_int_2500, mid_sbm_und_4000, mid_dense_und_1000]
+      reason: *walktrap_tie_reason
+      undefined_when: [loops, multi_edges]
+      undefined_reason: >-
+        as for walktrap
+
+walktrap_cut2:
+  params: {fn: walktrap, steps: 4, output: cut, groups: 2}
+  applies_to: undirected
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the exact merge sequence cut at 2 groups (-1 when the dendrogram has fewer merges)"
+    igraph:
+      call: "cut_at(cluster_walktrap(g, weights = NULL, steps = 4), no = 2)"
+      differs_when: *walktrap_ties
+      differs_on: [mid_gnm_und_2000, mid_gnm_und_int_2500, mid_sbm_und_4000, mid_dense_und_1000]
+      reason: *walktrap_tie_reason
+      undefined_on: [single_node]
+      undefined_when: [loops, multi_edges, disconnected]
+      undefined_reason: >-
+        as for walktrap_merges; igraph's cut_at() raises an error when asked
+        for two groups of a single node
+
+girvan_newman_cut3:
+  params: {fn: girvan_newman_cut, groups: 3}
+  applies_to: undirected
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    igraph:
+      call: "cut_at(cluster_edge_betweenness(simplify(g), weights = NULL), no = 3)"
+      undefined_when: [loops, multi_edges, disconnected, edge_case]
+      undefined_reason: >-
+        the R oracle simplifies the network, so multigraphs and networks
+        with loops are not comparable; disconnected and trivial networks
+        give dendrograms that cannot be cut at 3 groups in one tool or
+        the other
+
+# ---- Label propagation ---------------------------------------------------------
+
+label_prop_semisync:
+  params: {fn: label_propagation, variant: semi_synchronous, output: membership}
+  applies_to: undirected
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.community.label_propagation_communities(simple graph)"
+      differs_when: [loops, multi_edges]
+      reason: >-
+        NetworkX runs on the simple graph here (parallel edges once, no
+        loops); the engine counts parallel edges with their multiplicity
+
+label_prop_fixed_point:
+  params: {fn: label_propagation, variant: dominance, output: fixed_point}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "fraction of nodes whose label is dominant among their neighbors in the engine's partition (seed 1)"
+      differs_when: [null_graph]
+      reason: >-
+        The null graph: the empty labelling is trivially a fixed point (the
+        engine reports 1); the definition oracle reports undefined.
+
+label_prop_fixed_point_retention:
+  params: {fn: label_propagation, variant: retention, output: fixed_point}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "fraction of nodes with a dominant label in the engine's retention partition (seed 1)"
+      differs_when: [null_graph]
+      reason: >-
+        The null graph: the empty labelling is trivially a fixed point (the
+        engine reports 1); the definition oracle reports undefined.
+
+label_prop_fixed_point_fast:
+  params: {fn: label_propagation, variant: fast, output: fixed_point}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "fraction of nodes with a dominant label in the engine's fast partition (seed 1)"
+      differs_when: [null_graph]
+      reason: >-
+        The null graph: the empty labelling is trivially a fixed point (the
+        engine reports 1); the definition oracle reports undefined.
+
+label_prop_fixed_point_semisync:
+  params: {fn: label_propagation, variant: semi_synchronous, output: fixed_point}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "fraction of nodes with a dominant label in the engine's semi-synchronous partition"
+      differs_when: [null_graph]
+      reason: >-
+        The null graph: the empty labelling is trivially a fixed point (the
+        engine reports 1); the definition oracle reports undefined.
+
+label_prop_fixed_point_weighted:
+  params: {fn: label_propagation, variant: dominance, weighted: true, output: fixed_point}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 0, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "fraction of nodes with a dominant label by total weight in the engine's partition"
+      differs_when: [null_graph]
+      reason: >-
+        The null graph: the empty labelling is trivially a fixed point (the
+        engine reports 1); the definition oracle reports undefined.
+
+# Mean modularity over seeds 1 to 100 of each tool's own partitions.
+# Label propagation varies a great deal from run to run (on networks
+# with little community structure the dominance rule often ends with a
+# single group), so 100 seeds are used and the tolerance of 0.05 only
+# asserts that neither implementation is meaningfully better. Against
+# NetworkX 3.7 over 200 seeds the means agree within 0.025 except on
+# uniform_weights (fast variant, 0.04). The retention and fast variants
+# are compared with NetworkX only: igraph's C library has them, but its R
+# package (2.3.4, the current CRAN release) has no lpa_variant argument.
+label_prop_quality:
+  params: {fn: label_propagation, variant: dominance, output: quality, seeds: 100}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.05}
+  oracles:
+    igraph:
+      call: "mean over set.seed(1..100) of modularity(g, cluster_label_prop(g, weights = NA))"
+      differs_when: [loops]
+      reason: &lpa_igraph_loops >-
+        the engine ignores self-loops (a node never reads its own label);
+        igraph documents no rule for loops, but its mean on multi_loops_und
+        (0.258) is what a node that reads its own label once per loop
+        gives (0.265 over 300 simulated runs, against 0.206 with loops
+        ignored), as NetworkX does
+
+label_prop_quality_retention:
+  params: {fn: label_propagation, variant: retention, output: quality, seeds: 100}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.05}
+  oracles:
+    networkx:
+      call: "mean over seeds of modularity(G, asyn_lpa_communities(simple graph, seed = s))"
+      differs_when: [edge_case, loops, multi_edges]
+      reason: &lpa_simple >-
+        NetworkX runs on the simple graph here, while the engine counts
+        parallel edges with their multiplicity; without edges modularity
+        is undefined (the engine reports -1, NetworkX 0)
+
+label_prop_quality_fast:
+  params: {fn: label_propagation, variant: fast, output: quality, seeds: 100}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.05}
+  oracles:
+    networkx:
+      call: "mean over seeds of modularity(G, fast_label_propagation_communities(simple graph, seed = s))"
+      differs_when: [edge_case, loops, multi_edges]
+      reason: *lpa_simple
+
+# ---- Infomap ----------------------------------------------------------------
+
+map_equation:
+  params: {fn: map_equation}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "two-level map equation of the partition floor(3 v / n), visit rates in closed form or by solving the PageRank system (tau = 0.15)"
+
+map_equation_weighted:
+  params: {fn: map_equation, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "weighted two-level map equation of the partition floor(3 v / n)"
+
+infomap_codelength:
+  params: {fn: infomap, trials: 10, seed: 1}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "map equation of the engine's Infomap partition (10 trials, seed 1); -1 for an undirected network without edges, which has no random walk"
+
+# igraph's cluster_infomap() does not use the undirected flow of Rosvall
+# and Bergstrom (2008) (visit rates s_a / 2m, no teleportation) that the
+# engine uses for undirected networks: it reads an undirected network as
+# directed, with each edge in both directions, and applies the directed
+# flow with teleportation (tau = 0.15, recorded in the code). Its
+# documentation does not say so; the evidence is its output. The optimal
+# undirected codelengths of path10 and star8 (exhaustive search over every
+# partition) are 2.8617 and 2.4037 bits, which the engine reaches, while
+# igraph reports 3.1151 and 2.4864; those are exactly the optimal
+# codelengths of the both-ways directed networks under the engine's
+# directed map equation, and on the other undirected fixtures the engine's
+# directed search on the both-ways network reproduces igraph's mean
+# codelength within 0.008 bits. The comparison is therefore made on that
+# network (`as_directed`), so that both tools minimize the same quantity;
+# the engine's undirected codelength is checked against the definition in
+# infomap_codelength above.
+# Infomap (the `infomap` package) as a black box. Both tools search heuristically,
+# so the engine's codelength is expected to be no larger (`compare: le`).
+# infomap_native* compare with Infomap's own codelength for undirected networks;
+# infomap_partition* score Infomap's partition with the definition oracle's map
+# equation (any network, directed flow with teleportation 0.15), which avoids the
+# differences in directed flow conventions.
+
+infomap_native:
+  params: {fn: infomap, trials: 10, seed: 1}
+  applies_to: undirected
+  compare: le
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    infomap:
+      call: "Infomap(two_level = True, directed = False, num_trials = 10, seed = 1) on the links without loops; its codelength"
+      undefined_when: [loops]
+      undefined_reason: Infomap leaves self-links out unless asked; the engine's flow counts them
+
+infomap_native_weighted:
+  params: {fn: infomap, trials: 10, seed: 1, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  compare: le
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    infomap:
+      call: "as infomap_native with link weights"
+      undefined_when: [loops]
+      undefined_reason: Infomap leaves self-links out unless asked; the engine's flow counts them
+
+infomap_partition:
+  params: {fn: infomap, trials: 10, seed: 1}
+  applies_to: any
+  compare: le
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    infomap:
+      call: "map equation (definition oracle, tau = 0.15) of the partition Infomap(two_level = True, num_trials = 10, seed = 1) finds"
+
+infomap_partition_weighted:
+  params: {fn: infomap, trials: 10, seed: 1, weighted: true}
+  applies_to: any
+  requires_weights: true
+  compare: le
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    infomap:
+      call: "as infomap_partition with link weights"
+
+infomap_quality:
+  params: {fn: infomap, trials: 10, output: quality, seeds: 5, as_directed: true}
+  applies_to: undirected
+  compare: le
+  tolerance: {rel: 0, abs: 0.02}
+  note: >-
+    Seeds are fixed on both sides, so the comparison is repeatable. Both
+    tools minimize heuristically, so the engine's mean codelength must be
+    no larger than igraph's (within 0.02); since the engine's trials end
+    with the heat-bath refinement of Rosvall and Bergstrom (2008) it can be
+    smaller (multi_loops_und: 4.2089 against 4.2362).
+  oracles:
+    igraph:
+      call: "mean over set.seed(1..5) of cluster_infomap(g, nb.trials = 10)$codelength"
+      differs_when: [edge_case]
+      reason: >-
+        a network without edges has no random walk; the engine reports
+        -1 (undefined) where igraph may report a codelength of 0
+
+# ---- Leiden -------------------------------------------------------------------
+
+leiden_modularity:
+  params: {fn: leiden, objective: modularity, seed: 1}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exact modularity of the engine's Leiden partition (seed 1)"
+
+leiden_modularity_weighted:
+  params: {fn: leiden, objective: modularity, weighted: true, seed: 1}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exact weighted modularity of the engine's Leiden partition (seed 1)"
+
+leiden_cpm:
+  params: {fn: leiden, objective: cpm, resolution: 0.1, seed: 1}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exact CPM quality (1/2m) sum_ij (A_ij - 0.1) delta of the engine's partition (seed 1)"
+
+leiden_connected:
+  params: {fn: leiden, objective: modularity, output: groups, seed: 1}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "number of connected pieces of the induced subgraphs of the engine's groups (equal to the number of groups exactly when every group is connected)"
+
+leiden_connected_cpm:
+  params: {fn: leiden, objective: cpm, resolution: 0.05, output: groups, seed: 1}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "connected pieces of the engine's CPM groups (resolution 0.05)"
+
+# Against NetworkX 3.7 the largest gap is 0.023 (twomode_random, the
+# engine ahead).
+leiden_quality:
+  params: {fn: leiden, objective: modularity, output: mean_quality, seeds: 20}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.03}
+  oracles:
+    networkx:
+      compare: ge
+      note: >-
+        NetworkX's Leiden is a heuristic that stops at lower modularity on larger networks
+        (0.28 against 0.32 on a 2000-node random network); the engine must reach at least
+        what NetworkX does, so the sized fixtures compare with ge.
+      call: "mean over seeds of modularity(G, leiden_communities(simple graph, metric = 'modularity', seed = s))"
+      differs_when: [edge_case, loops, multi_edges]
+      reason: *lpa_simple
+    igraph:
+      call: "mean over set.seed(1..20) of modularity(g, cluster_leiden(g, objective_function = 'modularity', n_iterations = -1, weights = NA))"
+      undefined_on: [single_node]
+      undefined_reason: igraph's cluster_leiden() raises an error for a single node.
+
+leiden_cpm_quality:
+  params: {fn: leiden, objective: cpm, resolution: 0.1, output: mean_quality, seeds: 20}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.015}
+  note: >-
+    Seeds are fixed on both sides, so the comparison is repeatable; the
+    tolerance (was 0.03) is about twice the largest difference seen (0.0063).
+  oracles:
+    igraph:
+      call: "mean over set.seed(1..20) of the CPM quality (1/2m) sum_ij (A_ij - 0.1) delta of cluster_leiden(g, objective_function = 'CPM', resolution = 0.1, n_iterations = -1, weights = NA)"
+
+# ---- Spinglass ------------------------------------------------------------------
+
+spinglass_energy:
+  params: {fn: spinglass, seed: 1}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "Hamiltonian -sum_{i<j} (A_ij - k_i k_j / 2m) delta of the engine's partition (seed 1); -1 for disconnected networks, which are rejected"
+      differs_when: [multi_edges]
+      reason: >-
+        The engine's Hamiltonian reads parallel edges as one tie (as igraph's
+        spinglass, which takes a simple graph); the definition oracle sums
+        them into the adjacency matrix (two parallel edges on two nodes: -0.5
+        against -1).
+
+spinglass_energy_simple:
+  params: {fn: spinglass, null_model: simple, gamma: 0.5, seed: 1}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "Hamiltonian with the simple null model p = 2m / (n (n - 1)) and gamma 0.5 of the engine's partition"
+      differs_when: [multi_edges]
+      reason: >-
+        The engine's Hamiltonian reads parallel edges as one tie (as igraph's
+        spinglass, which takes a simple graph); the definition oracle sums
+        them into the adjacency matrix (two parallel edges on two nodes: -0.5
+        against -1).
+
+spinglass_quality:
+  params: {fn: spinglass, output: quality, seeds: 10}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.02}
+  note: >-
+    Seeds are fixed on both sides, so the comparison is repeatable; the
+    tolerance (was 0.03) is about twice the largest difference seen (0.0079).
+  oracles:
+    igraph:
+      call: "mean over set.seed(1..10) of modularity(g, cluster_spinglass(g, weights = NA))"
+      undefined_when: [disconnected, edge_case]
+      undefined_reason: >-
+        both tools reject disconnected networks; igraph also rejects the
+        trivial ones
+
+# ---- Exact maximum modularity -----------------------------------------------------
+# The exact search is run only where it finishes quickly; on the listed
+# larger fixtures it is skipped (the engine reports -1 there, and so do the
+# oracles).
+
+optimal_modularity:
+  params:
+    fn: optimal_modularity
+    skip: &optimal_skip [gnp_und_dense, gnp_und_sparse, les_miserables, real_weights_und,
+                         uniform_weights, weighted_und, gnp_dir_dense, gnp_dir_sparse,
+                         real_weights_dir, weighted_dir]
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "maximum of exact modularity over every partition (n <= 10), or of the Brandes et al. (2008) integer program solved by scipy.optimize.milp with zero gap"
+    igraph:
+      call: "modularity(cluster_optimal(g, weights = NULL))"
+      undefined_on: *optimal_skip
+      undefined_reason: >-
+        the exact search is not run on these larger fixtures (see the
+        note above), and GLPK would take too long on several of them
+
+optimal_modularity_weighted:
+  params: {fn: optimal_modularity, weighted: true, skip: *optimal_skip}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exhaustive or integer-programming maximum of exact weighted modularity"
+    igraph:
+      call: "modularity(cluster_optimal(g, weights = E(g)$weight))"
+      undefined_on: *optimal_skip
+      undefined_reason: as for optimal_modularity
+
+optimal_modularity_resolution:
+  params: {fn: optimal_modularity, resolution: 0.5, skip: *optimal_skip}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exhaustive or integer-programming maximum of exact modularity with resolution 0.5"
+
+# ---- Fluid communities --------------------------------------------------------------
+
+fluid_groups:
+  params: {fn: fluid_communities, k: 3, output: groups, seed: 1}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "k = 3 groups on connected networks of at least 3 nodes (no community can vanish); -1 where the method does not apply"
+
+fluid_quality:
+  params: {fn: fluid_communities, k: 3, output: quality, seeds: 20}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.05}
+  oracles:
+    networkx:
+      call: "mean over seeds of modularity(G, asyn_fluidc(simple graph, 3, seed = s))"
+      differs_when: [directed, undirected]
+      reason: >-
+        Fluid communities are randomized and the two procedures draw from
+        different generators; the mean modularity over 20 seeds agrees on the
+        corpus but not on every graph (0.505 against 0.560 on a 60-node tree).
+        The comparison is statistical, not per run.
+    igraph:
+      call: "mean over set.seed(1..20) of modularity(g, cluster_fluid_communities(simplify(g), 3))"
+      undefined_when: [disconnected, edge_case]
+      undefined_reason: >-
+        both tools reject disconnected networks (the engine reports -1);
+        igraph also rejects the trivial ones
+
+# ---- Voronoi communities ----------------------------------------------------------------
+
+voronoi_membership:
+  params: {fn: voronoi, mode: out, output: membership}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "exact distances (Floyd-Warshall on lengths 1 / ECC), every candidate radius, the engine's tie rules"
+
+voronoi_modularity:
+  params: {fn: voronoi, mode: out, output: modularity}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exact modularity of the Voronoi partition of highest modularity over every candidate radius"
+    igraph:
+      call: "set.seed(1); modularity of cluster_voronoi(g, weights = NULL, lengths = NULL, mode = 'out') (igraph 2.3: its internal community_voronoi_impl(g, mode = 'out', radius = -1))"
+      differs_when: [undirected, directed]
+      reason: >-
+        igraph chooses the radius with Brent's method, a local search,
+        while the engine tries every distinct distance; where they differ
+        the engine's modularity is the higher. igraph's result also depends
+        on the random number generator (the seed is fixed at 1). Listed for
+        inspection, not expected to match
+      undefined_on: [cycle7_dir]
+      undefined_when: [loops, multi_edges]
+      undefined_reason: >-
+        igraph requires a simple network, and on cycle7_dir its radius
+        search stops with "optimizer did not converge"
+
+voronoi_membership_all:
+  params: {fn: voronoi, mode: all, output: membership}
+  applies_to: directed
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as voronoi_membership with directions ignored for distances"
+
+voronoi_weighted:
+  params: {fn: voronoi, mode: out, weighted: true, lengths: inverse, output: membership}
+  applies_to: any
+  requires_weights: true
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "Voronoi partition with lengths 1 / weight divided by the ECC, strengths and modularity weighted"
+
+voronoi_radius1:
+  params: {fn: voronoi, mode: out, radius: 1.0, output: membership}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "Voronoi partition for the fixed radius 1"
+
+voronoi_all_radius1:
+  params: {fn: voronoi, mode: all, radius: 1.0, output: membership}
+  applies_to: directed
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "Voronoi partition for the fixed radius 1, directions ignored for distances"
+
+# ---- Partition comparison ------------------------------------------------------------------
+# The two fixed partitions floor(3 v / n) and (7 v) mod 4 of each fixture's
+# nodes are compared (the network itself is not used).
+
+compare_vi:
+  params: {fn: compare_partitions, method: vi}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "H(A) + H(B) - 2 I(A, B) in natural logarithms"
+    igraph:
+      call: "compare(a, b, method = 'vi')"
+      undefined_when: [null_graph]
+      undefined_reason: >-
+        Two partitions of no nodes: the engine reports undefined, igraph a
+        value.
+    cdlib:
+      call: "cdlib.evaluation.variation_of_information(blocks, stripes)"
+
+compare_nmi:
+  params: {fn: compare_partitions, method: nmi}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "2 I(A, B) / (H(A) + H(B)), 1 when both entropies are zero"
+    igraph:
+      call: "compare(a, b, method = 'nmi')"
+      undefined_when: [null_graph]
+      undefined_reason: >-
+        Two partitions of no nodes: the engine reports undefined, igraph a
+        value.
+    cdlib:
+      call: "cdlib.evaluation.normalized_mutual_information(blocks, stripes)"
+
+compare_split_join:
+  params: {fn: compare_partitions, method: split_join}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "2n - sum_i max_j n_ij - sum_j max_i n_ij"
+    igraph:
+      call: "sum(split_join_distance(a, b))"
+      undefined_when: [null_graph]
+      undefined_reason: >-
+        Two partitions of no nodes: the engine reports undefined, igraph a
+        value.
+
+compare_rand:
+  params: {fn: compare_partitions, method: rand}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "fraction of agreeing pairs; -1 (undefined) for fewer than two nodes"
+    igraph:
+      call: "compare(a, b, method = 'rand')"
+      undefined_on: [single_node]
+      undefined_reason: igraph raises an error for fewer than two nodes; the engine reports NaN.
+    cdlib:
+      call: "cdlib.evaluation.rand_index(blocks, stripes)"
+
+compare_adjusted_rand:
+  params: {fn: compare_partitions, method: adjusted_rand}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Hubert and Arabie (1985) in exact arithmetic"
+    igraph:
+      call: "compare(a, b, method = 'adjusted.rand')"
+      undefined_reason: >-
+        igraph raises an error for fewer than two nodes; the engine reports
+        NaN.
+      reason: >-
+        on two nodes both fixed partitions are all singletons, so the two
+        are identical and Hubert and Arabie's formula is 0/0; the engine
+        reports 1, the value for every other pair of identical partitions
+        (as scikit-learn's adjusted_rand_score() does), and igraph NaN
+      differs_when: [two_nodes]
+      undefined_when: [one_node, null_graph]
+    cdlib:
+      call: "cdlib.evaluation.adjusted_rand_index(blocks, stripes)"
+      differs_on: [single_node]
+      reason: >-
+        For partitions of one element cdlib (through scikit-learn) returns 1.0;
+        the adjusted Rand index is 0/0 there, and the engine, like igraph,
+        reports it undefined.
+
+compare_ami:
+  params: {fn: compare_partitions, method: ami}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Vinh, Epps, and Bailey (2010), expected mutual information summed with log-gamma terms, arithmetic-mean normalization"
+    cdlib:
+      call: "cdlib.evaluation.adjusted_mutual_information(blocks, stripes)"

@@ -1,0 +1,1233 @@
+# PageRank, Katz centrality, Bonacich power centrality, hubs and
+# authorities, assortativity, mixing matrices, the E-I index, and
+# within-group tie shares. Format: see ../README.md.
+#
+# Undefined values (NaN) are written as empty lines, so they match only
+# undefined values. Fixtures have no node attributes, so attributes come
+# from deterministic rules named in the engine spec (bindings/
+# spectral.py, `node_rule`): mod3 = v mod 3, id = v, mod3plus1 =
+# (v mod 3) + 1, num7 = 7v mod 11, num3 = 3v mod 5, for 0-based node v.
+# The R oracles name nodes "n1", "n2", ... and attach these rules as node
+# attributes.
+#
+# Engine options beyond the common keys:
+#   alpha_fraction, exponent_fraction: the parameter is this fraction of
+#       1 / lambda_max for the adjacency matrix the measure uses; each
+#       oracle computes lambda_max itself.
+#   simple: true  run on the adjacency-matrix reading of the network
+#       (parallel edges collapsed, self-loops dropped), as sna reads it.
+#   which: hubs | authorities  which vector of the hub and authority scores.
+#
+# The homophily oracle is the R package homophily (Knapp 2019), run by
+# oracles/r_spectral.R when it is installed.
+
+pagerank:
+  params: {fn: pagerank, damping: 0.85, loops: twice}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: PageRank (setProbability(0.85), setEpsilon(1e-14), setUseEdgeWeight(false)), node column 'pageranks' (oracles/system/gephi/Oracle.java)"
+      differs_on: [multi_loops_dir, multi_loops_und]
+      reason: "Gephi defect: with self-loops its PageRank scores do not sum to 1 (0.545 and 0.496 on these fixtures); see the small reproduction in docs/drafts/correctness_findings.md. Without loops it matches."
+    definition:
+      call: "solution of x = d P^T x + (d s + 1 - d) p by dense linear algebra (spectral_definition_oracle.py)"
+    igraph:
+      call: "igraph::page_rank(g, damping = 0.85, weights = NA)$vector"
+    pyigraph:
+      call: "python-igraph: g.pagerank(damping=0.85, weights=None)"
+    networkit:
+      call: "nk.centrality.PageRank(G, damp = 0.85, tol = 1e-15, distributeSinks = SinkHandling.DISTRIBUTE_SINKS)"
+      differs_when: [loops, multi_edges, isolates, disconnected, edge_case]
+      reason: >-
+        NetworKit 11 reads self-loops, parallel edges and nodes without out-
+        links differently (docs/drafts/convention_atlas.md), so on graphs with
+        any of them, and on graphs too small for its conventions, its scores
+        differ.
+      undefined_on: [empty, gnp_und_sparse, multi_loops_und, single_node, two_triangles_isolate]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md. (the oracle
+        script skips these fixtures; on other graphs the tag declarations
+        apply)
+    rustworkx:
+      tolerance: {rel: 5.0e-8, abs: 5.0e-11}  # rx.pagerank stops on its own L1 test: on the 97k-node ukwiki fixture its top scores sit 6e-9 (relative) from the engine and NetworkX, which agree to 1e-9; twice the spread of the sized tier, 3.5e-12 on the small corpus
+      call: "rx.pagerank(G as arcs, alpha = 0.85, tol = 1e-14, max_iter = 100000)"
+      differs_when: [loops]
+      reason: >-
+        rx.pagerank() takes a directed graph; an undirected fixture enters as
+        two arcs per edge and one arc per self-loop, so a loop counts once
+        (NetworkX's convention, pagerank_networkx), not twice (igraph's, this
+        variant).
+    sknetwork:
+      call: "sknetwork.ranking.PageRank(damping_factor = 0.85, solver = 'piteration', n_iter = 100000, tol = 1e-15).fit_predict(A)"
+      differs_on: [gnp_dir_sparse, gnp_und_sparse, multi_loops_und, pair, two_triangles_isolate, weighted_dir]
+      reason: >-
+        scikit-network's random-surfer operator weights the restart vector by
+        each node's own out-degree status, b_i = (1 - d [i has out-links]) y_i
+        (sknetwork/linalg/ppr_solver.py), instead of spreading the rank of
+        dangling nodes over y, so on fixtures with dangling nodes (sinks or
+        isolates) its scores are not the stationary distribution of the Google
+        matrix the engine and NetworkX use. Elsewhere the two agree.
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input matrix is empty').
+    graphblas:
+      call: "nx.pagerank(G simple, alpha = 0.85, tol = 1e-14, max_iter = 100000, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      differs_on: [empty, single_node]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+        On a graph without edges graphblas-algorithms returns 0 for every node;
+        the PageRank of an edgeless graph is uniform (every node dangles), as
+        the engine and NetworkX return.
+
+pagerank_networkx:
+  params: {fn: pagerank, damping: 0.85, loops: once}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as pagerank, with an undirected self-loop counted once"
+    networkx:
+      differs_on: [mid_messy_dir_int_2000, mid_plc_dir_4000]
+      reason: >-
+        The tool stops when the L1 change of the iterate falls below n * tol, which leaves an
+        error of a few 1e-9 relative on networks of thousands of nodes. Against the exact
+        solution of the linear system (numpy.linalg.solve) on mid_messy_dir_int_2000 NetworkX is
+        off by 3.4e-11 absolute (4.2e-9 relative), the engine by 1.8e-12 (2.1e-10).
+      call: "nx.pagerank(MultiGraph/MultiDiGraph, alpha = 0.85, weight = None, tol = 1e-14)"
+    networkit:
+      call: "nk.centrality.PageRank(G, damp = 0.85, tol = 1e-15, distributeSinks = SinkHandling.DISTRIBUTE_SINKS)"
+      undefined_on: [empty, gnp_und_sparse, multi_loops_und, single_node, two_triangles_isolate]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    rustworkx:
+      tolerance: {rel: 5.0e-8, abs: 5.0e-11}  # rx.pagerank stops on its own L1 test: on the 97k-node ukwiki fixture its top scores sit 6e-9 (relative) from the engine and NetworkX, which agree to 1e-9; twice the spread of the sized tier, 3.5e-12 on the small corpus
+      differs_on: [mid_messy_dir_int_2000, mid_plc_dir_4000]
+      reason: >-
+        The tool stops when the L1 change of the iterate falls below n * tol, which leaves an
+        error of a few 1e-9 relative on networks of thousands of nodes. Against the exact
+        solution of the linear system (numpy.linalg.solve) on mid_messy_dir_int_2000 NetworkX is
+        off by 3.4e-11 absolute (4.2e-9 relative), the engine by 1.8e-12 (2.1e-10).
+      call: "rx.pagerank(G as arcs, alpha = 0.85, tol = 1e-14, max_iter = 100000)"
+    sknetwork:
+      call: "sknetwork.ranking.PageRank(damping_factor = 0.85, solver = 'piteration', n_iter = 100000, tol = 1e-15).fit_predict(A)"
+      differs_on: [gnp_dir_sparse, gnp_und_sparse, multi_loops_und, pair, two_triangles_isolate, weighted_dir]
+      reason: >-
+        scikit-network's random-surfer operator weights the restart vector by
+        each node's own out-degree status, b_i = (1 - d [i has out-links]) y_i
+        (sknetwork/linalg/ppr_solver.py), instead of spreading the rank of
+        dangling nodes over y, so on fixtures with dangling nodes (sinks or
+        isolates) its scores are not the stationary distribution of the Google
+        matrix the engine and NetworkX use. Elsewhere the two agree.
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input matrix is empty').
+    graphblas:
+      call: "nx.pagerank(G simple, alpha = 0.85, tol = 1e-14, max_iter = 100000, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      differs_on: [empty, single_node]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+        On a graph without edges graphblas-algorithms returns 0 for every node;
+        the PageRank of an edgeless graph is uniform (every node dangles), as
+        the engine and NetworkX return.
+    jgrapht:
+      call: 'JGraphT 1.5.2: new PageRank<>(g, 0.85, 10000, 1e-14) on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+
+pagerank_weighted:
+  params: {fn: pagerank, damping: 0.85, weighted: true, loops: twice}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: PageRank (setProbability(0.85), setEpsilon(1e-14), setUseEdgeWeight(true)), node column 'pageranks' (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "as pagerank, transition probabilities proportional to weights"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    igraph:
+      call: "igraph::page_rank(g, damping = 0.85, weights = E(g)$weight)$vector"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    networkx:
+      differs_on: [mid_messy_dir_int_2000, mid_plc_dir_4000]
+      reason: >-
+        The tool stops when the L1 change of the iterate falls below n * tol, which leaves an
+        error of a few 1e-9 relative on networks of thousands of nodes. Against the exact
+        solution of the linear system (numpy.linalg.solve) on mid_messy_dir_int_2000 NetworkX is
+        off by 3.4e-11 absolute (4.2e-9 relative), the engine by 1.8e-12 (2.1e-10).
+      call: "nx.pagerank(G, weight = 'weight', tol = 1e-14)"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    pyigraph:
+      call: "python-igraph: g.pagerank(damping=0.85, weights=w)"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    networkit:
+      call: "nk.centrality.PageRank(G_weighted, damp = 0.85, tol = 1e-15, distributeSinks = SinkHandling.DISTRIBUTE_SINKS)"
+      undefined_when: [zero_weights, negative_weights]
+      undefined_reason: >-
+        NetworKit returns no value when an edge weight is zero or negative.
+      differs_when: [loops]
+      reason: >-
+        The entry counts an undirected self-loop twice (loops: twice);
+        NetworKit counts it once.
+    rustworkx:
+      tolerance: {rel: 5.0e-8, abs: 5.0e-11}  # rx.pagerank stops on its own L1 test: on the 97k-node ukwiki fixture its top scores sit 6e-9 (relative) from the engine and NetworkX, which agree to 1e-9; twice the spread of the sized tier, 3.5e-12 on the small corpus
+      call: "rx.pagerank(G as arcs, alpha = 0.85, weight_fn = float, tol = 1e-14, max_iter = 100000)"
+      differs_when: [loops]
+      reason: >-
+        The entry counts an undirected self-loop twice (loops: twice);
+        rustworkx counts it once.
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    sknetwork:
+      call: "sknetwork.ranking.PageRank(damping_factor = 0.85, solver = 'piteration', n_iter = 100000, tol = 1e-15).fit_predict(W)"
+      differs_on: [gnp_dir_sparse, gnp_und_sparse, multi_loops_und, pair, two_triangles_isolate, weighted_dir]
+      reason: >-
+        scikit-network's random-surfer operator weights the restart vector by
+        each node's own out-degree status, b_i = (1 - d [i has out-links]) y_i
+        (sknetwork/linalg/ppr_solver.py), instead of spreading the rank of
+        dangling nodes over y, so on fixtures with dangling nodes (sinks or
+        isolates) its scores are not the stationary distribution of the Google
+        matrix the engine and NetworkX use. Elsewhere the two agree.
+    graphblas:
+      call: "nx.pagerank(G simple, weight = 'weight', tol = 1e-14, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      differs_on: [empty, single_node]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+        On a graph without edges graphblas-algorithms returns 0 for every node;
+        the PageRank of an edgeless graph is uniform (every node dangles), as
+        the engine and NetworkX return.
+    jgrapht:
+      call: 'JGraphT 1.5.2: new PageRank<>(g_weighted, 0.85, 10000, 1e-14) on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+
+pagerank_personalized:
+  params: {fn: pagerank, damping: 0.85, personalization: mod3plus1, loops: twice}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as pagerank, jumps and dangling nodes following p proportional to (v mod 3) + 1"
+    igraph:
+      call: "igraph::page_rank(g, personalized = (0:(n - 1)) %% 3 + 1, weights = NA)$vector"
+    pyigraph:
+      call: "python-igraph: g.personalized_pagerank( damping=0.85, weights=None, reset=node_rule(\"mod3plus1\", n))"
+    rustworkx:
+      tolerance: {rel: 5.0e-8, abs: 5.0e-11}  # rx.pagerank stops on its own L1 test: on the 97k-node ukwiki fixture its top scores sit 6e-9 (relative) from the engine and NetworkX, which agree to 1e-9; twice the spread of the sized tier, 3.5e-12 on the small corpus
+      call: "rx.pagerank(G as arcs, alpha = 0.85, personalization = {v: v % 3 + 1}, tol = 1e-14)"
+      differs_when: [loops]
+      reason: >-
+        A self-loop enters rx.pagerank() as one arc, so it counts once, not
+        twice as in this variant (see pagerank).
+    sknetwork:
+      call: "sknetwork.ranking.PageRank(...).fit_predict(A, weights = (v % 3 + 1) / sum)"
+      differs_on: [gnp_dir_sparse, gnp_und_sparse, multi_loops_und, pair, two_triangles_isolate, weighted_dir]
+      reason: >-
+        scikit-network's random-surfer operator weights the restart vector by
+        each node's own out-degree status, b_i = (1 - d [i has out-links]) y_i
+        (sknetwork/linalg/ppr_solver.py), instead of spreading the rank of
+        dangling nodes over y, so on fixtures with dangling nodes (sinks or
+        isolates) its scores are not the stationary distribution of the Google
+        matrix the engine and NetworkX use. Elsewhere the two agree.
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input matrix is empty').
+    graphblas:
+      call: "nx.pagerank(G simple, personalization = {v: v % 3 + 1}, tol = 1e-14, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      differs_on: [empty, single_node]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+        On a graph without edges graphblas-algorithms returns 0 for every node;
+        the PageRank of an edgeless graph is uniform (every node dangles), as
+        the engine and NetworkX return.
+
+pagerank_personalized_networkx:
+  params: {fn: pagerank, damping: 0.85, personalization: mod3plus1, loops: once}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as pagerank_personalized, with an undirected self-loop counted once"
+    networkx:
+      differs_on: [mid_messy_dir_int_2000, mid_plc_dir_4000]
+      reason: >-
+        The tool stops when the L1 change of the iterate falls below n * tol, which leaves an
+        error of a few 1e-9 relative on networks of thousands of nodes. Against the exact
+        solution of the linear system (numpy.linalg.solve) on mid_messy_dir_int_2000 NetworkX is
+        off by 3.4e-11 absolute (4.2e-9 relative), the engine by 1.8e-12 (2.1e-10).
+      call: "nx.pagerank(G, personalization = {v: v % 3 + 1}, weight = None, tol = 1e-14)"
+    rustworkx:
+      tolerance: {rel: 5.0e-8, abs: 5.0e-11}  # rx.pagerank stops on its own L1 test: on the 97k-node ukwiki fixture its top scores sit 6e-9 (relative) from the engine and NetworkX, which agree to 1e-9; twice the spread of the sized tier, 3.5e-12 on the small corpus
+      differs_on: [mid_messy_dir_int_2000, mid_plc_dir_4000]
+      reason: >-
+        The tool stops when the L1 change of the iterate falls below n * tol, which leaves an
+        error of a few 1e-9 relative on networks of thousands of nodes. Against the exact
+        solution of the linear system (numpy.linalg.solve) on mid_messy_dir_int_2000 NetworkX is
+        off by 3.4e-11 absolute (4.2e-9 relative), the engine by 1.8e-12 (2.1e-10).
+      call: "rx.pagerank(G as arcs, alpha = 0.85, personalization = {v: v % 3 + 1}, tol = 1e-14)"
+    sknetwork:
+      call: "sknetwork.ranking.PageRank(...).fit_predict(A, weights = (v % 3 + 1) / sum)"
+      differs_on: [gnp_dir_sparse, gnp_und_sparse, multi_loops_und, pair, two_triangles_isolate, weighted_dir]
+      reason: >-
+        scikit-network's random-surfer operator weights the restart vector by
+        each node's own out-degree status, b_i = (1 - d [i has out-links]) y_i
+        (sknetwork/linalg/ppr_solver.py), instead of spreading the rank of
+        dangling nodes over y, so on fixtures with dangling nodes (sinks or
+        isolates) its scores are not the stationary distribution of the Google
+        matrix the engine and NetworkX use. Elsewhere the two agree.
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input matrix is empty').
+    graphblas:
+      call: "nx.pagerank(G simple, personalization = {v: v % 3 + 1}, tol = 1e-14, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      differs_on: [empty, single_node]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+        On a graph without edges graphblas-algorithms returns 0 for every node;
+        the PageRank of an edgeless graph is uniform (every node dangles), as
+        the engine and NetworkX return.
+
+pagerank_uniform_dangling:
+  params: {fn: pagerank, damping: 0.85, personalization: mod3plus1, dangling: uniform, loops: once}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as pagerank_personalized_networkx, dangling nodes jumping uniformly"
+    networkx:
+      differs_on: [mid_messy_dir_int_2000, mid_plc_dir_4000]
+      reason: >-
+        The tool stops when the L1 change of the iterate falls below n * tol, which leaves an
+        error of a few 1e-9 relative on networks of thousands of nodes. Against the exact
+        solution of the linear system (numpy.linalg.solve) on mid_messy_dir_int_2000 NetworkX is
+        off by 3.4e-11 absolute (4.2e-9 relative), the engine by 1.8e-12 (2.1e-10).
+      call: "nx.pagerank(G, personalization = {v: v % 3 + 1}, dangling = {v: 1}, weight = None, tol = 1e-14)"
+    rustworkx:
+      tolerance: {rel: 5.0e-8, abs: 5.0e-11}  # rx.pagerank stops on its own L1 test: on the 97k-node ukwiki fixture its top scores sit 6e-9 (relative) from the engine and NetworkX, which agree to 1e-9; twice the spread of the sized tier, 3.5e-12 on the small corpus
+      differs_on: [mid_messy_dir_int_2000, mid_plc_dir_4000]
+      reason: >-
+        The tool stops when the L1 change of the iterate falls below n * tol, which leaves an
+        error of a few 1e-9 relative on networks of thousands of nodes. Against the exact
+        solution of the linear system (numpy.linalg.solve) on mid_messy_dir_int_2000 NetworkX is
+        off by 3.4e-11 absolute (4.2e-9 relative), the engine by 1.8e-12 (2.1e-10).
+      call: "rx.pagerank(G as arcs, alpha = 0.85, personalization = {v: v % 3 + 1}, dangling = {v: 1}, tol = 1e-14)"
+    graphblas:
+      call: "nx.pagerank(G simple, personalization = {v: v % 3 + 1}, dangling = {v: 1}, tol = 1e-14, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      differs_on: [empty, single_node]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+        On a graph without edges graphblas-algorithms returns 0 for every node;
+        the PageRank of an edgeless graph is uniform (every node dangles), as
+        the engine and NetworkX return.
+
+pagerank_undirected:
+  params: {fn: pagerank, damping: 0.85, directed: false, loops: twice}
+  applies_to: directed
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: PageRank (setProbability(0.85), setEpsilon(1e-14), setDirected(false)), node column 'pageranks' (oracles/system/gephi/Oracle.java)"
+      differs_on: [gnp_dir_dense, gnp_dir_sparse, multi_loops_dir, real_weights_dir, weighted_dir]
+      reason: "Gephi's undirected view of a directed network merges a pair of opposite arcs into one edge (PageRank on the union graph reproduces it to 1e-16); the engine's undirected reading counts each arc. The symmetric reading reproduces Gephi (convention check) except on multi_loops_dir, which also has the loop defect of pagerank."
+    definition:
+      call: "as pagerank on the network with directions ignored"
+    igraph:
+      call: "igraph::page_rank(g, directed = FALSE, weights = NA)$vector"
+    pyigraph:
+      call: "python-igraph: g.pagerank(damping=0.85, directed=False, weights=None)"
+
+katz:
+  params: {fn: katz, alpha_fraction: 0.5, mode: in, loops: once, normalized: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "solution of (I - alpha A^T) x = 1 by dense linear algebra, unit norm, alpha = 0.5 / lambda_max"
+    networkx:
+      call: "nx.katz_centrality_numpy(G, alpha, beta = 1) on the summed adjacency matrix"
+      undefined_on: [single_node]
+      undefined_reason: katz_centrality_numpy fails on a network with one node.
+    rustworkx:
+      call: "rx.katz_centrality(G, alpha = 0.5 / lambda_max, beta = 1, max_iter = 100000, tol = 1e-14)"
+    graphblas:
+      call: "nx.katz_centrality(G simple, alpha = 0.5 / lambda_max, beta = 1, tol = 1e-14, backend = 'graphblas')"
+      differs_on: [empty, gnp_dir_sparse, gnp_und_sparse, multi_loops_dir, multi_loops_und, pair, single_node, two_triangles_isolate]
+      differs_when: [multi_edges]
+      reason: >-
+        graphblas-algorithms' katz_centrality drops the beta term for nodes
+        that have no in-links (they get no entry in the sparse result, read as
+        0), so those nodes, and nodes reached only from them, score 0 instead
+        of beta; Katz's definition gives every node at least beta. On every
+        fixture where all nodes have in-links it agrees with the definition
+        oracle. Parallel edges also collapse (Graph/DiGraph only).
+
+katz_weighted:
+  params: {fn: katz, alpha_fraction: 0.5, mode: in, weighted: true, loops: once, normalized: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as katz with the weighted adjacency matrix"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    networkx:
+      call: "nx.katz_centrality_numpy(G, alpha, weight = 'weight')"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    rustworkx:
+      call: "rx.katz_centrality(G, alpha = 0.5 / lambda_max, beta = 1, weight_fn = float, max_iter = 100000, tol = 1e-14)"
+    graphblas:
+      call: "nx.katz_centrality(G simple, alpha = 0.5 / lambda_max, weight = 'weight', tol = 1e-14, backend = 'graphblas')"
+      differs_on: [empty, gnp_dir_sparse, gnp_und_sparse, multi_loops_dir, multi_loops_und, pair, single_node, two_triangles_isolate]
+      reason: >-
+        graphblas-algorithms' katz_centrality drops the beta term for nodes
+        without in-links (see katz).
+
+katz_igraph:
+  params: {fn: katz, alpha_fraction: 0.5, mode: in, loops: ignore, normalized: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "solution of (I - alpha A^T) x = 1 without self-loops, unnormalized"
+    igraph:
+      call: "igraph::alpha_centrality(simplify(g, remove.multiple = FALSE), alpha, exo = 1, weights = NA)"
+    centiserve:
+      call: "centiserve::katzcent(g without loops, alpha = 0.5 / lambda_max)"
+      undefined_on: [cycle7_dir, empty, gnp_dir_dense, gnp_dir_sparse, multi_loops_dir, pair, path10, real_weights_dir, single_node, two_triangles_isolate, weighted_dir]
+      undefined_reason: >-
+        centiserve::katz needs a decay below the reciprocal of the largest
+        eigenvalue; it rejects the call's alpha on these inputs (valid range
+        0.0 to 0.2) or fails on a complex comparison.
+
+katz_exogenous:
+  params: {fn: katz, alpha_fraction: 0.9, mode: in, beta: mod3plus1, loops: ignore, normalized: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "solution of (I - alpha A^T) x = beta with beta_v = (v mod 3) + 1, alpha = 0.9 / lambda_max"
+    igraph:
+      call: "igraph::alpha_centrality(simplify(g, remove.multiple = FALSE), alpha, exo = (0:(n - 1)) %% 3 + 1, weights = NA)"
+
+bonacich:
+  params: {fn: bonacich, exponent_fraction: 0.5, mode: out, loops: ignore}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "alpha (I - beta A)^-1 A 1 by dense linear algebra, sum of squares n, beta = 0.5 / lambda_max (spectral_definition_oracle.py)"
+      undefined_on: [empty, single_node]
+      undefined_reason: Without ties A 1 = 0 and the scaling constant is 0 / 0.
+    igraph:
+      call: "igraph::power_centrality(g, exponent = beta)"
+      undefined_on: [empty, single_node]
+      undefined_reason: Without ties A 1 = 0 and the scaling constant is 0 / 0.
+
+bonacich_negative:
+  params: {fn: bonacich, exponent_fraction: -0.5, mode: out, loops: ignore}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "as bonacich with beta = -0.5 / lambda_max"
+      undefined_on: [empty, single_node]
+      undefined_reason: Without ties A 1 = 0 and the scaling constant is 0 / 0.
+    igraph:
+      call: "igraph::power_centrality(g, exponent = beta)"
+      undefined_on: [empty, single_node]
+      undefined_reason: Without ties A 1 = 0 and the scaling constant is 0 / 0.
+
+bonacich_unit:
+  params: {fn: bonacich, exponent: 1.0, mode: out, loops: ignore}
+  applies_to: any
+  tolerance: {rel: 2.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "as bonacich with beta = 1 (the default of igraph and sna), usually beyond 1 / lambda_max"
+      undefined_on: [cycle7_dir, gnp_dir_sparse, les_miserables]
+      undefined_reason: >-
+        1 is an eigenvalue of A, so I - A is singular and the
+        scores are undefined.
+    igraph:
+      call: "igraph::power_centrality(g, exponent = 1)"
+      undefined_on: [cycle7_dir, empty, gnp_dir_sparse, les_miserables, single_node]
+      undefined_reason: >-
+        1 is an eigenvalue of A, so I - A is singular and the scores are
+        undefined; without ties the scaling constant is 0 / 0.
+
+bonacich_sna:
+  params: {fn: bonacich, exponent: 1.0, mode: out, loops: ignore, simple: true}
+  applies_to: any
+  tolerance: {rel: 5.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "as bonacich_unit on the binary adjacency matrix without its diagonal"
+      undefined_on: [cycle7_dir, gnp_dir_sparse, les_miserables]
+      undefined_reason: >-
+        1 is an eigenvalue of A, so I - A is singular and the
+        scores are undefined.
+    sna:
+      call: "sna::bonpow(m, gmode, exponent = 1)"
+      undefined_on: [cycle7_dir, empty, gnp_dir_sparse, les_miserables, single_node]
+      undefined_reason: >-
+        1 is an eigenvalue of A, so I - A is singular and the scores are
+        undefined; without ties the scaling constant is 0 / 0.
+      tolerance: {rel: 5.0e-12, abs: 1.0e-12}
+      note: >-
+        sna solves the linear system with a dense LU factorization whose
+        rounding leaves about 2e-14 on scores that are zero in exact
+        arithmetic (113 nodes, 2519 edges, saved fuzz case: engine 1.8e-15,
+        sna 2.2e-14); the engine solves with its own routine and the two
+        agree to 5e-12 (relative) elsewhere. Oracle rounding noise, so the
+        absolute tolerance for this tool is 1e-12.
+
+bonacich_rescale:
+  params: {fn: bonacich, exponent_fraction: 0.5, mode: out, loops: ignore, rescale: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "as bonacich, divided by the sum of the scores"
+      undefined_on: [empty, single_node]
+      undefined_reason: Without ties the scores sum to 0.
+    igraph:
+      call: "igraph::power_centrality(g, exponent = beta, rescale = TRUE)"
+      undefined_on: [empty, single_node]
+      undefined_reason: Without ties the scores sum to 0.
+
+hits_authorities:
+  params: {fn: hits, which: authorities, loops: twice, scale: max}
+  applies_to: any
+  tolerance: {rel: 5.0e-11, abs: 2.0e-12}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: Hits (setEpsilon(1e-14)), node column 'authority' (oracles/system/gephi/Oracle.java)"
+      differs_when: [directed, undirected]
+      reason: "Gephi scales the hub and authority vectors to unit Euclidean length; the engine scales to maximum 1 (scale: unit reproduces it), and Gephi ignores self-loops (loops: ignore). With no edges Gephi returns 0 where the engine's value is undefined. A convention check holds on every fixture with edges."
+    definition:
+      call: "leading eigenvector of A^T A by dense eigendecomposition, largest 1; no answer when the leading eigenvalue is repeated"
+      undefined_on: [cycle7_dir, davis_twomode, path10, southern_women, star8, two_triangles_isolate, twomode_random, twomode_weighted]
+      undefined_reason: >-
+        Several blocks of the hub-authority graph share the largest
+        singular value (bipartite or disconnected networks, and the directed
+        cycle, where A^T A = I), so the leading eigenvector is not unique and
+        depends on the starting vector. the engine returns the limit of
+        Kleinberg's iteration from h = 1, as NetworkX's hits() does.
+    igraph:
+      call: "igraph::authority_score(g, weights = NA)$vector"
+      differs_when: [edge_case, disconnected, bipartite, symmetric_nodes]
+      reason: >-
+        Without ties the scores are undefined (the engine NaN, igraph fills in
+        values). When several blocks of the hub-authority graph share the
+        largest singular value (bipartite or disconnected networks, and
+        symmetric ones such as the directed cycle, where A^T A = I), the
+        leading eigenvector is not unique and depends on the start; the engine
+        returns the limit of Kleinberg's iteration from h = 1, as NetworkX's
+        hits() does.
+    pyigraph:
+      call: "python-igraph: gu.authority_score(scale=True)"
+      differs_when: [edge_case, disconnected, bipartite, symmetric_nodes]
+      reason: >-
+        Without ties the scores are undefined (the engine NaN, igraph fills in
+        values). When several blocks of the hub-authority graph share the
+        largest singular value (bipartite or disconnected networks, and
+        symmetric ones such as the directed cycle, where A^T A = I), the
+        leading eigenvector is not unique and depends on the start; the engine
+        returns the limit of Kleinberg's iteration from h = 1, as NetworkX's
+        hits() does.
+
+hits_hubs:
+  params: {fn: hits, which: hubs, loops: twice, scale: max}
+  applies_to: any
+  tolerance: {rel: 5.0e-11, abs: 2.0e-12}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: Hits (setEpsilon(1e-14)), node column 'hub' (oracles/system/gephi/Oracle.java)"
+      differs_when: [directed, undirected]
+      reason: "Gephi scales the hub and authority vectors to unit Euclidean length; the engine scales to maximum 1 (scale: unit reproduces it), and Gephi ignores self-loops (loops: ignore). With no edges Gephi returns 0 where the engine's value is undefined. A convention check holds on every fixture with edges."
+    definition:
+      call: "A times the leading eigenvector of A^T A, largest 1; no answer when the leading eigenvalue is repeated"
+      undefined_on: [cycle7_dir, davis_twomode, path10, southern_women, star8, two_triangles_isolate, twomode_random, twomode_weighted]
+      undefined_reason: >-
+        Several blocks of the hub-authority graph share the largest
+        singular value (bipartite or disconnected networks, and the directed
+        cycle, where A^T A = I), so the leading eigenvector is not unique and
+        depends on the starting vector. the engine returns the limit of
+        Kleinberg's iteration from h = 1, as NetworkX's hits() does.
+    igraph:
+      call: "igraph::hub_score(g, weights = NA)$vector"
+      differs_when: [edge_case, disconnected, bipartite, symmetric_nodes]
+      reason: >-
+        Without ties the scores are undefined (the engine NaN, igraph fills in
+        values). When several blocks of the hub-authority graph share the
+        largest singular value (bipartite or disconnected networks, and
+        symmetric ones such as the directed cycle, where A^T A = I), the
+        leading eigenvector is not unique and depends on the start; the engine
+        returns the limit of Kleinberg's iteration from h = 1, as NetworkX's
+        hits() does.
+    pyigraph:
+      call: "python-igraph: gu.hub_score(scale=True)"
+      differs_when: [edge_case, disconnected, bipartite, symmetric_nodes]
+      reason: >-
+        Without ties the scores are undefined (the engine NaN, igraph fills in
+        values). When several blocks of the hub-authority graph share the
+        largest singular value (bipartite or disconnected networks, and
+        symmetric ones such as the directed cycle, where A^T A = I), the
+        leading eigenvector is not unique and depends on the start; the engine
+        returns the limit of Kleinberg's iteration from h = 1, as NetworkX's
+        hits() does.
+
+hits_authorities_networkx:
+  params: {fn: hits, which: authorities, loops: once, scale: sum}
+  applies_to: any
+  tolerance: {rel: 2.0e-11, abs: 5.0e-14}
+  oracles:
+    definition:
+      call: "leading eigenvector of A^T A with undirected loops counted once, sum 1; no answer when the leading eigenvalue is repeated"
+      undefined_on: [cycle7_dir, davis_twomode, path10, southern_women, star8, two_triangles_isolate, twomode_random, twomode_weighted]
+      undefined_reason: >-
+        Several blocks of the hub-authority graph share the largest
+        singular value (bipartite or disconnected networks, and the directed
+        cycle, where A^T A = I), so the leading eigenvector is not unique and
+        depends on the starting vector. the engine returns the limit of
+        Kleinberg's iteration from h = 1, as NetworkX's hits() does.
+    networkx:
+      call: "nx.hits(G, normalized = True)[1] on the summed adjacency matrix"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        Without edges NetworkX's iteration divides 0 by 0 and fails to
+        converge.
+      tolerance: {rel: 2.0e-11, abs: 1.0e-12}
+      note: >-
+          NetworkX's power iteration stops at its own tolerance and leaves
+          rounding residue of about 6e-14 on entries that are exactly zero
+          (the engine returns 0); the absolute tolerance of 1e-12 for this
+          tool covers it.
+    rustworkx:
+      call: "rx.hits(G as arcs, max_iter = 1000000, tol = 1e-13)[1]"
+      reason: >-
+        When the leading singular value of A is repeated (bipartite or
+        disconnected networks, symmetric ones such as the directed cycle) hub
+        and authority vectors are not unique. rustworkx iterates A^T A from
+        uniform authorities; the engine, like NetworkX, takes the limit from h
+        = 1, so the two land on different vectors of the same eigenspace.
+      undefined_reason: >-
+        Without edges rx.hits() raises FailedToConverge.
+      differs_when: [disconnected, bipartite, symmetric_nodes]
+      undefined_when: [edgeless]
+    sknetwork:
+      call: "sknetwork.ranking.HITS().fit(A).scores_col_, scaled to sum 1"
+      differs_on: [cycle7_dir, davis_twomode, path10, southern_women, star8, two_triangles_isolate, twomode_random, twomode_weighted]
+      reason: >-
+        Repeated leading singular value on these fixtures: scikit-network takes
+        the leading singular vectors from a sparse SVD solver and clips their
+        negative entries (ranking/hits.py), which picks another vector of the
+        eigenspace. The definition oracle declares these fixtures undefined.
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input matrix is empty').
+    graphblas:
+      call: "nx.hits(G simple, tol = 1e-13, backend = 'graphblas')[1]"
+      differs_when: [multi_edges]
+      differs_on: [empty, single_node]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+        Without edges it returns 0 for every node, where hubs and authorities
+        are undefined (0/0).
+
+hits_hubs_networkx:
+  params: {fn: hits, which: hubs, loops: once, scale: sum}
+  applies_to: any
+  tolerance: {rel: 2.0e-11, abs: 5.0e-14}
+  oracles:
+    definition:
+      call: "A a, sum 1; no answer when the leading eigenvalue is repeated"
+      undefined_on: [cycle7_dir, davis_twomode, path10, southern_women, star8, two_triangles_isolate, twomode_random, twomode_weighted]
+      undefined_reason: >-
+        Several blocks of the hub-authority graph share the largest
+        singular value (bipartite or disconnected networks, and the directed
+        cycle, where A^T A = I), so the leading eigenvector is not unique and
+        depends on the starting vector. the engine returns the limit of
+        Kleinberg's iteration from h = 1, as NetworkX's hits() does.
+    networkx:
+      call: "nx.hits(G, normalized = True)[0] on the summed adjacency matrix"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        Without edges NetworkX's iteration divides 0 by 0 and fails to
+        converge.
+      tolerance: {rel: 2.0e-11, abs: 1.0e-12}
+      note: >-
+          NetworkX's power iteration stops at its own tolerance and leaves
+          rounding residue of about 6e-14 on entries that are exactly zero
+          (the engine returns 0); the absolute tolerance of 1e-12 for this
+          tool covers it.
+    rustworkx:
+      call: "rx.hits(G as arcs, max_iter = 1000000, tol = 1e-13)[0]"
+      reason: >-
+        When the leading singular value of A is repeated (bipartite or
+        disconnected networks, symmetric ones such as the directed cycle) hub
+        and authority vectors are not unique. rustworkx iterates A^T A from
+        uniform authorities; the engine, like NetworkX, takes the limit from h
+        = 1, so the two land on different vectors of the same eigenspace.
+      undefined_reason: >-
+        Without edges rx.hits() raises FailedToConverge.
+      differs_when: [disconnected, bipartite, symmetric_nodes]
+      undefined_when: [edgeless]
+    sknetwork:
+      call: "sknetwork.ranking.HITS().fit(A).scores_row_, scaled to sum 1"
+      differs_on: [cycle7_dir, davis_twomode, path10, southern_women, star8, two_triangles_isolate, twomode_random, twomode_weighted]
+      reason: >-
+        Repeated leading singular value on these fixtures: scikit-network takes
+        the leading singular vectors from a sparse SVD solver and clips their
+        negative entries (ranking/hits.py), which picks another vector of the
+        eigenspace. The definition oracle declares these fixtures undefined.
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input matrix is empty').
+    graphblas:
+      call: "nx.hits(G simple, tol = 1e-13, backend = 'graphblas')[0]"
+      differs_when: [multi_edges]
+      differs_on: [empty, single_node]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+        Without edges it returns 0 for every node, where hubs and authorities
+        are undefined (0/0).
+
+assortativity_degree:
+  params: {fn: assortativity_degree, directed: true, loops: twice}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Pearson correlation of out-degree at the source and in-degree at the target over all arcs (undirected edges both ways, loops twice) in exact arithmetic"
+    igraph:
+      call: "igraph::assortativity_degree(g, directed = TRUE)"
+      tolerance: {rel: 1.0e-8, abs: 1.0e-12}
+      note: >-
+        The tool sums degree products in floating point in its own order; on
+        a large multigraph (79 nodes, 6164 edges, saved fuzz case) that
+        leaves it up to 2e-9 (relative) from the exact value, which the
+        engine and the definition oracle agree on to 1e-12. Oracle
+        quirk, not an engine difference: the looser tolerance applies to
+        this tool only.
+    homophily:
+      call: "homophily::assort_degree(g)"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+      differs_when: [loops, multi_edges]
+      reason: >-
+        homophily takes degrees from the row and column sums of the
+        adjacency matrix, which count self-loops and parallel edges
+        differently from the degrees this engine and igraph use (an
+        undirected loop adds 2 to degree here). The networks agree when
+        there are no loops or parallel edges.
+    pyigraph:
+      call: "python-igraph: [g.assortativity_degree(directed=True)]"
+      tolerance: {rel: 1.0e-8, abs: 1.0e-12}
+      note: >-
+        The tool sums degree products in floating point in its own order; on
+        a large multigraph (79 nodes, 6164 edges, saved fuzz case) that
+        leaves it up to 2e-9 (relative) from the exact value, which the
+        engine and the definition oracle agree on to 1e-12. Oracle
+        quirk, not an engine difference: the looser tolerance applies to
+        this tool only.
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: assortativity_bin(A, 0 | 1), on
+        the binary adjacency matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - complete5_dir
+      - complete6
+      - cycle7_dir
+      - empty
+      - gnp_dir_dense
+      - gnp_dir_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - pair
+      - real_weights_dir
+      - single_node
+      - two_triangles_isolate
+      - weighted_dir
+      reason: BCT returns NaN where the degree variance is zero (regular networks, a single node);
+        the engine returns no value there, so both are undefined. On directed networks BCT's assortativity_bin(A,
+        1) is close to but not equal to the Pearson correlation of out-degree at the source and
+        in-degree at the target over the arcs (differences of 0.1% to 14% on the four directed
+        random/weighted fixtures; cause not identified), and it cannot count loops or parallel
+        edges.
+
+assortativity_degree_networkx:
+  params: {fn: assortativity_degree, directed: true, loops: once}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as assortativity_degree with an undirected self-loop contributing one arc"
+    networkx:
+      call: "nx.degree_assortativity_coefficient(MultiGraph/MultiDiGraph)"
+      tolerance: {rel: 1.0e-8, abs: 1.0e-12}
+      note: >-
+        The tool sums degree products in floating point in its own order; on
+        a large multigraph (79 nodes, 6164 edges, saved fuzz case) that
+        leaves it up to 2e-9 (relative) from the exact value, which the
+        engine and the definition oracle agree on to 1e-12. Oracle
+        quirk, not an engine difference: the looser tolerance applies to
+        this tool only.
+
+assortativity_degree_undirected:
+  params: {fn: assortativity_degree, directed: false, loops: twice}
+  applies_to: directed
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as assortativity_degree with directions ignored and total degree"
+    igraph:
+      call: "igraph::assortativity_degree(g, directed = FALSE)"
+      tolerance: {rel: 1.0e-8, abs: 1.0e-12}
+      note: >-
+        The tool sums degree products in floating point in its own order; on
+        a large multigraph (79 nodes, 6164 edges, saved fuzz case) that
+        leaves it up to 2e-9 (relative) from the exact value, which the
+        engine and the definition oracle agree on to 1e-12. Oracle
+        quirk, not an engine difference: the looser tolerance applies to
+        this tool only.
+    pyigraph:
+      call: "python-igraph: [g.assortativity_degree(directed=False)]"
+      tolerance: {rel: 1.0e-8, abs: 1.0e-12}
+      note: >-
+        The tool sums degree products in floating point in its own order; on
+        a large multigraph (79 nodes, 6164 edges, saved fuzz case) that
+        leaves it up to 2e-9 (relative) from the exact value, which the
+        engine and the definition oracle agree on to 1e-12. Oracle
+        quirk, not an engine difference: the looser tolerance applies to
+        this tool only.
+
+assortativity_degree_weighted:
+  params: {fn: assortativity_degree, weighted: true, directed: true, loops: once}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as assortativity_degree_networkx with strengths"
+    networkx:
+      call: "nx.degree_assortativity_coefficient(G, weight = 'weight')"
+      tolerance: {rel: 1.0e-8, abs: 1.0e-12}
+      note: >-
+        The tool sums degree products in floating point in its own order; on
+        a large multigraph (79 nodes, 6164 edges, saved fuzz case) that
+        leaves it up to 2e-9 (relative) from the exact value, which the
+        engine and the definition oracle agree on to 1e-12. Oracle
+        quirk, not an engine difference: the looser tolerance applies to
+        this tool only.
+
+assortativity_nominal:
+  params: {fn: assortativity_nominal, types: mod3, directed: true, loops: twice}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Newman (2003) eq. 2 from the arc mixing matrix of v mod 3, exact arithmetic"
+    igraph:
+      call: "igraph::assortativity_nominal(g, types = (0:(n - 1)) %% 3 + 1, directed = TRUE)"
+    pyigraph:
+      call: "python-igraph: [g.assortativity_nominal( [v % 3 for v in v0], directed=True)]"
+
+assortativity_nominal_undirected:
+  params: {fn: assortativity_nominal, types: mod3, directed: false, loops: twice}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as assortativity_nominal with directions ignored"
+    igraph:
+      call: "igraph::assortativity_nominal(g, types, directed = FALSE)"
+    homophily:
+      call: "homophily::assort_discrete(g, 'group'), which symmetrizes the mixing matrix"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+    pyigraph:
+      call: "python-igraph: [g.assortativity_nominal( [v % 3 for v in v0], directed=False)]"
+
+assortativity_nominal_networkx:
+  params: {fn: assortativity_nominal, types: mod3, directed: true, loops: once}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as assortativity_nominal with an undirected self-loop contributing one arc"
+    networkx:
+      call: "nx.attribute_assortativity_coefficient(MultiGraph/MultiDiGraph, 'group')"
+      differs_when: [edge_case]
+      reason: >-
+        Without edges the mixing matrix is empty and the coefficient is 0 / 0;
+        NetworkX returns 0, the engine and igraph return NaN.
+
+assortativity_modularity:
+  params: {fn: assortativity_nominal, types: mod3, directed: true, loops: twice, normalized: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "sum_i e_ii - sum_i a_i b_i"
+    igraph:
+      call: "igraph::assortativity_nominal(g, types, directed = TRUE, normalized = FALSE)"
+
+assortativity_values:
+  params: {fn: assortativity_values, values: num7, directed: true, loops: twice}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Pearson correlation of 7v mod 11 at both ends of every arc, exact arithmetic"
+    igraph:
+      call: "igraph::assortativity(g, values = (7 * (0:(n - 1))) %% 11, directed = TRUE)"
+    homophily:
+      call: "homophily::assort_scalar(g, (7 * (0:(n - 1))) %% 11)"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+    pyigraph:
+      call: "python-igraph: [g.assortativity([(7 * v) % 11 for v in v0], directed=True)]"
+
+assortativity_values_in:
+  params: {fn: assortativity_values, values: num7, values_in: num3, directed: true, loops: twice}
+  applies_to: directed
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Pearson correlation of 7v mod 11 at sources and 3v mod 5 at targets"
+    igraph:
+      call: "igraph::assortativity(g, values = 7v mod 11, values.in = 3v mod 5, directed = TRUE)"
+    homophily:
+      call: "homophily::assort_scalar(g, 7v mod 11, 3v mod 5)"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+    pyigraph:
+      call: "python-igraph: [g.assortativity( [(7 * v) % 11 for v in v0], [(3 * v) % 5 for v in v0], directed=True)]"
+
+assortativity_values_networkx:
+  params: {fn: assortativity_values, values: num7, directed: true, loops: once}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as assortativity_values with an undirected self-loop contributing one arc"
+    networkx:
+      call: "nx.numeric_assortativity_coefficient(MultiGraph/MultiDiGraph, 'value')"
+
+assortativity_covariance:
+  params: {fn: assortativity_values, values: num7, directed: true, loops: twice, normalized: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "covariance (divided by the number of arcs) of 7v mod 11 at both ends of every arc"
+    igraph:
+      call: "igraph::assortativity(g, values, directed = TRUE, normalized = FALSE)"
+    pyigraph:
+      call: "python-igraph: [g.assortativity( [(7 * v) % 11 for v in v0], directed=True, normalized=False)],"
+
+mixing_matrix:
+  params: {fn: mixing_matrix, dim1: mod3, direction: all}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "arc counts by category of v mod 3, folded into the upper triangle for undirected networks"
+    homophily:
+      call: "homophily::as_mixing_matrix(g, dim1 = 'group')"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+
+mixing_matrix_in:
+  params: {fn: mixing_matrix, dim1: mod3, direction: in}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "transpose of the arc counts by source and target category"
+    homophily:
+      call: "homophily::as_mixing_matrix(g, dim1 = 'group', direction = 'in')"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+
+mixing_matrix_nodes:
+  params: {fn: mixing_matrix, dim1: id, dim2: mod3, direction: all}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "for each node, its ties to nodes in each category of v mod 3, both directions"
+    homophily:
+      call: "homophily::as_mixing_matrix(g, dim1 = 'name', dim2 = 'group')"
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+      undefined_when: [edgeless]
+      differs_when: [two_nodes, isolates, symmetric_nodes]
+      reason: >-
+        On two-node networks, networks with isolated nodes, and small stars
+        (3 nodes, groups v mod 3 putting every node alone in its group)
+        homophily's node mixing table counts some ties twice (cause in
+        homophily not identified); the definition oracle agrees with the
+        engine there, and other networks agree. symmetric_nodes covers the
+        stars.
+
+mixing_matrix_nodes_out:
+  params: {fn: mixing_matrix, dim1: id, dim2: mod3, direction: out}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "for each node, its out-ties to nodes in each category"
+    homophily:
+      call: "homophily::as_mixing_matrix(g, dim1 = 'name', dim2 = 'group', direction = 'out')"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+
+mixing_matrix_nodes_in:
+  params: {fn: mixing_matrix, dim1: id, dim2: mod3, direction: in}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "category of the sender (rows) by receiving node (columns)"
+    homophily:
+      call: "homophily::as_mixing_matrix(g, dim1 = 'name', dim2 = 'group', direction = 'in')"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+
+ei_index:
+  params: {fn: ei_index, groups: mod3, scope: global}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "(E - I) / (E + I) over all edges, groups v mod 3 (Krackhardt and Stern 1988)"
+    homophily:
+      call: "homophily::ei_index(g, 'group', scope = 'global')"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+
+ei_index_group:
+  params: {fn: ei_index, groups: mod3, scope: group, counting: standard}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "I_g = ties among members, E_g = ties between members and non-members"
+
+ei_index_group_out:
+  params: {fn: ei_index, groups: mod3, scope: group, direction: out, counting: standard}
+  applies_to: directed
+  tolerance: {rel: 1.0e-14, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "I_g = arcs among members, E_g = arcs sent by members to non-members"
+
+ei_index_group_homophily:
+  params: {fn: ei_index, groups: mod3, scope: group, counting: homophily}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "I_g from the diagonal and E_g from row g of the upper triangle of homophily's mixing matrix"
+    homophily:
+      call: "homophily::ei_index(g, 'group', scope = 'group')"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+
+ei_index_node:
+  params: {fn: ei_index, groups: mod3, scope: node, counting: standard}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "each node's ties to its own group (I) and to others (E), sent and received; a self-loop is one internal tie"
+    egor:
+      call: "egor::comp_ei(egor object, alt.attr = 'group', ego.attr = 'group')"
+      differs_when: [directed, multi_edges, isolates, loops]
+      reason: >-
+        egor's comp_ei() counts alters, each neighbour once whatever the
+        number or direction of the ties to it, and no self-loop; the engine's
+        node E-I index counts ties (each edge, in either direction,
+        separately, a self-loop as an internal tie), and an ego without alters
+        has no value in egor where the engine reports undefined (-1).
+        Undirected fixtures without parallel edges or loops agree.
+
+ei_index_node_homophily:
+  params: {fn: ei_index, groups: mod3, scope: node, counting: homophily}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "as ei_index_node, with a self-loop counted twice when ties are counted both ways"
+    homophily:
+      call: "homophily::ei_index(g, 'group', scope = 'node')"
+      undefined_reason: >-
+        homophily fails on networks without ties or with a single node.
+      undefined_when: [edgeless]
+      differs_when: [two_nodes, isolates, symmetric_nodes]
+      reason: >-
+        homophily reports no value for a node whose group has no other node
+        present (an isolated node, either node of a two-node network, or a
+        node of a small star under groups v mod 3, where every node of the
+        three is alone in its group); the engine reports its index from its
+        ties (or undefined without any). The definition oracle agrees with
+        the engine. Oracle quirk; symmetric_nodes covers the stars.
+
+group_shares:
+  params: {fn: group_shares, groups: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "member-side counts of internal and external ties per group, observed share, and (size - 1) / (n - 1)"
+
+# ---- parameter values other than the defaults (second audit) -----------------
+#
+# PageRank at damping factors other than 0.85, weighted and unweighted, and
+# Katz centrality at other attenuation factors (as a fraction of 1 / the
+# largest eigenvalue), checked against the definition and NetworkX.
+
+pagerank_networkx_damping_050:
+  params: {fn: pagerank, damping: 0.5, loops: once}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as pagerank_networkx, damping 0.5"
+    networkx:
+      call: "nx.pagerank(MultiGraph/MultiDiGraph, alpha = 0.5, weight = None, tol = 1e-14)"
+
+pagerank_networkx_damping_095:
+  params: {fn: pagerank, damping: 0.95, loops: once}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as pagerank_networkx, damping 0.95"
+    networkx:
+      differs_on: [mid_messy_dir_int_2000, mid_plc_dir_4000]
+      reason: >-
+        The tool stops when the L1 change of the iterate falls below n * tol, which leaves an
+        error of a few 1e-9 relative on networks of thousands of nodes. Against the exact
+        solution of the linear system (numpy.linalg.solve) on mid_messy_dir_int_2000 NetworkX is
+        off by 3.4e-11 absolute (4.2e-9 relative), the engine by 1.8e-12 (2.1e-10).
+      call: "nx.pagerank(MultiGraph/MultiDiGraph, alpha = 0.95, weight = None, tol = 1e-14)"
+
+pagerank_weighted_networkx_damping_060:
+  params: {fn: pagerank, damping: 0.6, weighted: true, loops: once}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as pagerank_weighted with an undirected self-loop counted once, damping 0.6"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    networkx:
+      call: "nx.pagerank(MultiGraph/MultiDiGraph, alpha = 0.6, weight = 'weight', tol = 1e-14)"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+
+pagerank_personalized_networkx_damping_030:
+  params: {fn: pagerank, damping: 0.3, personalization: mod3plus1, loops: once}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as pagerank_personalized_networkx, damping 0.3"
+    networkx:
+      call: "nx.pagerank(MultiGraph/MultiDiGraph, alpha = 0.3, personalization = mod3plus1, tol = 1e-14)"
+
+katz_alpha_010:
+  params: {fn: katz, alpha_fraction: 0.1, mode: in, loops: once, normalized: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as katz, alpha = 0.1 / lambda_max"
+    networkx:
+      call: "nx.katz_centrality_numpy(G, alpha = 0.1 / lambda_max, beta = 1) on the summed adjacency matrix"
+      undefined_on: [single_node]
+      undefined_reason: katz_centrality_numpy fails on a network with one node.
+
+katz_alpha_080_weighted:
+  params: {fn: katz, alpha_fraction: 0.8, mode: in, weighted: true, loops: once, normalized: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-11}
+  oracles:
+    definition:
+      call: "as katz_weighted, alpha = 0.8 / lambda_max"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    networkx:
+      call: "nx.katz_centrality_numpy(G, alpha = 0.8 / lambda_max, weight = 'weight')"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.

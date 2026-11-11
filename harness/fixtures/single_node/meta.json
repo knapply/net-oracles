@@ -1,0 +1,15 @@
+{
+  "n": 1,
+  "directed": false,
+  "weighted": false,
+  "tags": [
+    "bipartite",
+    "edge_case",
+    "edgeless",
+    "isolates",
+    "no_two_paths",
+    "one_node",
+    "onemode"
+  ],
+  "source": "synthetic"
+}

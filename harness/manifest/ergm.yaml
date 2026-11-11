@@ -1,0 +1,370 @@
+# Exponential-family random graph models (ERGMs) and stochastic
+# actor-oriented models (SAOMs): statistics, change statistics, MPLE,
+# simulation from given coefficients, MCMC-MLE, and SAOM simulation.
+# Format: see ../README.md; terms and engine options:
+# bindings/ergm.py.
+#
+# Every model runs on the simple graph underlying the fixture (loops
+# dropped, repeated pairs once), as an ergm network object holds it.
+# Node attributes come from the node index: mod3 (v % 3) and num7
+# ((7 v) % 11). The engine lists nodefactor levels 1 and 2 of mod3; ergm's
+# nodefactor("mod3") drops the first level (0) by default and gives the
+# same two statistics, so the R oracle writes one nodefactor() term for
+# the consecutive nodefactor entries.
+#
+# ergm truncates degree and shared-partner counts at `cutoff` (30 by
+# default); the calls raise it above every fixture's size.
+#
+# Simulated means and MCMC-MLE are Monte Carlo estimates on both sides;
+# their tolerances allow several standard errors of the difference. A fit
+# that does not converge is -999 per coefficient (none expected on the
+# fixtures listed).
+
+ergm_stats_undirected:
+  params:
+    fn: ergm_statistics
+    terms: [edges, isolates, "kstar:2", "kstar:3", triangle, "gwdegree:0.5", "gwesp:0.5",
+            "gwdsp:0.5", "nodematch:mod3", "nodefactor:mod3:1", "nodefactor:mod3:2",
+            "nodecov:num7"]
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "direct counting over pairs and triples (ergm_definition_oracle.py)"
+    ergm:
+      call: >-
+        summary(nw ~ edges + isolates + kstar(2:3) + triangle + gwdegree(0.5, fixed = TRUE, cutoff = 100)
+        + gwesp(0.5, fixed = TRUE, cutoff = 100) + gwdsp(0.5, fixed = TRUE, cutoff = 100) + nodematch("mod3")
+        + nodefactor("mod3") + nodecov("num7"))
+      undefined_on: [single_node]
+      undefined_reason: >-
+        With one node only level 0 of mod3 occurs, so nodefactor() has no
+        statistics left after dropping the first level.
+
+ergm_stats_directed:
+  params:
+    fn: ergm_statistics
+    terms: [edges, mutual, isolates, "istar:2", "ostar:2", ttriple, ctriple, triangle,
+            "gwidegree:0.5", "gwodegree:0.5", "gwesp:0.5", "gwdsp:0.5", "nodematch:mod3",
+            "nodefactor:mod3:1", "nodefactor:mod3:2", "nodecov:num7"]
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "direct counting over pairs and triples (ergm_definition_oracle.py)"
+    ergm:
+      call: >-
+        summary(nw ~ edges + mutual + isolates + istar(2) + ostar(2) + ttriple + ctriple
+        + triangle + gwidegree(0.5, fixed = TRUE, cutoff = 100) + gwodegree(0.5, fixed = TRUE, cutoff = 100)
+        + gwesp(0.5, fixed = TRUE, cutoff = 100) + gwdsp(0.5, fixed = TRUE, cutoff = 100) + nodematch("mod3")
+        + nodefactor("mod3") + nodecov("num7"))
+      undefined_on: [pair]
+      undefined_reason: >-
+        With two nodes mod3 takes only levels 0 and 1, so nodefactor() gives
+        one statistic instead of two.
+
+ergm_change_sums_undirected:
+  params:
+    fn: ergm_change_sums
+    terms: [edges, isolates, "kstar:2", "kstar:3", triangle, "gwdegree:0.5", "gwesp:0.5",
+            "gwdsp:0.5", "nodematch:mod3", "nodefactor:mod3:1", "nodefactor:mod3:2",
+            "nodecov:num7"]
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum over dyads of g(x with the tie) - g(x without it), each counted directly (ergm_definition_oracle.py)"
+      only_on: [complete6, florentine, kite, multi_loops_und, path10, single_node, star8,
+                two_triangles_isolate, twomode_weighted]
+      undefined_reason: Recounting every statistic twice per dyad is limited to fixtures of at most 20 nodes.
+    ergm:
+      call: >-
+        mple <- ergmMPLE(nw ~ <the terms of ergm_stats_undirected>, output = "matrix");
+        colSums(mple$predictor * mple$weights)
+      undefined_on: [single_node]
+      undefined_reason: >-
+        A network of one node has no dyads, and nodefactor() has no level
+        left (see ergm_stats_undirected).
+
+ergm_change_sums_directed:
+  params:
+    fn: ergm_change_sums
+    terms: [edges, mutual, isolates, "istar:2", "ostar:2", ttriple, ctriple, triangle,
+            "gwidegree:0.5", "gwodegree:0.5", "gwesp:0.5", "gwdsp:0.5", "nodematch:mod3",
+            "nodefactor:mod3:1", "nodefactor:mod3:2", "nodecov:num7"]
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum over dyads of g(x with the tie) - g(x without it), each counted directly (ergm_definition_oracle.py)"
+      only_on: [complete5_dir, cycle7_dir, empty, multi_loops_dir, pair]
+      undefined_reason: Recounting every statistic twice per dyad is limited to fixtures of at most 20 nodes.
+    ergm:
+      call: >-
+        mple <- ergmMPLE(nw ~ <the terms of ergm_stats_directed>, output = "matrix");
+        colSums(mple$predictor * mple$weights)
+      undefined_on: [pair]
+      undefined_reason: nodefactor() gives one statistic on two nodes (see ergm_stats_directed).
+
+ergm_mple_undirected:
+  params: {fn: ergm_mple, terms: [edges, "gwesp:0.5", "nodematch:mod3"]}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-7, abs: 1.0e-10}
+  note: >-
+    Maximum pseudo-likelihood is a logistic regression: the definition
+    oracle and the engine agree to 1e-14; ergm's glm() iteration stops on a
+    relative deviance change of 1e-8, which leaves coefficients within
+    4.3e-8 relative (largest seen), hence rel 1e-7.
+  oracles:
+    definition:
+      call: "logistic regression of every dyad's tie on its change statistics, recounted by toggling (ergm_definition_oracle.py)"
+      only_on: [florentine, kite, multi_loops_und]
+      undefined_reason: >-
+        Recounting the change statistics is limited to fixtures of at most
+        20 nodes; the other small fixtures have no finite estimate.
+    ergm:
+      call: coef(ergm(nw ~ edges + gwesp(0.5, fixed = TRUE, cutoff = 100) + nodematch("mod3"), estimate = "MPLE"))
+      only_on: [florentine, kite, multi_loops_und, karate, gnp_und_dense,
+                gnp_und_sparse, les_miserables, uniform_weights, real_weights_und,
+                weighted_und]
+      undefined_reason: >-
+        On the other fixtures the pseudo-likelihood has no finite maximum
+        (complete, empty, or perfectly separated change statistics).
+
+ergm_mple_directed:
+  params: {fn: ergm_mple, terms: [edges, mutual, "gwesp:0.5", "nodematch:mod3"]}
+  applies_to: directed
+  tolerance: {rel: 1.0e-7, abs: 1.0e-10}
+  note: >-
+    Maximum pseudo-likelihood is a logistic regression: the definition
+    oracle and the engine agree to 1e-14; ergm's glm() iteration stops on a
+    relative deviance change of 1e-8, which leaves coefficients within
+    4.3e-8 relative (largest seen), hence rel 1e-7.
+  oracles:
+    definition:
+      call: "logistic regression of every dyad's tie on its change statistics, recounted by toggling (ergm_definition_oracle.py)"
+      only_on: [multi_loops_dir]
+      undefined_reason: >-
+        Recounting the change statistics is limited to fixtures of at most
+        20 nodes; the other small fixtures have no finite estimate.
+    ergm:
+      call: coef(ergm(nw ~ edges + mutual + gwesp(0.5, fixed = TRUE, cutoff = 100) + nodematch("mod3"), estimate = "MPLE"))
+      only_on: [multi_loops_dir, gnp_dir_dense, gnp_dir_sparse, real_weights_dir, weighted_dir]
+      undefined_reason: >-
+        On the other fixtures the pseudo-likelihood has no finite maximum
+        (complete, empty, or without any mutual pair).
+
+ergm_sim_dyadind_undirected:
+  params:
+    fn: ergm_sim_mean
+    terms: [edges, "nodematch:mod3", "nodecov:num7"]
+    coef: [-2.0, 1.0, 0.1]
+    oracle_interval: 1000
+    burnin: 20000
+    interval: 200
+    samples: 5000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0.01, abs: 0.05}
+  oracles:
+    definition:
+      call: "exact expectation, dyads independent (ergm_definition_oracle.py)"
+    ergm:
+      call: >-
+        colMeans(simulate(nw ~ edges + nodematch("mod3") + nodecov("num7"),
+        coef = c(-2, 1, 0.1), nsim = 4000, output = "stats", seed = 1,
+        control = control.simulate.formula(MCMC.burnin = 20000, MCMC.interval = 1000)))
+      only_on: [florentine, karate, southern_women]
+      undefined_reason: Simulated on a few fixtures only, to keep the oracle run short.
+
+ergm_sim_dyadind_directed:
+  params:
+    fn: ergm_sim_mean
+    terms: [edges, mutual, "nodematch:mod3"]
+    coef: [-2.0, 1.5, 0.5]
+    oracle_interval: 1000
+    burnin: 20000
+    interval: 200
+    samples: 5000
+    chains: 4
+    seed: 1
+  applies_to: directed
+  tolerance: {rel: 0.01, abs: 0.05}
+  oracles:
+    definition:
+      call: "exact expectation, unordered pairs independent (ergm_definition_oracle.py)"
+    ergm:
+      call: >-
+        colMeans(simulate(nw ~ edges + mutual + nodematch("mod3"), coef = c(-2, 1.5, 0.5),
+        nsim = 4000, output = "stats", seed = 1,
+        control = control.simulate.formula(MCMC.burnin = 20000, MCMC.interval = 1000)))
+      only_on: [cycle7_dir, gnp_dir_sparse]
+      undefined_reason: Simulated on a few fixtures only, to keep the oracle run short.
+
+ergm_sim_undirected:
+  params:
+    fn: ergm_sim_mean
+    terms: [edges, "gwesp:0.5", triangle, "gwdegree:0.5"]
+    coef: [-2.5, 0.4, 0.0, -0.3]
+    oracle_interval: 2000
+    fixtures: [complete6, single_node, florentine, karate, kite]
+    burnin: 50000
+    interval: 500
+    samples: 5000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0.02, abs: 0.1}
+  oracles:
+    definition:
+      call: "exact expectation over every graph on the fixture's nodes (ergm_definition_oracle.py)"
+      only_on: [complete6, single_node]
+      undefined_reason: Enumerating every graph is limited to 20 dyads (six nodes).
+    ergm:
+      call: >-
+        colMeans(simulate(nw ~ edges + gwesp(0.5, fixed = TRUE, cutoff = 100) + triangle
+        + gwdegree(0.5, fixed = TRUE, cutoff = 100), coef = c(-2.5, 0.4, 0, -0.3), nsim = 4000,
+        output = "stats", seed = 1,
+        control = control.simulate.formula(MCMC.burnin = 50000, MCMC.interval = 2000)))
+      only_on: [complete6, florentine, karate, kite]
+      undefined_reason: Simulated on a few fixtures only, to keep the oracle run short.
+
+ergm_sim_directed:
+  params:
+    fn: ergm_sim_mean
+    terms: [edges, mutual, "gwesp:0.5", ctriple, "gwdsp:0.5"]
+    coef: [-2.5, 1.0, 0.3, 0.0, -0.05]
+    oracle_interval: 2000
+    fixtures: [complete5_dir, empty, pair, cycle7_dir, gnp_dir_sparse]
+    burnin: 50000
+    interval: 500
+    samples: 5000
+    chains: 4
+    seed: 1
+  applies_to: directed
+  tolerance: {rel: 0.02, abs: 0.1}
+  oracles:
+    definition:
+      call: "exact expectation over every graph on the fixture's nodes (ergm_definition_oracle.py)"
+      only_on: [complete5_dir, empty, pair]
+      undefined_reason: Enumerating every graph is limited to 20 dyads (five nodes).
+    ergm:
+      call: >-
+        colMeans(simulate(nw ~ edges + mutual + gwesp(0.5, fixed = TRUE, cutoff = 100) + ctriple
+        + gwdsp(0.5, fixed = TRUE, cutoff = 100), coef = c(-2.5, 1, 0.3, 0, -0.05), nsim = 4000,
+        output = "stats", seed = 1,
+        control = control.simulate.formula(MCMC.burnin = 50000, MCMC.interval = 2000)))
+      only_on: [complete5_dir, cycle7_dir, gnp_dir_sparse]
+      undefined_reason: Simulated on a few fixtures only, to keep the oracle run short.
+
+ergm_mcmle_dyadind:
+  params:
+    fn: ergm_mcmle
+    terms: [edges, "nodematch:mod3"]
+    burnin: 20000
+    interval: 500
+    samples: 2000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.015}
+  note: >-
+    Seeds are fixed on both sides, so the comparison is repeatable; the
+    tolerance (was 0.03) is about twice the largest difference seen (0.0071).
+  oracles:
+    definition:
+      call: "maximum likelihood by logistic regression, dyads independent (ergm_definition_oracle.py)"
+      only_on: [florentine, karate, kite, gnp_und_dense, gnp_und_sparse, les_miserables,
+                southern_women, weighted_und]
+      undefined_reason: Fixtures where the likelihood has a finite maximum, a selection.
+    ergm:
+      call: coef(ergm(nw ~ edges + nodematch("mod3")))
+      only_on: [florentine, karate, kite, gnp_und_dense, gnp_und_sparse, les_miserables,
+                southern_women, weighted_und]
+      undefined_reason: >-
+        Fixtures where the likelihood has a finite maximum, a selection
+        (ergm fits a dyad-independent model exactly, by MPLE).
+
+ergm_mcmle_gwesp:
+  params:
+    fn: ergm_mcmle
+    terms: [edges, "gwesp:0.5"]
+    fixtures: [florentine, karate]
+    burnin: 50000
+    interval: 500
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.02}
+  note: >-
+    Seeds are fixed on both sides, so the comparison is repeatable; the
+    tolerance (was 0.06) is about twice the largest difference seen (0.0072).
+  oracles:
+    ergm:
+      call: coef(ergm(nw ~ edges + gwesp(0.5, fixed = TRUE, cutoff = 100), control = control.ergm(seed = 1, MCMC.samplesize = 4096)))
+      only_on: [florentine, karate]
+      undefined_reason: Fitted on two fixtures only, to keep the oracle run short.
+
+saom_sim_density:
+  params:
+    fn: saom_sim_mean
+    effects: [outdegree]
+    beta: [-1.0]
+    rate: 3.0
+    runs: 4000
+    seed: 1
+  applies_to: directed
+  tolerance: {rel: 0.01, abs: 0.3}
+  oracles:
+    definition:
+      call: "exact expectation: per actor, exp(Q) of the chain on (initial ties kept, ties added) (ergm_definition_oracle.py)"
+    rsiena:
+      call: "RSiena siena07(simOnly = TRUE, returnDeps = TRUE, cond = FALSE, n3 = 8000) with density = -1 and basic rate 3, both fixed; the statistics are computed from the simulated networks (r_siena.R)"
+      undefined_on: [empty, pair, single_node]
+      undefined_reason: RSiena needs at least three actors.
+      differs_on: [complete5_dir]
+      reason: >-
+        From a complete starting network RSiena returns a mean tie count of
+        about 5.0 (the stationary value of the model, 5.4), where the engine
+        and the exact definition oracle relax from 20 ties to 9.3 within the
+        period. The same network with one tie removed gives 8.9 under RSiena
+        (tools/probe_rsiena.R), in line with the engine, so RSiena treats an
+        all-ones first wave differently; the cause is not identified.
+      tolerance: {rel: 0.02, abs: 0.5}
+      note: >-
+        Both sides are Monte Carlo estimates (4000 and 8000 runs); the standard
+        error of a mean of the tie count is under 0.1 on every fixture (the count has a
+        standard deviation of at most about 6), so the standard error of the
+        difference is under 0.15 and the tolerance is more than three of them
+        at the smallest means.
+
+saom_sim_reciprocity:
+  params:
+    fn: saom_sim_mean
+    effects: [outdegree, reciprocity]
+    beta: [-1.0, 1.0]
+    rate: 3.0
+    runs: 4000
+    seed: 1
+  applies_to: directed
+  tolerance: {rel: 0.02, abs: 0.5}
+  oracles:
+    rsiena:
+      call: "RSiena siena07(simOnly = TRUE, returnDeps = TRUE, cond = FALSE, n3 = 8000) with density = -1, reciprocity = 1 and basic rate 3, all fixed; the statistics are computed from the simulated networks (r_siena.R)"
+      undefined_on: [empty, pair, single_node]
+      undefined_reason: RSiena needs at least three actors.
+      differs_on: [complete5_dir]
+      reason: >-
+        From a complete starting network RSiena returns a mean tie count of
+        about 5.0 (the stationary value of the model, 5.4), where the engine
+        and the exact definition oracle relax from 20 ties to 9.3 within the
+        period. The same network with one tie removed gives 8.9 under RSiena
+        (tools/probe_rsiena.R), in line with the engine, so RSiena treats an
+        all-ones first wave differently; the cause is not identified.
+      note: >-
+        With reciprocity the actors' choices interact, so no exact expectation
+        is available: the entry has the reference tool only. The statistics are
+        the mean tie count, the mean number of reciprocated ties (twice the
+        number of mutual pairs), and the mean number of changed ties.

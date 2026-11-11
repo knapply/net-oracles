@@ -1,0 +1,104 @@
+# Approximate Steiner trees: the measure `steiner_tree`, Mehlhorn's (1988,
+# `mehlhorn1988faster`) and Kou, Markowsky and Berman's (1981,
+# `kou1981fast`) 2-approximations. Format: see ../README.md; runners in
+# ../bindings/steiner.py (through the generic net_run), definition oracle
+# steiner_definition_oracle.py, NetworkX oracle steiner_networkx_oracle.py.
+#
+# The engine follows NetworkX's searches, spanning trees and tie rules, so
+# its tree is NetworkX's: the entries compare the edge positions exactly.
+# The definition oracle checks the guarantee instead: the tree is valid and
+# its weight lies between the optimum (exact Dreyfus-Wagner on at most five
+# terminals) and 2 (1 - 1/t) times it.
+#
+# Engine options:
+#   fn         steiner_tree
+#   method     mehlhorn | kou
+#   stat       edges | bounds
+#   terminals  third (every third node) | few (the first five of those) |
+#              three (the first three of those)
+#   weighted   use edge weights
+#
+# NetworkX's `kou` takes its terminals in the iteration order of Python sets,
+# and iterates a copy of a set (whose table can be smaller) beside the set
+# itself; the engine takes one order, so the `kou` entries use three terminals
+# (0, 3 and 6), where the set and its copy iterate alike and the engine is
+# given that order. With more terminals the trees can differ in ties (found
+# with four terminals on 1 of 60 random sets on karate). The definition
+# entries keep five terminals: they check the guarantee, not the tie rule.
+#
+# Nothing is compared on the null graph, disconnected networks, parallel
+# edges (NetworkX's Graph keeps the last edge of a parallel set; the engine
+# the first) and weighted runs on negative weights: the runners and the
+# oracles return nothing there.
+
+steiner_mehlhorn:
+  params: {fn: steiner_tree, method: mehlhorn, stat: edges, terminals: third}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.algorithms.approximation.steiner_tree(G, terminals, weight = 'weight', method = 'mehlhorn'), edge positions"
+
+steiner_mehlhorn_weighted:
+  params: {fn: steiner_tree, method: mehlhorn, stat: edges, terminals: third, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "as steiner_mehlhorn with the edge weights"
+
+steiner_kou:
+  params: {fn: steiner_tree, method: kou, stat: edges, terminals: three}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.algorithms.approximation.steiner_tree(G, terminals, weight = 'weight', method = 'kou'), edge positions"
+
+steiner_kou_weighted:
+  params: {fn: steiner_tree, method: kou, stat: edges, terminals: three, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "as steiner_kou with the edge weights"
+
+steiner_bounds_mehlhorn:
+  params: {fn: steiner_tree, method: mehlhorn, stat: bounds, terminals: few}
+  applies_to: undirected
+  compare: le
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "[0, 2 (1 - 1/t) OPT, -OPT]: the tree is valid and OPT <= weight <= 2 (1 - 1/t) OPT, OPT by Dreyfus-Wagner (steiner_definition_oracle.py)"
+
+steiner_bounds_mehlhorn_weighted:
+  params: {fn: steiner_tree, method: mehlhorn, stat: bounds, terminals: few, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  compare: le
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "as steiner_bounds_mehlhorn with the edge weights"
+
+steiner_bounds_kou:
+  params: {fn: steiner_tree, method: kou, stat: bounds, terminals: few}
+  applies_to: undirected
+  compare: le
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "as steiner_bounds_mehlhorn"
+
+steiner_bounds_kou_weighted:
+  params: {fn: steiner_tree, method: kou, stat: bounds, terminals: few, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  compare: le
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "as steiner_bounds_mehlhorn with the edge weights"

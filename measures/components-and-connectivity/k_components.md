@@ -50,5 +50,7 @@ Measure id: `k_components`. Original family: Components and connectivity.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>conn_k_components</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.k_components(G), each component of k as k * 1000 + node</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/connectivity.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/connectivity.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

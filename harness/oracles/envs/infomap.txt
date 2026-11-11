@@ -1,0 +1,4 @@
+# Infomap oracle (infomap_oracle.py)
+infomap
+numpy
+pyyaml

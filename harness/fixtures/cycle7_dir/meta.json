@@ -1,0 +1,10 @@
+{
+  "n": 7,
+  "directed": true,
+  "weighted": false,
+  "tags": [
+    "onemode",
+    "symmetric_nodes"
+  ],
+  "source": "synthetic"
+}

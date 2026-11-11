@@ -54,6 +54,8 @@ Measure id: `gb_spanning_trees`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>gb_spanning_trees</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>nx.number_of_spanning_trees(M)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/traversal_b.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/traversal_b.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [kirchhoff1847ueber](../../references.html#kirchhoff1847ueber), [tutte1948dissection](../../references.html#tutte1948dissection)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)

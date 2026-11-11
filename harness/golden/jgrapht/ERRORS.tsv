@@ -1,0 +1,22 @@
+fixture	variant	error
+complete5_dir	transitivity	IllegalArgumentException: Graph must be undirected
+complete5_dir	coreness_all	IllegalArgumentException: Graph must be undirected
+cycle7_dir	transitivity	IllegalArgumentException: Graph must be undirected
+cycle7_dir	coreness_all	IllegalArgumentException: Graph must be undirected
+empty	transitivity	IllegalArgumentException: Graph must be undirected
+empty	coreness_all	IllegalArgumentException: Graph must be undirected
+gnp_dir_dense	transitivity	IllegalArgumentException: Graph must be undirected
+gnp_dir_dense	coreness_all	IllegalArgumentException: Graph must be undirected
+gnp_dir_sparse	transitivity	IllegalArgumentException: Graph must be undirected
+gnp_dir_sparse	coreness_all	IllegalArgumentException: Graph must be undirected
+multi_loops_dir	transitivity	IllegalArgumentException: Graph must be undirected
+multi_loops_dir	coreness_all	IllegalArgumentException: Graph must be undirected
+multi_loops_dir	max_cliques	IllegalArgumentException: Graph must be simple
+multi_loops_und	coreness_all	IllegalArgumentException: Graph must be simple
+multi_loops_und	max_cliques	IllegalArgumentException: Graph must be simple
+pair	transitivity	IllegalArgumentException: Graph must be undirected
+pair	coreness_all	IllegalArgumentException: Graph must be undirected
+real_weights_dir	transitivity	IllegalArgumentException: Graph must be undirected
+real_weights_dir	coreness_all	IllegalArgumentException: Graph must be undirected
+weighted_dir	transitivity	IllegalArgumentException: Graph must be undirected
+weighted_dir	coreness_all	IllegalArgumentException: Graph must be undirected

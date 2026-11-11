@@ -1,0 +1,12 @@
+{
+ "inputs": "8b446aa6983faae7bd8ed0a339e1712218fe6d1557c94b88f9f94e91b6127000",
+ "oracles": [
+  "centiserve",
+  "definition",
+  "manynet",
+  "netrankr",
+  "networkx",
+  "pyigraph",
+  "tnet"
+ ]
+}

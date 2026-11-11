@@ -1,0 +1,251 @@
+# Deterministic graph builders and operations on a shared node set, compared
+# with NetworkX for the exact edge set and with the definition. Runners and
+# encodings: ../bindings/construct.py; derived inputs: ../derived/construct.py;
+# oracles construct_definition_oracle.py and construct_networkx_oracle.py.
+#
+# Generators take their size from the fixture's node count n (the graph of
+# the fixture is ignored), so n = 0 and n = 1 are covered. The result is the
+# node count followed by the edge list, sorted: an undirected edge as
+# (smaller, larger), directed arcs as (source, target). Node order is NetworkX's
+# integer numbering as stated in each entry. NetworkX's star_graph(k) has
+# k + 1 nodes, so `star` of n nodes is star_graph(n - 1).
+#
+# Operations (union, intersection, difference, compose) take the simple
+# graph of the fixture (distinct edges, loops kept) and the second graph of
+# derived/construct.py on the same node set: the even-numbered edges of the
+# first plus the ring i - ((i + 1) mod n). They return the node count and
+# the sorted edge list. The union of edge sets is nx.compose; NetworkX's
+# union demands disjoint node sets. compose is the relational composition
+# (an arc u -> w when u -> v in the first and v -> w in the second), defined
+# for directed graphs only, definition oracle only (NetworkX's compose is
+# the union).
+#
+# line_graph runs on the simple loop-free graph of the fixture; its nodes are
+# the edges numbered by their rank in the sorted edge list.
+#
+# paths_simple lists every simple path from node 0 to node n - 1 of the
+# simple loop-free graph with at most 4 edges, sorted lexicographically.
+
+construct_empty:
+  params: {fn: deterministic_generators, shape: empty}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "n isolated nodes"
+    networkx:
+      call: "nx.empty_graph(n)"
+
+construct_complete:
+  params: {fn: deterministic_generators, shape: complete}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair of the n nodes"
+    networkx:
+      call: "nx.complete_graph(n)"
+
+construct_complete_dir:
+  params: {fn: deterministic_generators, shape: complete_dir}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every ordered pair of the n nodes"
+    networkx:
+      call: "nx.complete_graph(n, create_using = nx.DiGraph)"
+
+construct_complete_bipartite:
+  params: {fn: deterministic_generators, shape: complete_bipartite}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "K(n // 2, n - n // 2), the first part numbered first"
+    networkx:
+      call: "nx.complete_bipartite_graph(n // 2, n - n // 2)"
+
+construct_star:
+  params: {fn: deterministic_generators, shape: star}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "node 0 joined to nodes 1..n-1"
+    networkx:
+      call: "nx.star_graph(n - 1) (nx.empty_graph(0) for n = 0)"
+
+construct_star_dir:
+  params: {fn: deterministic_generators, shape: star_dir}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "arcs 0 -> i for i in 1..n-1"
+    networkx:
+      call: "as star, create_using = nx.DiGraph"
+
+construct_path:
+  params: {fn: deterministic_generators, shape: path}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "edges i - (i + 1)"
+    networkx:
+      call: "nx.path_graph(n)"
+
+construct_path_dir:
+  params: {fn: deterministic_generators, shape: path_dir}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "arcs i -> i + 1"
+    networkx:
+      call: "nx.path_graph(n, create_using = nx.DiGraph)"
+
+construct_cycle:
+  params: {fn: deterministic_generators, shape: cycle}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "edges i - ((i + 1) mod n); a loop for n = 1"
+    networkx:
+      call: "nx.cycle_graph(n)"
+
+construct_cycle_dir:
+  params: {fn: deterministic_generators, shape: cycle_dir}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "arcs i -> ((i + 1) mod n)"
+    networkx:
+      call: "nx.cycle_graph(n, create_using = nx.DiGraph)"
+
+construct_wheel:
+  params: {fn: deterministic_generators, shape: wheel}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "hub 0, rim 1..n-1 as a cycle (a path for fewer than 4 nodes)"
+    networkx:
+      call: "nx.wheel_graph(n)"
+
+construct_lattice:
+  params: {fn: deterministic_generators, shape: lattice}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "3 rows by n columns, node r * n + c, no wrap"
+    networkx:
+      call: "nx.grid_2d_graph(3, n) relabelled to r * n + c"
+
+construct_tree_binary:
+  params: {fn: deterministic_generators, shape: tree_binary}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "complete binary tree of height min(n, 5), breadth-first numbering"
+    networkx:
+      call: "nx.balanced_tree(2, min(n, 5))"
+
+construct_tree_ternary:
+  params: {fn: deterministic_generators, shape: tree_ternary}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "complete ternary tree of height min(n, 4), breadth-first numbering"
+    networkx:
+      call: "nx.balanced_tree(3, min(n, 4))"
+
+construct_hypercube:
+  params: {fn: deterministic_generators, shape: hypercube}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "dimension min(n, 8); nodes joined when their numbers differ in one bit"
+    networkx:
+      call: "nx.hypercube_graph(d) relabelled by the bits of the coordinates, first coordinate most significant"
+      differs_when: [null_graph]
+      reason: >-
+        NetworkX defines the 0-dimensional hypercube as the null graph
+        (nx.hypercube_graph(0) has no node); the engine and the definition
+        oracle give Q_0 = K_1, one node (2^0 nodes joined when their numbers
+        differ in one bit). Convention, on the null graph only.
+
+construct_ladder:
+  params: {fn: deterministic_generators, shape: ladder}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "n rungs: two paths 0..n-1 and n..2n-1, rungs i - (i + n)"
+    networkx:
+      call: "nx.ladder_graph(n)"
+
+construct_union:
+  params: {fn: op_union}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "edges of either graph"
+    networkx:
+      call: "nx.compose(G, H) edges"
+
+construct_intersection:
+  params: {fn: op_intersection}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "edges of both graphs"
+    networkx:
+      call: "nx.intersection(G, H) edges"
+
+construct_difference:
+  params: {fn: op_difference}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "edges of the first graph not in the second"
+    networkx:
+      call: "nx.difference(G, H) edges"
+
+construct_compose:
+  params: {fn: op_compose}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "arc u -> w when u -> v in the first graph and v -> w in the second"
+
+construct_line_graph:
+  params: {fn: line_graph}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "nodes are the edges by rank; two are adjacent when they share an endpoint (directed: the target of the first is the source of the second)"
+    networkx:
+      call: "nx.line_graph(G) with each node (edge) replaced by its rank in the sorted edge list; edges sorted"
+
+paths_simple_cutoff4:
+  params: {fn: paths_simple, cutoff: 4}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "depth-first enumeration of node sequences from 0 to n - 1 without repeated nodes, at most 4 edges"
+    networkx:
+      call: "sorted(nx.all_simple_paths(G, 0, n - 1, cutoff = 4))"

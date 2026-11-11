@@ -1,0 +1,414 @@
+# Graph theory and combinatorics measures called through the registry entry
+# point: completeness and cliques, threshold graphs, feedback sets,
+# approximate matchings, the travelling salesman problem, power-law fits,
+# diversity and graph Voronoi cells. Runners and inputs: ../bindings/graph_theory.py;
+# oracles: ../oracles/graph_theory_*_oracle.py.
+#
+# Markers: -1 where the measure is undefined for the fixture (disconnected
+# graph or fewer than three nodes for tours, fewer than two distinct values in
+# the tail of a power-law fit, not a threshold graph for creation sequences,
+# no center reaching a node for Voronoi cells); -2 where the engine's exact
+# search is limited (never compared: the oracle entries list those fixtures
+# as undefined); diversity uses NaN below two incident edges, as igraph does.
+#
+# References: Chvatal and Hammer 1977 (`chvatal1977aggregation`) for
+# threshold graphs, Eades, Lin and Smyth 1993 (`eades1993fast`), Preis 1999
+# (`preis1999linear`), Drake and Hougardy 2003 (`drake2003simple`), Held and
+# Karp 1962 (`held1962dynamic`), Clauset, Shalizi and Newman 2009
+# (`clauset2009power`), Eagle, Macy and Claxton 2010 (`eagle2010network`),
+# Erwig 2000 (`erwig2000graph`); tools: NetworkX (`hagberg2008exploring`),
+# igraph (`csardi2006igraph`), the powerlaw package (`alstott2014powerlaw`).
+
+gt_is_complete:
+  params: {fn: gt_is_complete}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair of distinct nodes is adjacent in the simple graph (in both directions when directed); the null and one-node graphs are complete"
+    pyigraph:
+      call: "g.is_complete()"
+
+gt_is_clique_all:
+  params: {fn: gt_is_clique, candidate: all}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair of all nodes is adjacent in the simple graph"
+    pyigraph:
+      call: "g.is_clique(candidate, directed=False) for all nodes"
+
+gt_is_clique_even:
+  params: {fn: gt_is_clique, candidate: even}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair of the even-numbered nodes is adjacent in the simple graph"
+    pyigraph:
+      call: "g.is_clique(candidate, directed=False) for the even-numbered nodes"
+
+gt_is_clique_first3:
+  params: {fn: gt_is_clique, candidate: first3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair of the first three nodes is adjacent in the simple graph"
+    pyigraph:
+      call: "g.is_clique(candidate, directed=False) for the first three nodes"
+
+gt_is_clique_even_mutual:
+  params: {fn: gt_is_clique, candidate: even, directed: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair of the even-numbered nodes, with an arc each way on a directed graph is adjacent in the simple graph (an arc each way on a directed graph)"
+    pyigraph:
+      call: "g.is_clique(candidate, directed=True) for the even-numbered nodes, with an arc each way on a directed graph"
+
+gt_threshold_is:
+  params: {fn: gt_threshold_is}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no induced path on four nodes, four-cycle or two disjoint edges (the forbidden subgraphs of Chvatal and Hammer) in the simple graph, directions ignored"
+    networkx:
+      call: "networkx.algorithms.threshold.is_threshold_graph(G) on the simple undirected Graph"
+
+gt_threshold_types:
+  params: {fn: gt_threshold_types}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "a node isolated or dominating among those left is peeled off until none remain; the types in creation order (the first is dominating); [-1] if the peeling gets stuck"
+      note: the type of each position is unique, so the node order is checked by gt_threshold_valid
+    networkx:
+      call: "networkx.algorithms.threshold.creation_sequence(dict(G.degree())) as 1 for 'd' and 0 for 'i', [-1] if it returns None"
+
+gt_threshold_valid:
+  params: {fn: gt_threshold_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 for a threshold graph (the engine replays its creation order and compares with the simple graph), -1 otherwise"
+
+gt_fas_size:
+  params: {fn: gt_fas_size}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "fewest arcs whose removal leaves no cycle: arc subsets by increasing size when there are at most 20 arcs, a dynamic program over node subsets beyond; m - n + c when undirected; loops always count"
+      undefined_on: [gnp_dir_dense, gnp_dir_sparse, real_weights_dir, weighted_dir]
+      undefined_reason: the engine's exact search is limited to 22 nodes on a directed graph
+    pyigraph:
+      call: "len(g.feedback_arc_set(algo='ip'))"
+      undefined_on: [gnp_dir_dense, gnp_dir_sparse, real_weights_dir, weighted_dir]
+      undefined_reason: the engine's exact search is limited to 22 nodes on a directed graph
+
+gt_fas_valid:
+  params: {fn: gt_fas_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 when removing the engine's set leaves no cycle and its size equals its length"
+      undefined_on: [gnp_dir_dense, gnp_dir_sparse, real_weights_dir, weighted_dir]
+      undefined_reason: the engine's exact search is limited to 22 nodes on a directed graph
+
+gt_fas_eades_valid:
+  params: {fn: gt_fas_eades_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 when removing the Eades-Lin-Smyth set leaves no cycle (Kahn's algorithm; union-find when undirected)"
+
+gt_fas_eades_bound:
+  params: {fn: gt_fas_eades_bound}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1: the heuristic removes at most m / 2 - n / 6 arcs of a digraph without 2-cycles (Eades, Lin and Smyth 1993); the runner checks it on the simple digraph of the fixture keeping one arc of each antiparallel pair (the bound is false with them: a complete digraph on five nodes needs 10 arcs removed against 9.17)"
+
+gt_fvs_size:
+  params: {fn: gt_fvs_size}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "fewest nodes whose removal leaves no cycle: node subsets by increasing size; a looped node is always removed"
+      undefined_on: [davis_twomode, gnp_dir_dense, gnp_dir_sparse, gnp_und_dense, gnp_und_sparse, karate, les_miserables, real_weights_dir, real_weights_und, southern_women, uniform_weights, weighted_dir, weighted_und]
+      undefined_reason: the engine's exact search is limited to 22 nodes
+
+gt_fvs_valid:
+  params: {fn: gt_fvs_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 when removing the engine's set leaves no cycle and its size equals its length"
+      undefined_on: [davis_twomode, gnp_dir_dense, gnp_dir_sparse, gnp_und_dense, gnp_und_sparse, karate, les_miserables, real_weights_dir, real_weights_und, southern_women, uniform_weights, weighted_dir, weighted_und]
+      undefined_reason: the engine's exact search is limited to 22 nodes
+
+gt_match_greedy:
+  params: {fn: gt_match_greedy}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  compare: sorted
+  oracles:
+    definition:
+      call: "edges by decreasing weight (ties by input position), each kept when both ends are free; loops and weights of zero or less skipped; the matched input positions"
+      note: no tool defines the tie rule, so the stated rule is the definition
+
+gt_match_path_growing:
+  params: {fn: gt_match_path_growing}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  compare: sorted
+  oracles:
+    definition:
+      call: "path growing from the lowest-numbered unused node taking the heaviest free edge (ties by input position), edges alternating between two matchings, the heavier kept (Drake and Hougardy)"
+      note: no tool implements the algorithm, so the stated procedure is the definition
+
+gt_match_valid:
+  params: {fn: gt_match_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[greedy matching valid, greedy maximal among positive-weight edges, path-growing matching valid] = [1, 1, 1]"
+
+gt_match_half_bound:
+  params: {fn: gt_match_half_bound}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  compare: ge
+  oracles:
+    networkx:
+      call: "the weight of nx.max_weight_matching(G) on the simple graph (heaviest parallel edge, loops dropped, directions ignored), once per method; the engine value is twice the approximate matching's weight, which is at least the maximum (Preis 1999; Drake and Hougardy 2003)"
+
+gt_match_upper_bound:
+  params: {fn: gt_match_upper_bound}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  compare: le
+  oracles:
+    networkx:
+      call: "the weight of nx.max_weight_matching(G) on the simple graph, once per method: no matching is heavier than the maximum"
+
+gt_diversity:
+  params: {fn: gt_diversity}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "-sum p ln p / ln k over the k incident edges with shares p of the node's strength (all weights 1); NaN for k < 2; loops ignored"
+    pyigraph:
+      call: "g.diversity(weights=None), as NaN for nodes with under two edges (igraph returns 1.0 there; the normalized entropy of one share is 0 / 0)"
+      undefined_when: [multi_edges, loops]
+      undefined_reason: igraph's diversity is documented for simple graphs (it rejects parallel edges)
+
+gt_diversity_weighted:
+  params: {fn: gt_diversity, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "-sum p ln p / ln k over the k incident edges with shares p of the node's strength; NaN for k < 2; loops ignored"
+    pyigraph:
+      call: "g.diversity(weights='weight'), as NaN for nodes with under two edges (igraph returns 0.0 for one edge; the normalized entropy of one share is 0 / 0)"
+      undefined_when: [multi_edges, loops]
+      undefined_reason: igraph's diversity is documented for simple graphs (it rejects parallel edges)
+
+gt_voronoi_distance:
+  params: {fn: gt_voronoi_distance}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "least over the centers [0, n // 2] of the shortest-path distance (Floyd-Warshall on the fixture's edges, directions kept, hop count unless weighted); -1 if unreachable"
+    networkx:
+      call: "nx.voronoi_cells(G, centers, weight='weight') on the MultiGraph or MultiDiGraph of the fixture, then the distance from each node to its cell's center; -1 for the 'unreachable' cell"
+
+gt_voronoi_cells:
+  params: {fn: gt_voronoi_cells}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "index in [0, n // 2] of the center with the smallest (distance, index); -1 if unreachable"
+      note: networkx.voronoi_cells assigns equally near nodes by queue order, so ties follow this stated rule
+
+gt_tsp_exact_length:
+  params: {fn: gt_tsp_exact_length}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "length of a shortest closed tour of the metric closure of the simple weighted graph: all permutations for at most 10 nodes, a bitmask recurrence over subsets for 11 to 18; [-1] if disconnected or under three nodes"
+      undefined_on: [davis_twomode, gnp_und_dense, gnp_und_sparse, karate, les_miserables, multi_loops_und, real_weights_und, southern_women, twomode_random, uniform_weights, weighted_und]
+      undefined_reason: the engine's exact search is limited to 18 nodes
+
+gt_tsp_exact_valid:
+  params: {fn: gt_tsp_exact_valid}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 when the tour is a Hamiltonian cycle from node 0 back to node 0; [-1] if disconnected or under three nodes"
+      undefined_on: [davis_twomode, gnp_und_dense, gnp_und_sparse, karate, les_miserables, multi_loops_und, real_weights_und, southern_women, twomode_random, uniform_weights, weighted_und]
+      undefined_reason: the engine's exact search is limited to 18 nodes
+
+gt_tsp_nn_tour:
+  params: {fn: gt_tsp_nn_tour}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    networkx:
+      call: "the complete graph of shortest-path distances as traveling_salesman_problem builds it, nx.approximation.greedy_tsp(GG, weight='weight', source=0): its length, then the tour; [-1] if disconnected or under three nodes"
+
+gt_tsp_christofides_tour:
+  params: {fn: gt_tsp_christofides_tour}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    networkx:
+      call: "nx.approximation.christofides(GG, weight='weight') on the same complete graph, rotated to start at node 0: its length, then the tour; [-1] if disconnected or under three nodes"
+
+gt_tsp_heuristics_valid:
+  params: {fn: gt_tsp_heuristics_valid}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1, 1, 1, 1, 1]: greedy edge, 2-opt, annealing (seed 7), nearest neighbour and Christofides give Hamiltonian cycles from node 0 whose length equals the sum of closure distances (Floyd-Warshall in the runner); [-1] if disconnected or under three nodes"
+
+gt_tsp_heuristics_bound:
+  params: {fn: gt_tsp_heuristics_bound}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  compare: ge
+  oracles:
+    definition:
+      call: "the optimal tour length, five times (no tour is shorter), as for gt_tsp_exact_length"
+      undefined_on: [davis_twomode, gnp_und_dense, gnp_und_sparse, karate, les_miserables, multi_loops_und, real_weights_und, southern_women, twomode_random, uniform_weights, weighted_und]
+      undefined_reason: the engine's exact search is limited to 18 nodes
+
+gt_tsp_christofides_ratio:
+  params: {fn: gt_tsp_christofides_ratio}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  compare: le
+  oracles:
+    definition:
+      call: "3/2 of the optimal tour length (Christofides 1976: the closure is metric)"
+      undefined_on: [davis_twomode, gnp_und_dense, gnp_und_sparse, karate, les_miserables, multi_loops_und, real_weights_und, southern_women, twomode_random, uniform_weights, weighted_und]
+      undefined_reason: the engine's exact search is limited to 18 nodes
+
+gt_plfit_alpha:
+  params: {fn: gt_plfit_alpha, xmin: 2.0}
+  applies_to: any
+  tolerance: {rel: 1.0e-4, abs: 1.0e-4}
+  oracles:
+    definition:
+      call: "maximizer of the discrete power-law log-likelihood over the degrees at or above 2 (Hurwitz zeta by Euler-Maclaurin, bisection on the slope in the oracle); [-1] if the tail has under two distinct values"
+    powerlaw:
+      call: "powerlaw.Fit(degrees, xmin=2, discrete=True, estimate_discrete=False).alpha"
+
+gt_plfit_alpha_small:
+  params: {fn: gt_plfit_alpha, xmin: 2.0, small_sample_below: 50}
+  applies_to: any
+  tolerance: {rel: 1.0e-4, abs: 1.0e-4}
+  oracles:
+    definition:
+      call: "the maximizing exponent a, corrected to a (n - 1) / n + 1 / n for a tail of n observations when fewer than 50 nodes have a positive degree; uncorrected otherwise"
+    pyigraph:
+      call: "ig.power_law_fit(degrees, xmin=2, method='discrete').alpha"
+      note: "igraph applies the finite-size correction a (n - 1) / n + 1 / n to every fit of under 50 data points (python-igraph passes the positive degrees), which is the engine's small_sample option; its L-BFGS search matches the exact maximizer to the tolerance"
+
+gt_plfit_loglik:
+  params: {fn: gt_plfit_loglik, xmin: 2.0}
+  applies_to: any
+  tolerance: {rel: 1.0e-6, abs: 1.0e-6}
+  oracles:
+    definition:
+      call: "the discrete power-law log-likelihood of the tail at the maximizing exponent"
+
+gt_plfit_loglik_small:
+  params: {fn: gt_plfit_loglik, xmin: 2.0, small_sample_below: 50}
+  applies_to: any
+  tolerance: {rel: 1.0e-6, abs: 1.0e-6}
+  oracles:
+    definition:
+      call: "the discrete power-law log-likelihood of the tail at the small-sample corrected exponent (see gt_plfit_alpha_small)"
+    pyigraph:
+      call: "ig.power_law_fit(degrees, xmin=2, method='discrete').L"
+
+gt_plfit_distance:
+  params: {fn: gt_plfit_distance, xmin: 2.0}
+  applies_to: any
+  tolerance: {rel: 1.0e-4, abs: 1.0e-4}
+  oracles:
+    definition:
+      call: "largest gap between the empirical and the fitted distribution function over every integer at or above the cut-off (at each observed value after its step, and just below it)"
+    pyigraph:
+      call: "ig.power_law_fit(degrees, xmin=2, method='discrete').D"
+    powerlaw:
+      call: "powerlaw.Fit(degrees, xmin=2, discrete=True, estimate_discrete=False).D"
+
+gt_plfit_xmin:
+  params: {fn: gt_plfit_xmin}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the distinct degree whose tail (at least two observations, two distinct values) has the smallest distance, ties to the smaller"
+    pyigraph:
+      call: "ig.power_law_fit(degrees, method='discrete').xmin"
+      differs_on: [davis_twomode, southern_women]
+      reason: "igraph measures the gap only just below each observed value and misses the gap at the observed values themselves, so it underestimates the distance of the cut-off 8 (0.124 against the true 0.171) and picks it over the true minimizer 7 (0.135)"
+
+gt_plfit_xmin_bounded:
+  params: {fn: gt_plfit_xmin, alpha_max: 3.0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as gt_plfit_xmin among the cut-offs whose maximum-likelihood exponent is at most 3; [-1] if there is none"
+    powerlaw:
+      call: "powerlaw.Fit(degrees, discrete=True, estimate_discrete=False).xmin"
+      undefined_on: [path10, star8]
+      undefined_reason: "the package warns of fewer than two usable cut-offs and returns no value: these degree sequences have only two distinct values above the cut-off search range"
+      differs_on: [gnp_dir_dense, gnp_und_dense]
+      reason: "the package keeps only fits with an exponent in [0, 3]; when no cut-off qualifies it falls back to the smallest distance of its clamped fits, where the engine has no fit and reports -1"
+
+gt_plfit_alpha_continuous:
+  params: {fn: gt_plfit_alpha, xmin: 2.0, discrete: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "1 + n / sum ln(x / xmin) over the degrees at or above 2"
+    powerlaw:
+      call: "powerlaw.Fit(degrees, xmin=2, discrete=False).alpha"
+      differs_on: [florentine, gnp_und_sparse]
+      reason: "the package bounds the continuous exponent by 3 (its default parameter range) and returns 3 where the maximum-likelihood exponent is larger (3.24 and 3.05 here)"
+
+gt_plfit_alpha_continuous_small:
+  params: {fn: gt_plfit_alpha, xmin: 2.0, discrete: false, small_sample_below: 50}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "1 + n / sum ln(x / xmin) over the degrees at or above 2, corrected to a (n - 1) / n + 1 / n when fewer than 50 nodes have a positive degree"
+    pyigraph:
+      call: "ig.power_law_fit(degrees, xmin=2, method='continuous').alpha"

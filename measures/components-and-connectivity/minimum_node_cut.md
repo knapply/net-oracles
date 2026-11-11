@@ -52,6 +52,8 @@ Measure id: `min_node_cut`. Original family: Components and connectivity.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>flow_min_node_cut</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>len(nx.connectivity.minimum_st_node_cut(G, 0, n - 1)) on the simple graph; -1 if G.has_edge(0, n - 1)</code></td><td></td></tr><tr><td><code>flow_min_node_cut_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.minimum_cut_value(H, '0B', '(n-1)A') on the split digraph H: arcs vA -&gt; vB of capacity (v mod 3) + 1 and uB -&gt; vA for each arc u -&gt; v without a capacity (infinite)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/flow.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/flow.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Node cut {#node_cut}
@@ -73,6 +75,8 @@ Measure id: `node_cut`. Original family: Components and connectivity.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>conn_node_cut</code></td><td>NetworkX</td><td>any</td><td>no-value-on-some-inputs</td><td>(no value) disconnected</td><td>defaults</td><td>abs 0, rel 0</td><td><code>[len(nx.minimum_node_cut(G)), 1]</code></td><td>NetworkX raises an error for a network that is not connected; the reference returns the empty cut.</td></tr><tr><td><code>conn_node_cut_networkx</code></td><td>NetworkX</td><td>any</td><td>no-value-on-some-inputs</td><td>(no value) disconnected</td><td>defaults</td><td>abs 0, rel 0</td><td><code>[len(nx.minimum_node_cut(G)), 1]</code></td><td>as for conn_node_cut</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/connectivity.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/connectivity.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [esfahanian1984computing](../../references.html#esfahanian1984computing), [even1975algorithm](../../references.html#even1975algorithm), [even1975network](../../references.html#even1975network), [ford1956maximal](../../references.html#ford1956maximal), [hagberg2008exploring](../../references.html#hagberg2008exploring), [menger1927allgemeinen](../../references.html#menger1927allgemeinen), [schnorr1979bottlenecks](../../references.html#schnorr1979bottlenecks)
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring)
@@ -90,6 +94,8 @@ Measure id: `st_node_cut`. Original family: Components and connectivity.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>conn_st_node_cut</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>[len(nx.connectivity.minimum_st_node_cut(G, 0, n - 1)), 1]; -1 if G.has_edge(0, n - 1)</code></td><td></td></tr><tr><td><code>conn_st_node_cut_networkx</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>sorted(nx.connectivity.minimum_st_node_cut(G, 0, n - 1))</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/connectivity.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/connectivity.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

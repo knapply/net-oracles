@@ -1,0 +1,7 @@
+{
+ "inputs": "36c045d4ffb7477fda35ae2779ed0681763a2d8b97371b1548c6136541b5d312",
+ "oracles": [
+  "definition",
+  "networkx"
+ ]
+}

@@ -50,5 +50,7 @@ Measure id: `generalized_degree`. Original family: Graph theory and combinatoric
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>generalized_degree</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.generalized_degree(G)</code></td><td></td></tr><tr><td><code>generalized_degree</code></td><td>GraphBLAS algorithms</td><td>undirected</td><td>differs</td><td>multi_edges</td><td>direction, multi_edges, weights</td><td>abs 0, rel 0</td><td><code>nx.generalized_degree(G simple, backend = 'graphblas')</code></td><td>graphblas-algorithms accepts only Graph and DiGraph, so parallel edges collapse into one (the last weight wins); the reference counts each edge.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/matching.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/matching.yaml); [harness/golden/graphblas/](https://github.com/knapply/net-oracles/tree/main/harness/golden/graphblas/); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [davis2019algorithm](../../references.html#davis2019algorithm), [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

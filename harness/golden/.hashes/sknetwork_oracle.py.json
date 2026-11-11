@@ -1,0 +1,8 @@
+{
+ "inputs": "bf70dda9cb3919c2e0ca3c7549352e3476e39defde1df24bef1797c6f668019d",
+ "oracles": [
+  "cpnet",
+  "graphblas",
+  "sknetwork"
+ ]
+}

@@ -1,0 +1,111 @@
+# Random spanning trees: uniform, or with probability proportional to the
+# product of edge weights, by Wilson's algorithm (Wilson 1996,
+# `wilson1996generating`). Format: see ../README.md.
+#
+# A sampler cannot be compared draw for draw; each entry draws independent
+# trees with fixed seeds (draw k uses seed k + 1) and compares a statistic
+# with its exact value. Runners: ../bindings/trees_random.py; oracle:
+# trees_random_definition_oracle.py (Kirchhoff's effective resistances and the
+# transfer-current determinants of the spanning tree process, Burton and
+# Pemantle 1993; exhaustive enumeration of the trees of the
+# smallest networks) and NetworkX's own sampler (nx.random_spanning_tree) on
+# small networks. Tolerances are five to seven standard errors of the estimate.
+# Disconnected and directed networks have no random spanning tree: the runners
+# return nothing and the oracle likewise.
+#
+# Engine options:
+#   fn        random_spanning_tree
+#   stat      valid | edge_freq | pair_freq | chi_square
+#   weighted  edge weights as conductances (default false)
+#   draws     independent trees
+
+rst_valid:
+  params: {fn: random_spanning_tree, stat: valid, draws: 2000}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1, 1]: every draw is a spanning tree (n - 1 distinct edge positions, acyclic); equal seeds give equal trees"
+
+rst_valid_weighted:
+  params: {fn: random_spanning_tree, stat: valid, draws: 2000, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as rst_valid, weighted"
+
+rst_edge_freq:
+  params: {fn: random_spanning_tree, stat: edge_freq, draws: 20000}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.025}
+  oracles:
+    definition:
+      call: "P(e in T) = w_e * effective resistance of e (pseudo-inverse of the Laplacian), 20000 draws"
+
+rst_edge_freq_weighted:
+  params: {fn: random_spanning_tree, stat: edge_freq, draws: 20000, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0.025}
+  oracles:
+    definition:
+      call: "as rst_edge_freq with the edge weights as conductances"
+
+rst_pair_freq:
+  params: {fn: random_spanning_tree, stat: pair_freq, draws: 20000}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.025}
+  oracles:
+    definition:
+      call: "P(e, f in T) = Y_ee Y_ff - Y_ef^2 (transfer current) for the pairs among the first eight edges"
+
+rst_pair_freq_weighted:
+  params: {fn: random_spanning_tree, stat: pair_freq, draws: 20000, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0.025}
+  oracles:
+    definition:
+      call: "as rst_pair_freq, weighted"
+
+rst_chi_square:
+  params: {fn: random_spanning_tree, stat: chi_square, draws: 100000}
+  applies_to: undirected
+  # The engine side is the p-value of Pearson's goodness-of-fit test of
+  # 100000 drawn trees against all enumerated trees; it must be at least
+  # 1e-4. (chi2 / df against 1 with a fixed tolerance failed by chance on
+  # networks with few trees, where its standard deviation is sqrt(2 / df).)
+  compare: ge
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1e-4, the level of Pearson's goodness-of-fit test over all enumerated trees (at most 3000 trees)"
+
+rst_edge_freq_nx:
+  params: {fn: random_spanning_tree, stat: edge_freq, draws: 20000}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.025}
+  oracles:
+    definition:
+      call: "as rst_edge_freq"
+    networkx:
+      call: "fraction of 2000 draws of nx.random_spanning_tree(G, weight = None, seed = k) containing each edge (trees_random_networkx_oracle.py)"
+      only_on: [complete6, florentine, kite]
+      undefined_reason: NetworkX's sampler needs about 20 ms per tree; only small networks are drawn.
+      tolerance: {rel: 0, abs: 0.06}
+
+rst_edge_freq_nx_weighted:
+  params: {fn: random_spanning_tree, stat: edge_freq, draws: 20000, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0.025}
+  oracles:
+    definition:
+      call: "as rst_edge_freq_weighted"
+    networkx:
+      call: "fraction of 2000 draws of nx.random_spanning_tree(G, weight = 'weight', seed = k) containing each edge (trees_random_networkx_oracle.py)"
+      only_on: [twomode_weighted]
+      undefined_reason: NetworkX's sampler needs about 20 ms per tree; only small networks are drawn.
+      tolerance: {rel: 0, abs: 0.06}

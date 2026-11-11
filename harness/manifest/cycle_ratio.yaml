@@ -1,0 +1,112 @@
+# Minimum and maximum cycle ratio and cycle mean of a directed graph: the
+# measure `cycle_ratio` (Karp 1978, `karp1978characterization`, for the mean;
+# Dasdan and Gupta 1998, `dasdan1998faster`, on the ratio algorithms).
+# Format: see ../README.md; runners in ../bindings/cycle_ratio.py (through
+# the generic net_run), definition oracle cycle_ratio_definition_oracle.py,
+# NetworkX oracle cycle_ratio_networkx_oracle.py.
+#
+# The fixtures carry few usable weights, so the runners give every directed
+# fixture synthetic costs c_e = ((7e + 3) mod 11) - 3 (negative, zero and
+# positive) and times t_e = 1 + (e mod 3) by edge position, and run the
+# engine on a copy with those costs as weights. Karp's algorithm (unit times)
+# and Dinkelbach's iteration (with times) are compared with
+#   definition  Lawler's characterization: the least lambda with no negative
+#               cycle of c - lambda t, by bisection and Bellman-Ford, an
+#               algorithm independent of both (good to about 1e-9, hence
+#               the 1e-8 tolerance);
+#   networkx    the least or greatest ratio over nx.simple_cycles (Johnson's
+#               enumeration), on the small fixtures without parallel edges
+#               and loops (the enumeration treats a pair of parallel edges
+#               as one and the number of cycles explodes on the larger
+#               fixtures), where it is exact to rounding.
+# A network without a directed cycle gives NaN, encoded -999. Undirected
+# fixtures are not applicable (the measure rejects them).
+#
+# Engine options:
+#   fn       cycle_ratio
+#   extreme  minimum | maximum
+#   costs    pattern (synthetic, default) | fixture (the fixture's weights)
+#   times    none (unit, Karp) | pattern (Dinkelbach)
+#   stat     ratio (default) | valid
+
+cr_mean_min:
+  params: {fn: cycle_ratio, extreme: minimum}
+  applies_to: directed
+  tolerance: {rel: 1.0e-08, abs: 1.0e-08}
+  oracles:
+    definition:
+      call: "least lambda with no negative cycle of c - lambda (bisection, Bellman-Ford), -999 if acyclic"
+    networkx:
+      call: "min over nx.simple_cycles of the mean cost"
+      only_on: [complete5_dir, cycle7_dir, pair, empty]
+      undefined_reason: "enumeration oracle on the small fixtures only"
+
+cr_mean_max:
+  params: {fn: cycle_ratio, extreme: maximum}
+  applies_to: directed
+  tolerance: {rel: 1.0e-08, abs: 1.0e-08}
+  oracles:
+    definition:
+      call: "negated minimum of the negated costs"
+    networkx:
+      call: "max over nx.simple_cycles of the mean cost"
+      only_on: [complete5_dir, cycle7_dir, pair, empty]
+      undefined_reason: "enumeration oracle on the small fixtures only"
+
+cr_ratio_min:
+  params: {fn: cycle_ratio, extreme: minimum, times: pattern}
+  applies_to: directed
+  tolerance: {rel: 1.0e-08, abs: 1.0e-08}
+  oracles:
+    definition:
+      call: "as cr_mean_min with c - lambda t"
+    networkx:
+      call: "min over nx.simple_cycles of cost / time"
+      only_on: [complete5_dir, cycle7_dir, pair, empty]
+      undefined_reason: "enumeration oracle on the small fixtures only"
+
+cr_ratio_max:
+  params: {fn: cycle_ratio, extreme: maximum, times: pattern}
+  applies_to: directed
+  tolerance: {rel: 1.0e-08, abs: 1.0e-08}
+  oracles:
+    definition:
+      call: "as cr_mean_max with c - lambda t"
+    networkx:
+      call: "max over nx.simple_cycles of cost / time"
+      only_on: [complete5_dir, cycle7_dir, pair, empty]
+      undefined_reason: "enumeration oracle on the small fixtures only"
+
+cr_mean_weighted_min:
+  params: {fn: cycle_ratio, extreme: minimum, costs: fixture}
+  applies_to: directed
+  requires_weights: true
+  tolerance: {rel: 1.0e-08, abs: 1.0e-08}
+  oracles:
+    definition:
+      call: "as cr_mean_min with the fixture's weights as costs"
+
+cr_mean_weighted_max:
+  params: {fn: cycle_ratio, extreme: maximum, costs: fixture}
+  applies_to: directed
+  requires_weights: true
+  tolerance: {rel: 1.0e-08, abs: 1.0e-08}
+  oracles:
+    definition:
+      call: "as cr_mean_max with the fixture's weights as costs"
+
+cr_cycle_valid:
+  params: {fn: cycle_ratio, extreme: minimum, times: pattern, stat: valid}
+  applies_to: directed
+  tolerance: {rel: 1.0e-08, abs: 1.0e-08}
+  oracles:
+    definition:
+      call: "1: the returned cycle is a simple closed walk whose cost over time is the returned ratio (or the network is acyclic and the cycle empty)"
+
+cr_cycle_valid_karp:
+  params: {fn: cycle_ratio, extreme: maximum, stat: valid}
+  applies_to: directed
+  tolerance: {rel: 1.0e-08, abs: 1.0e-08}
+  oracles:
+    definition:
+      call: "1: as cr_cycle_valid for Karp's cycle (unit times, maximum)"

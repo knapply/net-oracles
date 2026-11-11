@@ -1,0 +1,247 @@
+# NetworkX's bipartite package beyond the two-mode centralities and
+# projections of twomode.yaml: two-colouring, set-based projections,
+# Latapy clustering (Latapy, Magnien, and Del Vecchio 2008,
+# `latapy2008basic`), butterflies (Sanei-Mehri, Sariyuce, and Tirthapura
+# 2018, `sanei2018butterfly`), the Robins-Alexander coefficient (Robins and
+# Alexander 2004, `robins2004small`), redundancy, spectral bipartivity
+# (Estrada and Rodriguez-Velazquez 2005, `estrada2005spectral`), BiRank (He
+# et al. 2017, `he2017birank`), bipartite modularity (Barber 2007,
+# `barber2007modularity`), König's vertex cover, and maximal extendability
+# (Lakhal and Litzler 1998, `lakhal1998polynomial`), as NetworkX 3.7
+# defines them. Format: see ../README.md; runners, derived inputs, and
+# encodings in ../bindings/bipartite_nx.py. Engine and oracles read the
+# simple graph of each fixture.
+
+bipartite_color:
+  params: {fn: bipartite_color}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "parity of the distance from the smallest node with a successor in each weak component (1 at the start, 0 for isolated nodes); -1 if some edge joins equal colours"
+    networkx:
+      call: "nx.bipartite.color(G) (-1 everywhere where it raises)"
+
+projection_count:
+  params: {fn: projection, weight: count}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "|succ(u) & pred(v)| for every v != u two steps from u"
+    networkx:
+      call: "nx.bipartite.weighted_projected_graph(G, top)"
+      undefined_on: [single_node]
+      undefined_reason: NetworkX raises when no node lies outside `top`
+
+projection_newman:
+  params: {fn: projection, weight: newman}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum of 1 / (|succ(x)| - 1) over shared neighbours x with |succ(x)| > 1, in exact rationals"
+    networkx:
+      call: "nx.bipartite.collaboration_weighted_projected_graph(G, top)"
+
+projection_jaccard:
+  params: {fn: projection, weight: jaccard}
+  applies_to: any
+  tolerance: {rel: 1.0e-15, abs: 0}
+  oracles:
+    definition:
+      call: "|succ(u) & pred(v)| / |succ(u) | pred(v)|"
+    networkx:
+      call: "nx.bipartite.overlap_weighted_projected_graph(G, top)"
+
+projection_min:
+  params: {fn: projection, weight: min}
+  applies_to: any
+  tolerance: {rel: 1.0e-15, abs: 0}
+  oracles:
+    definition:
+      call: "|succ(u) & pred(v)| / min(|succ(u)|, |pred(v)|)"
+    networkx:
+      call: "nx.bipartite.overlap_weighted_projected_graph(G, top, jaccard = False)"
+
+latapy_clustering_dot:
+  params: {fn: latapy_clustering, mode: dot}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "mean over nodes two steps away of |N(u) & N(v)| / |N(u) | N(v)|, exact rationals"
+    networkx:
+      call: "nx.bipartite.latapy_clustering(G, mode = 'dot')"
+
+latapy_clustering_min:
+  params: {fn: latapy_clustering, mode: min}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "as latapy_clustering_dot with min(|N(u)|, |N(v)|) as denominator"
+    networkx:
+      call: "nx.bipartite.latapy_clustering(G, mode = 'min')"
+
+latapy_clustering_max:
+  params: {fn: latapy_clustering, mode: max}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "as latapy_clustering_dot with max(|N(u)|, |N(v)|) as denominator"
+    networkx:
+      call: "nx.bipartite.latapy_clustering(G, mode = 'max')"
+
+butterflies:
+  params: {fn: butterflies}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "4-cycles through each node, enumerated from pairs of opposite nodes and deduplicated as edge sets"
+    networkx:
+      call: "nx.bipartite.butterflies(G)"
+
+robins_alexander:
+  params: {fn: robins_alexander}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "4 C4 / L3 with C4 the 4-cycles and L3 the simple 3-edge paths, enumerated; 0 with fewer than 4 nodes or 3 edges"
+    networkx:
+      call: "nx.bipartite.robins_alexander_clustering(G)"
+
+node_redundancy:
+  params: {fn: node_redundancy}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "share of pairs of successors of v with a common successor other than v (exact); -1 below two successors"
+    networkx:
+      call: "nx.bipartite.node_redundancy(G, nodes with at least two neighbours)"
+
+spectral_bipartivity:
+  params: {fn: spectral_bipartivity}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "cosh(A)_ii / exp(A)_ii and tr cosh(A) / tr exp(A) from the power series of the matrix exponential"
+    networkx:
+      call: "nx.bipartite.spectral_bipartivity(G, nodes = list(G)) and nx.bipartite.spectral_bipartivity(G)"
+
+birank:
+  params: {fn: birank}
+  applies_to: undirected
+  tolerance: {rel: 5.0e-6, abs: 1.0e-14}
+  note: >-
+    The engine iterates as NetworkX does and stops when the mean change of
+    a step falls below tol = 1e-10; the error left is about that change
+    divided by the spectral gap, so it is largest where the gap is small
+    (8.8e-7 relative against the definition oracle's exact projection onto
+    the leading eigenspace, on gnp_und_sparse; 1.1e-6 on a generated graph,
+    hence rel 5e-6, twice the largest, rounded up).
+    NetworkX runs the same iteration and agrees to 5e-14 (its own tolerance).
+  oracles:
+    definition:
+      call: "the uniform start projected onto the leading eigenspace of S^T S (S the degree-normalized biadjacency), u = S p, both L1-normalized"
+      differs_when: [isolates]
+      reason: >-
+        A node without ties to other nodes has degree 0, by which the
+        normalized matrices divide; the engine reports NaN, the definition
+        oracle the query vector's limit (1).
+    networkx:
+      call: "nx.bipartite.birank(G, top, max_iter = 1000, tol = 1e-10)"
+      tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+
+bipartite_modularity:
+  params: {fn: bipartite_modularity}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum over blocks of L_c / m - k_c d_c / m^2 (Barber), exact rationals"
+    networkx:
+      call: "nx.bipartite.modularity(G, blocks, top)"
+
+vertex_cover:
+  params: {fn: vertex_cover}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(size of a minimum vertex cover by integer programming (SciPy milp), 1): König's theorem gives the cover of a maximum matching that size"
+    networkx:
+      call: "nx.bipartite.to_vertex_cover(G, nx.bipartite.hopcroft_karp_matching(G, top), top_nodes = top): (size, 1 if it covers every edge)"
+
+maximal_extendability:
+  params: {fn: maximal_extendability}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "largest k such that every matching of k edges of the double cover lies in a perfect matching (enumeration, covers of at most 20 nodes); -1 if disconnected, without a perfect matching, or k = 0"
+      undefined_on: [davis_twomode, florentine, gnp_und_dense, gnp_und_sparse, karate, les_miserables,
+        multi_loops_und, real_weights_und, southern_women, twomode_random, twomode_weighted, uniform_weights,
+        weighted_und]
+      undefined_reason: enumeration runs on double covers of at most 20 nodes
+    networkx:
+      call: "nx.bipartite.maximal_extendability(cover2(G)) (-1 where it raises)"
+
+hopcroft_karp:
+  params: {fn: hopcroft_karp}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(size of a maximum matching by integer programming (SciPy milp), 1)"
+    networkx:
+      call: "nx.bipartite.hopcroft_karp_matching(G, top_nodes = top): (size, 1 if nx.is_matching)"
+
+min_weight_full_matching:
+  params: {fn: min_weight_full_matching}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "(least total cost of a matching covering the smaller side, by integer programming (SciPy milp), 1)"
+    networkx:
+      call: "nx.bipartite.minimum_weight_full_matching(G, top, weight = c): (total cost, 1 if it covers the smaller side); -1 where it raises"
+
+nx_hk_mates:
+  params: {fn: nx_hk_mates}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (which maximum matching is found depends on NetworkX's search order)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the matching is defined by NetworkX's procedure over its Python set of top nodes
+    networkx:
+      call: "nx.bipartite.hopcroft_karp_matching(G, top_nodes = top): each node's mate, -1 if unmatched; [-1] if top is not a side"
+
+nx_eppstein:
+  params: {fn: nx_eppstein}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (which maximum matching is found depends on NetworkX's search order)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the matching is defined by NetworkX's procedure over its Python set of top nodes
+    networkx:
+      call: "nx.bipartite.eppstein_matching(G, top_nodes = top): the dictionary's (key, value) pairs in order; [-1] if top is not a side"
+
+nx_eppstein_size:
+  params: {fn: nx_eppstein_size}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(maximum matching size by integer programming, 1); [-1] if top is not a side"
+    networkx:
+      call: "(len(eppstein_matching) / 2, 1 if every pair is an edge matched both ways); [-1] if top is not a side"

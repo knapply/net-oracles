@@ -48,5 +48,7 @@ Measure id: `cnx_lukes`. Original family: Communities.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nx_lukes_partitioning</code></td><td>NetworkX</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.community.lukes_partitioning(G, 3): (edges inside clusters, 1 if every cluster has at most 3 nodes); -1 if not a tree</code></td><td>NetworkX 3.7 fails with a KeyError on a tree of one node</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/community_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/community_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

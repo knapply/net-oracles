@@ -1,0 +1,5 @@
+# scikit-network oracle (sknetwork_oracle.py)
+scikit-network
+numpy
+scipy
+pyyaml

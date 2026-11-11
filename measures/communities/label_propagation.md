@@ -64,6 +64,8 @@ Measure id: `label_propagation`. Original family: Communities.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>label_prop_quality</code></td><td>igraph (R)</td><td>undirected</td><td>differs</td><td>loops</td><td>multi_edges, self_loops</td><td>abs 0.05, rel 0</td><td><code>mean over set.seed(1..100) of modularity(g, cluster_label_prop(g, weights = NA))</code></td><td>the reference ignores self-loops (a node never reads its own label); igraph documents no rule for loops, but its mean on multi_loops_und (0.258) is what a node that reads its own label once per loop gives (0.265 over 300 simulated runs, against 0.206 with loops ignored), as NetworkX does</td></tr><tr><td><code>label_prop_quality_fast</code></td><td>NetworkX</td><td>undirected</td><td>differs</td><td>edge_case, loops, multi_edges</td><td>defaults, multi_edges, self_loops</td><td>abs 0.05, rel 0</td><td><code>mean over seeds of modularity(G, fast_label_propagation_communities(simple graph, seed = s))</code></td><td>NetworkX runs on the simple graph here, while the reference counts parallel edges with their multiplicity; without edges modularity is undefined (the reference reports -1, NetworkX 0)</td></tr><tr><td><code>label_prop_quality_retention</code></td><td>NetworkX</td><td>undirected</td><td>differs</td><td>edge_case, loops, multi_edges</td><td>defaults, multi_edges, self_loops</td><td>abs 0.05, rel 0</td><td><code>mean over seeds of modularity(G, asyn_lpa_communities(simple graph, seed = s))</code></td><td>NetworkX runs on the simple graph here, while the reference counts parallel edges with their multiplicity; without edges modularity is undefined (the reference reports -1, NetworkX 0)</td></tr><tr><td><code>label_prop_semisync</code></td><td>NetworkX</td><td>undirected</td><td>differs</td><td>loops, multi_edges</td><td>multi_edges, self_loops</td><td>abs 0, rel 0</td><td><code>nx.community.label_propagation_communities(simple graph)</code></td><td>NetworkX runs on the simple graph here (parallel edges once, no loops); the reference counts parallel edges with their multiplicity</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/communities.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/communities.yaml); [harness/golden/igraph/](https://github.com/knapply/net-oracles/tree/main/harness/golden/igraph/); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Findings**
 
 <div class="table-wrapper"><table><thead><tr><th>Id</th><th>Tool</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../../findings.html#f029">F029</a></td><td>NetworkX</td><td>convention</td><td>Ties are broken by Python set or insertion order</td></tr></tbody></table></div>
@@ -86,6 +88,8 @@ Measure id: `cnx_label_propagation`. Original family: Communities.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nx_label_propagation</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.community.label_propagation_communities(G) on the simple undirected graph</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/community_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/community_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Seeded labels {#cnx_seeded_labels}
@@ -101,6 +105,8 @@ Measure id: `cnx_seeded_labels`. Original family: Communities.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nx_seeded_labels</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>per node: community index under asyn_lpa_communities and fast_label_propagation_communities (simple graph), and asyn_fluidc(k = min(3, n)) on the simple undirected graph (-1 if not connected), each with seed=random.Random(7)</code></td><td></td></tr><tr><td><code>nx_seeded_labels_valid</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>the same checks on NetworkX's communities</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/community_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/community_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

@@ -1,0 +1,12 @@
+{
+ "inputs": "da710bc7587fdb47ad0902a8f5f77421545efafaab087d97dbad33b4e3589716",
+ "oracles": [
+  "definition",
+  "igraph",
+  "networkit",
+  "s2",
+  "sf",
+  "sna",
+  "stats"
+ ]
+}

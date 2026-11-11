@@ -1,0 +1,22 @@
+{
+ "inputs": "20f63d09659891cfdddd32974f2bdd3b41a9563bf630330b10ee1b026d5d8d0f",
+ "oracles": [
+  "blockmodeling",
+  "centiserve",
+  "definition",
+  "egor",
+  "homophily",
+  "igraph",
+  "influencer",
+  "manynet",
+  "netrankr",
+  "networkit",
+  "networkx",
+  "pyigraph",
+  "s2",
+  "sf",
+  "sna",
+  "stats",
+  "tnet"
+ ]
+}

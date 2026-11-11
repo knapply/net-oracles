@@ -1,0 +1,141 @@
+# Sampled and pruned centralities: the measures `betweenness_approx` (Brandes
+# and Pich 2007, `brandes2007centrality`; Bader et al. 2007,
+# `bader2007approximating`), `closeness_approx` (Eppstein and Wang 2004,
+# `eppstein2004fast`), `closeness_top_k` (Bergamini et al. 2019,
+# `bergamini2019computing`) and `group_closeness` (Everett and Borgatti 1999,
+# `everett1999centrality`; greedy as in Bergamini et al. 2018,
+# `bergamini2018scaling`). Format: see ../README.md; runners in
+# ../bindings/approx_centrality.py (through the generic net_run), definition
+# oracle approx_centrality_definition_oracle.py, NetworkX oracle
+# approx_centrality_networkx_oracle.py.
+#
+# Exactness. With every node a source the estimators are the exact measures:
+# those entries compare values to 1e-9 against definitions (path counts and
+# distances computed from scratch) and NetworkX. The top-k and greedy group
+# entries are exact procedures and compare nodes and values exactly.
+#
+# Distribution. A sample of sources cannot be compared draw for draw with
+# another tool's sampler. The `mean` entries average 400 seeded estimates
+# from n/2 sources and bound the deviation from the exact value; the bound
+# is the measured value at the 400 seeds 0..399 on the fixtures of 20 nodes
+# or more (at most 0.0043 and 0.0137 for betweenness, 0.0095 for closeness)
+# with a factor of three or more to spare, enough to catch a missing scale
+# factor or a biased sampler (Brandes-Pich is unbiased: the sample is without
+# replacement and each source enters with probability k/n; the closeness
+# estimator is a ratio of two sample sums with a bias of order 1/k). The
+# runners' own all-sources run supplies the exact value there, validated by
+# the `all` entries.
+#
+# Conventions. The engine counts the paths through each parallel edge of a
+# network (betweenness), and so does the definition oracle. NetworkX reads the fixture as a simple graph: parallel edges
+# collapse to one, the engine counts paths through each parallel edge
+# (betweenness only; closeness and group closeness are distances and agree).
+# NetworkX's closeness and harmonic centrality use the distances INTO a
+# node in directed graphs: the runners use mode `in` there. Group closeness
+# reads directed networks as undirected; NetworkX's directed version is not
+# compared.
+#
+# Engine options:
+#   fn        betweenness_approx | closeness_approx | closeness_top_k |
+#             group_closeness
+#   stat      see ../bindings/approx_centrality.py
+#   weighted  betweenness_approx: use edge weights as lengths
+
+bcapprox_all:
+  params: {fn: betweenness_approx, stat: all}
+  applies_to: any
+  tolerance: {rel: 1.0e-09, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "sum over s != v != t of sigma_st(v) / sigma_st from BFS path counts, halved when undirected"
+    networkx:
+      call: "nx.betweenness_centrality(G, normalized = False)"
+      differs_when: [multi_edges]
+      reason: "NetworkX's simple graph keeps one edge of a parallel pair; the engine counts the paths through each parallel edge"
+
+bcapprox_all_weighted:
+  params: {fn: betweenness_approx, stat: all, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-09, abs: 1.0e-12}
+  oracles:
+    networkx:
+      call: "nx.betweenness_centrality(G, normalized = False, weight = 'weight')"
+      differs_when: [multi_edges]
+      undefined_when: [negative_weights, zero_weights]
+      undefined_reason: "lengths must be positive: the engine rejects negative weights and NetworkX's path counts at zero weights follow another convention"
+      reason: "as bcapprox_all"
+
+bcapprox_mean:
+  params: {fn: betweenness_approx, stat: mean}
+  applies_to: any
+  compare: le
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "bounds [0.02, 0.05] for [|ratio of sums - 1|, relative L1 deviation] of the mean of 400 estimates from n/2 sources"
+
+bcapprox_threads:
+  params: {fn: betweenness_approx, stat: threads}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1, 1]: equal values on 1 and 4 threads for one seed, different values for another seed"
+
+clapprox_all:
+  params: {fn: closeness_approx, stat: all}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "(nodes reached) / (sum of their BFS distances), 0 when none is reached; distances into the node when directed"
+    networkx:
+      call: "nx.closeness_centrality(G, wf_improved = False)"
+
+clapprox_mean:
+  params: {fn: closeness_approx, stat: mean}
+  applies_to: any
+  compare: le
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "bound [0.03] for |mean over nodes of (mean of 400 estimates from n/2 sources) / exact - 1|"
+
+cltopk_values:
+  params: {fn: closeness_top_k, stat: values}
+  applies_to: any
+  tolerance: {rel: 1.0e-09, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "harmonic closeness sum of 1 / d(u, v) over u != v reached, exact fractions, the 5 largest"
+    networkx:
+      call: "sorted(nx.harmonic_centrality(G).values(), reverse = True)[:5]"
+
+cltopk_nodes:
+  params: {fn: closeness_top_k, stat: nodes}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the nodes of the 5 largest exact harmonic closenesses, ties to the smallest id"
+    networkx:
+      call: "nx.harmonic_centrality(G) ranked by value rounded to 9 places, then id"
+
+grpcl_greedy:
+  params: {fn: group_closeness, stat: nodes}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "greedy: k times add the node minimizing the sum over all nodes of the distance to the group (undirected reading), ties to the smallest id; empty when not connected"
+
+grpcl_value:
+  params: {fn: group_closeness, stat: value}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "(n - k) / sum of the distances from the greedy group to the other nodes"
+    networkx:
+      call: "nx.group_closeness_centrality(G, S) for the definition oracle's greedy group S"

@@ -30,6 +30,10 @@ reasons.measure/tool -> capabilities.measure/tool; measures.concept -> concepts.
 
 Edge ends are called source and target. A reference value is the published definition evaluated independently. Every state other than checked-agrees has a reason in data/reasons.json. UCINET is documented-only: it was never run. Tool versions are those tested; findings may not hold in later versions.
 
+## Oracle harness (harness/)
+
+Reproduces every reference value. harness/manifest/<area>.yaml: one entry per measure variant, keyed by variant id, with params (the parameters every oracle computes with), applies_to, requires_weights and oracles (tool id -> oracle options, tolerance, documented differences). harness/fixtures/, fixtures-extra/ and derived/: the test graphs (edge lists with source and target columns). harness/golden/<tool>/: the values each tool returned per fixture and variant, with a VERSION file recording the tool version; golden-sized/ holds the larger graphs. harness/oracles/: one script per tool and area (Python *_oracle.py, R *.R), each tool used as a black box; harness/run_oracles.py reruns a script only when its inputs change (hashes in harness/golden/.hashes/). The manifest variant id is the measure id used in data/ where the measure was checked.
+
 ## Regenerate and validate
 
 python3 scripts/build.py          # write pages

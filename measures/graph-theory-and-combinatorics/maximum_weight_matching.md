@@ -59,6 +59,8 @@ Measure id: `max_weight_matching`. Original family: Graph theory and combinatori
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>matching_max</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.max_weight_matching(G) on unit weights: (size, size, 1 if nx.is_matching)</code></td><td></td></tr><tr><td><code>matching_max_weight</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.max_weight_matching(G, weight = 'weight')</code></td><td></td></tr><tr><td><code>matching_max_weight_card</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.max_weight_matching(G, maxcardinality = True, weight = 'weight')</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/matching.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/matching.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [edmonds1965maximum](../../references.html#edmonds1965maximum), [edmonds1965paths](../../references.html#edmonds1965paths), [galil1986efficient](../../references.html#galil1986efficient), [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [siek2002boost](../../references.html#siek2002boost), [tool_rustworkx](../../references.html#tool_rustworkx)
@@ -77,6 +79,8 @@ Measure id: `st_mwm`. Original family: Graph theory and combinatorics.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>st_mwm</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>the same totals and sizes from nx.max_weight_matching(G), (G, True), nx.min_weight_matching(G)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/structure_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/structure_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Mwm pairs {#st_mwm_pairs}
@@ -92,6 +96,8 @@ Measure id: `st_mwm_pairs`. Original family: Graph theory and combinatorics.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>st_mwm_pairs</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>sorted oriented pairs of max_weight_matching(G), then of (G, True), then of min_weight_matching(G), each list with its length first</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/structure_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/structure_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

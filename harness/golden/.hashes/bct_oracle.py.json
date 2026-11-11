@@ -1,0 +1,14 @@
+{
+ "inputs": "192f29da31ceadac50bc5efd66a5710b6cfd2053c8d0e4a556d07ea799501f3b",
+ "oracles": [
+  "bct",
+  "cdlib",
+  "definition",
+  "ergm",
+  "graspologic",
+  "infomap",
+  "jgrapht",
+  "networkx",
+  "pyigraph"
+ ]
+}

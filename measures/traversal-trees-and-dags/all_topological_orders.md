@@ -52,6 +52,8 @@ Measure id: `all_topological`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>dag_all_topological</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>the first 50 orders of nx.all_topological_sorts(D), in its sequence</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/trees.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/trees.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [knuth1974structured](../../references.html#knuth1974structured)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
@@ -73,6 +75,8 @@ Measure id: `nxs_topological_sorts`. Original family: Graph theory and combinato
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nxs_topological_sorts</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>first 2000 of nx.all_topological_sorts(DAG), in its order</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/nx_shims.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/nx_shims.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht)
 {% endraw %}

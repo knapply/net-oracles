@@ -1,0 +1,6 @@
+# python: 3.12
+# graspologic oracle (graspologic_oracle.py); graspologic needs Python < 3.13
+graspologic
+networkx
+numpy
+pyyaml

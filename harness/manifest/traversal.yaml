@@ -1,0 +1,203 @@
+# Traversals (breadth-first, depth-first, over edges, beam search) and the
+# shortest-path searches whose results depend on how ties are settled
+# (insertion-ordered Dijkstra, bidirectional searches, A*, the
+# Bellman-Ford-Moore queue). Format: see ../README.md; engine runners and
+# encodings in ../bindings/traversal.py.
+#
+# The engine reads the fixture's adjacency in NetworkX's order (nodes
+# 0..n - 1, then edges in file order); NetworkX runs on its multigraph of the
+# fixture with edge keys equal to positions. The definition oracle
+# (traversal_definition_oracle.py) writes each search from its textbook
+# definition over the same adjacency order. Weighted searches use the
+# fixture's weights (the least over parallel edges) and unit lengths on
+# unweighted fixtures.
+
+trav_bfs_edges:
+  params: {fn: trav_bfs_edges}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.bfs_edges(M, 0)"
+
+trav_bfs_layers:
+  params: {fn: trav_bfs_layers}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.bfs_layers(M, [0])"
+
+trav_bfs_labeled:
+  params: {fn: trav_bfs_labeled}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.bfs_labeled_edges(M, [0])"
+
+trav_dfs_events:
+  params: {fn: trav_dfs_events}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.dfs_labeled_edges(M)"
+
+trav_beam:
+  params: {fn: trav_beam, width: 2}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.bfs_beam_edges(M, 0, lambda v: (v * 7) % 5, 2)"
+
+trav_edge_bfs:
+  params: {fn: trav_edge_bfs, orientation: none}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.edge_bfs(M)"
+
+trav_edge_dfs:
+  params: {fn: trav_edge_dfs, orientation: none}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.edge_dfs(M)"
+
+trav_edge_bfs_reverse:
+  params: {fn: trav_edge_bfs, orientation: reverse}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.edge_bfs(M, orientation = 'reverse')"
+
+trav_edge_dfs_reverse:
+  params: {fn: trav_edge_dfs, orientation: reverse}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.edge_dfs(M, orientation = 'reverse')"
+
+trav_edge_bfs_ignore:
+  params: {fn: trav_edge_bfs, orientation: ignore}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.edge_bfs(M, orientation = 'ignore')"
+
+trav_edge_dfs_ignore:
+  params: {fn: trav_edge_dfs, orientation: ignore}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.edge_dfs(M, orientation = 'ignore')"
+
+ord_dijkstra_unit:
+  params: {fn: ord_dijkstra, weighted: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.single_source_dijkstra(M, 0, weight = None): (node, distance, parent) in dict order"
+
+ord_dijkstra_weighted:
+  params: {fn: ord_dijkstra, weighted: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.single_source_dijkstra(M, 0)"
+
+ord_dijkstra_preds:
+  params: {fn: ord_dijkstra, weighted: true, preds: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.dijkstra_predecessor_and_distance(M, 0)[0]"
+
+ord_bfs_preds:
+  params: {fn: ord_dijkstra, weighted: false, preds: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.dijkstra_predecessor_and_distance(M, 0, weight = None)[0]"
+
+ord_bellman_ford:
+  params: {fn: ord_bellman_ford, weighted: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.bellman_ford_predecessor_and_distance(M, 0)"
+
+ord_bidir_bfs:
+  params: {fn: ord_bidir_bfs}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.bidirectional_shortest_path(M, 0, n - 1)"
+
+ord_bidir_dijkstra:
+  params: {fn: ord_bidir_dijkstra}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.bidirectional_dijkstra(M, 0, n - 1): path, then length"
+
+ord_astar:
+  params: {fn: ord_astar}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "textbook search over NetworkX's adjacency order (traversal_definition_oracle.py)"
+    networkx:
+      call: "nx.astar_path(M, 0, n - 1)"

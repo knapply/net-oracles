@@ -54,6 +54,8 @@ Measure id: `k_truss`. Original family: Cohesion and subgroups.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>k_truss_3_edges</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.k_truss(G, 3), G the simple undirected graph without loops: the fixture edges whose pair it keeps</code></td><td></td></tr><tr><td><code>k_truss_3_nodes</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.k_truss(G, 3), G the simple undirected graph without loops: its nodes</code></td><td></td></tr><tr><td><code>k_truss_4_edges</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.k_truss(G, 4), G the simple undirected graph without loops: the fixture edges whose pair it keeps</code></td><td></td></tr><tr><td><code>k_truss_4_nodes</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.k_truss(G, 4), G the simple undirected graph without loops: its nodes</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/cores.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/cores.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [batagelj2003algorithm](../../references.html#batagelj2003algorithm), [carmi2007model](../../references.html#carmi2007model), [goltsev2006k](../../references.html#goltsev2006k), [hagberg2008exploring](../../references.html#hagberg2008exploring), [hebertdufresne2016multi](../../references.html#hebertdufresne2016multi), [seidman1983network](../../references.html#seidman1983network), [wang2012truss](../../references.html#wang2012truss)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
@@ -71,6 +73,8 @@ Measure id: `truss`. Original family: Cohesion and subgroups.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>truss_numbers</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>the largest k with the edge in nx.k_truss(G, k), G the simple undirected graph without loops (0 for loops)</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/cores.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/cores.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **References:** [batagelj2003algorithm](../../references.html#batagelj2003algorithm), [carmi2007model](../../references.html#carmi2007model), [goltsev2006k](../../references.html#goltsev2006k), [hagberg2008exploring](../../references.html#hagberg2008exploring), [hebertdufresne2016multi](../../references.html#hebertdufresne2016multi), [seidman1983network](../../references.html#seidman1983network), [wang2012truss](../../references.html#wang2012truss)
 

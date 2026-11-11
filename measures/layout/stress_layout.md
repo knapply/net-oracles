@@ -94,6 +94,8 @@ Measure id: `layout_stress_quality`. Original family: Layout.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>layout_stress_vs_kamada_kawai</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 0.02</td><td><code>optimally scaled stress of nx.kamada_kawai_layout of the largest component (0 below 3 nodes)</code></td><td></td></tr><tr><td><code>layout_stress_vs_kamada_kawai_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 0.02</td><td><code>optimally scaled weighted stress of nx.kamada_kawai_layout(weight = 'weight') of the largest component</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/layout.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/layout.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [brandes2007eigensolver](../../references.html#brandes2007eigensolver), [brandes2009experimental](../../references.html#brandes2009experimental), [gansner2005graph](../../references.html#gansner2005graph), [kamada1989algorithm](../../references.html#kamada1989algorithm), [mises1929praktische](../../references.html#mises1929praktische), [ortmann2017sparse](../../references.html#ortmann2017sparse)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
@@ -115,6 +117,8 @@ Measure id: `layout_stress_value`. Original family: Layout.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>layout_stress_value</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>the stress sum with nx.all_pairs_shortest_path_length on the skeleton</code></td><td></td></tr><tr><td><code>layout_stress_value_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>the stress sum with nx.all_pairs_dijkstra_path_length on the skeleton</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/layout.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/layout.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **References:** [brandes2007eigensolver](../../references.html#brandes2007eigensolver), [brandes2009experimental](../../references.html#brandes2009experimental), [gansner2005graph](../../references.html#gansner2005graph), [kamada1989algorithm](../../references.html#kamada1989algorithm), [mises1929praktische](../../references.html#mises1929praktische), [ortmann2017sparse](../../references.html#ortmann2017sparse)
 

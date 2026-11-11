@@ -1,0 +1,29 @@
+{
+ "inputs": "205689d9b45e9c4e964b52dc1f493b2b9c2f4b0a9c90121a06d291d60f5c01f4",
+ "oracles": [
+  "bctpy",
+  "blockmodeling",
+  "cdlib",
+  "centiserve",
+  "cpnet",
+  "definition",
+  "egor",
+  "ergm",
+  "graphblas",
+  "igraph",
+  "influencer",
+  "infomap",
+  "manynet",
+  "nauty",
+  "netrankr",
+  "networkx",
+  "powerlaw",
+  "published",
+  "pyigraph",
+  "rustworkx",
+  "sknetwork",
+  "sna",
+  "tnet",
+  "tsna"
+ ]
+}

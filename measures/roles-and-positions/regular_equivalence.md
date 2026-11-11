@@ -55,6 +55,8 @@ Measure id: `regular_equivalence`. Original family: Roles and positions.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>regular_equivalence</code></td><td>sna</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>classes at distance 0 in sna::redist(m, method = 'catrege')</code></td><td>sna fails on a network with a single node.</td></tr><tr><td><code>regular_equivalence_seed</code></td><td>sna</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>sna::redist(m, method = 'catrege', seed.partition = v %% 3), distance 0</code></td><td>sna fails on a network with a single node.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/roles.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/roles.yaml); [harness/golden/sna/](https://github.com/knapply/net-oracles/tree/main/harness/golden/sna/)
+
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [butts2008sna](../../references.html#butts2008sna), [ziberna2007generalized](../../references.html#ziberna2007generalized)
 
 ## Automorphic (Max Sim) and regular equivalence (REGE, CATREGE) {#cat_automorphic_catrege_equivalence_max_rege_regular_sim}

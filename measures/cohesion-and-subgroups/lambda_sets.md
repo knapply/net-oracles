@@ -56,6 +56,8 @@ Measure id: `lambda_sets`. Original family: Cohesion and subgroups.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>lambda_sets</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>classes of nx.edge_connectivity &gt;= k with at least two members, for every k &gt;= 1</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/groups.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/groups.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [borgatti1990ls](../../references.html#borgatti1990ls), [edmonds1972theoretical](../../references.html#edmonds1972theoretical), [ford1956maximal](../../references.html#ford1956maximal), [gomory1961multi](../../references.html#gomory1961multi), [gusfield1990very](../../references.html#gusfield1990very)
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [hagberg2008exploring](../../references.html#hagberg2008exploring)

@@ -60,6 +60,8 @@ Measure id: `girvan_newman`. Original family: Communities.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>girvan_newman</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-14, rel 1e-12</td><td><code>max of nx.community.modularity over nx.community.girvan_newman(simple graph)</code></td><td></td></tr><tr><td><code>girvan_newman</code></td><td>igraph (R)</td><td>undirected</td><td>differs</td><td>symmetric_nodes</td><td>ties</td><td>abs 1e-14, rel 1e-12</td><td><code>max(modularity(cluster_edge_betweenness(simplify(g), weights = NULL)))</code></td><td>Edges of exactly equal betweenness (symmetric positions) are removed in a different order, igraph by its own rule, the reference by edge index, so the dendrograms and their best levels can differ.</td></tr><tr><td><code>girvan_newman_membership</code></td><td>NetworkX</td><td>undirected</td><td>differs</td><td>edgeless</td><td>defaults</td><td>abs 0, rel 0</td><td><code>the first partition of highest modularity among the components and the partitions of nx.community.girvan_newman(simple graph)</code></td><td>Without edges: the reference returns no membership level for the null graph and the singletons otherwise, the NetworkX oracle one value for the empty level.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/groups.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/groups.yaml); [harness/golden/igraph/](https://github.com/knapply/net-oracles/tree/main/harness/golden/igraph/); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [girvan2002community](../../references.html#girvan2002community)
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht)
@@ -82,6 +84,8 @@ Measure id: `cnx_current_flow`. Original family: Communities.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nx_edge_current_flow_partition</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>symmetric_nodes</td><td>ties</td><td>abs 0, rel 0</td><td><code>nx.community.edge_current_flow_betweenness_partition(G, 3) on the simple undirected graph (-1 when n &lt; 3)</code></td><td>Edges whose current-flow betweenness ties in exact arithmetic (symmetric positions) differ in the last digits; NetworkX removes the one its rounding and dict order rank first, the reference the first in edge order.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/community_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/community_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [brandes2005centrality](../../references.html#brandes2005centrality)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
@@ -99,6 +103,8 @@ Measure id: `cnx_edge_betweenness`. Original family: Communities.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nx_edge_betweenness_partition</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.community.edge_betweenness_partition(G, 3) on the simple undirected graph (-1 when n &lt; 3)</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/community_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/community_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **References:** [brandes2001faster](../../references.html#brandes2001faster), [chen2014extension](../../references.html#chen2014extension), [clauset2004finding](../../references.html#clauset2004finding), [cordasco2010community](../../references.html#cordasco2010community), [fortunato2010community](../../references.html#fortunato2010community), [girvan2002community](../../references.html#girvan2002community), [hagberg2008exploring](../../references.html#hagberg2008exploring), [kernighan1970efficient](../../references.html#kernighan1970efficient)
 
@@ -118,6 +124,8 @@ Measure id: `cnx_girvan_newman`. Original family: Communities.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nx_girvan_newman</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>itertools.islice(nx.community.girvan_newman(G), 3)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/community_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/community_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Girvan newman cut {#girvan_newman_cut}
@@ -133,6 +141,8 @@ Measure id: `girvan_newman_cut`. Original family: Communities.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>girvan_newman_cut3</code></td><td>igraph (R)</td><td>undirected</td><td>no-value-on-some-inputs</td><td>(no value) disconnected, (no value) edge_case, (no value) loops, (no value) multi_edges</td><td>defaults, multi_edges, self_loops</td><td>abs 0, rel 0</td><td><code>cut_at(cluster_edge_betweenness(simplify(g), weights = NULL), no = 3)</code></td><td>the R oracle simplifies the network, so multigraphs and networks with loops are not comparable; disconnected and trivial networks give dendrograms that cannot be cut at 3 groups in one tool or the other</td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/communities.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/communities.yaml); [harness/golden/igraph/](https://github.com/knapply/net-oracles/tree/main/harness/golden/igraph/)
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph)
 {% endraw %}

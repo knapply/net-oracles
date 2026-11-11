@@ -1,0 +1,103 @@
+# Layouts: stress (all-pairs stress majorization and sparse stress, Gansner,
+# Koren, and North 2004; Kamada and Kawai 1989) and Fruchterman-Reingold
+# (1991). A layout is unique only up to rotation, reflection, translation and
+# local optima, so no coordinates are compared; each entry compares a number
+# that does not depend on those. Format: see ../README.md; engine runners and
+# encodings in ../bindings/layout.py. The full property checks stay in
+# ../layout_check.py.
+#
+# layout_stress_value: the stress sum over pairs of (|x_i - x_j| - d_ij)^2 /
+#   d_ij^2 of a fixed probe layout, d the shortest-path distance (hops, or
+#   weights) in the undirected skeleton (loops dropped, parallel edges keep
+#   their smallest weight), over pairs in one component.
+# layout_stress_vs_kamada_kawai: the same after the optimal scaling of the
+#   layout, for the engine's default stress layout of the largest component;
+#   it must be at most that of NetworkX's Kamada-Kawai layout (both minimise
+#   this energy).
+# layout_*_properties: (finite coordinates, the same coordinates on a repeated
+#   call, the same on 3 threads, components at least the gap apart: the mean
+#   edge length for stress, 1 for the force-directed layout). The definition
+#   oracle states what must hold, so every value is 1. No reference tool
+#   promises these (NetworkX's spring_layout rescales to [-1, 1]).
+
+layout_stress_value:
+  params: {fn: layout_stress_value, weighted: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "the stress sum by Floyd-Warshall distances on the skeleton (layout_definition_oracle.py)"
+    networkx:
+      call: "the stress sum with nx.all_pairs_shortest_path_length on the skeleton"
+
+layout_stress_value_weighted:
+  params: {fn: layout_stress_value, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "the stress sum by Floyd-Warshall distances on the weighted skeleton (layout_definition_oracle.py)"
+    networkx:
+      call: "the stress sum with nx.all_pairs_dijkstra_path_length on the skeleton"
+
+layout_stress_vs_kamada_kawai:
+  params: {fn: layout_stress_quality, weighted: false}
+  applies_to: any
+  compare: le
+  tolerance: {rel: 2.0e-2, abs: 1.0e-9}
+  oracles:
+    networkx:
+      call: "optimally scaled stress of nx.kamada_kawai_layout of the largest component (0 below 3 nodes)"
+
+layout_stress_vs_kamada_kawai_weighted:
+  params: {fn: layout_stress_quality, weighted: true}
+  applies_to: any
+  requires_weights: true
+  compare: le
+  tolerance: {rel: 2.0e-2, abs: 1.0e-9}
+  oracles:
+    networkx:
+      call: "optimally scaled weighted stress of nx.kamada_kawai_layout(weight = 'weight') of the largest component"
+
+layout_stress_properties:
+  params: {fn: layout_properties, method: stress, weighted: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "all four properties hold (layout_definition_oracle.py)"
+
+layout_stress_properties_weighted:
+  params: {fn: layout_properties, method: stress, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "all four properties hold (layout_definition_oracle.py)"
+
+layout_fr_properties:
+  params: {fn: layout_properties, method: fr, weighted: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "all four properties hold (layout_definition_oracle.py)"
+
+layout_fr_properties_weighted:
+  params: {fn: layout_properties, method: fr, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "all four properties hold (layout_definition_oracle.py)"
+
+layout_fr_barnes_hut_properties:
+  params: {fn: layout_properties, method: fr_bh, weighted: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "all four properties hold (layout_definition_oracle.py)"

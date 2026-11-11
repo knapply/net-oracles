@@ -1,0 +1,10 @@
+{
+  "n": 34,
+  "directed": false,
+  "weighted": false,
+  "tags": [
+    "onemode",
+    "symmetric_nodes"
+  ],
+  "source": "Zachary (1977); zachary1977information"
+}

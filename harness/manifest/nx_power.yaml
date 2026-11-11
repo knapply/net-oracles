@@ -1,0 +1,115 @@
+# NetworkX's power iterations (eigenvector_centrality, katz_centrality,
+# pagerank, hits) reproduced step for step, and NetworkX's Google matrix.
+# Format: see ../README.md; runners and encodings in ../bindings/nx_power.py.
+# A single -999 means the iteration did not converge within max_iter
+# (NetworkX raises PowerIterationFailedConvergence).
+#
+# Oracles: `definition` is nx_power_definition_oracle.py (each iteration
+# written out in plain Python from its definition); `networkx` is
+# nx_power_networkx_oracle.py.
+
+nxp_eigenvector:
+  params: {fn: nxp_eigenvector}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "x <- (x + A'x) / ||x + A'x||, from uniform, until sum |change| < n tol"
+    networkx:
+      call: "nx.eigenvector_centrality(G)"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement eigenvector_centrality for multigraphs.
+
+nxp_eigenvector_weighted_capped:
+  params: {fn: nxp_eigenvector, weighted: true, max_iter: 8}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as nxp_eigenvector with weights and at most 8 steps"
+    networkx:
+      call: "nx.eigenvector_centrality(G, max_iter = 8, weight = 'weight')"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement eigenvector_centrality for multigraphs.
+
+nxp_katz:
+  params: {fn: nxp_katz, alpha: 0.05}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "x <- alpha A'x + 1 from zeros until sum |change| < n tol, unit norm"
+    networkx:
+      call: "nx.katz_centrality(G, alpha = 0.05)"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement katz_centrality for multigraphs.
+
+nxp_katz_weighted_raw:
+  params: {fn: nxp_katz, alpha: 0.02, weighted: true, normalized: false}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as nxp_katz with weights, alpha 0.02, not normalized"
+    networkx:
+      call: "nx.katz_centrality(G, alpha = 0.02, normalized = False, weight = 'weight')"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement katz_centrality for multigraphs.
+
+nxp_pagerank:
+  params: {fn: nxp_pagerank}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-13}
+  oracles:
+    definition:
+      call: "x <- alpha (x P + dangling mass p) + (1 - alpha) p until sum |change| < n tol"
+    networkx:
+      call: "nx.pagerank(G, weight = None)"
+
+nxp_pagerank_personalized_weighted:
+  params: {fn: nxp_pagerank, weighted: true, personalization: mod3, alpha: 0.7}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-10, abs: 1.0e-13}
+  oracles:
+    definition:
+      call: "as nxp_pagerank with weights, alpha 0.7, personalization v % 3"
+    networkx:
+      call: "nx.pagerank(G, alpha = 0.7, personalization = {v: v % 3}, weight = 'weight')"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        The personalization v % 3 gives node 0 weight 0, so on one node it
+        sums to zero; the engine rejects it.
+
+nxp_hits:
+  params: {fn: nxp_hits}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-13}
+  oracles:
+    definition:
+      call: "a = hA, h <- Aa / max(Aa) until sum |change| < tol, then sum-normalized"
+    networkx:
+      call: "nx.hits(G) (power iteration; graph read without weights)"
+
+nxp_hits_raw_weighted:
+  params: {fn: nxp_hits, weighted: true, normalized: false}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-10, abs: 1.0e-13}
+  oracles:
+    definition:
+      call: "as nxp_hits with weights, authorities scaled to largest 1"
+    networkx:
+      call: "nx.hits(G, normalized = False)"
+
+nxp_google:
+  params: {fn: nxp_google}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "alpha (row-normalized A, dangling rows uniform) + (1 - alpha) / n"
+    networkx:
+      call: "nx.google_matrix(G, weight = None)"

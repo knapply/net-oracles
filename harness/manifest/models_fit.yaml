@@ -1,0 +1,210 @@
+# Fitting and sampling stochastic block models (Peixoto 2017,
+# `peixoto2017nonparametric`; agglomeration and merge-split MCMC after
+# `peixoto2014efficient` and `peixoto2020mergesplit`) and latent space models
+# (Hoff, Raftery and Handcock 2002, `hoff2002latent`; maximum likelihood and
+# Metropolis sampling as in `krivitsky2008fitting`). Format: see ../README.md.
+#
+# The description length and log-likelihood themselves are validated in
+# sbm.yaml and latent_space.yaml; here the optimizers and samplers are.
+# Runners: ../bindings/models_fit.py. Oracle: models_fit_definition_oracle.py
+# (exhaustive search and exact enumeration, no code shared with the engine);
+# graph-tool (graphtool_oracle.py) and latentnet (r_latentnet.R) run on the
+# heavy runner pool.
+#
+# Deterministic fits cannot be compared draw for draw; each is checked three
+# ways: the properties of its own output, evaluated with the definition
+# (`*_check`: a vector of ones), the least value over all partitions on
+# fixtures of up to eight nodes (`compare: values`), and, on every fixture,
+# not worse than the reference tool's own heuristic (`compare: le` for a
+# minimized description length, `ge` for a maximized log-likelihood).
+# A latent space log-likelihood has many local maxima, so a fit is judged by
+# what a local maximizer must satisfy (the checks below); the engine's
+# starting point is classical scaling, and a restart from random positions
+# can end higher (docs/drafts/correctness_findings.md).
+# Samplers are compared by distribution: independent chains with fixed seeds
+# against the exactly enumerated posterior, with a tolerance of five standard
+# errors of the estimate.
+#
+# Engine options:
+#   fn                sbm_fit | sbm_fit_check | sbm_sample_check |
+#                     sbm_sample_posterior | latent_* (below)
+#   degree_corrected  degree-corrected model (default false)
+#   sweeps, merge_split, beta, restarts   as in net_sbm_fit / net_sbm_sample
+#   chains            independent chains of the posterior estimate
+#   dim, sweeps, sd   latent space dimension, sweeps, and the four standard
+#                     deviations of net_latent_sample
+
+sbm_fit_check:
+  params: {fn: sbm_fit_check, degree_corrected: false, sweeps: 10, restarts: 3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the fit's reported description length equals the definition's for its partition; parts sum to the total; labels canonical; no worse than one block; reproducible for a seed and across threads (models_fit_definition_oracle.py: ones; the checks run in the binding with the definition's formulas)"
+
+
+sbm_fit_dc_check:
+  params: {fn: sbm_fit_check, degree_corrected: true, sweeps: 10, restarts: 3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as sbm_fit_check, degree corrected (models_fit_definition_oracle.py: ones; the checks run in the binding with the definition's formulas)"
+
+
+sbm_fit_merge_split_check:
+  params: {fn: sbm_fit_check, degree_corrected: false, sweeps: 20, merge_split: 3, restarts: 2}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as sbm_fit_check, with merge-split moves (models_fit_definition_oracle.py: ones; the checks run in the binding with the definition's formulas)"
+
+
+sbm_sample_check:
+  params: {fn: sbm_sample_check, degree_corrected: false, sweeps: 20, merge_split: 1, beta: 1.0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the last trace entry equals the definition's description length of the returned partition; labels canonical; same seed, same chain (models_fit_definition_oracle.py: ones; the checks run in the binding with the definition's formulas)"
+
+
+sbm_sample_dc_check:
+  params: {fn: sbm_sample_check, degree_corrected: true, sweeps: 20, merge_split: 1, beta: 1.0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as sbm_sample_check, degree corrected (models_fit_definition_oracle.py: ones; the checks run in the binding with the definition's formulas)"
+
+
+sbm_fit_optimum:
+  params: {fn: sbm_fit, degree_corrected: false, sweeps: 20, merge_split: 2, restarts: 20}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "the least description length over every partition of the nodes (restricted growth strings), formulas of sbm_definition_oracle.py"
+      only_on: [complete5_dir, complete6, cycle7_dir, pair, star8, two_triangles_isolate]
+      undefined_reason: Exhaustive search over all partitions is feasible only for 2 to 8 nodes; the other fixtures have a graph-tool comparison (sbm_fit_vs_graphtool) and the property checks.
+
+
+sbm_fit_dc_optimum:
+  params: {fn: sbm_fit, degree_corrected: true, sweeps: 20, merge_split: 2, restarts: 20}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "the least description length over every partition of the nodes (restricted growth strings), formulas of sbm_definition_oracle.py"
+      only_on: [complete5_dir, complete6, cycle7_dir, pair, star8, two_triangles_isolate]
+      undefined_reason: Exhaustive search over all partitions is feasible only for 2 to 8 nodes; the other fixtures have a graph-tool comparison (sbm_fit_vs_graphtool) and the property checks.
+
+
+sbm_fit_vs_graphtool:
+  params: {fn: sbm_fit, degree_corrected: false, sweeps: 20, merge_split: 2, restarts: 20}
+  applies_to: any
+  compare: le
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    graphtool:
+      call: 'the least description length (degree_dl_kind = "uniform") over 10 seeded runs of graph-tool minimize_blockmodel_dl(g, state_args = dict(deg_corr = False)), each refined by greedy mcmc_sweep under the same entropy; graphtool_oracle.py'
+      undefined_on: [empty, single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network with fewer than two nodes or without edges.
+
+
+sbm_fit_dc_vs_graphtool:
+  params: {fn: sbm_fit, degree_corrected: true, sweeps: 20, merge_split: 2, restarts: 20}
+  applies_to: any
+  compare: le
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    graphtool:
+      call: 'the least description length (degree_dl_kind = "uniform") over 10 seeded runs of graph-tool minimize_blockmodel_dl(g, state_args = dict(deg_corr = True)), each refined by greedy mcmc_sweep under the same entropy; graphtool_oracle.py'
+      undefined_on: [empty, single_node]
+      undefined_reason: The oracle script does not run graph-tool on a network with fewer than two nodes or without edges.
+
+
+sbm_posterior:
+  params: {fn: sbm_sample_posterior, degree_corrected: false, beta: 1.0, sweeps: 300, merge_split: 1, chains: 2000}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0.03}
+  oracles:
+    definition:
+      call: "the exact posterior exp(-beta Sigma) over every partition (enumerated); estimates from 2000 independent chains of 300 sweeps from singletons, seeds 1000 to 2999"
+      only_on: [complete5_dir, complete6, cycle7_dir, pair, star8, two_triangles_isolate]
+      undefined_reason: Enumerating all partitions is feasible only for 2 to 8 nodes.
+
+
+sbm_posterior_dc:
+  params: {fn: sbm_sample_posterior, degree_corrected: true, beta: 1.0, sweeps: 300, merge_split: 1, chains: 2000}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0.03}
+  oracles:
+    definition:
+      call: "the exact posterior exp(-beta Sigma) over every partition (enumerated); estimates from 2000 independent chains of 300 sweeps from singletons, seeds 1000 to 2999"
+      only_on: [complete5_dir, complete6, cycle7_dir, pair, star8, two_triangles_isolate]
+      undefined_reason: Enumerating all partitions is feasible only for 2 to 8 nodes.
+
+
+sbm_posterior_tempered:
+  params: {fn: sbm_sample_posterior, degree_corrected: false, beta: 0.5, sweeps: 300, merge_split: 1, chains: 2000}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0.03}
+  oracles:
+    definition:
+      call: "the exact posterior exp(-beta Sigma) over every partition (enumerated); estimates from 2000 independent chains of 300 sweeps from singletons, seeds 1000 to 2999"
+      only_on: [complete5_dir, complete6, cycle7_dir, pair, star8, two_triangles_isolate]
+      undefined_reason: Enumerating all partitions is feasible only for 2 to 8 nodes.
+
+latent_fit_d1_check:
+  params: {fn: latent_fit_check, dim: 1}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "models_fit_definition_oracle.py: ones; the checks run in the binding with latent_definition_oracle.py: the reported exact log-likelihood equals the definition's at the returned positions and intercept; positions are centred; a repeated fit is identical; a fit that reports convergence has a small gradient or two coincident nodes; SciPy L-BFGS-B started at the solution gains at most 1e-6 relative; (dim > 1) not below the fit of one dimension fewer"
+
+latent_fit_d2_check:
+  params: {fn: latent_fit_check, dim: 2}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as latent_fit_d1_check"
+
+latent_fit_d3_check:
+  params: {fn: latent_fit_check, dim: 3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as latent_fit_d1_check"
+
+latent_sample_check:
+  params: {fn: latent_sample_check, dim: 2, sweeps: 200}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "models_fit_definition_oracle.py: ones; the last log-likelihood of the trace equals the definition's at the returned state; the last alpha of its trace is the returned alpha; the same seed gives the same chain; the acceptance rate is in (0, 1); everything finite"
+
+latent_posterior_d1:
+  params: {fn: latent_sample_posterior, dim: 1, sweeps: 400000, sd: [1.5, 1.5, 2.0, 3.0]}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0.06}
+  oracles:
+    definition:
+      call: "quadrature of the exact posterior of the two-node network over (distance, alpha) under N(0, 2^2) coordinate and N(0, 3^2) intercept priors: mean and standard deviation of alpha and of the log-likelihood; engine: three chains of 400000 sweeps (seeds 1 to 3), burn-in 1000"
+      only_on: [pair]
+      undefined_reason: The exact posterior is available by quadrature only for a network of two nodes.
+
+latent_posterior_d2:
+  params: {fn: latent_sample_posterior, dim: 2, sweeps: 400000, sd: [1.5, 1.5, 2.0, 3.0]}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0.06}
+  oracles:
+    definition:
+      call: "as latent_posterior_d1, in two dimensions (the distance of two N(0, 2 sd^2 I) positions is Rayleigh)"
+      only_on: [pair]
+      undefined_reason: The exact posterior is available by quadrature only for a network of two nodes.

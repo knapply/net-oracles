@@ -1,0 +1,11 @@
+{
+ "inputs": "3c7d5281187c8f9c8116381c9d79529a88e2a848a03e23e0139327bf285adaae",
+ "oracles": [
+  "blockmodeling",
+  "definition",
+  "influencer",
+  "manynet",
+  "networkx",
+  "pyigraph"
+ ]
+}

@@ -1,0 +1,4 @@
+# python-igraph oracle (pyigraph_oracle.py)
+igraph
+numpy
+pyyaml

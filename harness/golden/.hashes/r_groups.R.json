@@ -1,0 +1,7 @@
+{
+ "inputs": "35a397b607be6453df8f0f17bd0c8b44c035e78c4f70ef07d6b920cd1c039114",
+ "oracles": [
+  "definition",
+  "igraph"
+ ]
+}

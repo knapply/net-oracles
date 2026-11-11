@@ -92,6 +92,8 @@ Measure id: `mis`. Original family: Graph theory and combinatorics.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>mis_check</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>1, 1, 1 for nx.maximal_independent_set(G, [start], seed = 11), checked the same way</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/matching.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/matching.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [brelaz1979new](../../references.html#brelaz1979new), [hagberg2008exploring](../../references.html#hagberg2008exploring), [kosowski2004classical](../../references.html#kosowski2004classical), [luby1986simple](../../references.html#luby1986simple), [magnien2009fast](../../references.html#magnien2009fast), [matula1983smallest](../../references.html#matula1983smallest), [schank2005approximating](../../references.html#schank2005approximating), [welsh1967upper](../../references.html#welsh1967upper)
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [peixoto2014graphtool](../../references.html#peixoto2014graphtool)

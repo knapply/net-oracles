@@ -1,0 +1,10 @@
+{
+  "n": 10,
+  "directed": false,
+  "weighted": false,
+  "tags": [
+    "onemode",
+    "symmetric_nodes"
+  ],
+  "source": "Krackhardt (1990); krackhardt1990assessing"
+}

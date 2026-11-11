@@ -52,6 +52,8 @@ Measure id: `trav_dfs_events`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>trav_dfs_events</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.dfs_labeled_edges(M)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/traversal.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/traversal.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht)
 
 ## Dfs iterator {#cat_dfs_iterator}
@@ -91,6 +93,8 @@ Measure id: `trav_edge_dfs`. Original family: Traversal, trees and DAGs.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>trav_edge_dfs</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.edge_dfs(M)</code></td><td></td></tr><tr><td><code>trav_edge_dfs_ignore</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.edge_dfs(M, orientation = 'ignore')</code></td><td></td></tr><tr><td><code>trav_edge_dfs_reverse</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.edge_dfs(M, orientation = 'reverse')</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/traversal.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/traversal.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [siek2002boost](../../references.html#siek2002boost), [tool_rustworkx](../../references.html#tool_rustworkx)
 {% endraw %}

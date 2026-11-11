@@ -1,0 +1,8 @@
+{
+ "inputs": "f23239db098eceface29c85b0a0c7c1de1e14f6fa17951dfea692af3d6f127ff",
+ "oracles": [
+  "definition",
+  "netrankr",
+  "tnet"
+ ]
+}

@@ -1,0 +1,121 @@
+# Random walks and random-walk sampling, the measures `random_walk` and
+# `random_walk_sampling` (Lovasz 1993, `lovasz1993random`; Leskovec and
+# Faloutsos 2006, `leskovec2006sampling`). Format: see ../README.md; runners
+# in ../bindings/random_walks.py (through the generic net_run), definition
+# oracle random_walks_definition_oracle.py, NetworkX oracle
+# random_walks_networkx_oracle.py.
+#
+# A sampler is checked by exact invariants and by distribution: each runner
+# returns a statistic of many seeded draws and the oracles return its exact
+# value (the Markov chain of the walk, solved by dense linear algebra) or, for
+# NetworkX, its own sampler's estimate. Tolerances are five to six standard
+# errors of a share estimated from the draws: 20000 independent walks give a
+# standard error of at most 0.0035 (end), and one walk of 200000 moves with
+# restart probability 0.2 (relaxation time about ten moves) at most 0.0035
+# (visits); NetworkX's estimate adds its own 0.0035, so 0.03 there.
+#
+# Engine options:
+#   fn        random_walk | random_walk_sampling
+#   stat      random_walk: valid | end; random_walk_sampling: visits | nodes
+#   weighted  follow arcs in proportion to their weights (default false)
+#
+# Conventions. An undirected self-loop is one arc of the engine's rows (it
+# is chosen with the probability of one arc); NetworkX's adjacency counts it
+# once too. Parallel edges are separate arcs of the engine, so a walker leaves
+# along a pair of parallel edges twice as often; NetworkX's simple graph
+# keeps one edge per pair. At a node with no way out the engine ends a walk
+# (stuck = stop, igraph's "return"); the sampling walk returns to its start.
+# NetworkX's generate_random_paths fails at such nodes (division by zero), so
+# those fixtures are undefined for it.
+
+rw_valid:
+  params: {fn: random_walk, stat: valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1, 1, 1, 1]: every step follows an arc, every walk has 7 nodes or ends at a node with no way out, every walk starts at its start, equal seeds give equal walks on 1 and 4 threads"
+
+rw_valid_weighted:
+  params: {fn: random_walk, stat: valid, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as rw_valid; arcs of weight 0 are never followed"
+
+rw_end:
+  params: {fn: random_walk, stat: end}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0.025}
+  oracles:
+    definition:
+      call: "e_0 P^4 with P the transition matrix of the arcs (stuck rows absorbing), exact"
+    networkx:
+      call: "share of the end nodes of nx.generate_random_paths(G, 20000, path_length = 4, source = 0, weight = None, seed = 1)"
+      tolerance: {rel: 0, abs: 0.03}
+      differs_when: [multi_edges]
+      undefined_when: [null_graph, isolates, not_strongly_connected]
+      undefined_reason: "NetworkX divides by the zero row sum of a node with no way out (isolated or a sink) and fails"
+      reason: "NetworkX's simple graph keeps one edge of a parallel pair; the engine's walker leaves along each parallel edge"
+
+rw_end_weighted:
+  params: {fn: random_walk, stat: end, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0.025}
+  oracles:
+    definition:
+      call: "as rw_end with arc weights"
+    networkx:
+      call: "as rw_end with weight = 'weight'"
+      tolerance: {rel: 0, abs: 0.03}
+      differs_when: [multi_edges]
+      undefined_when: [null_graph, isolates, not_strongly_connected, negative_weights, zero_weights]
+      undefined_reason: "NetworkX fails at a node with no way out, and at negative or zero total weight"
+      reason: "as rw_end"
+
+rws_visits:
+  params: {fn: random_walk_sampling, stat: visits}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0.02}
+  oracles:
+    definition:
+      call: "personalized PageRank of node 0 with restart probability 0.2 by a dense linear solve (stuck nodes return to node 0)"
+    networkx:
+      call: "nx.pagerank(G, alpha = 0.8, personalization = {0: 1}, dangling = {0: 1}, weight = None, tol = 1e-14)"
+      differs_when: [multi_edges]
+      reason: "NetworkX's simple graph keeps one edge of a parallel pair; the engine's walker leaves along each parallel edge"
+
+rws_visits_weighted:
+  params: {fn: random_walk_sampling, stat: visits, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0.02}
+  oracles:
+    definition:
+      call: "as rws_visits with arc weights"
+    networkx:
+      call: "nx.pagerank(G, alpha = 0.8, personalization = {0: 1}, dangling = {0: 1}, weight = 'weight', tol = 1e-14)"
+      differs_when: [multi_edges]
+      undefined_when: [negative_weights]
+      undefined_reason: "negative weights are not transition weights"
+      reason: "as rws_visits"
+
+rws_nodes:
+  params: {fn: random_walk_sampling, stat: nodes}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1, min(5, reach)]: the nodes are distinct, start first, each new one a neighbour of an earlier one, equal on 1 and 4 threads; reach is the size of the set reachable from node 0 (breadth-first search)"
+
+rws_nodes_weighted:
+  params: {fn: random_walk_sampling, stat: nodes, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as rws_nodes over arcs of positive weight"

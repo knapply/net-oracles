@@ -52,5 +52,7 @@ Measure id: `ergm_change_sums`. Original family: Statistical fitting.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ergm_change_sums_directed</code></td><td>ergm (statnet)</td><td>directed</td><td>no-value-on-some-inputs</td><td></td><td>direction, normalization</td><td>abs 1e-14, rel 1e-12</td><td><code>mple &lt;- ergmMPLE(nw ~ &lt;the terms of ergm_stats_directed&gt;, output = "matrix"); colSums(mple$predictor * mple$weights)</code></td><td>nodefactor() gives one statistic on two nodes (see ergm_stats_directed).</td></tr><tr><td><code>ergm_change_sums_undirected</code></td><td>ergm (statnet)</td><td>undirected</td><td>no-value-on-some-inputs</td><td></td><td>direction, normalization</td><td>abs 1e-14, rel 1e-12</td><td><code>mple &lt;- ergmMPLE(nw ~ &lt;the terms of ergm_stats_undirected&gt;, output = "matrix"); colSums(mple$predictor * mple$weights)</code></td><td>A network of one node has no dyads, and nodefactor() has no level left (see ergm_stats_undirected).</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/ergm.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/ergm.yaml); [harness/golden/ergm/](https://github.com/knapply/net-oracles/tree/main/harness/golden/ergm/)
+
 **Tools cited:** [hunter2008ergm](../../references.html#hunter2008ergm)
 {% endraw %}

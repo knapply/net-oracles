@@ -58,6 +58,8 @@ Measure id: `core_periphery_continuous`. Original family: Roles and positions.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>core_periphery_minres_vs_cpnet</code></td><td>cpnet</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-09</td><td><code>smallest residual sum of squares sum (a_ij - c_i c_j)^2 over the coreness vectors of cpnet.MINRES, Rombach and Rossa (those installed)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/groups.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/groups.yaml); [harness/golden/cpnet/](https://github.com/knapply/net-oracles/tree/main/harness/golden/cpnet/)
+
 **References:** [borgatti1999models](../../references.html#borgatti1999models), [boyd2010computing](../../references.html#boyd2010computing), [comrey1962minimum](../../references.html#comrey1962minimum), [nocedal2006numerical](../../references.html#nocedal2006numerical)
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [tool_cpnet](../../references.html#tool_cpnet)

@@ -1,0 +1,63 @@
+# Vertex orderings: the measure `vertex_orderings`, a degeneracy
+# (smallest-last) order (Matula and Beck 1983, `matula1983smallest`) and
+# maximum cardinality search (Tarjan and Yannakakis 1984,
+# `tarjan1984simple`). Format: see ../README.md; runners in
+# ../bindings/orderings.py (through the generic net_run), definition oracle
+# orderings_definition_oracle.py, NetworkX oracle orderings_networkx_oracle.py.
+#
+# The orderings are of the simple undirected network underlying the fixture
+# (loops dropped, parallel edges merged, directions ignored), with ties to the
+# smallest node id, so the definition oracle (repeated selection over all
+# nodes) reproduces the order exactly. NetworkX has no vertex ordering;
+# its core numbers give the degeneracy (the width of the degeneracy order)
+# and its chordality test checks that the reverse of the search order is a
+# perfect elimination ordering exactly for chordal networks.
+#
+# Engine options:
+#   fn    vertex_orderings
+#   kind  degeneracy | max-cardinality
+#   stat  order | width | chordal (max-cardinality only)
+
+ord_degeneracy_order:
+  params: {fn: vertex_orderings, kind: degeneracy, stat: order}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "repeatedly remove the node of least remaining degree, ties to the smallest id (orderings_definition_oracle.py)"
+
+ord_degeneracy_width:
+  params: {fn: vertex_orderings, kind: degeneracy, stat: width}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the largest remaining degree at a removal of the definition order"
+    networkx:
+      call: "max(nx.core_number(G).values()) on the simple undirected graph"
+
+ord_mcs_order:
+  params: {fn: vertex_orderings, kind: max-cardinality, stat: order}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "repeatedly visit the unvisited node with the most visited neighbours, ties to the smallest id"
+
+ord_mcs_width:
+  params: {fn: vertex_orderings, kind: max-cardinality, stat: width}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the largest number of visited neighbours at a visit of the definition order"
+
+ord_mcs_chordal:
+  params: {fn: vertex_orderings, kind: max-cardinality, stat: chordal}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1] when repeated removal of simplicial nodes empties the network (chordal), else [0]"
+    networkx:
+      call: "[int(nx.is_chordal(G))] on the simple undirected graph"

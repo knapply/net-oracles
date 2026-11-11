@@ -56,6 +56,8 @@ Measure id: `ord_astar`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ord_astar</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.astar_path(M, 0, n - 1)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/traversal.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/traversal.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Bellman ford {#ord_bellman_ford}
@@ -79,6 +81,8 @@ Measure id: `ord_bellman_ford`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ord_bellman_ford</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.bellman_ford_predecessor_and_distance(M, 0)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/traversal.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/traversal.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Findings**
 
 <div class="table-wrapper"><table><thead><tr><th>Id</th><th>Tool</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../../findings.html#f004">F004</a></td><td>NetworkX</td><td>defect</td><td>goldberg_radzik raises NetworkXUnbounded for any negative self-loop</td></tr></tbody></table></div>
@@ -99,6 +103,8 @@ Measure id: `ord_bidir_bfs`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ord_bidir_bfs</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.bidirectional_shortest_path(M, 0, n - 1)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/traversal.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/traversal.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Bidir dijkstra {#ord_bidir_dijkstra}
@@ -115,6 +121,8 @@ Measure id: `ord_bidir_dijkstra`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ord_bidir_dijkstra</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.bidirectional_dijkstra(M, 0, n - 1): path, then length</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/traversal.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/traversal.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Dijkstra {#ord_dijkstra}
@@ -130,6 +138,8 @@ Measure id: `ord_dijkstra`. Original family: Traversal, trees and DAGs.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ord_bfs_preds</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.dijkstra_predecessor_and_distance(M, 0, weight = None)[0]</code></td><td></td></tr><tr><td><code>ord_dijkstra_preds</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.dijkstra_predecessor_and_distance(M, 0)[0]</code></td><td></td></tr><tr><td><code>ord_dijkstra_unit</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.single_source_dijkstra(M, 0, weight = None): (node, distance, parent) in dict order</code></td><td></td></tr><tr><td><code>ord_dijkstra_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>nx.single_source_dijkstra(M, 0)</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/traversal.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/traversal.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -156,6 +166,8 @@ Measure id: `paths_astar`. Original family: Paths and distances.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>paths_astar_exact</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.astar_path_length(G, s, t, heuristic = lambda u, v: d(u, t)) for every pair</code></td><td></td></tr><tr><td><code>paths_astar_half</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.astar_path_length(G, s, t, heuristic = lambda u, v: 0.5 d(u, t), weight = 'weight') for every pair</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/paths.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/paths.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [siek2002boost](../../references.html#siek2002boost), [staudt2016networkit](../../references.html#staudt2016networkit), [tool_rustworkx](../../references.html#tool_rustworkx)
 
 ## Paths bidirectional {#paths_bidirectional}
@@ -176,6 +188,8 @@ Measure id: `paths_bidirectional`. Original family: Paths and distances.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>paths_bidirectional_unweighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>len(nx.bidirectional_shortest_path(G, s, t)) - 1 for every pair (no path: unreachable)</code></td><td></td></tr><tr><td><code>paths_bidirectional_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.bidirectional_dijkstra(G, s, t, weight = 'weight')[0] for every pair</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/paths.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/paths.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [staudt2016networkit](../../references.html#staudt2016networkit)
 
 ## Paths multi source {#paths_multi_source}
@@ -191,6 +205,8 @@ Measure id: `paths_multi_source`. Original family: Paths and distances.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>paths_multi_source_unweighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.multi_source_dijkstra_path_length(G, {0, n - 1}, weight = None)</code></td><td></td></tr><tr><td><code>paths_multi_source_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.multi_source_dijkstra_path_length(G, {0, n - 1}, weight = 'weight')</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/paths.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/paths.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -208,6 +224,8 @@ Measure id: `paths_negative`. Original family: Paths and distances.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>paths_bellman_ford_potential</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.single_source_bellman_ford_path_length(G, 0, weight = 'len')</code></td><td></td></tr><tr><td><code>paths_bellman_ford_shift</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.single_source_bellman_ford_path_length(G, 0, weight = 'len'); NetworkXUnbounded is a negative cycle</code></td><td></td></tr><tr><td><code>paths_goldberg_radzik_potential</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.goldberg_radzik(G, 0, weight = 'len')[1]</code></td><td></td></tr><tr><td><code>paths_goldberg_radzik_shift</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>loops</td><td>defaults, self_loops</td><td>abs 1e-12, rel 1e-12</td><td><code>nx.goldberg_radzik(G, 0, weight = 'len')[1]; NetworkXUnbounded is a negative cycle</code></td><td>NetworkX raises NetworkXUnbounded for any negative self-loop, reachable from the source or not (checked with nx.goldberg_radzik and bellman_ford_predecessor_and_distance); the reference and the definition oracle report the unreachable node and no negative cycle.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/paths.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/paths.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Paths predecessors {#paths_predecessors}
@@ -223,6 +241,8 @@ Measure id: `paths_predecessors`. Original family: Paths and distances.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>paths_predecessors_unweighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.predecessor(G, 0)</code></td><td></td></tr><tr><td><code>paths_predecessors_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.dijkstra_predecessor_and_distance(G, 0, weight = 'weight')[0]</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/paths.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/paths.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
@@ -250,6 +270,8 @@ Measure id: `paths_sssp`. Original family: Paths and distances.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>paths_sssp_cutoff_unweighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.single_source_shortest_path_length(G, s, cutoff = 2) for every s</code></td><td></td></tr><tr><td><code>paths_sssp_cutoff_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.single_source_dijkstra_path_length(G, s, cutoff = 2.5, weight = 'weight') for every s</code></td><td></td></tr><tr><td><code>paths_sssp_strength</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.single_source_dijkstra_path_length(G, s, weight = lambda u, v, d: min(1 / w)) for every s</code></td><td></td></tr><tr><td><code>paths_sssp_unweighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.single_source_shortest_path_length(G, s) for every s</code></td><td></td></tr><tr><td><code>paths_sssp_unweighted_all</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.single_source_shortest_path_length(G.to_undirected(), s) for every s</code></td><td></td></tr><tr><td><code>paths_sssp_unweighted_in</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.single_target_shortest_path_length(G, s) for every s</code></td><td></td></tr><tr><td><code>paths_sssp_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.single_source_dijkstra_path_length(G, s, weight = 'weight') for every s</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/paths.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/paths.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [siek2002boost](../../references.html#siek2002boost), [staudt2016networkit](../../references.html#staudt2016networkit), [tool_rustworkx](../../references.html#tool_rustworkx), [tool_sknetwork](../../references.html#tool_sknetwork)
 

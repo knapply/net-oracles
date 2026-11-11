@@ -1,0 +1,253 @@
+# NetworkX's community package as NetworkX 3.7 computes it: Girvan-Newman
+# (Girvan and Newman 2002, `girvan2002community`) and the edge betweenness
+# partition, clique percolation (Palla et al. 2005, `palla2005uncovering`),
+# the Kernighan-Lin bisection (Kernighan and Lin 1970,
+# `kernighan1970efficient`), semi-synchronous label propagation (Cordasco
+# and Gargano 2010, `cordasco2010community`), greedy modularity
+# maximization (Clauset, Newman, and Moore 2004, `clauset2004finding`),
+# modularity (Newman 2004, `newman2004analysis`), overlapping modularity
+# (Chen, Kuzmin, and Szymanski 2014, `chen2014extension`), and NetworkX's
+# partition counts. Format: see ../README.md; runners, inputs, and
+# encodings in ../bindings/community_nx.py.
+
+nx_girvan_newman:
+  params: {fn: cnx_girvan_newman, level: 3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "remove an edge of largest exact betweenness (first in NetworkX's edge order on ties) until the components multiply; first three levels"
+    networkx:
+      call: "itertools.islice(nx.community.girvan_newman(G), 3)"
+
+nx_edge_betweenness_partition:
+  params: {fn: cnx_edge_betweenness, k: 3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "remove edges of largest exact betweenness (first in edge order on ties) until 3 components"
+      differs_when: [unsorted_edges]
+      reason: >-
+        Ties in edge betweenness go to the first edge: in NetworkX's adjacency
+        (insertion) order for the engine, in sorted order for the definition
+        oracle; the two orders agree when the edge list is sorted.
+    networkx:
+      call: "nx.community.edge_betweenness_partition(G, 3) on the simple undirected graph (-1 when n < 3)"
+
+nx_k_clique_communities:
+  params: {fn: cnx_k_clique, k: 3}
+  applies_to: any
+  compare: sets
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "unions of maximal cliques of at least 3 nodes chained by sharing 2 nodes, cliques enumerated by growth"
+    networkx:
+      call: "nx.community.k_clique_communities(G, 3) on the simple undirected graph"
+
+nx_kernighan_lin:
+  params: {fn: cnx_kernighan_lin}
+  applies_to: undirected
+  # A bisection: which side NetworkX returns first changed in 3.7 (its
+  # first set is now the complement of the given first half).
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "nx.community.kernighan_lin_bisection(G_sorted, (first half, rest), max_iter = 10, weight = 'weight' if weighted)"
+
+nx_label_propagation:
+  params: {fn: cnx_label_propagation}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "nx.community.label_propagation_communities(G) on the simple undirected graph"
+
+nx_greedy_modularity:
+  params: {fn: cnx_greedy_modularity, resolution: 1.0}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "nx.community.greedy_modularity_communities(G) on the simple undirected graph"
+
+nx_greedy_modularity_res:
+  params: {fn: cnx_greedy_modularity, resolution: 0.6}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "nx.community.greedy_modularity_communities(G, resolution = 0.6) on the simple undirected graph"
+
+nx_modularity_nx:
+  params: {fn: cnx_modularity_nx}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum over blocks of L_c / m - k_out,c k_in,c / m^2 (undirected: d_c^2 / (2m)^2), exact rationals over the edge list"
+    networkx:
+      call: "nx.community.modularity(G_natural, blocks, weight = 'weight' if weighted)"
+
+nx_overlapping_modularity:
+  params: {fn: cnx_overlapping}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "sum over the cover of 2 L~_c / D - (k~_c / D)^2, exact rationals"
+    networkx:
+      call: "nx.community.overlapping_modularity(G_simple_undirected, cover)"
+
+nx_partition_counts:
+  params: {fn: cnx_partition_counts}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(edges inside blocks, distinct pairs between blocks, non-adjacent pairs between blocks) by enumeration"
+    networkx:
+      call: "(quality.intra_community_edges, quality.inter_community_edges, quality.inter_community_non_edges) of blocks on G_natural"
+
+nx_naive_greedy_modularity:
+  params: {fn: cnx_naive_greedy}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic)"
+      undefined_when: [directed, undirected]
+      undefined_reason: a heuristic's result has no definition to evaluate independently; NetworkX's own implementation is the reference
+    networkx:
+      call: "nx.community.naive_greedy_modularity_communities(G) on the simple undirected graph"
+      reason: >-
+        Exactly tied merges: NetworkX compares whole-partition modularities summed in set order, so rounding decides; the engine compares gains and takes the first pair.
+      differs_when: [directed, undirected]
+
+nx_lukes_partitioning:
+  params: {fn: cnx_lukes, max_size: 3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(largest number of tree edges kept with every component of at most 3 nodes, by enumeration over edge subsets, 1); -1 if not a tree"
+    networkx:
+      call: "nx.community.lukes_partitioning(G, 3): (edges inside clusters, 1 if every cluster has at most 3 nodes); -1 if not a tree"
+      undefined_on: [single_node]
+      undefined_reason: NetworkX 3.7 fails with a KeyError on a tree of one node
+
+nx_edge_current_flow_partition:
+  params: {fn: cnx_current_flow, k: 3}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "see nx_edge_betweenness_partition; current-flow ties have no exact rational reference here"
+      undefined_when: [directed, undirected]
+      undefined_reason: the definition oracle has no exact current-flow betweenness; NetworkX is the reference
+    networkx:
+      call: "nx.community.edge_current_flow_betweenness_partition(G, 3) on the simple undirected graph (-1 when n < 3)"
+      reason: >-
+        Edges whose current-flow betweenness ties in exact arithmetic (symmetric positions) differ in the last digits; NetworkX removes the one its rounding and dict order rank first, the engine the first in edge order.
+      differs_when: [symmetric_nodes]
+
+nx_seeded_labels:
+  params: {fn: cnx_seeded_labels}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (the labels are defined by NetworkX's draws)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the labels are defined by the draws of NetworkX's Python generator; nx_seeded_labels_valid checks their defining properties
+    networkx:
+      call: "per node: community index under asyn_lpa_communities and fast_label_propagation_communities (simple graph), and asyn_fluidc(k = min(3, n)) on the simple undirected graph (-1 if not connected), each with seed=random.Random(7)"
+
+nx_seeded_labels_valid:
+  params: {fn: cnx_seeded_labels_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(1, 1, 1 if connected else -1): asynchronous and fast label propagation end with every node holding a most frequent neighbour label; fluid communities give k non-empty communities"
+    networkx:
+      call: "the same checks on NetworkX's communities"
+
+nx_louvain_seeded:
+  params: {fn: cnx_louvain_seeded}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (the partition is defined by NetworkX's draws)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the partition follows the draws of NetworkX's Python generator; nx_louvain_seeded_valid checks its defining properties
+    networkx:
+      call: "per node: community index under nx.community.louvain_communities(simple graph, seed=random.Random(7)); -1 for a graph without edges"
+
+nx_louvain_seeded_valid:
+  params: {fn: cnx_louvain_seeded_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(1, 1): the communities partition the nodes and their modularity is at least the singletons'; (-1, -1) without edges"
+    networkx:
+      call: "the same checks on NetworkX's communities"
+
+nx_leiden_seeded:
+  params: {fn: cnx_leiden_seeded}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (the partition is defined by NetworkX's draws)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the partition follows the draws of NetworkX's Python generator; nx_leiden_seeded_valid checks its defining properties
+    networkx:
+      call: "per node: community index under nx.community.leiden_communities(simple graph, seed=random.Random(7)) with metric 'cpm' and 'modularity' (NetworkX 3.7); -1 without edges"
+
+nx_leiden_seeded_valid:
+  params: {fn: cnx_leiden_seeded_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(1, 1) per metric: the communities partition the nodes and each induces a connected subgraph; -1 without edges"
+    networkx:
+      call: "the same checks on NetworkX's communities"
+
+nx_naive_greedy_exact:
+  params: {fn: cnx_naive_greedy_nx}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic; its ties follow NetworkX's sums)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which tied merge NetworkX makes follows its whole-partition modularity sums in Python set order; nx_naive_greedy_modularity checks the engine's own greedy merging
+    networkx:
+      call: "nx.community.naive_greedy_modularity_communities(G) on the simple undirected graph: community index per node in NetworkX's order; -1 without edges"

@@ -1,0 +1,7 @@
+{
+ "inputs": "9973c6c4337e00604993fd57a631b3c6c6afff6c8a3dc293e20144e0ddc19b48",
+ "oracles": [
+  "infomap",
+  "networkx"
+ ]
+}

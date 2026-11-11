@@ -1,0 +1,290 @@
+# Dyad census, degree distribution, Krackhardt's graph-theoretic dimensions,
+# ego composition, symmetrize, dichotomize, Simmelian ties, cocitation and
+# bibliographic coupling, partition quality (coverage, performance), and the
+# motif census. Format: see ../README.md; runners, encodings and derived
+# inputs (the attribute of node v is v % 3, the block of node v is v % 3) in
+# ../bindings/descriptive_more.py. Undefined values are -999.
+#
+# Where NetworkX has the measure (partition quality, the triad census behind
+# the directed motif sizes) its function is the reference. Elsewhere the
+# NetworkX oracle builds the same quantity from NetworkX graph operations and
+# numpy/scipy (to_undirected, common_neighbors, degree_histogram, adjacency
+# matrices, entropy), a computation independent of the engine's. The
+# definition oracles evaluate each formula by enumeration over the edge list
+# in exact fractions. sna and igraph implement several of these (dyad
+# census, motifs, symmetrize, Krackhardt dimensions); they are not yet wired
+# as oracles for these entries (see the capability matrix).
+
+dyad_census:
+  params: {fn: dyad_census}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "for every pair i < j of distinct nodes: both arcs (mutual), one (asymmetric), none (null); parallel arcs once, loops ignored; every tie of an undirected network is mutual"
+    networkx:
+      call: "mutual = G.to_undirected(reciprocal=True).number_of_edges(), asymmetric = G.to_undirected().number_of_edges() - mutual, null = n(n-1)/2 - the union (loops removed)"
+
+degree_distribution:
+  params: {fn: degree_distribution, mode: all, loops: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "the histogram of the degree sequence (loops twice, parallel edges each), mean, population variance, minimum, maximum and Gini coefficient in exact fractions"
+    networkx:
+      call: "nx.degree_histogram(G) on the multigraph, numpy mean, var, min, max and the rank form of the Gini coefficient"
+
+degree_distribution_noloops:
+  params: {fn: degree_distribution, mode: all, loops: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as degree_distribution with every self-loop removed first"
+    networkx:
+      call: "nx.degree_histogram on the multigraph without self-loops, numpy statistics"
+
+degree_distribution_in:
+  params: {fn: degree_distribution, mode: in, loops: true}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as degree_distribution for the in-degrees (a loop counts once)"
+    networkx:
+      call: "the histogram of G.in_degree() on the multigraph (bincount), numpy statistics"
+
+degree_distribution_out:
+  params: {fn: degree_distribution, mode: out, loops: true}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as degree_distribution for the out-degrees (a loop counts once)"
+    networkx:
+      call: "the histogram of G.out_degree() on the multigraph (bincount), numpy statistics"
+
+krackhardt_dimensions:
+  params: {fn: krackhardt_dimensions}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "connectedness = pairs in one weak component / all pairs; hierarchy = 1 - mutually reachable ordered pairs / reachable ordered pairs (Warshall closure); efficiency = 1 - (arcs - (n - c)) / (n (n - 1) - (n - c)) for c weak components, on the distinct arcs between distinct nodes (an undirected edge is two arcs); NaN where 0 / 0 (-999)"
+    networkx:
+      call: "the same from nx.weakly_connected_components, nx.strongly_connected_components and nx.descendants (nx.connected_components for an undirected network)"
+
+ego_composition:
+  params: {fn: ego_composition, mode: all}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "alter counts and shares by category v % 3 over the distinct neighbours other than the node; Blau 1 - sum p^2 in exact fractions; Shannon -sum p ln p; IQV = Blau / (1 - 1 / k) for the k categories present; share of alters in the ego's category; -999 where undefined"
+    networkx:
+      call: "G.neighbors (successors, predecessors) for the alters, numpy for shares and Blau, scipy.stats.entropy for Shannon"
+
+ego_composition_out:
+  params: {fn: ego_composition, mode: out}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as ego_composition with the successors as alters"
+    networkx:
+      call: "as ego_composition with G.successors"
+
+ego_composition_in:
+  params: {fn: ego_composition, mode: in}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as ego_composition with the predecessors as alters"
+    networkx:
+      call: "as ego_composition with G.predecessors"
+
+symmetrize_max:
+  params: {fn: symmetrize, method: max}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles: &symmetrize_oracles
+    definition:
+      call: "the matrix of summed parallel weights (loops dropped, absent = 0); a tie {i, j} (i < j) takes the method's value of the two entries a = W[i][j], b = W[j][i]; a result of 0 is no tie"
+
+symmetrize_min:
+  params: {fn: symmetrize, method: min}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles: *symmetrize_oracles
+
+symmetrize_sum:
+  params: {fn: symmetrize, method: sum}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles: *symmetrize_oracles
+
+symmetrize_mean:
+  params: {fn: symmetrize, method: mean}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles: *symmetrize_oracles
+
+symmetrize_product:
+  params: {fn: symmetrize, method: product}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles: *symmetrize_oracles
+
+symmetrize_upper:
+  params: {fn: symmetrize, method: upper}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles: *symmetrize_oracles
+
+symmetrize_lower:
+  params: {fn: symmetrize, method: lower}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles: *symmetrize_oracles
+
+symmetrize_strong:
+  params: {fn: symmetrize, method: strong}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 for every pair with both entries non-zero"
+    networkx:
+      call: "G.to_undirected(reciprocal=True) on the simple graph, weight 1"
+      differs_when: [zero_weights, negative_weights]
+      reason: >-
+        The engine reads a tie as present when its summed weight is not 0, so
+        parallel edges whose weights cancel (or a zero weight) leave no tie;
+        NetworkX keeps every edge it is given.
+
+symmetrize_weak:
+  params: {fn: symmetrize, method: weak}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 for every pair with either entry non-zero"
+    networkx:
+      call: "G.to_undirected() on the simple graph, weight 1"
+      differs_when: [zero_weights, negative_weights]
+      reason: >-
+        The engine reads a tie as present when its summed weight is not 0, so
+        parallel edges whose weights cancel (or a zero weight) leave no tie;
+        NetworkX keeps every edge it is given.
+
+dichotomize_ge:
+  params: {fn: dichotomize, by: cutoff, rule: ge, value: 2.0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the distinct pairs (parallel weights summed in input order, loops kept) whose weight is at least 2"
+
+dichotomize_lt:
+  params: {fn: dichotomize, by: cutoff, rule: lt, value: 2.0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the distinct pairs whose weight is below 2"
+
+dichotomize_ne:
+  params: {fn: dichotomize, by: cutoff, rule: ne, value: 1.0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the distinct pairs whose weight is not 1"
+
+dichotomize_density:
+  params: {fn: dichotomize, by: density, value: 0.3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "distinct weights taken from the largest down, all ties of a weight together, while the count of ties (loops excluded) stays within floor(0.3 x possible ties)"
+
+simmelian_ties:
+  params: {fn: simmelian_ties}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "pairs i < j tied (both ways if directed) with a node k tied to both (both ways if directed)"
+    networkx:
+      call: "U = G.to_undirected(reciprocal=True) (G itself if undirected, loops removed); the edges of U with len(list(nx.common_neighbors(U, u, v))) > 0"
+
+cocitation:
+  params: {fn: cocitation, kind: cocitation}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "for every pair i < j, the number of nodes k with arcs k -> i and k -> j (distinct arcs, loops ignored; an undirected edge is two arcs); pairs with a positive count"
+    networkx:
+      call: "A = nx.to_numpy_array of the simple graph; the upper triangle of A.T @ A, positive entries"
+
+coupling:
+  params: {fn: cocitation, kind: coupling}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "for every pair i < j, the number of nodes k with arcs i -> k and j -> k"
+    networkx:
+      call: "the upper triangle of A @ A.T, positive entries"
+
+partition_quality:
+  params: {fn: partition_quality}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "coverage = ties inside a block / ties; performance = (tied pairs inside a block + untied pairs across blocks) / all pairs (ordered pairs when directed), on the simple graph, blocks v % 3"
+    networkx:
+      call: "nx.community.partition_quality(G, blocks) on the simple graph without loops"
+      undefined_when: [edgeless]
+      undefined_reason: >-
+        NetworkX divides by the number of edges and raises ZeroDivisionError
+        on a network without edges (the engine returns NaN).
+
+motif_census_3:
+  params: {fn: motif_census, size: 3}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every 3-subset of the simple graph with 2 edges (open path) or 3 (triangle)"
+    networkx:
+      call: "triangles = sum(nx.triangles(G).values()) / 3; open paths = sum over nodes of C(d, 2) - 3 triangles"
+
+motif_census_4:
+  params: {fn: motif_census, size: 4}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every 4-subset of the simple graph that is connected, classified by edge count and degree sequence: star, path, cycle, paw, diamond, clique"
+    networkx:
+      call: "every connected induced 4-node subgraph classified with nx.is_isomorphic against nx.star_graph(3), path_graph(4), cycle_graph(4), the paw, the diamond and complete_graph(4)"
+      undefined_on: [les_miserables, gnp_und_sparse, weighted_und, real_weights_und]
+      undefined_reason: >-
+        The oracle enumerates the 4-subsets with a graph isomorphism test
+        for each, which is limited to 40 nodes.
+
+motif_census_3_directed:
+  params: {fn: motif_census, size: 3}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every 3-subset of the simple digraph, its arcs classified into the MAN triad types by mutual, asymmetric and null dyads and the shape; the 13 connected types"
+    networkx:
+      call: "nx.triadic_census(G) on the simple digraph, the 13 connected types in MAN order"

@@ -1,0 +1,11 @@
+{
+ "inputs": "23c8ba890ee937252b41099721ef7f5160c3d511d97cd9744ab144973704a455",
+ "oracles": [
+  "definition",
+  "igraph",
+  "networkx",
+  "rustworkx",
+  "sna",
+  "tsna"
+ ]
+}

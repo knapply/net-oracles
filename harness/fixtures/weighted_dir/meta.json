@@ -1,0 +1,12 @@
+{
+  "n": 50,
+  "directed": true,
+  "weighted": true,
+  "tags": [
+    "integer_weights",
+    "not_strongly_connected",
+    "onemode",
+    "weighted"
+  ],
+  "source": "G(n=50, p=0.1), seed 15"
+}

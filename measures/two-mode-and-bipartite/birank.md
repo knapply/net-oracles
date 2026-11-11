@@ -52,6 +52,8 @@ Measure id: `birank`. Original family: Two-mode and bipartite.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>birank</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-14, rel 1e-12</td><td><code>nx.bipartite.birank(G, top, max_iter = 1000, tol = 1e-10)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/bipartite_nx.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/bipartite_nx.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [he2017birank](../../references.html#he2017birank)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)

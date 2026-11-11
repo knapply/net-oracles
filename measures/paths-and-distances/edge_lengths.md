@@ -50,5 +50,7 @@ Measure id: `edge_lengths`. Original family: Paths and distances.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>edge_lengths_lonlat</code></td><td>s2 (sphere geometry)</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-09, rel 1e-12</td><td><code>s2::s2_distance(s2_geog_point(lon, lat) of the two endpoints, radius = 6371008.7714)</code></td><td></td></tr><tr><td><code>edge_lengths_planar</code></td><td>sf (planar geometry)</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 1e-12</td><td><code>sf::st_distance(point a, point b, by_element = TRUE) on planar points</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/roles.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/roles.yaml); [harness/golden/s2/](https://github.com/knapply/net-oracles/tree/main/harness/golden/s2/); [harness/golden/sf/](https://github.com/knapply/net-oracles/tree/main/harness/golden/sf/)
+
 **Tools cited:** [pebesma2018sf](../../references.html#pebesma2018sf), [tool_s2](../../references.html#tool_s2)
 {% endraw %}

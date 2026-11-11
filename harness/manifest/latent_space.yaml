@@ -1,0 +1,114 @@
+# Latent space models: the log-likelihood of the distance model and its
+# gradient (Hoff, Raftery, and Handcock 2002, `hoff2002latent`), the
+# case-control estimate with every non-tie sampled (Raftery et al. 2012,
+# `raftery2012fast`; it then equals the exact value), and the incremental
+# update of one node's move. Format: see ../README.md.
+#
+# Every fixture is read as its simple graph (loops dropped, repeated edges
+# once, weights ignored) with the positions of derived/
+# models.py. The engine runners are in bindings/models.py; the
+# oracle oracles/latent_definition_oracle.py evaluates every
+# pair with dense numpy arrays.
+#
+# latent_loglik results: the log-likelihood, d l / d alpha, then d l / d z
+# row-major (node 0 dimension 0, node 0 dimension 1, ...).
+# latent_move_delta results: the change in log-likelihood when node 0
+# moves to (0.3, -0.2, 0.1, ...), then the gradient after the move,
+# row-major.
+#
+# Engine options:
+#   fn                latent_loglik | latent_move_delta
+#   dim               dimension of the latent space (default 2)
+#   alpha             the intercept
+#   case_control_all  (latent_loglik) evaluate through the case-control
+#                     path with n controls per node
+#
+# latentnet (`krivitsky2008fitting`) runs on the heavy runner pool
+# (oracles/r_latentnet.R) and gives the log-likelihood and,
+# where it can be read, the gradient.
+
+latent_loglik_d2:
+  params: {fn: latent_loglik, dim: 2, alpha: 0.5}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense pairwise evaluation of the definition (latent_definition_oracle.py)"
+    latentnet:
+      call: "latentnet ergmm.lpY(model, theta) at the given intercept and positions, with ergmm.lpY.grad (r_latentnet.R)"
+      partial: true
+      undefined_on: [empty, pair, single_node, complete5_dir, complete6]
+      undefined_reason: >-
+        latentnet needs at least three nodes, and its maximum-likelihood fit
+        (which the oracle uses to build the model object) stops with
+        "non-finite value supplied by optim" on the complete graphs, where
+        the likelihood has no finite maximum.
+
+latent_loglik_d1:
+  params: {fn: latent_loglik, dim: 1, alpha: 1.5}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense pairwise evaluation of the definition (latent_definition_oracle.py)"
+    latentnet:
+      call: "latentnet ergmm.lpY(model, theta) at the given intercept and positions, with ergmm.lpY.grad (r_latentnet.R)"
+      partial: true
+      undefined_on: [empty, pair, single_node, complete5_dir, complete6]
+      undefined_reason: >-
+        latentnet needs at least three nodes, and its maximum-likelihood fit
+        (which the oracle uses to build the model object) stops with
+        "non-finite value supplied by optim" on the complete graphs, where
+        the likelihood has no finite maximum.
+
+latent_loglik_d3:
+  params: {fn: latent_loglik, dim: 3, alpha: -0.4}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense pairwise evaluation of the definition (latent_definition_oracle.py)"
+    latentnet:
+      call: "latentnet ergmm.lpY(model, theta) at the given intercept and positions, with ergmm.lpY.grad (r_latentnet.R)"
+      partial: true
+      undefined_on: [empty, pair, single_node, complete5_dir, complete6, path10]
+      undefined_reason: >-
+        latentnet needs at least three nodes, and its maximum-likelihood fit
+        (which the oracle uses to build the model object) stops with
+        "non-finite value supplied by optim" on the complete graphs, where
+        the likelihood has no finite maximum.
+
+latent_loglik_case_control_all:
+  params: {fn: latent_loglik, dim: 2, alpha: 0.5, case_control_all: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "dense pairwise evaluation of the definition (latent_definition_oracle.py)"
+    latentnet:
+      call: "latentnet ergmm.lpY(model, theta) at the given intercept and positions, with ergmm.lpY.grad (r_latentnet.R)"
+      partial: true
+      undefined_on: [empty, pair, single_node, complete5_dir, complete6]
+      undefined_reason: >-
+        latentnet needs at least three nodes, and its maximum-likelihood fit
+        (which the oracle uses to build the model object) stops with
+        "non-finite value supplied by optim" on the complete graphs, where
+        the likelihood has no finite maximum.
+
+latent_move_delta_d2:
+  params: {fn: latent_move_delta, dim: 2, alpha: 0.5}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "log-likelihood after the move minus before, gradient after (latent_definition_oracle.py)"
+    latentnet:
+      call: "latentnet ergmm.lpY(model, theta) at the intercept and positions after the move minus before, and ergmm.lpY.grad after (r_latentnet.R)"
+      partial: true
+      undefined_on: [empty, pair, single_node, complete5_dir, complete6]
+      undefined_reason: >-
+        latentnet needs at least three nodes, and its maximum-likelihood fit
+        (which the oracle uses to build the model object) stops with
+        "non-finite value supplied by optim" on the complete graphs, where
+        the likelihood has no finite maximum.
+

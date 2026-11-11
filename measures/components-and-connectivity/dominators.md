@@ -72,6 +72,8 @@ Measure id: `frontiers`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>dag_dominance_frontiers</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.dominance_frontiers(G, 0), one sorted tuple per node, (-1) if unreachable</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/trees.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/trees.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Idom {#idom}
@@ -94,6 +96,8 @@ Measure id: `idom`. Original family: Traversal, trees and DAGs.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>dag_immediate_dominators</code></td><td>NetworkX</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.immediate_dominators(G, 0), with 0 for the start and -1 for unreachable nodes</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/trees.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/trees.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **References:** [cooper2001simple](../../references.html#cooper2001simple)
 

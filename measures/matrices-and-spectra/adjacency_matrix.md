@@ -56,5 +56,7 @@ Measure id: `gm_adjacency`. Original family: Matrices and spectra.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>gm_adjacency</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.adjacency_matrix(G, weight = None).toarray()</code></td><td></td></tr><tr><td><code>gm_adjacency_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.adjacency_matrix(G, weight = 'weight').toarray()</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/graph_matrices.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/graph_matrices.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [staudt2016networkit](../../references.html#staudt2016networkit), [tool_rustworkx](../../references.html#tool_rustworkx)
 {% endraw %}

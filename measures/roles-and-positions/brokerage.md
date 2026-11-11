@@ -52,5 +52,7 @@ Measure id: `brokerage`. Original family: Roles and positions.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>brokerage</code></td><td>sna</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>sna::brokerage(m, cl = (0:(n - 1)) %% 3)$raw.nli</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/positions.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/positions.yaml); [harness/golden/sna/](https://github.com/knapply/net-oracles/tree/main/harness/golden/sna/)
+
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [butts2008sna](../../references.html#butts2008sna)
 {% endraw %}

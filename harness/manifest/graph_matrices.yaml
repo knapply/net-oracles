@@ -1,0 +1,258 @@
+# Graph matrices (adjacency, Laplacian, normalized Laplacian, incidence,
+# Bethe Hessian, modularity), the Fiedler pair, and aperiodicity, with the
+# conventions of NetworkX 3.7's linalg package. Format: see ../README.md;
+# runners and encodings in ../bindings/graph_matrices.py.
+#
+# Oracles: `definition` is graph_matrices_definition_oracle.py (exact
+# fractions for the matrices, NumPy's dense eigensolver for the Fiedler
+# pair, matrix powers for aperiodicity); `networkx` is
+# graph_matrices_networkx_oracle.py. A single -999 marks an undefined
+# result (see the binding).
+
+gm_adjacency:
+  params: {fn: gm_adjacency}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "A[u][v] += 1 per edge (both ways when undirected; an undirected self-loop once)"
+    networkx:
+      call: "nx.adjacency_matrix(G, weight = None).toarray()"
+
+gm_adjacency_weighted:
+  params: {fn: gm_adjacency, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "A[u][v] += w per edge"
+    networkx:
+      call: "nx.adjacency_matrix(G, weight = 'weight').toarray()"
+
+gm_laplacian:
+  params: {fn: gm_laplacian}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "D - A with D the row sums of A"
+    networkx:
+      call: "nx.laplacian_matrix(G, weight = None).toarray()"
+
+gm_laplacian_weighted:
+  params: {fn: gm_laplacian, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "D - A with weights"
+    networkx:
+      call: "nx.laplacian_matrix(G, weight = 'weight').toarray()"
+
+gm_normalized_laplacian:
+  params: {fn: gm_laplacian, normalized: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "D^-1/2 (D - A) D^-1/2, 0 for zero degrees"
+    networkx:
+      call: "nx.normalized_laplacian_matrix(G, weight = None).toarray()"
+    graspologic:
+      call: "graspologic.utils.to_laplacian(A, form = 'I-DAD')"
+      differs_when: [directed]
+      reason: >-
+        For a directed graph graspologic's 'I-DAD' form is D_in^-1/2 (D_in - A)
+        D_in^-1/2 with in-degrees (graspologic/utils/utils.py, to_laplacian),
+        and a node without in-links gets 0 on the diagonal; the engine, like
+        NetworkX's normalized_laplacian_matrix, normalizes by out-degrees.
+        Undirected fixtures agree.
+
+gm_normalized_laplacian_weighted:
+  params: {fn: gm_laplacian, normalized: true, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "D^-1/2 (D - A) D^-1/2 with weights"
+    networkx:
+      call: "nx.normalized_laplacian_matrix(G, weight = 'weight').toarray()"
+    graspologic:
+      call: "graspologic.utils.to_laplacian(W, form = 'I-DAD')"
+      differs_when: [directed]
+      reason: >-
+        For a directed graph graspologic's 'I-DAD' form is D_in^-1/2 (D_in - A)
+        D_in^-1/2 with in-degrees (graspologic/utils/utils.py, to_laplacian),
+        and a node without in-links gets 0 on the diagonal; the engine, like
+        NetworkX's normalized_laplacian_matrix, normalizes by out-degrees.
+        Undirected fixtures agree.
+
+gm_incidence:
+  params: {fn: gm_incidence}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "1 at both endpoints of each edge's column; self-loops empty"
+    networkx:
+      call: "nx.incidence_matrix(G, edgelist = the fixture's edges in order).toarray()"
+
+gm_incidence_oriented_weighted:
+  params: {fn: gm_incidence, oriented: true, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "-w at the source and w at the target of each edge's column"
+    networkx:
+      call: "nx.incidence_matrix(G, edgelist = the fixture's edges, oriented = True, weight = 'weight').toarray()"
+
+gm_bethe_hessian:
+  params: {fn: gm_bethe_hessian}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "(r^2 - 1) I - r A + D, r = sum d^2 / sum d - 1"
+    networkx:
+      call: "nx.bethe_hessian_matrix(G).toarray() (graph built without weights)"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement the Bethe Hessian for multigraphs.
+
+gm_bethe_hessian_weighted:
+  params: {fn: gm_bethe_hessian, weighted: true}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "(r^2 - 1) I - r A + D with weighted A and D, r from unweighted degrees"
+    networkx:
+      call: "nx.bethe_hessian_matrix(G).toarray() (it reads the attribute 'weight')"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement the Bethe Hessian for multigraphs.
+
+gm_modularity:
+  params: {fn: gm_modularity}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "A - k k' / 2m (A - k_out k_in' / m when directed); NaN without edges"
+    networkx:
+      call: "nx.modularity_matrix(G) or nx.directed_modularity_matrix(G)"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement the modularity matrices for multigraphs.
+
+gm_modularity_weighted:
+  params: {fn: gm_modularity, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as gm_modularity with weights"
+    networkx:
+      call: "nx.modularity_matrix(G, weight = 'weight') or the directed version"
+      undefined_when: [multi_edges]
+      undefined_reason: NetworkX does not implement the modularity matrices for multigraphs.
+
+gm_fiedler_value:
+  params: {fn: gm_fiedler, output: value}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "second smallest eigenvalue of the Laplacian (numpy.linalg.eigh); 0 when disconnected"
+    networkx:
+      call: "nx.algebraic_connectivity(G, tol = 1e-10, method = 'tracemin_lu') (directed graphs through NetworkX's _preprocess_graph, then weight = 'weight', as spectral_ordering reads them)"
+
+gm_fiedler_value_normalized_weighted:
+  params: {fn: gm_fiedler, output: value, normalized: true, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "second smallest eigenvalue of the normalized Laplacian of absolute weights"
+    networkx:
+      call: "nx.algebraic_connectivity(G, weight = 'weight', normalized = True, tol = 1e-10, method = 'tracemin_lu')"
+
+gm_fiedler_vector:
+  params: {fn: gm_fiedler, output: vector}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "unit eigenvector of the second smallest eigenvalue, first entry negative"
+    networkx:
+      call: "nx.fiedler_vector(G) (default method tracemin_pcg, tol 1e-8)"
+      tolerance: {rel: 1.0e-5, abs: 1.0e-6}
+      note: >-
+        NetworkX's TraceMIN solver stops at a residual of 1e-8, which leaves
+        vector entries within 2e-6 of the exact eigenvector (largest seen);
+        the engine agrees with the definition oracle to 1e-11.
+      reason: >-
+        For two nodes NetworkX returns [1, -1] without solving; the engine
+        returns the unit vector with its first entry negative (the backend
+        returns NetworkX's [1, -1]).
+      differs_when: [two_nodes]
+
+gm_fiedler_vector_normalized:
+  params: {fn: gm_fiedler, output: vector, normalized: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "as gm_fiedler_vector for the normalized Laplacian"
+    networkx:
+      call: "nx.fiedler_vector(G, normalized = True)"
+      tolerance: {rel: 1.0e-5, abs: 1.0e-6}
+      note: >-
+        NetworkX's TraceMIN solver stops at a residual of 1e-8, which leaves
+        vector entries within 2e-6 of the exact eigenvector (largest seen);
+        the engine agrees with the definition oracle to 1e-11.
+      reason: >-
+        For two nodes NetworkX returns [1, -1] without solving; the engine
+        returns the unit vector with its first entry negative.
+      undefined_on: [gnp_dir_dense, gnp_und_dense, real_weights_dir, weighted_dir]
+      undefined_reason: >-
+        NetworkX's tracemin_pcg iteration for the normalized Laplacian does
+        not converge on these graphs and, having no iteration cap, never
+        returns.
+      differs_when: [two_nodes]
+
+gm_aperiodic:
+  params: {fn: gm_aperiodic}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "some power of the adjacency matrix is positive (Wielandt's bound)"
+    networkx:
+      call: "nx.is_aperiodic(G) on strongly connected graphs"
+
+gm_class_matrix:
+  params: {fn: gm_class_matrix}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "edges between classes v % 3 (both entries for undirected edges across classes, once within)"
+    networkx:
+      call: "nx.attr_matrix(G, node_attr = lambda v: v % 3, rc_order = [0, 1, 2])"
+
+gm_class_matrix_weighted:
+  params: {fn: gm_class_matrix, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "as gm_class_matrix summing weights"
+    networkx:
+      call: "nx.attr_matrix(G, edge_attr = 'weight', node_attr = lambda v: v % 3, rc_order = [0, 1, 2])"

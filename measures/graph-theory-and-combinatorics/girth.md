@@ -53,5 +53,7 @@ Measure id: `girth`. Original family: Graph theory and combinatorics.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>cyc_girth</code></td><td>NetworkX</td><td>any</td><td>differs</td><td>multi_edges, (no value) directed</td><td>direction, multi_edges</td><td>abs 0, rel 0</td><td><code>nx.girth(G); -2 for infinity</code></td><td>Parallel edges form a cycle of length 2 in the reference value's multigraph; NetworkX's simple graph merges them. NetworkX's girth is not implemented for directed graphs.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/cycles.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/cycles.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

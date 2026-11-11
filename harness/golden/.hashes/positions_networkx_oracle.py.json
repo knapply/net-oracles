@@ -1,0 +1,11 @@
+{
+ "inputs": "ecda94dab9abe9a62edf522398318abc8486d80abb31528a9dab75f546f9906c",
+ "oracles": [
+  "cpnet",
+  "definition",
+  "nauty",
+  "networkx",
+  "powerlaw",
+  "sknetwork"
+ ]
+}

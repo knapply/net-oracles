@@ -1,0 +1,9 @@
+{
+ "inputs": "0078d60fd54ed67fc5739870038cb2bf84ff8699181f2730ff44976a544f5057",
+ "oracles": [
+  "centiserve",
+  "definition",
+  "netrankr",
+  "tnet"
+ ]
+}

@@ -52,6 +52,8 @@ Measure id: `kpp_optimum:distance_fragmentation`. Original family: Centrality.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>kpp_distance_fragmentation_optimum_k2</code></td><td>keyplayer</td><td>any</td><td>no-value-on-some-inputs</td><td>(no value) directed</td><td>direction</td><td>abs 1e-14, rel 1e-12</td><td><code>maximum over every pair S of keyplayer::fragment(adjacency, S, binary = TRUE)</code></td><td>single_node has fewer nodes than the set size, so there is no set to score; keyplayer's fragmentation is not directional, so it is compared on undirected networks only.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/resilience.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/resilience.yaml); [harness/golden/keyplayer/](https://github.com/knapply/net-oracles/tree/main/harness/golden/keyplayer/)
+
 **References:** [borgatti2006identifying](../../references.html#borgatti2006identifying), [brandes2008variants](../../references.html#brandes2008variants), [dinic1970algorithm](../../references.html#dinic1970algorithm), [everett1999centrality](../../references.html#everett1999centrality), [everton2012disrupting](../../references.html#everton2012disrupting), [ford1956maximal](../../references.html#ford1956maximal), [freeman1991centrality](../../references.html#freeman1991centrality), [koschutzki2005centrality](../../references.html#koschutzki2005centrality)
 
 **Tools cited:** [an2016keyplayer](../../references.html#an2016keyplayer)
@@ -69,6 +71,8 @@ Measure id: `kpp_optimum:distance_reach`. Original family: Centrality.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>kpp_distance_reach_optimum_k2</code></td><td>keyplayer</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 1e-14, rel 1e-12</td><td><code>maximum over every pair S of (|S| + (n - |S|) kpcent(adjacency, S, 'mreach.closeness', M = Inf, method = 'min', binary = TRUE, cmode = 'outdegree')) / n</code></td><td>no set of two nodes leaves anything to reach (single node), and keyplayer::kpcent fails on a two-node network.</td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/resilience.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/resilience.yaml); [harness/golden/keyplayer/](https://github.com/knapply/net-oracles/tree/main/harness/golden/keyplayer/)
 
 **References:** [borgatti2006identifying](../../references.html#borgatti2006identifying), [brandes2008variants](../../references.html#brandes2008variants), [dinic1970algorithm](../../references.html#dinic1970algorithm), [everett1999centrality](../../references.html#everett1999centrality), [everton2012disrupting](../../references.html#everton2012disrupting), [ford1956maximal](../../references.html#ford1956maximal), [freeman1991centrality](../../references.html#freeman1991centrality), [koschutzki2005centrality](../../references.html#koschutzki2005centrality)
 
@@ -105,6 +109,8 @@ Measure id: `kpp_optimum:m_reach`. Original family: Centrality.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>kpp_m_reach_optimum_k3</code></td><td>keyplayer</td><td>any</td><td>no-value-on-some-inputs</td><td></td><td></td><td>abs 0, rel 0</td><td><code>maximum over every set S of three nodes of keyplayer::kpcent(adjacency, S, 'mreach.degree', M = 1, method = 'min', binary = TRUE, cmode = 'outdegree')</code></td><td>fewer nodes than the set size, so there is no set to score.</td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/resilience.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/resilience.yaml); [harness/golden/keyplayer/](https://github.com/knapply/net-oracles/tree/main/harness/golden/keyplayer/)
 
 **References:** [borgatti2006identifying](../../references.html#borgatti2006identifying), [brandes2008variants](../../references.html#brandes2008variants), [dinic1970algorithm](../../references.html#dinic1970algorithm), [everett1999centrality](../../references.html#everett1999centrality), [everton2012disrupting](../../references.html#everton2012disrupting), [ford1956maximal](../../references.html#ford1956maximal), [freeman1991centrality](../../references.html#freeman1991centrality), [koschutzki2005centrality](../../references.html#koschutzki2005centrality)
 

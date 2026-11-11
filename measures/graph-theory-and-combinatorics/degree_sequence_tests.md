@@ -52,6 +52,8 @@ Measure id: `nxs_degree_sequence_test`. Original family: Graph theory and combin
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nxs_digraphical</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.is_digraphical(in_seq, out_seq)</code></td><td></td></tr><tr><td><code>nxs_graphical_eg</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.is_graphical(seq, method = 'eg')</code></td><td></td></tr><tr><td><code>nxs_graphical_hh</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.is_graphical(seq, method = 'hh')</code></td><td></td></tr><tr><td><code>nxs_multigraphical</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.is_multigraphical(seq)</code></td><td></td></tr><tr><td><code>nxs_pseudographical</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.is_pseudographical(seq)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/nx_shims.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/nx_shims.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 ## Is bigraphical {#cat_bigraphical_is}

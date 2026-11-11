@@ -1,0 +1,8 @@
+{
+ "inputs": "79837d602820bfccfcdc76852911676db8c5395a3dfc75e953c9046ec6f93402",
+ "oracles": [
+  "nauty",
+  "networkx",
+  "sknetwork"
+ ]
+}

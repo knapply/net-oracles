@@ -1,0 +1,11 @@
+{
+  "n": 32,
+  "directed": false,
+  "weighted": false,
+  "tags": [
+    "bipartite",
+    "onemode",
+    "symmetric_nodes"
+  ],
+  "source": "Davis, Gardner, and Gardner (1941); davis1941deep"
+}

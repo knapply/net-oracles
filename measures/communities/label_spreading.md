@@ -50,5 +50,7 @@ Measure id: `nxo_label_spreading`. Original family: Communities.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>nxo_harmonic_function</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.node_classification.harmonic_function(G), labels (v // 4) % 3 on nodes v % 4 == 0 (graph without weights)</code></td><td></td></tr><tr><td><code>nxo_local_global_weighted</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.node_classification.local_and_global_consistency(G, alpha = 0.9, max_iter = 12)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/nx_order.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/nx_order.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

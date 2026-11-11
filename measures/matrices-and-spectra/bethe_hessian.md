@@ -48,5 +48,7 @@ Measure id: `gm_bethe_hessian`. Original family: Matrices and spectra.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>gm_bethe_hessian</code></td><td>NetworkX</td><td>undirected</td><td>no-value-on-some-inputs</td><td>(no value) multi_edges</td><td>multi_edges</td><td>abs 1e-12, rel 1e-12</td><td><code>nx.bethe_hessian_matrix(G).toarray() (graph built without weights)</code></td><td>NetworkX does not implement the Bethe Hessian for multigraphs.</td></tr><tr><td><code>gm_bethe_hessian_weighted</code></td><td>NetworkX</td><td>undirected</td><td>no-value-on-some-inputs</td><td>(no value) multi_edges</td><td>multi_edges</td><td>abs 1e-12, rel 1e-12</td><td><code>nx.bethe_hessian_matrix(G).toarray() (it reads the attribute 'weight')</code></td><td>NetworkX does not implement the Bethe Hessian for multigraphs.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/graph_matrices.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/graph_matrices.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)
 {% endraw %}

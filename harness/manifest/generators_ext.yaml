@@ -1,0 +1,300 @@
+# Named graphs, graph complement and products, degree-sequence realization
+# and Pruefer coding (crates/engine/src/named_graphs.rs, graph_ops.rs,
+# realize.rs and generate_models.rs, C interface crates/capi/src/gen_extra.rs):
+# each family on a table of cases (derived/generators_ext.py) against the
+# defining rule and NetworkX. Runners and encodings: ../bindings/generators_ext.py;
+# oracles generators_ext_definition_oracle.py and generators_ext_networkx_oracle.py.
+#
+# The cases do not use the fixture graph, so every entry runs on the fixture
+# `pair` only. A case result is a row (node count, edge count) followed by the
+# sorted edges: an undirected edge as (smaller, larger), an arc as (source,
+# target). Graphicality entries give one row (1 or 0) per case; Pruefer coding
+# gives the sequence length then one row per label.
+#
+# Node numbering is NetworkX's integer numbering. The hexagonal and
+# triangular lattices label nodes by (column, row) pairs in NetworkX; here
+# the integer is the rank of the pair among the surviving pairs in
+# lexicographic order. A product node (u, x) is u * |H| + x. NetworkX has no
+# Havel-Hakimi tie rule that matches the documented one (its `havel_hakimi_graph`
+# labels nodes by their rank among the positive degrees), so the realizations
+# are checked against the documented rule and for exact degrees and
+# simplicity, and graphicality against NetworkX and exhaustive search.
+# NetworkX's complement never has loops (`op_complement_loops` is definition
+# only). The random models of these families are checked in
+# ../generators_check.py.
+#
+# gen_invalid lists parameters outside the domain; the engine must refuse
+# each with a message that says why (1 = refused with the expected words).
+
+gen_barbell:
+  params: {fn: cat_barbell, family: barbell}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "two cliques, the path between them, and the two joining edges"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.barbell_graph(m1, m2)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_lollipop:
+  params: {fn: cat_lollipop, family: lollipop}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the clique, the path, and the edge joining the clique's last node to the path"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.lollipop_graph(m, n)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_generalized_petersen:
+  params: {fn: cat_generalized_petersen, family: generalized_petersen}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "outer cycle, spokes (i, n + i) and inner edges (n + i, n + (i + k) mod n)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.generalized_petersen_graph(n, k)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_turan:
+  params: {fn: gen_turan, family: turan}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair of nodes in different parts of sizes floor(n / r) (smaller parts first) and floor(n / r) + 1"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.turan_graph(n, r)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_lcf:
+  params: {fn: gen_lcf, family: lcf}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the n-cycle plus the chord (i mod n, (i + shift) mod n) for each position of the repeated shift list"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.LCF_graph(n, shifts, repeats)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_dgm:
+  params: {fn: cat_dorogovtsev_goltsev_mendes, family: dgm}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.dorogovtsev_goltsev_mendes_graph(g)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_hexagonal_lattice:
+  params: {fn: cat_hexagonal_lattice, family: hexagonal}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.hexagonal_lattice_graph(m, n, periodic, with_positions=False), nodes numbered by the rank of their (column, row) label"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_triangular_lattice:
+  params: {fn: cat_lattice_triangular, family: triangular}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.triangular_lattice_graph(m, n, periodic, with_positions=False), nodes numbered by the rank of their (column, row) label"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_prufer_decode:
+  params: {fn: gen_random_tree, family: prufer_decode}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the textbook decoding: join the smallest current leaf to each label in turn, then the last two nodes"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.from_prufer_sequence(sequence)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_prufer_encode:
+  params: {fn: gen_random_tree, family: prufer_encode}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the textbook coding: record the neighbour of the smallest leaf, remove it, n - 2 times"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.to_prufer_sequence(T)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_graphical:
+  params: {fn: cat_graphical_is, family: graphical}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "exhaustive search for a simple graph with the degrees"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.is_graphical(sequence), method eg and hh agreeing"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_digraphical:
+  params: {fn: cat_graphical_is, family: digraphical}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "exhaustive search for a simple digraph with the in- and out-degrees"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.is_digraphical(in_sequence, out_sequence)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_bigraphical:
+  params: {fn: gen_realize_bipartite, family: bigraphical}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "exhaustive search for a simple bipartite graph with the row and column degrees"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_havel_hakimi:
+  params: {fn: gen_degree_realization, family: havel_hakimi}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "an independent implementation of the documented rule (pivot of largest residual degree, smallest index first, joined to the next largest); degrees and simplicity checked"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_kleitman_wang:
+  params: {fn: gen_degree_realization, family: kleitman_wang}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "an independent implementation of the documented rule (pivot of largest residual out-degree joined to the largest residual in-degrees); degrees and simplicity checked"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_gale_ryser:
+  params: {fn: gen_realize_bipartite, family: gale_ryser}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "an independent implementation of the documented rule (rows longest first, joined to the largest residual columns); degrees and simplicity checked"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+op_complement:
+  params: {fn: op_complement, family: complement}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair (ordered when directed) of distinct nodes that is not an edge"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.complement(G)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+op_complement_loops:
+  params: {fn: op_complement, family: complement, loops: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair (ordered when directed) not an edge, with the loop at every node without one"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+op_product_cartesian:
+  params: {fn: op_graph_product, family: product, op: 0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(u = v and x ~ y) or (u ~ v and x = y) over all node pairs, node (u, x) numbered u * |H| + x"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.cartesian_product(G, H), nodes (u, x) numbered u * |H| + x"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+op_product_tensor:
+  params: {fn: op_graph_product, family: product, op: 1}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "u ~ v and x ~ y over all node pairs, node (u, x) numbered u * |H| + x"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.tensor_product(G, H), nodes (u, x) numbered u * |H| + x"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+op_product_strong:
+  params: {fn: op_graph_product, family: product, op: 2}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the union of the Cartesian and tensor products over all node pairs, node (u, x) numbered u * |H| + x"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.strong_product(G, H), nodes (u, x) numbered u * |H| + x"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+op_product_lexicographic:
+  params: {fn: op_graph_product, family: product, op: 3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "u ~ v, or u = v and x ~ y over all node pairs, node (u, x) numbered u * |H| + x"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.lexicographic_product(G, H), nodes (u, x) numbered u * |H| + x"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_full_citation:
+  params: {fn: gen_citation, family: full_citation}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every node joined to every earlier node (arcs from the later node when directed)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_invalid:
+  params: {fn: generators_ext_invalid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "each parameter set is outside the documented domain"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"

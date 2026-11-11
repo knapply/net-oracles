@@ -1,0 +1,705 @@
+# Relational event models: the statistics of an event stream over the full
+# risk set of every event, and the partial-likelihood fit of the ordinal
+# model (Butts 2008; Perry and Wolfe 2013). Format: see ../README.md.
+#
+# Every fixture is read as a stream of directed events by
+# derived/rem.py (self-loops dropped, each edge repeated one to
+# three times, some occurrences reversed, a fixed pseudo-random order,
+# time k + 1 for the k-th event). The engine runners are in
+# bindings/rem.py; the oracle oracles/
+# rem_definition_oracle.py recomputes every count from the whole history
+# at every event (numpy arrays, no incremental state) and fits by its own
+# Newton iteration on the dense design.
+#
+# rem_statistic results: one line per event in time order, holding the
+# statistic of the event's own dyad, its sum over the full risk set (every
+# ordered pair of distinct actors), and its sum of squares over the risk
+# set; so every risk-set value enters the comparison without writing the
+# whole design.
+#
+# rem_fit results: the coefficients, then their standard errors. When the
+# maximum partial likelihood estimate does not exist (the likelihood is
+# monotone, as on small fixtures where no event repeats a dyad) or there
+# are no events, every value is written as -999; the engine reports this
+# as non-convergence and the definition oracle by no convergence in 200
+# iterations.
+#
+# Engine options:
+#   fn          rem_statistic | rem_fit
+#   stat        (rem_statistic) inertia | reciprocity | sender_out |
+#               sender_in | receiver_out | receiver_in | transitive |
+#               cyclic | shared_out | shared_in | recency_dyad |
+#               recency_reciprocal | recency_sender_out | recency_sender_in
+#               | recency_receiver_out | recency_receiver_in
+#   stats       (rem_fit) list of statistics, in coefficient order
+#   memory      full (default) | window | decay; param is the window width
+#               (events with t_e >= t - width count) or the half-life
+#               (weight exp(-(t - t_e) ln 2 / T) ln 2 / T)
+#   triad       min (default) | product | binary: how closure statistics
+#               combine the two counts of a two-path or shared partner
+#   event_type  count only events of this type ((e + j) mod 2)
+#   weighted    events carry the fixture's edge weights
+#   ties        pairs of simultaneous events (shared history and risk set)
+#
+# remstats (`arena2026remstats`) and remstimate
+# (`arena2026remstimate`) are run by oracles/r_rem.R. remstats
+# leaves out the first event (empty history), which the script writes as
+# zeros. Decayed statistics: remstats weights a past event by
+# exp(-(t' - t_e) ln 2 / T) without the factor ln 2 / T of Brandes et al.
+# (2009), and with an ordinal history it evaluates the decay at the time t'
+# of the previous event rather than at the current event's time. For event
+# times 1, 2, 3, ... that is a constant factor c = (ln 2 / T) 2^(-1/T) on
+# every linear or minimum-of-counts statistic, so the oracle script scales
+# remstats' values by c (see rem_inertia_decay); the product and binary
+# decay variants have no such relation and no remstats oracle. Product
+# closure, event types, weights, recency of the reciprocal dyad, and ties
+# have no remstats counterpart.
+
+rem_inertia:
+  params: {fn: rem_statistic, stat: inertia}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ inertia(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_reciprocity:
+  params: {fn: rem_statistic, stat: reciprocity}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ reciprocity(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_sender_out:
+  params: {fn: rem_statistic, stat: sender_out}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ outdegreeSender(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_sender_in:
+  params: {fn: rem_statistic, stat: sender_in}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ indegreeSender(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_receiver_out:
+  params: {fn: rem_statistic, stat: receiver_out}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ outdegreeReceiver(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_receiver_in:
+  params: {fn: rem_statistic, stat: receiver_in}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ indegreeReceiver(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_transitive:
+  params: {fn: rem_statistic, stat: transitive}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ otp(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_cyclic:
+  params: {fn: rem_statistic, stat: cyclic}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ itp(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_shared_out:
+  params: {fn: rem_statistic, stat: shared_out}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ osp(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_shared_in:
+  params: {fn: rem_statistic, stat: shared_in}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ isp(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_recency_dyad:
+  params: {fn: rem_statistic, stat: recency_dyad}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ recencyContinue(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_recency_reciprocal:
+  params: {fn: rem_statistic, stat: recency_reciprocal}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_recency_sender_out:
+  params: {fn: rem_statistic, stat: recency_sender_out}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ recencySendSender(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_recency_sender_in:
+  params: {fn: rem_statistic, stat: recency_sender_in}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ recencyReceiveSender(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_recency_receiver_out:
+  params: {fn: rem_statistic, stat: recency_receiver_out}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ recencySendReceiver(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_recency_receiver_in:
+  params: {fn: rem_statistic, stat: recency_receiver_in}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ recencyReceiveReceiver(), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_transitive_binary:
+  params: {fn: rem_statistic, stat: transitive, triad: binary}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ otp(unique = TRUE), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_transitive_product:
+  params: {fn: rem_statistic, stat: transitive, triad: product}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_cyclic_binary:
+  params: {fn: rem_statistic, stat: cyclic, triad: binary}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ itp(unique = TRUE), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_cyclic_product:
+  params: {fn: rem_statistic, stat: cyclic, triad: product}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_shared_out_binary:
+  params: {fn: rem_statistic, stat: shared_out, triad: binary}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ osp(unique = TRUE), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_shared_out_product:
+  params: {fn: rem_statistic, stat: shared_out, triad: product}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_shared_in_binary:
+  params: {fn: rem_statistic, stat: shared_in, triad: binary}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ isp(unique = TRUE), memory = "full")
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_shared_in_product:
+  params: {fn: rem_statistic, stat: shared_in, triad: product}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_inertia_window:
+  params: {fn: rem_statistic, stat: inertia, memory: window, param: 6}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ inertia(), memory = "window", memory_value
+        = 6)
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_reciprocity_window:
+  params: {fn: rem_statistic, stat: reciprocity, memory: window, param: 6}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ reciprocity(), memory = "window", memory_value
+        = 6)
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_receiver_in_window:
+  params: {fn: rem_statistic, stat: receiver_in, memory: window, param: 6}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ indegreeReceiver(), memory = "window", memory_value
+        = 6)
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_transitive_window:
+  params: {fn: rem_statistic, stat: transitive, memory: window, param: 6}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ otp(), memory = "window", memory_value = 6)
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_shared_in_window:
+  params: {fn: rem_statistic, stat: shared_in, memory: window, param: 6}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: remstats::remstats(reh, tie_effects = ~ isp(), memory = "window", memory_value = 6)
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_inertia_decay:
+  params: {fn: rem_statistic, stat: inertia, memory: decay, param: 5}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: c * remstats::remstats(reh, tie_effects = ~ inertia(), memory = "decay", memory_value = 5), c = (ln 2 / 5) 2^(-1/5)
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+      note: >-
+        remstats weights a past event by exp(-(t' - t_e) ln 2 / T), where t' is
+        the time of the previous event, and omits the factor ln 2 / T of
+        Brandes et al. (2009); the definition evaluates the weight at the
+        current event's time t = t' + 1. Event times are consecutive integers,
+        so the two differ by the constant c = (ln 2 / T) 2^(-1/T), and the
+        golden values are remstats' scaled by c (sum of squares by c^2;
+        fitted coefficients divided by c). The closure statistics take the
+        smaller of two counts, which scales the same way.
+
+rem_sender_out_decay:
+  params: {fn: rem_statistic, stat: sender_out, memory: decay, param: 5}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: c * remstats::remstats(reh, tie_effects = ~ outdegreeSender(), memory = "decay", memory_value = 5), c = (ln 2 / 5) 2^(-1/5)
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_receiver_in_decay:
+  params: {fn: rem_statistic, stat: receiver_in, memory: decay, param: 5}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: c * remstats::remstats(reh, tie_effects = ~ indegreeReceiver(), memory = "decay", memory_value = 5), c = (ln 2 / 5) 2^(-1/5)
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_transitive_decay:
+  params: {fn: rem_statistic, stat: transitive, memory: decay, param: 5}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: c * remstats::remstats(reh, tie_effects = ~ otp(), memory = "decay", memory_value = 5), c = (ln 2 / 5) 2^(-1/5)
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_shared_out_decay:
+  params: {fn: rem_statistic, stat: shared_out, memory: decay, param: 5}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+    remstats:
+      call: c * remstats::remstats(reh, tie_effects = ~ osp(), memory = "decay", memory_value = 5), c = (ln 2 / 5) 2^(-1/5)
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_transitive_product_decay:
+  params: {fn: rem_statistic, stat: transitive, memory: decay, param: 5, triad: product}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_shared_in_binary_decay:
+  params: {fn: rem_statistic, stat: shared_in, memory: decay, param: 5, triad: binary}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_inertia_type1:
+  params: {fn: rem_statistic, stat: inertia, event_type: 1}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_transitive_type1:
+  params: {fn: rem_statistic, stat: transitive, event_type: 1}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_inertia_weighted:
+  params: {fn: rem_statistic, stat: inertia, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_transitive_weighted:
+  params: {fn: rem_statistic, stat: transitive, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_shared_out_weighted_decay:
+  params: {fn: rem_statistic, stat: shared_out, weighted: true, memory: decay, param: 5}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_reciprocity_ties:
+  params: {fn: rem_statistic, stat: reciprocity, ties: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_transitive_ties:
+  params: {fn: rem_statistic, stat: transitive, ties: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_recency_dyad_ties:
+  params: {fn: rem_statistic, stat: recency_dyad, ties: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "recount from the whole history at every event (rem_definition_oracle.py)"
+
+rem_fit_basic:
+  params: {fn: rem_fit, stats: [inertia, reciprocity, receiver_in, transitive]}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "Newton iteration on the dense design built from the definitions"
+    remstats:
+      call: remstimate::remstimate(reh, remstats::remstats(reh, tie_effects = ~ inertia() + reciprocity()
+        + indegreeReceiver() + otp(), memory = "full"), method = "MLE")
+      partial: true
+      tolerance: {rel: 1.0e-3, abs: 1.0e-4}
+      note: >-
+        Coefficients only (remstimate's standard errors are written as NaN):
+        remstimate stops its optimizer at a looser tolerance than the
+        engine's Newton iteration, so coefficients agree to at most 3e-4
+        absolute or 0.4% relative (largest seen; the definition oracle and the
+        engine agree to 1e-11).
+      undefined_on: [cycle7_dir, davis_twomode, florentine, pair, path10, southern_women, star8, twomode_random, twomode_weighted]
+      undefined_reason: >-
+        On pair, remify rejects a stream this short. On the others the maximum
+        partial likelihood estimate does not exist (the likelihood is monotone;
+        the engine and the definition oracle report it as -999) and remstimate
+        returns its last iterate.
+      differs_on: [complete5_dir, gnp_dir_dense]
+      reason: >-
+        remstimate's coefficients differ by up to a few percent on these
+        fixtures, while the engine agrees with the definition oracle's Newton
+        iteration to 1e-11 there (tolerance 1e-9); the difference is in remstimate's optimizer.
+
+rem_fit_closure:
+  params: {fn: rem_fit, stats: [reciprocity, transitive, cyclic, shared_in]}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "Newton iteration on the dense design built from the definitions"
+    remstats:
+      call: remstimate::remstimate(reh, remstats::remstats(reh, tie_effects = ~ reciprocity()
+        + otp() + itp() + isp(), memory = "full"), method = "MLE")
+      partial: true
+      tolerance: {rel: 1.0e-3, abs: 1.0e-4}
+      note: >-
+        Coefficients only (remstimate's standard errors are written as NaN):
+        remstimate stops its optimizer at a looser tolerance than the
+        engine's Newton iteration, so coefficients agree to at most 3e-4
+        absolute or 0.4% relative (largest seen; the definition oracle and the
+        engine agree to 1e-11).
+      undefined_on: [cycle7_dir, davis_twomode, florentine, pair, path10, southern_women, star8, twomode_random, twomode_weighted]
+      undefined_reason: >-
+        On pair, remify rejects a stream this short. On the others the maximum
+        partial likelihood estimate does not exist (the likelihood is monotone;
+        the engine and the definition oracle report it as -999) and remstimate
+        returns its last iterate.
+      differs_on: [complete5_dir]
+      reason: >-
+        remstimate's coefficients differ by up to a few percent on these
+        fixtures, while the engine agrees with the definition oracle's Newton
+        iteration to 1e-11 there (tolerance 1e-9); the difference is in remstimate's optimizer.
+
+rem_fit_activity:
+  params: {fn: rem_fit, stats: [inertia, sender_out, receiver_out, shared_out]}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "Newton iteration on the dense design built from the definitions"
+    remstats:
+      call: remstimate::remstimate(reh, remstats::remstats(reh, tie_effects = ~ inertia() + outdegreeSender()
+        + outdegreeReceiver() + osp(), memory = "full"), method = "MLE")
+      partial: true
+      tolerance: {rel: 1.0e-3, abs: 1.0e-4}
+      note: >-
+        Coefficients only (remstimate's standard errors are written as NaN):
+        remstimate stops its optimizer at a looser tolerance than the
+        engine's Newton iteration, so coefficients agree to at most 3e-4
+        absolute or 0.4% relative (largest seen; the definition oracle and the
+        engine agree to 1e-11).
+      undefined_on: [cycle7_dir, davis_twomode, pair, path10, southern_women, star8, twomode_random, twomode_weighted]
+      undefined_reason: >-
+        On pair, remify rejects a stream this short. On the others the maximum
+        partial likelihood estimate does not exist (the likelihood is monotone;
+        the engine and the definition oracle report it as -999) and remstimate
+        returns its last iterate.
+      differs_on: [complete5_dir, gnp_dir_dense]
+      reason: >-
+        remstimate's coefficients differ by up to a few percent on these
+        fixtures, while the engine agrees with the definition oracle's Newton
+        iteration to 1e-11 there (tolerance 1e-9); the difference is in remstimate's optimizer.
+
+rem_fit_recency:
+  params: {fn: rem_fit, stats: [recency_dyad, reciprocity, recency_receiver_in]}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "Newton iteration on the dense design built from the definitions"
+    remstats:
+      call: remstimate::remstimate(reh, remstats::remstats(reh, tie_effects = ~ recencyContinue()
+        + reciprocity() + recencyReceiveReceiver(), memory = "full"), method = "MLE")
+      partial: true
+      tolerance: {rel: 1.0e-3, abs: 1.0e-4}
+      note: >-
+        Coefficients only (remstimate's standard errors are written as NaN):
+        remstimate stops its optimizer at a looser tolerance than the
+        engine's Newton iteration, so coefficients agree to at most 3e-4
+        absolute or 0.4% relative (largest seen; the definition oracle and the
+        engine agree to 1e-11).
+      undefined_on: [pair]
+      undefined_reason: remify rejects a stream this short (one edge).
+
+rem_fit_decay:
+  params: {fn: rem_fit, stats: [inertia, reciprocity, transitive], memory: decay, param: 5}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "Newton iteration on the dense design built from the definitions"
+    remstats:
+      call: remstimate::remstimate(reh, remstats::remstats(reh, tie_effects = ~ inertia() + reciprocity() + otp(), memory = "decay", memory_value = 5), method = "MLE"), coefficients divided by c = (ln 2 / 5) 2^(-1/5)
+      partial: true
+      tolerance: {rel: 1.0e-3, abs: 1.0e-4}
+      note: >-
+        Coefficients only, as rem_fit_window; the decayed statistics are
+        remstats' scaled by c (see rem_inertia_decay), so its coefficients are
+        divided by c.
+      undefined_on: [cycle7_dir, davis_twomode, florentine, pair, path10, southern_women, star8, twomode_random, twomode_weighted]
+      undefined_reason: >-
+        On pair, remify rejects a stream this short. On the others the maximum
+        partial likelihood estimate does not exist (the likelihood is monotone;
+        the engine and the definition oracle report it as -999) and remstimate
+        returns its last iterate.
+
+rem_fit_window:
+  params: {fn: rem_fit, stats: [inertia, reciprocity, receiver_in], memory: window, param: 6}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "Newton iteration on the dense design built from the definitions"
+    remstats:
+      call: remstimate::remstimate(reh, remstats::remstats(reh, tie_effects = ~ inertia() + reciprocity()
+        + indegreeReceiver(), memory = "window", memory_value = 6), method = "MLE")
+      partial: true
+      tolerance: {rel: 1.0e-3, abs: 1.0e-4}
+      note: >-
+        Coefficients only (remstimate's standard errors are written as NaN):
+        remstimate stops its optimizer at a looser tolerance than the
+        engine's Newton iteration, so coefficients agree to at most 3e-4
+        absolute or 0.4% relative (largest seen; the definition oracle and the
+        engine agree to 1e-11).
+      undefined_on: [davis_twomode, gnp_dir_sparse, gnp_und_dense, gnp_und_sparse, karate, les_miserables, pair, real_weights_dir, real_weights_und, southern_women, twomode_random, twomode_weighted, uniform_weights, weighted_dir, weighted_und]
+      undefined_reason: >-
+        On pair, remify rejects a stream this short. On the others the maximum
+        partial likelihood estimate does not exist (the likelihood is monotone;
+        the engine and the definition oracle report it as -999) and remstimate
+        returns its last iterate.
+
+rem_fit_ties:
+  params: {fn: rem_fit, stats: [inertia, reciprocity, transitive], ties: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "Newton iteration on the dense design built from the definitions"

@@ -1,0 +1,63 @@
+# Combinatorial measures of NetworkX's clique module (and, as they are
+# added, colouring, covering, dominating sets, chordal graphs, planarity,
+# tournaments, and related modules), as NetworkX 3.7 defines them.
+# Format: see ../README.md; runners, inputs, and encodings in
+# ../bindings/combinatorial.py. Engine and oracles read the simple graph a
+# fixture denotes (nodes 0..n - 1, the edges in file order, self-loops
+# dropped); the Python package tests multigraphs and self-loops against
+# NetworkX directly. Cliques: Bron and Kerbosch (1973), `bron1973algorithm`;
+# Zhang et al. (2005), `zhang2005genome`; maximum-weight cliques: Tavares
+# et al. (2015), `tavares2015branch`.
+
+node_clique_number:
+  params: {fn: node_clique_number}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "largest clique containing each node, over every clique enumerated by growth in increasing order"
+    networkx:
+      call: "nx.node_clique_number(G)"
+
+all_cliques:
+  params: {fn: all_cliques}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every clique, sorted by size, then lexicographically"
+    networkx:
+      call: "list(nx.enumerate_all_cliques(G))"
+
+max_weight_clique:
+  params: {fn: max_weight_clique}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "(largest total weight over every clique, 1) with w(v) = (7 v mod 5) - 1; the empty clique weighs 0"
+    networkx:
+      call: "nx.max_weight_clique(G) with node attribute weight = (7 v mod 5) - 1: (weight, 1 if the nodes form a clique)"
+
+max_weight_clique_nodes:
+  params: {fn: max_weight_clique_nodes}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.max_weight_clique(G)[0] (members in the order NetworkX's branch and bound adds them)"
+
+# Maximal cliques in NetworkX's exact order (Tomita, Tanaka and Takahashi
+# 2006, `tomita2006worst`, as NetworkX iterates its Python sets; fixture
+# labels are integers, whose hash is the value).
+nx_cliques_order:
+  params: {fn: nx_cliques_order}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (the order of the cliques and of their members follows NetworkX's sets)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the order is defined by NetworkX's iteration over Python sets; the cliques themselves are checked by the other clique measures
+    networkx:
+      call: "list(nx.find_cliques(G)) then list(nx.find_cliques_recursive(G)), each clique in order"

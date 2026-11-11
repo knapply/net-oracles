@@ -421,10 +421,17 @@ def legend_html(rel=""):
 def harness_links(conv_rows, tool_ids, rel="../"):
     """Links into harness/ (added by a later export); empty while the directory is absent."""
     if not os.path.isdir(HARNESS): return []
+    # harness/ is not part of the website (it is excluded from the site
+    # build), so link to the files in the repository instead.
+    base = "https://github.com/knapply/net-oracles/tree/main/harness/"
     out = []
-    for f in sorted({c["manifest"] for c in conv_rows if c.get("manifest")}):
-        out.append("[harness/%s](%sharness/%s)" % (f, rel, f))
-    for t in sorted(tool_ids): out.append("[harness/golden/%s/](%sharness/golden/%s/)" % (t, rel, t))
+    for f in sorted({c["manifest"].replace("manifest.d/", "manifest/")
+                     for c in conv_rows if c.get("manifest")}):
+        if os.path.exists(os.path.join(HARNESS, f)):
+            out.append("[harness/%s](%s%s)" % (f, base, f))
+    for t in sorted(tool_ids):
+        if os.path.isdir(os.path.join(HARNESS, "golden", t)):
+            out.append("[harness/golden/%s/](%sgolden/%s/)" % (t, base, t))
     return out
 
 
@@ -865,6 +872,10 @@ reasons.measure/tool -> capabilities.measure/tool; measures.concept -> concepts.
 ## Conventions of the data
 
 Edge ends are called source and target. A reference value is the published definition evaluated independently. Every state other than checked-agrees has a reason in data/reasons.json. UCINET is documented-only: it was never run. Tool versions are those tested; findings may not hold in later versions.
+
+## Oracle harness (harness/)
+
+Reproduces every reference value. harness/manifest/<area>.yaml: one entry per measure variant, keyed by variant id, with params (the parameters every oracle computes with), applies_to, requires_weights and oracles (tool id -> oracle options, tolerance, documented differences). harness/fixtures/, fixtures-extra/ and derived/: the test graphs (edge lists with source and target columns). harness/golden/<tool>/: the values each tool returned per fixture and variant, with a VERSION file recording the tool version; golden-sized/ holds the larger graphs. harness/oracles/: one script per tool and area (Python *_oracle.py, R *.R), each tool used as a black box; harness/run_oracles.py reruns a script only when its inputs change (hashes in harness/golden/.hashes/). The manifest variant id is the measure id used in data/ where the measure was checked.
 
 ## Regenerate and validate
 

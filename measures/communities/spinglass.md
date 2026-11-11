@@ -56,6 +56,8 @@ Measure id: `spinglass`. Original family: Communities.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>spinglass_quality</code></td><td>igraph (R)</td><td>undirected</td><td>no-value-on-some-inputs</td><td>(no value) disconnected, (no value) edge_case</td><td>defaults</td><td>abs 0.02, rel 0</td><td><code>mean over set.seed(1..10) of modularity(g, cluster_spinglass(g, weights = NA))</code></td><td>both tools reject disconnected networks; igraph also rejects the trivial ones</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/communities.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/communities.yaml); [harness/golden/igraph/](https://github.com/knapply/net-oracles/tree/main/harness/golden/igraph/)
+
 **Findings**
 
 <div class="table-wrapper"><table><thead><tr><th>Id</th><th>Tool</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../../findings.html#f038">F038</a></td><td>igraph (R)</td><td>convention</td><td>Spinglass reads the network as simple</td></tr></tbody></table></div>

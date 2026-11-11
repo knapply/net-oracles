@@ -52,6 +52,8 @@ Measure id: `simrank`. Original family: Graph theory and combinatorics.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>simrank</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>nx.simrank_similarity(G) on the simple Graph or DiGraph, every pair</code></td><td></td></tr><tr><td><code>simrank_converged</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-11, rel 1e-09</td><td><code>nx.similarity._simrank_similarity_python(G, tolerance = 1e-13)</code></td><td></td></tr><tr><td><code>simrank_pairwise</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>nx.similarity._simrank_similarity_python(G)</code></td><td></td></tr><tr><td><code>simrank_weighted</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>nx.simrank_similarity(M) on the weighted multigraph (to_numpy_array adds the weights of parallel edges)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/similarity.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/similarity.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [hagberg2008exploring](../../references.html#hagberg2008exploring), [jeh2002simrank](../../references.html#jeh2002simrank), [zhang2015panther](../../references.html#zhang2015panther)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)

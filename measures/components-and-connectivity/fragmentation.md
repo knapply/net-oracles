@@ -54,5 +54,7 @@ Measure id: `fragmentation`. Original family: Components and connectivity.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>fragmentation</code></td><td>igraph (R)</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>1 - sum(s (s - 1)) / (n (n - 1)) over the sizes s of igraph::components(g, mode = 'weak')$csize</code></td><td></td></tr><tr><td><code>fragmentation_strong</code></td><td>igraph (R)</td><td>directed</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-09</td><td><code>1 - sum(s (s - 1)) / (n (n - 1)) over the sizes s of igraph::components(g, mode = 'strong')$csize</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/topography.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/topography.yaml); [harness/golden/igraph/](https://github.com/knapply/net-oracles/tree/main/harness/golden/igraph/)
+
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [csardi2006igraph](../../references.html#csardi2006igraph)
 {% endraw %}

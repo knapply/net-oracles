@@ -1,0 +1,247 @@
+# Brokerage and positions: Burt's structural holes, Gould-Fernandez
+# brokerage, structural equivalence, and CONCOR. Format: see
+# ../README.md.
+#
+# Undefined values (NaN, such as the constraint of an isolate) are written
+# to golden files as empty lines, so undefined only matches undefined.
+#
+# The fixtures have no group attribute, so brokerage uses a deterministic
+# grouping: `groups: mod3` puts node index v (0-based) in group v % 3. The
+# engine runner, the definition oracle, and the sna oracle all use it.
+
+constraint:
+  params: {fn: constraint, weighted: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Burt's formula term by term in exact arithmetic (oracles/positions_definition_oracle.py)"
+    networkx:
+      call: "nx.constraint(MultiGraph | MultiDiGraph)"
+      differs_when: [loops]
+      reason: >-
+        NetworkX keeps self-loops in the adjacency matrix, so a loop adds to
+        the node's total tie volume and lowers every p_ij. Burt's measure
+        concerns ties to others; this engine and igraph ignore loops.
+    igraph:
+      call: "igraph::constraint(g) on a copy without the weight attribute"
+      differs_when: [loops]
+      reason: >-
+        A node whose only tie is a self-loop has no neighbours, so Burt's
+        constraint is undefined for the engine and the definition oracle;
+        igraph reports 0.
+    pyigraph:
+      call: "python-igraph: gu.constraint()"
+      differs_when: [loops]
+      reason: >-
+        A node whose only tie is a self-loop has no neighbours, so Burt's
+        constraint is undefined for the engine and the definition oracle;
+        python-igraph reports 0.
+    manynet:
+      call: "manynet::node_constraint(g) (node_by_constraint in newer versions)"
+      differs_when: [isolates]
+      reason: >-
+        A node without ties to other nodes (one whose only tie is a self-loop)
+        has undefined constraint for the engine and the definition oracle;
+        manynet reports 0.
+
+constraint_weighted:
+  params: {fn: constraint, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Burt's formula in exact arithmetic with weights as tie strengths"
+    networkx:
+      call: "nx.constraint(G, weight = 'weight')"
+      differs_when: [loops]
+      reason: >-
+        A node whose only tie is a self-loop has no neighbours, so Burt's
+        constraint is undefined for the engine and the definition oracle;
+        NetworkX counts the loop as a tie to itself (4 for one loop of weight
+        2).
+    igraph:
+      call: "igraph::constraint(g, weights = E(g)$weight)"
+      differs_when: [loops]
+      reason: >-
+        A node whose only tie is a self-loop has no neighbours, so Burt's
+        constraint is undefined for the engine and the definition oracle;
+        igraph reports 0.
+    pyigraph:
+      call: "python-igraph: g.constraint(weights=w)"
+      differs_when: [loops]
+      reason: >-
+        A node whose only tie is a self-loop has no neighbours, so Burt's
+        constraint is undefined for the engine and the definition oracle;
+        python-igraph reports 0.
+effective_size:
+  params: {fn: effective_size, weighted: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Burt's formula term by term in exact arithmetic (oracles/positions_definition_oracle.py)"
+    networkx:
+      call: "nx.effective_size(MultiGraph | MultiDiGraph)"
+      differs_when: [loops]
+      reason: >-
+        NetworkX keeps self-loops in the adjacency matrix, so a loop adds to
+        the node's tie volume and can be its strongest tie. This engine
+        ignores loops.
+    manynet:
+      call: "manynet::node_effsize(g) (node_by_effsize in newer versions)"
+      differs_when: [directed, loops, multi_edges, edge_case]
+      reason: >-
+        manynet (netrics) returns a different value from the engine on
+        directed networks, on multigraphs with loops, and on the two-node
+        network (about half the engine's on a directed cycle and on
+        directed random graphs); the cause was not traced. Simple
+        undirected networks agree.
+
+effective_size_weighted:
+  params: {fn: effective_size, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Burt's formula in exact arithmetic with weights as tie strengths"
+    networkx:
+      call: "nx.effective_size(G, weight = 'weight')"
+      differs_when: [loops]
+      reason: >-
+        Burt's effective size counts a node's neighbours; NetworkX's weighted
+        formula also counts a neighbour's self-loop as redundancy (0.5 for
+        node 0 of 1-0 plus a loop at 1, against 1).
+
+efficiency:
+  params: {fn: efficiency, weighted: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "effective size divided by the number of contacts, exact arithmetic"
+    networkx:
+      call: "nx.effective_size(G) / number of distinct neighbours other than the node"
+      differs_when: [loops]
+      reason: NetworkX keeps self-loops in the effective size (see effective_size).
+    manynet:
+      call: "manynet::node_efficiency(g) (node_by_efficiency in newer versions)"
+      differs_when: [directed, loops, multi_edges, edge_case]
+      reason: >-
+        manynet (netrics) returns a different value from the engine on
+        directed networks, on multigraphs with loops, and on the two-node
+        network (about half the engine's on a directed cycle and on
+        directed random graphs); the cause was not traced. Simple
+        undirected networks agree.
+
+brokerage:
+  params: {fn: brokerage, groups: mod3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "enumeration of every two-path i -> j -> k with no i -> k (oracles/positions_definition_oracle.py)"
+    sna:
+      call: "sna::brokerage(m, cl = (0:(n - 1)) %% 3)$raw.nli"
+
+structural_equivalence_euclidean:
+  params: {fn: structural_equivalence, method: euclidean}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "row and column profiles compared over k != i, j (oracles/positions_definition_oracle.py)"
+    sna:
+      call: "sna::sedist(m, method = 'euclidean')"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        sna::sedist() fails on a network with one node.
+    blockmodeling:
+      call: "blockmodeling::sedist(m, method = 'euclidean')"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        The oracle script does not call blockmodeling on a network of one
+        node: sedist compares pairs of nodes, and there is no pair.
+      reason: >-
+        On a symmetric matrix (every undirected fixture and complete5_dir)
+        blockmodeling::sedist agrees with the engine. On an asymmetric one it
+        compares full row and column profiles including the entries for the
+        two nodes themselves (k = i, j), where the engine, like sna::sedist,
+        leaves them out; node 0 against node 1 on cycle7_dir is 2 against
+        sqrt(2), and on pair 0 against sqrt(2).
+      differs_when: [directed]
+
+structural_equivalence_correlation:
+  params: {fn: structural_equivalence, method: correlation}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Pearson correlation of row and column profiles over k != i, j, exact moments"
+    sna:
+      call: "sna::sedist(m, method = 'correlation')"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        sna::sedist() fails on a network with one node.
+
+structural_equivalence_hamming:
+  params: {fn: structural_equivalence, method: hamming}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "row and column profiles compared over k != i, j"
+    sna:
+      call: "sna::sedist(m, method = 'hamming')"
+      undefined_on: [single_node]
+      undefined_reason: >-
+        sna::sedist() fails on a network with one node.
+
+structural_equivalence_euclidean_weighted:
+  params: {fn: structural_equivalence, method: euclidean, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "valued profiles (total edge weight) compared over k != i, j"
+    sna:
+      call: "sna::sedist(valued m, method = 'euclidean')"
+    blockmodeling:
+      call: "blockmodeling::sedist(W, method = 'euclidean')"
+      reason: >-
+        On a symmetric matrix (every undirected fixture and complete5_dir)
+        blockmodeling::sedist agrees with the engine. On an asymmetric one it
+        compares full row and column profiles including the entries for the
+        two nodes themselves (k = i, j), where the engine, like sna::sedist,
+        leaves them out; node 0 against node 1 on cycle7_dir is 2 against
+        sqrt(2), and on pair 0 against sqrt(2).
+      differs_when: [directed]
+
+concor:
+  params: {fn: concor, depth: 1}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "independent numpy iteration of correlation matrices (oracles/positions_definition_oracle.py)"
+
+concor_depth2:
+  params: {fn: concor, depth: 2}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "independent numpy iteration of correlation matrices, two rounds of splits"
+      undefined_on: [cycle7_dir, kite]
+      undefined_reason: >-
+        The second split is numerically fragile on these networks
+        (correlations within rounding error of zero), so the definition oracle
+        declines; on any graph it declines when a correlation with the
+        reference node comes within 1e-6 of zero or when relative
+        perturbations of 1e-12 change the partition
+        (positions_definition_oracle.py, concor).

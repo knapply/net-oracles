@@ -56,6 +56,8 @@ Measure id: `automorphic_equivalence`. Original family: Roles and positions.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>automorphic_equivalence</code></td><td>nauty</td><td>any</td><td>no-value-on-some-inputs</td><td>(no value) multi_edges</td><td>multi_edges</td><td>abs 0, rel 0</td><td><code>pynauty.autgrp(Graph).orbits (nauty 2.8.8): orbit of the automorphism group</code></td><td>nauty graphs are simple: parallel edges (edge multiplicities, which the reference and the definition oracle respect) cannot be represented.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/roles.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/roles.yaml); [harness/golden/nauty/](https://github.com/knapply/net-oracles/tree/main/harness/golden/nauty/)
+
 **References:** [mckay2014practical](../../references.html#mckay2014practical)
 
 **Tools cited:** [borgatti2002ucinet](../../references.html#borgatti2002ucinet), [mckay2014practical](../../references.html#mckay2014practical)

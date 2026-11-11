@@ -1,0 +1,9 @@
+{
+ "inputs": "d785b7b41970a05aa2627f4ae336db44a6c5c648aa220ef5e78c11dcf4497b3b",
+ "oracles": [
+  "cpnet",
+  "definition",
+  "graphblas",
+  "networkx"
+ ]
+}

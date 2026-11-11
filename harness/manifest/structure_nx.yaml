@@ -1,0 +1,405 @@
+# NetworkX's structural tests as NetworkX 3.7 computes them: domination and
+# connected domination (Guha and Khuller 1998, `guha1998approximation`),
+# regularity and the s-metric (Li et al. 2005, `li2005towards`), (k,
+# l)-connectivity (`kleinberg2002small`), tournaments (`moon1968topics`),
+# distance-regular graphs (`brouwer1989distance`), perfect graphs
+# (`chudnovsky2006strong`), AT-free graphs
+# (`lekkerkerker1962representation`), chordal graphs (`tarjan1984simple`;
+# Fulkerson and Gross 1965 for the definition oracle), and minimal
+# triangulations (`berry2004maximum`). Format: see ../README.md; runners,
+# inputs, and encodings in ../bindings/structure_nx.py. Engine and oracles
+# read the simple graph with edges sorted by (u, v), whose adjacency is in
+# node order.
+st_dominating:
+  params: {fn: st_dominating}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every node in the set or a successor of a member, checked node by node"
+    networkx:
+      call: "[nx.is_dominating_set(G, even nodes), nx.is_dominating_set(G, [0])]"
+
+st_cds:
+  params: {fn: st_cds}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic or NetworkX-specific procedure)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the result is defined by NetworkX's procedure, not by a formula that can be evaluated independently
+    networkx:
+      call: "sorted(nx.connected_dominating_set(G_sorted)) (-1 if disconnected)"
+
+st_regular:
+  params: {fn: st_regular}
+  applies_to: any
+  tolerance: {rel: 1.0e-15, abs: 0}
+  oracles:
+    definition:
+      call: "[1 if all (in- and out-) degrees agree, sum over edges of degree products]"
+    networkx:
+      call: "[nx.is_regular(G), nx.s_metric(G)]"
+
+st_kl:
+  params: {fn: st_kl}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic or NetworkX-specific procedure)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the result is defined by NetworkX's procedure, not by a formula that can be evaluated independently
+    networkx:
+      call: "per edge: 1 if kept by nx.kl_connected_subgraph(G_sorted, 2, l), l = 2, 3"
+      undefined_on: [gnp_dir_dense]
+      undefined_reason: NetworkX deep-copies the graph once per edge; the 784-arc fixture is skipped for time
+
+st_tournament:
+  params: {fn: st_tournament}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[exactly one arc per pair and no loops, every node reaching every other]"
+    networkx:
+      call: "[nx.tournament.is_tournament(G), nx.tournament.is_strongly_connected(G)] on the simple DiGraph"
+
+st_intersection:
+  params: {fn: st_intersection}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "b_i and c_i from all pairwise distances, consistent over pairs at each distance"
+    networkx:
+      call: "nx.intersection_array(G) (-1 where it raises)"
+
+st_perfect:
+  params: {fn: st_perfect}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no induced odd cycle of length >= 5 in G or its complement, every node subset searched (n <= 16)"
+      undefined_on: [davis_twomode, florentine, gnp_und_dense, gnp_und_sparse, karate, les_miserables, multi_loops_und, real_weights_und, southern_women, twomode_random, uniform_weights, weighted_und]
+      undefined_reason: the subset search runs on graphs of at most 16 nodes
+    networkx:
+      call: "nx.is_perfect_graph(G)"
+
+st_at_free:
+  params: {fn: st_at_free}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no independent triple with each pair joined by a path avoiding the third's closed neighbourhood"
+    networkx:
+      call: "nx.is_at_free(G)"
+
+st_chordal:
+  params: {fn: st_chordal}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1 if simplicial nodes can be removed one by one until none remain, clique number - 1]"
+    networkx:
+      call: "[nx.is_chordal(G), nx.chordal_graph_treewidth(G)]"
+
+st_fill:
+  params: {fn: st_fill}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (a heuristic or NetworkX-specific procedure)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the result is defined by NetworkX's procedure, not by a formula that can be evaluated independently
+    networkx:
+      call: "nx.complete_to_chordal_graph(G): [fill edges, alpha of each node]"
+
+# Planarity: the left-right test (de Fraysseix and Rosenstiehl 1982,
+# `defraysseix1982depth`; de Fraysseix, Ossona de Mendez and
+# Rosenstiehl 2006, `defraysseix2006tremaux`; Brandes's write-up,
+# `brandes2009left`); the definition oracle uses the path-addition algorithm
+# of Demoucron, Malgrange and Pertuiset (1964, `demoucron1964graphes`) and
+# checks Kuratowski subdivisions (`kuratowski1930probleme`) by smoothing.
+st_planar:
+  params: {fn: st_planar}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 if every biconnected block embeds by Demoucron-Malgrange-Pertuiset path addition"
+    networkx:
+      call: "nx.is_planar(G)"
+
+st_counterexample:
+  params: {fn: st_counterexample}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (NetworkX's edge-deletion order picks the subgraph)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which Kuratowski subgraph is found is defined by NetworkX's deletion procedure
+    networkx:
+      call: "sorted edges of nx.get_counterexample(G), or [-1] if planar"
+
+st_kuratowski:
+  params: {fn: st_kuratowski}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "-1 if planar (path addition), else 1"
+    networkx:
+      call: "1 if nx.get_counterexample(G) smooths to K5 or K3,3, -1 if planar"
+
+st_embedding:
+  params: {fn: st_embedding}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (NetworkX's construction picks one of the embeddings)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which planar embedding is returned is defined by NetworkX's left-right construction
+    networkx:
+      call: "check_planarity(G)[1].get_data(): each node's neighbours clockwise, flat with a count first; [-1] if not planar"
+
+st_embedding_euler:
+  params: {fn: st_embedding_euler}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 if planar (path addition): an embedding of a planar graph satisfies V - E + F = 1 + C; -1 if not planar"
+    networkx:
+      call: "1 if the faces of check_planarity(G)[1] satisfy V - E + F = 1 + C, -1 if not planar"
+
+# Weighted matchings as NetworkX computes them (Edmonds 1965,
+# `edmonds1965paths`, `edmonds1965maximum`; Galil 1986,
+# `galil1986efficient`), k-factors by gadget reduction
+# (`meijer2009algorithm`), and minimum edge covers. All read the simple
+# undirected graph on the sorted pairs (u < v), each pair weighted by its
+# first occurrence in the fixture (one without weights).
+st_mwm:
+  params: {fn: st_mwm}
+  applies_to: any
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "integer programs (HiGHS): [max weight, its size, max weight among maximum matchings, size, min weight among maximum matchings, size]"
+      partial: true
+      note: >-
+        The size of a maximum-weight matching is published only when every
+        maximum-weight matching has the same size (ties or zero-weight edges
+        can leave it open: edges 6-0 of weight 7 against 3-0 and 11-6 of
+        weights 2 and 5).
+    networkx:
+      call: "the same totals and sizes from nx.max_weight_matching(G), (G, True), nx.min_weight_matching(G)"
+
+st_mwm_pairs:
+  params: {fn: st_mwm_pairs}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (NetworkX's procedure picks among optimal matchings and orients each pair)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which optimal matching is returned, and each pair's orientation, are defined by NetworkX's procedure
+    networkx:
+      call: "sorted oriented pairs of max_weight_matching(G), then of (G, True), then of min_weight_matching(G), each list with its length first"
+
+st_kfactor:
+  params: {fn: st_kfactor}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "for k = 1, 2, 3: k n / 2 if an integer program finds a spanning k-regular subgraph, else -1"
+    networkx:
+      call: "for k = 1, 2, 3: the number of edges of nx.k_factor(G, k), -1 if NetworkX finds none"
+
+st_kfactor_edges:
+  params: {fn: st_kfactor_edges}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (NetworkX's matching picks the factor)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which k-factor is returned, and its edge order, are defined by NetworkX's procedure
+    networkx:
+      call: "for k = 1, 2: the edges of nx.k_factor(G, k) in order, flat, with their count first (-1 if none)"
+
+st_edge_cover:
+  params: {fn: st_edge_cover}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the least number of edges covering every node (integer program), -1 with an isolated node"
+    networkx:
+      call: "len(nx.min_edge_cover(G)) counting each edge once, -1 with an isolated node"
+
+# Colourings as NetworkX computes them: greedy largest first (Welsh and
+# Powell 1967, `welsh1967upper`), with interchange (Kosowski and
+# Manuszewski 2004, `kosowski2004classical`), DSATUR (Brélaz 1979,
+# `brelaz1979new`), and equitable colouring (Kierstead et al. 2010,
+# `kierstead2010fast`) with max degree + 1 and + 3 colours.
+st_coloring:
+  params: {fn: st_coloring}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (each colouring is defined by NetworkX's procedure)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which proper colouring is returned is defined by NetworkX's procedure
+    networkx:
+      call: "colours per node from greedy_color(G, 'largest_first'), (G, 'largest_first', interchange=True), (G, 'DSATUR'), equitable_color(G, D + 1), equitable_color(G, D + 3) on the simple undirected graph"
+
+st_coloring_valid:
+  params: {fn: st_coloring_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 for each of the five colourings: a proper colouring; the equitable ones also with class sizes differing by at most one"
+    networkx:
+      call: "the same checks on NetworkX's colourings"
+
+# The triad census (Holland and Leinhardt 1976, `holland1976local`) as
+# NetworkX's triadic_census computes it (Batagelj and Mrvar 2001,
+# `batagelj2001subquadratic`), over all triads and over the triads meeting
+# a node subset. Reads the fixture's directed graph as it is (parallel
+# edges and self-loops included, as NetworkX reads a MultiDiGraph).
+st_triads:
+  params: {fn: st_triads}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every triple meeting the subset classified by its mutual, asymmetric and null dyads and their orientation; subsets: all nodes, even nodes, node 0"
+      reason: with a node subset, NetworkX's boundary correction counts a self-loop at a node outside the subset as half of a mutual dyad (the node is in its own pred-and-succ set), so its 102 and 003 counts for the subset are off by one; the engine reproduces NetworkX
+      differs_when: [loops]
+    networkx:
+      call: "nx.triadic_census(G), (G, even nodes), (G, [0]) on the MultiDiGraph"
+
+# Chromatic (Birkhoff 1912, `birkhoff1912determinant`) and Tutte (Tutte
+# 1954, `tutte1954contribution`) polynomials of the simple undirected graph
+# on the sorted pairs, as NetworkX's chromatic_polynomial and
+# tutte_polynomial define them; exponential, so computed only for graphs
+# of at most 20 edges ([-1] otherwise, in the engine and both oracles).
+# The NetworkX oracle needs sympy (its goldens were produced where sympy is
+# installed and are kept when it is not).
+st_polynomials:
+  params: {fn: st_polynomials}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "chromatic: Whitney's sum over edge subsets of (-1)^|A| x^c(A); Tutte: the rank-generating sum over all edge subsets"
+    networkx:
+      call: "coefficients of sympy.Poly(nx.chromatic_polynomial(G), x) and of nx.tutte_polynomial(G) in x, y"
+
+# Travelling-salesman walks as NetworkX's traveling_salesman_problem
+# computes them over all nodes of the weighted simple graph (Christofides
+# 1976, `christofides1976worst`; the greedy nearest-neighbour heuristic,
+# Rosenkrantz, Stearns and Lewis 1977, `rosenkrantz1977analysis`).
+st_tsp:
+  params: {fn: st_tsp}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (each walk is defined by NetworkX's procedure)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which walk is returned is defined by NetworkX's heuristics and tie order
+    networkx:
+      call: "traveling_salesman_problem(G) (Christofides), (G, method=greedy_tsp), (G, cycle=False), each with its length first; [-1] if G is disconnected or has fewer than two nodes"
+
+st_tsp_valid:
+  params: {fn: st_tsp_valid}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "for each walk: 1 if consecutive nodes are adjacent, every node is visited, and the cycles return to their start; [-1] if disconnected"
+    networkx:
+      call: "the same checks on NetworkX's walks"
+
+# Procedures that iterate Python sets (reproduced from the labels' hashes;
+# fixture labels are integers, whose hash is the value): asteroidal triples
+# and tournament Hamiltonian paths.
+st_asteroidal:
+  params: {fn: st_asteroidal}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (which triple is returned is defined by NetworkX's set order; st_asteroidal_valid checks it)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which asteroidal triple is found first follows NetworkX's iteration over Python sets
+    networkx:
+      call: "nx.find_asteroidal_triple(G): the triple, or [-1]"
+
+st_asteroidal_valid:
+  params: {fn: st_asteroidal_valid}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 if an asteroidal triple exists (checked by brute force), else -1"
+    networkx:
+      call: "1 if nx.find_asteroidal_triple(G) returns a triple, else -1"
+
+st_hampath:
+  params: {fn: st_hampath}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (the order is defined by NetworkX's insertions over its subgraph views)"
+      undefined_when: [directed, undirected]
+      undefined_reason: on graphs that are not tournaments the result is only NetworkX's insertion order
+    networkx:
+      call: "nx.tournament.hamiltonian_path(G) on the simple digraph"
+
+st_chordal_order:
+  params: {fn: st_chordal_order}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (the order follows NetworkX's iteration over Python sets; st_chordal checks the cliques)"
+      undefined_when: [directed, undirected]
+      undefined_reason: the order of the cliques follows NetworkX's maximum cardinality search over Python sets
+    networkx:
+      call: "nx.chordal_graph_cliques(nx.complete_to_chordal_graph(G)[0]): each clique sorted, in NetworkX's order"
+
+st_junction:
+  params: {fn: st_junction}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (which clique tree is returned follows NetworkX's clique order and tie order; st_junction_valid checks it)"
+      undefined_when: [directed, undirected]
+      undefined_reason: among the maximum-weight spanning trees of the clique graph NetworkX returns the one its order picks
+    networkx:
+      call: "nx.junction_tree(G): per node (0 clique / 1 sepset, members), then (-1, i, j) per edge, in NetworkX's order"
+
+st_junction_valid:
+  params: {fn: st_junction_valid}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1, 1, 1]: a junction tree's cliques cover the edges and are not nested, its separators are their cliques' intersections, and it has the running intersection property"
+    networkx:
+      call: "the same checks on nx.junction_tree(G)"

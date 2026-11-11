@@ -1,0 +1,187 @@
+# Formula families of implicit graphs (crates/engine/src/storage/implicit.rs,
+# C interface crates/capi/src/implicit.rs): the edge set of each family on a
+# table of cases (derived/implicit.py) against the defining rule and NetworkX.
+# Runners and encodings: ../bindings/implicit.py; oracles
+# implicit_definition_oracle.py and implicit_networkx_oracle.py.
+#
+# The cases do not use the fixture graph: they cover the empty graph, one
+# node, two nodes, the smallest valid size and larger ones, so every entry
+# runs on the fixture `pair` only. A case result is a row (node count, edge
+# count) followed by the sorted edges: an undirected edge as (smaller,
+# larger), an arc as (source, target).
+#
+# Node numbering is NetworkX's integer numbering except where stated:
+# hypercube nodes are the tuples read as integers (first coordinate the most
+# significant bit); de Bruijn and Kautz nodes are numbered by the rule in
+# derived/implicit.py (NetworkX has no generator for them; its oracle builds
+# them as iterated line digraphs and maps the words to that numbering). The
+# hypercube of dimension 0 is one node (NetworkX returns the null graph), so
+# it has its own definition-only entry. A wheel needs n >= 4, a Kautz graph
+# a word length of at least 2.
+#
+# implicit_invalid lists parameters outside the domain; the engine must
+# refuse each with a message that says why (1 = refused with the expected
+# words).
+
+implicit_complete_bipartite:
+  params: {fn: implicit_family, family: complete_bipartite}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair (u, v) with u < a <= v"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.complete_bipartite_graph(a, b)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_complete_bipartite_dir:
+  params: {fn: implicit_family, family: complete_bipartite, directed: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every arc (u, v) with u < a <= v"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.complete_bipartite_graph(a, b), oriented from the first part"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_complete_multipartite:
+  params: {fn: implicit_family, family: complete_multipartite}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every pair in different parts"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.complete_multipartite_graph(*sizes)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_star:
+  params: {fn: implicit_family, family: star}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "centre 0 joined to 1..n"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.star_graph(n)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_path:
+  params: {fn: implicit_family, family: path}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "i joined to i + 1"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.path_graph(n)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_path_dir:
+  params: {fn: implicit_family, family: path, directed: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "arcs i -> i + 1"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.path_graph(n, create_using=nx.DiGraph)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_wheel:
+  params: {fn: implicit_family, family: wheel}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "hub 0 and the rim cycle 1 .. n - 1"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.wheel_graph(n)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_hypercube:
+  params: {fn: implicit_family, family: hypercube}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "pairs differing in one bit"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.hypercube_graph(d), tuple read as an integer"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_circulant:
+  params: {fn: implicit_family, family: circulant}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "i joined to i +- o (mod n)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.circulant_graph(n, offsets)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_de_bruijn:
+  params: {fn: implicit_family, family: de_bruijn}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "arcs w -> w[1:] + c over the words"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "iterated nx.line_graph of the complete digraph with loops"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_kautz:
+  params: {fn: implicit_family, family: kautz}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "arcs w -> w[1:] + c, c != last letter, over the words with no equal neighbours"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "iterated nx.line_graph of the complete digraph"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+implicit_hypercube_q0:
+  params: {fn: implicit_q0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the empty bit string: one node, no edge"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+
+implicit_invalid:
+  params: {fn: implicit_invalid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "each parameter set is outside the documented domain"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"

@@ -54,6 +54,8 @@ Measure id: `ap_node_connectivity`. Original family: Graph theory and combinator
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ap_node_connectivity</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.approximation.node_connectivity(G_sorted)</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/approximation.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/approximation.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **Findings**
 
 <div class="table-wrapper"><table><thead><tr><th>Id</th><th>Tool</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../../findings.html#f031">F031</a></td><td>NetworkX</td><td>defect</td><td>approximation.node_connectivity starts from a bound that can exceed the connectivity</td></tr></tbody></table></div>

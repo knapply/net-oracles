@@ -54,6 +54,8 @@ Measure id: `ei_index`. Original family: Mixing and assortativity.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>ei_index_node</code></td><td>egor</td><td>any</td><td>differs</td><td>directed, isolates, loops, multi_edges</td><td>defaults, direction, multi_edges, self_loops, ties</td><td>abs 1e-15, rel 1e-14</td><td><code>egor::comp_ei(egor object, alt.attr = 'group', ego.attr = 'group')</code></td><td>egor's comp_ei() counts alters, each neighbour once whatever the number or direction of the ties to it, and no self-loop; the reference value's node E-I index counts ties (each edge, in either direction, separately, a self-loop as an internal tie), and an ego without alters has no value in egor where the reference reports undefined (-1). Undirected fixtures without parallel edges or loops agree.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/spectral.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/spectral.yaml); [harness/golden/egor/](https://github.com/knapply/net-oracles/tree/main/harness/golden/egor/)
+
 **Findings**
 
 <div class="table-wrapper"><table><thead><tr><th>Id</th><th>Tool</th><th>Kind</th><th>Title</th></tr></thead><tbody><tr><td><a href="../../findings.html#f073">F073</a></td><td>egor</td><td>convention</td><td>comp_ei counts each neighbour once</td></tr></tbody></table></div>

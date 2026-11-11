@@ -1,0 +1,14 @@
+{
+ "inputs": "4c4a93e0898ae5bdd3bedad2a8870d5e158486e8ebb442f2eef17ad1773da5d7",
+ "oracles": [
+  "cpnet",
+  "definition",
+  "graphblas",
+  "igraph",
+  "nauty",
+  "networkx",
+  "powerlaw",
+  "published",
+  "sknetwork"
+ ]
+}

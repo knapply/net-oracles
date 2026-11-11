@@ -1,0 +1,12 @@
+{
+  "n": 77,
+  "directed": false,
+  "weighted": true,
+  "tags": [
+    "integer_weights",
+    "onemode",
+    "symmetric_nodes",
+    "weighted"
+  ],
+  "source": "Knuth (1993); knuth1993stanford"
+}

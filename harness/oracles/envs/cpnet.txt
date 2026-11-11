@@ -1,0 +1,6 @@
+# cpnet core-periphery oracle (cpnet_oracle.py)
+cpnet
+numpy
+scipy
+networkx
+pyyaml

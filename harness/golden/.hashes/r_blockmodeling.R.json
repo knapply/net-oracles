@@ -1,0 +1,9 @@
+{
+ "inputs": "ef5c5d58f4ffd1ad3caeb1f26b2a188c127dd808e2200c3dce295742005dff99",
+ "oracles": [
+  "blockmodeling",
+  "definition",
+  "manynet",
+  "pyigraph"
+ ]
+}

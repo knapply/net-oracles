@@ -1,0 +1,8 @@
+{
+ "inputs": "e1fab303eae7436c3bbe9c62b0f8090469676b0dc7b4e0116151309e8c6a1b3e",
+ "oracles": [
+  "definition",
+  "manynet",
+  "networkx"
+ ]
+}

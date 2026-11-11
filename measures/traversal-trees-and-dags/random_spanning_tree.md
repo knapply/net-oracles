@@ -91,6 +91,8 @@ Measure id: `rst_edge_freq`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>rst_edge_freq_nx</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0.06, rel 0</td><td><code>fraction of 2000 draws of nx.random_spanning_tree(G, weight = None, seed = k) containing each edge</code></td><td></td></tr><tr><td><code>rst_edge_freq_nx_weighted</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 0.06, rel 0</td><td><code>fraction of 2000 draws of nx.random_spanning_tree(G, weight = 'weight', seed = k) containing each edge</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/trees_random.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/trees_random.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [wilson1996generating](../../references.html#wilson1996generating)
 
 **Tools cited:** [hagberg2008exploring](../../references.html#hagberg2008exploring)

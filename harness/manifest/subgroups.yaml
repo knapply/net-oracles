@@ -1,0 +1,459 @@
+# Cohesive subgroups: cores, cliques, and communities.
+# Format: see ../README.md.
+
+coreness_all:
+  params: {fn: coreness, mode: all}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "repeated deletion of nodes below degree k (oracles/subgroups_definition_oracle.py)"
+    networkx:
+      call: "nx.core_number(nx.Graph(G) | nx.DiGraph(G)) after removing self-loops"
+      differs_when: [loops, multi_edges]
+      reason: >-
+        nx.core_number rejects self-loops and multigraphs, so it is run on
+        the simple graph without loops. igraph and this engine count each
+        parallel edge and count a loop in a node's degree (2 in undirected
+        networks, 1 in and 1 out in directed networks).
+    igraph:
+      call: "igraph::coreness(g, mode = 'all')"
+    pyigraph:
+      call: "python-igraph: g.coreness(mode=\"all\")"
+    networkit:
+      call: "nk.centrality.CoreDecomposition(G simple undirected)"
+      undefined_on: [complete5_dir, cycle7_dir, empty, gnp_dir_dense, gnp_dir_sparse, multi_loops_dir, multi_loops_und, pair, real_weights_dir, weighted_dir]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    rustworkx:
+      call: "rx.core_number(G simple undirected)"
+      differs_when: [directed, multi_edges, loops]
+      reason: >-
+        rx.core_number() counts distinct neighbours and drops self-loops:
+        given the fixture's multigraph it counts parallel edges once and
+        ignores loops, and it reads a directed graph's in- and out-neighbours
+        as one neighbourhood; the engine's mode 'all' counts in- plus out-
+        degree with every edge, a loop twice (igraph's convention).
+    sknetwork:
+      call: "sknetwork.topology.get_core_decomposition(A simple symmetrized)"
+      differs_when: [directed, multi_edges]
+      reason: >-
+        get_core_decomposition() peels by the row (out-) neighbours of the
+        sparse matrix (topology/core.pyx), and a sparse matrix holds one entry
+        per pair, so parallel edges count once; the engine's mode 'all' counts
+        in- plus out-degree with every edge.
+    bctpy:
+      call: "bct.kcoreness_centrality_bu(A binary)[0]"
+      differs_when: [directed, multi_edges]
+      reason: >-
+        kcoreness_centrality_bu() takes a binary undirected matrix: a directed
+        fixture enters symmetrized, so a reciprocated pair is one tie, and
+        parallel edges collapse; the engine's mode 'all' counts in- plus
+        out-degree with every edge (igraph's convention).
+    jgrapht:
+      call: 'JGraphT 1.5.2: new Coreness<>(g).getScores() on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+      undefined_reason: Coreness throws 'Graph must be undirected' on a directed graph and 'Graph
+        must be simple' on loops or parallel edges.
+      undefined_when:
+      - directed
+      - loops
+      - multi_edges
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: kcoreness_centrality_bu, on the
+        binary adjacency matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - multi_loops_und
+      reason: 'A bct call takes a binary adjacency matrix, which cannot carry loops or parallel
+        edges: the driver keeps one arc per ordered pair and drops loops, while the engine counts
+        every edge.'
+      undefined_reason: kcoreness_centrality_bu is defined for undirected matrices only.
+      undefined_when:
+      - directed
+
+coreness_out:
+  params: {fn: coreness, mode: out}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "repeated deletion of nodes below out-degree k"
+    igraph:
+      call: "igraph::coreness(g, mode = 'out')"
+    pyigraph:
+      call: "python-igraph: g.coreness(mode=\"out\")"
+
+coreness_in:
+  params: {fn: coreness, mode: in}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "repeated deletion of nodes below in-degree k"
+    igraph:
+      call: "igraph::coreness(g, mode = 'in')"
+    pyigraph:
+      call: "python-igraph: g.coreness(mode=\"in\")"
+
+max_cliques:
+  params: {fn: max_cliques, min_size: 0}
+  applies_to: any
+  compare: sets
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every clique built in increasing node order, kept when no node extends it"
+    networkx:
+      call: "nx.find_cliques(nx.Graph(G)) (undirected simple projection; find_cliques rejects directed graphs and ignores loops)"
+    igraph:
+      call: "igraph::max_cliques(g) (ignores directions, loops, and parallel edges)"
+    pyigraph:
+      call: "python-igraph: [tuple(sorted(c)) for c in g.maximal_cliques(min=0)]"
+    networkit:
+      call: "nk.clique.MaximalCliques(G simple undirected).getCliques()"
+      undefined_on: [empty, gnp_und_sparse, multi_loops_dir, multi_loops_und, single_node, two_triangles_isolate]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    jgrapht:
+      call: 'JGraphT 1.5.2: new BronKerboschCliqueFinder<>(g) on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+      undefined_reason: BronKerboschCliqueFinder throws 'Graph must be simple' on loops or parallel
+        edges; on directed input it does not error but returns a collection that is not the maximal
+        cliques of the underlying graph (pair 0->1 gives two singletons, cycle7_dir six cliques
+        instead of seven edges), so it is not compared.
+      undefined_when:
+      - directed
+      - loops
+      - multi_edges
+
+max_cliques_min3:
+  params: {fn: max_cliques, min_size: 3}
+  applies_to: any
+  compare: sets
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "maximal cliques by definition, keeping those with at least 3 members"
+    networkx:
+      call: "[c for c in nx.find_cliques(nx.Graph(G)) if len(c) >= 3]"
+    igraph:
+      call: "igraph::max_cliques(g, min = 3)"
+    pyigraph:
+      call: "python-igraph: [tuple(sorted(c)) for c in g.maximal_cliques(min=3)]"
+    networkit:
+      call: "nk.clique.MaximalCliques(G simple undirected).getCliques(), size >= 3"
+      undefined_on: [empty, gnp_und_sparse, multi_loops_dir, multi_loops_und, single_node, two_triangles_isolate]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+
+clique_number:
+  params: {fn: clique_number}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "largest clique found by the definition oracle"
+    networkx:
+      call: "max(len(c) for c in nx.find_cliques(nx.Graph(G)))"
+    igraph:
+      call: "igraph::clique_num(g)"
+    pyigraph:
+      call: "python-igraph: [g.clique_number()]"
+    networkit:
+      call: "max size in nk.clique.MaximalCliques(G simple undirected).getCliques()"
+    published:
+      call: clique number as reported (karate 5, kite 4)
+      only_on: [karate, kite]
+      tolerance: {rel: 0, abs: 0}
+      undefined_reason: the literature value is printed for these classic networks only
+    jgrapht:
+      call: 'JGraphT 1.5.2: size of the largest BronKerboschCliqueFinder clique on a pseudograph
+        (oracles/system/jgrapht/Oracle.java)'
+      undefined_reason: BronKerboschCliqueFinder throws 'Graph must be simple' on loops or parallel
+        edges; on directed input it does not error but returns a collection that is not the maximal
+        cliques of the underlying graph (pair 0->1 gives two singletons, cycle7_dir six cliques
+        instead of seven edges), so it is not compared.
+      undefined_when:
+      - directed
+      - loops
+      - multi_edges
+
+# Modularity is validated on a fixed, deterministic partition: node v of n
+# goes to group floor(3 v / n). Modularity is undefined for a network with
+# no edges: this engine, igraph, and the definition oracle return NaN and
+# NetworkX returns 0 (compare.py matches NaN with NaN only).
+modularity:
+  params: {fn: modularity, partition: blocks3, resolution: 1.0, weighted: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exact double sum over node pairs of [A_ij - k_i k_j / 2m] (Leicht-Newman form for directed)"
+    networkx:
+      call: "nx.community.modularity(G, blocks, weight = None) on the multigraph"
+      differs_when: [edge_case]
+      reason: NetworkX returns 0 for a network without edges; this engine and igraph return NaN.
+    igraph:
+      call: "igraph::modularity(g, blocks, weights = rep(1, m), directed = TRUE)"
+    pyigraph:
+      call: "python-igraph: [g.modularity(blocks, weights=None, resolution=1.0, directed=True)]"
+    networkit:
+      call: "nk.community.Modularity().getQuality(blocks3 partition, G)"
+      undefined_on: [complete5_dir, cycle7_dir, empty, gnp_dir_dense, gnp_dir_sparse, multi_loops_dir, multi_loops_und, pair, real_weights_dir, single_node, weighted_dir]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    sknetwork:
+      call: "sknetwork.clustering.get_modularity(A, blocks3 labels)"
+      differs_when: [loops]
+      reason: >-
+        scikit-network reads the adjacency matrix, where an undirected
+        self-loop is 1 on the diagonal and adds 1 to the degree; the engine,
+        like igraph and NetworkX, counts it twice in both (exact rational
+        evaluation of both conventions reproduces each tool's value on
+        multi_loops_und).
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input matrix is empty').
+    cdlib:
+      call: "cdlib.evaluation.newman_girvan_modularity(MultiGraph, blocks3)"
+      differs_when: [multi_edges]
+      reason: >-
+        cdlib's newman_girvan_modularity counts the parallel edges inside a
+        community once while the edge total and the degrees count every copy (a
+        triangle with one doubled edge, communities {0, 1} and {2}: cdlib
+        -0.375, NetworkX and the engine -0.125); with loops but no parallel
+        edges it agrees.
+      undefined_when: [directed]
+      undefined_reason: >-
+        newman_girvan_modularity is the undirected measure; directed fixtures
+        are not passed.
+      undefined_on: [single_node]
+    graspologic:
+      call: "graspologic.partition.modularity(G summed, blocks3, weight_attribute = 'weight')"
+      differs_when: [loops]
+      reason: >-
+        graspologic-native adds an undirected self-loop's weight once to the
+        community's internal weight but twice to the node's degree (exact
+        rational evaluation of that convention reproduces -0.090567 on
+        multi_loops_und); the engine, igraph and NetworkX count it twice in
+        both.
+      undefined_when: [directed]
+      undefined_reason: >-
+        graspologic's modularity is for undirected graphs.
+      undefined_on: [single_node]
+
+modularity_resolution:
+  params: {fn: modularity, partition: blocks3, resolution: 0.5, weighted: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exact double sum with resolution 1/2"
+    networkx:
+      call: "nx.community.modularity(G, blocks, weight = None, resolution = 0.5)"
+      differs_when: [edge_case]
+      reason: NetworkX returns 0 for a network without edges; this engine and igraph return NaN.
+    igraph:
+      call: "igraph::modularity(g, blocks, weights = rep(1, m), resolution = 0.5)"
+    pyigraph:
+      call: "python-igraph: [g.modularity(blocks, weights=None, resolution=0.5, directed=True)]"
+    sknetwork:
+      call: "sknetwork.clustering.get_modularity(A, blocks3 labels, resolution = 0.5)"
+      differs_when: [loops]
+      reason: >-
+        An undirected self-loop counts once on the diagonal and in the degree
+        in scikit-network, twice in the engine (see modularity).
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input matrix is empty').
+    graspologic:
+      call: "graspologic.partition.modularity(G summed, blocks3, resolution = 0.5)"
+      differs_when: [loops]
+      reason: >-
+        A self-loop counts once in the internal weight and twice in the degree
+        in graspologic-native (see modularity).
+      undefined_when: [directed]
+      undefined_reason: >-
+        graspologic's modularity is for undirected graphs.
+      undefined_on: [single_node]
+
+modularity_weighted:
+  params: {fn: modularity, partition: blocks3, resolution: 1.0, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exact double sum with weights as exact rationals"
+    networkx:
+      call: "nx.community.modularity(G, blocks, weight = 'weight')"
+      differs_when: [edgeless]
+      reason: >-
+        Without edges modularity is 0 / 0; NetworkX returns 0, the engine NaN.
+    igraph:
+      call: "igraph::modularity(g, blocks, weights = E(g)$weight)"
+    pyigraph:
+      call: "python-igraph: [g.modularity(blocks, weights=w, resolution=1.0, directed=True)],"
+    networkit:
+      call: "nk.community.Modularity().getQuality(blocks3 partition, G_weighted)"
+      undefined_on: [real_weights_dir, weighted_dir]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    sknetwork:
+      call: "sknetwork.clustering.get_modularity(W, blocks3 labels)"
+      differs_when: [loops]
+      reason: >-
+        An undirected self-loop counts once on the diagonal and in the degree
+        in scikit-network, twice in the engine (see modularity).
+    graspologic:
+      call: "graspologic.partition.modularity(G summed weights, blocks3, weight_attribute = 'weight')"
+      differs_when: [loops]
+      reason: >-
+        A self-loop counts once in the internal weight and twice in the degree
+        in graspologic-native (see modularity).
+      undefined_when: [directed]
+      undefined_reason: >-
+        graspologic's modularity is for undirected graphs.
+
+# Louvain partitions legitimately differ between implementations, so the
+# partition itself is not compared. Instead each oracle evaluates its own
+# modularity function on the partition this engine returns, which checks
+# that the reported modularity is exactly the modularity of the reported
+# partition. Partition quality relative to NetworkX and igraph is checked
+# by the louvain_quality measures below.
+louvain_modularity:
+  params: {fn: louvain_modularity, resolution: 1.0, weighted: false, seed: 1}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exact modularity of the engine's Louvain partition (seed 1)"
+    networkx:
+      call: "nx.community.modularity(G, engine partition, weight = None)"
+      differs_when: [edge_case]
+      reason: NetworkX returns 0 for a network without edges; this engine returns NaN.
+
+louvain_modularity_weighted:
+  params: {fn: louvain_modularity, resolution: 1.0, weighted: true, seed: 1}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exact weighted modularity of the engine's Louvain partition (seed 1)"
+    networkx:
+      call: "nx.community.modularity(G, engine partition, weight = 'weight')"
+      differs_when: [edgeless]
+      reason: >-
+        Without edges modularity is 0 / 0; NetworkX returns 0, the engine NaN.
+
+louvain_modularity_resolution:
+  params: {fn: louvain_modularity, resolution: 0.5, weighted: false, seed: 1}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "exact modularity (resolution 1/2) of the engine's Louvain partition (seed 1)"
+    networkx:
+      call: "nx.community.modularity(G, engine partition, resolution = 0.5)"
+      differs_when: [edge_case]
+      reason: NetworkX returns 0 for a network without edges; this engine returns NaN.
+
+# Partition quality. Each tool's Louvain implementation is run with seeds
+# 1 to 20 and the mean modularity of its partitions (evaluated on the same
+# network) is compared. Implementations visit nodes in different orders
+# and reach different local optima, so the means are not expected to be
+# equal: the tolerance of 0.02 in absolute modularity only asserts that
+# neither is meaningfully better than the other. Against NetworkX 3.7 the
+# largest observed gap is 0.007 (real_weights_und, unweighted), with the
+# engine ahead on some fixtures and behind on others.
+louvain_quality:
+  params: {fn: louvain_quality, resolution: 1.0, weighted: false, seeds: 20}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.02}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: mean over 20 runs, on the main thread of a fresh JVM, of Modularity (setRandom(false), setUseWeight(false), setResolution(1.0)).getModularity() (oracles/system/gephi/Oracle.java, Louvain20.java); an unseeded draw, fixed by the run order (see louvain_quality_weighted)"
+      differs_on: [multi_loops_und]
+      reason: "With self-loops Gephi's modularity changes (mean of 20 runs 0.249 with the loops, 0.321 with the loops removed and parallel edges kept); the engine and the definition oracle count a loop as degree 2, the standard modularity of a multigraph."
+    networkx:
+      call: "mean over seeds 1..20 of modularity(G, louvain_communities(G, weight = None, seed = s))"
+      differs_when: [edge_case]
+      reason: NetworkX returns 0 for a network without edges; this engine returns NaN.
+    igraph:
+      call: "mean over set.seed(1..20) of modularity(g, cluster_louvain(g, weights = NA))"
+      differs_when: [directed, undirected]
+      reason: >-
+        Two different randomized procedures: the mean modularity over 20 seeds
+        agrees within the tolerance on the corpus, but on small graphs the
+        spread between runs exceeds it (0.219 against 0.187 on 7 nodes); the
+        comparison is statistical, not per run.
+
+louvain_quality_weighted:
+  params: {fn: louvain_quality, resolution: 1.0, weighted: true, seeds: 20}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 0, abs: 0.005}
+  note: >-
+    The seeds of this engine, NetworkX and igraph are fixed, so their side is
+    repeatable. Gephi has no seed: its statistic still follows the identity
+    hash order of the objects it creates (also with setRandom(false)), so its
+    runs differ from each other (20-run means spread by about 0.005 when the
+    runs shared a JVM with other work). The oracle fixes the sequence by
+    running the 20 runs on the main thread of a fresh JVM, which makes the
+    committed golden reproducible on the same JDK; it is one fixed draw of a
+    random quantity, not a value Gephi guarantees. The tolerance (was 0.02) is
+    about twice the largest difference seen against the other tools (0.0018).
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: mean over 20 runs, on the main thread of a fresh JVM, of Modularity (setRandom(false), setUseWeight(true), setResolution(1.0)).getModularity() (oracles/system/gephi/Oracle.java, Louvain20.java)"
+    networkx:
+      call: "mean over seeds 1..20 of modularity(G, louvain_communities(G, weight = 'weight', seed = s), weight = 'weight')"
+      differs_when: [directed, edgeless, undirected]
+      reason: >-
+        Two different randomized procedures: the mean modularity over the
+        seeds agrees within the tolerance on the corpus but not on every
+        graph; the comparison is statistical, not per run (and without edges
+        modularity is 0 / 0: the engine NaN, the tools 0).
+    igraph:
+      call: "mean over set.seed(1..20) of modularity(g, cluster_louvain(g, weights = E(g)$weight), weights = E(g)$weight)"
+      differs_when: [directed, undirected]
+      reason: >-
+        Two different randomized procedures: the mean modularity over the
+        seeds agrees within the tolerance on the corpus but not on every
+        graph; the comparison is statistical, not per run (and without edges
+        modularity is 0 / 0: the engine NaN, the tools 0).
+
+louvain_quality_resolution:
+  params: {fn: louvain_quality, resolution: 0.5, weighted: false, seeds: 20}
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.01}
+  note: >-
+    Seeds are fixed on both sides, so the comparison is repeatable; the
+    tolerance (was 0.02) is about twice the largest difference seen (0.0048).
+  oracles:
+    networkx:
+      call: "mean over seeds 1..20 of modularity(G, louvain_communities(G, weight = None, resolution = 0.5, seed = s), resolution = 0.5)"
+      differs_when: [edge_case]
+      reason: NetworkX returns 0 for a network without edges; this engine returns NaN.
+    igraph:
+      call: "mean over set.seed(1..20) of modularity(g, cluster_louvain(g, weights = NA, resolution = 0.5), resolution = 0.5)"
+      differs_when: [directed, undirected]
+      reason: >-
+        Two different randomized procedures: the mean modularity over the
+        seeds agrees within the tolerance on the corpus but not on every
+        graph; the comparison is statistical, not per run (and without edges
+        modularity is 0 / 0: the engine NaN, the tools 0).

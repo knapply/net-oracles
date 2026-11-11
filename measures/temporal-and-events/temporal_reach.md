@@ -50,5 +50,7 @@ Measure id: `temporal_reach`. Original family: Temporal and events.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>temporal_reach_out_instantaneous</code></td><td>tsna / networkDynamic</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>sum(is.finite(tPath(nd, v, 'fwd', 'earliest.arrive', ...)$tdist)) - 1</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/temporal.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/temporal.yaml); [harness/golden/tsna/](https://github.com/knapply/net-oracles/tree/main/harness/golden/tsna/)
+
 **Tools cited:** [handcock2008statnet](../../references.html#handcock2008statnet)
 {% endraw %}

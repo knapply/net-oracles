@@ -1,0 +1,13 @@
+{
+ "inputs": "ad076f32d1059b6d405483cb69e95f74237d2607fb94c065ca5da78632fb3e99",
+ "oracles": [
+  "bct",
+  "boost",
+  "cdlib",
+  "definition",
+  "ergm",
+  "graspologic",
+  "jgrapht",
+  "networkx"
+ ]
+}

@@ -57,6 +57,8 @@ Measure id: `gomory_hu`. Original family: Components and connectivity.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>flow_gomory_hu_tree</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.gomory_hu_tree(G, capacity = 'capacity').edges(data = 'weight'), as (u, v, weight) with u &lt; v</code></td><td></td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/flow.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/flow.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
+
 **References:** [gomory1961multi](../../references.html#gomory1961multi), [gusfield1990very](../../references.html#gusfield1990very), [hagberg2008exploring](../../references.html#hagberg2008exploring)
 
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [michail2020jgrapht](../../references.html#michail2020jgrapht)
@@ -74,6 +76,8 @@ Measure id: `gomory_hu_values`. Original family: Components and connectivity.
 **Conventions and tolerances.** Tolerance is the bound used when comparing a tool's values with the reference value: `abs` and `rel` (0 means exact).
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>flow_gomory_hu_values</code></td><td>NetworkX</td><td>undirected</td><td>agrees</td><td></td><td></td><td>abs 1e-12, rel 1e-12</td><td><code>nx.minimum_cut_value(G, u, v) for every pair u &lt; v</code></td><td></td></tr></tbody></table></div>
+
+**Harness files:** [harness/manifest/flow.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/flow.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/)
 
 **References:** [gomory1961multi](../../references.html#gomory1961multi), [gusfield1990very](../../references.html#gusfield1990very), [hagberg2008exploring](../../references.html#hagberg2008exploring)
 

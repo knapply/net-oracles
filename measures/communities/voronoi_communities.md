@@ -70,6 +70,8 @@ Measure id: `voronoi`. Original family: Communities.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>voronoi_modularity</code></td><td>igraph (R)</td><td>any</td><td>differs</td><td>directed, undirected, (no value) loops, (no value) multi_edges</td><td>direction, multi_edges, self_loops, ties</td><td>abs 1e-14, rel 1e-12</td><td><code>set.seed(1); modularity of cluster_voronoi(g, weights = NULL, lengths = NULL, mode = 'out') (igraph 2.3: its internal community_voronoi_impl(g, mode = 'out', radius = -1))</code></td><td>igraph chooses the radius with Brent's method, a local search, while the reference tries every distinct distance; where they differ the reference value's modularity is the higher. igraph's result also depends on the random number generator (the seed is fixed at 1). Listed for inspection, not expected to match igraph requires a simple network, and on cycle7_dir its radius search stops with "optimizer did not converge"</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/communities.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/communities.yaml); [harness/golden/igraph/](https://github.com/knapply/net-oracles/tree/main/harness/golden/igraph/)
+
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph)
 
 ## Voronoi cells {#cat_cells_voronoi}

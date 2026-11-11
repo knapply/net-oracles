@@ -1,0 +1,1083 @@
+# Reciprocity, transitivity and clustering, distances, mean distance,
+# diameter, eccentricity, radius, reachability, cut points, and bridges.
+# Format: see ../README.md.
+#
+# Non-finite results are written as markers by the engine runner
+# (bindings/descriptive.py) and by every oracle: -999 for NaN
+# (undefined) and -1000 for infinity. No measure here can take either value.
+#
+# Engine options beyond the common keys:
+#   mode        reciprocity: default | ratio | dyadic | correlation;
+#               paths: out | in | all.
+#   undefined   clustering coefficients that are 0 / 0: nan (igraph; left
+#               out of averages) or zero (NetworkX; counted as 0).
+#   weighting   none | barrat | onnela.
+#   unconnected mean distance and diameter: true averages (or maximizes)
+#               over pairs joined by a path; false gives infinity when some
+#               node does not reach every other.
+#
+# Several R oracles run on igraph::simplify(g) or on the adjacency matrix
+# without its diagonal, because these measures are defined on the
+# adjacency matrix (parallel edges once, loops ignored); the calls say so.
+
+reciprocity:
+  params: {fn: reciprocity, mode: default}
+  applies_to: directed
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "reciprocated distinct arcs / distinct arcs between distinct nodes (descriptive_definition_oracle.py)"
+    networkx:
+      call: "nx.overall_reciprocity(DiGraph without self-loops)"
+      undefined_on: [empty]
+      undefined_reason: NetworkX raises for a graph without edges, where the ratio is 0 / 0.
+    igraph:
+      call: "igraph::reciprocity(igraph::simplify(g), mode = 'default')"
+      undefined_on: [empty]
+      undefined_reason: The ratio is 0 / 0 without arcs; not compared.
+    sna:
+      call: "sna::grecip(m with its diagonal set to 0, measure = 'edgewise')"
+      undefined_on: [empty]
+      undefined_reason: The ratio is 0 / 0 without arcs; not compared.
+    pyigraph:
+      call: "python-igraph: [simple.reciprocity(mode=\"default\")] if simple.ecount() else None"
+      undefined_on: [empty]
+      undefined_reason: The ratio is 0 / 0 without arcs; not compared.
+    ergm:
+      call: "2 * summary(nw ~ mutual) / summary(nw ~ edges)"
+      undefined_on: [empty]
+      undefined_reason: >-
+        A network without ties has no reciprocity.
+    graphblas:
+      call: "nx.overall_reciprocity(DiGraph without loops, backend = 'graphblas')"
+      undefined_on: [empty]
+      undefined_reason: >-
+        As in NetworkX, overall_reciprocity raises 'Not defined for empty
+        graphs'.
+
+reciprocity_ratio:
+  params: {fn: reciprocity, mode: ratio}
+  applies_to: directed
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "mutual dyads / non-null dyads"
+    igraph:
+      call: "igraph::reciprocity(igraph::simplify(g), mode = 'ratio')"
+      undefined_on: [empty]
+      undefined_reason: The ratio is 0 / 0 without arcs; not compared.
+    sna:
+      call: "sna::grecip(m with its diagonal set to 0, measure = 'dyadic.nonnull')"
+      undefined_on: [empty]
+      undefined_reason: The ratio is 0 / 0 without arcs; not compared.
+    pyigraph:
+      call: "python-igraph: [simple.reciprocity(mode=\"ratio\")] if simple.ecount() else None"
+      undefined_on: [empty]
+      undefined_reason: The ratio is 0 / 0 without arcs; not compared.
+
+reciprocity_dyadic:
+  params: {fn: reciprocity, mode: dyadic}
+  applies_to: directed
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "(mutual + null dyads) / all dyads"
+    sna:
+      call: "sna::grecip(m with its diagonal set to 0, measure = 'dyadic')"
+
+reciprocity_correlation:
+  params: {fn: reciprocity, mode: correlation}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Pearson correlation of x_ij and x_ji over ordered pairs i != j, by numpy (Garlaschelli and Loffredo 2004 show it equals (r - p) / (1 - p))"
+    sna:
+      call: "sna::grecip(m with its diagonal set to 0, measure = 'correlation')"
+      undefined_on: [empty, complete5_dir]
+      undefined_reason: >-
+        Every tie between distinct nodes is absent (or present), so the
+        correlation is 0 / 0. This engine reports NaN; sna defines it as 1.
+        Not compared.
+      differs_when: [edge_case]
+      reason: >-
+        On a two-node network with one arc the two ordered pairs give the
+        perfectly anticorrelated values (1, 0) and (0, 1), so the correlation
+        is -1, as the definition oracle confirms; sna reports 0.
+
+transitivity:
+  params: {fn: transitivity, undefined: nan}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "closed / connected ordered paths i - j - k over the simple undirected reading, by enumeration"
+    igraph:
+      call: "igraph::transitivity(simplify(as_undirected(g)), type = 'global')"
+      undefined_on: [empty, pair, single_node]
+      undefined_reason: Without connected triples the ratio is 0 / 0; not compared.
+    pyigraph:
+      call: "python-igraph: (None if sum(k * (k - 1) for k in su.degree()) == 0 else [su.transitivity_undirected(mode=\"nan\")])"
+      undefined_on: [empty, pair, single_node]
+      undefined_reason: Without connected triples the ratio is 0 / 0; not compared.
+    ergm:
+      call: "3 * summary(nw ~ triangle) / summary(nw ~ kstar(2))"
+      undefined_on: [complete5_dir, cycle7_dir, empty, gnp_dir_dense, gnp_dir_sparse, multi_loops_dir, pair, real_weights_dir, single_node, weighted_dir]
+      undefined_reason: >-
+        The statistic is computed for undirected networks with at least three
+        nodes only.
+    networkit:
+      call: "nk.globals.ClusteringCoefficient.exactGlobal(G simple)"
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+      undefined_when: [no_two_paths]
+    published:
+      call: global clustering coefficient of the karate club as reported in the literature (0.2557)
+      only_on: [karate]
+      tolerance: {rel: 0, abs: 6.0e-05}
+      note: >-
+        Rounding of the published values: the table prints four decimals, so half a unit in the last place is 5e-5; largest difference seen 1.8e-5.
+      undefined_reason: the literature value is printed for the karate club only
+    jgrapht:
+      call: 'JGraphT 1.5.2: new ClusteringCoefficient<>(g).getGlobalClusteringCoefficient() on
+        a pseudograph (oracles/system/jgrapht/Oracle.java)'
+      differs_on:
+      - multi_loops_und
+      reason: JGraphT counts loops and parallel edges as extra neighbours/triangles in a pseudograph;
+        the engine uses simple neighbour sets.
+      undefined_reason: ClusteringCoefficient.getGlobalClusteringCoefficient throws 'Graph must
+        be undirected' on a directed graph.
+      undefined_when:
+      - directed
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: transitivity_bu / transitivity_bd,
+        on the binary adjacency matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - gnp_dir_dense
+      - gnp_dir_sparse
+      - multi_loops_dir
+      - real_weights_dir
+      - weighted_dir
+      reason: BCT's directed variants (clustering_coef_bd, transitivity_bd) are Fagiolo's directed
+        coefficients, which weigh the in/out/cycle/middleman triangle types over the total degree;
+        the engine takes the undirected neighbourhood. Undirected simple networks agree.
+
+transitivity_networkx:
+  params: {fn: transitivity, undefined: zero}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "as transitivity, 0 without connected triples"
+    networkx:
+      call: "nx.transitivity(nx.Graph of the network, self-loops removed)"
+    ergm:
+      call: "3 * summary(nw ~ triangle) / summary(nw ~ kstar(2)), 0 without 2-stars"
+      undefined_on: [complete5_dir, cycle7_dir, empty, gnp_dir_dense, gnp_dir_sparse, multi_loops_dir, pair, real_weights_dir, weighted_dir]
+      undefined_reason: >-
+        The statistic is computed for undirected networks with at least three
+        nodes only.
+    networkit:
+      call: "nk.globals.ClusteringCoefficient.exactGlobal(G simple)"
+      undefined_on: [empty, pair, single_node]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    rustworkx:
+      call: "rx.transitivity(G simple)"
+    graphblas:
+      call: "nx.transitivity(G simple without loops, backend = 'graphblas')"
+    bctpy:
+      call: "bct.transitivity_bu(A binary, no diagonal)"
+      undefined_on: [empty, pair, single_node]
+      undefined_reason: >-
+        No connected triples: transitivity_bu() divides 0 by 0 and returns NaN,
+        where this variant (NetworkX's convention) is 0.
+
+clustering:
+  params: {fn: clustering, weighting: none, undefined: nan}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "adjacent pairs of distinct neighbors / pairs of distinct neighbors, NaN below two neighbors"
+    igraph:
+      call: "igraph::transitivity(simplify(as_undirected(g)), type = 'local', isolates = 'NaN')"
+    pyigraph:
+      call: "python-igraph: su.transitivity_local_undirected(mode=\"nan\")"
+    networkit:
+      call: "nk.centrality.LocalClusteringCoefficient(G simple, turbo = False), NaN below degree 2"
+
+clustering_zero:
+  params: {fn: clustering, weighting: none, undefined: zero}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: ClusteringCoefficient (setDirected(false)), node column 'clustering' (oracles/system/gephi/Oracle.java)"
+      differs_on: [multi_loops_dir, multi_loops_und]
+      reason: "Gephi counts a self-loop in a node's neighbourhood: with the loops removed (parallel edges kept) its coefficients and triangle counts equal the simple-graph definition, which this engine and the definition oracle follow; parallel edges do not change them (checked on multi_loops_und and multi_loops_dir)."
+    definition:
+      call: "as clustering, 0 below two neighbors"
+    networkx:
+      call: "nx.clustering(nx.Graph of the network, self-loops removed)"
+    igraph:
+      call: "igraph::transitivity(simplify(as_undirected(g)), type = 'local', isolates = 'zero')"
+    pyigraph:
+      call: "python-igraph: su.transitivity_local_undirected(mode=\"zero\")"
+    networkit:
+      call: "nk.centrality.LocalClusteringCoefficient(G simple, turbo = False)"
+    graphblas:
+      call: "nx.clustering(G simple without loops, backend = 'graphblas')"
+      differs_when: [multi_edges]
+      reason: >-
+        graphblas-algorithms accepts only Graph and DiGraph, so parallel edges
+        collapse into one (the last weight wins); the engine counts each edge.
+    bctpy:
+      call: "bct.clustering_coef_bu(A binary, no diagonal)"
+    jgrapht:
+      call: 'JGraphT 1.5.2: new ClusteringCoefficient<>(g).getScores() on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+      differs_on:
+      - gnp_dir_dense
+      - gnp_dir_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - real_weights_dir
+      - weighted_dir
+      reason: JGraphT's local clustering on a directed graph counts ordered pairs of neighbours
+        (denominator k(k-1) per arc direction), while the engine, like NetworkX and igraph, treats
+        the neighbourhood as undirected; on a pseudograph JGraphT also counts loops and parallel
+        edges, while the engine uses simple neighbour sets. Values agree whenever every arc is
+        reciprocated (complete5_dir).
+    boost:
+      call: Boost Graph Library clustering_coefficient(g, v) (oracles/system/boost/oracle.cpp)
+      differs_on:
+      - multi_loops_und
+      reason: BGL's clustering_coefficient counts parallel edges and loops as extra neighbours;
+        the engine uses simple neighbour sets.
+      undefined_reason: BGL's clustering_coefficient, mean_clustering_coefficient and articulation_points
+        are defined for undirected graphs only; the driver does not call them on directed input.
+      undefined_when:
+      - directed
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: clustering_coef_bu / clustering_coef_bd,
+        on the binary adjacency matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - gnp_dir_dense
+      - gnp_dir_sparse
+      - multi_loops_dir
+      - real_weights_dir
+      - weighted_dir
+      reason: BCT's directed variants (clustering_coef_bd, transitivity_bd) are Fagiolo's directed
+        coefficients, which weigh the in/out/cycle/middleman triangle types over the total degree;
+        the engine takes the undirected neighbourhood. Undirected simple networks agree.
+
+average_clustering:
+  params: {fn: average_clustering, weighting: none, undefined: nan}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: ClusteringCoefficient.getAverageClusteringCoefficient() (setDirected(false)) (oracles/system/gephi/Oracle.java)"
+      differs_on: [multi_loops_dir, multi_loops_und]
+      reason: "Gephi counts a self-loop in a node's neighbourhood: with the loops removed (parallel edges kept) its coefficients and triangle counts equal the simple-graph definition, which this engine and the definition oracle follow; parallel edges do not change them (checked on multi_loops_und and multi_loops_dir)."
+    definition:
+      call: "mean local coefficient over nodes with at least two neighbors (NaN if none)"
+    igraph:
+      call: "igraph::transitivity(simplify(as_undirected(g)), type = 'average', isolates = 'NaN')"
+    pyigraph:
+      call: "python-igraph: [su.transitivity_avglocal_undirected(mode=\"nan\")]"
+
+average_clustering_zero:
+  params: {fn: average_clustering, weighting: none, undefined: zero}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "mean local coefficient over all nodes, 0 below two neighbors"
+    networkx:
+      call: "nx.average_clustering(nx.Graph of the network, self-loops removed)"
+    igraph:
+      call: "igraph::transitivity(simplify(as_undirected(g)), type = 'average', isolates = 'zero')"
+      undefined_when: [null_graph]
+      undefined_reason: >-
+        The null graph has no nodes to average over; igraph returns 0, the
+        engine reports undefined.
+    pyigraph:
+      call: "python-igraph: [su.transitivity_avglocal_undirected(mode=\"zero\")]"
+    networkit:
+      call: "mean of nk.centrality.LocalClusteringCoefficient(G simple)"
+    graphblas:
+      call: "nx.average_clustering(G simple without loops, backend = 'graphblas')"
+    bctpy:
+      call: "mean(bct.clustering_coef_bu(A binary, no diagonal))"
+    jgrapht:
+      call: 'JGraphT 1.5.2: new ClusteringCoefficient<>(g).getAverageClusteringCoefficient() on
+        a pseudograph (oracles/system/jgrapht/Oracle.java)'
+      differs_on:
+      - gnp_dir_dense
+      - gnp_dir_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - real_weights_dir
+      - weighted_dir
+      reason: JGraphT's local clustering on a directed graph counts ordered pairs of neighbours
+        (denominator k(k-1) per arc direction), while the engine, like NetworkX and igraph, treats
+        the neighbourhood as undirected; on a pseudograph JGraphT also counts loops and parallel
+        edges, while the engine uses simple neighbour sets. Values agree whenever every arc is
+        reciprocated (complete5_dir).
+    boost:
+      call: Boost Graph Library mean_clustering_coefficient (oracles/system/boost/oracle.cpp)
+      differs_on:
+      - multi_loops_und
+      reason: BGL's clustering_coefficient counts parallel edges and loops as extra neighbours;
+        the engine uses simple neighbour sets.
+      undefined_reason: BGL's mean_clustering_coefficient is defined for undirected graphs only;
+        the driver does not call it on directed input.
+      undefined_when:
+      - directed
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: mean(clustering_coef_bu / _bd),
+        on the binary adjacency matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - gnp_dir_dense
+      - gnp_dir_sparse
+      - multi_loops_dir
+      - real_weights_dir
+      - weighted_dir
+      reason: BCT's directed variants (clustering_coef_bd, transitivity_bd) are Fagiolo's directed
+        coefficients, which weigh the in/out/cycle/middleman triangle types over the total degree;
+        the engine takes the undirected neighbourhood. Undirected simple networks agree.
+
+clustering_barrat:
+  params: {fn: clustering, weighting: barrat, undefined: nan}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Barrat et al. (2004): sum over ordered neighbor pairs (j, h) of (w_ij + w_ih) / 2 a_jh, over s_i (k_i - 1), in exact arithmetic"
+    igraph:
+      call: "igraph::transitivity(g, type = 'barrat', weights = E(g)$weight, isolates = 'NaN')"
+      differs_when: [loops]
+      reason: >-
+        Self-loops: a node whose only tie is a loop has no pair of distinct
+        neighbours, so the engine reports it undefined; igraph counts the loop
+        in the strength and degree and reports a number (2 for one loop of
+        weight 1).
+    pyigraph:
+      call: "python-igraph: g.transitivity_local_undirected(mode=\"nan\", weights=w)"
+      differs_when: [loops]
+      reason: >-
+        Self-loops: a node whose only tie is a loop has no pair of distinct
+        neighbours, so the engine reports it undefined; python-igraph reports
+        0.
+    tnet:
+      call: "tnet::clustering_local_w(net, measure = 'am')"
+
+clustering_onnela:
+  params: {fn: clustering, weighting: onnela, undefined: zero}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Onnela et al. (2005): sum over ordered neighbor pairs of the cube root of the product of the three normalized weights, over k_i (k_i - 1); 0 below two neighbors"
+    networkx:
+      call: "nx.clustering(G, weight = 'weight')"
+    bctpy:
+      call: "bct.clustering_coef_wu(W / max(W))"
+
+average_clustering_onnela:
+  params: {fn: average_clustering, weighting: onnela, undefined: zero}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "mean of the Onnela coefficients, 0 below two neighbors"
+    networkx:
+      call: "nx.average_clustering(G, weight = 'weight')"
+    bctpy:
+      call: "mean(bct.clustering_coef_wu(W / max(W)))"
+
+distances:
+  params: {fn: distances, mode: out}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "Floyd-Warshall in exact arithmetic (descriptive_definition_oracle.py)"
+    networkx:
+      call: "nx.all_pairs_shortest_path_length(G)"
+    igraph:
+      call: "igraph::distances(g, mode = 'out', weights = NA)"
+    sna:
+      call: "sna::geodist(m without its diagonal)$gdist"
+    pyigraph:
+      call: "python-igraph: flat(gu.distances(mode=\"out\"))"
+    networkit:
+      call: "nk.distance.APSP(G).getDistances()"
+    rustworkx:
+      call: "rx.digraph_distance_matrix(G, null_value = inf) (graph_distance_matrix when undirected)"
+    sknetwork:
+      call: "sknetwork.path.get_distances(A simple, source = s) for each s"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input
+        matrix is empty').
+    graphblas:
+      call: "nx.single_source_shortest_path_length(G simple, s, backend = 'graphblas') for each s"
+    bctpy:
+      call: "bct.distance_bin(A binary)"
+    jgrapht:
+      call: 'JGraphT 1.5.2: DijkstraShortestPath(g).getPathWeight(i, j) on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+    boost:
+      call: Boost Graph Library floyd_warshall_all_pairs_shortest_paths (unit weights) (oracles/system/boost/oracle.cpp)
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: distance_bin, on the binary adjacency
+        matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+
+distances_in:
+  params: {fn: distances, mode: in}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "Floyd-Warshall on the reversed arcs"
+    networkx:
+      call: "nx.all_pairs_shortest_path_length(G.reverse())"
+    igraph:
+      call: "igraph::distances(g, mode = 'in', weights = NA)"
+    pyigraph:
+      call: "python-igraph: flat(gu.distances(mode=\"in\"))"
+
+distances_all:
+  params: {fn: distances, mode: all}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "Floyd-Warshall with every arc in both directions"
+    networkx:
+      call: "nx.all_pairs_shortest_path_length(G.to_undirected())"
+    igraph:
+      call: "igraph::distances(g, mode = 'all', weights = NA)"
+    pyigraph:
+      call: "python-igraph: flat(gu.distances(mode=\"all\"))"
+    networkit:
+      call: "nk.distance.APSP(undirected G).getDistances()"
+    rustworkx:
+      call: "rx.graph_distance_matrix(undirected G, null_value = inf)"
+    sknetwork:
+      call: "sknetwork.path.get_distances(A simple symmetrized, source = s) for each s"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        scikit-network rejects an adjacency matrix without entries ('The input
+        matrix is empty').
+
+distances_weighted:
+  params: {fn: distances, mode: out, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Floyd-Warshall on the weights in exact arithmetic"
+    networkx:
+      call: "nx.all_pairs_dijkstra_path_length(G, weight = 'weight')"
+    igraph:
+      call: "igraph::distances(g, mode = 'out', weights = E(g)$weight)"
+    pyigraph:
+      call: "python-igraph: flat(g.distances(mode=\"out\", weights=w))"
+    networkit:
+      call: "nk.distance.APSP(G_weighted).getDistances()"
+    rustworkx:
+      call: "rx.floyd_warshall_numpy(G, weight_fn = float)"
+    bctpy:
+      call: "bct.distance_wei(L)[0]"
+    jgrapht:
+      call: 'JGraphT 1.5.2: DijkstraShortestPath(g_weighted).getPathWeight(i, j) on a pseudograph
+        (oracles/system/jgrapht/Oracle.java)'
+    boost:
+      call: Boost Graph Library floyd_warshall_all_pairs_shortest_paths(weight_map) (oracles/system/boost/oracle.cpp)
+
+distances_weighted_strength:
+  params: {fn: distances, mode: out, weighted: true, weights_as: strength}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  oracles:
+    definition:
+      call: "Floyd-Warshall on lengths 1/w in exact arithmetic"
+    igraph:
+      call: "igraph::distances(g, mode = 'out', weights = 1 / E(g)$weight)"
+    pyigraph:
+      call: "python-igraph: flat(g.distances( mode=\"out\", weights=[1 / x for x in g.es[\"weight\"]]))"
+mean_distance:
+  params: {fn: mean_distance, mode: out, unconnected: true}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDistance.getPathLength() (setDirected as the network) (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "mean of the finite exact distances between distinct nodes"
+    networkx:
+      call: "mean of nx.all_pairs_shortest_path_length over distinct pairs (equal to nx.average_shortest_path_length where NetworkX defines it, which the oracle checks)"
+      undefined_on: [empty, single_node]
+      undefined_reason: >-
+        No pair of distinct nodes is joined by a path, so the mean is 0 / 0
+        (NetworkX's average_shortest_path_length returns 0 for one node and
+        raises for the empty graph); not compared.
+    igraph:
+      call: "igraph::mean_distance(g, directed = TRUE, unconnected = TRUE, weights = NA)"
+    pyigraph:
+      call: "python-igraph: [gu.average_path_length(directed=True, unconn=True)]"
+    bctpy:
+      call: "bct.charpath(D, include_diagonal = False, include_infinite = False)[0]"
+
+mean_distance_all:
+  params: {fn: mean_distance, mode: all, unconnected: true}
+  applies_to: directed
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDistance.getPathLength() (setDirected(false)) (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "mean finite distance, direction ignored"
+    igraph:
+      call: "igraph::mean_distance(g, directed = FALSE, unconnected = TRUE, weights = NA)"
+    pyigraph:
+      call: "python-igraph: [gu.average_path_length(directed=False, unconn=True)]"
+
+mean_distance_connected:
+  params: {fn: mean_distance, mode: out, unconnected: false}
+  applies_to: any
+  tolerance: {rel: 1.0e-14, abs: 0}
+  oracles:
+    definition:
+      call: "mean distance, infinite if some node does not reach every other"
+    igraph:
+      call: "igraph::mean_distance(g, directed = TRUE, unconnected = FALSE, weights = NA)"
+    pyigraph:
+      call: "python-igraph: [gu.average_path_length(directed=True, unconn=False)]"
+
+mean_distance_weighted:
+  params: {fn: mean_distance, mode: out, weighted: true, unconnected: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "mean of the finite exact weighted distances"
+    networkx:
+      call: "mean of nx.all_pairs_dijkstra_path_length over distinct pairs"
+    igraph:
+      call: "igraph::mean_distance(g, directed = TRUE, unconnected = TRUE, weights = E(g)$weight)"
+    pyigraph:
+      call: "python-igraph: [g.average_path_length(directed=True, unconn=True, weights=w)]"
+    bctpy:
+      call: "bct.charpath(distance_wei(L), include_infinite = False)[0]"
+
+diameter:
+  params: {fn: diameter, mode: out, unconnected: true}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDistance.getDiameter() (setDirected as the network) (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "largest finite exact distance"
+    networkx:
+      call: "largest value of nx.all_pairs_shortest_path_length (nx.diameter where NetworkX defines it, which the oracle checks)"
+    igraph:
+      call: "igraph::diameter(g, directed = TRUE, unconnected = TRUE, weights = NA)"
+    pyigraph:
+      call: "python-igraph: [gu.diameter(directed=True, unconn=True)]"
+    networkit:
+      call: "nk.distance.Diameter(G simple, algo = DiameterAlgo.EXACT)"
+      undefined_on: [complete5_dir, cycle7_dir, empty, gnp_dir_dense, gnp_dir_sparse, multi_loops_dir, pair, real_weights_dir, weighted_dir]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    bctpy:
+      call: "bct.charpath(D, include_infinite = False)[4]"
+      undefined_on: [empty, gnp_dir_sparse, gnp_und_sparse, multi_loops_dir, multi_loops_und, pair, single_node, two_triangles_isolate, weighted_dir]
+      undefined_reason: >-
+        bctpy's charpath() keeps unreachable pairs in the eccentricities and
+        the diameter (reported as 1e20) even with include_infinite = False,
+        which only drops them from the characteristic path length; the engine
+        ignores unreachable pairs.
+    published:
+      call: diameter as reported (karate 5, kite 4)
+      only_on: [karate, kite]
+      tolerance: {rel: 0, abs: 0}
+      undefined_reason: the literature value is printed for these classic networks only
+    jgrapht:
+      call: 'JGraphT 1.5.2: new GraphMeasurer<>(g).getDiameter() on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+      differs_on:
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - pair
+      - two_triangles_isolate
+      - weighted_dir
+      reason: 'JGraphT''s GraphMeasurer returns Infinity when some node cannot reach another;
+        the engine reports the longest finite shortest path (unconnected: true). Fixtures listed
+        are not (strongly) connected.'
+    boost:
+      call: Boost Graph Library radius_and_diameter().second (oracles/system/boost/oracle.cpp)
+      differs_on:
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - pair
+      - two_triangles_isolate
+      - weighted_dir
+      reason: 'BGL''s radius_and_diameter gives DBL_MAX when some node cannot reach another; the
+        engine reports the longest finite shortest path (unconnected: true). Listed fixtures are
+        not (strongly) connected.'
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: charpath(distance_bin(A), 0, 0)
+        diameter, on the binary adjacency matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - empty
+      - single_node
+      reason: charpath gives NaN where no node reaches another (empty and one-node networks);
+        the engine returns 0.
+
+diameter_connected:
+  params: {fn: diameter, mode: out, unconnected: false}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "largest distance, infinite if some node does not reach every other"
+    igraph:
+      call: "igraph::diameter(g, directed = TRUE, unconnected = FALSE, weights = NA)"
+    pyigraph:
+      call: "python-igraph: [gu.diameter(directed=True, unconn=False)]"
+
+diameter_all:
+  params: {fn: diameter, mode: all, unconnected: true}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDistance.getDiameter() (setDirected(false)) (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "largest finite distance, direction ignored"
+    igraph:
+      call: "igraph::diameter(g, directed = FALSE, unconnected = TRUE, weights = NA)"
+    pyigraph:
+      call: "python-igraph: [gu.diameter(directed=False, unconn=True)]"
+
+diameter_weighted:
+  params: {fn: diameter, mode: out, weighted: true, unconnected: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "largest finite exact weighted distance"
+    networkx:
+      call: "largest value of nx.all_pairs_dijkstra_path_length"
+    igraph:
+      call: "igraph::diameter(g, directed = TRUE, unconnected = TRUE, weights = E(g)$weight)"
+    pyigraph:
+      call: "python-igraph: [g.diameter(directed=True, unconn=True, weights=w)]"
+    networkit:
+      call: "nk.distance.Diameter(G_weighted simple (shortest parallel edge), algo = DiameterAlgo.EXACT)"
+      undefined_on: [les_miserables, real_weights_dir, real_weights_und, twomode_weighted, uniform_weights, weighted_dir, weighted_und]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    bctpy:
+      call: "bct.charpath(distance_wei(L), include_infinite = False)[4]"
+      undefined_on: [empty, gnp_dir_sparse, gnp_und_sparse, multi_loops_dir, multi_loops_und, pair, single_node, two_triangles_isolate, weighted_dir]
+      undefined_reason: >-
+        bctpy's charpath() keeps unreachable pairs in the eccentricities and
+        the diameter (reported as 1e20) even with include_infinite = False,
+        which only drops them from the characteristic path length; the engine
+        ignores unreachable pairs.
+
+eccentricity:
+  params: {fn: eccentricity, mode: all}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDistance (setDirected(false)), node column 'eccentricity' (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "largest finite exact distance from each node, direction ignored (0 for isolates)"
+    networkx:
+      call: "nx.eccentricity(G.to_undirected()) on connected networks; elsewhere the largest value of nx.single_source_shortest_path_length"
+    igraph:
+      call: "igraph::eccentricity(g without weights, mode = 'all')"
+    pyigraph:
+      call: "python-igraph: gu.eccentricity(mode=\"all\")"
+    networkit:
+      call: "nk.distance.Eccentricity.getValue(G simple, v)"
+      undefined_on: [complete5_dir, cycle7_dir, empty, gnp_dir_dense, gnp_dir_sparse, multi_loops_dir, pair, real_weights_dir, weighted_dir]
+      undefined_reason: >-
+        NetworKit 11 returns a different value or none on these inputs (loops
+        and parallel edges, directed input, isolated nodes, fewer than three
+        nodes, or a disconnected graph for the standard closeness), so no
+        value is compared; see docs/drafts/convention_atlas.md.
+    bctpy:
+      call: "bct.charpath(D, include_infinite = False)[2]"
+      undefined_on: [gnp_und_sparse, multi_loops_und, single_node, two_triangles_isolate]
+      undefined_when: [directed]
+      undefined_reason: >-
+        bctpy's charpath() keeps unreachable pairs in the eccentricities
+        (reported as 1e20) even with include_infinite = False, which only drops
+        them from the characteristic path length; the engine ignores
+        unreachable pairs. Directed fixtures are not passed: this variant (mode
+        'all') reads them as undirected, which charpath() does not do.
+    jgrapht:
+      call: 'JGraphT 1.5.2: new GraphMeasurer<>(g).getVertexEccentricityMap() on a pseudograph
+        (oracles/system/jgrapht/Oracle.java)'
+      differs_on:
+      - cycle7_dir
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - pair
+      - real_weights_dir
+      - two_triangles_isolate
+      - weighted_dir
+      reason: JGraphT's GraphMeasurer follows edge direction and returns Infinity for a node that
+        cannot reach every other node; the engine's eccentricity and radius here are in mode 'all'
+        (direction ignored) and over reachable nodes. Fixtures listed are directed or not connected.
+    boost:
+      call: Boost Graph Library all_eccentricities (oracles/system/boost/oracle.cpp)
+      differs_on:
+      - cycle7_dir
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - pair
+      - real_weights_dir
+      - two_triangles_isolate
+      - weighted_dir
+      reason: BGL's all_eccentricities and radius_and_diameter follow edge direction and give
+        DBL_MAX for a node that cannot reach every other node; the engine's eccentricity and radius
+        here are in mode 'all' (direction ignored) over reachable nodes. Listed fixtures are directed
+        or not connected.
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: charpath eccentricity, on the binary
+        adjacency matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - cycle7_dir
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - pair
+      - real_weights_dir
+      - single_node
+      - two_triangles_isolate
+      - weighted_dir
+      reason: charpath(distance_bin(A), 0, 0) takes the longest finite distance and gives NaN
+        to a node that reaches nobody; on directed networks it follows edge direction (the engine's
+        mode here ignores it).
+
+eccentricity_out:
+  params: {fn: eccentricity, mode: out}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDistance (setDirected(true)), node column 'eccentricity' (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "largest finite exact distance from each node along arcs"
+    networkx:
+      call: "nx.eccentricity(G) on strongly connected networks; elsewhere the largest value of nx.single_source_shortest_path_length"
+    igraph:
+      call: "igraph::eccentricity(g without weights, mode = 'out')"
+    pyigraph:
+      call: "python-igraph: gu.eccentricity(mode=\"out\")"
+    jgrapht:
+      call: 'JGraphT 1.5.2: new GraphMeasurer<>(g).getVertexEccentricityMap() on a pseudograph
+        (oracles/system/jgrapht/Oracle.java)'
+      differs_on: [empty, gnp_dir_sparse, multi_loops_dir, pair, weighted_dir]
+      reason: JGraphT's GraphMeasurer returns Infinity for a node that cannot reach every other
+        node along arcs; the engine returns the longest finite distance. The listed fixtures are
+        the directed ones that are not strongly connected (agreement on the other four).
+    boost:
+      call: Boost Graph Library all_eccentricities over floyd_warshall_all_pairs_shortest_paths
+        (oracles/system/boost/oracle.cpp)
+      differs_on: [empty, gnp_dir_sparse, multi_loops_dir, pair, weighted_dir]
+      reason: BGL's all_eccentricities gives DBL_MAX for a node that cannot reach every other
+        node along arcs; the engine returns the longest finite distance. The listed fixtures are
+        the directed ones that are not strongly connected (agreement on the other four).
+
+eccentricity_weighted:
+  params: {fn: eccentricity, mode: out, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "largest finite exact weighted distance from each node"
+    networkx:
+      call: "nx.eccentricity(G, weight = 'weight') on (strongly) connected networks; elsewhere the largest value of nx.single_source_dijkstra_path_length"
+
+radius:
+  params: {fn: radius, mode: all}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    gephi:
+      call: "Gephi toolkit 0.11.3: GraphDistance.getRadius() (setDirected(false)) (oracles/system/gephi/Oracle.java)"
+    definition:
+      call: "smallest eccentricity, direction ignored"
+    igraph:
+      call: "igraph::radius(g without weights, mode = 'all')"
+    pyigraph:
+      call: "python-igraph: [gu.radius(mode=\"all\")]"
+    bctpy:
+      call: "bct.charpath(D, include_infinite = False)[3]"
+      undefined_on: [gnp_und_sparse, multi_loops_und, single_node, two_triangles_isolate]
+      undefined_when: [directed]
+      undefined_reason: >-
+        bctpy's charpath() keeps unreachable pairs in the eccentricities
+        (reported as 1e20) even with include_infinite = False, which only drops
+        them from the characteristic path length; the engine ignores
+        unreachable pairs. The radius is the smallest of those eccentricities.
+        Directed fixtures are not passed (mode 'all').
+    jgrapht:
+      call: 'JGraphT 1.5.2: new GraphMeasurer<>(g).getRadius() on a pseudograph (oracles/system/jgrapht/Oracle.java)'
+      differs_on:
+      - cycle7_dir
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - real_weights_dir
+      - two_triangles_isolate
+      - weighted_dir
+      reason: JGraphT's GraphMeasurer follows edge direction and returns Infinity for a node that
+        cannot reach every other node; the engine's eccentricity and radius here are in mode 'all'
+        (direction ignored) and over reachable nodes. Fixtures listed are directed or not connected.
+    boost:
+      call: Boost Graph Library radius_and_diameter().first (oracles/system/boost/oracle.cpp)
+      differs_on:
+      - cycle7_dir
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_dir
+      - multi_loops_und
+      - real_weights_dir
+      - two_triangles_isolate
+      - weighted_dir
+      reason: BGL's all_eccentricities and radius_and_diameter follow edge direction and give
+        DBL_MAX for a node that cannot reach every other node; the engine's eccentricity and radius
+        here are in mode 'all' (direction ignored) over reachable nodes. Listed fixtures are directed
+        or not connected.
+    bct:
+      call: 'Brain Connectivity Toolbox 2019-03-03 in Octave: charpath radius, on the binary adjacency
+        matrix without loops or parallel edges (oracles/system/bct/oracle.m)'
+      differs_on:
+      - cycle7_dir
+      - empty
+      - gnp_dir_sparse
+      - gnp_und_sparse
+      - multi_loops_und
+      - real_weights_dir
+      - single_node
+      - two_triangles_isolate
+      - weighted_dir
+      reason: charpath's radius is the minimum eccentricity over nodes that reach at least one
+        other, so isolated nodes are ignored (the engine counts them as 0), NaN when no node reaches
+        another; it follows edge direction on directed networks.
+
+reachability:
+  params: {fn: reachability, mode: out}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "row sums of the transitive closure, less the node itself"
+    networkx:
+      call: "len(nx.descendants(G, v)), or len(nx.node_connected_component(G, v)) - 1 if undirected"
+    igraph:
+      call: "igraph::ego_size(g, order = vcount(g), mode = 'out') - 1"
+    pyigraph:
+      call: "python-igraph: [x - 1 for x in gu.neighborhood_size(order=everything, mode=\"out\")]"
+
+reachability_in:
+  params: {fn: reachability, mode: in}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "column sums of the transitive closure, less the node itself"
+    networkx:
+      call: "len(nx.ancestors(G, v))"
+    igraph:
+      call: "igraph::ego_size(g, order = vcount(g), mode = 'in') - 1"
+    pyigraph:
+      call: "python-igraph: [x - 1 for x in gu.neighborhood_size(order=everything, mode=\"in\")]"
+
+reachability_all:
+  params: {fn: reachability, mode: all}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "row sums of the closure of the symmetrized arcs, less the node itself"
+    networkx:
+      call: "len(nx.node_connected_component(G.to_undirected(), v)) - 1"
+    igraph:
+      call: "igraph::ego_size(g, order = vcount(g), mode = 'all') - 1"
+    pyigraph:
+      call: "python-igraph: [x - 1 for x in gu.neighborhood_size(order=everything, mode=\"all\")]"
+
+cut_points:
+  params: {fn: cut_points}
+  applies_to: any
+  compare: sorted
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "nodes whose removal increases the number of components of the undirected reading, by removal"
+    networkx:
+      call: "nx.articulation_points(nx.MultiGraph of the network)"
+    igraph:
+      call: "igraph::articulation_points(simplify(as_undirected(g))), which does not depend on parallel edges"
+    sna:
+      call: "sna::cutpoints(symmetrized m without its diagonal, mode = 'graph')"
+    pyigraph:
+      call: "python-igraph: sorted(float(v) for v in su.articulation_points()),"
+    rustworkx:
+      call: "rx.articulation_points(G)"
+      undefined_when: [directed]
+      undefined_reason: >-
+        rx.articulation_points() accepts only an undirected PyGraph.
+    boost:
+      call: Boost Graph Library articulation_points (oracles/system/boost/oracle.cpp)
+      undefined_reason: BGL's articulation_points is defined for undirected graphs only; the driver
+        does not call it on directed input.
+      undefined_when:
+      - directed
+
+bridges:
+  params: {fn: bridges}
+  applies_to: any
+  compare: sets
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "edges whose removal increases the number of components of the undirected multigraph reading, by removal; reported by their endpoints"
+    networkx:
+      call: "nx.bridges(nx.MultiGraph of the network)"
+    igraph:
+      call: "igraph::ends(u, igraph::bridges(u)) with u = as_undirected(g, mode = 'each')"
+      undefined_on: [complete5_dir, gnp_dir_dense, gnp_dir_sparse, multi_loops_dir,
+                     multi_loops_und, real_weights_dir, weighted_dir]
+      undefined_reason: >-
+        The undirected reading of these networks has parallel edges (or arcs
+        in both directions), and igraph's documentation does not say how
+        bridges() treats them, so it is compared only where there are none.
+    rustworkx:
+      call: "rx.bridges(G)"
+      undefined_when: [directed]
+      undefined_reason: >-
+        rx.bridges() accepts only an undirected PyGraph.
+      differs_when: [multi_edges]
+      reason: >-
+        Two parallel edges between the same nodes are never a bridge for the
+        engine (removing one leaves the other); rx.bridges() reads the
+        multigraph as a simple graph and reports the pair as a bridge.
+
+# ---- parameter values other than the defaults (second audit) -----------------
+#
+# Distances along incoming arcs (mode `in`) and with arc lengths 1 / weight
+# (`weights_as: strength`) for the summaries of the distance matrix.
+
+mean_distance_in:
+  params: {fn: mean_distance, mode: in, unconnected: true}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "mean of the finite exact distances along incoming arcs"
+    networkx:
+      call: "mean of the finite lengths of nx.all_pairs_shortest_path_length(G.reverse())"
+      undefined_on: [empty]
+      undefined_reason: a network without nodes has no mean distance (the oracle writes nothing).
+
+diameter_in:
+  params: {fn: diameter, mode: in, unconnected: true}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "largest finite exact distance along incoming arcs"
+    networkx:
+      call: "largest finite length of nx.all_pairs_shortest_path_length(G.reverse())"
+
+eccentricity_in:
+  params: {fn: eccentricity, mode: in}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "largest finite exact distance along incoming arcs"
+    networkx:
+      call: "largest value of nx.single_source_shortest_path_length(G.reverse(), v)"
+
+mean_distance_weighted_strength:
+  params: {fn: mean_distance, mode: out, weighted: true, weights_as: strength, unconnected: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "mean of the finite exact distances, arc lengths 1 / weight"
+    networkx:
+      call: "mean of the finite lengths of nx.all_pairs_dijkstra_path_length with length 1 / weight"
+
+diameter_weighted_strength:
+  params: {fn: diameter, mode: out, weighted: true, weights_as: strength, unconnected: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "largest finite exact distance, arc lengths 1 / weight"
+    networkx:
+      call: "largest finite length of nx.all_pairs_dijkstra_path_length with length 1 / weight"
+
+eccentricity_weighted_strength:
+  params: {fn: eccentricity, mode: out, weighted: true, weights_as: strength}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "largest finite exact distance from each node, arc lengths 1 / weight"
+    networkx:
+      call: "largest value of nx.single_source_dijkstra_path_length with length 1 / weight"

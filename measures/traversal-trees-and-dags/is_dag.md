@@ -55,5 +55,7 @@ Measure id: `is_dag`. Original family: Traversal, trees and DAGs.
 
 <div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Tool</th><th>Scope</th><th>Outcome</th><th>Differs when</th><th>Conventions</th><th>Tolerance</th><th>Call</th><th>Note</th></tr></thead><tbody><tr><td><code>dag_is_dag</code></td><td>NetworkX</td><td>any</td><td>agrees</td><td></td><td></td><td>abs 0, rel 0</td><td><code>nx.is_directed_acyclic_graph(M)</code></td><td></td></tr><tr><td><code>dag_is_dag</code></td><td>rustworkx</td><td>any</td><td>no-value-on-some-inputs</td><td>(no value) undirected</td><td>direction</td><td>abs 0, rel 0</td><td><code>rx.is_directed_acyclic_graph(G)</code></td><td>rx.is_directed_acyclic_graph() accepts only a PyDiGraph.</td></tr></tbody></table></div>
 
+**Harness files:** [harness/manifest/trees.yaml](https://github.com/knapply/net-oracles/tree/main/harness/manifest/trees.yaml); [harness/golden/networkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/networkx/); [harness/golden/rustworkx/](https://github.com/knapply/net-oracles/tree/main/harness/golden/rustworkx/)
+
 **Tools cited:** [csardi2006igraph](../../references.html#csardi2006igraph), [hagberg2008exploring](../../references.html#hagberg2008exploring), [peixoto2014graphtool](../../references.html#peixoto2014graphtool), [tool_rustworkx](../../references.html#tool_rustworkx), [tool_sknetwork](../../references.html#tool_sknetwork)
 {% endraw %}

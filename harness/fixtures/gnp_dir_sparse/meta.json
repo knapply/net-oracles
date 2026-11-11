@@ -1,0 +1,10 @@
+{
+  "n": 60,
+  "directed": true,
+  "weighted": false,
+  "tags": [
+    "not_strongly_connected",
+    "onemode"
+  ],
+  "source": "G(n=60, p=0.05), seed 11"
+}
