@@ -1,0 +1,67 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "benchmarks/hosted-environments.json",
+ "type": "array",
+ "items": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "tool",
+   "suite",
+   "date",
+   "run_id",
+   "cpu",
+   "cores_offered",
+   "memory",
+   "platform",
+   "tool_version"
+  ],
+  "properties": {
+   "tool": {
+    "type": "string"
+   },
+   "suite": {
+    "type": "string"
+   },
+   "date": {
+    "type": "string"
+   },
+   "run_id": {
+    "type": "string"
+   },
+   "cpu": {
+    "type": "string"
+   },
+   "cores_offered": {
+    "type": "integer"
+   },
+   "cores_logical": {
+    "type": "integer"
+   },
+   "memory": {
+    "type": "string"
+   },
+   "platform": {
+    "type": "string"
+   },
+   "runner_image": {
+    "type": "string"
+   },
+   "github_runner": {
+    "type": "string"
+   },
+   "cgroup_cpu_quota": {
+    "type": "string"
+   },
+   "python": {
+    "type": "string"
+   },
+   "tool_version": {
+    "type": "string"
+   },
+   "event": {
+    "type": "string"
+   }
+  }
+ }
+}

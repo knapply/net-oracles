@@ -1,0 +1,65 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "benchmarks/hosted.csv (one object per CSV row)",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "suite",
+  "graph",
+  "nodes",
+  "edges",
+  "measure",
+  "tool",
+  "tool_version",
+  "seconds",
+  "peak_megabytes",
+  "threads",
+  "status"
+ ],
+ "properties": {
+  "suite": {
+   "enum": [
+    "hosted"
+   ]
+  },
+  "graph": {
+   "type": "string"
+  },
+  "nodes": {
+   "type": "string",
+   "pattern": "^[0-9]*$"
+  },
+  "edges": {
+   "type": "string",
+   "pattern": "^[0-9]*$"
+  },
+  "measure": {
+   "type": "string"
+  },
+  "tool": {
+   "type": "string"
+  },
+  "tool_version": {
+   "type": "string"
+  },
+  "seconds": {
+   "type": "string",
+   "pattern": "^([0-9.eE+-]+)?$"
+  },
+  "peak_megabytes": {
+   "type": "string",
+   "pattern": "^([0-9.eE+-]+)?$"
+  },
+  "threads": {
+   "type": "string",
+   "pattern": "^[0-9a-z]*$"
+  },
+  "status": {
+   "enum": [
+    "ok",
+    "over-budget",
+    "error"
+   ]
+  }
+ }
+}

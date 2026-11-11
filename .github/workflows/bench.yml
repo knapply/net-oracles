@@ -1,0 +1,113 @@
+name: bench
+
+# Timings of other tools on GitHub-hosted runners (shared hardware; rows are labelled `hosted`).
+# Each matrix job runs one tool on the small or the mid suite of bench/graphs.yaml; the last job
+# merges the rows into data/benchmarks/hosted.csv and commits them with the rebuilt pages.
+on:
+  workflow_dispatch:
+    inputs:
+      suites:
+        description: "Suites (JSON list), from bench/graphs.yaml"
+        default: '["ladder-small", "ladder-mid"]'
+      commit:
+        description: "Commit the rows to main"
+        type: boolean
+        default: true
+  schedule:
+    - cron: "17 4 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bench
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    name: ${{ matrix.tool }} / ${{ matrix.suite }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: ${{ fromJSON(github.event.inputs.suites || '["ladder-small", "ladder-mid"]') }}
+        tool: [networkx, pyigraph, networkit, graphblas, nx_parallel, igraph, sna, gapbs, graphtool]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the runner
+        run: python -m pip install numpy pyyaml
+      - name: Install the tool (Python)
+        if: ${{ contains(fromJSON('["networkx","pyigraph","networkit","graphblas","nx_parallel"]'), matrix.tool) }}
+        run: |
+          case "${{ matrix.tool }}" in
+            networkx) pkgs="networkx" ;;
+            pyigraph) pkgs="igraph" ;;
+            networkit) pkgs="networkit scipy" ;;
+            graphblas) pkgs="networkx graphblas-algorithms" ;;
+            nx_parallel) pkgs="networkx nx-parallel joblib" ;;
+          esac
+          python -m pip install $pkgs
+      - name: Install the tool (R)
+        if: ${{ matrix.tool == 'igraph' || matrix.tool == 'sna' }}
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q r-base-core r-cran-igraph r-cran-sna
+      - uses: mamba-org/setup-micromamba@v2
+        if: ${{ matrix.tool == 'graphtool' }}
+        with:
+          environment-name: gt
+          create-args: >-
+            python=3.12 graph-tool numpy
+          cache-environment: true
+      - name: Run
+        run: |
+          mkdir -p rows
+          if [ "${{ matrix.tool }}" = graphtool ]; then export GRAPH_TOOL_PY="$MAMBA_ROOT_PREFIX/envs/gt/bin/python"; fi
+          python bench/run.py --suite "${{ matrix.suite }}" --tools "${{ matrix.tool }}" --suite-tag hosted \
+            --budget 60 --out "rows/rows-${{ matrix.tool }}__${{ matrix.suite }}.csv" \
+            --env-out "rows/env-${{ matrix.tool }}__${{ matrix.suite }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rows-${{ matrix.tool }}-${{ matrix.suite }}
+          path: rows/
+          if-no-files-found: error
+
+  commit:
+    needs: measure
+    if: ${{ always() && github.ref == 'refs/heads/main' && needs.measure.result != 'cancelled' && (github.event_name == 'schedule' || github.event.inputs.commit == 'true') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: rows-*
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Merge and rebuild
+        run: |
+          python bench/merge_hosted.py artifacts --run-id "${{ github.run_id }}" --event "${{ github.event_name }}"
+          python scripts/build.py
+          python scripts/build.py --check
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/benchmarks/hosted.csv data/benchmarks/hosted-environments.json benchmarks.md llms.txt data.md
+          if git diff --cached --quiet; then echo "no change"; exit 0; fi
+          git commit -m "Hosted benchmark rows, run ${{ github.run_id }}"
+          git pull --rebase -q origin main
+          git push origin HEAD:main
+          # a push made with the workflow token does not start the pages workflow
+          gh workflow run pages.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -62,7 +62,8 @@
   "status": {
    "enum": [
     "ok",
-    "over-budget"
+    "over-budget",
+    "error"
    ]
   }
  }

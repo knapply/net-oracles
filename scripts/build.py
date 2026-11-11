@@ -69,6 +69,8 @@ def load_all():
         "tools": load_json("tools.json"), "measures": load_json("measures.json"), "concepts": load_json("concepts.json"),
         "conventions": load_json("conventions.json"), "findings": load_json("findings.json"),
         "capabilities": load_csv("capabilities.csv"), "results": load_csv("benchmarks/results.csv"),
+        "hosted": load_csv("benchmarks/hosted.csv") if os.path.exists(os.path.join(DATA, "benchmarks", "hosted.csv")) else [],
+        "hosted_env": load_json("benchmarks/hosted-environments.json") if os.path.exists(os.path.join(DATA, "benchmarks", "hosted-environments.json")) else [],
         "reasons": load_json("reasons.json"), "fixtures": load_json("fixtures.json"),
         "bib": parse_bib(open(os.path.join(DATA, "references.bib"), encoding="utf-8").read()),
     }
@@ -86,7 +88,7 @@ def check_data(d):
     sch = lambda n: load_json("schema/" + n)
     for name, f in [("tools", "tools"), ("measures", "measures"), ("concepts", "concepts"), ("conventions", "conventions"), ("findings", "findings"), ("reasons", "reasons"), ("fixtures", "fixtures")]:
         errs += validate(d[name], sch(f + ".schema.json"), name)
-    for name, f in [("capabilities", "capabilities"), ("results", "benchmarks-results")]:
+    for name, f in [("capabilities", "capabilities"), ("results", "benchmarks-results"), ("hosted", "benchmarks-hosted")]:
         s = sch(f + ".schema.json")
         for i, r in enumerate(d[name]):
             r2 = dict(r)
@@ -141,6 +143,9 @@ def check_data(d):
             if k not in bib: errs.append("findings: missing bib key " + k)
     for r in d["results"]:
         if r["tool"] not in tools: errs.append("benchmarks: unknown tool " + r["tool"])
+    for r in d["hosted"]:
+        if r["tool"] not in tools: errs.append("hosted benchmarks: unknown tool " + r["tool"])
+    errs += validate(d["hosted_env"], load_json("schema/benchmarks-hosted-environments.schema.json"), "hosted_env")
     for fx in d["fixtures"]:
         for k in fx["references"]:
             if k not in bib: errs.append("fixtures: missing bib key " + k)
@@ -588,7 +593,8 @@ A tool marked *documented-only* was never run: its entries come from its documen
         ("fixtures.json", "The input graphs used for the comparisons: id, tier, kind, size, direction, weights, source and citation key."),
         ("conventions.json", "Per measure, variant and tool: scope, call, outcome, differing conditions, normalization/direction/weights/self-loops/ties/defaults dimensions, note, tolerance."),
         ("findings.json", "Bugs, disagreements and limitations in other tools."),
-        ("benchmarks/results.csv", "Timing and memory of other tools; method in `data/benchmarks/method.md`."),
+        ("benchmarks/results.csv", "Timing and memory of other tools (headline runs); method in `data/benchmarks/method.md`."),
+        ("benchmarks/hosted.csv", "The same measures run on GitHub-hosted runners (suite `hosted`); hardware in `benchmarks/hosted-environments.json`."),
         ("definitions/<family-slug>.json", "Precise definitions per concept of a family: notation, LaTeX formulas, variants per measure, edge cases (what the published definition gives and what each tool does). Cases are defined in `definitions/_vocabulary.json`; procedure in `data/definitions/README.md`."),
         ("references.bib", "BibTeX for every cited key.")]]
     body = "# Data and schemas\n\n" + table(["File", "Content"], schema_rows) + """
@@ -799,7 +805,7 @@ Every entry that is not `checked-agrees` has a reason in `reasons.json`. `build.
     # benchmarks
     method = pipe_tables_to_html(open(os.path.join(DATA, "benchmarks", "method.md"), encoding="utf-8").read().strip())
     method = re.sub(r"^# .*\n", "", method)
-    body = "# Benchmarks\n\nTimings and memory of other tools only. Raw rows: `data/benchmarks/results.csv`. Method:\n\n" + method.replace("\n#", "\n##") + "\n"
+    body = "# Benchmarks\n\nTimings and memory of other tools only. The first tables are the headline runs (dedicated hardware, rows in `data/benchmarks/results.csv`); results from GitHub-hosted runners are in a separate section at the end and are never combined with them. Method:\n\n" + method.replace("\n#", "\n##") + "\n"
     R = d["results"]
     grp = collections.defaultdict(list)
     for r in R: grp[(r["suite"], r["tool"], r["measure"])].append(r)
@@ -816,6 +822,22 @@ Every entry that is not `checked-agrees` has a reason in `reasons.json`. `build.
             mb = [float(r["peak_megabytes"]) for r in rs if r["peak_megabytes"]]
             rows.append([mlink(me, "", esc(me)) if me in mid else esc(me), esc(tid[t]["name"]), len(rs), len(sec), "%.4g" % statistics.median(sec) if sec else "", "%.4g" % statistics.median(mb) if mb else ""])
         body += table(["Measure", "Tool", "Graphs", "Finished", "Median seconds", "Median peak MB"], rows) + "\n"
+    # Rows measured on GitHub-hosted runners are a different dataset (shared, variable hardware): their own section and tables,
+    # never combined with the headline rows above.
+    H = d["hosted"]
+    if H:
+        body += "\n## Hosted-runner results\n\nMeasured by the `bench` workflow on GitHub-hosted runners with the shared runner in `bench/`. Hardware is shared and varies between runs, so compare tools within one run, not with the headline tables above. Raw rows: `data/benchmarks/hosted.csv`; hardware per run: `data/benchmarks/hosted-environments.json`.\n\n"
+        body += table(["Tool", "Suite", "Date", "Runner CPU", "Cores offered", "Memory", "Tool version"], [[
+            esc(tid[e["tool"]]["name"] if e["tool"] in tid else e["tool"]), esc(e["suite"]), esc(e["date"][:10]), esc(e["cpu"]), e["cores_offered"], esc(e["memory"]), esc(e.get("tool_version", ""))]
+            for e in sorted(d["hosted_env"], key=lambda e: (e["tool"], e["suite"]))]) + "\n"
+        hg = collections.defaultdict(list)
+        for r in H: hg[(r["tool"], r["measure"])].append(r)
+        rows = []
+        for (t, me), rs in sorted(hg.items(), key=lambda kv: (kv[0][1].lower(), kv[0][0])):
+            sec = [float(r["seconds"]) for r in rs if r["seconds"]]
+            mb = [float(r["peak_megabytes"]) for r in rs if r["peak_megabytes"]]
+            rows.append([mlink(me, "", esc(me)) if me in mid else esc(me), esc(tid[t]["name"]), len(rs), len(sec), "%.4g" % statistics.median(sec) if sec else "", "%.4g" % statistics.median(mb) if mb else ""])
+        body += "\n### Median time per measure (hosted)\n\nMedian over the graphs on which the tool finished within the budget.\n\n" + table(["Measure", "Tool", "Graphs", "Finished", "Median seconds", "Median peak MB"], rows) + "\n"
     files["benchmarks.md"] = page({"title": "Benchmarks", "layout": "default", "nav_order": 7}, body)
 
     # references
@@ -861,7 +883,8 @@ Source of truth is data/. Pages are generated from it by scripts/build.py (pytho
 - data/fixtures.json (data/schema/fixtures.schema.json): the input graphs of the comparisons (id, tier, kind, size, direction, weights, source, citation key).
 - data/conventions.json (data/schema/conventions.schema.json): array of records per measure, variant and tool. Fields: measure, variant, manifest, tool, scope (any | directed | undirected), weights_required, call (how the tool was invoked), outcome (agrees | differs | no-value-on-some-inputs | documented), differs_when and undefined_when (structural conditions such as loops, multi_edges, directed, disconnected, ties), only_on, dimensions (normalization, direction, weights, self_loops, multi_edges, ties, defaults), note, tolerance {{abs, rel}} (0 means exact), optional differs_on_inputs, no_value_on_inputs, reference.
 - data/findings.json (data/schema/findings.schema.json): array of findings. Fields: id, tool, version, measure (nullable), kind (defect | convention | limitation), status (reproduced | observed | reported), title, reproduction, observed, expected, evidence, references.
-- data/benchmarks/results.csv (data/schema/benchmarks-results.schema.json): timing rows of other tools. Columns: suite, graph, nodes, edges, measure, tool, tool_version, seconds (empty when over budget), peak_megabytes, threads, status. Method: data/benchmarks/method.md.
+- data/benchmarks/results.csv (data/schema/benchmarks-results.schema.json): timing rows of other tools (headline runs). Columns: suite, graph, nodes, edges, measure, tool, tool_version, seconds (empty when over budget), peak_megabytes, threads, status. Method: data/benchmarks/method.md.
+- data/benchmarks/hosted.csv (data/schema/benchmarks-hosted.schema.json): the same columns, suite always `hosted`, measured on GitHub-hosted runners; never combined with results.csv. data/benchmarks/hosted-environments.json (data/schema/benchmarks-hosted-environments.schema.json): one record per tool and suite with the runner hardware, date and run id.
 - data/definitions/<family-slug>.json (data/schema/definitions.schema.json): one file per family with the precise definitions of its concepts, keyed by concept id. Per concept: status (complete | partial | name_only), note, notation (symbol, meaning), formulas (name, latex, applies_to, where), variants (measure id -> what changes in the formula), edge_cases (case, definition_gives, tools: tool id -> status agrees | differs | no_value | documented | not_recorded, behaviour, source, optional measure and finding), references (BibTeX keys). The edge-case ids and their meaning are in data/definitions/_vocabulary.json. Procedure: data/definitions/README.md.
 - data/references.bib: BibTeX for every key used above.
 
