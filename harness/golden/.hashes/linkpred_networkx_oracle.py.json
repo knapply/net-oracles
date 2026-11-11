@@ -1,6 +1,9 @@
 {
  "inputs": "77f4a6abfd822d593e4ae9f919ef7ad82de9a991265e0eadcceaf016400aca21",
  "oracles": [
+  "definition",
+  "igraph",
+  "infomap",
   "networkx"
  ]
 }

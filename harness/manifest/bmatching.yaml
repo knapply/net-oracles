@@ -1,0 +1,71 @@
+# b-matching: a set of edges in which node v has at most b(v) edges. Every
+# fixture uses the capacity b(v) = 1 + v % 3; direction is ignored, parallel
+# edges are separate, self-loops and (weighted) edges of weight zero or less
+# never join a matching. Runners and encodings: ../bindings/bmatching.py.
+#
+# No NetworkX, igraph, sna or UCINET function computes a b-matching. The
+# definition oracle is the integer program (scipy.optimize.milp, HiGHS, zero
+# gap) and exhaustive search on small fixtures. NetworKit's BSuitorMatcher
+# (the b-Suitor algorithm) is the one tool that implements it, as a
+# half-approximation, and so is the reference for the greedy method.
+
+bmatching_cardinality:
+  params: {fn: bmatching_cardinality}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the optimum of the integer program: maximize the number of edges chosen with at most b(v) at each node v, every edge once, self-loops excluded"
+
+bmatching_weight:
+  params: {fn: bmatching_weight}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    definition:
+      call: "the optimum of the integer program: maximize the total weight of the edges chosen with at most b(v) at each node v, every edge once, edges of weight zero or less and self-loops excluded"
+
+bmatching_valid:
+  params: {fn: bmatching_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[exact cardinality matching valid, exact weight matching valid, greedy matching valid] = [1, 1, 1]: distinct edge ids, no self-loop, no edge of weight zero or less when weighted, no node above its capacity"
+
+bmatching_greedy_half:
+  params: {fn: bmatching_greedy_double}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  compare: ge
+  oracles:
+    definition:
+      call: "the optimum weight of the integer program; the engine value is twice the greedy matching's weight, which is at least the optimum (Khan et al. 2016)"
+
+bmatching_greedy_upper:
+  params: {fn: bmatching_greedy_weight}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  compare: le
+  oracles:
+    definition:
+      call: "the optimum weight of the integer program; no b-matching is heavier, so the greedy weight is at most it"
+
+bmatching_greedy_bsuitor:
+  params: {fn: bmatching_greedy_weight}
+  applies_to: undirected
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  oracles:
+    networkit:
+      call: "nk.matching.BSuitorMatcher(G, b).run(); the weight of the matched edges (the b-Suitor matching is the greedy one by decreasing weight when no two weights tie)"
+      undefined_when: [loops, multi_edges, integer_weights, zero_weights, negative_weights]
+      undefined_reason: >-
+        NetworKit does not define the matching where the greedy order is
+        ambiguous or the input leaves its scope: equal weights (integer
+        weights tie) are broken by neighbour order, parallel edges and
+        self-loops are not part of its simple-graph model, and edges of weight
+        zero or less are not excluded as the engine excludes them.

@@ -1,12 +1,8 @@
 {
  "inputs": "b079041f06b3f877ea7be9ac58aa2f58b587c173ce3e47ba3cf72e379b2cccba",
  "oracles": [
-  "blockmodeling",
   "definition",
-  "egor",
-  "igraph",
   "influencer",
-  "networkx",
-  "pyigraph"
+  "networkx"
  ]
 }

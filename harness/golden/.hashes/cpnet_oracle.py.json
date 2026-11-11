@@ -4,6 +4,9 @@
   "cpnet",
   "definition",
   "graphblas",
-  "networkx"
+  "nauty",
+  "networkx",
+  "rsiena",
+  "sknetwork"
  ]
 }

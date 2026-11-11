@@ -537,6 +537,96 @@ bonacich_rescale:
       undefined_on: [empty, single_node]
       undefined_reason: Without ties the scores sum to 0.
 
+# Weighted Bonacich power: A is the valued matrix (parallel edge weights
+# added, the diagonal dropped), as sna::bonpow reads it; the exponent is a
+# fraction of its largest eigenvalue. A negative weight is outside the domain.
+bonacich_weighted:
+  params: {fn: bonacich, exponent_fraction: 0.5, mode: out, weighted: true, loops: ignore}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "alpha (I - beta W)^-1 W 1 with W the valued matrix, sum of squares n, beta = 0.5 / lambda_max(W)"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    igraph:
+      call: "igraph::power_centrality(g, exponent = 0.5 / lambda_max(W)) on the graph with its weight attribute"
+      differs_when: [weighted]
+      reason: >-
+        igraph::power_centrality has no weights argument and reads the graph
+        as edge counts: on a graph carrying a weight attribute it returns the
+        unweighted scores (checked: identical with and without the attribute),
+        while sna::bonpow reads the matrix values and agrees with the engine.
+    sna:
+      call: "sna::bonpow(W, gmode, diag = FALSE, exponent = 0.5 / lambda_max(W)) on the valued matrix"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+
+bonacich_weighted_negative:
+  params: {fn: bonacich, exponent_fraction: -0.5, mode: out, weighted: true, loops: ignore}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "as bonacich_weighted with beta = -0.5 / lambda_max(W)"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    igraph:
+      call: "igraph::power_centrality(g, exponent = -0.5 / lambda_max(W)) on the graph with its weight attribute"
+      differs_when: [weighted]
+      reason: >-
+        igraph::power_centrality has no weights argument and reads the graph
+        as edge counts: on a graph carrying a weight attribute it returns the
+        unweighted scores (checked: identical with and without the attribute),
+        while sna::bonpow reads the matrix values and agrees with the engine.
+    sna:
+      call: "sna::bonpow(W, gmode, diag = FALSE, exponent = -0.5 / lambda_max(W)) on the valued matrix"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+
+bonacich_weighted_rescale:
+  params: {fn: bonacich, exponent_fraction: 0.5, mode: out, weighted: true, loops: ignore, rescale: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 1.0e-9, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "as bonacich_weighted, divided by the sum of the scores"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+    igraph:
+      call: "igraph::power_centrality(g, exponent = 0.5 / lambda_max(W), rescale = TRUE) on the graph with its weight attribute"
+      differs_when: [weighted]
+      reason: >-
+        igraph::power_centrality has no weights argument and reads the graph
+        as edge counts: on a graph carrying a weight attribute it returns the
+        unweighted scores (checked: identical with and without the attribute),
+        while sna::bonpow reads the matrix values and agrees with the engine.
+    sna:
+      call: "sna::bonpow(W, gmode, diag = FALSE, exponent = 0.5 / lambda_max(W), rescale = TRUE) on the valued matrix"
+      undefined_when: [negative_weights]
+      undefined_reason: >-
+        Negative weights are outside the measure's domain (lengths, transition
+        probabilities, attenuated walks): the engine declines (no value) where
+        the oracle computes numbers from them.
+
 hits_authorities:
   params: {fn: hits, which: authorities, loops: twice, scale: max}
   applies_to: any

@@ -4,14 +4,11 @@
   "bct",
   "cdlib",
   "definition",
-  "ergm",
   "gephi",
   "graspologic",
-  "igraph",
   "jgrapht",
   "networkx",
   "pyigraph",
-  "remstats",
-  "rsiena"
+  "remstats"
  ]
 }

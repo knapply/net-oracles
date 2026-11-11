@@ -1,10 +1,10 @@
 {
- "inputs": "d1995037f12be1bf403510311648c9bf46a412bdef4bbbe79d48b5b8802faa6c",
+ "inputs": "667e6122a43ed13d1bbc2124022d83504582c5842139679adf3abb0eb5fb74c6",
  "oracles": [
   "cdlib",
-  "ergm",
-  "graspologic",
+  "definition",
   "jgrapht",
-  "networkx"
+  "networkx",
+  "pyigraph"
  ]
 }

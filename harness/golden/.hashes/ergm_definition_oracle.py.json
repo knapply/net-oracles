@@ -10,7 +10,6 @@
   "definition",
   "egor",
   "ergm",
-  "gephi",
   "graphblas",
   "graspologic",
   "homophily",
@@ -21,6 +20,7 @@
   "manynet",
   "nauty",
   "netrankr",
+  "networkit",
   "networkx",
   "powerlaw",
   "published",
@@ -28,8 +28,11 @@
   "remstats",
   "rsiena",
   "rustworkx",
+  "s2",
+  "sf",
   "sknetwork",
   "sna",
+  "stats",
   "tnet",
   "tsna"
  ]

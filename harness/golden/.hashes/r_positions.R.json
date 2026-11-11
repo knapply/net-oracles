@@ -1,8 +1,8 @@
 {
  "inputs": "839a03f65e4e0030c48de3665609edd1f7390ca5249540a72bd2f9bb166e3666",
  "oracles": [
-  "definition",
   "igraph",
+  "networkx",
   "sna"
  ]
 }

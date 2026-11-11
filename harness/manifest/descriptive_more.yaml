@@ -12,8 +12,8 @@
 # matrices, entropy), a computation independent of the engine's. The
 # definition oracles evaluate each formula by enumeration over the edge list
 # in exact fractions. sna and igraph implement several of these (dyad
-# census, motifs, symmetrize, Krackhardt dimensions); they are not yet wired
-# as oracles for these entries (see the capability matrix).
+# census, motifs, symmetrize, Krackhardt dimensions); their oracles are
+# oracles/r_descriptive_more.R.
 
 dyad_census:
   params: {fn: dyad_census}
@@ -24,6 +24,10 @@ dyad_census:
       call: "for every pair i < j of distinct nodes: both arcs (mutual), one (asymmetric), none (null); parallel arcs once, loops ignored; every tie of an undirected network is mutual"
     networkx:
       call: "mutual = G.to_undirected(reciprocal=True).number_of_edges(), asymmetric = G.to_undirected().number_of_edges() - mutual, null = n(n-1)/2 - the union (loops removed)"
+    igraph:
+      call: "igraph::dyad_census(igraph::simplify(g)): mut, asym, null"
+    sna:
+      call: "sna::dyad.census(m) on the 0/1 adjacency matrix without its diagonal: Mut, Asym, Null"
 
 degree_distribution:
   params: {fn: degree_distribution, mode: all, loops: true}
@@ -34,6 +38,8 @@ degree_distribution:
       call: "the histogram of the degree sequence (loops twice, parallel edges each), mean, population variance, minimum, maximum and Gini coefficient in exact fractions"
     networkx:
       call: "nx.degree_histogram(G) on the multigraph, numpy mean, var, min, max and the rank form of the Gini coefficient"
+    igraph:
+      call: "igraph::degree_distribution(g, mode = 'all', loops = TRUE) times n for the histogram; mean, population variance, min, max of igraph::degree(g, mode = 'all', loops = TRUE) and the rank form of the Gini coefficient in base R"
 
 degree_distribution_noloops:
   params: {fn: degree_distribution, mode: all, loops: false}
@@ -44,6 +50,8 @@ degree_distribution_noloops:
       call: "as degree_distribution with every self-loop removed first"
     networkx:
       call: "nx.degree_histogram on the multigraph without self-loops, numpy statistics"
+    igraph:
+      call: "igraph::degree_distribution(g, mode = 'all', loops = FALSE) times n for the histogram; mean, population variance, min, max of igraph::degree(g, mode = 'all', loops = FALSE) and the rank form of the Gini coefficient in base R"
 
 degree_distribution_in:
   params: {fn: degree_distribution, mode: in, loops: true}
@@ -54,6 +62,8 @@ degree_distribution_in:
       call: "as degree_distribution for the in-degrees (a loop counts once)"
     networkx:
       call: "the histogram of G.in_degree() on the multigraph (bincount), numpy statistics"
+    igraph:
+      call: "igraph::degree_distribution(g, mode = 'in', loops = TRUE) times n for the histogram; mean, population variance, min, max of igraph::degree(g, mode = 'in', loops = TRUE) and the rank form of the Gini coefficient in base R"
 
 degree_distribution_out:
   params: {fn: degree_distribution, mode: out, loops: true}
@@ -64,6 +74,8 @@ degree_distribution_out:
       call: "as degree_distribution for the out-degrees (a loop counts once)"
     networkx:
       call: "the histogram of G.out_degree() on the multigraph (bincount), numpy statistics"
+    igraph:
+      call: "igraph::degree_distribution(g, mode = 'out', loops = TRUE) times n for the histogram; mean, population variance, min, max of igraph::degree(g, mode = 'out', loops = TRUE) and the rank form of the Gini coefficient in base R"
 
 krackhardt_dimensions:
   params: {fn: krackhardt_dimensions}
@@ -74,6 +86,49 @@ krackhardt_dimensions:
       call: "connectedness = pairs in one weak component / all pairs; hierarchy = 1 - mutually reachable ordered pairs / reachable ordered pairs (Warshall closure); efficiency = 1 - (arcs - (n - c)) / (n (n - 1) - (n - c)) for c weak components, on the distinct arcs between distinct nodes (an undirected edge is two arcs); NaN where 0 / 0 (-999)"
     networkx:
       call: "the same from nx.weakly_connected_components, nx.strongly_connected_components and nx.descendants (nx.connected_components for an undirected network)"
+    sna:
+      call: "c(sna::connectedness(m), sna::hierarchy(m, measure = 'krackhardt'), sna::efficiency(m)) on the 0/1 adjacency matrix without its diagonal (an undirected edge is two arcs)"
+      differs_when: [disconnected, not_strongly_connected, one_node, null_graph]
+      reason: >-
+        Three conventions differ. Hierarchy: sna documents it as the share of
+        asymmetric dyads among the non-null dyads of the reachability graph
+        (each mutual dyad counts once); the engine counts reachable ordered
+        pairs, so a mutually reachable dyad weighs twice (asymmetric / (asymmetric
+        + 2 mutual) against sna's asymmetric / (asymmetric + mutual)); the two are
+        equal when every dyad is asymmetric or none is, and a strongly connected
+        network gives 0 in both. Efficiency: with more than one weak component
+        (isolated nodes count as components) sna's value differs from the
+        engine's, which measures the arcs against the n - c an out-forest needs
+        (sna returns NaN on the edgeless network and 0 on two triangles and an
+        isolate, where the engine gives 1 and 0.789). Connectedness of a
+        single node: sna gives 1, the engine NaN (no pair to be connected).
+
+krackhardt_lubness:
+  params: {fn: krackhardt_dimensions, part: lubness}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "LUBness = 1 - V / sum over weak components of c nodes of (c - 1)(c - 2) / 2, V the pairs of one component with no least upper bound: an upper bound k of i and j reaches both (a node reaches itself) and the least one is the upper bound that every other upper bound reaches; the distinct arcs between distinct nodes (an undirected edge is two arcs); NaN where no component has 3 nodes (-999)"
+    networkx:
+      call: "the same from nx.weakly_connected_components and nx.ancestors"
+    sna:
+      call: "sna::lubness(m) on the 0/1 adjacency matrix without its diagonal (an undirected edge is two arcs)"
+      differs_when: [not_strongly_connected]
+      reason: >-
+        The normalization, the weak-component sum and the NaN rule agree with
+        sna on every digraph of 3 and 4 nodes and 1,500 random ones of 5 to 8.
+        The difference is the least upper bound. sna's help page defines it as
+        an upper bound lying on a path from every upper bound to both nodes,
+        which is the upper bound every other one reaches (the engine's rule).
+        The values sna returns follow a different rule, the upper bound that
+        reaches every other upper bound (the most distant one): on all 5,660
+        digraphs that were run its counts equal that rule exactly, and its
+        counts differ from the documented rule on 341. Example: arcs 0 -> 1,
+        2 -> 0, 3 -> 0 on 4 nodes: the pair (0, 1) has the upper bounds 0, 2 and
+        3 and 0 is the one all reach; the engine counts 1 violation (score 2/3),
+        sna 2 (score 1/3). Networks in which every node reaches every other
+        (and every undirected network) are not affected.
 
 ego_composition:
   params: {fn: ego_composition, mode: all}
@@ -109,45 +164,86 @@ symmetrize_max:
   params: {fn: symmetrize, method: max}
   applies_to: any
   tolerance: {rel: 1.0e-12, abs: 1.0e-12}
-  oracles: &symmetrize_oracles
-    definition:
+  oracles:
+    definition: &symmetrize_definition
       call: "the matrix of summed parallel weights (loops dropped, absent = 0); a tie {i, j} (i < j) takes the method's value of the two entries a = W[i][j], b = W[j][i]; a result of 0 is no tie"
+    igraph:
+      call: "igraph::as_undirected(igraph::graph_from_adjacency_matrix(W, mode = 'directed', weighted = TRUE), mode = 'collapse', edge.attr.comb = list(weight = 'max')): the ties with their combined weight, weight 0 dropped"
 
 symmetrize_min:
   params: {fn: symmetrize, method: min}
   applies_to: any
   tolerance: {rel: 1.0e-12, abs: 1.0e-12}
-  oracles: *symmetrize_oracles
+  oracles:
+    definition: *symmetrize_definition
+    igraph:
+      call: "igraph::as_undirected(igraph::graph_from_adjacency_matrix(W, mode = 'directed', weighted = TRUE), mode = 'collapse', edge.attr.comb = list(weight = 'min')): the ties with their combined weight, weight 0 dropped"
+      differs_when: [directed]
+      reason: >-
+        igraph combines the weights of the edges between a pair that exist
+        (a tie with one direction keeps that weight), where the engine reads
+        the missing direction as 0 and combines a with 0: min and product
+        leave no tie, and mean halves the weight. Undirected networks have both
+        entries equal and agree.
 
 symmetrize_sum:
   params: {fn: symmetrize, method: sum}
   applies_to: any
   tolerance: {rel: 1.0e-12, abs: 1.0e-12}
-  oracles: *symmetrize_oracles
+  oracles:
+    definition: *symmetrize_definition
+    igraph:
+      call: "igraph::as_undirected(igraph::graph_from_adjacency_matrix(W, mode = 'directed', weighted = TRUE), mode = 'collapse', edge.attr.comb = list(weight = 'sum')): the ties with their combined weight, weight 0 dropped"
 
 symmetrize_mean:
   params: {fn: symmetrize, method: mean}
   applies_to: any
   tolerance: {rel: 1.0e-12, abs: 1.0e-12}
-  oracles: *symmetrize_oracles
+  oracles:
+    definition: *symmetrize_definition
+    igraph:
+      call: "igraph::as_undirected(igraph::graph_from_adjacency_matrix(W, mode = 'directed', weighted = TRUE), mode = 'collapse', edge.attr.comb = list(weight = 'mean')): the ties with their combined weight, weight 0 dropped"
+      differs_when: [directed]
+      reason: >-
+        igraph combines the weights of the edges between a pair that exist
+        (a tie with one direction keeps that weight), where the engine reads
+        the missing direction as 0 and combines a with 0: min and product
+        leave no tie, and mean halves the weight. Undirected networks have both
+        entries equal and agree.
 
 symmetrize_product:
   params: {fn: symmetrize, method: product}
   applies_to: any
   tolerance: {rel: 1.0e-12, abs: 1.0e-12}
-  oracles: *symmetrize_oracles
+  oracles:
+    definition: *symmetrize_definition
+    igraph:
+      call: "igraph::as_undirected(igraph::graph_from_adjacency_matrix(W, mode = 'directed', weighted = TRUE), mode = 'collapse', edge.attr.comb = list(weight = 'prod')): the ties with their combined weight, weight 0 dropped"
+      differs_when: [directed]
+      reason: >-
+        igraph combines the weights of the edges between a pair that exist
+        (a tie with one direction keeps that weight), where the engine reads
+        the missing direction as 0 and combines a with 0: min and product
+        leave no tie, and mean halves the weight. Undirected networks have both
+        entries equal and agree.
 
 symmetrize_upper:
   params: {fn: symmetrize, method: upper}
   applies_to: any
   tolerance: {rel: 1.0e-12, abs: 1.0e-12}
-  oracles: *symmetrize_oracles
+  oracles:
+    definition: *symmetrize_definition
+    sna:
+      call: "sna::symmetrize(W, rule = 'upper') on the matrix of summed weights without its diagonal: the non-zero entries above the diagonal"
 
 symmetrize_lower:
   params: {fn: symmetrize, method: lower}
   applies_to: any
   tolerance: {rel: 1.0e-12, abs: 1.0e-12}
-  oracles: *symmetrize_oracles
+  oracles:
+    definition: *symmetrize_definition
+    sna:
+      call: "sna::symmetrize(W, rule = 'lower') on the matrix of summed weights without its diagonal: the non-zero entries above the diagonal"
 
 symmetrize_strong:
   params: {fn: symmetrize, method: strong}
@@ -163,6 +259,10 @@ symmetrize_strong:
         The engine reads a tie as present when its summed weight is not 0, so
         parallel edges whose weights cancel (or a zero weight) leave no tie;
         NetworkX keeps every edge it is given.
+    igraph:
+      call: "igraph::as_undirected(igraph::simplify(g), mode = 'mutual'): the ties, weight 1"
+    sna:
+      call: "sna::symmetrize(m, rule = 'strong') on the 0/1 adjacency matrix: the non-zero entries above the diagonal"
 
 symmetrize_weak:
   params: {fn: symmetrize, method: weak}
@@ -178,6 +278,10 @@ symmetrize_weak:
         The engine reads a tie as present when its summed weight is not 0, so
         parallel edges whose weights cancel (or a zero weight) leave no tie;
         NetworkX keeps every edge it is given.
+    igraph:
+      call: "igraph::as_undirected(igraph::simplify(g), mode = 'collapse'): the ties, weight 1"
+    sna:
+      call: "sna::symmetrize(m, rule = 'weak') on the 0/1 adjacency matrix: the non-zero entries above the diagonal"
 
 dichotomize_ge:
   params: {fn: dichotomize, by: cutoff, rule: ge, value: 2.0}
@@ -186,6 +290,14 @@ dichotomize_ge:
   oracles:
     definition:
       call: "the distinct pairs (parallel weights summed in input order, loops kept) whose weight is at least 2"
+    sna:
+      call: "sna::event2dichot(W, method = 'absolute', thresh = 2, leq = FALSE) on the matrix of summed weights, diagonal kept: the cells set to 1 (i <= j when undirected)"
+      differs_when: [integer_weights, multi_edges]
+      reason: >-
+        sna keeps the cells strictly above the threshold, the engine the cells
+        at least 2: a tie of weight exactly 2 (a pair of parallel edges, or an
+        integer weight) is kept by the engine only. Real weights equal to 2 do
+        not occur in the fixtures.
 
 dichotomize_lt:
   params: {fn: dichotomize, by: cutoff, rule: lt, value: 2.0}
@@ -210,6 +322,17 @@ dichotomize_density:
   oracles:
     definition:
       call: "distinct weights taken from the largest down, all ties of a weight together, while the count of ties (loops excluded) stays within floor(0.3 x possible ties)"
+    sna:
+      call: "sna::event2dichot(W, method = 'quantile', thresh = 0.7, leq = FALSE) on the matrix of summed weights, diagonal kept: the cells set to 1 (i <= j when undirected)"
+      differs_on: [multi_loops_dir, multi_loops_und, pair]
+      reason: >-
+        sna takes a quantile of all the cells of the matrix (the diagonal and
+        the absent ties included) and keeps those strictly above it; the engine
+        keeps whole weight levels from the largest down while the ties (loops
+        excluded) stay within floor(0.3 x possible ties). The two give the same
+        ties when the quantile falls on a weight level and no loop or tie of
+        weight equal to the cut is in play; they differ on the loops of
+        multi_loops_dir and multi_loops_und and on the single tie of pair.
 
 simmelian_ties:
   params: {fn: simmelian_ties}
@@ -230,6 +353,8 @@ cocitation:
       call: "for every pair i < j, the number of nodes k with arcs k -> i and k -> j (distinct arcs, loops ignored; an undirected edge is two arcs); pairs with a positive count"
     networkx:
       call: "A = nx.to_numpy_array of the simple graph; the upper triangle of A.T @ A, positive entries"
+    igraph:
+      call: "igraph::cocitation(igraph::simplify(g)): the pairs i < j with a positive count"
 
 coupling:
   params: {fn: cocitation, kind: coupling}
@@ -240,6 +365,8 @@ coupling:
       call: "for every pair i < j, the number of nodes k with arcs i -> k and j -> k"
     networkx:
       call: "the upper triangle of A @ A.T, positive entries"
+    igraph:
+      call: "igraph::bibcoupling(igraph::simplify(g)): the pairs i < j with a positive count"
 
 partition_quality:
   params: {fn: partition_quality}
@@ -264,6 +391,12 @@ motif_census_3:
       call: "every 3-subset of the simple graph with 2 edges (open path) or 3 (triangle)"
     networkx:
       call: "triangles = sum(nx.triangles(G).values()) / 3; open paths = sum over nodes of C(d, 2) - 3 triangles"
+    igraph:
+      call: "igraph::motifs(igraph::simplify(g), 3): the open-path (2 edges) and triangle classes"
+    sna:
+      call: "sna::triad.census(m, mode = 'graph'): the 201 (open path) and 300 (triangle) counts"
+      undefined_on: [single_node]
+      undefined_reason: sna's triad census has no value for a network of fewer than 3 nodes.
 
 motif_census_4:
   params: {fn: motif_census, size: 4}
@@ -278,6 +411,8 @@ motif_census_4:
       undefined_reason: >-
         The oracle enumerates the 4-subsets with a graph isomorphism test
         for each, which is limited to 40 nodes.
+    igraph:
+      call: "igraph::motifs(igraph::simplify(g), 4): the star, path, cycle, paw, diamond and clique classes, each class found with igraph::isomorphic against igraph::graph_from_isomorphism_class(4, id, directed = FALSE)"
 
 motif_census_3_directed:
   params: {fn: motif_census, size: 3}
@@ -288,3 +423,10 @@ motif_census_3_directed:
       call: "every 3-subset of the simple digraph, its arcs classified into the MAN triad types by mutual, asymmetric and null dyads and the shape; the 13 connected types"
     networkx:
       call: "nx.triadic_census(G) on the simple digraph, the 13 connected types in MAN order"
+
+    igraph:
+      call: "igraph::triad_census(igraph::simplify(g)): the 13 connected types in the standard order"
+    sna:
+      call: "sna::triad.census(m, mode = 'digraph'): the 13 connected types by name"
+      undefined_on: [pair]
+      undefined_reason: sna's triad census has no value for a network of fewer than 3 nodes.

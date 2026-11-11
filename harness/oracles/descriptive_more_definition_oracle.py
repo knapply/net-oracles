@@ -136,7 +136,21 @@ def krackhardt(fx):
     hier = None if ordered == 0 else 1 - Fraction(mutual, ordered)
     minimum = n - len(comps)
     eff = None if n < 2 else 1 - Fraction(len(arcs) - minimum, n * (n - 1) - minimum)
-    return [f(conn), f(hier), f(eff)]
+    # Least upper boundedness: k is an upper bound of i and j when k reaches
+    # both (a node reaches itself); u is a least upper bound when it is an
+    # upper bound reached by every upper bound. A violation is a pair in one
+    # weak component with none; the score is 1 - V / sum (c - 1)(c - 2) / 2.
+    for v in range(n):
+        reach[v][v] = True
+    violations = 0
+    for comp in comps:
+        for i, j in combinations(comp, 2):
+            upper = [k for k in range(n) if reach[k][i] and reach[k][j]]
+            if not any(all(reach[k][u] for k in upper) for u in upper):
+                violations += 1
+    most = sum((len(c) - 1) * (len(c) - 2) // 2 for c in comps if len(c) >= 3)
+    lub = ratio(most - violations, most)
+    return [f(conn), f(hier), f(eff), f(lub)]
 
 
 def alters(fx, mode):
@@ -371,7 +385,8 @@ def compute(fx, e):
     if fn == "degree_distribution":
         return degree_distribution(fx, e)
     if fn == "krackhardt_dimensions":
-        return krackhardt(fx)
+        values = krackhardt(fx)
+        return values[3:] if e.get("part") == "lubness" else values[:3]
     if fn == "ego_composition":
         return ego_composition(fx, e)
     if fn == "symmetrize":

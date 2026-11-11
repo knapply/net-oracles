@@ -3,9 +3,9 @@
  "oracles": [
   "cpnet",
   "definition",
+  "graphblas",
   "nauty",
   "networkx",
-  "powerlaw",
   "sknetwork"
  ]
 }

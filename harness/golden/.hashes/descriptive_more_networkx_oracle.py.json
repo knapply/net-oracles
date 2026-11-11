@@ -1,25 +1,10 @@
 {
- "inputs": "e7fdaff7ac2fdac776e3b89c1b4b5dc7b413681cb4009922462e318d53fa8010",
+ "inputs": "80b1578abbacfcc6e684159a40801c833c42e623d23e5087a220c8dd9d94d706",
  "oracles": [
-  "bctpy",
-  "blockmodeling",
-  "centiserve",
-  "cpnet",
   "definition",
-  "egor",
-  "graphblas",
-  "homophily",
   "igraph",
-  "influencer",
-  "manynet",
   "netrankr",
   "networkx",
-  "published",
-  "pyigraph",
-  "rustworkx",
-  "sknetwork",
-  "sna",
-  "tnet",
-  "tsna"
+  "sna"
  ]
 }

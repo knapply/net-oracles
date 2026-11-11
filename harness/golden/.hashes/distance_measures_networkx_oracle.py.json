@@ -5,11 +5,10 @@
   "definition",
   "graphblas",
   "igraph",
-  "infomap",
   "nauty",
   "networkx",
-  "powerlaw",
   "published",
+  "rsiena",
   "sknetwork"
  ]
 }

@@ -1,0 +1,8 @@
+{
+ "inputs": "f4ac2c99bc188a9c818ccbdee6c2fa7689a22d57b958fe3f516210014491cf00",
+ "oracles": [
+  "definition",
+  "graphblas",
+  "nauty"
+ ]
+}

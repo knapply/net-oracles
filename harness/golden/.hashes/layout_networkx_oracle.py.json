@@ -2,10 +2,13 @@
  "inputs": "4d3a4ba2db56d25d5563390601255d16b67f9d375f577544b341e233ce078c2e",
  "oracles": [
   "cdlib",
+  "cpnet",
   "definition",
-  "ergm",
+  "igraph",
   "infomap",
+  "networkit",
   "networkx",
-  "powerlaw"
+  "powerlaw",
+  "pyigraph"
  ]
 }

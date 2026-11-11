@@ -2,7 +2,6 @@
  "inputs": "abda37c4cb03df3f53898e01149ee1ca76e7fe190609d3780a3cf527af43dfd6",
  "oracles": [
   "definition",
-  "netrankr",
   "networkx"
  ]
 }

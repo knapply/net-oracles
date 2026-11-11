@@ -2,6 +2,9 @@
  "inputs": "d3bf4f6721593579fea1745780b1615f12f6564eb83d45e39fec9cc02b10ce28",
  "oracles": [
   "cdlib",
+  "igraph",
+  "infomap",
+  "networkit",
   "networkx"
  ]
 }

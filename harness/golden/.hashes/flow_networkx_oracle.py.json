@@ -3,10 +3,9 @@
  "oracles": [
   "bctpy",
   "definition",
+  "ergm",
   "igraph",
   "networkx",
-  "published",
-  "rustworkx",
   "sna",
   "tsna"
  ]

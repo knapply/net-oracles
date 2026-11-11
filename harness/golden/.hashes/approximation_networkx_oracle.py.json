@@ -1,12 +1,9 @@
 {
  "inputs": "2a1a81a50909fcb1e507e7d0c32603f0bbcc186052739dd7ec7e4d821729bdd3",
  "oracles": [
-  "centiserve",
   "definition",
-  "igraph",
-  "netrankr",
-  "networkx",
-  "sna",
-  "tnet"
+  "egor",
+  "manynet",
+  "networkx"
  ]
 }

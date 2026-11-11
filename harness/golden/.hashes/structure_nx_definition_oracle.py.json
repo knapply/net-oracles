@@ -1,7 +1,6 @@
 {
  "inputs": "4f6dbc7b2b94781f9670eb6b4926a166f988d5e09164df18e7bae10a991794d5",
  "oracles": [
-  "centiserve",
   "definition",
   "homophily",
   "igraph",

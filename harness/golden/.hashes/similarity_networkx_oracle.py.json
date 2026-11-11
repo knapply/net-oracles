@@ -5,19 +5,20 @@
   "cdlib",
   "cpnet",
   "definition",
-  "ergm",
   "graphblas",
   "graspologic",
   "igraph",
   "infomap",
   "jgrapht",
   "nauty",
+  "networkit",
   "networkx",
   "powerlaw",
   "published",
   "pyigraph",
   "remstats",
   "rsiena",
-  "sknetwork"
+  "sknetwork",
+  "sna"
  ]
 }

@@ -1,13 +1,14 @@
 {
- "inputs": "ad076f32d1059b6d405483cb69e95f74237d2607fb94c065ca5da78632fb3e99",
+ "inputs": "c267f3941fe882482e32caaea6f46a879085a4b6b4de6c13a83a4018350b31bc",
  "oracles": [
   "bct",
   "boost",
   "cdlib",
-  "definition",
   "ergm",
   "graspologic",
   "jgrapht",
-  "networkx"
+  "networkx",
+  "pyigraph",
+  "rsiena"
  ]
 }

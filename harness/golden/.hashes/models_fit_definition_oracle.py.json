@@ -1,7 +1,11 @@
 {
- "inputs": "8ad74cd909a6287eff3815a64bda9fb154c9979286439afff4fa0908e2e4d98b",
+ "inputs": "f5bfaf7d648788bd666709dd7ffbc4f54e702160342a473420feced7f587d387",
  "oracles": [
+  "bctpy",
   "definition",
-  "networkx"
+  "igraph",
+  "networkx",
+  "sna",
+  "tsna"
  ]
 }

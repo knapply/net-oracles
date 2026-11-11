@@ -2,7 +2,6 @@
  "inputs": "6dc1ddf0c7c913f95a86deb62e697773696c91ab98bc99be77978c645e3aa45d",
  "oracles": [
   "igraph",
-  "networkx",
   "sna"
  ]
 }

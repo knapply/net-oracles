@@ -2,12 +2,9 @@
  "inputs": "41cb2bceb3c907e3dc67d34425250fe018cf502b0bd60355e02a16e5e28433ad",
  "oracles": [
   "definition",
-  "egor",
+  "ergm",
   "igraph",
-  "influencer",
   "networkx",
-  "rustworkx",
-  "sna",
-  "tsna"
+  "rustworkx"
  ]
 }

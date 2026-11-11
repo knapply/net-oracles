@@ -1,6 +1,8 @@
 {
  "inputs": "56dc34f6b3b6aec97959de86c334df4506db1c1225e46f0adbd4368e5ce791d0",
  "oracles": [
+  "cpnet",
+  "definition",
   "networkx",
   "powerlaw"
  ]

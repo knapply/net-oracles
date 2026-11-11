@@ -1,12 +1,9 @@
 {
- "inputs": "8b446aa6983faae7bd8ed0a339e1712218fe6d1557c94b88f9f94e91b6127000",
+ "inputs": "3e9455eaa05feffa7a45337bf3525e933d657a0af008fd296ac69dbce35f5e53",
  "oracles": [
-  "centiserve",
-  "definition",
-  "manynet",
-  "netrankr",
-  "networkx",
+  "homophily",
+  "igraph",
   "pyigraph",
-  "tnet"
+  "sna"
  ]
 }

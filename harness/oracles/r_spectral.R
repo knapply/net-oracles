@@ -77,10 +77,10 @@ hits_vector <- function(f, g) {
   v
 }
 
-igraph_values <- function(variant, spec, g, e, meta) {
+igraph_values <- function(variant, spec, g, e, meta, w) {
   n <- meta$n
   v0 <- 0:(n - 1)
-  w <- if (meta$weighted) igraph::E(g)$weight else NULL
+  wt <- if (meta$weighted) igraph::E(g)$weight else NULL
   quiet <- function(expr) suppressWarnings(expr)
   plain <- counts_no_loops(e, meta)
   fraction <- function(key) {
@@ -88,10 +88,16 @@ igraph_values <- function(variant, spec, g, e, meta) {
     f <- spec$params[[paste0(key, "_fraction")]]
     if (lam > 0) f / lam else f
   }
+  # The exponent as a fraction of the largest eigenvalue of the valued matrix.
+  fraction_valued <- function(key) {
+    lam <- radius(w)
+    f <- spec$params[[paste0(key, "_fraction")]]
+    if (lam > 0) f / lam else f
+  }
   noloops <- igraph::simplify(g, remove.multiple = FALSE, remove.loops = TRUE)
   switch(variant,
     pagerank = igraph::page_rank(g, damping = 0.85, weights = NA)$vector,
-    pagerank_weighted = igraph::page_rank(g, damping = 0.85, weights = w)$vector,
+    pagerank_weighted = igraph::page_rank(g, damping = 0.85, weights = wt)$vector,
     pagerank_personalized = igraph::page_rank(g, damping = 0.85, weights = NA,
                                               personalized = v0 %% 3 + 1)$vector,
     pagerank_undirected = igraph::page_rank(g, damping = 0.85, directed = FALSE,
@@ -105,6 +111,11 @@ igraph_values <- function(variant, spec, g, e, meta) {
     bonacich_unit = quiet(igraph::power_centrality(g, exponent = 1)),
     bonacich_rescale = quiet(igraph::power_centrality(g, exponent = fraction("exponent"),
                                                       rescale = TRUE)),
+    bonacich_weighted = quiet(igraph::power_centrality(g, exponent = fraction_valued("exponent"))),
+    bonacich_weighted_negative = quiet(igraph::power_centrality(
+      g, exponent = fraction_valued("exponent"))),
+    bonacich_weighted_rescale = quiet(igraph::power_centrality(
+      g, exponent = fraction_valued("exponent"), rescale = TRUE)),
     hits_authorities = quiet(hits_vector(igraph::authority_score, g)),
     hits_hubs = quiet(hits_vector(igraph::hub_score, g)),
     assortativity_degree = igraph::assortativity_degree(g, directed = TRUE),
@@ -125,10 +136,22 @@ igraph_values <- function(variant, spec, g, e, meta) {
   )
 }
 
-sna_values <- function(variant, m, meta) {
+sna_values <- function(variant, m, meta, w) {
   gmode <- if (meta$directed) "digraph" else "graph"
+  # The exponent as a fraction of the largest eigenvalue of the valued matrix.
+  fraction <- function(key) {
+    lam <- radius(w)
+    f <- manifest[[variant]]$params[[paste0(key, "_fraction")]]
+    if (lam > 0) f / lam else f
+  }
   switch(variant,
     bonacich_sna = sna::bonpow(m, gmode = gmode, diag = FALSE, exponent = 1),
+    bonacich_weighted = sna::bonpow(w, gmode = gmode, diag = FALSE,
+                                    exponent = fraction("exponent")),
+    bonacich_weighted_negative = sna::bonpow(w, gmode = gmode, diag = FALSE,
+                                             exponent = fraction("exponent")),
+    bonacich_weighted_rescale = sna::bonpow(w, gmode = gmode, diag = FALSE,
+                                            exponent = fraction("exponent"), rescale = TRUE),
     NULL
   )
 }
@@ -181,14 +204,25 @@ for (name in sort(list.dirs(fixtures_dir, full.names = FALSE, recursive = FALSE)
     if (!meta$directed) m[cbind(e$to + 1L, e$from + 1L)] <- 1
   }
   diag(m) <- 0
+  # The valued matrix: parallel edge weights added, the diagonal dropped; an
+  # undirected edge fills both triangles.
+  w <- matrix(0, meta$n, meta$n)
+  for (k in seq_len(nrow(e))) {
+    i <- e$from[k] + 1L
+    j <- e$to[k] + 1L
+    if (i == j) next
+    x <- if (meta$weighted) e$weight[k] else 1
+    w[i, j] <- w[i, j] + x
+    if (!meta$directed) w[j, i] <- w[j, i] + x
+  }
 
   for (variant in names(manifest)) {
     spec <- manifest[[variant]]
     if (!applies(spec, meta) || meta$n == 0) next
     for (oracle in intersect(names(spec$oracles), c("igraph", "sna", "homophily"))) {
       v <- attempt(switch(oracle,
-        igraph = igraph_values(variant, spec, g, e, meta),
-        sna = sna_values(variant, m, meta),
+        igraph = igraph_values(variant, spec, g, e, meta, w),
+        sna = sna_values(variant, m, meta, w),
         homophily = homophily_values(variant, g, meta)
       ))
       if (!is.null(v)) {

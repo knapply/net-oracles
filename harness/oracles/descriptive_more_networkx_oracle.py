@@ -93,7 +93,17 @@ def krackhardt(fx):
     hier = (1 - mutual / reach) if reach else None
     minimum = n - len(comps)
     eff = None if n < 2 else 1 - (d.number_of_edges() - minimum) / (n * (n - 1) - minimum)
-    return [mark(conn), mark(hier), mark(eff)]
+    violations, most = 0, 0
+    for comp in nx.weakly_connected_components(d):
+        c = len(comp)
+        most += (c - 1) * (c - 2) // 2 if c >= 3 else 0
+        above = {v: nx.ancestors(d, v) | {v} for v in comp}
+        for i, j in combinations(sorted(comp), 2):
+            upper = above[i] & above[j]
+            if not any(upper <= above[u] for u in upper):
+                violations += 1
+    lub = None if most == 0 else 1 - violations / most
+    return [mark(conn), mark(hier), mark(eff), mark(lub)]
 
 
 def ego_composition(fx, e):
@@ -196,7 +206,7 @@ def compute(fx, e):
     fn = e["fn"]
     return {"dyad_census": lambda: dyad_census(fx),
             "degree_distribution": lambda: degree_distribution(fx, e),
-            "krackhardt_dimensions": lambda: krackhardt(fx),
+            "krackhardt_dimensions": lambda: krackhardt(fx)[3:] if e.get("part") == "lubness" else krackhardt(fx)[:3],
             "ego_composition": lambda: ego_composition(fx, e),
             "symmetrize": lambda: symmetrize(fx, e),
             "simmelian_ties": lambda: simmelian(fx),

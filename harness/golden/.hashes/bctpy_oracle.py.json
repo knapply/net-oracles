@@ -2,9 +2,7 @@
  "inputs": "dad0d95f1fcbd33a85883eef3453ab0df9cb878e3f408ffbbef539bd9ad052a7",
  "oracles": [
   "bctpy",
-  "definition",
-  "igraph",
   "networkx",
-  "sna"
+  "tsna"
  ]
 }

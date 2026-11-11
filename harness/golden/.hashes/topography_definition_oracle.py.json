@@ -1,13 +1,10 @@
 {
  "inputs": "a5acfb12a0775692926387f9c74028c294a750e1221a2767b7695708d3e905f6",
  "oracles": [
-  "blockmodeling",
   "centiserve",
   "definition",
-  "egor",
   "homophily",
   "igraph",
-  "manynet",
   "netrankr",
   "networkit",
   "networkx",

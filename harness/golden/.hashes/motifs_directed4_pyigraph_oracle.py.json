@@ -1,0 +1,6 @@
+{
+ "inputs": "42c467b45cb741e9c75981ab1e42b3bd53c0bf0b57de6f799fc1369f7599c7da",
+ "oracles": [
+  "pyigraph"
+ ]
+}

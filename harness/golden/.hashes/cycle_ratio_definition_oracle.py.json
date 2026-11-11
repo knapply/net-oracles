@@ -2,7 +2,6 @@
  "inputs": "86344d3e920a14a60dcfd3818d4d83c9913e0a8f8e75bffb8818b165c7c324c7",
  "oracles": [
   "definition",
-  "nauty",
   "networkx"
  ]
 }

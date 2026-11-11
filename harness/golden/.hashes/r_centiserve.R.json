@@ -3,7 +3,6 @@
  "oracles": [
   "centiserve",
   "definition",
-  "netrankr",
   "tnet"
  ]
 }

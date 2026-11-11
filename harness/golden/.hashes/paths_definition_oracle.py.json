@@ -4,8 +4,6 @@
   "blockmodeling",
   "definition",
   "influencer",
-  "manynet",
-  "networkx",
-  "pyigraph"
+  "networkx"
  ]
 }

@@ -12,7 +12,6 @@
   "ergm",
   "graphblas",
   "graspologic",
-  "homophily",
   "igraph",
   "influencer",
   "infomap",
@@ -20,6 +19,7 @@
   "manynet",
   "nauty",
   "netrankr",
+  "networkit",
   "networkx",
   "powerlaw",
   "published",
@@ -29,7 +29,6 @@
   "rustworkx",
   "sknetwork",
   "sna",
-  "tnet",
   "tsna"
  ]
 }

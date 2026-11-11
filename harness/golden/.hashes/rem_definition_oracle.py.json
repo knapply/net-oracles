@@ -1,5 +1,5 @@
 {
- "inputs": "1e183451b1484b0284ff17a3215d29b51d6d923517e550e35c7ce32484559053",
+ "inputs": "82993f23c035955e76b5041bfc8653075a4076b0c0703a6a0495c04473bf186b",
  "oracles": [
   "bct",
   "bctpy",
@@ -7,7 +7,6 @@
   "cdlib",
   "cpnet",
   "definition",
-  "egor",
   "ergm",
   "gephi",
   "graphblas",
@@ -16,8 +15,8 @@
   "influencer",
   "infomap",
   "jgrapht",
-  "manynet",
   "nauty",
+  "networkit",
   "networkx",
   "powerlaw",
   "published",

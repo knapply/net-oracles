@@ -1,0 +1,24 @@
+# The directed size-4 motif census: the 199 weakly connected classes of the 218
+# isomorphism classes of directed graphs on 4 nodes, in igraph's isoclass
+# numbering (a documented convention: the id of each class is that of
+# igraph's Graph.Isoclass(4, id, directed=True); the 19 classes that are not
+# weakly connected, which igraph reports as NaN, are omitted). Counts are of
+# induced subgraphs of the simple digraph (loops and parallel arcs ignored),
+# exact. Engine runner: ../bindings/descriptive_more.py (motif_census).
+#
+# The definition oracle enumerates every 4-subset and canonicalizes its arcs by
+# brute force over the 24 relabelings; python-igraph and R igraph run
+# motifs on the simple digraph as black boxes, so the numbering and the
+# counts are both checked against igraph's own output.
+
+motif_census_4_directed:
+  params: {fn: motif_census, size: 4}
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "every weakly connected 4-subset of the simple digraph, canonicalized over the 24 relabelings and numbered by igraph's isoclass representatives; the 199 connected classes in increasing id"
+    pyigraph:
+      call: "g.simplify(); g.motifs_randesu(size=4) without the NaN entries (the 19 classes that are not weakly connected)"
+    igraph:
+      call: "igraph::motifs(simplify(g), 4) without the NA entries"
