@@ -28,3 +28,12 @@ Checklist, for people and for language models:
 
 An adapter named like its tool (`networkx.py`) is fine: the template removes its own directory from `sys.path` so the real package is imported.
 Adapters that need an extra interpreter read `BENCH_PYTHON_<NAME>` (for example `GRAPH_TOOL_PY` for graph-tool). Anything an adapter builds is cached next to the graph in `--prepare`, which is not measured.
+
+## Statistical-model suite (statnet, RSiena)
+
+    python3 bench/run.py --suite statnet-small --out /tmp/stat.csv      # R: network ergm latentnet tergm RSiena sand
+    python3 bench/run.py --suite statnet-ladder --graphs gnm50,gnm100 --out /tmp/stat.csv
+
+Model fits are measures with `model: true` in `measures.yaml`; they run on the graphs whose `model` (graphs.yaml) lists them under `tasks`. Datasets come from the R packages through `data/export_statnet.R` (Florentine marriage, faux.mesa.high, the Lazega collaboration network from `sand`, the Sampson monks panel, the RSiena s50 excerpt); the size ladder is uniform random graphs (`gnm50` to `gnm6400`, average degree 6) with an edges + gwesp(0.25) model. The van de Bunt freshmen data is not shipped in RSiena, so it is not run.
+
+Seeds, burn-in, interval, sample size, iteration limits and RSiena's `nsub` and `n3` are fixed under `controls` in `measures.yaml`; the runner writes them with the model to `PATH.model`, which the adapters read. The digest of a fit has `coef` and `se` (term order) plus iteration counts; the runner compares two tools' fits as the largest coefficient difference in standard errors against `agreement` in `measures.yaml` (printed as `AGREEMENT` lines and stored in the raw file), not as equality. `--adapters-dir` may also hold `measures.overlay.yaml` (`calls: {measure: {tool: text}}`, `suite_tools: [names]`) to document the calls of extra tools and add them to the statnet suites. The ergm adapter records the number of MCMLE rounds and the nominal MCMC steps (rounds times burn-in plus sample size times interval).

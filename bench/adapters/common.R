@@ -66,7 +66,7 @@ bench_main <- function(tool, version, load, calls, threads = function(t) 1L, not
     invisible(gc()); base <- rss_mb(); row$base_megabytes <- round(base, 1)
     d <- read_edges(graph)
     src <- if (file.exists(paste0(graph, ".sources"))) as.integer(scan(paste0(graph, ".sources"), quiet = TRUE)) else integer()
-    ctx <- list(n = d$n, directed = d$directed, edges = d$edges, sources = src, threads = row$threads)
+    ctx <- list(n = d$n, directed = d$directed, edges = d$edges, sources = src, threads = row$threads, graph = graph)
     row$nodes <- d$n; row$edges <- d$m
     times <- numeric(); digest <- list()
     if (measure == "load") {
@@ -97,5 +97,44 @@ bench_main <- function(tool, version, load, calls, threads = function(t) 1L, not
   emit(res)
 }
 
+# The model of a statistical task: PATH.model, one "key<TAB>value" line per setting (written by the
+# runner from measures.yaml); lists are joined by ";". Returns a named character vector.
+read_model <- function(graph) {
+  l <- readLines(paste0(graph, ".model"), warn = FALSE)
+  l <- l[nzchar(l)]
+  kv <- strsplit(l, "\t", fixed = TRUE)
+  structure(vapply(kv, function(x) x[2], ""), names = vapply(kv, function(x) x[1], ""))
+}
+mnum <- function(m, key, default = NA_real_) if (key %in% names(m)) as.numeric(m[[key]]) else default
+mterms <- function(m) strsplit(m[["terms"]], ";", fixed = TRUE)[[1]]
+# Formula terms of the model: the shared names ("gwesp(0.5)") become the package's ("gwesp(0.5, fixed = TRUE)").
+mformula <- function(m, lhs = "nw") {
+  t <- sub("^gwesp\\(([^)]*)\\)$", "gwesp(\\1, fixed = TRUE)", mterms(m))
+  t <- sub("^nodematch\\((\\w+)\\)$", "nodematch('\\1')", t)
+  as.formula(paste(lhs, "~", paste(t, collapse = " + ")), env = parent.frame())
+}
+# Standard-error digest of a fit, as the runner compares it: coef and se in the order of the terms.
+fit_digest <- function(coef, se, ...) c(list(coef = as.numeric(coef), se = as.numeric(se)), list(...))
+# Tables of a model graph: from PATH.raw (data/export_statnet.R) when the graph is a dataset, else the
+# edge file (one wave, no attributes). Returns list(n, directed, waves, edges = data.frame(wave, from, to), nodes).
+load_tables <- function(ctx) {
+  raw <- paste0(ctx$graph, ".raw")
+  if (dir.exists(raw)) {
+    meta <- read.delim(file.path(raw, "meta.tsv"))
+    list(n = meta$n, directed = meta$directed != 0, waves = meta$waves,
+         edges = read.delim(file.path(raw, "edges.tsv")), nodes = read.delim(file.path(raw, "nodes.tsv"), check.names = FALSE))
+  } else {
+    e <- matrix(ctx$edges + 1L, ncol = 2, byrow = TRUE)
+    list(n = ctx$n, directed = ctx$directed, waves = 1L, edges = data.frame(wave = 1L, from = e[, 1], to = e[, 2]), nodes = data.frame())
+  }
+}
+# One wave as a `network` object (vertex attributes from the node table).
+make_network <- function(tb, wave = 1L) {
+  e <- tb$edges[tb$edges$wave == wave, c("from", "to")]
+  nw <- network::network.initialize(tb$n, directed = tb$directed, loops = FALSE)
+  nw <- network::add.edges(nw, as.integer(e$from), as.integer(e$to))
+  for (a in names(tb$nodes)) network::set.vertex.attribute(nw, a, tb$nodes[[a]])
+  nw
+}
 # Raise from a call to mark the measure as not available in the tool.
 unsupported <- function(why = "") stop("unsupported: ", why, call. = FALSE)

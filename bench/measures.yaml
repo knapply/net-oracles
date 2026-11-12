@@ -95,3 +95,83 @@ measures:
       sna: "closeness(el, cmode='undirected')"
       nx-parallel: "closeness_centrality(G, backend='parallel')"
       graphblas: "closeness_centrality(G, backend='graphblas')"
+  network_build:
+    label: "network build from edge-list frame"
+    reps: 3
+    model: true
+    what: Construct the tool's network object from a two-column edge list data frame (nodes numbered 1..n, isolates kept).
+    calls:
+      network: "as.network(data.frame(from, to), directed = d, vertices = data.frame(vertex.names = 1:n))"
+  network_frame:
+    label: "network to edge-list frame"
+    reps: 3
+    model: true
+    what: Convert the network object back to an edge-list data frame.
+    calls:
+      network: "as.data.frame(nw)"
+  ergm_mple:
+    label: "ERGM MPLE"
+    reps: 3
+    model: true
+    what: "Maximum pseudo-likelihood fit of the model's terms. Digest: coef, se, iterations."
+    calls:
+      ergm: "ergm(nw ~ terms, estimate = 'MPLE')"
+  ergm_mcmle:
+    label: "ERGM MCMC-MLE"
+    reps: 1
+    model: true
+    what: "MCMC maximum likelihood fit from the MPLE start, seeded. Digest: coef, se, iterations (MCMLE rounds), mcmc_steps, converged."
+    calls:
+      ergm: "ergm(nw ~ terms, control = control.ergm(seed, MCMC.burnin, MCMC.interval, MCMC.samplesize, MCMLE.maxit, parallel = 0))"
+  latent_fit:
+    label: "latent space fit (d = 2)"
+    reps: 1
+    model: true
+    what: "Euclidean latent space model with two dimensions. latentnet samples the posterior (digest: intercept mean and sd); an engine point estimate has no standard errors."
+    calls:
+      latentnet: "ergmm(nw ~ euclidean(d = 2), control = ergmm.control(burnin, sample.size, interval), seed)"
+  tergm_fit:
+    label: "TERGM formation and persistence fit"
+    reps: 1
+    model: true
+    what: Separable temporal fit on the three-wave panel (Sampson monks).
+    calls:
+      tergm: "tergm(list(w1, w2, w3) ~ Form(~edges + mutual) + Persist(~edges + mutual), estimate = 'CMLE')"
+  siena_mom:
+    label: "SAOM method of moments"
+    reps: 1
+    model: true
+    what: "siena07 on three waves of friendship with drinking behaviour, nsub and n3 from controls.siena. Digest: coef, se, max convergence ratio, phase iterations."
+    calls:
+      rsiena: "siena07(sienaAlgorithm(nsub, n3, seed), data, effects, batch = TRUE)"
+
+# ---- Statistical-model tasks (suites statnet-small, statnet-ladder) ----------------------------
+# A measure with `model: true` runs only on graphs whose model lists it under `tasks`; every other
+# measure skips graphs that have a model. The runner writes the model and the controls to PATH.model
+# for the adapters. Seeds and control settings are fixed here; a fit is one run (reps 1) because the
+# MCMC chain is seeded. Digest keys `coef` and `se` (in term order) are compared by the runner as a
+# tolerance in standard errors (agreement, below), not for equality.
+agreement:
+  # max |coef_a - coef_b| / max(se_a, se_b) allowed between two tools
+  ergm_mple: 0.05
+  ergm_mcmle: 3.0
+  latent_fit: 3.0
+  tergm_fit: 3.0
+  siena_mom: 3.0
+controls:
+  seed: 20261028
+  mple: {maxit: 100, tol: 1e-10}
+  mcmle: {burnin: 16384, interval: 1024, samplesize: 2048, maxit: 30, chains: 1}
+  latent: {dim: 2, burnin: 10000, samplesize: 4000, interval: 10}
+  tergm: {estimate: CMLE}
+  siena: {nsub: 4, n3: 1000, n3_small: 200, nbr_nodes: 1}
+models:
+  florentine: {terms: [edges, "kstar(2)", "gwesp(0.5)"], tasks: [network_build, network_frame, ergm_mple, ergm_mcmle, latent_fit]}
+  mesa: {terms: [edges, "nodematch(Grade)", "gwesp(0.25)"], tasks: [network_build, network_frame, ergm_mple, ergm_mcmle, latent_fit]}
+  # collaboration ties are undirected, so no mutual term: edges + same practice + gwesp
+  lazega: {terms: [edges, "nodematch(Practice)", "gwesp(0.25)"], tasks: [network_build, network_frame, ergm_mple, ergm_mcmle, latent_fit]}
+  ladder: {terms: [edges, "gwesp(0.25)"], tasks: [network_build, network_frame, ergm_mple, ergm_mcmle]}
+  sampson: {terms: [edges, mutual], tasks: [tergm_fit]}   # three waves, formation (edges + mutual) and persistence (edges + mutual)
+  s50: {effects: [outdegree, reciprocity, transTrip, cycle3, "egoX(drinking)", "altX(drinking)", "simX(drinking)", "linear(drinking)", "quad(drinking)", "avAlt(drinking, friendship)"],
+        tasks: [siena_mom]}
+  # van de Bunt freshmen data: not shipped in the RSiena package, so not run.

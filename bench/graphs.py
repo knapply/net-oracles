@@ -124,12 +124,47 @@ def download(spec: dict, path: str, allow_unpinned: bool = False) -> dict:
             "source": f"{spec['url']} (sha256 {got[:16]}), self-loops and duplicates dropped, ids renumbered"}
 
 
+def generate_gnm(nodes: int, degree: float, seed: int, path: str) -> dict:
+    """Uniform random undirected graph on `nodes` nodes with about nodes*degree/2 edges (for model fits)."""
+    import numpy as np
+    rng = np.random.Generator(np.random.PCG64(seed))
+    m = int(nodes * degree / 2)
+    u, v = simple_undirected(nodes, rng.integers(0, nodes, 2 * m), rng.integers(0, nodes, 2 * m), rng)
+    u, v = u[:m], v[:m]
+    common.write_edges(path, nodes, False, u, v)
+    return {"nodes": int(nodes), "edges": int(len(u)), "directed": False,
+            "source": f"uniform random graph, {nodes} nodes, about {degree:g} average degree, seed {seed}; duplicates and self-loops dropped"}
+
+
+def export_rdata(dataset: str, path: str) -> dict:
+    """Export a dataset of an R package (data/export_statnet.R) and write wave 1 as an edge file; the
+    waves, ties and node attributes stay next to it in PATH.raw/ for adapters that read tables."""
+    import subprocess
+    import numpy as np
+    raw = path + ".raw"
+    here = os.path.dirname(os.path.abspath(__file__))
+    subprocess.run(["Rscript", os.path.join(here, "data", "export_statnet.R"), dataset, raw], check=True)
+    meta = open(os.path.join(raw, "meta.tsv")).read().split("\n")[1].split("\t")
+    n, directed = int(meta[0]), bool(int(meta[1]))
+    rows = [ln.split("\t") for ln in open(os.path.join(raw, "edges.tsv")).read().splitlines()[1:]]
+    w1 = np.array([(int(r[1]) - 1, int(r[2]) - 1) for r in rows if r[0] == "1"], dtype=np.int64).reshape(-1, 2)
+    w1 = w1[w1[:, 0] != w1[:, 1]]
+    if not directed:
+        w1 = np.unique(np.sort(w1, axis=1), axis=0)
+    common.write_edges(path, n, directed, w1[:, 0], w1[:, 1])
+    return {"nodes": n, "edges": int(len(w1)), "directed": directed, "source": f"R dataset {dataset}, wave 1 as the edge file"}
+
+
 def materialize(name: str, spec: dict, seed: int, cache: str, allow_unpinned: bool = False) -> str:
     """Path of graph `name` in `cache`, built on first use (with PATH.sources, the search sources)."""
     os.makedirs(cache, exist_ok=True)
     path = os.path.join(cache, name + ".edges")
     if not os.path.exists(path):
-        if "family" in spec:
+        if spec.get("family") == "gnm":
+            info = generate_gnm(int(spec["nodes"]), float(spec["degree"]), seed + int(spec["nodes"]), path)
+        elif spec.get("family") == "rdata":
+            info = export_rdata(spec["dataset"], path)
+        elif "family" in spec:
             fam, scale = spec["family"], int(spec["scale"])
             info = generate(fam, scale, seed + scale, path)
         else:

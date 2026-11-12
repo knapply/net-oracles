@@ -151,6 +151,7 @@ def main():
 
     meas, gr = load_yaml("measures.yaml"), load_yaml("graphs.yaml")
     adapters = discover(a.adapters_dir)
+    extra_tools = apply_overlays(a.adapters_dir, meas)
     if a.list:
         print("adapters:", ", ".join(sorted(adapters)))
         print("suites:", ", ".join(gr["suites"]))
@@ -162,13 +163,15 @@ def main():
         missing = [t for t in a.tools.split(",") if t not in adapters]
         if missing:
             sys.exit("no adapter for: " + ", ".join(missing))
-    tools = a.tools.split(",") if a.tools else sorted(adapters)
     suite = gr["suites"][a.suite] if a.suite else {"tag": "adhoc", "budget": 240, "graphs": (a.graphs or "").split(",")}
+    if a.graphs and a.suite:  # a subset of the suite's graphs, keeping its tools and measures
+        suite = dict(suite, graphs=a.graphs.split(","))
+    tools = a.tools.split(",") if a.tools else [t for t in suite.get("tools", sorted(adapters)) + (extra_tools if "tools" in suite else []) if t in adapters]
     if not a.suite and not a.graphs:
         sys.exit("give --suite or --graphs")
     tag = a.suite_tag or suite["tag"]
     budget = a.budget or suite["budget"]
-    ids = a.measures.split(",") if a.measures else list(meas["measures"])
+    ids = a.measures.split(",") if a.measures else suite.get("measures", list(meas["measures"]))
     env = environment()
     if a.env_out:
         os.makedirs(os.path.dirname(os.path.abspath(a.env_out)), exist_ok=True)
@@ -186,17 +189,23 @@ def main():
     print(f"suite {a.suite or a.graphs} tag {tag}: {len(tools)} tools, {len(suite['graphs'])} graphs, "
           f"{len(ids)} measures, budget {budget:g} s; writing {a.out}", flush=True)
     digests = {}
+    fits = {}
     counts = {}
     for gname in suite["graphs"]:
         spec = gr["graphs"][gname]
         path = G.materialize(gname, spec, gr["seed"], a.cache, a.allow_unpinned)
         nodes, _ = G.common.read_header(path)
         edges = (os.path.getsize(path) - 24) // 8
+        model = meas.get("models", {}).get(spec.get("model")) if spec.get("model") else None
+        if model:
+            write_model(path, model, meas)
         for tool in tools:
             cmd0 = command(tool, adapters[tool])
             prepared = False
             for mid in ids:
                 m = meas["measures"][mid]
+                if bool(m.get("model")) != bool(model) or (model and mid not in model.get("tasks", [])):
+                    continue  # model tasks run on model graphs only, and the other way round
                 lim = meas.get("limits", {})
                 if edges > lim.get("max_edges", {}).get(tool, float("inf")):
                     continue
@@ -241,14 +250,86 @@ def main():
                     csv_f.flush()
                 if status == "ok" and row.get("digest"):
                     digests.setdefault((gname, mid), []).append((row["tool"], row["digest"]))
+                    if "coef" in row["digest"]:
+                        fits.setdefault((gname, mid), []).append((row["tool"], row["digest"]))
                 print(f"  {gname:9} {mid:12} {tool:12} {status:11} {fmt(med):>10} s  {fmt(peak):>8} MB", flush=True)
+    for (gname, mid), items in fits.items():
+        for line in agreement(items, meas.get("agreement", {}).get(mid, 3.0)):
+            print(f"AGREEMENT {gname} {mid}: {line}", flush=True)
+            print(json.dumps({"agreement": {"graph": gname, "measure_id": mid, "text": line}}), file=raw_f, flush=True)
     for (gname, mid), items in digests.items():
-        for k in {k for _, d in items for k in d}:
+        for k in {k for _, d in items for k in d if k not in ("coef", "se")}:
             vals = [(t, d[k]) for t, d in items if k in d]
             if len(vals) > 1 and any(not close(vals[0][1], v) for _, v in vals[1:]):
                 print(f"DIGEST DIFFERS {gname} {mid} {k}: " + ", ".join(f"{t}={v}" for t, v in vals), file=sys.stderr)
     print("done: " + ", ".join(f"{k} {v}" for k, v in sorted(counts.items())), flush=True)
     return 0
+
+
+def apply_overlays(dirs, meas):
+    """An adapters directory may hold measures.overlay.yaml: `calls: {measure_id: {tool: text}}` documents the
+    calls of its tools, and `statnet_tools: [names]` adds them to the suites that list their own tools.
+    Returns the added tool names."""
+    added = []
+    for d in dirs:
+        p = os.path.join(os.path.abspath(d), "measures.overlay.yaml")
+        if not os.path.exists(p):
+            continue
+        with open(p) as f:
+            ov = yaml.safe_load(f) or {}
+        for mid, calls in (ov.get("calls") or {}).items():
+            meas["measures"][mid].setdefault("calls", {}).update(calls)
+        added += ov.get("suite_tools") or []
+    return added
+
+
+def flatten(d, prefix=""):
+    """{'a': {'b': [1, 2]}} -> {'a.b': '1;2'}: the settings of a model file."""
+    out = {}
+    for k, v in d.items():
+        key = prefix + str(k)
+        if isinstance(v, dict):
+            out.update(flatten(v, key + "."))
+        else:
+            out[key] = ";".join(map(str, v)) if isinstance(v, list) else str(v)
+    return out
+
+
+def write_model(path, model, meas):
+    """PATH.model: the model and the controls of a statistical task, one key<TAB>value line each."""
+    kv = flatten(model) | flatten(meas.get("controls", {}), "controls.")
+    kv.pop("tasks", None)
+    with open(path + ".model", "w") as f:
+        for k, v in kv.items():
+            f.write(f"{k}\t{v}\n")
+
+
+def agreement(items, tol):
+    """Compare fits pairwise: max |coef_a - coef_b| / max(se_a, se_b) over terms, against tol (in standard
+    errors, not exact equality). Fits without standard errors are compared in absolute terms and said so."""
+    lines = []
+    ref_tool, ref = items[0]
+    for tool, d in items[1:]:
+        a, b = ref.get("coef"), d.get("coef")
+        if not isinstance(a, list):
+            a = [a]
+        if not isinstance(b, list):
+            b = [b]
+        if len(a) != len(b):
+            lines.append(f"{ref_tool} vs {tool}: {len(a)} vs {len(b)} coefficients, not compared")
+            continue
+        se_a, se_b = ref.get("se") or [], d.get("se") or []
+        se_a = se_a if isinstance(se_a, list) else [se_a]
+        se_b = se_b if isinstance(se_b, list) else [se_b]
+        z = []
+        for i, (x, y) in enumerate(zip(a, b)):
+            ses = [s for s in ((se_a[i] if i < len(se_a) else None), (se_b[i] if i < len(se_b) else None)) if isinstance(s, (int, float)) and s > 0]
+            z.append(abs(x - y) / max(ses) if ses else float("nan"))
+        known = [v for v in z if v == v]
+        worst = max(known) if known else float("nan")
+        verdict = "agree" if known and worst <= tol else ("no standard errors" if not known else "DIFFER")
+        lines.append(f"{ref_tool} vs {tool}: max {worst:.3g} standard errors (tolerance {tol:g}): {verdict}")
+    return lines
 
 
 def close(x, y, rel=1e-4):

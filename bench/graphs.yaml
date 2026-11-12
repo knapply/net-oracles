@@ -34,6 +34,22 @@ graphs:
   ca-grqc:
     download: {url: "https://snap.stanford.edu/data/ca-GrQc.txt.gz", sha256: "", directed: false}
 
+  # Model fits (measures.yaml: models). Datasets come from R packages (data/export_statnet.R).
+  florentine: {family: rdata, dataset: flomarriage, model: florentine}
+  mesa:       {family: rdata, dataset: faux.mesa.high, model: mesa}
+  lazega:     {family: rdata, dataset: lazega, model: lazega}
+  sampson:    {family: rdata, dataset: samplk, model: sampson}
+  s50:        {family: rdata, dataset: s50, model: s50}
+  # Size ladder of uniform random graphs, average degree 6, model edges + gwesp(0.25).
+  gnm50:   {family: gnm, nodes: 50,   degree: 6, model: ladder}
+  gnm100:  {family: gnm, nodes: 100,  degree: 6, model: ladder}
+  gnm200:  {family: gnm, nodes: 200,  degree: 6, model: ladder}
+  gnm400:  {family: gnm, nodes: 400,  degree: 6, model: ladder}
+  gnm800:  {family: gnm, nodes: 800,  degree: 6, model: ladder}
+  gnm1600: {family: gnm, nodes: 1600, degree: 6, model: ladder}
+  gnm3200: {family: gnm, nodes: 3200, degree: 6, model: ladder}
+  gnm6400: {family: gnm, nodes: 6400, degree: 6, model: ladder}
+
 # tag: the `suite` column of the rows written to results.csv (--suite-tag overrides it).
 # budget: seconds per (tool, graph, measure) before the process is killed (status over-budget).
 suites:
@@ -45,3 +61,10 @@ suites:
                                                            kron16, urand16, road16, lfr16, kron18, urand18, road18, lfr18]}
   gap-reduced:   {tag: gap-kernels,  budget: 120,  graphs: [kron20, urand20]}
   gap-full:      {tag: gap-kernels,  budget: 600,  graphs: [kron22, urand22]}
+  # Statistical-model suites: `measures` and `tools` replace the defaults (all measures, all adapters).
+  statnet-small: {tag: statnet, budget: 240, tools: [network, ergm, latentnet, tergm, rsiena],
+                  measures: [network_build, network_frame, ergm_mple, ergm_mcmle, latent_fit, tergm_fit, siena_mom],
+                  graphs: [florentine, mesa, lazega, sampson, s50, gnm50, gnm100, gnm200]}
+  statnet-ladder: {tag: statnet, budget: 240, tools: [network, ergm],
+                   measures: [network_build, network_frame, ergm_mple, ergm_mcmle],
+                   graphs: [gnm50, gnm100, gnm200, gnm400, gnm800, gnm1600, gnm3200, gnm6400]}
