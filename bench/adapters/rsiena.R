@@ -23,9 +23,9 @@ bench_main(
   calls = list(
     siena_mom = function(G, ctx) {
       m <- G$model
-      alg <- sienaAlgorithm(nsub = mnum(m, "controls.siena.nsub"), n3 = mnum(m, "controls.siena.n3"), seed = mnum(m, "controls.seed"),
-                            projname = tempfile("siena"), useStdInits = FALSE, nbrNodes = 1)
-      ans <- siena07(alg, data = G$data, effects = G$effects, batch = TRUE, verbose = FALSE, silent = TRUE, returnDeps = FALSE)
+      alg <- sienaAlgorithmCreate(nsub = mnum(m, "controls.siena.nsub"), n3 = mnum(m, "controls.siena.n3"), seed = mnum(m, "controls.seed"),
+                            projname = tempfile("siena"), useStdInits = FALSE)
+      ans <- siena07(alg, data = G$data, effects = G$effects, batch = TRUE, verbose = FALSE, silent = TRUE, returnDeps = FALSE, nbrNodes = 1)
       ph <- function(x) if (is.null(x)) NA_real_ else as.numeric(x)[1]
       fit_digest(ans$theta, ans$se, tconv_max = ph(ans$tconv.max), converged = as.numeric(isTRUE(ans$OK)),
                  phase3_iterations = ph(nrow(ans$sf)), n = ph(ans$n), fields = paste(names(ans), collapse = " "))

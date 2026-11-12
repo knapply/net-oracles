@@ -25,7 +25,7 @@ bench_main(
       fit <- ergm(mformula(m, "nw"), control = ctl_mcmle(m))
       its <- as.numeric(fit$iterations)
       steps <- its * (mnum(m, "controls.mcmle.burnin") + mnum(m, "controls.mcmle.samplesize") * mnum(m, "controls.mcmle.interval"))
-      fit_digest(coef(fit), se_of(fit), iterations = its, mcmc_steps = steps, converged = as.numeric(isTRUE(fit$converged)), terms = names(coef(fit)))
+      fit_digest(coef(fit), se_of(fit), iterations = its, mcmc_steps = steps, converged = if (is.null(fit$converged)) NA_real_ else as.numeric(isTRUE(fit$converged)), terms = names(coef(fit)))
     }
   )
 )
