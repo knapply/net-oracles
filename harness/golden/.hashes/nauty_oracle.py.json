@@ -1,5 +1,5 @@
 {
- "inputs": "a855ee672cdfa5fb0b348ab4b0ac57e0fc27072bc498e18a895fa0c61794a7cd",
+ "inputs": "db23b66f8dc2a9c94e9a7fc468ae18de60b1c25b6ddf477fe91d631b733a92a1",
  "oracles": [
   "nauty",
   "networkx"

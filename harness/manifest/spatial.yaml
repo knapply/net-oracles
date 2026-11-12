@@ -1,0 +1,434 @@
+# Geospatial functions with a third coordinate and Cartesian spaces of one
+# or more dimensions: edge lengths, proximity networks (within a distance,
+# k nearest neighbours) and group geometry. Format: see ../README.md.
+#
+# The fixtures carry no coordinates, so the oracles and the engine runner
+# derive them from the fixture size by the rule in
+# oracles/spatial_points.py (repeated in bindings/spatial.py):
+#   crs: lonlat | planar | cartesian
+#   dim: number of coordinate columns (lonlat 2 or 3, the third a height in
+#        radius units; planar 2 or 3; cartesian 1 or more)
+#   height: surface (default; sqrt(great_circle^2 + dz^2)) | chord
+#           (straight line between the points on the sphere of radius R + h)
+#   metric: euclidean | manhattan | chebyshev | minkowski (cartesian only), p
+#   r / k: within a distance (<=) / the k nearest other points
+#   partition: mod3
+# Ties, for every oracle: a pair at distance exactly r is within; neighbours
+# at equal distance rank by node index. Edge lists have one line per edge:
+# from, to, distance; group geometry one line per group: size, centroid
+# (one value per column), mean distance, root mean square distance.
+#
+# Oracle names: `definition` is spatial_definition_oracle.py (exact or
+# 60-digit decimal arithmetic), `scipy` spatial_scipy_oracle.py (scipy.spatial
+# distance functions and cKDTree as black boxes; the tie rules applied to
+# its output).
+
+spatial_edge_lengths_ll3_surface:
+  params: {fn: spatial_edge_lengths, crs: lonlat, dim: 3, height: surface}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat with height, surface distance sqrt(great_circle^2 + dz^2): length of every edge between its endpoints, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat with height, surface distance sqrt(great_circle^2 + dz^2): length of every edge between its endpoints; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_ll3_surface:
+  params: {fn: spatial_proximity, crs: lonlat, dim: 3, height: surface, r: 3000000.0}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat with height, surface distance sqrt(great_circle^2 + dz^2): every pair (i < j) within r, one line per pair, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat with height, surface distance sqrt(great_circle^2 + dz^2): every pair (i < j) within r, one line per pair; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_knn_ll3_surface:
+  params: {fn: spatial_proximity, crs: lonlat, dim: 3, height: surface, k: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat with height, surface distance sqrt(great_circle^2 + dz^2): the 3 nearest other points of each point, ties by index, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat with height, surface distance sqrt(great_circle^2 + dz^2): the 3 nearest other points of each point, ties by index; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_group_geometry_ll3_surface:
+  params: {fn: spatial_group_geometry, crs: lonlat, dim: 3, height: surface, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat with height, surface distance sqrt(great_circle^2 + dz^2): size, centroid, mean and root mean square distance per group (node %% 3), evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat with height, surface distance sqrt(great_circle^2 + dz^2): size, centroid, mean and root mean square distance per group (node %% 3); scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_edge_lengths_ll3_chord:
+  params: {fn: spatial_edge_lengths, crs: lonlat, dim: 3, height: chord}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat with height, straight-line (chord) distance on radius R + h: length of every edge between its endpoints, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat with height, straight-line (chord) distance on radius R + h: length of every edge between its endpoints; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_ll3_chord:
+  params: {fn: spatial_proximity, crs: lonlat, dim: 3, height: chord, r: 3000000.0}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat with height, straight-line (chord) distance on radius R + h: every pair (i < j) within r, one line per pair, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat with height, straight-line (chord) distance on radius R + h: every pair (i < j) within r, one line per pair; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_knn_ll3_chord:
+  params: {fn: spatial_proximity, crs: lonlat, dim: 3, height: chord, k: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat with height, straight-line (chord) distance on radius R + h: the 3 nearest other points of each point, ties by index, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat with height, straight-line (chord) distance on radius R + h: the 3 nearest other points of each point, ties by index; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_group_geometry_ll3_chord:
+  params: {fn: spatial_group_geometry, crs: lonlat, dim: 3, height: chord, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat with height, straight-line (chord) distance on radius R + h: size, centroid, mean and root mean square distance per group (node %% 3), evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat with height, straight-line (chord) distance on radius R + h: size, centroid, mean and root mean square distance per group (node %% 3); scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_edge_lengths_ll2_chord:
+  params: {fn: spatial_edge_lengths, crs: lonlat, dim: 2, height: chord}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat without height, chord distance: length of every edge between its endpoints, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat without height, chord distance: length of every edge between its endpoints; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_ll2_chord:
+  params: {fn: spatial_proximity, crs: lonlat, dim: 2, height: chord, r: 3000000.0}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat without height, chord distance: every pair (i < j) within r, one line per pair, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat without height, chord distance: every pair (i < j) within r, one line per pair; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_knn_ll2_chord:
+  params: {fn: spatial_proximity, crs: lonlat, dim: 2, height: chord, k: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat without height, chord distance: the 3 nearest other points of each point, ties by index, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat without height, chord distance: the 3 nearest other points of each point, ties by index; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_group_geometry_ll2_chord:
+  params: {fn: spatial_group_geometry, crs: lonlat, dim: 2, height: chord, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat without height, chord distance: size, centroid, mean and root mean square distance per group (node %% 3), evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "lonlat without height, chord distance: size, centroid, mean and root mean square distance per group (node %% 3); scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_edge_lengths_pl3:
+  params: {fn: spatial_edge_lengths, crs: planar, dim: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "planar x, y with z as a third Euclidean axis: length of every edge between its endpoints, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "planar x, y with z as a third Euclidean axis: length of every edge between its endpoints; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_pl3:
+  params: {fn: spatial_proximity, crs: planar, dim: 3, r: 5}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "planar x, y with z as a third Euclidean axis: every pair (i < j) within r, one line per pair, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "planar x, y with z as a third Euclidean axis: every pair (i < j) within r, one line per pair; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_knn_pl3:
+  params: {fn: spatial_proximity, crs: planar, dim: 3, k: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "planar x, y with z as a third Euclidean axis: the 3 nearest other points of each point, ties by index, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "planar x, y with z as a third Euclidean axis: the 3 nearest other points of each point, ties by index; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_group_geometry_pl3:
+  params: {fn: spatial_group_geometry, crs: planar, dim: 3, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "planar x, y with z as a third Euclidean axis: size, centroid, mean and root mean square distance per group (node %% 3), evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "planar x, y with z as a third Euclidean axis: size, centroid, mean and root mean square distance per group (node %% 3); scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_edge_lengths_c1:
+  params: {fn: spatial_edge_lengths, crs: cartesian, dim: 1, metric: euclidean}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "one-dimensional Cartesian: length of every edge between its endpoints, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "one-dimensional Cartesian: length of every edge between its endpoints; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_c1:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 1, metric: euclidean, r: 2}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "one-dimensional Cartesian: every pair (i < j) within r, one line per pair, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "one-dimensional Cartesian: every pair (i < j) within r, one line per pair; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_knn_c1:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 1, metric: euclidean, k: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "one-dimensional Cartesian: the 3 nearest other points of each point, ties by index, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "one-dimensional Cartesian: the 3 nearest other points of each point, ties by index; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_group_geometry_c1:
+  params: {fn: spatial_group_geometry, crs: cartesian, dim: 1, metric: euclidean, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "one-dimensional Cartesian: size, centroid, mean and root mean square distance per group (node %% 3), evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "one-dimensional Cartesian: size, centroid, mean and root mean square distance per group (node %% 3); scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_edge_lengths_c3_manhattan:
+  params: {fn: spatial_edge_lengths, crs: cartesian, dim: 3, metric: manhattan}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "three-dimensional Manhattan: length of every edge between its endpoints, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "three-dimensional Manhattan: length of every edge between its endpoints; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_c3_manhattan:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 3, metric: manhattan, r: 6}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "three-dimensional Manhattan: every pair (i < j) within r, one line per pair, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "three-dimensional Manhattan: every pair (i < j) within r, one line per pair; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_knn_c3_manhattan:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 3, metric: manhattan, k: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "three-dimensional Manhattan: the 3 nearest other points of each point, ties by index, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "three-dimensional Manhattan: the 3 nearest other points of each point, ties by index; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_group_geometry_c3_manhattan:
+  params: {fn: spatial_group_geometry, crs: cartesian, dim: 3, metric: manhattan, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "three-dimensional Manhattan: size, centroid, mean and root mean square distance per group (node %% 3), evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "three-dimensional Manhattan: size, centroid, mean and root mean square distance per group (node %% 3); scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_edge_lengths_c5_chebyshev:
+  params: {fn: spatial_edge_lengths, crs: cartesian, dim: 5, metric: chebyshev}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "five-dimensional Chebyshev: length of every edge between its endpoints, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "five-dimensional Chebyshev: length of every edge between its endpoints; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_c5_chebyshev:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 5, metric: chebyshev, r: 4}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "five-dimensional Chebyshev: every pair (i < j) within r, one line per pair, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "five-dimensional Chebyshev: every pair (i < j) within r, one line per pair; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_knn_c5_chebyshev:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 5, metric: chebyshev, k: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "five-dimensional Chebyshev: the 3 nearest other points of each point, ties by index, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "five-dimensional Chebyshev: the 3 nearest other points of each point, ties by index; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_group_geometry_c5_chebyshev:
+  params: {fn: spatial_group_geometry, crs: cartesian, dim: 5, metric: chebyshev, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "five-dimensional Chebyshev: size, centroid, mean and root mean square distance per group (node %% 3), evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "five-dimensional Chebyshev: size, centroid, mean and root mean square distance per group (node %% 3); scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_edge_lengths_c4_p3:
+  params: {fn: spatial_edge_lengths, crs: cartesian, dim: 4, metric: minkowski, p: 3.0}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "four-dimensional Minkowski with p = 3: length of every edge between its endpoints, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "four-dimensional Minkowski with p = 3: length of every edge between its endpoints; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_c4_p3:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 4, metric: minkowski, p: 3.0, r: 6}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "four-dimensional Minkowski with p = 3: every pair (i < j) within r, one line per pair, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "four-dimensional Minkowski with p = 3: every pair (i < j) within r, one line per pair; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_knn_c4_p3:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 4, metric: minkowski, p: 3.0, k: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "four-dimensional Minkowski with p = 3: the 3 nearest other points of each point, ties by index, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "four-dimensional Minkowski with p = 3: the 3 nearest other points of each point, ties by index; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_group_geometry_c4_p3:
+  params: {fn: spatial_group_geometry, crs: cartesian, dim: 4, metric: minkowski, p: 3.0, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "four-dimensional Minkowski with p = 3: size, centroid, mean and root mean square distance per group (node %% 3), evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "four-dimensional Minkowski with p = 3: size, centroid, mean and root mean square distance per group (node %% 3); scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_edge_lengths_c2_p1_5:
+  params: {fn: spatial_edge_lengths, crs: cartesian, dim: 2, metric: minkowski, p: 1.5}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "two-dimensional Minkowski with p = 1.5: length of every edge between its endpoints, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "two-dimensional Minkowski with p = 1.5: length of every edge between its endpoints; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_c2_p1_5:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 2, metric: minkowski, p: 1.5, r: 3.5}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "two-dimensional Minkowski with p = 1.5: every pair (i < j) within r, one line per pair, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "two-dimensional Minkowski with p = 1.5: every pair (i < j) within r, one line per pair; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_knn_c2_p1_5:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 2, metric: minkowski, p: 1.5, k: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "two-dimensional Minkowski with p = 1.5: the 3 nearest other points of each point, ties by index, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "two-dimensional Minkowski with p = 1.5: the 3 nearest other points of each point, ties by index; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_group_geometry_c2_p1_5:
+  params: {fn: spatial_group_geometry, crs: cartesian, dim: 2, metric: minkowski, p: 1.5, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "two-dimensional Minkowski with p = 1.5: size, centroid, mean and root mean square distance per group (node %% 3), evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "two-dimensional Minkowski with p = 1.5: size, centroid, mean and root mean square distance per group (node %% 3); scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_edge_lengths_c2_p1:
+  params: {fn: spatial_edge_lengths, crs: cartesian, dim: 2, metric: minkowski, p: 1.0}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "Minkowski with p = 1 (the Manhattan distance): length of every edge between its endpoints, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "Minkowski with p = 1 (the Manhattan distance): length of every edge between its endpoints; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_c2_p1:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 2, metric: minkowski, p: 1.0, r: 4}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "Minkowski with p = 1 (the Manhattan distance): every pair (i < j) within r, one line per pair, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "Minkowski with p = 1 (the Manhattan distance): every pair (i < j) within r, one line per pair; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_knn_c2_p1:
+  params: {fn: spatial_proximity, crs: cartesian, dim: 2, metric: minkowski, p: 1.0, k: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 0}
+  oracles:
+    definition:
+      call: "Minkowski with p = 1 (the Manhattan distance): the 3 nearest other points of each point, ties by index, evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "Minkowski with p = 1 (the Manhattan distance): the 3 nearest other points of each point, ties by index; scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_group_geometry_c2_p1:
+  params: {fn: spatial_group_geometry, crs: cartesian, dim: 2, metric: minkowski, p: 1.0, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Minkowski with p = 1 (the Manhattan distance): size, centroid, mean and root mean square distance per group (node %% 3), evaluated from the definition in exact or 60-digit decimal arithmetic"
+    scipy:
+      call: "Minkowski with p = 1 (the Manhattan distance): size, centroid, mean and root mean square distance per group (node %% 3); scipy.spatial (cKDTree.query_pairs, cKDTree.query with k = n re-ranked by (distance, index), scipy.spatial.distance functions for lengths and dispersion)"
+
+spatial_within_ll3_surface_tie:
+  params: {fn: spatial_proximity, crs: lonlat, dim: 3, height: surface, r: 100000.0}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-7}
+  oracles:
+    definition:
+      call: "lonlat with height, surface distance, r = 100000: a copied location sits exactly 100000 above its original, so the pair is at distance exactly r and is within (<=); evaluated from the definition in 60-digit decimal arithmetic"
+    scipy:
+      call: "the same pairs from the surface distance sqrt(gc^2 + dz^2) with gc from numpy's atan2 of the cross and dot products of the unit vectors and dz from scipy.spatial.distance.cdist (cityblock) on the heights; within means <= r"
