@@ -1,0 +1,134 @@
+# Planarity measures (registry measures is_planar, planar_embedding,
+# kuratowski_subgraph, is_outerplanar, planar_layout): the left-right test
+# (de Fraysseix and Rosenstiehl 1982, `defraysseix1982depth`; Brandes 2009,
+# `brandes2009left`), rotation systems, Kuratowski certificates
+# (`kuratowski1930probleme`), outerplanarity by the apex graph (Chartrand and
+# Harary 1967, `chartrand1967planar`) and the de Fraysseix, Pach and Pollack
+# straight-line drawing (`defraysseix1990draw`, `chrobak1995linear`). Every
+# entry reads the simple undirected graph underlying the fixture; runners and
+# encodings: ../bindings/planarity.py, checkers: ../planarity_check.py.
+#
+# The definition oracle decides planarity by path addition (Demoucron,
+# Malgrange and Pertuiset 1964, `demoucron1964graphes`) on each biconnected
+# block, and expects the properties that every correct embedding, certificate
+# or drawing has: embeddings and drawings are compared by validity (Euler's
+# formula, no crossing, grid bounds), never coordinate by coordinate, except
+# NetworkX's rotation system, which the default convention reproduces.
+# Boost (boyer_myrvold_planarity_test, chrobak_payne_straight_line_drawing)
+# is a black box run through its C++ interface.
+
+pl_planar:
+  params: {fn: pl_planar}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 if every biconnected block of the simple graph embeds by Demoucron-Malgrange-Pertuiset path addition"
+    networkx:
+      call: "nx.is_planar(G)"
+    boost:
+      call: "boyer_myrvold_planarity_test(g) (oracles/system/boost/planarity.cpp)"
+
+pl_embedding:
+  params: {fn: pl_embedding}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (NetworkX's construction picks one of the embeddings)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which planar embedding is returned is defined by NetworkX's left-right construction, which is the engine's default convention
+    networkx:
+      call: "check_planarity(G)[1].get_data(): each node's neighbours clockwise from the leftmost, flat with a count first; [-1] if not planar"
+
+pl_embedding_smallest:
+  params: {fn: pl_embedding_smallest}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (the rotation is NetworkX's, started at each node's smallest neighbour)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which planar embedding is returned is defined by NetworkX's left-right construction
+    networkx:
+      call: "check_planarity(G)[1].get_data() with every node's cyclic list rotated to start at its smallest neighbour; [-1] if not planar"
+
+pl_embedding_valid:
+  params: {fn: pl_embedding_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1] if planar (path addition): an embedding of the simple graph lists each neighbour once at each end and satisfies V - E + F = C + C' (C components, C' with an edge); [-1] if not planar"
+    networkx:
+      call: "[1 if the rotation system of check_planarity(G)[1] lists the neighbours and satisfies Euler's formula], [-1] if not planar"
+    boost:
+      call: "[1 if the rotation system of boyer_myrvold_planarity_test(g) satisfies the same checks], [-1] if not planar (oracles/system/boost/planarity.cpp)"
+
+pl_embedding_darts:
+  params: {fn: pl_embedding_darts}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1, 1, 1] if planar: every dart (2e source end, 2e + 1 target end of input edge e, loops and parallel edges included) once at its node, V - E + F = C + C' for the multigraph, one face of length one per loop; [-1] if not planar"
+    networkx:
+      call: "the dart rotation built from check_planarity(G)[1] by the documented rule (parallel edges together at the lowest edge, reversed at the other end; a loop's darts after the first neighbour), then the same checks, [-1] if not planar"
+
+pl_kuratowski_valid:
+  params: {fn: pl_kuratowski_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1, 1] if not planar (path addition): the returned edges are distinct input edges forming exactly a subdivision of K5 or K3,3 (so a minimal non-planar subgraph) and the reported kind agrees; [-1] if planar"
+    networkx:
+      call: "[1, 1] if nx.get_counterexample(G) is exactly a subdivision of K5 or K3,3 (the same checker applied to NetworkX's subgraph), [-1] if planar"
+    boost:
+      call: "[1, 1] if the kuratowski_subgraph edges of boyer_myrvold_planarity_test form a non-planar subgraph of the input (its isolator does not return a minimal one: pendant paths and extra chords stay), [-1] if planar (oracles/system/boost/planarity.cpp)"
+
+pl_kuratowski_nx:
+  params: {fn: pl_kuratowski_nx}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "no closed form (NetworkX's edge-deletion order picks the subgraph)"
+      undefined_when: [directed, undirected]
+      undefined_reason: which Kuratowski subgraph is found is defined by NetworkX's deletion procedure
+    networkx:
+      call: "sorted edges (u < v) of nx.get_counterexample(G), flat, or [-1] if planar"
+
+pl_outerplanar:
+  params: {fn: pl_outerplanar}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "1 if the simple graph plus a new node joined to every node is planar by path addition (Chartrand and Harary 1967)"
+    networkx:
+      call: "nx.is_planar(G plus an apex node joined to every node)"
+
+pl_outerplanar_valid:
+  params: {fn: pl_outerplanar_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1] if not outerplanar (apex graph not planar by path addition): the certificate edges are exactly a subdivision of K4 or K2,3; [-1] if outerplanar"
+    networkx:
+      call: "[1] if an edge-minimal non-outerplanar subgraph found by deletion with nx.is_planar on the apex graph is exactly a subdivision of K4 or K2,3, [-1] if outerplanar"
+
+pl_layout_valid:
+  params: {fn: pl_layout_valid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[1, 1, 1, 1] if planar: integer points within the (2n - 4) by (n - 2) grid, distinct, no two edges crossing or overlapping and no node on another edge (exact integer orientation tests), the angular order of each node's neighbours equals the returned embedding up to a mirror; [-1] if not planar"
+    networkx:
+      call: "the same four checks on nx.combinatorial_embedding_to_pos(check_planarity(G)[1]) (integer grid positions), [-1] if not planar"
+    boost:
+      call: "the first three checks on chrobak_payne_straight_line_drawing after boyer_myrvold, make_biconnected_planar and make_maximal_planar (Boost recomputes its embedding after augmenting, so the angular check reads 1), [-1] if not planar (oracles/system/boost/planarity.cpp)"
+      undefined_when: [one_node, two_nodes]
+      undefined_reason: Boost's make_maximal_planar and planar_canonical_ordering need a graph of at least three nodes, so the driver draws none
