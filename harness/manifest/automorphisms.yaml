@@ -1,0 +1,266 @@
+# Automorphism group, group order and canonical labeling: the measures
+# automorphism_group, automorphism_count and canonical_labeling (individualization
+# and refinement; McKay and Piperno 2014). Format: see ../README.md; runners,
+# derived inputs and encodings in ../bindings/automorphisms.py.
+#
+# Engine options of the runners:
+#   fn: automorphism   measure (group | count), output (order | orbits | generators),
+#                      colors (none | parity: node v has colour v % 2), edges (simple |
+#                      multiplicity)
+#   fn: canonical      check (relabelings | pairs), colors, edges
+#
+# Encodings: the group order is a list of 16-bit limbs, least significant first
+# (exact in a float); orbits are one label per node (compared as a partition);
+# `generators` is the order recomputed by Schreier-Sims from the engine's own
+# generators once each is checked to be an automorphism and their orbits are the
+# returned orbits ([-1] otherwise): generators are never compared with a tool's,
+# which differ with the numbering of the nodes. The canonical entries compare
+# counts and truth values (1 or 0) because canonical forms are tool specific:
+#   relabelings  [how many of 8 seeded relabelings give the fixture's form]; 8 expected
+#   pairs        [form(fixture) == form(rev(fixture)), form(fixture) == form(perturbed(fixture))],
+#                where the first is a relabeling (1) and the second is isomorphic or not as
+#                the oracle's isomorphism test says
+#
+# Every oracle reads loops as part of a node's colour (their number under
+# `multiplicity`) and ignores weights. nauty and bliss (through igraph) take simple
+# coloured graphs: parallel edges are represented by subdividing each pair with a
+# node coloured by its multiplicity (the group order is unchanged). The definition
+# oracle decides each existence of an automorphism by backtracking over partial maps;
+# NetworkX's isomorphism test is the black box of its oracle.
+
+automorphism_order:
+  params: {fn: automorphism, measure: group, output: order, colors: none, edges: simple}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "|Aut| as the product of the orbit sizes along the nodes: each existence of an automorphism decided by backtracking (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "pynauty.autgrp(Graph(..., vertex_coloring)): generators; PermutationGroup(generators).order() (sympy, exact)"
+    igraph:
+      call: "igraph::count_automorphisms(g, colors)$group_size, an exact decimal string, as 16-bit limbs"
+    networkx:
+      call: "|Aut| as the product of orbit sizes along the nodes, each existence decided by nx.vf2pp_is_isomorphic on copies with fixed nodes labelled"
+
+automorphism_orbits:
+  params: {fn: automorphism, measure: group, output: orbits, colors: none, edges: simple}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "orbits: the nodes c with an automorphism v -> c, by backtracking (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "pynauty.autgrp(Graph(..., vertex_coloring))[3] (orbit of each vertex), original nodes only"
+    igraph:
+      call: "classes of the nodes joined by igraph::automorphism_group(g, colors), original nodes only"
+    networkx:
+      call: "orbits from nx.vf2pp_is_isomorphic (fixed v in one copy, c in the other)"
+
+automorphism_count:
+  params: {fn: automorphism, measure: count, output: order, colors: none, edges: simple}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as automorphism_order: |Aut| from the definition (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "as automorphism_order: sympy order of the pynauty generators"
+    igraph:
+      call: "as automorphism_order: igraph::count_automorphisms(g, colors)$group_size"
+    networkx:
+      call: "as automorphism_order: orbit sizes from nx.vf2pp_is_isomorphic"
+
+automorphism_order_colored:
+  params: {fn: automorphism, measure: group, output: order, colors: parity, edges: simple}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "|Aut| as the product of the orbit sizes along the nodes with node colours v % 2: each existence of an automorphism decided by backtracking (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "pynauty.autgrp(Graph(..., vertex_coloring)): generators; PermutationGroup(generators).order() (sympy, exact), vertex colours v % 2"
+    igraph:
+      call: "igraph::count_automorphisms(g, colors)$group_size, an exact decimal string, as 16-bit limbs, vertex colours v % 2"
+    networkx:
+      call: "|Aut| as the product of orbit sizes along the nodes, each existence decided by nx.vf2pp_is_isomorphic on copies with fixed nodes labelled with node colours v % 2"
+
+automorphism_orbits_colored:
+  params: {fn: automorphism, measure: group, output: orbits, colors: parity, edges: simple}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "orbits: the nodes c with an automorphism v -> c, by backtracking with node colours v % 2 (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "pynauty.autgrp(Graph(..., vertex_coloring))[3] (orbit of each vertex), original nodes only, vertex colours v % 2"
+    igraph:
+      call: "classes of the nodes joined by igraph::automorphism_group(g, colors), original nodes only, vertex colours v % 2"
+    networkx:
+      call: "orbits from nx.vf2pp_is_isomorphic (fixed v in one copy, c in the other) with node colours v % 2"
+
+automorphism_count_colored:
+  params: {fn: automorphism, measure: count, output: order, colors: parity, edges: simple}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as automorphism_order_colored: |Aut| from the definition (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "as automorphism_order_colored: sympy order of the pynauty generators, vertex colours v % 2"
+    igraph:
+      call: "as automorphism_order_colored: igraph::count_automorphisms(g, colors)$group_size, vertex colours v % 2"
+    networkx:
+      call: "as automorphism_order_colored: orbit sizes from nx.vf2pp_is_isomorphic"
+
+automorphism_order_multi:
+  params: {fn: automorphism, measure: group, output: order, colors: none, edges: multiplicity}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "|Aut| as the product of the orbit sizes along the nodes counting parallel edges (edges: multiplicity): each existence of an automorphism decided by backtracking (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "pynauty.autgrp(Graph(..., vertex_coloring)): generators; PermutationGroup(generators).order() (sympy, exact), each pair subdivided by a node coloured by its multiplicity"
+      undefined_when: [directed]
+      undefined_reason: "pynauty autgrp and canon_label do not return on the directed reduction of a multigraph (each pair subdivided by a directed path of two arcs), so no value is produced; the undirected multigraph fixtures are covered"
+    igraph:
+      call: "igraph::count_automorphisms(g, colors)$group_size, an exact decimal string, as 16-bit limbs, each pair subdivided by a node coloured by its multiplicity"
+    networkx:
+      call: "|Aut| as the product of orbit sizes along the nodes, each existence decided by nx.vf2pp_is_isomorphic on copies with fixed nodes labelled counting parallel edges (edges: multiplicity)"
+
+automorphism_orbits_multi:
+  params: {fn: automorphism, measure: group, output: orbits, colors: none, edges: multiplicity}
+  applies_to: any
+  compare: partition
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "orbits: the nodes c with an automorphism v -> c, by backtracking counting parallel edges (edges: multiplicity) (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "pynauty.autgrp(Graph(..., vertex_coloring))[3] (orbit of each vertex), original nodes only, each pair subdivided by a node coloured by its multiplicity"
+      undefined_when: [directed]
+      undefined_reason: "pynauty autgrp and canon_label do not return on the directed reduction of a multigraph (each pair subdivided by a directed path of two arcs), so no value is produced; the undirected multigraph fixtures are covered"
+    igraph:
+      call: "classes of the nodes joined by igraph::automorphism_group(g, colors), original nodes only, each pair subdivided by a node coloured by its multiplicity"
+    networkx:
+      call: "orbits from nx.vf2pp_is_isomorphic (fixed v in one copy, c in the other) counting parallel edges (edges: multiplicity)"
+
+automorphism_count_multi:
+  params: {fn: automorphism, measure: count, output: order, colors: none, edges: multiplicity}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as automorphism_order_multi: |Aut| from the definition (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "as automorphism_order_multi: sympy order of the pynauty generators, each pair subdivided by a node coloured by its multiplicity"
+      undefined_when: [directed]
+      undefined_reason: "pynauty autgrp and canon_label do not return on the directed reduction of a multigraph (each pair subdivided by a directed path of two arcs), so no value is produced; the undirected multigraph fixtures are covered"
+    igraph:
+      call: "as automorphism_order_multi: igraph::count_automorphisms(g, colors)$group_size, each pair subdivided by a node coloured by its multiplicity"
+    networkx:
+      call: "as automorphism_order_multi: orbit sizes from nx.vf2pp_is_isomorphic"
+
+automorphism_generators:
+  params: {fn: automorphism, measure: group, output: generators, colors: none, edges: simple}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "|Aut| from the definition: the engine's generators are accepted when each is an automorphism, their orbits are the engine's orbits and Schreier-Sims on them gives this order (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "as automorphism_order: PermutationGroup(generators).order() on the pynauty generators"
+    igraph:
+      call: "as automorphism_order: igraph::count_automorphisms(g)$group_size"
+    networkx:
+      call: "as automorphism_order: orbit sizes from nx.vf2pp_is_isomorphic"
+
+canonical_relabelings:
+  params: {fn: canonical, check: relabelings, colors: none, edges: simple}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "a canonical form depends on the isomorphism class only: how many of 8 seeded relabelings are isomorphic to the fixture (backtracking), 8 expected (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "how many of 8 seeded relabelings have the fixture's pynauty.certificate and canonical colour order"
+    igraph:
+      call: "how many of 8 seeded relabelings give the fixture's graph under igraph::canonical_permutation (with colours)"
+    networkx:
+      call: "how many of 8 seeded relabelings nx.vf2pp_is_isomorphic finds isomorphic to the fixture"
+
+canonical_pairs:
+  params: {fn: canonical, check: pairs, colors: none, edges: simple}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[fixture isomorphic to rev(fixture), isomorphic to perturbed(fixture)], decided by backtracking (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "[pynauty certificate and colour order of the fixture equal those of rev(fixture), of perturbed(fixture)]"
+    igraph:
+      call: "[canonical_permutation graphs equal for rev(fixture), for perturbed(fixture)]"
+    networkx:
+      call: "[nx.vf2pp_is_isomorphic(fixture, rev(fixture)), nx.vf2pp_is_isomorphic(fixture, perturbed(fixture))]"
+
+canonical_relabelings_colored:
+  params: {fn: canonical, check: relabelings, colors: parity, edges: simple}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "a canonical form depends on the isomorphism class only: how many of 8 seeded relabelings are isomorphic to the fixture (backtracking), 8 expected with node colours v % 2 (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "how many of 8 seeded relabelings have the fixture's pynauty.certificate and canonical colour order, vertex colours v % 2"
+    igraph:
+      call: "how many of 8 seeded relabelings give the fixture's graph under igraph::canonical_permutation (with colours), vertex colours v % 2"
+    networkx:
+      call: "how many of 8 seeded relabelings nx.vf2pp_is_isomorphic finds isomorphic to the fixture with node colours v % 2"
+
+canonical_pairs_colored:
+  params: {fn: canonical, check: pairs, colors: parity, edges: simple}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[fixture isomorphic to rev(fixture), isomorphic to perturbed(fixture)], decided by backtracking with node colours v % 2 (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "[pynauty certificate and colour order of the fixture equal those of rev(fixture), of perturbed(fixture)], vertex colours v % 2"
+    igraph:
+      call: "[canonical_permutation graphs equal for rev(fixture), for perturbed(fixture)], vertex colours v % 2"
+    networkx:
+      call: "[nx.vf2pp_is_isomorphic(fixture, rev(fixture)), nx.vf2pp_is_isomorphic(fixture, perturbed(fixture))] with node colours v % 2"
+
+canonical_relabelings_multi:
+  params: {fn: canonical, check: relabelings, colors: none, edges: multiplicity}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "a canonical form depends on the isomorphism class only: how many of 8 seeded relabelings are isomorphic to the fixture (backtracking), 8 expected counting parallel edges (edges: multiplicity) (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "how many of 8 seeded relabelings have the fixture's pynauty.certificate and canonical colour order, each pair subdivided by a node coloured by its multiplicity"
+      undefined_when: [directed]
+      undefined_reason: "pynauty autgrp and canon_label do not return on the directed reduction of a multigraph (each pair subdivided by a directed path of two arcs), so no value is produced; the undirected multigraph fixtures are covered"
+    igraph:
+      call: "how many of 8 seeded relabelings give the fixture's graph under igraph::canonical_permutation (with colours), each pair subdivided by a node coloured by its multiplicity"
+    networkx:
+      call: "how many of 8 seeded relabelings nx.vf2pp_is_isomorphic finds isomorphic to the fixture counting parallel edges (edges: multiplicity)"
+
+canonical_pairs_multi:
+  params: {fn: canonical, check: pairs, colors: none, edges: multiplicity}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "[fixture isomorphic to rev(fixture), isomorphic to perturbed(fixture)], decided by backtracking counting parallel edges (edges: multiplicity) (automorphisms_definition_oracle.py)"
+    nauty:
+      call: "[pynauty certificate and colour order of the fixture equal those of rev(fixture), of perturbed(fixture)], each pair subdivided by a node coloured by its multiplicity"
+      undefined_when: [directed]
+      undefined_reason: "pynauty autgrp and canon_label do not return on the directed reduction of a multigraph (each pair subdivided by a directed path of two arcs), so no value is produced; the undirected multigraph fixtures are covered"
+    igraph:
+      call: "[canonical_permutation graphs equal for rev(fixture), for perturbed(fixture)], each pair subdivided by a node coloured by its multiplicity"
+    networkx:
+      call: "[nx.vf2pp_is_isomorphic(fixture, rev(fixture)), nx.vf2pp_is_isomorphic(fixture, perturbed(fixture))] counting parallel edges (edges: multiplicity)"
