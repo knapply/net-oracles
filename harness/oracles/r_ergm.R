@@ -251,9 +251,108 @@ model_value <- function(spec, fx, nw) {
     NULL)
 }
 
+# ---- the term catalog (manifest entries with fn: oracle_only) ----------------
+# Every ergm term page: its statistics and its summed change statistics on
+# each fixture, one line per term of the entry's list (a term with several
+# statistics gives several values on its line; a term ergm rejects on that
+# fixture gives NaN). Attributes and covariate matrices are defined from the
+# node index, as the manifest header says.
+
+catalog_errors <- new.env()
+
+read_types <- function(name) {
+  txt <- paste(readLines(file.path(fixtures_dir, name, "meta.json")), collapse = " ")
+  m <- regmatches(txt, regexpr('"type": *\\[[^]]*\\]', txt))
+  if (!length(m)) return(NULL)
+  as.integer(strsplit(gsub("[^0-9,]", "", sub('"type":', "", m)), ",")[[1]])
+}
+
+catalog_network <- function(fx, type) {
+  n <- fx$n
+  ord <- if (is.null(type)) seq_len(n) else c(which(type == 0), which(type == 1))
+  pos <- integer(n)
+  pos[ord] <- seq_len(n)
+  n1 <- if (is.null(type)) 0L else sum(type == 0)
+  nw <- if (is.null(type))
+    network::network.initialize(n, directed = fx$directed, loops = FALSE, multiple = FALSE)
+  else network::network.initialize(n, directed = FALSE, bipartite = n1, loops = FALSE,
+                                   multiple = FALSE)
+  keep <- fx$from != fx$to
+  a <- pos[fx$from[keep] + 1L]
+  b <- pos[fx$to[keep] + 1L]
+  if (!fx$directed) {
+    lo <- pmin(a, b)
+    b <- pmax(a, b)
+    a <- lo
+  }
+  pairs <- unique(data.frame(a = a, b = b))
+  if (!is.null(type) && nrow(pairs) && any(pairs$a > n1 | pairs$b <= n1))
+    stop("an edge inside one mode")
+  if (nrow(pairs)) network::add.edges(nw, tail = pairs$a, head = pairs$b)
+  for (r in c("mod2", "mod3", "blocks3", "num7", "num3", "id"))
+    network::set.vertex.attribute(nw, r, node_rule(r, n)[ord])
+  env <- new.env(parent = globalenv())
+  env$nw <- nw
+  i <- row(matrix(0, n, n)) - 1
+  j <- col(matrix(0, n, n)) - 1
+  clean <- function(m) { diag(m) <- 0; m }
+  env$smat <- clean((i + j) %% 4)
+  env$dmat <- clean((i + 2 * j) %% 5)
+  env$amats <- (row(matrix(0, 3, 3)) + col(matrix(0, 3, 3)) - 2) %% 4
+  env$amatd <- (row(matrix(0, 3, 3)) - 1 + 2 * (col(matrix(0, 3, 3)) - 1)) %% 5
+  env$sbin <- clean(((i + j) %% 3 == 0) * 1)
+  env$dbin <- clean(((i + 2 * j) %% 3 == 0) * 1)
+  if (!is.null(type)) {
+    i <- row(matrix(0, n1, n - n1)) - 1
+    j <- col(matrix(0, n1, n - n1)) - 1
+    env$bmat <- (i + 2 * j) %% 5
+  }
+  env
+}
+
+catalog_value <- function(variant, spec, fx) {
+  e <- spec$params
+  o <- spec$oracles$ergm
+  if (is.null(e$terms)) return(NULL)
+  if (!is.null(o$only_on) && !(fx$name %in% unlist(o$only_on))) return(NULL)
+  bip <- identical(e$mode, "bipartite")
+  env <- catalog_network(fx, if (bip) read_types(fx$name) else NULL)
+  t0 <- Sys.time()
+  on.exit(message(sprintf("  %s on %s: %.1f s", variant, fx$name,
+                          as.numeric(Sys.time() - t0, units = "secs"))))
+  lapply(unlist(e$terms), function(term) {
+    t1 <- Sys.time()
+    on.exit({
+      d <- as.numeric(Sys.time() - t1, units = "secs")
+      if (d > 3) message(sprintf("  slow: %s on %s: %s %.0f s", variant, fx$name, term, d))
+    })
+    tryCatch({
+      # A term that takes more than 20 s on one fixture counts as rejected.
+      setTimeLimit(elapsed = 20, transient = TRUE)
+      f <- stats::as.formula(paste("nw ~", term), env = env)
+      if (identical(e$kind, "change_sums")) {
+        # No dyads (one node): the sum over the empty set is zero (ergmMPLE
+        # does not return on such a network).
+        if (network::network.size(env$nw) < 2)
+          return(numeric(length(as.numeric(summary(f)))))
+        m <- ergm::ergmMPLE(f, output = "matrix")
+        as.numeric(colSums(m$predictor * m$weights))
+      } else as.numeric(summary(f))
+    }, error = function(err) {
+      key <- paste(variant, term, sep = " | ")
+      old <- catalog_errors[[key]]
+      catalog_errors[[key]] <- list(n = (if (is.null(old)) 0L else old$n) + 1L,
+        first = if (is.null(old)) paste0(fx$name, ": ", substr(conditionMessage(err), 1, 90))
+                else old$first)
+      NaN
+    })
+  })
+}
+
 compute <- function(variant, spec, fx) {
   e <- spec$params
   n <- fx$n
+  if (e$fn == "oracle_only") return(catalog_value(variant, spec, fx))
   if (n < 1) return(NULL)
   nw <- as_network(fx)
   if (startsWith(e$fn, "ergm_")) return(model_value(spec, fx, nw))
@@ -281,6 +380,17 @@ compute <- function(variant, spec, fx) {
     NULL)
 }
 
+# ERGM_ENTRY_FILTER (a regular expression) restricts a run to the matching
+# manifest entries, for trying a new entry without the model fits.
+keep <- Sys.getenv("ERGM_ENTRY_FILTER")
+if (nzchar(keep)) manifest <- manifest[grepl(keep, names(manifest))]
+
 run_oracle("ergm", sprintf("ergm %s (summary statistics; network %s)",
                            utils::packageVersion("ergm"), utils::packageVersion("network")),
            compute)
+
+errs <- sort(ls(catalog_errors))
+if (length(errs)) {
+  cat(sprintf("catalog: %d (entry | term) pairs failed on some fixture\n", length(errs)))
+  for (k in errs) cat(sprintf("  %s  x%d  %s\n", k, catalog_errors[[k]]$n, catalog_errors[[k]]$first))
+}

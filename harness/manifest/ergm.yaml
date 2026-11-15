@@ -368,3 +368,405 @@ saom_sim_reciprocity:
         is available: the entry has the reference tool only. The statistics are
         the mean tie count, the mean number of reciprocated ties (twice the
         number of mutual pairs), and the mean number of changed ties.
+
+# ---------------------------------------------------------------------------
+# Term catalog: every ergm term page (docs/drafts/models_inventory.md), as
+# oracle-only entries (engine fn `oracle_only`: no engine measure yet; the
+# comparison counts the golden files as "oracle only" and a missing one as
+# "not run"). Each entry lists ergm terms exactly as written in a formula;
+# the golden file has one line per listed term, in order: the term's
+# statistics (summary(nw ~ term)) or, for the change-sum entries, the sum
+# over all dyads of the change statistics at the observed network
+# (ergmMPLE, as in ergm_change_sums_*). A term with several statistics
+# gives several values on its line; NaN means ergm rejects that term on
+# that fixture (too few nodes, a level or structure the fixture lacks).
+#
+# Attributes, from the node index v (0-based): categorical mod2 (v % 2),
+# mod3 (v % 3), blocks3 (3 v div n); quantitative num7 ((7 v) % 11), num3
+# ((3 v) % 5), id (v). Covariate matrices, with i and j the 0-based node
+# indices and a zero diagonal: smat (i + j) % 4 (symmetric), dmat
+# (i + 2 j) % 5, sbin 1 when (i + j) % 3 = 0, dbin 1 when (i + 2 j) % 3 = 0,
+# and for two-mode networks bmat (first mode by second mode) (i + 2 j) % 5
+# with j counted within the second mode; amats (symmetric) and amatd, the
+# 3 by 3 level matrices of attrcov("mod3", .): (a + b) % 4 and (a + 2 b) % 5
+# for 0-based levels a and b. Two-mode fixtures list their first
+# mode (type 0) first, so attributes follow the nodes, not the new order.
+# Every statistic runs on the simple graph under the fixture, as above.
+#
+# Not every page runs on these fixtures: valued-only terms, operators
+# without an inner term and the tergm edge-age terms have the undefined
+# entries at the end, with the reason. The ergm.count, ergm.rank,
+# ergm.multi and latentnet pages are outside this catalog.
+# ---------------------------------------------------------------------------
+
+ergm_terms_stats_undirected:
+  params:
+    fn: oracle_only
+    kind: stats
+    terms: &undirected_terms
+      - edges
+      - density
+      - meandeg
+      - isolates
+      - degree(1)
+      - degree(0:3)
+      - degree(1, by = "mod2")
+      - degree1.5
+      - degrange(2)
+      - degrange(2, 4)
+      - degcor
+      - degcrossprod
+      - concurrent
+      - concurrent(by = "mod2")
+      - concurrentties
+      - concurrentties(by = "mod2")
+      - kstar(2)
+      - kstar(2:3)
+      - kstar(2, attr = "mod2")
+      - altkstar(0.5, fixed = TRUE)
+      - altkstar(1, fixed = TRUE)
+      - gwdegree(0.5, fixed = TRUE, cutoff = 100)
+      - gwdegree(1, fixed = TRUE, cutoff = 100)
+      - sociality
+      - sociality(nodes = 1:3)
+      - twopath
+      - threetrail
+      - threetrail(keep = 2:3)
+      - cycle(3)
+      - cycle(3:4)
+      - triangle
+      - triangle(attr = "mod3")
+      - triangle(attr = "mod3", diff = TRUE)
+      - opentriad
+      - tripercent("mod3")
+      - tripercent("mod3", diff = TRUE)
+      - localtriangle(sbin)
+      - transitiveties
+      - transitiveties(attr = "mod3")
+      - cyclicalties
+      - balance
+      - esp(0:3)
+      - esp(2)
+      - dsp(0:3)
+      - dsp(2)
+      - nsp(0:3)
+      - nsp(2)
+      - gwesp(0.5, fixed = TRUE, cutoff = 100)
+      - gwesp(1, fixed = TRUE, cutoff = 100)
+      - gwdsp(0.5, fixed = TRUE, cutoff = 100)
+      - gwdsp(1, fixed = TRUE, cutoff = 100)
+      - gwnsp(0.5, fixed = TRUE, cutoff = 100)
+      - gwnsp(1, fixed = TRUE, cutoff = 100)
+      - triadcensus(0:3)
+      - nodecov("num7")
+      - nodecov("num3")
+      - nodecovrange("num7")
+      - nodefactor("mod3")
+      - nodefactor("mod3", levels = TRUE)
+      - nodefactordistinct("mod3")
+      - nodematch("mod3")
+      - nodematch("mod3", diff = TRUE)
+      - nodemix("mod3")
+      - absdiff("num7")
+      - absdiff("num7", pow = 2)
+      - absdiffcat("num7")
+      - smalldiff("num7", 2)
+      - diff("num7", sign.action = "abs")
+      - mm("mod3")
+      - edgecov(smat)
+      - dyadcov(smat)
+      - attrcov("mod3", amats)
+      - hamming(sbin)
+      - Label(~edges, "x")
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-9}
+  note: >-
+    Oracle-only: the engine has none of these terms yet; the definition
+    oracle arrives with each engine term.
+  oracles:
+    ergm:
+      call: "summary(nw ~ <term>) for each term of the list (undirected)"
+
+ergm_terms_change_sums_undirected:
+  params:
+    fn: oracle_only
+    kind: change_sums
+    terms: *undirected_terms
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  note: >-
+    Oracle-only, as the statistics entry of this family;
+    the sums are the pooled change statistics MPLE regresses on.
+  oracles:
+    ergm:
+      call: >-
+        mple <- ergmMPLE(nw ~ <term>, output = "matrix");
+        colSums(mple$predictor * mple$weights), for each term of the list (undirected)
+
+ergm_terms_stats_directed:
+  params:
+    fn: oracle_only
+    kind: stats
+    terms: &directed_terms
+      - edges
+      - density
+      - meandeg
+      - isolates
+      - mutual
+      - mutual(same = "mod3")
+      - mutual(by = "mod3")
+      - mutual(same = "mod3", diff = TRUE)
+      - asymmetric
+      - asymmetric(attr = "mod3")
+      - idegree(0:2)
+      - idegree(1, by = "mod2")
+      - odegree(0:2)
+      - odegree(1, by = "mod2")
+      - idegree1.5
+      - odegree1.5
+      - idegrange(2)
+      - idegrange(1, 3)
+      - odegrange(2)
+      - odegrange(1, 3)
+      - m2star
+      - istar(2)
+      - istar(2:3)
+      - istar(2, attr = "mod2")
+      - ostar(2)
+      - ostar(2:3)
+      - ostar(2, attr = "mod2")
+      - gwidegree(0.5, fixed = TRUE, cutoff = 100)
+      - gwidegree(1, fixed = TRUE, cutoff = 100)
+      - gwodegree(0.5, fixed = TRUE, cutoff = 100)
+      - gwodegree(1, fixed = TRUE, cutoff = 100)
+      - twopath
+      - threetrail
+      - cycle(3)
+      - cycle(3:4)
+      - triangle
+      - triangle(attr = "mod3")
+      - ttriple
+      - ttriple(attr = "mod3")
+      - ctriple
+      - ctriple(attr = "mod3")
+      - transitive
+      - intransitive
+      - transitiveties
+      - transitiveties(attr = "mod3")
+      - cyclicalties
+      - simmelian
+      - nearsimmelian
+      - simmelianties
+      - balance
+      - localtriangle(dbin)
+      - triadcensus(0:15)
+      - esp(0:3)
+      - esp(2)
+      - esp(0:2, type = "ITP")
+      - dsp(0:3)
+      - dsp(0:2, type = "ISP")
+      - nsp(0:3)
+      - gwesp(0.5, fixed = TRUE, cutoff = 100)
+      - gwesp(1, fixed = TRUE, cutoff = 100)
+      - gwesp(0.5, fixed = TRUE, type = "ITP", cutoff = 100)
+      - gwdsp(0.5, fixed = TRUE, cutoff = 100)
+      - gwdsp(1, fixed = TRUE, cutoff = 100)
+      - gwnsp(0.5, fixed = TRUE, cutoff = 100)
+      - gwnsp(1, fixed = TRUE, cutoff = 100)
+      - sender
+      - sender(nodes = 1:3)
+      - receiver
+      - receiver(nodes = 1:3)
+      - nodecov("num7")
+      - nodeicov("num7")
+      - nodeocov("num7")
+      - nodecovrange("num7")
+      - nodeicovrange("num7")
+      - nodeocovrange("num7")
+      - nodefactor("mod3")
+      - nodeifactor("mod3")
+      - nodeofactor("mod3")
+      - nodefactordistinct("mod3")
+      - nodeifactordistinct("mod3")
+      - nodeofactordistinct("mod3")
+      - nodematch("mod3")
+      - nodematch("mod3", diff = TRUE)
+      - nodemix("mod3")
+      - absdiff("num7")
+      - absdiffcat("num7")
+      - diff("num7")
+      - diff("num7", pow = 2)
+      - smalldiff("num7", 2)
+      - mm("mod3")
+      - edgecov(dmat)
+      - dyadcov(dmat)
+      - attrcov("mod3", amatd)
+      - hamming(dbin)
+      - Label(~edges, "x")
+      - Symmetrize(~triangle, rule = "weak")
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-9}
+  note: >-
+    Oracle-only: the engine has none of these terms yet; the definition
+    oracle arrives with each engine term.
+  oracles:
+    ergm:
+      call: "summary(nw ~ <term>) for each term of the list (directed)"
+
+ergm_terms_change_sums_directed:
+  params:
+    fn: oracle_only
+    kind: change_sums
+    terms: *directed_terms
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  note: >-
+    Oracle-only, as the statistics entry of this family;
+    the sums are the pooled change statistics MPLE regresses on.
+  oracles:
+    ergm:
+      call: >-
+        mple <- ergmMPLE(nw ~ <term>, output = "matrix");
+        colSums(mple$predictor * mple$weights), for each term of the list (directed)
+
+ergm_terms_stats_bipartite:
+  params:
+    fn: oracle_only
+    kind: stats
+    mode: bipartite
+    terms: &bipartite_terms
+      - edges
+      - density
+      - meandeg
+      - isolates
+      - isolatededges
+      - coincidence
+      - b1degree(0:2)
+      - b2degree(0:2)
+      - b1degree(1, by = "mod2")
+      - b2degree(1, by = "mod2")
+      - b1concurrent
+      - b2concurrent
+      - b1mindegree(2)
+      - b2mindegree(2)
+      - b1degrange(2)
+      - b1degrange(2, 4)
+      - b2degrange(2)
+      - b2degrange(2, 4)
+      - b1star(2:3)
+      - b2star(2:3)
+      - b1star(2, attr = "mod2")
+      - b2star(2, attr = "mod2")
+      - b1twostar("mod2", "mod3")
+      - b2twostar("mod3", "mod2")
+      - b1starmix(2, "mod2")
+      - b2starmix(2, "mod2")
+      - b1cov("num7")
+      - b2cov("num3")
+      - b1covrange("num7")
+      - b2covrange("num3")
+      - b1factor("mod3")
+      - b2factor("mod3")
+      - b1factordistinct("mod3")
+      - b2factordistinct("mod3")
+      - b1nodematch("mod3")
+      - b1nodematch("mod3", diff = TRUE)
+      - b2nodematch("mod3")
+      - b1sociality
+      - b2sociality
+      - b1dsp(0:2)
+      - b2dsp(0:2)
+      - gwb1degree(0.5, fixed = TRUE, cutoff = 100)
+      - gwb1degree(1, fixed = TRUE, cutoff = 100)
+      - gwb2degree(0.5, fixed = TRUE, cutoff = 100)
+      - gwb2degree(1, fixed = TRUE, cutoff = 100)
+      - gwb1dsp(0.5, fixed = TRUE, cutoff = 100)
+      - gwb1dsp(1, fixed = TRUE, cutoff = 100)
+      - gwb2dsp(0.5, fixed = TRUE, cutoff = 100)
+      - gwb2dsp(1, fixed = TRUE, cutoff = 100)
+      - nodemix("mod3")
+      - edgecov(bmat)
+      - dyadcov(bmat)
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-9}
+  note: >-
+    Oracle-only: the engine has none of these terms yet; the definition
+    oracle arrives with each engine term.
+  oracles:
+    ergm:
+      call: "summary(nw ~ <term>) for each term of the list (bipartite)"
+      only_on: [davis_twomode, twomode_random, twomode_weighted]
+      undefined_reason: >-
+        ergm's bipartite terms need a two-mode network with the first mode
+        numbered first; only the fixtures with a `type` array are two-mode.
+
+ergm_terms_change_sums_bipartite:
+  params:
+    fn: oracle_only
+    kind: change_sums
+    mode: bipartite
+    terms: *bipartite_terms
+  applies_to: undirected
+  tolerance: {rel: 1.0e-12, abs: 1.0e-14}
+  note: >-
+    Oracle-only, as the statistics entry of this family;
+    the sums are the pooled change statistics MPLE regresses on.
+  oracles:
+    ergm:
+      call: >-
+        mple <- ergmMPLE(nw ~ <term>, output = "matrix");
+        colSums(mple$predictor * mple$weights), for each term of the list (bipartite)
+      only_on: [davis_twomode, twomode_random, twomode_weighted]
+      undefined_reason: >-
+        ergm's bipartite terms need a two-mode network with the first mode
+        numbered first; only the fixtures with a `type` array are two-mode.
+
+ergm_terms_valued_only:
+  params:
+    fn: oracle_only
+    pages: [atleast, atmost, cdf, cyclicalweights, equalto, greaterthan, ininterval, nodecovar, nodeicovar, nodeocovar, smallerthan, sum, transitiveweights, B]
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-9}
+  oracles:
+    ergm:
+      call: "none: the term cannot run on the fixtures"
+      undefined_when: [directed, undirected]
+      undefined_reason: >-
+        These ergm pages are valued-only (or, for B, wrap binary terms for valued
+        models): they need edge values and a valued network with a response,
+        and every fixture here is a binary simple graph (weighted fixtures keep
+        their weights outside the ergm network object).
+
+ergm_terms_operators:
+  params:
+    fn: oracle_only
+    pages: [Curve, Exp, F, For, I, Log, NodematchFilter, Offset, Prod, Project, S, Sum]
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-9}
+  oracles:
+    ergm:
+      call: "none: the term cannot run on the fixtures"
+      undefined_when: [directed, undirected]
+      undefined_reason: >-
+        Operators take inner terms, a second formula, a derived network or
+        a sequence of arguments (Curve, Exp, F, For, I, Log, NodematchFilter,
+        Offset, Prod, Project, S, Sum); no default argument set runs on the
+        fixtures without inventing a model. Label and Symmetrize, which do run
+        with an inner term, are in the catalog entries.
+
+ergm_terms_tergm_undefined:
+  params:
+    fn: oracle_only
+    pages: [Change, Cross, Diss, EdgeAges, Form, Persist, degrange.mean.age, degree.mean.age, edge.ages, edgecov.ages, edgecov.mean.age, edges.ageinterval, mean.age, nodefactor.mean.age, nodemix.mean.age]
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-9}
+  oracles:
+    ergm:
+      call: "none: the term cannot run on the fixtures"
+      undefined_when: [directed, undirected]
+      undefined_reason: >-
+        tergm pages: the operators (Change, Cross, Diss, EdgeAges, Form, Persist)
+        need a lagged or changing network, and the edge-age terms (degrange.mean.age,
+        degree.mean.age, edge.ages, edgecov.ages, edgecov.mean.age, edges.ageinterval,
+        mean.age, nodefactor.mean.age, nodemix.mean.age) need edge timestamps; the
+        fixtures are static, so tergm has no static term beyond the ergm ones.
