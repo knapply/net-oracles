@@ -1,6 +1,7 @@
 {
- "inputs": "bea8c7c4e7790e7e66f2d4bc630d10583efdd401eed9fcc99d6f9cc38624a4bb",
+ "inputs": "954a7e66efb8662099624f95ff0d78f01b4dc82b2f6e78b848b439c5fbd89689",
  "oracles": [
+  "bctpy",
   "networkx"
  ]
 }

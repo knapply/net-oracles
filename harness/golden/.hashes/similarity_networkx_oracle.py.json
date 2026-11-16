@@ -1,10 +1,14 @@
 {
- "inputs": "6af4be409ff1c561e97f912bfc9b1e0bb4d003a1a408d094fc0679c07924f998",
+ "inputs": "6b750d068bdbdd51764556d7a1174b9d5b31da2764420bae78e132f616090ce1",
  "oracles": [
   "bct",
+  "bctpy",
+  "boost",
   "cdlib",
   "cpnet",
   "definition",
+  "ergm",
+  "gephi",
   "graphblas",
   "graspologic",
   "igraph",

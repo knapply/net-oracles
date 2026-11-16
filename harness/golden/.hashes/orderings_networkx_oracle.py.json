@@ -1,6 +1,8 @@
 {
- "inputs": "cf1edb86ed7ca44d06c2ea60da27c7ba69fe836c8b4b12d5dbb2344322c1c91c",
+ "inputs": "152583e59e979a6398ddb1e3b7044b9cefb9d13e90dc31283ce28529a63ebb69",
  "oracles": [
-  "networkx"
+  "jgrapht",
+  "networkx",
+  "pyigraph"
  ]
 }

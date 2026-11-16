@@ -1,5 +1,5 @@
 {
- "inputs": "bc52336cdbc7218ca05dc05c43ca2f5a1cfb5bd153a0435585b78bf9099f9e36",
+ "inputs": "c827ff52cb428d81f68b93abb88e655ae46c15fa37a97a93ec5c0201c8006e9b",
  "oracles": [
   "networkit",
   "networkx"

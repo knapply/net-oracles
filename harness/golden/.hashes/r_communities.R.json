@@ -1,5 +1,5 @@
 {
- "inputs": "b4941f028353222c02d8678454087b6e58547c415928e083582625abb7b9fd10",
+ "inputs": "12c1e623026c5b30e1edae238bacd720d4c41fa68b4b68d53135ab3933bb1d05",
  "oracles": [
   "blockmodeling",
   "definition",
@@ -9,6 +9,7 @@
   "manynet",
   "netrankr",
   "networkx",
+  "scipy",
   "sna"
  ]
 }

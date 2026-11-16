@@ -1,10 +1,10 @@
 {
- "inputs": "f55e2947398c993ab4a58c2a219fd59469eee39c89bf37117e06970a76b82bbd",
+ "inputs": "3fef38f9ced0c56f511e8ccf8c55d9c90696cc56c9075750c5ab305613cd9631",
  "oracles": [
-  "blockmodeling",
   "definition",
   "egor",
   "manynet",
-  "networkx"
+  "networkx",
+  "scipy"
  ]
 }

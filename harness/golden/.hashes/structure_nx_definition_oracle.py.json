@@ -1,15 +1,15 @@
 {
- "inputs": "4f6dbc7b2b94781f9670eb6b4926a166f988d5e09164df18e7bae10a991794d5",
+ "inputs": "a3010a07adc4875de355b29033cf345cce335a9371637bab8cd8075182998d0b",
  "oracles": [
   "definition",
   "homophily",
   "igraph",
   "networkit",
+  "networkx",
   "pyigraph",
   "s2",
   "sf",
   "sna",
-  "stats",
-  "tnet"
+  "stats"
  ]
 }

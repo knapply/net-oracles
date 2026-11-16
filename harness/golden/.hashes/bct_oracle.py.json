@@ -1,14 +1,10 @@
 {
- "inputs": "b776f1b936e63a17027d12a3ead234c80e247a6ee0b2091e46db17608c897524",
+ "inputs": "336b2a0bdc0fe0eda718678431b96f2d28d299f9d05454ebb684763a211a46e4",
  "oracles": [
   "bct",
-  "cdlib",
-  "definition",
   "igraph",
   "infomap",
-  "jgrapht",
   "networkit",
-  "networkx",
-  "pyigraph"
+  "networkx"
  ]
 }

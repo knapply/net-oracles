@@ -1,13 +1,13 @@
 {
- "inputs": "d190cfaa06b0a553e0f619335cce7edcbd17892e44215dc8180958769aa59260",
+ "inputs": "8dee84e69711ea5cdb078f170ed01edc3681b32bee0e722a68e46a3ec0960170",
  "oracles": [
   "bct",
+  "boost",
   "cdlib",
   "definition",
-  "gephi",
+  "ergm",
   "graspologic",
   "igraph",
-  "infomap",
   "jgrapht",
   "networkit",
   "networkx",

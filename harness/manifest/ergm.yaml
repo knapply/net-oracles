@@ -2,7 +2,7 @@
 # actor-oriented models (SAOMs): statistics, change statistics, MPLE,
 # simulation from given coefficients, MCMC-MLE, and SAOM simulation.
 # Format: see ../README.md; terms and engine options:
-# bindings/ergm.py.
+# bindings/ergm.py (ergm_fit: bindings/ergm_fit.py).
 #
 # Every model runs on the simple graph underlying the fixture (loops
 # dropped, repeated pairs once), as an ergm network object holds it.
@@ -306,6 +306,517 @@ ergm_mcmle_gwesp:
       call: coef(ergm(nw ~ edges + gwesp(0.5, fixed = TRUE, cutoff = 100), control = control.ergm(seed = 1, MCMC.samplesize = 4096)))
       only_on: [florentine, karate]
       undefined_reason: Fitted on two fixtures only, to keep the oracle run short.
+
+ergm_fit_mple:
+  params: {fn: ergm_fit, method: mple, terms: [edges, "gwesp:0.5", "nodematch:mod3"]}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-7, abs: 1.0e-10}
+  note: >-
+    ergm_fit with method mple is the logistic regression of
+    ergm_mple_undirected; the tolerance is that entry's (ergm's glm()
+    stopping rule).
+  oracles:
+    definition:
+      call: "logistic regression of every dyad's tie on its change statistics, recounted by toggling (ergm_definition_oracle.py)"
+      only_on: [florentine, kite, multi_loops_und]
+      undefined_reason: >-
+        Recounting the change statistics is limited to fixtures of at most
+        20 nodes; the other small fixtures have no finite estimate.
+    ergm:
+      call: coef(ergm(nw ~ edges + gwesp(0.5, fixed = TRUE, cutoff = 100) + nodematch("mod3"), estimate = "MPLE"))
+      only_on: [florentine, kite, multi_loops_und, karate, gnp_und_dense,
+                gnp_und_sparse, les_miserables]
+      undefined_reason: >-
+        On the other fixtures the pseudo-likelihood has no finite maximum
+        (complete, empty, or perfectly separated change statistics); a
+        selection of the fixtures of ergm_mple_undirected.
+
+ergm_fit_dyadind_loglik:
+  params: {fn: ergm_fit, method: auto, loglik: true, terms: [edges, "nodematch:mod3", "nodecov:num7"]}
+  applies_to: undirected
+  tolerance: {rel: 1.0e-7, abs: 1.0e-9}
+  note: >-
+    A dyad-independent model under method auto is fitted by MPLE, which is
+    its maximum likelihood estimate, and its log-likelihood is exact. The
+    values are the coefficients, the log-likelihood at the estimate and
+    that of the null model (every coefficient zero: -dyads log 2). The
+    tolerance is that of the MPLE entries (ergm's glm() stopping rule).
+  oracles:
+    definition:
+      call: "maximum likelihood by logistic regression, dyads independent; sum over dyads of y eta - log(1 + e^eta) (ergm_definition_oracle.py)"
+      only_on: [florentine, karate, kite, gnp_und_dense, gnp_und_sparse, les_miserables]
+      undefined_reason: Fixtures where the likelihood has a finite maximum, a selection.
+    ergm:
+      call: >-
+        fit <- ergm(nw ~ edges + nodematch("mod3") + nodecov("num7"));
+        c(coef(fit), logLik(fit), logLikNull(fit))
+      only_on: [florentine, karate, kite, gnp_und_dense, gnp_und_sparse, les_miserables]
+      undefined_reason: Fixtures where the likelihood has a finite maximum, a selection.
+      tolerance: {rel: 1.0e-7, abs: 1.0e-7}
+      note: >-
+        ergm's glm() iteration stops on a relative deviance change of 1e-8:
+        on gnp_und_sparse its estimate leaves a score (gradient of the exact
+        log-likelihood) of up to 2.2e-5, where the engine's and the
+        definition oracle's leave 5e-14, and the second coefficient (-0.0996)
+        differs by 2.6e-8; the absolute tolerance allows ergm's stopping
+        rule on small coefficients.
+
+ergm_fit_exact6_triangle:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, triangle]
+    nodes: 6
+    fixtures: [florentine, gnp_und_dense, karate, kite, two_triangles_isolate]
+    burnin: 2000
+    interval: 50
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Tolerance: the engine's Monte Carlo error against the exact values was
+    at most 0.064 (16,000 draws per round); abs 0.1 allows for that and the
+    reference tool's own Monte Carlo error.
+    The subgraph induced by the first six nodes of each fixture. The
+    definition oracle is the exact maximum likelihood estimate (all 2^15
+    graphs enumerated); the engine and ergm are Monte Carlo estimates.
+  oracles:
+    definition:
+      call: "exact maximum likelihood by enumerating every graph on six nodes (ergm_definition_oracle.py)"
+      only_on: [florentine, gnp_und_dense, karate, kite, two_triangles_isolate]
+      undefined_reason: The six-node subgraphs with a finite maximum, a selection.
+    ergm:
+      call: coef(ergm(nw6 ~ edges + triangle, control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [florentine, gnp_und_dense, karate, kite, two_triangles_isolate]
+      undefined_on: [two_triangles_isolate]
+      undefined_reason: >-
+        The subgraphs with a finite maximum, a selection; where ergm gives
+        no estimate the definition oracle still checks the engine.
+        On two_triangles_isolate: ergm stops with "subscript out of bounds" (its MPLE has no finite value there: the change statistics separate the ties).
+
+ergm_fit_exact6_gwesp:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, "gwesp:0.5"]
+    nodes: 6
+    fixtures: [florentine, gnp_und_dense, karate, kite, two_triangles_isolate]
+    burnin: 2000
+    interval: 50
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    As ergm_fit_exact6_triangle (and its tolerance), with a fixed-decay
+    GWESP term.
+  oracles:
+    definition:
+      call: "exact maximum likelihood by enumerating every graph on six nodes (ergm_definition_oracle.py)"
+      only_on: [florentine, gnp_und_dense, karate, kite, two_triangles_isolate]
+      undefined_reason: The six-node subgraphs with a finite maximum, a selection.
+    ergm:
+      call: coef(ergm(nw6 ~ edges + gwesp(0.5, fixed = TRUE, cutoff = 100), control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [florentine, gnp_und_dense, karate, kite, two_triangles_isolate]
+      undefined_on: [kite, two_triangles_isolate]
+      undefined_reason: >-
+        The subgraphs with a finite maximum, a selection; where ergm gives
+        no estimate the definition oracle still checks the engine.
+        On kite: ergm stops with "Unconstrained MCMC sampling did not mix at all" (from its MPLE start the chains sit at the empty or complete graph).
+        On two_triangles_isolate: ergm stops with "subscript out of bounds" (its MPLE has no finite value there: the change statistics separate the ties).
+
+ergm_fit_exact6_missing:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, triangle]
+    nodes: 6
+    missing: [[0, 1], [2, 4], [3, 5]]
+    fixtures: [florentine, karate, kite, two_triangles_isolate]
+    burnin: 2000
+    interval: 50
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Tolerance: the engine's Monte Carlo error against the exact values was
+    at most 0.064 (16,000 draws per round); abs 0.1 allows for that and the
+    reference tool's own Monte Carlo error.
+    Missing-data maximum likelihood (Handcock and Gile 2010) on the
+    six-node subgraph with three dyads unobserved: the definition oracle
+    sums the 2^3 completions of the missing dyads out exactly.
+  oracles:
+    definition:
+      call: "exact missing-data maximum likelihood by enumeration, the missing dyads summed out (ergm_definition_oracle.py)"
+      only_on: [florentine, karate, kite, two_triangles_isolate]
+      undefined_reason: The six-node subgraphs with a finite maximum, a selection.
+    ergm:
+      call: >-
+        nw6[1, 2] <- nw6[3, 5] <- nw6[4, 6] <- NA;
+        coef(ergm(nw6 ~ edges + triangle, control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [florentine, karate, kite, two_triangles_isolate]
+      undefined_on: [florentine, two_triangles_isolate]
+      undefined_reason: >-
+        The subgraphs with a finite maximum, a selection; where ergm gives
+        no estimate the definition oracle still checks the engine.
+        On florentine, two_triangles_isolate: ergm stops with "non-conformable arguments" (a missing dyad closes a triangle, so its MPLE with the dyad absent separates).
+
+ergm_fit_mcmle_gwesp:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, "gwesp:0.5"]
+    fixtures: [florentine, karate]
+    burnin: 50000
+    interval: 500
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.03}
+  note: >-
+    Monte Carlo estimates on both sides; the tolerance allows several
+    standard errors of their difference.
+  oracles:
+    ergm:
+      call: coef(ergm(nw ~ edges + gwesp(0.5, fixed = TRUE, cutoff = 100), control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [florentine, karate]
+      undefined_reason: Fitted on two fixtures only, to keep the oracle run short.
+
+ergm_fit_mple_directed:
+  params: {fn: ergm_fit, method: mple, terms: [edges, mutual, "gwesp:0.5", "nodematch:mod3"]}
+  applies_to: directed
+  tolerance: {rel: 1.0e-7, abs: 1.0e-10}
+  note: >-
+    ergm_fit with method mple is the logistic regression of
+    ergm_mple_directed; the tolerance is that entry's (ergm's glm()
+    stopping rule).
+  oracles:
+    definition:
+      call: "logistic regression of every dyad's tie on its change statistics, recounted by toggling (ergm_definition_oracle.py)"
+      only_on: [multi_loops_dir]
+      undefined_reason: >-
+        Recounting the change statistics is limited to fixtures of at most
+        20 nodes; the other small fixtures have no finite estimate.
+    ergm:
+      call: coef(ergm(nw ~ edges + mutual + gwesp(0.5, fixed = TRUE, cutoff = 100) + nodematch("mod3"), estimate = "MPLE"))
+      only_on: [multi_loops_dir, gnp_dir_dense, gnp_dir_sparse, real_weights_dir, weighted_dir]
+      undefined_reason: >-
+        On the other fixtures the pseudo-likelihood has no finite maximum
+        (complete, empty, or without any mutual pair).
+
+ergm_fit_dyadind_loglik_directed:
+  params: {fn: ergm_fit, method: auto, loglik: true, terms: [edges, mutual, "nodematch:mod3"]}
+  applies_to: directed
+  tolerance: {rel: 1.0e-9, abs: 1.0e-9}
+  note: >-
+    With mutual the dyads are not independent but the unordered pairs are:
+    the likelihood is a product of four-outcome logits, one per pair, and
+    method auto maximizes it exactly (Newton's method). The values are the
+    coefficients, the exact log-likelihood and the null log-likelihood
+    (-dyads log 2). The directed counterpart of ergm_fit_dyadind_loglik
+    (mutual is not defined on undirected networks).
+  oracles:
+    definition:
+      call: "exact maximum likelihood over independent unordered pairs, four states each (ergm_definition_oracle.py)"
+      only_on: [gnp_dir_dense, gnp_dir_sparse, weighted_dir, real_weights_dir, multi_loops_dir]
+      undefined_reason: Fixtures with a finite maximum (some mutual pair, not all).
+    ergm:
+      call: >-
+        fit <- ergm(nw ~ edges + mutual + nodematch("mod3"), control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096));
+        c(coef(fit), logLik(fit), logLikNull(fit))
+      only_on: [gnp_dir_dense, gnp_dir_sparse, weighted_dir, real_weights_dir, multi_loops_dir]
+      undefined_reason: Fixtures with a finite maximum (some mutual pair, not all).
+      tolerance: {rel: 0.002, abs: 0.05}
+      note: >-
+        ergm treats mutual as dyad dependent: its coefficients are MCMC
+        estimates and its log-likelihood comes from bridge sampling, both
+        Monte Carlo, so the tolerance allows several of their standard
+        errors; the engine's values are exact (see the definition oracle).
+
+ergm_fit_exact5_dir_stars:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, mutual, "istar:2", "ostar:2"]
+    nodes: {gnp_dir_dense: [1, 2, 3, 4, 5], real_weights_dir: [17, 26, 28, 35, 44]}
+    fixtures: [gnp_dir_dense, real_weights_dir]
+    burnin: 2000
+    interval: 50
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Tolerance: the engine's Monte Carlo error against the exact values was
+    at most 0.064 (16,000 draws per round); abs 0.1 allows for that and the
+    reference tool's own Monte Carlo error.
+    Five-node induced subgraphs of directed fixtures (node lists per fixture, chosen so the maximum is finite: a window of gnp_dir_dense and the five largest-degree nodes of real_weights_dir). The definition oracle is the exact maximum likelihood estimate from the tally of all 2^20 directed graphs; the engine and ergm are Monte Carlo estimates. The directed counterpart of ergm_fit_exact6_triangle's design, with mutual and in- and out-two-stars.
+  oracles:
+    definition:
+      call: "exact maximum likelihood from the tally of every graph on the subgraph's nodes (ergm_definition_oracle.py)"
+      only_on: [gnp_dir_dense, real_weights_dir]
+      undefined_reason: The subgraphs with a finite maximum, a selection.
+    ergm:
+      call: coef(ergm(nw_sub ~ edges + mutual + istar(2) + ostar(2), control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [gnp_dir_dense, real_weights_dir]
+      undefined_on: [real_weights_dir]
+      undefined_reason: >-
+        The subgraphs with a finite maximum, a selection; where ergm gives
+        no estimate the definition oracle still checks the engine.
+        On real_weights_dir: ergm stops with "subscript out of bounds" (its MPLE has no finite value there: the change statistics separate the ties).
+
+ergm_fit_exact5_dir_ttriple:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, ttriple]
+    nodes: {gnp_dir_dense: [1, 2, 3, 4, 5], real_weights_dir: [17, 26, 28, 35, 44]}
+    fixtures: [gnp_dir_dense, real_weights_dir]
+    burnin: 2000
+    interval: 50
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Tolerance: the engine's Monte Carlo error against the exact values was
+    at most 0.064 (16,000 draws per round); abs 0.1 allows for that and the
+    reference tool's own Monte Carlo error.
+    As ergm_fit_exact5_dir_stars with transitive triples (the directed counterpart of ergm_fit_exact6_triangle).
+  oracles:
+    definition:
+      call: "exact maximum likelihood from the tally of every graph on the subgraph's nodes (ergm_definition_oracle.py)"
+      only_on: [gnp_dir_dense, real_weights_dir]
+      undefined_reason: The subgraphs with a finite maximum, a selection.
+    ergm:
+      call: coef(ergm(nw_sub ~ edges + ttriple, control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [gnp_dir_dense, real_weights_dir]
+      undefined_on: [gnp_dir_dense, real_weights_dir]
+      undefined_reason: >-
+        The subgraphs with a finite maximum, a selection; where ergm gives
+        no estimate the definition oracle still checks the engine.
+        On gnp_dir_dense, real_weights_dir: ergm stops with "Unconstrained MCMC sampling did not mix at all" (from its MPLE start the chains sit at the empty or complete graph).
+
+ergm_fit_exact5_dir_gwesp:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, mutual, "gwesp:0.5"]
+    nodes: {gnp_dir_dense: [1, 2, 3, 4, 5], real_weights_dir: [17, 26, 28, 35, 44]}
+    fixtures: [gnp_dir_dense, real_weights_dir]
+    burnin: 2000
+    interval: 50
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Tolerance: the engine's Monte Carlo error against the exact values was
+    at most 0.064 (16,000 draws per round); abs 0.1 allows for that and the
+    reference tool's own Monte Carlo error.
+    As ergm_fit_exact5_dir_stars with a fixed-decay GWESP term (outgoing two-paths; the directed counterpart of ergm_fit_exact6_gwesp).
+  oracles:
+    definition:
+      call: "exact maximum likelihood from the tally of every graph on the subgraph's nodes (ergm_definition_oracle.py)"
+      only_on: [gnp_dir_dense, real_weights_dir]
+      undefined_reason: The subgraphs with a finite maximum, a selection.
+    ergm:
+      call: coef(ergm(nw_sub ~ edges + mutual + gwesp(0.5, fixed = TRUE, cutoff = 100), control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [gnp_dir_dense, real_weights_dir]
+      undefined_on: [gnp_dir_dense, real_weights_dir]
+      undefined_reason: >-
+        The subgraphs with a finite maximum, a selection; where ergm gives
+        no estimate the definition oracle still checks the engine.
+        On gnp_dir_dense: ergm stops with "Unconstrained MCMC sampling did not mix at all" (from its MPLE start the chains sit at the empty or complete graph).
+        On real_weights_dir: ergm stops with "subscript out of bounds" (its MPLE has no finite value there: the change statistics separate the ties).
+
+ergm_fit_exact5_dir_missing:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, mutual, "istar:2", "ostar:2"]
+    nodes: {gnp_dir_dense: [1, 2, 3, 4, 5], real_weights_dir: [17, 26, 28, 35, 44]}
+    missing: [[0, 1], [2, 3], [4, 0]]
+    fixtures: [gnp_dir_dense, real_weights_dir]
+    burnin: 2000
+    interval: 50
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Tolerance: the engine's Monte Carlo error against the exact values was
+    at most 0.064 (16,000 draws per round); abs 0.1 allows for that and the
+    reference tool's own Monte Carlo error.
+    Missing-data maximum likelihood (Handcock and Gile 2010) on the five-node subgraphs of ergm_fit_exact5_dir_stars with the arcs 0 -> 1, 2 -> 3 and 4 -> 0 unobserved; the definition oracle sums their 2^3 completions out exactly (the directed counterpart of ergm_fit_exact6_missing).
+  oracles:
+    definition:
+      call: "exact missing-data maximum likelihood from the tally of every graph on the subgraph's nodes (ergm_definition_oracle.py)"
+      only_on: [gnp_dir_dense, real_weights_dir]
+      undefined_reason: The subgraphs with a finite maximum, a selection.
+    ergm:
+      call: coef(ergm(nw_sub ~ edges + mutual + istar(2) + ostar(2), control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [gnp_dir_dense, real_weights_dir]
+      undefined_on: [real_weights_dir]
+      undefined_reason: >-
+        The subgraphs with a finite maximum, a selection; where ergm gives
+        no estimate the definition oracle still checks the engine.
+        On real_weights_dir: ergm stops with "Unconstrained MCMC sampling did not mix at all" (from its MPLE start the chains sit at the empty or complete graph).
+      tolerance: {rel: 0, abs: 0.2}
+      note: >-
+        ergm's missing-data estimate lands further from the exact value than
+        the engine's (gnp_dir_dense, edges coefficient: exact 1.657, engine
+        1.668, ergm 1.535); the definition oracle holds the engine to abs 0.1.
+
+ergm_fit_exact7_triangle:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, triangle]
+    nodes: 7
+    fixtures: [florentine, gnp_und_dense, karate, kite, les_miserables, two_triangles_isolate]
+    burnin: 2000
+    interval: 50
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Tolerance: the engine's Monte Carlo error against the exact values was
+    at most 0.064 (16,000 draws per round); abs 0.1 allows for that and the
+    reference tool's own Monte Carlo error.
+    The subgraph induced by the first seven nodes; the definition oracle is the exact maximum likelihood estimate from the tally of all 2^21 graphs.
+  oracles:
+    definition:
+      call: "exact maximum likelihood from the tally of every graph on the subgraph's nodes (ergm_definition_oracle.py)"
+      only_on: [florentine, gnp_und_dense, karate, kite, les_miserables, two_triangles_isolate]
+      undefined_reason: The subgraphs with a finite maximum, a selection.
+    ergm:
+      call: coef(ergm(nw_sub ~ edges + triangle, control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [florentine, gnp_und_dense, karate, kite, les_miserables, two_triangles_isolate]
+      undefined_on: [karate, les_miserables, two_triangles_isolate]
+      undefined_reason: >-
+        The subgraphs with a finite maximum, a selection; where ergm gives
+        no estimate the definition oracle still checks the engine.
+        On les_miserables: ergm stops with "Unconstrained MCMC sampling did not mix at all" (from its MPLE start the chains sit at the empty or complete graph).
+        On two_triangles_isolate: ergm stops with "subscript out of bounds" (its MPLE has no finite value there: the change statistics separate the ties).
+        On karate: ergm's fit does not finish within the oracle's 300 s limit per fit (its chains sit near the complete graph).
+
+ergm_fit_exact7_kstar:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, "kstar:2", triangle]
+    nodes: 7
+    fixtures: [florentine, gnp_und_dense, karate, les_miserables]
+    burnin: 2000
+    interval: 50
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Tolerance: the engine's Monte Carlo error against the exact values was
+    at most 0.064 (16,000 draws per round); abs 0.1 allows for that and the
+    reference tool's own Monte Carlo error.
+    As ergm_fit_exact7_triangle with two-stars (on kite the triple sits at the edge of the space of statistics, so the maximum is not finite there).
+  oracles:
+    definition:
+      call: "exact maximum likelihood from the tally of every graph on the subgraph's nodes (ergm_definition_oracle.py)"
+      only_on: [florentine, gnp_und_dense, karate, les_miserables]
+      undefined_reason: The subgraphs with a finite maximum, a selection.
+    ergm:
+      call: coef(ergm(nw_sub ~ edges + kstar(2) + triangle, control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [florentine, gnp_und_dense, karate, les_miserables]
+      undefined_on: [karate, les_miserables]
+      undefined_reason: >-
+        The subgraphs with a finite maximum, a selection; where ergm gives
+        no estimate the definition oracle still checks the engine.
+        On les_miserables: ergm stops with "Unconstrained MCMC sampling did not mix at all" (from its MPLE start the chains sit at the empty or complete graph).
+        On karate: ergm's fit does not finish within the oracle's 300 s limit per fit (its chains sit near the complete graph).
+      tolerance: {rel: 0.06, abs: 0.1}
+      note: >-
+        Two-stars and triangles move almost together on seven nodes, so the
+        estimate is poorly determined along one direction and ergm's Monte
+        Carlo estimate lands further from the exact value than the engine's
+        (gnp_und_dense, edges coefficient: exact 8.873, engine 8.904, ergm
+        8.565 with 10,000 draws); the relative tolerance allows for ergm's
+        error, the definition oracle holds the engine to abs 0.1.
+
+ergm_fit_exact7_missing:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, triangle]
+    nodes: 7
+    missing: [[0, 1], [2, 4], [3, 5], [1, 6]]
+    fixtures: [florentine, gnp_und_dense, karate, kite, les_miserables, two_triangles_isolate]
+    burnin: 2000
+    interval: 50
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: undirected
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Tolerance: the engine's Monte Carlo error against the exact values was
+    at most 0.064 (16,000 draws per round); abs 0.1 allows for that and the
+    reference tool's own Monte Carlo error.
+    Missing-data maximum likelihood on the seven-node subgraphs of ergm_fit_exact7_triangle with the dyads {0, 1}, {2, 4}, {3, 5} and {1, 6} unobserved; their 2^4 completions are summed out exactly.
+  oracles:
+    definition:
+      call: "exact missing-data maximum likelihood from the tally of every graph on the subgraph's nodes (ergm_definition_oracle.py)"
+      only_on: [florentine, gnp_und_dense, karate, kite, les_miserables, two_triangles_isolate]
+      undefined_reason: The subgraphs with a finite maximum, a selection.
+    ergm:
+      call: coef(ergm(nw_sub ~ edges + triangle, control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [florentine, gnp_und_dense, karate, kite, les_miserables, two_triangles_isolate]
+      undefined_on: [florentine, les_miserables, two_triangles_isolate]
+      undefined_reason: >-
+        The subgraphs with a finite maximum, a selection; where ergm gives
+        no estimate the definition oracle still checks the engine.
+        On florentine, two_triangles_isolate: ergm stops with "non-conformable arguments" (a missing dyad closes a triangle, so its MPLE with the dyad absent separates).
+        On les_miserables: ergm's fit does not finish within the oracle's 300 s limit per fit (its chains sit near the complete graph).
+
+ergm_fit_mcmle_gwesp_directed:
+  params:
+    fn: ergm_fit
+    method: mcmle
+    terms: [edges, mutual, "gwesp:0.5", "nodematch:mod3"]
+    fixtures: [gnp_dir_dense, multi_loops_dir]
+    burnin: 50000
+    interval: 500
+    samples: 4000
+    chains: 4
+    seed: 1
+  applies_to: directed
+  tolerance: {rel: 0, abs: 0.05}
+  note: >-
+    The directed counterpart of ergm_fit_mcmle_gwesp, with the terms of
+    ergm_fit_mple_directed. Monte Carlo estimates on both sides; the
+    tolerance allows several standard errors of their difference.
+  oracles:
+    ergm:
+      call: coef(ergm(nw ~ edges + mutual + gwesp(0.5, fixed = TRUE, cutoff = 100) + nodematch("mod3"), control = control.ergm(seed = 1, MCMLE.maxit = 30, MCMC.samplesize = 4096)))
+      only_on: [gnp_dir_dense, multi_loops_dir]
+      undefined_reason: Fitted on two fixtures only, to keep the oracle run short.
+      tolerance: {rel: 0.02, abs: 0.05}
+      note: >-
+        On gnp_dir_dense the edges and GWESP coefficients are large and
+        strongly correlated (-10.76 and 6.34); the two Monte Carlo estimates
+        differ by 0.12 there (1.2 percent), hence a relative tolerance.
 
 saom_sim_density:
   params:

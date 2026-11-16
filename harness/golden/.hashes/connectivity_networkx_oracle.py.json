@@ -1,10 +1,10 @@
 {
- "inputs": "369bd25cd7b640fc87c8a86bdd3127211305a105b3e3212dc6afd79709a303da",
+ "inputs": "7f685be60f7870833d710b1b610c23e27d10225872c0e55fa8db8060048f7fa5",
  "oracles": [
   "bctpy",
   "definition",
-  "ergm",
   "igraph",
+  "nauty",
   "networkx",
   "sna",
   "tsna"

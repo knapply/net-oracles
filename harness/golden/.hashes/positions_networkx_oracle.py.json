@@ -1,11 +1,12 @@
 {
- "inputs": "ecda94dab9abe9a62edf522398318abc8486d80abb31528a9dab75f546f9906c",
+ "inputs": "44a77f48d55cdd62b645bc067db2b757f1011d9e35b4d186c9fb6718ff9162c6",
  "oracles": [
   "cpnet",
   "definition",
-  "graphblas",
+  "infomap",
   "nauty",
   "networkx",
+  "powerlaw",
   "sknetwork"
  ]
 }

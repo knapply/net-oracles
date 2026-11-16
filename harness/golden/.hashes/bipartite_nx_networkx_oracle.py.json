@@ -1,10 +1,9 @@
 {
- "inputs": "41cb2bceb3c907e3dc67d34425250fe018cf502b0bd60355e02a16e5e28433ad",
+ "inputs": "6c3ebb995f559fe857146c85dc2290b1f02b86f730c84358c618d9c89bae32c6",
  "oracles": [
   "definition",
-  "ergm",
   "igraph",
-  "networkx",
-  "rustworkx"
+  "influencer",
+  "networkx"
  ]
 }

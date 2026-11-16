@@ -1,9 +1,10 @@
 {
- "inputs": "915f3d9533f2366037e26b56b1a70bf14e276b9c4067bfcee0141c29790923ba",
+ "inputs": "e5d0c5c1a0d0a339faafa21aed8e2c998f528059fa46c9dc1217bd3f5065c5ff",
  "oracles": [
   "bct",
   "bctpy",
   "blockmodeling",
+  "boost",
   "cdlib",
   "cpnet",
   "definition",
@@ -16,6 +17,7 @@
   "infomap",
   "jgrapht",
   "keyplayer",
+  "manynet",
   "nauty",
   "networkit",
   "networkx",

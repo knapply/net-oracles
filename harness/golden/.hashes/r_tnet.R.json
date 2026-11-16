@@ -1,6 +1,8 @@
 {
- "inputs": "f23239db098eceface29c85b0a0c7c1de1e14f6fa17951dfea692af3d6f127ff",
+ "inputs": "a147dd06fa9217875b02487af798bc1d7a07cad34e49d3019ee2e26433e10260",
  "oracles": [
+  "definition",
+  "networkx",
   "tnet"
  ]
 }

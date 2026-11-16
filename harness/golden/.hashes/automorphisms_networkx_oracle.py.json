@@ -1,8 +1,9 @@
 {
- "inputs": "dc6b359fb23b8ac99e728f95d67fee2b3ab5833e9bd43bd6f9ae2ec0ccfd1326",
+ "inputs": "cffd01cc3c09fc0b5e2b2318662af123817dc19d5d10c0974d21db1cff16a238",
  "oracles": [
   "definition",
   "igraph",
-  "networkx"
+  "networkx",
+  "rustworkx"
  ]
 }

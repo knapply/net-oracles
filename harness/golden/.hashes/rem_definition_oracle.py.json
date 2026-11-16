@@ -1,9 +1,10 @@
 {
- "inputs": "4d58831f267d1852fe2031362a6e09a1c85e0dfb67188bb5212b91148acead75",
+ "inputs": "21cc2e633b50d35b96675b80e73c823cbc35cfa3d696c2c3b83e51f70be3bc6b",
  "oracles": [
   "bct",
   "bctpy",
   "blockmodeling",
+  "boost",
   "cdlib",
   "cpnet",
   "definition",

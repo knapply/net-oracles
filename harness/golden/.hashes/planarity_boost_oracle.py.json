@@ -1,8 +1,13 @@
 {
- "inputs": "a2f48021229c51c2c05f94a8a20e21ac84bcb86f72e3bb9174e21c9b2e4a001e",
+ "inputs": "dfc5d4ca9c0b80af858f14299e8d3baab28abd2a8c0e6b6ee0c1711b2c44b1ca",
  "oracles": [
+  "bctpy",
   "boost",
   "definition",
-  "networkx"
+  "graphblas",
+  "igraph",
+  "networkx",
+  "published",
+  "sna"
  ]
 }

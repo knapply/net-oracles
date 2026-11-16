@@ -1,12 +1,6 @@
 {
- "inputs": "1782fa3eb6df8c8c9bc5029a404ee3e70c0ed3820fd72c03e859a934d6749be6",
+ "inputs": "ac8dd8b8b5bb5d194ca4f88f41edaa85a8170599205dcf6389acd9b6dd0d661b",
  "oracles": [
-  "definition",
-  "igraph",
-  "networkit",
-  "s2",
-  "sf",
-  "sna",
-  "stats"
+  "definition"
  ]
 }

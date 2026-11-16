@@ -1,7 +1,10 @@
 {
- "inputs": "bf70dda9cb3919c2e0ca3c7549352e3476e39defde1df24bef1797c6f668019d",
+ "inputs": "9bfc3e81bb18a6c3b977fdc12c726fd267a9737dbaae2a2788e6e567833f8dde",
  "oracles": [
-  "rsiena",
+  "cpnet",
+  "definition",
+  "nauty",
+  "networkx",
   "sknetwork"
  ]
 }

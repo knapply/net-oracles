@@ -1,14 +1,15 @@
 {
- "inputs": "d618f67facc3ab1cecc4cf7bf473d8639f9738f9df32d3f752d80d2520857e2a",
+ "inputs": "02fd8b563e716c3f4d9b9db4656b4826f40391f087339207b4915b0b1da32501",
  "oracles": [
   "bct",
   "bctpy",
   "blockmodeling",
+  "boost",
   "cdlib",
+  "centiserve",
   "cpnet",
   "definition",
   "egor",
-  "ergm",
   "graphblas",
   "graspologic",
   "igraph",
@@ -26,6 +27,7 @@
   "remstats",
   "rsiena",
   "rustworkx",
+  "scipy",
   "sknetwork",
   "sna",
   "tsna"

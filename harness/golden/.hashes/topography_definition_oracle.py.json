@@ -1,11 +1,10 @@
 {
- "inputs": "a5acfb12a0775692926387f9c74028c294a750e1221a2767b7695708d3e905f6",
+ "inputs": "64d21375d204cfb6439e5c443a89873b79693e91d5017951601d4a1706b3513a",
  "oracles": [
   "centiserve",
   "definition",
   "homophily",
   "igraph",
-  "netrankr",
   "networkit",
   "networkx",
   "pyigraph",

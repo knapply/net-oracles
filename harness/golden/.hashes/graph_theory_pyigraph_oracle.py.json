@@ -1,7 +1,8 @@
 {
- "inputs": "c51fe4ab8d1a34c55291cc36d5ea7b59d62149c41e8f0881b8cacc7e5aa148bb",
+ "inputs": "1a08306575f7108bbf18d0a731635bdf28c1219341497be619ae5febae144ec5",
  "oracles": [
   "bct",
+  "boost",
   "cdlib",
   "cpnet",
   "definition",

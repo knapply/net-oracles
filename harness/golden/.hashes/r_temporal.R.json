@@ -1,8 +1,7 @@
 {
- "inputs": "23c8ba890ee937252b41099721ef7f5160c3d511d97cd9744ab144973704a455",
+ "inputs": "decfc49887412bfcfd91db662d9d750e1d9f6b6ee4a0bffb7101e4046aa5a242",
  "oracles": [
   "definition",
-  "ergm",
   "networkx",
   "tsna"
  ]

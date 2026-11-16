@@ -1,8 +1,9 @@
 {
- "inputs": "f4ac2c99bc188a9c818ccbdee6c2fa7689a22d57b958fe3f516210014491cf00",
+ "inputs": "c9310c9d90acf433e90bfaac5511567a04cfba8e4f8511c40298610444645787",
  "oracles": [
+  "cpnet",
   "definition",
-  "graphblas",
-  "nauty"
+  "nauty",
+  "networkx"
  ]
 }

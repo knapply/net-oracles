@@ -1,7 +1,9 @@
 {
- "inputs": "b079041f06b3f877ea7be9ac58aa2f58b587c173ce3e47ba3cf72e379b2cccba",
+ "inputs": "2f9ea4126b732a1143d1be6a44f2cd83a7f05aa663e3a8d3f94db15c6d3eac8c",
  "oracles": [
+  "blockmodeling",
   "definition",
+  "igraph",
   "influencer",
   "networkx"
  ]

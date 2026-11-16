@@ -1,0 +1,7 @@
+{
+ "inputs": "afe8c13a35756f1c930eb0e957ad0dc1f70f1d78e568fa1537eb777a3413562a",
+ "oracles": [
+  "definition",
+  "scipy"
+ ]
+}

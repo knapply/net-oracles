@@ -1,7 +1,6 @@
 {
- "inputs": "757557e102cd2c3f945d95c586295e345470407804aa62331913153f7039c42e",
+ "inputs": "66ab6d6e9a5295632a771720ce871e217c550c6d7f0ccce64f8ff916344f3a8f",
  "oracles": [
-  "definition",
   "igraph",
   "sna"
  ]

@@ -1,9 +1,9 @@
 {
- "inputs": "2a1a81a50909fcb1e507e7d0c32603f0bbcc186052739dd7ec7e4d821729bdd3",
+ "inputs": "52db9f852a6ad14db88d3b19c221251a533de5b273531d675d3d875e40348ddf",
  "oracles": [
   "definition",
   "egor",
-  "manynet",
-  "networkx"
+  "networkx",
+  "scipy"
  ]
 }

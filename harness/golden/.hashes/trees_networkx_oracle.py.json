@@ -1,7 +1,6 @@
 {
- "inputs": "fb281d7c13eab7d54433273e5c57d4a87dd76e03675a586934cc28efab1adb1b",
+ "inputs": "dd77869e8a8ed31b746e79675291da2d49021c6765ef08baab394bd45ea19c2e",
  "oracles": [
-  "definition",
   "networkx"
  ]
 }

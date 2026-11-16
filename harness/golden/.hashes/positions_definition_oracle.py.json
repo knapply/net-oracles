@@ -1,12 +1,10 @@
 {
- "inputs": "cb6cbe48a65f3d0da07218a905c771a657383450a36cb0f09ade5cf31c36d060",
+ "inputs": "3fbb3bde9d9117282fd2eb59c0a60e752025e4e3654b6d9d8e947887ac70345a",
  "oracles": [
-  "bctpy",
   "blockmodeling",
   "centiserve",
   "definition",
   "egor",
-  "ergm",
   "homophily",
   "igraph",
   "influencer",
@@ -17,6 +15,7 @@
   "pyigraph",
   "rustworkx",
   "s2",
+  "scipy",
   "sf",
   "sna",
   "stats",

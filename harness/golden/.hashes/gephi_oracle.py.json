@@ -1,9 +1,10 @@
 {
- "inputs": "b23e9335bbcc85dbc7a09094e98b2505ba8724af2e5d6ecce5240db8d458230e",
+ "inputs": "e39586da3c41eb719c7fd6732a94972051c95748bb14a3bb76967e75d017cd08",
  "oracles": [
-  "bct",
+  "boost",
   "cdlib",
   "definition",
+  "ergm",
   "gephi",
   "graspologic",
   "jgrapht",

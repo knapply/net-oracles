@@ -1,6 +1,8 @@
 {
- "inputs": "7d2f5e7559231c13a88e9bb97ecef9de43a86ce0388ec61c66abae9356527bbc",
+ "inputs": "f94eab2b4c7d6b458d38fa535840d56ce5bd8d9b4896b951df63364e38b25e60",
  "oracles": [
-  "definition"
+  "definition",
+  "networkx",
+  "powerlaw"
  ]
 }

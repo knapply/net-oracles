@@ -1,6 +1,7 @@
 {
- "inputs": "9e5b18f90f37cb80940b92b246b6d4cba81195d41a6dbd7374b557d2c332e2d3",
+ "inputs": "7c076988dbd4cf4241a268b772e2f129badd456af8af902cb839ec13fe927f2f",
  "oracles": [
+  "cpnet",
   "networkx"
  ]
 }

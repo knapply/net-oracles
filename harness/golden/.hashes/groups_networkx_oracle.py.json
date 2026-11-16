@@ -1,5 +1,5 @@
 {
- "inputs": "20f63d09659891cfdddd32974f2bdd3b41a9563bf630330b10ee1b026d5d8d0f",
+ "inputs": "98d1d540f422c677916af710f867f220fb7998332a36ac1f47af643a91bf4e8b",
  "oracles": [
   "blockmodeling",
   "centiserve",
@@ -13,6 +13,7 @@
   "networkx",
   "pyigraph",
   "s2",
+  "scipy",
   "sf",
   "sna",
   "stats",

@@ -4,7 +4,8 @@
 # summary() of ERGM terms on the observed network as exact counts for the
 # descriptive measures, and, for the model entries (manifest/
 # ergm.yaml), statistics, summed change statistics (ergmMPLE), MPLE and
-# MCMC-MLE coefficients, and mean simulated statistics. ergm is run as a
+# MCMC-MLE coefficients (also ergm_fit: MPLE, MCMLE, missing-data MLE on
+# NA dyads, log-likelihoods), and mean simulated statistics. ergm is run as a
 # black box; its source is not read.
 #
 #   Rscript oracles/r_ergm.R
@@ -222,6 +223,22 @@ with_rules <- function(nw, n) {
   nw
 }
 
+# An ergm_fit reference fit with a wall-clock limit (FIT_LIMIT seconds): a
+# fit that runs over (a degenerate model, slow constrained chains) is an
+# error, reported and written as nothing, so one input cannot hold the whole
+# run. The time each fit took is reported.
+FIT_LIMIT <- as.numeric(Sys.getenv("NETORACLES_ERGM_FIT_LIMIT", "600"))
+within_limit <- function(label, expr) {
+  t0 <- proc.time()[["elapsed"]]
+  setTimeLimit(elapsed = FIT_LIMIT, transient = TRUE)
+  on.exit({
+    setTimeLimit(elapsed = Inf)
+    message(sprintf("  %s: %.0fs", label, proc.time()[["elapsed"]] - t0))
+  })
+  expr
+}
+spec_name <- function(spec) paste(unlist(spec$params$terms), collapse = "+")
+
 # Model fits and simulations: only on the fixtures the manifest lists for
 # this oracle (they are slow and undefined elsewhere).
 model_value <- function(spec, fx, nw) {
@@ -229,7 +246,19 @@ model_value <- function(spec, fx, nw) {
   o <- spec$oracles$ergm
   if (!is.null(o$only_on) && !(fx$name %in% unlist(o$only_on))) return(NULL)
   if (fx$name %in% unlist(o$undefined_on)) return(NULL)
-  nw <- with_rules(nw, fx$n)
+  n <- fx$n
+  if (!is.null(e$nodes)) {
+    # ergm_fit on an induced subgraph: the first `nodes` nodes, or the
+    # fixture's node list (0-based, increasing) when `nodes` maps fixtures
+    # to lists.
+    keep <- if (is.list(e$nodes)) unlist(e$nodes[[fx$name]]) + 1L else seq_len(e$nodes)
+    n <- length(keep)
+    nw <- network::get.inducedSubgraph(nw, keep)
+  }
+  nw <- with_rules(nw, n)
+  # Missing dyads (0-based pairs) are NA in the network: ergm fits them by
+  # missing-data maximum likelihood.
+  for (d in e$missing) nw[d[[1]] + 1L, d[[2]] + 1L] <- NA
   f <- model_formula(nw, e$terms)
   set.seed(1)
   switch(e$fn,
@@ -243,6 +272,16 @@ model_value <- function(spec, fx, nw) {
       f, coef = unlist(e$coef), nsim = 4000, output = "stats", seed = 1,
       control = ergm::control.simulate.formula(MCMC.burnin = e$burnin,
                                                MCMC.interval = e$oracle_interval)))),
+    ergm_fit = within_limit(sprintf("%s on %s", spec_name(spec), fx$name), {
+      fit <- if (identical(e$method, "mple")) ergm::ergm(f, estimate = "MPLE") else
+        ergm::ergm(f, control = ergm::control.ergm(
+          seed = 1, MCMLE.maxit = 30,
+          MCMC.samplesize = if (is.null(o$samples)) 4096 else o$samples))
+      v <- as.numeric(stats::coef(fit))
+      if (isTRUE(e$loglik))
+        v <- c(v, as.numeric(stats::logLik(fit)), as.numeric(ergm::logLikNull(fit)))
+      v
+    }),
     ergm_mcmle = {
       ctl <- if (length(e$terms) > 1 && any(grepl("^gw", unlist(e$terms))))
         ergm::control.ergm(seed = 1, MCMC.samplesize = 4096) else ergm::control.ergm(seed = 1)
