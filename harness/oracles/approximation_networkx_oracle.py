@@ -41,6 +41,23 @@ def _nc(fx, e):
     return [apx.node_connectivity(sorted_graph(fx))]
 
 
+def given_graph(fx):
+    g = nx.DiGraph() if fx.directed else nx.Graph()
+    g.add_nodes_from(range(fx.n))
+    if fx.directed:
+        g.add_edges_from(sorted(set(zip(fx.src, fx.tgt))))
+    else:
+        g.add_edges_from(sorted({(min(a, b), max(a, b)) for a, b in zip(fx.src, fx.tgt)}))
+    return g
+
+
+@measure("ap_node_connectivity_any")
+def _nc_any(fx, e):
+    if fx.n == 0:
+        return None
+    return [apx.node_connectivity(given_graph(fx))]
+
+
 @measure("ap_local_connectivity")
 def _lc(fx, e):
     if fx.n < 3:

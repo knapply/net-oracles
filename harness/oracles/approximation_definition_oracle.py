@@ -32,6 +32,49 @@ def measure(name):
     return wrap
 
 
+@measure("ap_node_connectivity_any")
+def _nc_any(fx, e):
+    """White and Newman's greedy path packing as NetworkX runs it (pivot of
+    least NetworkX degree, first in node order; its non-neighbours, then
+    non-adjacent pairs of its neighbours), started from the least loop-free
+    degree (least of out- and in-degree in a digraph), which bounds the node
+    connectivity: the engine's `simple` start. The local searches are
+    NetworkX's public local_node_connectivity."""
+    import itertools
+
+    import networkx as nx
+    from networkx.algorithms import approximation as apx
+
+    if fx.n == 0 or e.get("start", "simple") != "simple":
+        return None
+    g = nx.DiGraph() if fx.directed else nx.Graph()
+    g.add_nodes_from(range(fx.n))
+    pairs = set(zip(fx.src, fx.tgt)) if fx.directed else \
+        {(min(a, b), max(a, b)) for a, b in zip(fx.src, fx.tgt)}
+    g.add_edges_from(sorted(pairs))
+    if not (nx.is_weakly_connected(g) if fx.directed else nx.is_connected(g)):
+        return [0]
+
+    def loop_free(v, nbrs):
+        return sum(1 for w in nbrs if w != v)
+
+    if fx.directed:
+        k = min(min(loop_free(v, g.successors(v)), loop_free(v, g.predecessors(v))) for v in g)
+        nbrs = lambda v: list(itertools.chain(g.predecessors(v), g.successors(v)))  # noqa: E731
+        pairs_of = itertools.permutations
+    else:
+        k = min(loop_free(v, g.neighbors(v)) for v in g)
+        nbrs = lambda v: list(g.neighbors(v))  # noqa: E731
+        pairs_of = itertools.combinations
+    v = min(g, key=lambda u: (g.degree(u), u))
+    for w in sorted(set(g) - set(nbrs(v)) - {v}):
+        k = min(k, apx.local_node_connectivity(g, v, w, cutoff=k))
+    for x, y in pairs_of(nbrs(v), 2):
+        if y not in g[x] and x != y:
+            k = min(k, apx.local_node_connectivity(g, x, y, cutoff=k))
+    return [k]
+
+
 @measure("ap_large_clique_size")
 def _lcs(fx, e):
     """The heuristic grows cliques greedily; on graphs whose largest clique

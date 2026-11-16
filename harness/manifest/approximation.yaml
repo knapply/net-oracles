@@ -22,6 +22,32 @@ ap_node_connectivity:
     networkx:
       call: "nx.approximation.node_connectivity(G_sorted)"
 
+ap_node_connectivity_any:
+  params: {fn: ap_node_connectivity_any}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "NetworkX's procedure (pivot of least NetworkX degree, local searches by nx.approximation.local_node_connectivity with the running bound as cutoff) started from the least loop-free degree, least of out- and in-degree in a digraph"
+      undefined_when: [null_graph]
+      undefined_reason: node connectivity is undefined for a graph without nodes
+    networkx:
+      call: "nx.approximation.node_connectivity(G) on the fixture as given (directed kept, loops kept, parallel edges merged)"
+      differs_when: [directed, loops]
+      reason: NetworkX starts from its own least degree (a loop counted twice, out- plus in-degree in a digraph), which can exceed the node connectivity; the engine's default `simple` start is the least loop-free degree. The `networkx` start reproduces NetworkX (ap_node_connectivity_any_networkx).
+      undefined_when: [null_graph]
+      undefined_reason: NetworkX raises for the null graph
+
+ap_node_connectivity_any_networkx:
+  params: {fn: ap_node_connectivity_any, start: networkx}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    networkx:
+      call: "nx.approximation.node_connectivity(G) on the fixture as given (directed kept, loops kept, parallel edges merged)"
+      undefined_when: [null_graph]
+      undefined_reason: NetworkX raises for the null graph
+
 ap_local_connectivity:
   params: {fn: ap_local_connectivity}
   applies_to: any
