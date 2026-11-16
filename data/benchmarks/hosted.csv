@@ -1,1 +1,526 @@
 suite,graph,nodes,edges,measure,tool,tool_version,seconds,peak_megabytes,threads,status
+hosted,kron12,4096,48474,betweenness (16 sources),gapbs,941462c7c42e,0.06248,57.3,4,ok
+hosted,kron12,4096,48474,bfs,gapbs,941462c7c42e,5e-05,57.3,4,ok
+hosted,kron12,4096,48474,components,gapbs,941462c7c42e,0.00014,57.3,4,ok
+hosted,kron12,4096,48474,pagerank,gapbs,941462c7c42e,0.00125,57.3,4,ok
+hosted,kron12,4096,48474,triangles,gapbs,941462c7c42e,0.00343,57.3,4,ok
+hosted,kron14,16384,212944,betweenness (16 sources),gapbs,941462c7c42e,0.08379,81.4,4,ok
+hosted,kron14,16384,212944,bfs,gapbs,941462c7c42e,0.00018,81.4,4,ok
+hosted,kron14,16384,212944,components,gapbs,941462c7c42e,0.00066,81.4,4,ok
+hosted,kron14,16384,212944,pagerank,gapbs,941462c7c42e,0.00484,81.4,4,ok
+hosted,kron14,16384,212944,triangles,gapbs,941462c7c42e,0.02029,81.4,4,ok
+hosted,kron16,65536,909258,betweenness (16 sources),gapbs,941462c7c42e,0.18504,177.7,4,ok
+hosted,kron16,65536,909258,bfs,gapbs,941462c7c42e,0.00976,177.7,4,ok
+hosted,kron16,65536,909258,components,gapbs,941462c7c42e,0.00891,177.7,4,ok
+hosted,kron16,65536,909258,pagerank,gapbs,941462c7c42e,0.00599,177.7,4,ok
+hosted,kron16,65536,909258,triangles,gapbs,941462c7c42e,0.1101,177.7,4,ok
+hosted,kron18,262144,3805960,betweenness (16 sources),gapbs,941462c7c42e,0.46268,569.5,4,ok
+hosted,kron18,262144,3805960,bfs,gapbs,941462c7c42e,0.00193,569.5,4,ok
+hosted,kron18,262144,3805960,components,gapbs,941462c7c42e,0.00577,569.5,4,ok
+hosted,kron18,262144,3805960,pagerank,gapbs,941462c7c42e,0.02189,569.5,4,ok
+hosted,kron18,262144,3805960,triangles,gapbs,941462c7c42e,0.68826,569.5,4,ok
+hosted,road12,4096,7251,betweenness (16 sources),gapbs,941462c7c42e,0.07577,57.3,4,ok
+hosted,road12,4096,7251,bfs,gapbs,941462c7c42e,0.00027,57.3,4,ok
+hosted,road12,4096,7251,components,gapbs,941462c7c42e,0.0151,57.3,4,ok
+hosted,road12,4096,7251,pagerank,gapbs,941462c7c42e,0.00021,57.3,4,ok
+hosted,road12,4096,7251,triangles,gapbs,941462c7c42e,4e-05,57.3,4,ok
+hosted,road14,16384,29246,betweenness (16 sources),gapbs,941462c7c42e,0.07771,81.4,4,ok
+hosted,road14,16384,29246,bfs,gapbs,941462c7c42e,0.00058,81.4,4,ok
+hosted,road14,16384,29246,components,gapbs,941462c7c42e,0.00058,81.4,4,ok
+hosted,road14,16384,29246,pagerank,gapbs,941462c7c42e,0.00113,81.4,4,ok
+hosted,road14,16384,29246,triangles,gapbs,941462c7c42e,0.00018,81.4,4,ok
+hosted,road16,65536,117367,betweenness (16 sources),gapbs,941462c7c42e,0.12216,177.7,4,ok
+hosted,road16,65536,117367,bfs,gapbs,941462c7c42e,0.00457,177.7,4,ok
+hosted,road16,65536,117367,components,gapbs,941462c7c42e,0.01774,177.7,4,ok
+hosted,road16,65536,117367,pagerank,gapbs,941462c7c42e,0.01203,177.7,4,ok
+hosted,road16,65536,117367,triangles,gapbs,941462c7c42e,0.006,177.7,4,ok
+hosted,road18,262144,471118,betweenness (16 sources),gapbs,941462c7c42e,0.30525,569.5,4,ok
+hosted,road18,262144,471118,bfs,gapbs,941462c7c42e,0.0054,569.5,4,ok
+hosted,road18,262144,471118,components,gapbs,941462c7c42e,0.00427,569.5,4,ok
+hosted,road18,262144,471118,pagerank,gapbs,941462c7c42e,0.00881,569.5,4,ok
+hosted,road18,262144,471118,triangles,gapbs,941462c7c42e,0.01185,569.5,4,ok
+hosted,urand12,4096,32678,betweenness (16 sources),gapbs,941462c7c42e,0.05347,57.3,4,ok
+hosted,urand12,4096,32678,bfs,gapbs,941462c7c42e,0.00811,57.3,4,ok
+hosted,urand12,4096,32678,components,gapbs,941462c7c42e,0.00016,57.3,4,ok
+hosted,urand12,4096,32678,pagerank,gapbs,941462c7c42e,0.00032,57.3,4,ok
+hosted,urand12,4096,32678,triangles,gapbs,941462c7c42e,0.00228,57.3,4,ok
+hosted,urand14,16384,131006,betweenness (16 sources),gapbs,941462c7c42e,0.07272,81.4,4,ok
+hosted,urand14,16384,131006,bfs,gapbs,941462c7c42e,0.0002,81.4,4,ok
+hosted,urand14,16384,131006,components,gapbs,941462c7c42e,0.00062,81.4,4,ok
+hosted,urand14,16384,131006,pagerank,gapbs,941462c7c42e,0.0013,81.4,4,ok
+hosted,urand14,16384,131006,triangles,gapbs,941462c7c42e,0.00605,81.4,4,ok
+hosted,urand16,65536,524225,betweenness (16 sources),gapbs,941462c7c42e,0.14868,177.7,4,ok
+hosted,urand16,65536,524225,bfs,gapbs,941462c7c42e,0.00058,177.7,4,ok
+hosted,urand16,65536,524225,components,gapbs,941462c7c42e,0.00406,177.7,4,ok
+hosted,urand16,65536,524225,pagerank,gapbs,941462c7c42e,0.00232,177.7,4,ok
+hosted,urand16,65536,524225,triangles,gapbs,941462c7c42e,0.01755,177.7,4,ok
+hosted,urand18,262144,2097084,betweenness (16 sources),gapbs,941462c7c42e,0.40429,569.5,4,ok
+hosted,urand18,262144,2097084,bfs,gapbs,941462c7c42e,0.02281,569.5,4,ok
+hosted,urand18,262144,2097084,components,gapbs,941462c7c42e,0.01197,569.5,4,ok
+hosted,urand18,262144,2097084,pagerank,gapbs,941462c7c42e,0.02151,569.5,4,ok
+hosted,urand18,262144,2097084,triangles,gapbs,941462c7c42e,0.05146,569.5,4,ok
+hosted,kron12,4096,48474,bfs,graphblas,2023.10.0,0.004565,31.1,1,ok
+hosted,kron12,4096,48474,load (read and build; memory = resident graph),graphblas,2023.10.0,0.060283,31.3,1,ok
+hosted,kron12,4096,48474,pagerank,graphblas,2023.10.0,,,1,error
+hosted,kron12,4096,48474,triangles,graphblas,2023.10.0,,,1,error
+hosted,kron14,16384,212944,bfs,graphblas,2023.10.0,0.029451,81.4,1,ok
+hosted,kron14,16384,212944,load (read and build; memory = resident graph),graphblas,2023.10.0,0.327119,82.7,1,ok
+hosted,kron14,16384,212944,pagerank,graphblas,2023.10.0,,,1,error
+hosted,kron14,16384,212944,triangles,graphblas,2023.10.0,,,1,error
+hosted,kron16,65536,909258,bfs,graphblas,2023.10.0,0.193361,291.6,1,ok
+hosted,kron16,65536,909258,load (read and build; memory = resident graph),graphblas,2023.10.0,1.6802,297.9,1,ok
+hosted,kron16,65536,909258,pagerank,graphblas,2023.10.0,,,1,error
+hosted,kron16,65536,909258,triangles,graphblas,2023.10.0,,,1,error
+hosted,road12,4096,7251,bfs,graphblas,2023.10.0,0.003067,19.9,1,ok
+hosted,road12,4096,7251,load (read and build; memory = resident graph),graphblas,2023.10.0,0.02452,19.6,1,ok
+hosted,road12,4096,7251,pagerank,graphblas,2023.10.0,,,1,error
+hosted,road12,4096,7251,triangles,graphblas,2023.10.0,,,1,error
+hosted,road14,16384,29246,bfs,graphblas,2023.10.0,0.010655,30.3,1,ok
+hosted,road14,16384,29246,load (read and build; memory = resident graph),graphblas,2023.10.0,0.054612,29.1,1,ok
+hosted,road14,16384,29246,pagerank,graphblas,2023.10.0,,,1,error
+hosted,road14,16384,29246,triangles,graphblas,2023.10.0,,,1,error
+hosted,road16,65536,117367,bfs,graphblas,2023.10.0,0.055724,72.5,1,ok
+hosted,road16,65536,117367,load (read and build; memory = resident graph),graphblas,2023.10.0,0.324174,66.8,1,ok
+hosted,road16,65536,117367,pagerank,graphblas,2023.10.0,,,1,error
+hosted,road16,65536,117367,triangles,graphblas,2023.10.0,,,1,error
+hosted,road18,262144,471118,bfs,graphblas,2023.10.0,0.285485,245.9,1,ok
+hosted,road18,262144,471118,load (read and build; memory = resident graph),graphblas,2023.10.0,1.31615,217.9,1,ok
+hosted,road18,262144,471118,pagerank,graphblas,2023.10.0,,,1,error
+hosted,road18,262144,471118,triangles,graphblas,2023.10.0,,,1,error
+hosted,urand12,4096,32678,bfs,graphblas,2023.10.0,0.002776,27.1,1,ok
+hosted,urand12,4096,32678,load (read and build; memory = resident graph),graphblas,2023.10.0,0.050354,27.2,1,ok
+hosted,urand12,4096,32678,pagerank,graphblas,2023.10.0,,,1,error
+hosted,urand12,4096,32678,triangles,graphblas,2023.10.0,,,1,error
+hosted,urand14,16384,131006,bfs,graphblas,2023.10.0,0.017864,59.4,1,ok
+hosted,urand14,16384,131006,load (read and build; memory = resident graph),graphblas,2023.10.0,0.234305,59.6,1,ok
+hosted,urand14,16384,131006,pagerank,graphblas,2023.10.0,,,1,error
+hosted,urand14,16384,131006,triangles,graphblas,2023.10.0,,,1,error
+hosted,urand16,65536,524225,bfs,graphblas,2023.10.0,0.13217,189.3,1,ok
+hosted,urand16,65536,524225,load (read and build; memory = resident graph),graphblas,2023.10.0,1.1063,189.7,1,ok
+hosted,urand16,65536,524225,pagerank,graphblas,2023.10.0,,,1,error
+hosted,urand16,65536,524225,triangles,graphblas,2023.10.0,,,1,error
+hosted,kron12,4096,48474,betweenness (16 sources),graphtool,3.9,0.00769,11.6,4,ok
+hosted,kron12,4096,48474,bfs,graphtool,3.9,0.001059,13.1,4,ok
+hosted,kron12,4096,48474,closeness,graphtool,3.9,0.552849,6.2,4,ok
+hosted,kron12,4096,48474,components,graphtool,3.9,0.000408,5.1,4,ok
+hosted,kron12,4096,48474,load (read and build; memory = resident graph),graphtool,3.9,0.028966,5.1,4,ok
+hosted,kron12,4096,48474,pagerank,graphtool,3.9,0.002896,6,4,ok
+hosted,kron12,4096,48474,triangles,graphtool,3.9,0.006783,5.5,4,ok
+hosted,kron14,16384,212944,betweenness (16 sources),graphtool,3.9,0.03908,39,4,ok
+hosted,kron14,16384,212944,bfs,graphtool,3.9,0.003547,21,4,ok
+hosted,kron14,16384,212944,closeness,graphtool,3.9,9.40357,16.4,4,ok
+hosted,kron14,16384,212944,components,graphtool,3.9,0.001631,13.7,4,ok
+hosted,kron14,16384,212944,load (read and build; memory = resident graph),graphtool,3.9,0.040846,14.3,4,ok
+hosted,kron14,16384,212944,pagerank,graphtool,3.9,0.009857,14.5,4,ok
+hosted,kron14,16384,212944,triangles,graphtool,3.9,0.058116,13.8,4,ok
+hosted,kron16,65536,909258,betweenness (16 sources),graphtool,3.9,0.196625,171.4,4,ok
+hosted,kron16,65536,909258,bfs,graphtool,3.9,0.009697,52.4,4,ok
+hosted,kron16,65536,909258,closeness,graphtool,,,,0,over-budget
+hosted,kron16,65536,909258,components,graphtool,3.9,0.005599,45.9,4,ok
+hosted,kron16,65536,909258,load (read and build; memory = resident graph),graphtool,3.9,0.054947,50.2,4,ok
+hosted,kron16,65536,909258,pagerank,graphtool,3.9,0.039413,48.9,4,ok
+hosted,kron16,65536,909258,triangles,graphtool,3.9,0.375938,46.6,4,ok
+hosted,kron18,262144,3805960,betweenness (16 sources),graphtool,3.9,1.25747,688.4,4,ok
+hosted,kron18,262144,3805960,bfs,graphtool,3.9,0.055685,184.5,4,ok
+hosted,kron18,262144,3805960,components,graphtool,3.9,0.052563,182.4,4,ok
+hosted,kron18,262144,3805960,load (read and build; memory = resident graph),graphtool,3.9,0.239198,201.6,4,ok
+hosted,kron18,262144,3805960,pagerank,graphtool,3.9,0.2448,188.8,4,ok
+hosted,kron18,262144,3805960,triangles,graphtool,3.9,5.13326,184.5,4,ok
+hosted,road12,4096,7251,betweenness (16 sources),graphtool,3.9,0.00329,5.7,4,ok
+hosted,road12,4096,7251,bfs,graphtool,3.9,0.000754,10.9,4,ok
+hosted,road12,4096,7251,closeness,graphtool,3.9,0.313793,4.6,4,ok
+hosted,road12,4096,7251,components,graphtool,3.9,0.000241,3.4,4,ok
+hosted,road12,4096,7251,load (read and build; memory = resident graph),graphtool,3.9,0.028682,2.8,4,ok
+hosted,road12,4096,7251,pagerank,graphtool,3.9,0.003355,3.9,4,ok
+hosted,road12,4096,7251,triangles,graphtool,3.9,0.000189,3.2,4,ok
+hosted,road14,16384,29246,betweenness (16 sources),graphtool,3.9,0.012454,14.5,4,ok
+hosted,road14,16384,29246,bfs,graphtool,3.9,0.002934,12.4,4,ok
+hosted,road14,16384,29246,closeness,graphtool,3.9,5.67992,9.8,4,ok
+hosted,road14,16384,29246,components,graphtool,3.9,0.002017,6.2,4,ok
+hosted,road14,16384,29246,load (read and build; memory = resident graph),graphtool,3.9,0.027774,4.3,4,ok
+hosted,road14,16384,29246,pagerank,graphtool,3.9,0.007462,5.9,4,ok
+hosted,road14,16384,29246,triangles,graphtool,3.9,0.000646,5.4,4,ok
+hosted,road16,65536,117367,betweenness (16 sources),graphtool,3.9,0.072907,49.1,4,ok
+hosted,road16,65536,117367,bfs,graphtool,3.9,0.007203,18.5,4,ok
+hosted,road16,65536,117367,closeness,graphtool,,,,0,over-budget
+hosted,road16,65536,117367,components,graphtool,3.9,0.006182,18.4,4,ok
+hosted,road16,65536,117367,load (read and build; memory = resident graph),graphtool,3.9,0.030212,10.1,4,ok
+hosted,road16,65536,117367,pagerank,graphtool,3.9,0.017866,14.8,4,ok
+hosted,road16,65536,117367,triangles,graphtool,3.9,0.00197,13.5,4,ok
+hosted,road18,262144,471118,betweenness (16 sources),graphtool,3.9,0.581761,188,4,ok
+hosted,road18,262144,471118,bfs,graphtool,3.9,0.038101,42,4,ok
+hosted,road18,262144,471118,components,graphtool,3.9,0.060513,66.7,4,ok
+hosted,road18,262144,471118,load (read and build; memory = resident graph),graphtool,3.9,0.072987,33.5,4,ok
+hosted,road18,262144,471118,pagerank,graphtool,3.9,0.166888,46.6,4,ok
+hosted,road18,262144,471118,triangles,graphtool,3.9,0.03104,42.3,4,ok
+hosted,urand12,4096,32678,betweenness (16 sources),graphtool,3.9,0.007544,11.1,4,ok
+hosted,urand12,4096,32678,bfs,graphtool,3.9,0.001082,12.5,4,ok
+hosted,urand12,4096,32678,closeness,graphtool,3.9,0.605651,6.1,4,ok
+hosted,urand12,4096,32678,components,graphtool,3.9,0.000582,4.8,4,ok
+hosted,urand12,4096,32678,load (read and build; memory = resident graph),graphtool,3.9,0.029034,4.4,4,ok
+hosted,urand12,4096,32678,pagerank,graphtool,3.9,0.001938,5.4,4,ok
+hosted,urand12,4096,32678,triangles,graphtool,3.9,0.00093,4.9,4,ok
+hosted,urand14,16384,131006,betweenness (16 sources),graphtool,3.9,0.030377,29.9,4,ok
+hosted,urand14,16384,131006,bfs,graphtool,3.9,0.003329,18,4,ok
+hosted,urand14,16384,131006,closeness,graphtool,3.9,11.8052,15.6,4,ok
+hosted,urand14,16384,131006,components,graphtool,3.9,0.001927,11.7,4,ok
+hosted,urand14,16384,131006,load (read and build; memory = resident graph),graphtool,3.9,0.032519,10.6,4,ok
+hosted,urand14,16384,131006,pagerank,graphtool,3.9,0.006516,11.4,4,ok
+hosted,urand14,16384,131006,triangles,graphtool,3.9,0.004159,10.7,4,ok
+hosted,urand16,65536,524225,betweenness (16 sources),graphtool,3.9,0.243804,135.9,4,ok
+hosted,urand16,65536,524225,bfs,graphtool,3.9,0.00953,40.8,4,ok
+hosted,urand16,65536,524225,closeness,graphtool,,,,0,over-budget
+hosted,urand16,65536,524225,components,graphtool,3.9,0.012084,40.2,4,ok
+hosted,urand16,65536,524225,load (read and build; memory = resident graph),graphtool,3.9,0.057132,35.4,4,ok
+hosted,urand16,65536,524225,pagerank,graphtool,3.9,0.030791,36.5,4,ok
+hosted,urand16,65536,524225,triangles,graphtool,3.9,0.023541,34.7,4,ok
+hosted,urand18,262144,2097084,betweenness (16 sources),graphtool,3.9,1.35925,433.9,4,ok
+hosted,urand18,262144,2097084,bfs,graphtool,3.9,0.065409,131.9,4,ok
+hosted,urand18,262144,2097084,components,graphtool,3.9,0.093439,154.3,4,ok
+hosted,urand18,262144,2097084,load (read and build; memory = resident graph),graphtool,3.9,0.228144,134.3,4,ok
+hosted,urand18,262144,2097084,pagerank,graphtool,3.9,0.237711,132.9,4,ok
+hosted,urand18,262144,2097084,triangles,graphtool,3.9,0.297671,130.6,4,ok
+hosted,kron12,4096,48474,bfs,igraph,2.1.4,0.004,3.2,1,ok
+hosted,kron12,4096,48474,closeness,igraph,2.1.4,0.621,3.3,1,ok
+hosted,kron12,4096,48474,components,igraph,2.1.4,0.001,3.3,1,ok
+hosted,kron12,4096,48474,load (read and build; memory = resident graph),igraph,2.1.4,0.038,3.1,1,ok
+hosted,kron12,4096,48474,pagerank,igraph,2.1.4,0.012,3.5,1,ok
+hosted,kron12,4096,48474,triangles,igraph,2.1.4,0.01,3.2,1,ok
+hosted,kron14,16384,212944,bfs,igraph,2.1.4,0.007,13.6,1,ok
+hosted,kron14,16384,212944,closeness,igraph,2.1.4,11.184,13.8,1,ok
+hosted,kron14,16384,212944,components,igraph,2.1.4,0.003,13.7,1,ok
+hosted,kron14,16384,212944,load (read and build; memory = resident graph),igraph,2.1.4,0.062,19.9,1,ok
+hosted,kron14,16384,212944,pagerank,igraph,2.1.4,0.044,13.8,1,ok
+hosted,kron14,16384,212944,triangles,igraph,2.1.4,0.052,13.6,1,ok
+hosted,kron16,65536,909258,bfs,igraph,2.1.4,0.036,45.9,1,ok
+hosted,kron16,65536,909258,components,igraph,2.1.4,0.014,35.8,1,ok
+hosted,kron16,65536,909258,load (read and build; memory = resident graph),igraph,2.1.4,0.136,90.9,1,ok
+hosted,kron16,65536,909258,pagerank,igraph,2.1.4,0.172,57.6,1,ok
+hosted,kron16,65536,909258,triangles,igraph,2.1.4,0.273,42.5,1,ok
+hosted,kron18,262144,3805960,bfs,igraph,2.1.4,0.15,207.4,1,ok
+hosted,kron18,262144,3805960,components,igraph,2.1.4,0.097,182.9,1,ok
+hosted,kron18,262144,3805960,load (read and build; memory = resident graph),igraph,2.1.4,0.931,356.8,1,ok
+hosted,kron18,262144,3805960,pagerank,igraph,2.1.4,0.845,241,1,ok
+hosted,kron18,262144,3805960,triangles,igraph,2.1.4,2.031,197,1,ok
+hosted,road12,4096,7251,bfs,igraph,2.1.4,0.004,0.6,1,ok
+hosted,road12,4096,7251,closeness,igraph,2.1.4,0.58,0.7,1,ok
+hosted,road12,4096,7251,components,igraph,2.1.4,0.001,0.7,1,ok
+hosted,road12,4096,7251,load (read and build; memory = resident graph),igraph,2.1.4,0.038,0.5,1,ok
+hosted,road12,4096,7251,pagerank,igraph,2.1.4,0.007,0.8,1,ok
+hosted,road12,4096,7251,triangles,igraph,2.1.4,0.003,0.6,1,ok
+hosted,road14,16384,29246,bfs,igraph,2.1.4,0.007,1.8,1,ok
+hosted,road14,16384,29246,closeness,igraph,2.1.4,13.071,1.8,1,ok
+hosted,road14,16384,29246,components,igraph,2.1.4,0.003,1.8,1,ok
+hosted,road14,16384,29246,load (read and build; memory = resident graph),igraph,2.1.4,0.034,1.6,1,ok
+hosted,road14,16384,29246,pagerank,igraph,2.1.4,0.022,3.6,1,ok
+hosted,road14,16384,29246,triangles,igraph,2.1.4,0.006,1.8,1,ok
+hosted,road16,65536,117367,bfs,igraph,2.1.4,0.018,12.3,1,ok
+hosted,road16,65536,117367,closeness,igraph,,,,0,over-budget
+hosted,road16,65536,117367,components,igraph,2.1.4,0.006,12.4,1,ok
+hosted,road16,65536,117367,load (read and build; memory = resident graph),igraph,2.1.4,0.043,12.3,1,ok
+hosted,road16,65536,117367,pagerank,igraph,2.1.4,0.072,19.1,1,ok
+hosted,road16,65536,117367,triangles,igraph,2.1.4,0.016,12.4,1,ok
+hosted,road18,262144,471118,bfs,igraph,2.1.4,0.101,59.2,1,ok
+hosted,road18,262144,471118,components,igraph,2.1.4,0.029,32.6,1,ok
+hosted,road18,262144,471118,load (read and build; memory = resident graph),igraph,2.1.4,0.089,55.2,1,ok
+hosted,road18,262144,471118,pagerank,igraph,2.1.4,0.311,83.7,1,ok
+hosted,road18,262144,471118,triangles,igraph,2.1.4,0.074,42.7,1,ok
+hosted,urand12,4096,32678,bfs,igraph,2.1.4,0.004,1.6,1,ok
+hosted,urand12,4096,32678,closeness,igraph,2.1.4,0.851,1.7,1,ok
+hosted,urand12,4096,32678,components,igraph,2.1.4,0.001,1.7,1,ok
+hosted,urand12,4096,32678,load (read and build; memory = resident graph),igraph,2.1.4,0.037,1.5,1,ok
+hosted,urand12,4096,32678,pagerank,igraph,2.1.4,0.01,1.8,1,ok
+hosted,urand12,4096,32678,triangles,igraph,2.1.4,0.003,1.6,1,ok
+hosted,urand14,16384,131006,bfs,igraph,2.1.4,0.008,11.8,1,ok
+hosted,urand14,16384,131006,closeness,igraph,2.1.4,16.906,11.9,1,ok
+hosted,urand14,16384,131006,components,igraph,2.1.4,0.002,11.9,1,ok
+hosted,urand14,16384,131006,load (read and build; memory = resident graph),igraph,2.1.4,0.049,11.8,1,ok
+hosted,urand14,16384,131006,pagerank,igraph,2.1.4,0.037,12.1,1,ok
+hosted,urand14,16384,131006,triangles,igraph,2.1.4,0.012,11.9,1,ok
+hosted,urand16,65536,524225,bfs,igraph,2.1.4,0.028,29.9,1,ok
+hosted,urand16,65536,524225,components,igraph,2.1.4,0.001,21.2,1,ok
+hosted,urand16,65536,524225,load (read and build; memory = resident graph),igraph,2.1.4,0.084,53.1,1,ok
+hosted,urand16,65536,524225,pagerank,igraph,2.1.4,0.13,40.1,1,ok
+hosted,urand16,65536,524225,triangles,igraph,2.1.4,0.039,24.5,1,ok
+hosted,urand18,262144,2097084,bfs,igraph,2.1.4,0.202,136.3,1,ok
+hosted,urand18,262144,2097084,components,igraph,2.1.4,0.113,104.7,1,ok
+hosted,urand18,262144,2097084,load (read and build; memory = resident graph),igraph,2.1.4,0.305,200.3,1,ok
+hosted,urand18,262144,2097084,pagerank,igraph,2.1.4,0.603,164.8,1,ok
+hosted,urand18,262144,2097084,triangles,igraph,2.1.4,0.257,116.8,1,ok
+hosted,kron12,4096,48474,betweenness (16 sources),networkit,11.3,0.014244,7.4,4,ok
+hosted,kron12,4096,48474,bfs,networkit,11.3,0.000395,3.1,4,ok
+hosted,kron12,4096,48474,closeness,networkit,11.3,0.164581,4.4,4,ok
+hosted,kron12,4096,48474,components,networkit,11.3,0.000183,4,4,ok
+hosted,kron12,4096,48474,load (read and build; memory = resident graph),networkit,11.3,0.016269,2.9,4,ok
+hosted,kron12,4096,48474,pagerank,networkit,11.3,0.001125,4.2,4,ok
+hosted,kron12,4096,48474,triangles,networkit,11.3,0.003291,4.2,4,ok
+hosted,kron14,16384,212944,betweenness (16 sources),networkit,11.3,0.050959,19.7,4,ok
+hosted,kron14,16384,212944,bfs,networkit,11.3,0.001911,6,4,ok
+hosted,kron14,16384,212944,closeness,networkit,11.3,3.37557,8.6,4,ok
+hosted,kron14,16384,212944,components,networkit,11.3,0.001223,6.9,4,ok
+hosted,kron14,16384,212944,load (read and build; memory = resident graph),networkit,11.3,0.053895,12,4,ok
+hosted,kron14,16384,212944,pagerank,networkit,11.3,0.004464,7.7,4,ok
+hosted,kron14,16384,212944,triangles,networkit,11.3,0.021161,9.1,4,ok
+hosted,kron16,65536,909258,betweenness (16 sources),networkit,11.3,0.24588,70,4,ok
+hosted,kron16,65536,909258,bfs,networkit,11.3,0.008097,22.7,4,ok
+hosted,kron16,65536,909258,closeness,networkit,,,,0,over-budget
+hosted,kron16,65536,909258,components,networkit,11.3,0.005045,23.6,4,ok
+hosted,kron16,65536,909258,load (read and build; memory = resident graph),networkit,11.3,0.201986,49.5,4,ok
+hosted,kron16,65536,909258,pagerank,networkit,11.3,0.018675,27.5,4,ok
+hosted,kron16,65536,909258,triangles,networkit,11.3,0.152068,33,4,ok
+hosted,kron18,262144,3805960,betweenness (16 sources),networkit,11.3,1.09487,279.7,4,ok
+hosted,kron18,262144,3805960,bfs,networkit,11.3,0.063245,96.4,4,ok
+hosted,kron18,262144,3805960,components,networkit,11.3,0.037502,97.4,4,ok
+hosted,kron18,262144,3805960,load (read and build; memory = resident graph),networkit,11.3,0.966896,210.3,4,ok
+hosted,kron18,262144,3805960,pagerank,networkit,11.3,0.147036,109.2,4,ok
+hosted,kron18,262144,3805960,triangles,networkit,11.3,1.00937,136.2,4,ok
+hosted,road12,4096,7251,betweenness (16 sources),networkit,11.3,0.026121,4.8,4,ok
+hosted,road12,4096,7251,bfs,networkit,11.3,0.000145,0.9,4,ok
+hosted,road12,4096,7251,closeness,networkit,11.3,0.098876,2.1,4,ok
+hosted,road12,4096,7251,components,networkit,11.3,7e-05,1.8,4,ok
+hosted,road12,4096,7251,load (read and build; memory = resident graph),networkit,11.3,0.008791,0.7,4,ok
+hosted,road12,4096,7251,pagerank,networkit,11.3,0.001047,2,4,ok
+hosted,road12,4096,7251,triangles,networkit,11.3,0.004975,2,4,ok
+hosted,road14,16384,29246,betweenness (16 sources),networkit,11.3,0.037964,11.9,4,ok
+hosted,road14,16384,29246,bfs,networkit,11.3,0.00053,2.4,4,ok
+hosted,road14,16384,29246,closeness,networkit,11.3,1.56074,4.1,4,ok
+hosted,road14,16384,29246,components,networkit,11.3,0.000293,3.3,4,ok
+hosted,road14,16384,29246,load (read and build; memory = resident graph),networkit,11.3,0.013239,2.2,4,ok
+hosted,road14,16384,29246,pagerank,networkit,11.3,0.003337,3.9,4,ok
+hosted,road14,16384,29246,triangles,networkit,11.3,0.002822,3.8,4,ok
+hosted,road16,65536,117367,betweenness (16 sources),networkit,11.3,0.140223,39.6,4,ok
+hosted,road16,65536,117367,bfs,networkit,11.3,0.003353,5.4,4,ok
+hosted,road16,65536,117367,closeness,networkit,11.3,34.3543,11.6,4,ok
+hosted,road16,65536,117367,components,networkit,11.3,0.002003,6.3,4,ok
+hosted,road16,65536,117367,load (read and build; memory = resident graph),networkit,11.3,0.035402,8.1,4,ok
+hosted,road16,65536,117367,pagerank,networkit,11.3,0.017329,9.8,4,ok
+hosted,road16,65536,117367,triangles,networkit,11.3,0.006791,10.7,4,ok
+hosted,road18,262144,471118,betweenness (16 sources),networkit,11.3,0.848968,146.5,4,ok
+hosted,road18,262144,471118,bfs,networkit,11.3,0.021629,20.3,4,ok
+hosted,road18,262144,471118,components,networkit,11.3,0.010595,21.1,4,ok
+hosted,road18,262144,471118,load (read and build; memory = resident graph),networkit,11.3,0.125267,32.4,4,ok
+hosted,road18,262144,471118,pagerank,networkit,11.3,0.084219,35,4,ok
+hosted,road18,262144,471118,triangles,networkit,11.3,0.033528,34.8,4,ok
+hosted,urand12,4096,32678,betweenness (16 sources),networkit,11.3,0.019341,6.5,4,ok
+hosted,urand12,4096,32678,bfs,networkit,11.3,0.000346,2.4,4,ok
+hosted,urand12,4096,32678,closeness,networkit,11.3,0.198585,3.6,4,ok
+hosted,urand12,4096,32678,components,networkit,11.3,0.000175,3.3,4,ok
+hosted,urand12,4096,32678,load (read and build; memory = resident graph),networkit,11.3,0.014061,2.2,4,ok
+hosted,urand12,4096,32678,pagerank,networkit,11.3,0.000747,3.4,4,ok
+hosted,urand12,4096,32678,triangles,networkit,11.3,0.003958,3.4,4,ok
+hosted,urand14,16384,131006,betweenness (16 sources),networkit,11.3,0.04773,16.1,4,ok
+hosted,urand14,16384,131006,bfs,networkit,11.3,0.001716,4.6,4,ok
+hosted,urand14,16384,131006,closeness,networkit,11.3,4.71311,7.3,4,ok
+hosted,urand14,16384,131006,components,networkit,11.3,0.000955,5.4,4,ok
+hosted,urand14,16384,131006,load (read and build; memory = resident graph),networkit,11.3,0.037553,8,4,ok
+hosted,urand14,16384,131006,pagerank,networkit,11.3,0.003091,6.3,4,ok
+hosted,urand14,16384,131006,triangles,networkit,11.3,0.005261,6.9,4,ok
+hosted,urand16,65536,524225,betweenness (16 sources),networkit,11.3,0.329525,60.4,4,ok
+hosted,urand16,65536,524225,bfs,networkit,11.3,0.008933,16.9,4,ok
+hosted,urand16,65536,524225,closeness,networkit,,,,0,over-budget
+hosted,urand16,65536,524225,components,networkit,11.3,0.004784,17.7,4,ok
+hosted,urand16,65536,524225,load (read and build; memory = resident graph),networkit,11.3,0.139349,31.8,4,ok
+hosted,urand16,65536,524225,pagerank,networkit,11.3,0.012561,21,4,ok
+hosted,urand16,65536,524225,triangles,networkit,11.3,0.028417,23.9,4,ok
+hosted,urand18,262144,2097084,betweenness (16 sources),networkit,11.3,2.11476,224.8,4,ok
+hosted,urand18,262144,2097084,bfs,networkit,11.3,0.073677,66.3,4,ok
+hosted,urand18,262144,2097084,components,networkit,11.3,0.038331,67.2,4,ok
+hosted,urand18,262144,2097084,load (read and build; memory = resident graph),networkit,11.3,0.636274,126.5,4,ok
+hosted,urand18,262144,2097084,pagerank,networkit,11.3,0.096073,79.6,4,ok
+hosted,urand18,262144,2097084,triangles,networkit,11.3,0.177743,91.7,4,ok
+hosted,kron12,4096,48474,betweenness (16 sources),networkx,3.7,0.310348,32.8,1,ok
+hosted,kron12,4096,48474,bfs,networkx,3.7,0.005362,31.3,1,ok
+hosted,kron12,4096,48474,closeness,networkx,3.7,15.8112,31.6,1,ok
+hosted,kron12,4096,48474,components,networkx,3.7,0.004764,31.2,1,ok
+hosted,kron12,4096,48474,load (read and build; memory = resident graph),networkx,3.7,0.05988,31.6,1,ok
+hosted,kron12,4096,48474,pagerank,networkx,3.7,,,1,error
+hosted,kron12,4096,48474,triangles,networkx,3.7,0.153723,34.3,1,ok
+hosted,road12,4096,7251,betweenness (16 sources),networkx,3.7,0.132362,21.7,1,ok
+hosted,road12,4096,7251,bfs,networkx,3.7,0.002083,20.2,1,ok
+hosted,road12,4096,7251,closeness,networkx,3.7,6.07057,20.4,1,ok
+hosted,road12,4096,7251,components,networkx,3.7,0.001916,20.3,1,ok
+hosted,road12,4096,7251,load (read and build; memory = resident graph),networkx,3.7,0.020833,19.9,1,ok
+hosted,road12,4096,7251,pagerank,networkx,3.7,,,1,error
+hosted,road12,4096,7251,triangles,networkx,3.7,0.012052,20.7,1,ok
+hosted,road14,16384,29246,betweenness (16 sources),networkx,3.7,0.783141,36.6,1,ok
+hosted,road14,16384,29246,bfs,networkx,3.7,0.007905,30.5,1,ok
+hosted,road14,16384,29246,components,networkx,3.7,0.007329,30.1,1,ok
+hosted,road14,16384,29246,load (read and build; memory = resident graph),networkx,3.7,0.048914,29.4,1,ok
+hosted,road14,16384,29246,pagerank,networkx,3.7,,,1,error
+hosted,road14,16384,29246,triangles,networkx,3.7,0.045457,33,1,ok
+hosted,road16,65536,117367,betweenness (16 sources),networkx,3.7,3.20354,99.7,1,ok
+hosted,road16,65536,117367,bfs,networkx,3.7,0.031752,72.7,1,ok
+hosted,road16,65536,117367,components,networkx,3.7,0.03141,70.1,1,ok
+hosted,road16,65536,117367,load (read and build; memory = resident graph),networkx,3.7,0.203602,67,1,ok
+hosted,road16,65536,117367,pagerank,networkx,3.7,,,1,error
+hosted,road16,65536,117367,triangles,networkx,3.7,0.197734,80.3,1,ok
+hosted,urand12,4096,32678,betweenness (16 sources),networkx,3.7,0.289964,28.8,1,ok
+hosted,urand12,4096,32678,bfs,networkx,3.7,0.00241,27.4,1,ok
+hosted,urand12,4096,32678,closeness,networkx,3.7,10.1024,27.5,1,ok
+hosted,urand12,4096,32678,components,networkx,3.7,0.002292,27.4,1,ok
+hosted,urand12,4096,32678,load (read and build; memory = resident graph),networkx,3.7,0.040743,27.5,1,ok
+hosted,urand12,4096,32678,pagerank,networkx,3.7,,,1,error
+hosted,urand12,4096,32678,triangles,networkx,3.7,0.040392,28.1,1,ok
+hosted,urand14,16384,131006,betweenness (16 sources),networkx,3.7,1.61477,64,1,ok
+hosted,urand14,16384,131006,bfs,networkx,3.7,0.021448,59.6,1,ok
+hosted,urand14,16384,131006,components,networkx,3.7,0.020057,59.4,1,ok
+hosted,urand14,16384,131006,load (read and build; memory = resident graph),networkx,3.7,0.227183,59.8,1,ok
+hosted,urand14,16384,131006,pagerank,networkx,3.7,,,1,error
+hosted,urand14,16384,131006,triangles,networkx,3.7,0.214824,61.2,1,ok
+hosted,kron12,4096,48474,betweenness (16 sources),nx-parallel,0.4,0.796054,39.4,4,ok
+hosted,kron12,4096,48474,bfs,nx-parallel,0.4,0.005292,31.2,4,ok
+hosted,kron12,4096,48474,components,nx-parallel,0.4,0.031033,41.7,4,ok
+hosted,kron12,4096,48474,load (read and build; memory = resident graph),nx-parallel,0.4,0.064556,31.3,4,ok
+hosted,kron12,4096,48474,triangles,nx-parallel,0.4,0.139267,40.2,4,ok
+hosted,kron14,16384,212944,betweenness (16 sources),nx-parallel,0.4,1.505,101.6,4,ok
+hosted,kron14,16384,212944,bfs,nx-parallel,0.4,0.038813,81.5,4,ok
+hosted,kron14,16384,212944,components,nx-parallel,0.4,0.069531,84.3,4,ok
+hosted,kron14,16384,212944,load (read and build; memory = resident graph),nx-parallel,0.4,0.315578,82.7,4,ok
+hosted,kron14,16384,212944,triangles,nx-parallel,0.4,0.725082,98.9,4,ok
+hosted,kron16,65536,909258,betweenness (16 sources),nx-parallel,0.4,5.78747,350.4,4,ok
+hosted,kron16,65536,909258,bfs,nx-parallel,0.4,0.208511,291.6,4,ok
+hosted,kron16,65536,909258,components,nx-parallel,0.4,0.284641,296.8,4,ok
+hosted,kron16,65536,909258,load (read and build; memory = resident graph),nx-parallel,0.4,1.41349,297.9,4,ok
+hosted,kron16,65536,909258,triangles,nx-parallel,0.4,4.39145,356.1,4,ok
+hosted,kron18,262144,3805960,betweenness (16 sources),nx-parallel,0.4,32.5589,1365.8,4,ok
+hosted,kron18,262144,3805960,bfs,nx-parallel,0.4,1.12562,1163.4,4,ok
+hosted,kron18,262144,3805960,components,nx-parallel,0.4,1.93881,1168.2,4,ok
+hosted,kron18,262144,3805960,load (read and build; memory = resident graph),nx-parallel,0.4,6.93131,1196.7,4,ok
+hosted,kron18,262144,3805960,triangles,nx-parallel,0.4,,1452,4,over-budget
+hosted,road12,4096,7251,betweenness (16 sources),nx-parallel,0.4,0.674068,28.9,4,ok
+hosted,road12,4096,7251,bfs,nx-parallel,0.4,0.002818,20,4,ok
+hosted,road12,4096,7251,components,nx-parallel,0.4,0.016076,27,4,ok
+hosted,road12,4096,7251,load (read and build; memory = resident graph),nx-parallel,0.4,0.024113,19.7,4,ok
+hosted,road12,4096,7251,triangles,nx-parallel,0.4,0.026179,29,4,ok
+hosted,road14,16384,29246,betweenness (16 sources),nx-parallel,0.4,1.0289,44.2,4,ok
+hosted,road14,16384,29246,bfs,nx-parallel,0.4,0.00872,30.2,4,ok
+hosted,road14,16384,29246,components,nx-parallel,0.4,0.039263,34.9,4,ok
+hosted,road14,16384,29246,load (read and build; memory = resident graph),nx-parallel,0.4,0.048505,29.2,4,ok
+hosted,road14,16384,29246,triangles,nx-parallel,0.4,0.083635,43.9,4,ok
+hosted,road16,65536,117367,betweenness (16 sources),nx-parallel,0.4,2.74528,109.2,4,ok
+hosted,road16,65536,117367,bfs,nx-parallel,0.4,0.049335,72.5,4,ok
+hosted,road16,65536,117367,components,nx-parallel,0.4,0.056751,73.5,4,ok
+hosted,road16,65536,117367,load (read and build; memory = resident graph),nx-parallel,0.4,0.28891,66.9,4,ok
+hosted,road16,65536,117367,triangles,nx-parallel,0.4,0.340199,106.8,4,ok
+hosted,road18,262144,471118,betweenness (16 sources),nx-parallel,0.4,12.3386,338.9,4,ok
+hosted,road18,262144,471118,bfs,nx-parallel,0.4,0.245925,245.8,4,ok
+hosted,road18,262144,471118,components,nx-parallel,0.4,0.302768,239,4,ok
+hosted,road18,262144,471118,load (read and build; memory = resident graph),nx-parallel,0.4,1.24346,218,4,ok
+hosted,road18,262144,471118,triangles,nx-parallel,0.4,2.02233,362.1,4,ok
+hosted,urand12,4096,32678,betweenness (16 sources),nx-parallel,0.4,0.809518,36.3,4,ok
+hosted,urand12,4096,32678,bfs,nx-parallel,0.4,0.003223,27.2,4,ok
+hosted,urand12,4096,32678,components,nx-parallel,0.4,0.037093,32,4,ok
+hosted,urand12,4096,32678,load (read and build; memory = resident graph),nx-parallel,0.4,0.048988,27.2,4,ok
+hosted,urand12,4096,32678,triangles,nx-parallel,0.4,0.071669,36.4,4,ok
+hosted,urand14,16384,131006,betweenness (16 sources),nx-parallel,0.4,1.4481,69.7,4,ok
+hosted,urand14,16384,131006,bfs,nx-parallel,0.4,0.016495,59.5,4,ok
+hosted,urand14,16384,131006,components,nx-parallel,0.4,0.03317,63.1,4,ok
+hosted,urand14,16384,131006,load (read and build; memory = resident graph),nx-parallel,0.4,0.213187,59.6,4,ok
+hosted,urand14,16384,131006,triangles,nx-parallel,0.4,0.243422,72.4,4,ok
+hosted,urand16,65536,524225,betweenness (16 sources),nx-parallel,0.4,6.35043,231.6,4,ok
+hosted,urand16,65536,524225,bfs,nx-parallel,0.4,0.130545,189.4,4,ok
+hosted,urand16,65536,524225,components,nx-parallel,0.4,0.160269,192.4,4,ok
+hosted,urand16,65536,524225,load (read and build; memory = resident graph),nx-parallel,0.4,0.908406,189.7,4,ok
+hosted,urand16,65536,524225,triangles,nx-parallel,0.4,1.14747,221.3,4,ok
+hosted,urand18,262144,2097084,betweenness (16 sources),nx-parallel,0.4,29.736,813.4,4,ok
+hosted,urand18,262144,2097084,bfs,nx-parallel,0.4,1.15044,711.6,4,ok
+hosted,urand18,262144,2097084,components,nx-parallel,0.4,1.18847,704.6,4,ok
+hosted,urand18,262144,2097084,load (read and build; memory = resident graph),nx-parallel,0.4,4.47376,709,4,ok
+hosted,urand18,262144,2097084,triangles,nx-parallel,0.4,5.8841,793.2,4,ok
+hosted,kron12,4096,48474,betweenness (16 sources),pyigraph,1.0.0,0.009346,21.7,1,ok
+hosted,kron12,4096,48474,bfs,pyigraph,1.0.0,0.000485,20.3,1,ok
+hosted,kron12,4096,48474,closeness,pyigraph,1.0.0,0.43758,20.9,1,ok
+hosted,kron12,4096,48474,components,pyigraph,1.0.0,0.00057,20.2,1,ok
+hosted,kron12,4096,48474,load (read and build; memory = resident graph),pyigraph,1.0.0,0.013443,25.5,1,ok
+hosted,kron12,4096,48474,pagerank,pyigraph,1.0.0,0.006289,23.7,1,ok
+hosted,kron12,4096,48474,triangles,pyigraph,1.0.0,0.007604,20.8,1,ok
+hosted,kron14,16384,212944,betweenness (16 sources),pyigraph,1.0.0,0.044482,33.3,1,ok
+hosted,kron14,16384,212944,bfs,pyigraph,1.0.0,0.00219,27,1,ok
+hosted,kron14,16384,212944,closeness,pyigraph,1.0.0,9.18621,29.7,1,ok
+hosted,kron14,16384,212944,components,pyigraph,1.0.0,0.002769,26.9,1,ok
+hosted,kron14,16384,212944,load (read and build; memory = resident graph),pyigraph,1.0.0,0.053529,55.8,1,ok
+hosted,kron14,16384,212944,pagerank,pyigraph,1.0.0,0.025644,38.6,1,ok
+hosted,kron14,16384,212944,triangles,pyigraph,1.0.0,0.044664,29.5,1,ok
+hosted,kron16,65536,909258,betweenness (16 sources),pyigraph,1.0.0,0.381496,82.5,1,ok
+hosted,kron16,65536,909258,bfs,pyigraph,1.0.0,0.015399,55.5,1,ok
+hosted,kron16,65536,909258,components,pyigraph,1.0.0,0.018683,53.9,1,ok
+hosted,kron16,65536,909258,load (read and build; memory = resident graph),pyigraph,1.0.0,0.321572,183.3,1,ok
+hosted,kron16,65536,909258,pagerank,pyigraph,1.0.0,0.152671,101.3,1,ok
+hosted,kron16,65536,909258,triangles,pyigraph,1.0.0,0.3587,66.5,1,ok
+hosted,kron18,262144,3805960,betweenness (16 sources),pyigraph,1.0.0,2.65171,287.9,1,ok
+hosted,kron18,262144,3805960,bfs,pyigraph,1.0.0,0.108356,178.5,1,ok
+hosted,kron18,262144,3805960,components,pyigraph,1.0.0,0.13129,170.5,1,ok
+hosted,kron18,262144,3805960,load (read and build; memory = resident graph),pyigraph,1.0.0,1.88409,715.2,1,ok
+hosted,kron18,262144,3805960,pagerank,pyigraph,1.0.0,0.780653,360.1,1,ok
+hosted,kron18,262144,3805960,triangles,pyigraph,1.0.0,2.68596,223.9,1,ok
+hosted,road12,4096,7251,betweenness (16 sources),pyigraph,1.0.0,0.004202,18.7,1,ok
+hosted,road12,4096,7251,bfs,pyigraph,1.0.0,0.000339,18.5,1,ok
+hosted,road12,4096,7251,closeness,pyigraph,1.0.0,0.429607,18.6,1,ok
+hosted,road12,4096,7251,components,pyigraph,1.0.0,0.000168,18.4,1,ok
+hosted,road12,4096,7251,load (read and build; memory = resident graph),pyigraph,1.0.0,0.004747,18.4,1,ok
+hosted,road12,4096,7251,pagerank,pyigraph,1.0.0,0.002581,19.7,1,ok
+hosted,road12,4096,7251,triangles,pyigraph,1.0.0,0.000566,18.4,1,ok
+hosted,road14,16384,29246,betweenness (16 sources),pyigraph,1.0.0,0.022913,21.6,1,ok
+hosted,road14,16384,29246,bfs,pyigraph,1.0.0,0.001508,19.7,1,ok
+hosted,road14,16384,29246,closeness,pyigraph,1.0.0,7.38838,20.3,1,ok
+hosted,road14,16384,29246,components,pyigraph,1.0.0,0.001291,19.3,1,ok
+hosted,road14,16384,29246,load (read and build; memory = resident graph),pyigraph,1.0.0,0.010359,22.1,1,ok
+hosted,road14,16384,29246,pagerank,pyigraph,1.0.0,0.010696,22.6,1,ok
+hosted,road14,16384,29246,triangles,pyigraph,1.0.0,0.003007,20.6,1,ok
+hosted,road16,65536,117367,betweenness (16 sources),pyigraph,1.0.0,0.185203,34,1,ok
+hosted,road16,65536,117367,bfs,pyigraph,1.0.0,0.009441,27.9,1,ok
+hosted,road16,65536,117367,closeness,pyigraph,,,,0,over-budget
+hosted,road16,65536,117367,components,pyigraph,1.0.0,0.007288,24.4,1,ok
+hosted,road16,65536,117367,load (read and build; memory = resident graph),pyigraph,1.0.0,0.043729,38.3,1,ok
+hosted,road16,65536,117367,pagerank,pyigraph,1.0.0,0.048464,34.9,1,ok
+hosted,road16,65536,117367,triangles,pyigraph,1.0.0,0.015186,30.2,1,ok
+hosted,road18,262144,471118,betweenness (16 sources),pyigraph,1.0.0,1.6933,86.2,1,ok
+hosted,road18,262144,471118,bfs,pyigraph,1.0.0,0.063041,62.6,1,ok
+hosted,road18,262144,471118,components,pyigraph,1.0.0,0.044608,41.6,1,ok
+hosted,road18,262144,471118,load (read and build; memory = resident graph),pyigraph,1.0.0,0.16699,103.1,1,ok
+hosted,road18,262144,471118,pagerank,pyigraph,1.0.0,0.207062,86.3,1,ok
+hosted,road18,262144,471118,triangles,pyigraph,1.0.0,0.078483,71.4,1,ok
+hosted,urand12,4096,32678,betweenness (16 sources),pyigraph,1.0.0,0.00982,20.8,1,ok
+hosted,urand12,4096,32678,bfs,pyigraph,1.0.0,0.000431,19.8,1,ok
+hosted,urand12,4096,32678,closeness,pyigraph,1.0.0,0.543264,20.3,1,ok
+hosted,urand12,4096,32678,components,pyigraph,1.0.0,0.000169,19.5,1,ok
+hosted,urand12,4096,32678,load (read and build; memory = resident graph),pyigraph,1.0.0,0.010309,22.7,1,ok
+hosted,urand12,4096,32678,pagerank,pyigraph,1.0.0,0.008567,22.3,1,ok
+hosted,urand12,4096,32678,triangles,pyigraph,1.0.0,0.001464,20,1,ok
+hosted,urand14,16384,131006,betweenness (16 sources),pyigraph,1.0.0,0.043286,27.7,1,ok
+hosted,urand14,16384,131006,bfs,pyigraph,1.0.0,0.002818,23.2,1,ok
+hosted,urand14,16384,131006,closeness,pyigraph,1.0.0,11.6491,25.2,1,ok
+hosted,urand14,16384,131006,components,pyigraph,1.0.0,0.000558,23.1,1,ok
+hosted,urand14,16384,131006,load (read and build; memory = resident graph),pyigraph,1.0.0,0.035444,40.7,1,ok
+hosted,urand14,16384,131006,pagerank,pyigraph,1.0.0,0.02039,31,1,ok
+hosted,urand14,16384,131006,triangles,pyigraph,1.0.0,0.006896,25,1,ok
+hosted,urand16,65536,524225,betweenness (16 sources),pyigraph,1.0.0,0.427567,61,1,ok
+hosted,urand16,65536,524225,bfs,pyigraph,1.0.0,0.01687,42.2,1,ok
+hosted,urand16,65536,524225,components,pyigraph,1.0.0,0.002825,39.3,1,ok
+hosted,urand16,65536,524225,load (read and build; memory = resident graph),pyigraph,1.0.0,0.175666,112.8,1,ok
+hosted,urand16,65536,524225,pagerank,pyigraph,1.0.0,0.10976,69.7,1,ok
+hosted,urand16,65536,524225,triangles,pyigraph,1.0.0,0.037585,49,1,ok
+hosted,urand18,262144,2097084,betweenness (16 sources),pyigraph,1.0.0,2.74759,184.8,1,ok
+hosted,urand18,262144,2097084,bfs,pyigraph,1.0.0,0.140091,118.6,1,ok
+hosted,urand18,262144,2097084,components,pyigraph,1.0.0,0.13205,103.7,1,ok
+hosted,urand18,262144,2097084,load (read and build; memory = resident graph),pyigraph,1.0.0,0.856646,401.7,1,ok
+hosted,urand18,262144,2097084,pagerank,pyigraph,1.0.0,0.581872,222.8,1,ok
+hosted,urand18,262144,2097084,triangles,pyigraph,1.0.0,0.286383,143.6,1,ok
+hosted,kron12,4096,48474,closeness,sna,,,,0,over-budget
+hosted,kron12,4096,48474,components,sna,2.8,0.24,135.9,1,ok
+hosted,kron12,4096,48474,load (read and build; memory = resident graph),sna,2.8,0.05,0,1,ok
+hosted,road12,4096,7251,closeness,sna,2.8,2.333,483.1,1,ok
+hosted,road12,4096,7251,components,sna,2.8,0.013,40.9,1,ok
+hosted,road12,4096,7251,load (read and build; memory = resident graph),sna,2.8,0.043,0,1,ok
+hosted,road14,16384,29246,closeness,sna,,,,0,over-budget
+hosted,road14,16384,29246,components,sna,2.8,0.057,76.4,1,ok
+hosted,road14,16384,29246,load (read and build; memory = resident graph),sna,2.8,0.049,0,1,ok
+hosted,road16,65536,117367,closeness,sna,,,,0,error
+hosted,road16,65536,117367,components,sna,2.8,0.31,241.7,1,ok
+hosted,road16,65536,117367,load (read and build; memory = resident graph),sna,2.8,0.035,1.8,1,ok
+hosted,urand12,4096,32678,closeness,sna,,,,0,over-budget
+hosted,urand12,4096,32678,components,sna,2.8,0.061,79.4,1,ok
+hosted,urand12,4096,32678,load (read and build; memory = resident graph),sna,2.8,0.042,0,1,ok
+hosted,urand14,16384,131006,closeness,sna,,,,0,over-budget
+hosted,urand14,16384,131006,components,sna,2.8,0.555,280.2,1,ok
+hosted,urand14,16384,131006,load (read and build; memory = resident graph),sna,2.8,0.046,2,1,ok
