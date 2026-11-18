@@ -1,0 +1,50 @@
+name: research-watch
+
+# Weekly scan of new network and graph research and of new releases of the surveyed tools.
+# Writes research/<date>.md, updates research/index.md and watch/state.json, opens an issue
+# with the top papers, then rebuilds the pages.
+on:
+  schedule:
+    - cron: "41 9 * * 1"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Look back this many days"
+        default: "8"
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: research-watch
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scan
+        run: python3 watch/research_watch.py --days "${{ github.event.inputs.days || '8' }}" --issue /tmp/issue.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          OPENALEX_MAILTO: knapply@users.noreply.github.com
+      - name: Commit and open the issue
+        run: |
+          git add research watch/state.json
+          if git diff --cached --quiet; then echo "nothing new"; exit 0; fi
+          git -c user.name=knapply -c user.email=knapply@users.noreply.github.com commit -qm "Research watch $(date -u +%F)"
+          git pull --rebase -q origin main
+          git push origin HEAD:main
+          gh label create research-watch --color 0e8a16 --description "Weekly research watch" 2>/dev/null || true
+          gh issue create --title "Research watch $(date -u +%F)" --label research-watch --body-file /tmp/issue.md
+          # a push made with the workflow token does not start the pages workflow
+          gh workflow run pages.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}

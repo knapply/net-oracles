@@ -1,0 +1,71 @@
+{
+  "arxiv": {
+    "query": "cat:cs.SI OR cat:physics.soc-ph OR (cat:cs.DS AND (abs:graph OR abs:network)) OR (cat:stat.ME AND (abs:network OR abs:graph)) OR (cat:stat.AP AND abs:network) OR (cat:cs.DB AND abs:graph) OR (cat:cs.DC AND abs:graph) OR (cat:cs.LG AND (ti:graph OR ti:network)) OR (cat:q-bio.MN)",
+    "max_results": 2000,
+    "page_size": 200
+  },
+  "openalex_sources": [
+    {"name": "Social Networks", "issn": "0378-8733"},
+    {"name": "Network Science", "issn": "2050-1242"},
+    {"name": "Journal of Complex Networks", "issn": "2051-1310"},
+    {"name": "Applied Network Science", "issn": "2364-8228"},
+    {"name": "Social Network Analysis and Mining", "issn": "1869-5450"},
+    {"name": "Journal of Statistical Software", "issn": "1548-7660"},
+    {"name": "Journal of Mathematical Sociology", "issn": "0022-250X"},
+    {"name": "Journal of Social Structure", "issn": "1529-1227"},
+    {"name": "Sociological Methodology", "issn": "0081-1750"},
+    {"name": "Journal of Graph Algorithms and Applications", "issn": "1526-1719"},
+    {"name": "ACM Journal of Experimental Algorithmics", "issn": "1084-6654"},
+    {"name": "Proceedings of the VLDB Endowment", "issn": "2150-8097"}
+  ],
+  "releases": [
+    "networkx/networkx",
+    "igraph/igraph",
+    "igraph/rigraph",
+    "igraph/python-igraph",
+    "networkit/networkit",
+    "statnet/ergm",
+    "statnet/sna",
+    "statnet/network",
+    "statnet/tergm",
+    "snlab-nl/rsiena",
+    "Qiskit/rustworkx",
+    "scikit-network-team/scikit-network",
+    "GraphBLAS/python-graphblas",
+    "python-graphblas/graphblas-algorithms",
+    "rapidsai/cugraph",
+    "networkx/nx-parallel",
+    "JuliaGraphs/Graphs.jl",
+    "jgrapht/jgrapht",
+    "petgraph/petgraph",
+    "gbbs-project/gbbs",
+    "sbeamer/gapbs",
+    "mapequation/infomap",
+    "microsoft/graphrag",
+    "apache/incubator-graphar",
+    "kuzudb/kuzu",
+    "memgraph/mage",
+    "neo4j/graph-data-science"
+  ],
+  "topics": {
+    "centrality": ["centrality", "betweenness", "closeness", "pagerank", "eigenvector", "katz", "harmonic", "brokerage", "structural hole", "key player", "influence maximization"],
+    "communities": ["community detection", "modularity", "leiden", "louvain", "infomap", "stochastic block", "blockmodel", "clustering coefficient", "graph partition", "core-periphery", "k-core", "dense subgraph"],
+    "statistical models": ["exponential random graph", "ergm", "stochastic actor", "saom", "siena", "relational event", "latent space", "network regression", "qap", "network autocorrelation", "peer effect", "homophily", "contagion", "respondent-driven"],
+    "paths and flow": ["shortest path", "all-pairs", "distance oracle", "maximum flow", "min cut", "minimum cut", "connectivity", "spanning tree", "matching", "traversal", "breadth-first", "reachability"],
+    "temporal and dynamic": ["temporal network", "dynamic graph", "streaming graph", "evolving network", "time-varying", "incremental", "fully dynamic"],
+    "multilayer and hypergraph": ["multilayer", "multiplex", "hypergraph", "higher-order", "simplicial", "bipartite", "two-mode", "signed network"],
+    "spectral and embedding": ["spectral", "laplacian", "graph embedding", "node embedding", "random walk", "diffusion", "resistance distance", "graph signal"],
+    "motifs and counting": ["motif", "graphlet", "triangle counting", "triad census", "subgraph counting", "clique", "isomorphism", "canonical labeling"],
+    "systems and performance": ["parallel", "gpu", "simd", "cache-efficient", "external memory", "out-of-core", "compressed graph", "graph processing", "graph database", "benchmark", "scalable", "linear time", "near-linear", "approximation algorithm", "sketch"],
+    "knowledge graphs and retrieval": ["knowledge graph", "graphrag", "retrieval-augmented", "entity resolution", "link prediction", "graph query", "rdf", "sparql", "property graph"],
+    "network sampling and inference": ["network sampling", "missing data", "measurement error", "network inference", "graph reconstruction", "uncertainty"],
+    "visualisation and layout": ["graph drawing", "graph layout", "force-directed", "network visualization", "network visualisation"]
+  },
+  "signals": {
+    "code": ["github.com", "gitlab.com", "code is available", "open-source", "open source", "implementation", "software", "package", "library"],
+    "method": ["we propose", "we introduce", "novel algorithm", "new algorithm", "new measure", "estimator", "faster than", "speedup", "orders of magnitude", "state-of-the-art"],
+    "pitfall": ["inconsisten", "bias", "incorrect", "pitfall", "misleading", "reproducib", "replication", "erratum", "correction"]
+  },
+  "min_score": 4,
+  "issue_top": 20
+}
