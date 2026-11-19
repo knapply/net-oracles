@@ -1,0 +1,67 @@
+# Centrality across sampled possible worlds: the measure `centrality_worlds`
+# (possible-world semantics, Potamias et al. 2010, `potamias2010nearest`;
+# robustness to missing ties, Frantz, Cataldo and Carley 2009,
+# `frantz2009robustness`, Smith and Moody 2013, `smith2013structural`).
+# Format: see ../README.md; runner in ../bindings/worlds.py, definition
+# oracle worlds_definition_oracle.py, NetworkX oracle
+# worlds_networkx_oracle.py.
+#
+# Exactness. The worlds are a function of the seed only (Philox4x32-10
+# draws keyed by edge and world word, an exact Bernoulli comparison with
+# the keep probability), so the oracles rebuild the same worlds from the
+# definition and compare every node's value in every world: the value
+# entries flatten the node by world matrix row by row. The summary entry
+# compares the per-node mean, standard deviation (divisor k - 1), number of
+# defined worlds and the 0.05, 0.5 and 0.95 quantiles (linear, type 7).
+#
+# Conventions. Edge weights are ignored (hop counts); each fixture edge is
+# one tie, so parallel edges are kept or dropped independently and a world
+# keeps an adjacency when any copy survives (NetworkX's simple graph sees
+# the same distances). Directed networks use the distances into the node
+# (mode `in`), as NetworkX's closeness and harmonic centrality do. Closeness
+# is the normalized Wasserman-Faust form (NetworkX `wf_improved = True`).
+#
+# Engine options:
+#   fn       centrality_worlds
+#   stat     closeness | harmonic | reach | summary (closeness summaries)
+#   keep     tie keep probability
+#   worlds   number of worlds
+#   seed     seed of the worlds
+
+worlds_closeness:
+  params: {fn: centrality_worlds, stat: closeness, keep: 0.7, worlds: 128, seed: 7}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "Wasserman-Faust closeness from breadth-first distances in each rebuilt world"
+    networkx:
+      call: "nx.closeness_centrality(world, wf_improved = True)"
+
+worlds_harmonic:
+  params: {fn: centrality_worlds, stat: harmonic, keep: 0.5, worlds: 128, seed: 11}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "sum of 1 / d over the nodes reaching the node in each rebuilt world (fractions)"
+    networkx:
+      call: "nx.harmonic_centrality(world)"
+
+worlds_reach:
+  params: {fn: centrality_worlds, stat: reach, keep: 0.4, worlds: 128, seed: 2}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "number of other nodes reaching the node in each rebuilt world"
+    networkx:
+      call: "len(nx.ancestors(world, v)), or the component size minus 1"
+
+worlds_closeness_summary:
+  params: {fn: centrality_worlds, stat: summary, keep: 0.8, worlds: 576, seed: 5}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "mean, sd (k - 1), defined count and type-7 quantiles 0.05, 0.5, 0.95 of the per-world Wasserman-Faust closeness (exact fractions for the moments)"
