@@ -123,6 +123,63 @@ def entry_rules(path: str) -> tuple[tuple[float, float], str, set[str], set[str]
     return tol, mode, set(oe.get("differs_when") or []), undefined
 
 
+def groups() -> dict[str, list[Path]]:
+    g: dict[str, list[Path]] = {}
+    base = []
+    for s in sorted(ORACLES.glob("*_oracle.py")):
+        text = s.read_text()
+        m = ENV_RE.search("\n".join(text.splitlines()[:10]))
+        if m:
+            g.setdefault("env-" + m.group(1), []).append(s)
+        elif "system_run" in text:
+            g.setdefault("system", []).append(s)
+        else:
+            base.append(s)
+    # Round-robin by size (a rough proxy for time) so the shards take about as long.
+    base.sort(key=lambda s: -s.stat().st_size)
+    for i in range(BASE_SHARDS):
+        g[f"base-{i + 1}"] = sorted(base[i::BASE_SHARDS])
+    g["r"] = sorted(ORACLES.glob("*.R"))
+    return dict(sorted(g.items()))
+
+
+def r_packages() -> list[str]:
+    pkgs: set[str] = set()
+    for s in ORACLES.glob("*.R"):
+        pkgs |= {a or b or c for a, b, c in R_PKG_RE.findall(s.read_text())}
+    return sorted(pkgs - {"utils", "base", "stats", "methods", "graphics", "grDevices", "tools", "parallel"})
+
+
+def cmd_run(group: str, force: bool, jobs: int, report: Path | None) -> int:
+    sys.path.insert(0, str(HARNESS))
+    import run_oracles  # noqa: E402  (the harness's own runner)
+
+    scripts = groups().get(group)
+    if scripts is None:
+        print(f"unknown group {group!r}; groups: {', '.join(groups())}", file=sys.stderr)
+        return 2
+    scripts = sorted(scripts, key=lambda s: -s.stat().st_size)
+    results = []
+    with ThreadPoolExecutor(max_workers=max(1, jobs)) as pool:
+        futs = [pool.submit(run_oracles.run, s, force) for s in scripts]
+        for f in as_completed(futs):
+            name, status, out = f.result()
+            results.append({"script": name, "status": status, "output": out[-4000:]})
+            if status != "unchanged":
+                print(f"== {name}: {status}", flush=True)
+                if out and not status.startswith("ran"):
+                    print("   " + out[-2000:].replace("\n", "\n   "), flush=True)
+    counts: dict[str, int] = {}
+    for r in results:
+        k = r["status"].split()[0]
+        counts[k] = counts.get(k, 0) + 1
+    print(f"{group}: " + ", ".join(f"{v} {k}" for k, v in sorted(counts.items())))
+    if report:
+        report.write_text(json.dumps({"group": group, "counts": counts,
+                                      "results": sorted(results, key=lambda r: r["script"])}, indent=1))
+    return 1 if counts.get("FAILED") else 0
+
+
 def _rows(data: bytes, name: str) -> list[list[str]] | None:
     if name.endswith(".gz"):
         try:
