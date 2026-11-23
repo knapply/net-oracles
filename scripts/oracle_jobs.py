@@ -24,7 +24,15 @@ Groups follow what a script needs installed:
 against the committed file: `identical` (byte for byte), `within tolerance`
 (every number within the manifest tolerance of its entry, the oracle's own
 tolerance where it has one, and never tighter than 1e-9; every other cell
-equal), `differs`, `new` or `removed`. The bound is twice the manifest
+equal), `differs`, `new` or `removed`. Entries are compared the way the
+manifest says: `compare: sets` and `sorted` ignore row order, `partition`
+ignores group labels, and `ge` / `le` mark a heuristic whose value is only a
+bound, so a rerun is reported as `bound` and need not reproduce. A differing
+file on an input that the oracle's `differs_when` tags name, or on which an
+oracle of the entry declares the value undefined (`undefined_on`: no unique
+answer, such as a repeated leading eigenvalue), is reported as `documented
+input`. Only `differs` and `removed`
+fail. The bound is twice the manifest
 tolerance: that tolerance bounds each run's distance from the reference
 value, so two runs of an iterative or sampled oracle can be twice as far from
 each other (both within it of the reference). A file harness/golden/ORACLE/FIXTURE/
@@ -55,96 +63,64 @@ ENV_RE = re.compile(r"^#\s*oracle-env:\s*([A-Za-z0-9_.-]+)\s*$", re.M)
 R_PKG_RE = re.compile(r"([A-Za-z][\w.]*)::|library\(([\w.]+)\)|requireNamespace\(\"([\w.]+)\"")
 BASE_SHARDS = 4
 TOL = 1e-9
-_TOLS: dict[tuple[str, str], tuple[float, float]] | None = None
+_ENTRIES: dict[str, dict] | None = None
+_TAGS: dict[str, set[str]] = {}
 
 
-def tolerances() -> dict[tuple[str, str], tuple[float, float]]:
-    """(entry, oracle) -> (abs, rel); oracle "" is the entry's own tolerance."""
-    global _TOLS
-    if _TOLS is None:
-        _TOLS = {}
+def entries() -> dict[str, dict]:
+    """Manifest entries by key (empty without PyYAML)."""
+    global _ENTRIES
+    if _ENTRIES is None:
+        _ENTRIES = {}
         try:
             import yaml
         except ImportError:
-            return _TOLS
+            return _ENTRIES
         for f in sorted((HARNESS / "manifest").glob("*.yaml")):
             for key, e in (yaml.safe_load(f.read_text()) or {}).items():
-                if not isinstance(e, dict):
-                    continue
-                t = e.get("tolerance") or {}
-                _TOLS[(key, "")] = (float(t.get("abs", 0)), float(t.get("rel", 0)))
-                for o, oe in (e.get("oracles") or {}).items():
-                    if isinstance(oe, dict) and oe.get("tolerance"):
-                        ot = oe["tolerance"]
-                        _TOLS[(key, o)] = (float(ot.get("abs", 0)), float(ot.get("rel", 0)))
-    return _TOLS
+                if isinstance(e, dict):
+                    _ENTRIES[key] = e
+    return _ENTRIES
 
 
-def tolerance_of(path: str) -> tuple[float, float]:
+def fixture_tags(name: str) -> set[str]:
+    if name not in _TAGS:
+        tags: set[str] = set()
+        for d in ("fixtures", "fixtures-extra"):
+            meta = HARNESS / d / name / "meta.json"
+            if meta.exists():
+                m = json.loads(meta.read_text())
+                tags = set(m.get("tags", [])) | {"directed" if m.get("directed") else "undirected"}
+                break
+        _TAGS[name] = tags
+    return _TAGS[name]
+
+
+def parse_path(path: str) -> tuple[str, str, str] | None:
+    """(oracle, fixture, entry) of harness/golden*/ORACLE/FIXTURE/ENTRY.ext."""
     parts = path.split("/")
-    t = tolerances()
-    if len(parts) >= 4 and parts[1] in ("golden", "golden-sized"):
-        oracle, entry = parts[2], re.sub(r"\.(csv|tsv|json)(\.gz)?$", "", parts[-1])
-        a, r = t.get((entry, oracle)) or t.get((entry, "")) or (0.0, 0.0)
-        return max(2 * a, TOL), max(2 * r, TOL)
-    return TOL, TOL
+    if len(parts) == 5 and parts[1] in ("golden", "golden-sized"):
+        return parts[2], parts[3], re.sub(r"\.(csv|tsv|json)(\.gz)?$", "", parts[4])
+    return None
 
 
-def groups() -> dict[str, list[Path]]:
-    g: dict[str, list[Path]] = {}
-    base = []
-    for s in sorted(ORACLES.glob("*_oracle.py")):
-        text = s.read_text()
-        m = ENV_RE.search("\n".join(text.splitlines()[:10]))
-        if m:
-            g.setdefault("env-" + m.group(1), []).append(s)
-        elif "system_run" in text:
-            g.setdefault("system", []).append(s)
-        else:
-            base.append(s)
-    # Round-robin by size (a rough proxy for time) so the shards take about as long.
-    base.sort(key=lambda s: -s.stat().st_size)
-    for i in range(BASE_SHARDS):
-        g[f"base-{i + 1}"] = sorted(base[i::BASE_SHARDS])
-    g["r"] = sorted(ORACLES.glob("*.R"))
-    return dict(sorted(g.items()))
-
-
-def r_packages() -> list[str]:
-    pkgs: set[str] = set()
-    for s in ORACLES.glob("*.R"):
-        pkgs |= {a or b or c for a, b, c in R_PKG_RE.findall(s.read_text())}
-    return sorted(pkgs - {"utils", "base", "stats", "methods", "graphics", "grDevices", "tools", "parallel"})
-
-
-def cmd_run(group: str, force: bool, jobs: int, report: Path | None) -> int:
-    sys.path.insert(0, str(HARNESS))
-    import run_oracles  # noqa: E402  (the harness's own runner)
-
-    scripts = groups().get(group)
-    if scripts is None:
-        print(f"unknown group {group!r}; groups: {', '.join(groups())}", file=sys.stderr)
-        return 2
-    scripts = sorted(scripts, key=lambda s: -s.stat().st_size)
-    results = []
-    with ThreadPoolExecutor(max_workers=max(1, jobs)) as pool:
-        futs = [pool.submit(run_oracles.run, s, force) for s in scripts]
-        for f in as_completed(futs):
-            name, status, out = f.result()
-            results.append({"script": name, "status": status, "output": out[-4000:]})
-            if status != "unchanged":
-                print(f"== {name}: {status}", flush=True)
-                if out and not status.startswith("ran"):
-                    print("   " + out[-2000:].replace("\n", "\n   "), flush=True)
-    counts: dict[str, int] = {}
-    for r in results:
-        k = r["status"].split()[0]
-        counts[k] = counts.get(k, 0) + 1
-    print(f"{group}: " + ", ".join(f"{v} {k}" for k, v in sorted(counts.items())))
-    if report:
-        report.write_text(json.dumps({"group": group, "counts": counts,
-                                      "results": sorted(results, key=lambda r: r["script"])}, indent=1))
-    return 1 if counts.get("FAILED") else 0
+def entry_rules(path: str) -> tuple[tuple[float, float], str, set[str], set[str]]:
+    """Doubled tolerance (abs, rel), compare mode, the oracle's differs_when
+    tags, and the fixtures on which any oracle of the entry declares the
+    value undefined (no unique answer, so any rerun may differ)."""
+    where = parse_path(path)
+    if not where:
+        return (TOL, TOL), "", set(), set()
+    oracle, _, key = where
+    e = entries().get(key) or {}
+    oe = (e.get("oracles") or {}).get(oracle) or {}
+    oe = oe if isinstance(oe, dict) else {}
+    t = oe.get("tolerance") or e.get("tolerance") or {}
+    tol = (max(2 * float(t.get("abs", 0)), TOL), max(2 * float(t.get("rel", 0)), TOL))
+    mode = str(oe.get("compare") or e.get("compare") or "")
+    undefined = {f for o in (e.get("oracles") or {}).values() if isinstance(o, dict)
+                 for f in (o.get("undefined_on") or [])}
+    return tol, mode, set(oe.get("differs_when") or []), undefined
 
 
 def _rows(data: bytes, name: str) -> list[list[str]] | None:
@@ -167,6 +143,10 @@ def _rows(data: bytes, name: str) -> list[list[str]] | None:
 def _close(a: str, b: str, tol: tuple[float, float]) -> bool:
     if a == b:
         return True
+    # A cell may hold a vector as space-separated numbers (a matrix row).
+    if " " in a.strip() or " " in b.strip():
+        xa, xb = a.split(), b.split()
+        return len(xa) == len(xb) and all(_close(x, y, tol) for x, y in zip(xa, xb))
     try:
         x, y = float(a), float(b)
     except ValueError:
@@ -174,6 +154,26 @@ def _close(a: str, b: str, tol: tuple[float, float]) -> bool:
     if math.isnan(x) and math.isnan(y):
         return True
     return abs(x - y) <= tol[0] + tol[1] * max(abs(x), abs(y))
+
+
+def _same(a: list[list[str]], b: list[list[str]], tol: tuple[float, float]) -> bool:
+    return len(a) == len(b) and all(
+        len(ra) == len(rb) and all(_close(x, y, tol) for x, y in zip(ra, rb)) for ra, rb in zip(a, b))
+
+
+def _num_key(row: list[str]) -> tuple:
+    out = []
+    for c in row:
+        try:
+            out.append((0, float(c), ""))
+        except ValueError:
+            out.append((1, 0.0, c))
+    return tuple(out)
+
+
+def _canonical_partition(rows: list[list[str]]) -> list[list[str]]:
+    seen: dict[str, str] = {}
+    return [[seen.setdefault(c, str(len(seen))) for c in r] for r in rows]
 
 
 def classify(path: str) -> str:
@@ -186,14 +186,22 @@ def classify(path: str) -> str:
     new = p.read_bytes()
     if new == old.stdout:
         return "identical"
+    tol, mode, differs_when, undefined = entry_rules(path)
+    if mode in ("ge", "le"):
+        return "bound"
     a, b = _rows(old.stdout, path), _rows(new, path)
-    if a is None or b is None or len(a) != len(b):
-        return "differs"
-    tol = tolerance_of(path)
-    for ra, rb in zip(a, b):
-        if len(ra) != len(rb) or not all(_close(x, y, tol) for x, y in zip(ra, rb)):
-            return "differs"
-    return "within tolerance"
+    if a is not None and b is not None and a[:1] == b[:1]:
+        head, a, b = a[:1], a[1:], b[1:]
+        if mode in ("sets", "sorted"):
+            a, b = sorted(a, key=_num_key), sorted(b, key=_num_key)
+        elif mode == "partition":
+            a, b = _canonical_partition(a), _canonical_partition(b)
+        if _same(a, b, tol):
+            return "within tolerance"
+    where = parse_path(path)
+    if where and (differs_when & fixture_tags(where[1]) or where[1] in undefined):
+        return "documented input"
+    return "differs"
 
 
 def changed_outputs() -> list[str]:
@@ -216,6 +224,7 @@ def cmd_compare(report: Path | None, summary: Path | None) -> int:
     for _, c in data:
         counts[c] = counts.get(c, 0) + 1
     bad = [(p, c) for p, c in data if c in ("differs", "removed")]
+    notes = [(p, c) for p, c in data if c in ("bound", "documented input")]
     lines = ["| Outcome | Files |", "|---|---|"]
     lines += [f"| {k} | {v} |" for k, v in sorted(counts.items())] or ["| no change | 0 |"]
     if versions:
@@ -224,6 +233,9 @@ def cmd_compare(report: Path | None, summary: Path | None) -> int:
             old = subprocess.run(["git", "show", f"HEAD:{v}"], cwd=ROOT, capture_output=True, text=True).stdout.strip()
             new = (ROOT / v).read_text().strip() if (ROOT / v).exists() else ""
             lines.append(f"- `{v}`: {old or '(none)'} -> {new or '(none)'}")
+    if notes:
+        lines += ["", f"Changed but allowed by the manifest ({len(notes)}, first 20):", ""]
+        lines += [f"- `{p}` ({c})" for p, c in notes[:20]]
     if bad:
         lines += ["", f"Outputs that differ ({len(bad)}, first 50):", ""]
         lines += [f"- `{p}` ({c})" for p, c in bad[:50]]
