@@ -1,15 +1,11 @@
 {
- "inputs": "12c1e623026c5b30e1edae238bacd720d4c41fa68b4b68d53135ab3933bb1d05",
+ "inputs": "0d5ad146e92870644c94bea17949ff5f2ef4ec321ac8baa0243106847ca48195",
  "oracles": [
-  "blockmodeling",
   "definition",
   "egor",
   "igraph",
-  "influencer",
-  "manynet",
   "netrankr",
   "networkx",
-  "scipy",
   "sna"
  ]
 }

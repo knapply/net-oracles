@@ -1,0 +1,16 @@
+{
+ "inputs": "2535d1f0eb08dbcfb6beae7bae0d00cbb47cd26440f0fdb544265dc73211825d",
+ "oracles": [
+  "bct",
+  "boost",
+  "cdlib",
+  "definition",
+  "igraph",
+  "infomap",
+  "jgrapht",
+  "networkit",
+  "networkx",
+  "pyigraph",
+  "remstats"
+ ]
+}

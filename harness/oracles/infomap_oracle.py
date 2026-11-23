@@ -12,7 +12,7 @@ Two uses, one per kind of variant:
   must find a codelength no larger; both are heuristics, so `le` is the
   comparison.
 - `infomap_partition*`: Infomap's partition, scored with the definition oracle's
-  map equation (communities_definition_oracle.map_equation; two levels,
+  map equation (map_equation.py; two levels,
   teleportation 0.15 recorded on directed networks). The engine's codelength
   must again be no larger. This isolates the search from flow conventions
   that differ between the tools for directed networks.
@@ -29,7 +29,7 @@ import importlib.metadata
 
 from infomap import Infomap
 
-import communities_definition_oracle as defn
+import map_equation as defn
 from tool_common import run
 
 ORACLE = "infomap"

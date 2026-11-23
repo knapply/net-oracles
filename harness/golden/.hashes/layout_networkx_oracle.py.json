@@ -1,8 +1,9 @@
 {
- "inputs": "991297ce5b5a5d908396436893fe443774aa8f6281d80dc2aa1b08c6b4337341",
+ "inputs": "2f73cbc5c0b7cab62991d92e8c9ce9cfec1edab1cb292b48c282da25811f55de",
  "oracles": [
   "bct",
   "cdlib",
+  "cpnet",
   "definition",
   "igraph",
   "infomap",
@@ -11,6 +12,6 @@
   "networkx",
   "powerlaw",
   "pyigraph",
-  "sknetwork"
+  "remstats"
  ]
 }

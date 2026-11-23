@@ -1,7 +1,8 @@
 {
- "inputs": "59aac0cb917a93e350fe05dfa618b601c9a54e2dccb32136249eb6205ef439a0",
+ "inputs": "a71993317dba050879d2f75dc560a322bf448308ca58533f27d8eb586dd5ffbb",
  "oracles": [
   "definition",
+  "igraph",
   "networkx"
  ]
 }

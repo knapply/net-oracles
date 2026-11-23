@@ -1,10 +1,8 @@
 {
- "inputs": "7d6ffa5ed385d42bf8a2b9cd69990c4c7ad731db19fbaa9112d64200222c3377",
+ "inputs": "4350fdbd71ce9c8494662841204b727d9e66b224032444feeb5f217db702158b",
  "oracles": [
   "boost",
-  "definition",
-  "jgrapht",
-  "networkx",
-  "pyigraph"
+  "infomap",
+  "jgrapht"
  ]
 }

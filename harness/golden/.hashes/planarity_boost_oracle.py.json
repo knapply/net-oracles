@@ -1,13 +1,8 @@
 {
- "inputs": "dfc5d4ca9c0b80af858f14299e8d3baab28abd2a8c0e6b6ee0c1711b2c44b1ca",
+ "inputs": "924d4301dbe8104c2253c2f8c378c9281aa0efc16b0ab35de37f24e8223fbb9a",
  "oracles": [
-  "bctpy",
   "boost",
-  "definition",
-  "graphblas",
-  "igraph",
-  "networkx",
-  "published",
-  "sna"
+  "infomap",
+  "jgrapht"
  ]
 }

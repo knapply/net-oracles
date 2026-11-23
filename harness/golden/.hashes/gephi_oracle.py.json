@@ -1,15 +1,10 @@
 {
- "inputs": "e39586da3c41eb719c7fd6732a94972051c95748bb14a3bb76967e75d017cd08",
+ "inputs": "3225ef5fb9a26c6925d087a89fdcc6ec78db65fbcc9e9a81400e15906d3e1f42",
  "oracles": [
+  "bct",
   "boost",
-  "cdlib",
   "definition",
-  "ergm",
   "gephi",
-  "graspologic",
-  "jgrapht",
-  "networkx",
-  "pyigraph",
-  "remstats"
+  "jgrapht"
  ]
 }

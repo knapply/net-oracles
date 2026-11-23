@@ -9,7 +9,6 @@ Central. Without them the script is skipped and the committed goldens stay.
 """
 from __future__ import annotations
 
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -37,9 +36,7 @@ def main() -> None:
         out = Path(tmp) / "golden"
         sr.run([java, "-cp", f"{cp}:{tmp}", "Oracle", str(FIXTURES), str(out)])
         dst = GOLDEN / ORACLE
-        if dst.exists():
-            shutil.rmtree(dst)
-        shutil.copytree(out, dst)
+        sr.replace_outputs(out, dst)
     jv = sr.run([java, "-version"]).stderr.splitlines()[0]
     write_version(ORACLE, f"JGraphT {JGRAPHT} ({jv})")
     print(f"jgrapht {JGRAPHT}: wrote {sum(1 for _ in (GOLDEN / ORACLE).rglob('*.csv'))} golden files")

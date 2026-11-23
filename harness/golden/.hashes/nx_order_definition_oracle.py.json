@@ -1,29 +1,13 @@
 {
- "inputs": "d0581fa90068e033097138f3da36acf3cd69cbc7faa865c282c52e8f8a06ab8f",
+ "inputs": "8031a29b8d4af3c204a34969642be32ba0979bc6fcb1a001569e2766cd0cf90a",
  "oracles": [
-  "bct",
-  "bctpy",
   "blockmodeling",
-  "boost",
-  "cdlib",
-  "cpnet",
   "definition",
-  "egor",
-  "graphblas",
   "igraph",
   "influencer",
-  "infomap",
   "manynet",
-  "nauty",
-  "networkit",
   "networkx",
-  "powerlaw",
-  "published",
   "rsiena",
-  "rustworkx",
-  "scipy",
-  "sknetwork",
-  "sna",
-  "tsna"
+  "scipy"
  ]
 }

@@ -1,7 +1,6 @@
 {
- "inputs": "ad82059f99b3a9137977b510e80ba898ac3c554f2e88ca27362f9ac5f12c24d8",
+ "inputs": "f641b1a0145119dbcc1ea30dec06da661a3432faaf0dbb45a262157b3d039eb3",
  "oracles": [
-  "definition",
-  "tnet"
+  "definition"
  ]
 }

@@ -1,12 +1,13 @@
 {
- "inputs": "6db824e96cce3b4ff996956e6ebb45e1e6185308d47894059814e03aed7c2834",
+ "inputs": "324eeb421dac8d7fa705d07099a423088d218e4ee58b8e58ab21350676127576",
  "oracles": [
-  "boost",
   "cpnet",
   "definition",
   "igraph",
   "nauty",
   "networkx",
-  "rsiena"
+  "powerlaw",
+  "pyigraph",
+  "sknetwork"
  ]
 }

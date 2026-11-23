@@ -1,9 +1,7 @@
 {
- "inputs": "c9310c9d90acf433e90bfaac5511567a04cfba8e4f8511c40298610444645787",
+ "inputs": "e0cc0ea7b1d783f43950790fcfbadb1d8b85e48e7c18f61467006877285e8730",
  "oracles": [
-  "cpnet",
   "definition",
-  "nauty",
   "networkx"
  ]
 }

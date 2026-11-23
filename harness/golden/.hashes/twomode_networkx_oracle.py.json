@@ -1,10 +1,8 @@
 {
- "inputs": "2f9ea4126b732a1143d1be6a44f2cd83a7f05aa663e3a8d3f94db15c6d3eac8c",
+ "inputs": "e11da2b72af2433f819b046735c42cc43ce8edac8879f2bff6017980bfd2d1fb",
  "oracles": [
-  "blockmodeling",
   "definition",
-  "igraph",
-  "influencer",
-  "networkx"
+  "networkx",
+  "rsiena"
  ]
 }

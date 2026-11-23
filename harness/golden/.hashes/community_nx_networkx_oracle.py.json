@@ -1,17 +1,15 @@
 {
- "inputs": "02fd8b563e716c3f4d9b9db4656b4826f40391f087339207b4915b0b1da32501",
+ "inputs": "5cef46a87df2c7299f0fad3598ef4cbd8c6f420dd70becd1463243ecb0c25686",
  "oracles": [
   "bct",
   "bctpy",
   "blockmodeling",
   "boost",
   "cdlib",
-  "centiserve",
   "cpnet",
   "definition",
   "egor",
   "graphblas",
-  "graspologic",
   "igraph",
   "influencer",
   "infomap",

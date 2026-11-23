@@ -1,12 +1,10 @@
 {
- "inputs": "df6b28bf2e91efee8a921c6fd5dd5f864b99c3848d411a003a6f6272e4ee31d1",
+ "inputs": "c3bc407f8212a0fdec8508ffaf1c3c4d791f3eb70b5425eed47cd626d631e660",
  "oracles": [
   "centiserve",
   "definition",
   "igraph",
-  "netrankr",
   "networkx",
-  "pyigraph",
   "sna",
   "tnet"
  ]

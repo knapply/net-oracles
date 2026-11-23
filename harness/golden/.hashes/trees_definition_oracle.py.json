@@ -1,7 +1,6 @@
 {
- "inputs": "61d700a00cd66ed358cf65c4b1e14f86266e5c9695c0a5fc10707fda33c3a693",
+ "inputs": "bc8babfa23c5fb46fd1367e270d1c7b432223665bcb320bab79be0c4e2348954",
  "oracles": [
-  "definition",
-  "networkit"
+  "definition"
  ]
 }

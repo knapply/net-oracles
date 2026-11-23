@@ -1,12 +1,11 @@
 {
- "inputs": "44a77f48d55cdd62b645bc067db2b757f1011d9e35b4d186c9fb6718ff9162c6",
+ "inputs": "f87b8b61aa740799e38c4e170a5e211f814cdc2a4fb8b3f910d8c4b065ba26d9",
  "oracles": [
-  "cpnet",
   "definition",
-  "infomap",
   "nauty",
   "networkx",
   "powerlaw",
+  "pyigraph",
   "sknetwork"
  ]
 }

@@ -130,13 +130,15 @@ def input_hash(script: Path, cmd: list[str]) -> str:
     # Driver sources of a system-tool oracle (oracles/system/<tool>/).
     drivers = ORACLES / "system" / script.stem.removesuffix("_oracle")
     for p in sorted(drivers.rglob("*")) if drivers.is_dir() else []:
-        if p.is_file():
+        if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc":
             add(p)
     if script.suffix == ".py" and "system_run" in script.read_text():
         add(ORACLES / "system_run.py")
     for d in (HERE / "fixtures", HERE / "derived"):
         for p in sorted(d.rglob("*")):
-            if p.is_file():
+            # Bytecode caches are written when a script or check imports
+            # derived/ (they hold source times), so they never enter the hash.
+            if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc":
                 add(p)
     # presets.yaml holds engine-side convention checks only (no oracle
     # computes them), so it never reruns a script.
@@ -240,10 +242,23 @@ def rehash(scripts: list[Path]) -> int:
     return 0
 
 
+def default_jobs() -> int:
+    """Scripts run at once: NETORACLES_JOBS when set (a CI job
+    can set it to its share of the CPUs), else the CPUs this process may
+    run on (its affinity, not the whole machine as os.cpu_count says)."""
+    env = os.environ.get("NETORACLES_JOBS", "")
+    if env.isdigit() and int(env) > 0:
+        return int(env)
+    try:
+        return len(os.sched_getaffinity(0)) or 2
+    except AttributeError:
+        return os.cpu_count() or 2
+
+
 def main(argv: list[str]) -> int:
     python_only = "--python-only" in argv
     force = "--all" in argv
-    jobs = os.cpu_count() or 2
+    jobs = default_jobs()
     words = []
     it = iter(argv)
     for a in it:

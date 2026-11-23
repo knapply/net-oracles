@@ -1,8 +1,6 @@
 {
- "inputs": "4c27697ed6e0f63de56f5ba49310c72d4c27a085a410d2d13299518fb7328857",
+ "inputs": "b94143b26a5bdeab95e5ec4b2878ae29d20c0553070b1cfb937abeb49bc24e43",
  "oracles": [
-  "centiserve",
-  "definition",
   "networkx"
  ]
 }

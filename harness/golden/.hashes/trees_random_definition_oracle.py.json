@@ -1,7 +1,9 @@
 {
- "inputs": "032a535446d5ae1c1306deeb879f8c29268768a048af74de23645a0910c058f5",
+ "inputs": "eca6e7808192b8aea179ba626ec65fbffc98d6bd6f78da8b2fa32d0d827b6481",
  "oracles": [
+  "bctpy",
   "definition",
-  "tsna"
+  "igraph",
+  "sna"
  ]
 }

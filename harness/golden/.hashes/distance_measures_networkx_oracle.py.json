@@ -1,13 +1,11 @@
 {
- "inputs": "5faeff68100915061231bd8952add1774514b510bba4efa9851353b4f944cf77",
+ "inputs": "f2dc2062369f594e41a245fda940547215956e5988fe4f8d0f935589befc7518",
  "oracles": [
   "boost",
   "definition",
   "graphblas",
   "igraph",
-  "nauty",
   "networkx",
-  "published",
-  "rsiena"
+  "published"
  ]
 }

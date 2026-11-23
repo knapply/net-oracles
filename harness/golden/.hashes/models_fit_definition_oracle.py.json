@@ -1,11 +1,6 @@
 {
- "inputs": "c6b5a25b79d07b9e694793b4d5d1b1e1d2dd66d1bd02fb9578a7eb466158adf7",
+ "inputs": "ec266e392facbb55f284f6b738e8f6a56c9e3a7f05c70bb0248cc20dfa534acb",
  "oracles": [
-  "definition",
-  "igraph",
-  "nauty",
-  "networkx",
-  "sna",
-  "tsna"
+  "definition"
  ]
 }

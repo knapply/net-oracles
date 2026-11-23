@@ -1,5 +1,5 @@
 {
- "inputs": "a675d88bf3067265146a5e2a4080ac22bbf3fc745ff91787b6dd0ebb817074ba",
+ "inputs": "f59b5fd301ca733654236fc62990d43dc7906eb783f74c76ef2df7abf05b006c",
  "oracles": [
   "bct",
   "bctpy",
@@ -10,8 +10,6 @@
   "cpnet",
   "definition",
   "egor",
-  "ergm",
-  "gephi",
   "graphblas",
   "graspologic",
   "homophily",
@@ -30,12 +28,9 @@
   "remstats",
   "rsiena",
   "rustworkx",
-  "s2",
   "scipy",
-  "sf",
   "sknetwork",
   "sna",
-  "stats",
   "tnet",
   "tsna"
  ]

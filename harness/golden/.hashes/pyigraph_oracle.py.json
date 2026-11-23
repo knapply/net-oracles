@@ -1,9 +1,7 @@
 {
- "inputs": "c8e944e517f600f7bc95e8874fddde6755e6bee503a1c23faa787e2874445606",
+ "inputs": "29cf8e6973c2807d210cfba045a2609e824c312db792bd43c9dca5de2a8d5679",
  "oracles": [
-  "homophily",
-  "igraph",
-  "pyigraph",
-  "sna"
+  "definition",
+  "pyigraph"
  ]
 }

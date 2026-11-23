@@ -1,5 +1,5 @@
 {
- "inputs": "21cc2e633b50d35b96675b80e73c823cbc35cfa3d696c2c3b83e51f70be3bc6b",
+ "inputs": "61b247381ea90144d43eea1ec90d452b1ba0a5f9965fcf5145bf7b9b3a96e5d8",
  "oracles": [
   "bct",
   "bctpy",
@@ -8,8 +8,6 @@
   "cdlib",
   "cpnet",
   "definition",
-  "ergm",
-  "gephi",
   "graphblas",
   "graspologic",
   "igraph",

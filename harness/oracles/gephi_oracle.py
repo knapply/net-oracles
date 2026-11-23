@@ -12,7 +12,6 @@ stay.
 """
 from __future__ import annotations
 
-import shutil
 import sys
 import tempfile
 from pathlib import Path
@@ -39,9 +38,7 @@ def main() -> None:
         out = Path(tmp) / "golden"
         sr.run([java, "-Djava.awt.headless=true", "-cp", f"{jar}:{tmp}", "Oracle", str(FIXTURES), str(out)])
         dst = GOLDEN / ORACLE
-        if dst.exists():
-            shutil.rmtree(dst)
-        shutil.copytree(out, dst)
+        sr.replace_outputs(out, dst)
     jv = sr.run([java, "-version"]).stderr.splitlines()[0]
     write_version(ORACLE, f"Gephi toolkit {GEPHI} ({jv})")
     print(f"gephi {GEPHI}: wrote {sum(1 for _ in (GOLDEN / ORACLE).rglob('*.csv'))} golden files")

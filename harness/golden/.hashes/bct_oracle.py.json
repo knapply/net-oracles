@@ -1,10 +1,9 @@
 {
- "inputs": "336b2a0bdc0fe0eda718678431b96f2d28d299f9d05454ebb684763a211a46e4",
+ "inputs": "139c4991738907c1e962dc0b4554063a8c885575483b7baa2c304ebfd37385b1",
  "oracles": [
   "bct",
-  "igraph",
+  "boost",
   "infomap",
-  "networkit",
-  "networkx"
+  "jgrapht"
  ]
 }

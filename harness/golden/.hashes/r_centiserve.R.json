@@ -1,8 +1,6 @@
 {
- "inputs": "b5bd4b793efa282120a677007980224a37265c4458834a33483193ed756af6ba",
+ "inputs": "f4574d6fbe9daadd7c3298c47580a58b58fa71e8c0605840e5b2b5e4fbe2ca8c",
  "oracles": [
-  "centiserve",
-  "definition",
-  "tnet"
+  "centiserve"
  ]
 }

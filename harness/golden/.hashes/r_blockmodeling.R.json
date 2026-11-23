@@ -1,9 +1,6 @@
 {
- "inputs": "554c0b816533b296d6334b89fb9052c54c296231fa1a01fb01e39e41f3d1fe10",
+ "inputs": "97ed28e931b1cee41c71b8905764955895c2b9b9a19bbe63cd97ba2d3a840056",
  "oracles": [
-  "blockmodeling",
-  "definition",
-  "manynet",
-  "networkx"
+  "blockmodeling"
  ]
 }

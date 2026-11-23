@@ -1,8 +1,7 @@
 {
- "inputs": "11fa30e10d1269dd32ea82bf6437288f50f46cbf1a3b01dcbe09162fe61a6051",
+ "inputs": "8ab528c49b796544e4df61d79532fdfe1d33607db6e1cd72aed9d51723771d2e",
  "oracles": [
   "definition",
-  "networkx",
-  "rsiena"
+  "networkx"
  ]
 }

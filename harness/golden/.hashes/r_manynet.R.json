@@ -1,8 +1,7 @@
 {
- "inputs": "d208a0166a42dd4b3485119fd6ddc107f4c43fac65cba0977a11c62353a508f5",
+ "inputs": "42471dfeb30298e460a3242dc962ae17813f56e9220c15edb803cfcdc44d14fd",
  "oracles": [
   "manynet",
-  "networkx",
-  "scipy"
+  "networkx"
  ]
 }

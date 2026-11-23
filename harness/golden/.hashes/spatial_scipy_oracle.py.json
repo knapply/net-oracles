@@ -1,7 +1,6 @@
 {
- "inputs": "afe8c13a35756f1c930eb0e957ad0dc1f70f1d78e568fa1537eb777a3413562a",
+ "inputs": "0bda135db2a2dd41f81c7efc614954dbfdcd11f75f06f0c12e555558ec3066c0",
  "oracles": [
-  "definition",
   "scipy"
  ]
 }

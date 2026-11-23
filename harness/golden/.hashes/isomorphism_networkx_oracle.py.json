@@ -1,10 +1,8 @@
 {
- "inputs": "a4b94ec3991d2fbbf28951c21833c330b3ab337a91e6b0f080bf56734b4f466b",
+ "inputs": "f719b4026e897c268e7aefaa06821d1f029333c54e5bda9f98ce9c1ac2ba82d5",
  "oracles": [
   "definition",
-  "igraph",
   "nauty",
-  "networkx",
-  "sna"
+  "networkx"
  ]
 }

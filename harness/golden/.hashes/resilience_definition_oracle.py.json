@@ -1,5 +1,5 @@
 {
- "inputs": "066b96745520010514bd1b0d8624fbb7d8ce799a2898b71a37f471a2032d6e4a",
+ "inputs": "14913e136e59119fa8e840c9dba9212d5fd9fe7faf58824c9a270c382443152f",
  "oracles": [
   "blockmodeling",
   "centiserve",
@@ -7,17 +7,13 @@
   "egor",
   "homophily",
   "igraph",
-  "influencer",
   "manynet",
   "netrankr",
   "networkit",
   "networkx",
   "pyigraph",
-  "s2",
   "scipy",
-  "sf",
   "sna",
-  "stats",
   "tnet"
  ]
 }

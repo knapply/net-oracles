@@ -1,8 +1,6 @@
 {
- "inputs": "def9a0c81ecc6d56c539e56a6f454858ea772aee09ecfa361867d163dcfe0ed9",
+ "inputs": "3c7d5281187c8f9c8116381c9d79529a88e2a848a03e23e0139327bf285adaae",
  "oracles": [
-  "blockmodeling",
-  "definition",
-  "networkx"
+  "definition"
  ]
 }

@@ -1,9 +1,6 @@
 {
- "inputs": "8f9862236cd2d0a415c43093000f76acf9eeb58f73429649c59b8af2d353c64e",
+ "inputs": "8f86c677221a3268b51edfa96204226c5fe07664e488c92a61832012c4c61477",
  "oracles": [
-  "definition",
-  "networkx",
-  "powerlaw",
-  "sknetwork"
+  "powerlaw"
  ]
 }

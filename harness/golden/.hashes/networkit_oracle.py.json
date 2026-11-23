@@ -1,12 +1,7 @@
 {
- "inputs": "d0dd141516651500a97d6b8a9e5677f6ccf3d3c15cedd1966042e70316b10beb",
+ "inputs": "50b575d8f5b01150d880166c11f70ed6ee7d3e79a969d8fccadd4dccc00d6c14",
  "oracles": [
   "definition",
-  "igraph",
-  "networkit",
-  "s2",
-  "sf",
-  "sna",
-  "stats"
+  "networkit"
  ]
 }

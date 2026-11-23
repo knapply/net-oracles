@@ -1,6 +1,36 @@
 {
- "inputs": "54740b6583e869346cb74a99e7c9cd6f51981af3ef7aea766fa773cdbf2ef0b6",
+ "inputs": "d450a45e8110fe3c4d9d80dbab3db162e3376887225beec7f1bcb11962e4236b",
  "oracles": [
-  "definition"
+  "bct",
+  "bctpy",
+  "blockmodeling",
+  "boost",
+  "cdlib",
+  "centiserve",
+  "cpnet",
+  "definition",
+  "egor",
+  "graphblas",
+  "homophily",
+  "igraph",
+  "influencer",
+  "infomap",
+  "jgrapht",
+  "manynet",
+  "nauty",
+  "netrankr",
+  "networkit",
+  "networkx",
+  "powerlaw",
+  "published",
+  "pyigraph",
+  "remstats",
+  "rsiena",
+  "rustworkx",
+  "scipy",
+  "sknetwork",
+  "sna",
+  "tnet",
+  "tsna"
  ]
 }

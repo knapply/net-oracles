@@ -43,3 +43,18 @@ def run(cmd, **kw) -> subprocess.CompletedProcess:
         sys.stderr.write(r.stdout[-3000:] + r.stderr[-6000:])
         raise subprocess.CalledProcessError(r.returncode, cmd)
     return r
+
+
+def replace_outputs(out: Path, dst: Path) -> None:
+    """Install a driver's golden files from `out` into `dst` (golden/<oracle>)
+    without touching files another script wrote there: two scripts may share
+    one oracle directory (boost_oracle.py and planarity_boost_oracle.py both
+    write golden/boost). Every file in `dst` of a variant the driver wrote
+    (same file name, any fixture) is removed first, so a variant that no
+    longer applies to a fixture leaves no stale file; other files stay."""
+    produced = {p.name for p in out.rglob("*") if p.is_file()}
+    if dst.exists():
+        for p in dst.rglob("*"):
+            if p.is_file() and p.name in produced:
+                p.unlink()
+    shutil.copytree(out, dst, dirs_exist_ok=True)

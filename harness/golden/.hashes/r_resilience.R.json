@@ -1,14 +1,12 @@
 {
- "inputs": "e5d0c5c1a0d0a339faafa21aed8e2c998f528059fa46c9dc1217bd3f5065c5ff",
+ "inputs": "a86d223371628f13bf5d4a91e258ab8582877c97cf71369f2bc568fd3310c1cf",
  "oracles": [
   "bct",
   "bctpy",
-  "blockmodeling",
   "boost",
   "cdlib",
   "cpnet",
   "definition",
-  "ergm",
   "gephi",
   "graphblas",
   "graspologic",
@@ -17,7 +15,6 @@
   "infomap",
   "jgrapht",
   "keyplayer",
-  "manynet",
   "nauty",
   "networkit",
   "networkx",

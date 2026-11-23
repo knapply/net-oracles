@@ -1,14 +1,11 @@
 {
- "inputs": "6b750d068bdbdd51764556d7a1174b9d5b31da2764420bae78e132f616090ce1",
+ "inputs": "161359b62d3cfd1644bb3a27d830fd363145a7024c4177f58140706ddef22749",
  "oracles": [
   "bct",
-  "bctpy",
   "boost",
   "cdlib",
   "cpnet",
   "definition",
-  "ergm",
-  "gephi",
   "graphblas",
   "graspologic",
   "igraph",
@@ -21,7 +18,6 @@
   "published",
   "pyigraph",
   "remstats",
-  "rsiena",
   "sknetwork",
   "sna"
  ]

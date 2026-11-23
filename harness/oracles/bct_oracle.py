@@ -13,7 +13,6 @@ from __future__ import annotations
 
 import hashlib
 import os
-import shutil
 import sys
 import tempfile
 import urllib.request
@@ -54,9 +53,7 @@ def main() -> None:
         res = sr.run([octave, "--no-gui", "--quiet", str(src)])
         version = res.stdout.strip().splitlines()[-1]
         dst = GOLDEN / ORACLE
-        if dst.exists():
-            shutil.rmtree(dst)
-        shutil.copytree(out, dst)
+        sr.replace_outputs(out, dst)
     write_version(ORACLE, version)
     print(f"{version}: wrote {sum(1 for _ in (GOLDEN / ORACLE).rglob('*.csv'))} golden files")
 

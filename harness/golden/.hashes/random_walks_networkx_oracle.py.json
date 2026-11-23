@@ -1,14 +1,15 @@
 {
- "inputs": "c01e3d1ed1390c2eadc5dca5a68f169d89c7c0294f17f33506ef27715f37296e",
+ "inputs": "909998c3a1a53fd2a53565840176e174812f13b56f33f425e5cf395d928590c1",
  "oracles": [
   "bct",
   "cdlib",
+  "cpnet",
   "definition",
   "igraph",
   "infomap",
   "networkit",
   "networkx",
-  "powerlaw",
-  "sknetwork"
+  "pyigraph",
+  "remstats"
  ]
 }

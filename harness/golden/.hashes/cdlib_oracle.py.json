@@ -1,9 +1,7 @@
 {
- "inputs": "9f23303ceef2a0b6e328d96d9e20007bd185648110a44ccde3bf18c81583cccf",
+ "inputs": "5fe5edb77feb8c062c178bab81a10c87d526154698e5fdad29f55723d5aea857",
  "oracles": [
-  "bct",
   "cdlib",
-  "definition",
   "igraph",
   "networkit",
   "networkx"
