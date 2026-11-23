@@ -28,9 +28,7 @@ on:
         description: "Groups (JSON list, empty for all), from scripts/oracle_jobs.py matrix"
         default: ""
   push:
-    # oracles-ci: trial runs of this workflow before it is on main (a manual
-    # run needs the workflow on the default branch).
-    branches: [main, oracles-ci]
+    branches: [main]
     paths:
       - "harness/**"
       - "scripts/oracle_jobs.py"
