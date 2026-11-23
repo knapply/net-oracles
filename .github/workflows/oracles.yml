@@ -1,0 +1,209 @@
+name: oracles
+
+# Rerun the oracle scripts of harness/ on GitHub-hosted runners and check the
+# reference outputs they write against the committed ones
+# (scripts/oracle_jobs.py). One job per group of scripts that share what they
+# need installed: the main Python interpreter (four shards), each isolated
+# Python environment (harness/oracles/envs/), the native tools, R, graph-tool.
+#
+# verify (schedule, push, default for dispatch): rerun every script and
+#   report; fails when a reference output differs beyond 1e-9 or a script
+#   fails. Nothing is committed. Tool versions that moved are listed.
+# update (dispatch only): rerun scripts whose inputs changed (or every script
+#   with `all`), then commit the new outputs and run records to a branch
+#   oracles/<run id> for review; main is never written.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "verify or update"
+        type: choice
+        options: [verify, update]
+        default: verify
+      all:
+        description: "update: rerun every script, not only those whose inputs changed"
+        type: boolean
+        default: false
+      groups:
+        description: "Groups (JSON list, empty for all), from scripts/oracle_jobs.py matrix"
+        default: ""
+  push:
+    branches: [main]
+    paths:
+      - "harness/**"
+      - "scripts/oracle_jobs.py"
+      - ".github/workflows/oracles.yml"
+  schedule:
+    - cron: "23 9 * * 0"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: oracles-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  MODE: ${{ github.event.inputs.mode || 'verify' }}
+  NETORACLES_ORACLE_ENVS: /home/runner/oracle-envs
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      groups: ${{ steps.m.outputs.groups }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts
+            harness/oracles
+      - id: m
+        env:
+          WANT: ${{ github.event.inputs.groups }}
+        run: |
+          if [ -n "$WANT" ]; then echo "groups=$WANT" >> "$GITHUB_OUTPUT"
+          else echo "groups=$(python3 scripts/oracle_jobs.py matrix)" >> "$GITHUB_OUTPUT"; fi
+
+  run:
+    needs: plan
+    name: ${{ matrix.group }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        group: ${{ fromJSON(needs.plan.outputs.groups) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Main interpreter: the versions recorded in harness/golden/*/VERSION.
+      - name: Install (main interpreter)
+        run: python -m pip install -q networkx==3.7 numpy==2.5.4 scipy==1.18.1 pandas pyyaml sympy
+
+      - name: Install (isolated Python environment)
+        if: ${{ startsWith(matrix.group, 'env-') && matrix.group != 'env-graph-tool' }}
+        run: bash harness/tools/oracle_envs.sh "${GROUP#env-}"
+        env:
+          GROUP: ${{ matrix.group }}
+
+      - uses: mamba-org/setup-micromamba@v2
+        if: ${{ matrix.group == 'env-graph-tool' }}
+        with:
+          environment-name: gt
+          create-args: >-
+            python=3.12 graph-tool numpy scipy pyyaml
+          cache-environment: true
+      - name: Link graph-tool as its oracle environment
+        if: ${{ matrix.group == 'env-graph-tool' }}
+        run: |
+          mkdir -p "$NETORACLES_ORACLE_ENVS/graph-tool/bin"
+          ln -sf "$MAMBA_ROOT_PREFIX/envs/gt/bin/python" "$NETORACLES_ORACLE_ENVS/graph-tool/bin/python"
+
+      - name: Install (R)
+        if: ${{ matrix.group == 'r' }}
+        run: |
+          . /etc/os-release
+          curl -fsSL "https://raw.githubusercontent.com/eddelbuettel/r2u/master/inst/scripts/add_cranapt_${VERSION_CODENAME}.sh" | sudo bash
+          pkgs=$(python3 scripts/oracle_jobs.py rpkgs)
+          for p in $pkgs; do
+            sudo apt-get install -y -q --no-install-recommends "r-cran-$(echo "$p" | tr 'A-Z' 'a-z')" >/dev/null 2>&1 || echo "no binary: $p"
+          done
+          sudo env PKGS="$pkgs" Rscript -e 'options(bspm.enable = FALSE, repos = c(CRAN = "https://cloud.r-project.org"));
+            want <- strsplit(Sys.getenv("PKGS"), " ")[[1]]
+            gh <- c(homophily = "knapply/homophily", netrankr = "schochastics/netrankr")
+            for (p in setdiff(want, rownames(installed.packages()))) {
+              ok <- tryCatch({ install.packages(p); p %in% rownames(installed.packages()) }, error = function(e) FALSE)
+              if (!ok && p %in% names(gh)) ok <- tryCatch({ remotes::install_github(gh[[p]], upgrade = "never"); TRUE }, error = function(e) FALSE)
+              message(if (ok) "installed " else "NOT INSTALLED ", p)
+            }'
+
+      - name: Run
+        id: run
+        continue-on-error: true
+        env:
+          GROUP: ${{ matrix.group }}
+          ORACLE_BOOTSTRAP: "1"
+        run: |
+          all=--all
+          if [ "$MODE" = update ] && [ "${{ github.event.inputs.all }}" != "true" ]; then all=; fi
+          python scripts/oracle_jobs.py run "$GROUP" $all --jobs 4 --report "report-$GROUP.json"
+
+      - name: Compare with the committed outputs
+        id: compare
+        continue-on-error: true
+        env:
+          GROUP: ${{ matrix.group }}
+        run: |
+          echo "### $GROUP" >> "$GITHUB_STEP_SUMMARY"
+          python scripts/oracle_jobs.py compare --report "compare-$GROUP.json" --summary "$GITHUB_STEP_SUMMARY"
+
+      - name: Collect the changed outputs
+        if: always()
+        env:
+          GROUP: ${{ matrix.group }}
+        run: |
+          mkdir -p out
+          git status --porcelain --untracked-files=all -- harness/golden harness/golden-sized \
+            | sed 's/^...//; s/.* -> //' > out/paths.txt
+          # deleted files are listed and recreated as deletions by the update job
+          tar -czf "out/outputs-$GROUP.tar.gz" --ignore-failed-read -T out/paths.txt 2>/dev/null || true
+          mv "report-$GROUP.json" "compare-$GROUP.json" out/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: oracles-${{ matrix.group }}
+          path: out/
+          retention-days: 14
+
+      - name: Result
+        if: ${{ steps.run.outcome != 'success' || steps.compare.outcome != 'success' }}
+        run: |
+          echo "::error title=${{ matrix.group }}::run ${{ steps.run.outcome }}, compare ${{ steps.compare.outcome }}"
+          exit 1
+
+  update:
+    needs: run
+    if: ${{ always() && github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'update' && needs.run.result != 'cancelled' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: oracles-*
+      - name: Apply every group's outputs
+        run: |
+          set -euo pipefail
+          mkdir -p seen
+          for d in artifacts/oracles-*; do
+            g=${d#artifacts/oracles-}
+            [ -f "$d/outputs-$g.tar.gz" ] || continue
+            rm -rf stage && mkdir stage && tar -xzf "$d/outputs-$g.tar.gz" -C stage
+            # Two groups writing one file must agree on its bytes.
+            (cd stage && find . -type f) | while read -r f; do
+              if [ -f "seen/$f" ] && ! cmp -s "seen/$f" "stage/$f"; then
+                echo "::error::$f written differently by two groups"; exit 1
+              fi
+              mkdir -p "seen/$(dirname "$f")" && cp "stage/$f" "seen/$f"
+            done
+            cp -a stage/. .
+            while read -r p; do [ -e "stage/$p" ] || git rm -q --ignore-unmatch "$p"; done < "$d/paths.txt"
+          done
+      - name: Commit to a review branch
+        run: |
+          git config user.name "knapply"
+          git config user.email "knapply@users.noreply.github.com"
+          git add -A harness/golden harness/golden-sized
+          if git diff --cached --quiet; then echo "::notice::no change"; exit 0; fi
+          b="oracles/${{ github.run_id }}"
+          git checkout -q -b "$b"
+          git commit -q -m "Oracle outputs from hosted run ${{ github.run_id }}"
+          git push -q origin "$b"
+          echo "::notice::pushed $b" && echo "Pushed branch \`$b\`" >> "$GITHUB_STEP_SUMMARY"
