@@ -21,13 +21,19 @@ Groups follow what a script needs installed:
 (the same hashing and records), so a group run here is what
 `python3 run_oracles.py` would do for those scripts. `compare` reads
 `git status` after a run and classifies every changed reference output
-against the committed file: `identical` (byte for byte), `within 1e-9`
-(every number within an absolute or relative 1e-9 of the committed one, every
-other cell equal), `differs`, `new` or `removed`. A changed VERSION file is a
+against the committed file: `identical` (byte for byte), `within tolerance`
+(every number within the manifest tolerance of its entry, the oracle's own
+tolerance where it has one, and never tighter than 1e-9; every other cell
+equal), `differs`, `new` or `removed`. The bound is twice the manifest
+tolerance: that tolerance bounds each run's distance from the reference
+value, so two runs of an iterative or sampled oracle can be twice as far from
+each other (both within it of the reference). A file harness/golden/ORACLE/FIXTURE/
+ENTRY.csv takes the tolerance of manifest entry ENTRY. A changed VERSION file is a
 tool version that moved. Exit 1 when anything differs, so a scheduled run
 that cannot reproduce the committed outputs shows up as a failure.
 
-Standard library only.
+Standard library only, plus PyYAML for the tolerances (without it every
+file is compared at 1e-9).
 """
 from __future__ import annotations
 
@@ -49,6 +55,39 @@ ENV_RE = re.compile(r"^#\s*oracle-env:\s*([A-Za-z0-9_.-]+)\s*$", re.M)
 R_PKG_RE = re.compile(r"([A-Za-z][\w.]*)::|library\(([\w.]+)\)|requireNamespace\(\"([\w.]+)\"")
 BASE_SHARDS = 4
 TOL = 1e-9
+_TOLS: dict[tuple[str, str], tuple[float, float]] | None = None
+
+
+def tolerances() -> dict[tuple[str, str], tuple[float, float]]:
+    """(entry, oracle) -> (abs, rel); oracle "" is the entry's own tolerance."""
+    global _TOLS
+    if _TOLS is None:
+        _TOLS = {}
+        try:
+            import yaml
+        except ImportError:
+            return _TOLS
+        for f in sorted((HARNESS / "manifest").glob("*.yaml")):
+            for key, e in (yaml.safe_load(f.read_text()) or {}).items():
+                if not isinstance(e, dict):
+                    continue
+                t = e.get("tolerance") or {}
+                _TOLS[(key, "")] = (float(t.get("abs", 0)), float(t.get("rel", 0)))
+                for o, oe in (e.get("oracles") or {}).items():
+                    if isinstance(oe, dict) and oe.get("tolerance"):
+                        ot = oe["tolerance"]
+                        _TOLS[(key, o)] = (float(ot.get("abs", 0)), float(ot.get("rel", 0)))
+    return _TOLS
+
+
+def tolerance_of(path: str) -> tuple[float, float]:
+    parts = path.split("/")
+    t = tolerances()
+    if len(parts) >= 4 and parts[1] in ("golden", "golden-sized"):
+        oracle, entry = parts[2], re.sub(r"\.(csv|tsv|json)(\.gz)?$", "", parts[-1])
+        a, r = t.get((entry, oracle)) or t.get((entry, "")) or (0.0, 0.0)
+        return max(2 * a, TOL), max(2 * r, TOL)
+    return TOL, TOL
 
 
 def groups() -> dict[str, list[Path]]:
@@ -125,7 +164,7 @@ def _rows(data: bytes, name: str) -> list[list[str]] | None:
     return list(csv.reader(io.StringIO(text), delimiter=delim))
 
 
-def _close(a: str, b: str) -> bool:
+def _close(a: str, b: str, tol: tuple[float, float]) -> bool:
     if a == b:
         return True
     try:
@@ -134,7 +173,7 @@ def _close(a: str, b: str) -> bool:
         return False
     if math.isnan(x) and math.isnan(y):
         return True
-    return abs(x - y) <= TOL or abs(x - y) <= TOL * max(abs(x), abs(y))
+    return abs(x - y) <= tol[0] + tol[1] * max(abs(x), abs(y))
 
 
 def classify(path: str) -> str:
@@ -150,10 +189,11 @@ def classify(path: str) -> str:
     a, b = _rows(old.stdout, path), _rows(new, path)
     if a is None or b is None or len(a) != len(b):
         return "differs"
+    tol = tolerance_of(path)
     for ra, rb in zip(a, b):
-        if len(ra) != len(rb) or not all(_close(x, y) for x, y in zip(ra, rb)):
+        if len(ra) != len(rb) or not all(_close(x, y, tol) for x, y in zip(ra, rb)):
             return "differs"
-    return "within 1e-9"
+    return "within tolerance"
 
 
 def changed_outputs() -> list[str]:
