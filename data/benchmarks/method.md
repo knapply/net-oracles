@@ -4,7 +4,7 @@ This file describes how the timing rows in `results.csv` were produced. Only the
 
 ## Suites
 
-- `size-ladder`: 24 graphs from about 1,000 to several hundred thousand nodes (road networks, citation graphs, generated random and scale-free graphs). Each tool ran in a fresh process per graph. The time is the median of 3 runs (1 run for betweenness and closeness, which are measured on a sample of sources, as the measure name states). Budget: 240 s per tool and graph. 21 threads were offered to each tool; tools that are single-threaded by design used one.
+- `size-ladder`: 24 graphs from about 1,000 to several hundred thousand nodes (road networks, citation graphs, generated random and scale-free graphs). Each tool ran in a fresh process per graph. The time is the median of 3 runs (1 run for betweenness and closeness, which are measured on a sample of sources, as the measure name states). Budget: 240 s per tool and graph. Every multithreaded tool ran in each of the three thread modes below.
 - `size-ladder-graph-tool`: the same 24 graphs for graph-tool, run in a container image with 5 CPUs and a budget of 600 s per tool and graph, because the tool is distributed as a container image.
 - `gap-kernels`: the kernels of the GAP Benchmark Suite (breadth-first search, PageRank, connected components, betweenness on 4 sources) on two generated graphs with about 4.2 million nodes and 128 million edges, with 1 thread and with all offered threads. Budget: 20 s per kernel.
 - `python-comparison` and `r-comparison`: a smaller set of measures (degree build, components, betweenness, closeness, harmonic closeness, k-cores, maximal cliques, Louvain communities, triad census, constraint, eigenvector centrality, QAP and MRQAP in R) against NetworkX, igraph, NetworKit and sna. Times are medians of runs of at least 0.2 s. NetworkX and igraph used 1 thread; NetworKit used all offered threads. The R rows come from the printed output of the run and are rounded to 0.1 ms.
@@ -15,7 +15,7 @@ This file describes how the timing rows in `results.csv` were produced. Only the
 - Time: wall clock of the measure call after the graph is loaded in memory, unless the measure name says "build".
 - Memory: peak resident memory of the process during the call, above the process's resident memory before the graph was read (`peak_megabytes`). For the `gap-kernels` suite the value is the whole-process peak.
 - `status` is `over-budget` when the tool did not finish within the budget; `seconds` is then empty.
-- `threads` is the number of threads offered to the tool (`all` means every CPU offered to the container).
+- Thread modes (`thread_mode`): every timed cell is recorded three ways, so tools are compared like for like: `one` (one thread each), `all` (every core offered) and `default` (each tool's own default, which is what most users get). A single-threaded tool has the same value in every mode. `threads` is the number of threads the tool ran with (`all` means every CPU offered to the container; empty where the run did not record it).
 - Each row records the version of the tool where it was recorded; the main versions are NetworkX 3.7, igraph 1.0.0 (Python) and 2.3.4 (R), NetworKit 11.2.2, graph-tool 3.9 and GAP Benchmark Suite revision 941462c7c42e.
 
 ## Hardware

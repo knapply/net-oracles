@@ -803,25 +803,27 @@ Every entry that is not `checked-agrees` has a reason in `reasons.json`. `build.
     files["findings.md"] = page({"title": "Findings", "layout": "default", "nav_order": 6}, body)
 
     # benchmarks
+    TMODE_ORDER = {"one": 0, "all": 1, "default": 2}
+    TMODE_LABEL = {"one": "one", "all": "all cores", "default": "tool default"}
     method = pipe_tables_to_html(open(os.path.join(DATA, "benchmarks", "method.md"), encoding="utf-8").read().strip())
     method = re.sub(r"^# .*\n", "", method)
     body = "# Benchmarks\n\nTimings and memory of other tools only. The first tables are the headline runs (dedicated hardware, rows in `data/benchmarks/results.csv`); results from GitHub-hosted runners are in a separate section at the end and are never combined with them. Method:\n\n" + method.replace("\n#", "\n##") + "\n"
     R = d["results"]
     grp = collections.defaultdict(list)
-    for r in R: grp[(r["suite"], r["tool"], r["measure"])].append(r)
+    for r in R: grp[(r["suite"], r["tool"], r["measure"], r["thread_mode"])].append(r)
     suites = sorted({r["suite"] for r in R})
     body += "\n## Summary by suite\n\n" + table(["Suite", "Tool", "Rows", "Graphs", "Measures", "Over budget"], [[
         s, esc(tid[t]["name"]), len(rs), len({r["graph"] for r in rs}), len({r["measure"] for r in rs}), sum(1 for r in rs if r["status"] == "over-budget")]
         for s in suites for t in sorted({r["tool"] for r in R if r["suite"] == s}) for rs in [[r for r in R if r["suite"] == s and r["tool"] == t]]]) + "\n"
     for s in suites:
-        body += "\n## Median time per measure: %s\n\nMedian over the graphs on which the tool finished within the budget; threads as in the data file.\n\n" % s
+        body += "\n## Median time per measure: %s\n\nMedian over the graphs on which the tool finished within the budget, per thread mode: one thread, all cores offered, and the tool's own default.\n\n" % s
         rows = []
-        for (ss, t, me), rs in sorted(grp.items(), key=lambda kv: (kv[0][2].lower(), kv[0][1])):
+        for (ss, t, me, tm), rs in sorted(grp.items(), key=lambda kv: (kv[0][2].lower(), kv[0][1], TMODE_ORDER.get(kv[0][3], 9))):
             if ss != s: continue
             sec = [float(r["seconds"]) for r in rs if r["seconds"]]
             mb = [float(r["peak_megabytes"]) for r in rs if r["peak_megabytes"]]
-            rows.append([mlink(me, "", esc(me)) if me in mid else esc(me), esc(tid[t]["name"]), len(rs), len(sec), "%.4g" % statistics.median(sec) if sec else "", "%.4g" % statistics.median(mb) if mb else ""])
-        body += table(["Measure", "Tool", "Graphs", "Finished", "Median seconds", "Median peak MB"], rows) + "\n"
+            rows.append([mlink(me, "", esc(me)) if me in mid else esc(me), esc(tid[t]["name"]), TMODE_LABEL[tm], len(rs), len(sec), "%.4g" % statistics.median(sec) if sec else "", "%.4g" % statistics.median(mb) if mb else ""])
+        body += table(["Measure", "Tool", "Threads", "Graphs", "Finished", "Median seconds", "Median peak MB"], rows) + "\n"
     # Rows measured on GitHub-hosted runners are a different dataset (shared, variable hardware): their own section and tables,
     # never combined with the headline rows above.
     H = d["hosted"]
@@ -883,7 +885,7 @@ Source of truth is data/. Pages are generated from it by scripts/build.py (pytho
 - data/fixtures.json (data/schema/fixtures.schema.json): the input graphs of the comparisons (id, tier, kind, size, direction, weights, source, citation key).
 - data/conventions.json (data/schema/conventions.schema.json): array of records per measure, variant and tool. Fields: measure, variant, manifest, tool, scope (any | directed | undirected), weights_required, call (how the tool was invoked), outcome (agrees | differs | no-value-on-some-inputs | documented), differs_when and undefined_when (structural conditions such as loops, multi_edges, directed, disconnected, ties), only_on, dimensions (normalization, direction, weights, self_loops, multi_edges, ties, defaults), note, tolerance {{abs, rel}} (0 means exact), optional differs_on_inputs, no_value_on_inputs, reference.
 - data/findings.json (data/schema/findings.schema.json): array of findings. Fields: id, tool, version, measure (nullable), kind (defect | convention | limitation), status (reproduced | observed | reported), title, reproduction, observed, expected, evidence, references.
-- data/benchmarks/results.csv (data/schema/benchmarks-results.schema.json): timing rows of other tools (headline runs). Columns: suite, graph, nodes, edges, measure, tool, tool_version, seconds (empty when over budget), peak_megabytes, threads, status. Method: data/benchmarks/method.md.
+- data/benchmarks/results.csv (data/schema/benchmarks-results.schema.json): timing rows of other tools (headline runs). Columns: suite, graph, nodes, edges, measure, tool, tool_version, seconds (empty when over budget), peak_megabytes, threads (what the tool ran with), thread_mode (one, all or default: one thread, every core offered, the tool's own choice), status. Method: data/benchmarks/method.md.
 - data/benchmarks/hosted.csv (data/schema/benchmarks-hosted.schema.json): the same columns, suite always `hosted`, measured on GitHub-hosted runners; never combined with results.csv. data/benchmarks/hosted-environments.json (data/schema/benchmarks-hosted-environments.schema.json): one record per tool and suite with the runner hardware, date and run id.
 - data/definitions/<family-slug>.json (data/schema/definitions.schema.json): one file per family with the precise definitions of its concepts, keyed by concept id. Per concept: status (complete | partial | name_only), note, notation (symbol, meaning), formulas (name, latex, applies_to, where), variants (measure id -> what changes in the formula), edge_cases (case, definition_gives, tools: tool id -> status agrees | differs | no_value | documented | not_recorded, behaviour, source, optional measure and finding), references (BibTeX keys). The edge-case ids and their meaning are in data/definitions/_vocabulary.json. Procedure: data/definitions/README.md.
 - data/references.bib: BibTeX for every key used above.
