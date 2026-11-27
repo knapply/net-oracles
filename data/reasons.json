@@ -2072,6 +2072,57 @@
   "documentation": "NetworKit public classes and functions"
  },
  {
+  "measure": "betweenness_approx",
+  "tool": "networkx",
+  "state": "checked-convention",
+  "reason": "NetworkX 3.7 was run and its value differs from the reference value by convention (multi-edges) on inputs tagged multi_edges. NetworkX's simple graph keeps one edge of a parallel pair; the reference value counts the paths through each parallel edge. Tolerance: abs 1e-12, rel 1e-09 (0 means exact equality). 2 comparisons differ and 33 agree.",
+  "short": "Differs by convention (multi-edges): NetworkX's simple graph keeps one edge of a parallel pair; the reference value counts the paths through each parallel edge.",
+  "reason_incomplete": false,
+  "tool_version": "3.7",
+  "convention": [
+   "multi-edges"
+  ],
+  "inputs": {
+   "differs": {
+    "tags": [
+     "multi_edges"
+    ],
+    "named": []
+   },
+   "no_value": {
+    "tags": [
+     "negative_weights",
+     "zero_weights"
+    ],
+    "named": []
+   }
+  },
+  "comparisons": {
+   "agreeing": 33,
+   "differing": 2
+  },
+  "variants": [
+   {
+    "variant": "bcapprox_all",
+    "outcome": "differs",
+    "reason": "NetworkX's simple graph keeps one edge of a parallel pair; the reference value counts the paths through each parallel edge",
+    "tolerance": {
+     "abs": 1e-12,
+     "rel": 1e-09
+    },
+    "convention": [
+     "multi-edges"
+    ],
+    "differs_inputs": {
+     "tags": [
+      "multi_edges"
+     ],
+     "named": []
+    }
+   }
+  ]
+ },
+ {
   "measure": "bicomponents",
   "tool": "boost",
   "state": "reported-in-docs",
@@ -2230,6 +2281,96 @@
   "reason_incomplete": false,
   "why_not_run": "commercial-closed-source",
   "documentation": "published help pages and program documentation"
+ },
+ {
+  "measure": "bonacich",
+  "tool": "igraph",
+  "state": "checked-convention",
+  "reason": "igraph (R) 2.3.4 was run and its value differs from the reference value by convention (weights) on inputs tagged weighted. igraph::power_centrality has no weights argument and reads the graph as edge counts: on a graph carrying a weight attribute it returns the unweighted scores (checked: identical with and without the attribute), while sna::bonpow reads the matrix values and agrees with the reference value. Tolerance: abs 1e-10, rel 1e-09 (0 means exact equality). 21 comparisons differ and 101 agree.",
+  "short": "Differs by convention (weights): igraph::power_centrality has no weights argument and reads the graph as edge counts: on a graph carrying a weight attribute it returns the unweighted scores (checked...",
+  "reason_incomplete": false,
+  "tool_version": "2.3.4",
+  "convention": [
+   "weights"
+  ],
+  "inputs": {
+   "differs": {
+    "tags": [
+     "weighted"
+    ],
+    "named": []
+   },
+   "no_value": {
+    "tags": [],
+    "named": [
+     "empty",
+     "single_node",
+     "cycle7_dir",
+     "gnp_dir_sparse",
+     "les_miserables"
+    ]
+   }
+  },
+  "comparisons": {
+   "agreeing": 101,
+   "differing": 21
+  },
+  "variants": [
+   {
+    "variant": "bonacich_weighted",
+    "outcome": "differs",
+    "reason": "igraph::power_centrality has no weights argument and reads the graph as edge counts: on a graph carrying a weight attribute it returns the unweighted scores (checked: identical with and without the attribute), while sna::bonpow reads the matrix values and agrees with the reference value.",
+    "tolerance": {
+     "abs": 1e-10,
+     "rel": 1e-09
+    },
+    "convention": [
+     "weights"
+    ],
+    "differs_inputs": {
+     "tags": [
+      "weighted"
+     ],
+     "named": []
+    }
+   },
+   {
+    "variant": "bonacich_weighted_negative",
+    "outcome": "differs",
+    "reason": "igraph::power_centrality has no weights argument and reads the graph as edge counts: on a graph carrying a weight attribute it returns the unweighted scores (checked: identical with and without the attribute), while sna::bonpow reads the matrix values and agrees with the reference value.",
+    "tolerance": {
+     "abs": 1e-10,
+     "rel": 1e-09
+    },
+    "convention": [
+     "weights"
+    ],
+    "differs_inputs": {
+     "tags": [
+      "weighted"
+     ],
+     "named": []
+    }
+   },
+   {
+    "variant": "bonacich_weighted_rescale",
+    "outcome": "differs",
+    "reason": "igraph::power_centrality has no weights argument and reads the graph as edge counts: on a graph carrying a weight attribute it returns the unweighted scores (checked: identical with and without the attribute), while sna::bonpow reads the matrix values and agrees with the reference value.",
+    "tolerance": {
+     "abs": 1e-10,
+     "rel": 1e-09
+    },
+    "convention": [
+     "weights"
+    ],
+    "differs_inputs": {
+     "tags": [
+      "weighted"
+     ],
+     "named": []
+    }
+   }
+  ]
  },
  {
   "measure": "bonacich",
@@ -4350,16 +4491,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "RSiena exported functions and help titles; effects from getEffects()"
- },
- {
-  "measure": "cat_barbell",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: barbell_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "cat_barbell",
@@ -7783,16 +7914,6 @@
  },
  {
   "measure": "cat_dorogovtsev_goltsev_mendes",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: dorogovtsev_goltsev_mendes_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
- },
- {
-  "measure": "cat_dorogovtsev_goltsev_mendes",
   "tool": "rustworkx",
   "state": "reported-in-docs",
   "reason": "Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: dorogovtsev_goltsev_mendes_graph.",
@@ -8853,16 +8974,6 @@
  },
  {
   "measure": "cat_generalized_petersen",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: generalized_petersen_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
- },
- {
-  "measure": "cat_generalized_petersen",
   "tool": "rustworkx",
   "state": "reported-in-docs",
   "reason": "Not run for this measure. rustworkx 0.18.1 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (rustworkx public functions and generators); API names: generalized_petersen_graph.",
@@ -9350,16 +9461,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "rustworkx public functions and generators"
- },
- {
-  "measure": "cat_hexagonal_lattice",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: hexagonal_lattice_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "cat_hexagonal_lattice",
@@ -10133,16 +10234,6 @@
  },
  {
   "measure": "cat_lattice_triangular",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: triangular_lattice_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
- },
- {
-  "measure": "cat_lattice_triangular",
   "tool": "pyigraph",
   "state": "reported-in-docs",
   "reason": "Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: Triangular_Lattice.",
@@ -10400,16 +10491,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "RSiena exported functions and help titles; effects from getEffects()"
- },
- {
-  "measure": "cat_lollipop",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: lollipop_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "cat_lollipop",
@@ -14211,16 +14292,6 @@
  },
  {
   "measure": "cocitation",
-  "tool": "igraph",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. igraph (R) 2.3.4 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (R package igraph: exported functions and help titles); API names: bibcoupling; cocitation.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "R package igraph: exported functions and help titles"
- },
- {
-  "measure": "cocitation",
   "tool": "pyigraph",
   "state": "reported-in-docs",
   "reason": "Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: bibcoupling; cocitation.",
@@ -17339,16 +17410,6 @@
  },
  {
   "measure": "dyad_census",
-  "tool": "igraph",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. igraph (R) 2.3.4 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's documentation (R package igraph: exported functions and help titles); API names: dyad_census.",
-  "short": "Not run: listed in the tool's documentation; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "R package igraph: exported functions and help titles"
- },
- {
-  "measure": "dyad_census",
   "tool": "pyigraph",
   "state": "reported-in-docs",
   "reason": "Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: dyad_census.",
@@ -17356,16 +17417,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "python-igraph Graph methods and module functions"
- },
- {
-  "measure": "dyad_census",
-  "tool": "sna",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. sna 2.8 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's documentation (R package sna: exported functions and help titles); API names: dyad.census.",
-  "short": "Not run: listed in the tool's documentation; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "R package sna: exported functions and help titles"
  },
  {
   "measure": "dyad_census",
@@ -19619,16 +19670,6 @@
  },
  {
   "measure": "gen_chung_lu",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: expected_degree_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
- },
- {
-  "measure": "gen_chung_lu",
   "tool": "pyigraph",
   "state": "reported-in-docs",
   "reason": "Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: Chung_Lu.",
@@ -19646,16 +19687,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "R package igraph: exported functions and help titles"
- },
- {
-  "measure": "gen_circulant",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: circulant_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "gen_citation",
@@ -19686,16 +19717,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "R package igraph: exported functions and help titles"
- },
- {
-  "measure": "gen_complete_multipartite",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: complete_multipartite_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "gen_configuration",
@@ -20169,16 +20190,6 @@
  },
  {
   "measure": "gen_lcf",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: LCF_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
- },
- {
-  "measure": "gen_lcf",
   "tool": "pyigraph",
   "state": "reported-in-docs",
   "reason": "Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: LCF.",
@@ -20336,16 +20347,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "R package igraph: exported functions and help titles"
- },
- {
-  "measure": "gen_random_tree",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: nonisomorphic_trees; random_labeled_rooted_tree; random_labeled_tree; random_unlabeled_rooted_tree; random_unlabeled_tree.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "gen_realize_bipartite",
@@ -20646,16 +20647,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "R package igraph: exported functions and help titles"
- },
- {
-  "measure": "gen_turan",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: turan_graph.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "gen_windmill",
@@ -21103,16 +21094,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "R package igraph: exported functions and help titles"
- },
- {
-  "measure": "graph_spectrum",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: adjacency_spectrum; bethe_hessian_spectrum; laplacian_spectrum; magnetic_spectrum; modularity_spectrum; normalized_laplacian_spectrum.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "graph_spectrum",
@@ -22471,37 +22452,6 @@
   "documentation": "rustworkx public functions and generators"
  },
  {
-  "measure": "implicit_family",
-  "tool": "networkx",
-  "state": "checked-no-value",
-  "reason": "NetworkX 3.7 was run for this measure, but the survey's comparison report records no comparison counts (neither agreeing nor differing) for the entry, so the inputs on which the tool gives no value, and why, cannot be stated from the sources. What the sources do say: the cases are fixed and do not use the fixture graph; one fixture carries them. The comparison is restricted to the fixture(s): pair.",
-  "short": "Checked, no comparison counts recorded for this entry.",
-  "reason_incomplete": true,
-  "missing": "The sources record no comparison counts (agreeing or differing) for this entry, so the inputs on which the tool gives no value, and why, cannot be stated.",
-  "tool_version": "3.7",
-  "convention": [],
-  "inputs": {
-   "differs": {
-    "tags": [],
-    "named": []
-   },
-   "no_value": {
-    "tags": [],
-    "named": [
-     "pair"
-    ]
-   }
-  },
-  "comparisons": {
-   "agreeing": 0,
-   "differing": 0
-  },
-  "findings": [
-   "F034"
-  ],
-  "variants": []
- },
- {
   "measure": "induced_centrality",
   "tool": "ucinet",
   "state": "reported-in-docs",
@@ -23625,12 +23575,74 @@
  {
   "measure": "krackhardt_dimensions",
   "tool": "sna",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. sna 2.8 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's documentation (R package sna: exported functions and help titles); API names: connectedness; lubness.",
-  "short": "Not run: listed in the tool's documentation; no comparison set up for this measure yet.",
+  "state": "checked-convention",
+  "reason": "sna 2.8 was run and its value differs from the reference value by convention (unreachable pairs) on inputs tagged disconnected, not_strongly_connected, one_node and null_graph. Three conventions differ. Hierarchy: sna documents it as the share of asymmetric dyads among the non-null dyads of the reachability graph (each mutual dyad counts once); the reference value counts reachable ordered pairs, so a mutually reachable dyad weighs twice (asymmetric / (asymmetric + 2 mutual) against sna's asymmetric / (asymmetric + mutual)); the two are equal when every dyad is asymmetric or none is, and a strongly connected network gives 0 in both. Efficiency: with more than one weak component (isolated nodes count as components) sna's value differs from the reference value's, which measures the arcs against the n - c an out-forest needs (sna returns NaN on the edgeless network and 0 on two triangles and an isolate, where the reference value gives 1 and 0.789). Connectedness of a single node: sna gives 1, the reference value NaN (no pair to be connected). The normalization, the weak-component sum and the NaN rule agree with sna on every digraph of 3 and 4 nodes and 1,500 random ones of 5 to 8. The difference is the least upper bound. sna's help page defines it as an upper bound lying on a path from every upper bound to both nodes, which is the upper bound every other one reaches (the reference value's rule). The values sna returns follow a different rule, the upper bound that reaches every other upper bound (the most distant one): on all 5,660 digraphs that were run its counts equal that rule exactly, and its counts differ from the documented rule on 341. Example: arcs 0 -> 1, 2 -> 0, 3 -> 0 on 4 nodes: the pair (0, 1) has the upper bounds 0, 2 and 3 and 0 is the one all reach; the reference value counts 1 violation (score 2/3), sna 2 (score 1/3). Networks in which every node reaches every other (and every undirected network) are not affected. Tolerance: abs 1e-12, rel 1e-12 (0 means exact equality). 10 comparisons differ and 46 agree.",
+  "short": "Differs by convention (unreachable pairs): Three conventions differ. Hierarchy: sna documents it as the share of asymmetric dyads among the non-null dyads of the reachability graph (each mutual dyad counts...",
   "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "R package sna: exported functions and help titles"
+  "tool_version": "2.8",
+  "convention": [
+   "unreachable pairs"
+  ],
+  "inputs": {
+   "differs": {
+    "tags": [
+     "disconnected",
+     "not_strongly_connected",
+     "one_node",
+     "null_graph"
+    ],
+    "named": []
+   },
+   "no_value": {
+    "tags": [],
+    "named": []
+   }
+  },
+  "comparisons": {
+   "agreeing": 46,
+   "differing": 10
+  },
+  "variants": [
+   {
+    "variant": "krackhardt_dimensions",
+    "outcome": "differs",
+    "reason": "Three conventions differ. Hierarchy: sna documents it as the share of asymmetric dyads among the non-null dyads of the reachability graph (each mutual dyad counts once); the reference value counts reachable ordered pairs, so a mutually reachable dyad weighs twice (asymmetric / (asymmetric + 2 mutual) against sna's asymmetric / (asymmetric + mutual)); the two are equal when every dyad is asymmetric or none is, and a strongly connected network gives 0 in both. Efficiency: with more than one weak component (isolated nodes count as components) sna's value differs from the reference value's, which measures the arcs against the n - c an out-forest needs (sna returns NaN on the edgeless network and 0 on two triangles and an isolate, where the reference value gives 1 and 0.789). Connectedness of a single node: sna gives 1, the reference value NaN (no pair to be connected).",
+    "tolerance": {
+     "abs": 1e-12,
+     "rel": 1e-12
+    },
+    "convention": [
+     "unreachable pairs"
+    ],
+    "differs_inputs": {
+     "tags": [
+      "disconnected",
+      "not_strongly_connected",
+      "one_node",
+      "null_graph"
+     ],
+     "named": []
+    }
+   },
+   {
+    "variant": "krackhardt_lubness",
+    "outcome": "differs",
+    "reason": "The normalization, the weak-component sum and the NaN rule agree with sna on every digraph of 3 and 4 nodes and 1,500 random ones of 5 to 8. The difference is the least upper bound. sna's help page defines it as an upper bound lying on a path from every upper bound to both nodes, which is the upper bound every other one reaches (the reference value's rule). The values sna returns follow a different rule, the upper bound that reaches every other upper bound (the most distant one): on all 5,660 digraphs that were run its counts equal that rule exactly, and its counts differ from the documented rule on 341. Example: arcs 0 -> 1, 2 -> 0, 3 -> 0 on 4 nodes: the pair (0, 1) has the upper bounds 0, 2 and 3 and 0 is the one all reach; the reference value counts 1 violation (score 2/3), sna 2 (score 1/3). Networks in which every node reaches every other (and every undirected network) are not affected.",
+    "tolerance": {
+     "abs": 1e-12,
+     "rel": 1e-12
+    },
+    "convention": [
+     "unreachable pairs"
+    ],
+    "differs_inputs": {
+     "tags": [
+      "not_strongly_connected"
+     ],
+     "named": []
+    }
+   }
+  ]
  },
  {
   "measure": "krackhardt_dimensions",
@@ -24258,58 +24270,6 @@
   "reason_incomplete": false,
   "why_not_run": "documented-only-tool",
   "documentation": "CRAN reference manual of graphlayouts 1.2.5: help topics"
- },
- {
-  "measure": "layout_stress_quality",
-  "tool": "networkx",
-  "state": "checked-no-value",
-  "reason": "NetworkX 3.7 was run for this measure, but the survey's comparison report records no comparison counts (neither agreeing nor differing) for the entry, so the inputs on which the tool gives no value, and why, cannot be stated from the sources.",
-  "short": "Checked, no comparison counts recorded for this entry.",
-  "reason_incomplete": true,
-  "missing": "The sources record no comparison counts (agreeing or differing) for this entry, so the inputs on which the tool gives no value, and why, cannot be stated.",
-  "tool_version": "3.7",
-  "convention": [],
-  "inputs": {
-   "differs": {
-    "tags": [],
-    "named": []
-   },
-   "no_value": {
-    "tags": [],
-    "named": []
-   }
-  },
-  "comparisons": {
-   "agreeing": 0,
-   "differing": 0
-  },
-  "variants": []
- },
- {
-  "measure": "layout_stress_value",
-  "tool": "networkx",
-  "state": "checked-no-value",
-  "reason": "NetworkX 3.7 was run for this measure, but the survey's comparison report records no comparison counts (neither agreeing nor differing) for the entry, so the inputs on which the tool gives no value, and why, cannot be stated from the sources.",
-  "short": "Checked, no comparison counts recorded for this entry.",
-  "reason_incomplete": true,
-  "missing": "The sources record no comparison counts (agreeing or differing) for this entry, so the inputs on which the tool gives no value, and why, cannot be stated.",
-  "tool_version": "3.7",
-  "convention": [],
-  "inputs": {
-   "differs": {
-    "tags": [],
-    "named": []
-   },
-   "no_value": {
-    "tags": [],
-    "named": []
-   }
-  },
-  "comparisons": {
-   "agreeing": 0,
-   "differing": 0
-  },
-  "variants": []
  },
  {
   "measure": "layout_sugiyama",
@@ -26029,26 +25989,6 @@
   "documentation": "graph-tool public classes and functions"
  },
  {
-  "measure": "motif_census",
-  "tool": "igraph",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. igraph (R) 2.3.4 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's documentation (R package igraph: exported functions and help titles); API names: count_motifs; graphlets; motifs; sample_motifs.",
-  "short": "Not run: listed in the tool's documentation; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "R package igraph: exported functions and help titles"
- },
- {
-  "measure": "motif_census",
-  "tool": "pyigraph",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: motifs_randesu; motifs_randesu_estimate; motifs_randesu_no.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "python-igraph Graph methods and module functions"
- },
- {
   "measure": "multi_loop_detection",
   "tool": "igraph",
   "state": "reported-in-docs",
@@ -26663,16 +26603,6 @@
  },
  {
   "measure": "op_complement",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: complement.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
- },
- {
-  "measure": "op_complement",
   "tool": "pyigraph",
   "state": "reported-in-docs",
   "reason": "Not run for this measure. igraph (Python) 1.0.0 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (python-igraph Graph methods and module functions); API names: complementer.",
@@ -26760,16 +26690,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "python-igraph Graph methods and module functions"
- },
- {
-  "measure": "op_graph_product",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: cartesian_product; corona_product; lexicographic_product; modular_product; rooted_product; strong_product; tensor_product.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "op_graph_product",
@@ -27850,16 +27770,6 @@
   "documentation": "NetworKit public classes and functions"
  },
  {
-  "measure": "partition_quality",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: partition_quality.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
- },
- {
   "measure": "paths_all_pairs",
   "tool": "igraph",
   "state": "reported-in-docs",
@@ -28811,16 +28721,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "R package igraph: exported functions and help titles"
- },
- {
-  "measure": "random_walk",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: generate_random_paths; random_walk.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "random_walk",
@@ -29816,16 +29716,6 @@
   "reason_incomplete": false,
   "why_not_run": "not-yet-wired",
   "documentation": "JGraphT 1.5.2 javadoc: all classes and interfaces (org.jgrapht.*)"
- },
- {
-  "measure": "steiner_tree",
-  "tool": "networkx",
-  "state": "reported-in-docs",
-  "reason": "Not run for this measure. NetworkX 3.7 was run in this survey on other measures, but no comparison against the reference value has been set up for this one yet (not yet wired up). Documentation source: the tool's public API listing (networkx public API (algorithms, generators, linalg, readwrite)); API names: steiner_tree.",
-  "short": "Not run: listed in the tool's public API listing; no comparison set up for this measure yet.",
-  "reason_incomplete": false,
-  "why_not_run": "not-yet-wired",
-  "documentation": "networkx public API (algorithms, generators, linalg, readwrite)"
  },
  {
   "measure": "steiner_tree",

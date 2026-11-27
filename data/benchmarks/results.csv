@@ -1,27 +1,15 @@
 suite,graph,nodes,edges,measure,tool,tool_version,seconds,peak_megabytes,threads,thread_mode,status
-gap-kernels,kron22,4194302,128311450,betweenness (4 sources),gapbs,941462c7c42e,0.62543,614,21,all,ok
 gap-kernels,kron22,4194302,128311450,betweenness (4 sources),gapbs,941462c7c42e,7.77168,614,1,one,ok
-gap-kernels,kron22,4194302,128311450,bfs,gapbs,941462c7c42e,0.008655,556,21,all,ok
 gap-kernels,kron22,4194302,128311450,bfs,gapbs,941462c7c42e,0.09552,558,1,one,ok
-gap-kernels,kron22,4194302,128311450,components,gapbs,941462c7c42e,0.01152,557,21,all,ok
 gap-kernels,kron22,4194302,128311450,components,gapbs,941462c7c42e,0.17201,557,1,one,ok
-gap-kernels,kron22,4194302,128311450,pagerank,gapbs,941462c7c42e,0.22107,557,21,all,ok
 gap-kernels,kron22,4194302,128311450,pagerank,gapbs,941462c7c42e,2.14095,558,1,one,ok
-gap-kernels,kron22,4194302,128311450,sssp,gapbs,941462c7c42e,0.097895,1137,21,all,ok
 gap-kernels,kron22,4194302,128311450,sssp,gapbs,941462c7c42e,1.10634,1066,1,one,ok
-gap-kernels,kron22,4194302,128311450,triangle count,gapbs,941462c7c42e,3.57755,1238,21,all,ok
 gap-kernels,kron22,4194302,128311450,triangle count,gapbs,941462c7c42e,60.0396,1175,1,one,ok
-gap-kernels,urand22,4194304,134217158,betweenness (4 sources),gapbs,941462c7c42e,0.94293,644,21,all,ok
 gap-kernels,urand22,4194304,134217158,betweenness (4 sources),gapbs,941462c7c42e,11.2106,644,1,one,ok
-gap-kernels,urand22,4194304,134217158,bfs,gapbs,941462c7c42e,0.011655,579,21,all,ok
 gap-kernels,urand22,4194304,134217158,bfs,gapbs,941462c7c42e,0.09031,580,1,one,ok
-gap-kernels,urand22,4194304,134217158,components,gapbs,941462c7c42e,0.01692,579,21,all,ok
 gap-kernels,urand22,4194304,134217158,components,gapbs,941462c7c42e,0.186865,580,1,one,ok
-gap-kernels,urand22,4194304,134217158,pagerank,gapbs,941462c7c42e,0.198945,580,21,all,ok
 gap-kernels,urand22,4194304,134217158,pagerank,gapbs,941462c7c42e,1.5381,580,1,one,ok
-gap-kernels,urand22,4194304,134217158,sssp,gapbs,941462c7c42e,0.140185,1184,21,all,ok
 gap-kernels,urand22,4194304,134217158,sssp,gapbs,941462c7c42e,1.82165,1147,1,one,ok
-gap-kernels,urand22,4194304,134217158,triangle count,gapbs,941462c7c42e,0.7397,579,21,all,ok
 gap-kernels,urand22,4194304,134217158,triangle count,gapbs,941462c7c42e,13.4472,580,1,one,ok
 networkx-backends,dense dir. n=1000 m=200000,1000,200000,clustering (directed),graphblas,,0.0641,,1,all,ok
 networkx-backends,dense dir. n=1000 m=200000,1000,200000,clustering (directed),graphblas,,0.063,,1,one,ok

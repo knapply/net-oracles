@@ -2,7 +2,7 @@
 
 A neutral survey of network-analysis software. It records which tool implements which measure, how conventions differ between tools (normalization, direction, weights, self-loops, ties, defaults, tolerances), bugs and disagreements found in other tools, how tools were benchmarked, and citations. It describes other tools only.
 
-Counts: 48 tool records, 1635 measures grouped into 702 concepts in 21 families, 2524 measure-by-tool entries (671 checked by running the tool), 1412 convention records, 90 findings, 3875 benchmark rows.
+Counts: 48 tool records, 1635 measures grouped into 702 concepts in 21 families, 2542 measure-by-tool entries (713 checked by running the tool), 1412 convention records, 90 findings, 3863 benchmark rows.
 
 Source of truth is data/. Pages are generated from it by scripts/build.py (python3, standard library only). Raw base: https://raw.githubusercontent.com/knapply/net-oracles/main/ ; site: https://knapply.github.io/net-oracles/
 
