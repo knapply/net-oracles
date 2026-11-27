@@ -26,7 +26,7 @@ Deterministic generators. Entries grouped here: Deterministic generators.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#deterministic_generators">Deterministic generators</a></td><td><code>deterministic_generators</code></td><td>7</td><td>All generators above, with the node numbering of the tool; the numbering of grids, hypercubes and trees follows each tool's convention.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#deterministic_generators">Deterministic generators</a></td><td><code>deterministic_generators</code></td><td>6</td><td>All generators above, with the node numbering of the tool; the numbering of grids, hypercubes and trees follows each tool's convention.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

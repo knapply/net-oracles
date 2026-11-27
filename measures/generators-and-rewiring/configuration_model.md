@@ -26,7 +26,7 @@ Configuration model. Entries grouped here: Configuration model; Degseq.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_configuration">Configuration model</a></td><td><code>gen_configuration</code></td><td>3</td><td>The stub-matching model above, as a multigraph unless the tool states a simple-graph option (not recorded).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_configuration">Configuration model</a></td><td><code>gen_configuration</code></td><td>2</td><td>The stub-matching model above, as a multigraph unless the tool states a simple-graph option (not recorded).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

@@ -26,7 +26,7 @@ Spectral and MDS layouts. Entries grouped here: Layout spectral; Multidimensiona
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#layout_mds">Multidimensional scaling layout</a></td><td><code>layout_mds</code></td><td>2</td><td>Classical scaling of the graph distance matrix into two dimensions, as above.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#layout_mds">Multidimensional scaling layout</a></td><td><code>layout_mds</code></td><td>1</td><td>Classical scaling of the graph distance matrix into two dimensions, as above.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

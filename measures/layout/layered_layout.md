@@ -26,7 +26,7 @@ Layered and tree layouts. Entries grouped here: Barycenter Greedy Two Layered Bi
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#layout_sugiyama">Sugiyama layered layout</a></td><td><code>layout_sugiyama</code></td><td>2</td><td>The layered drawing whose crossing-reduction step uses the barycenter rule above (after layer assignment); ordering ties are broken by an unspecified rule.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#layout_sugiyama">Sugiyama layered layout</a></td><td><code>layout_sugiyama</code></td><td>1</td><td>The layered drawing whose crossing-reduction step uses the barycenter rule above (after layer assignment); ordering ties are broken by an unspecified rule.</td></tr></tbody></table></div>
 
 ## Barycenter Greedy Two Layered Bipartite Layout2 D {#cat_barycenter_bipartite_d_greedy_layered_layout2_two}
 

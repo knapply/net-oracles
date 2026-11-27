@@ -28,7 +28,7 @@ Incidence matrix. Entries grouped here: Incidence.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gm_incidence">Incidence</a></td><td><code>gm_incidence</code></td><td>5</td><td>Node-by-edge matrix: unoriented 0/1 for undirected input, signed for directed input; the biadjacency variant is node-class by node-class for two-mode input. Columns follow the order of the edge list.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gm_incidence">Incidence</a></td><td><code>gm_incidence</code></td><td>4</td><td>Node-by-edge matrix: unoriented 0/1 for undirected input, signed for directed input; the biadjacency variant is node-class by node-class for two-mode input. Columns follow the order of the edge list.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

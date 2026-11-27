@@ -26,7 +26,7 @@ Preferential attachment. Entries grouped here: Pa; Pa age; Preferential attachme
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_pa">Pa</a></td><td><code>cat_pa</code></td><td>1</td><td>Preferential attachment; the options are not recorded.</td></tr><tr><td><a href="#cat_age_pa">Pa age</a></td><td><code>cat_age_pa</code></td><td>1</td><td>Attachment with an age term in addition to degree; the age function is not recorded here.</td></tr><tr><td><a href="#gen_preferential">Preferential attachment generator</a></td><td><code>gen_preferential</code></td><td>7</td><td>Linear attachment by degree as in the formula; direction, initial graph and exponent options are not recorded.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_pa">Pa</a></td><td><code>cat_pa</code></td><td>1</td><td>Preferential attachment; the options are not recorded.</td></tr><tr><td><a href="#cat_age_pa">Pa age</a></td><td><code>cat_age_pa</code></td><td>1</td><td>Attachment with an age term in addition to degree; the age function is not recorded here.</td></tr><tr><td><a href="#gen_preferential">Preferential attachment generator</a></td><td><code>gen_preferential</code></td><td>6</td><td>Linear attachment by degree as in the formula; direction, initial graph and exponent options are not recorded.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

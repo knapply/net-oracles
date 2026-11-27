@@ -24,7 +24,7 @@ Depth-first search. Entries grouped here: Dfs events; Dfs iterator; Edge dfs.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#trav_dfs_events">Dfs events</a></td><td><code>trav_dfs_events</code></td><td>2</td><td>Every edge together with its label (tree, forward/reverse-post, non-tree) as events.</td></tr><tr><td><a href="#cat_dfs_iterator">Dfs iterator</a></td><td><code>cat_dfs_iterator</code></td><td>1</td><td>Nodes in visiting order as an iterator; documented only.</td></tr><tr><td><a href="#trav_edge_dfs">Edge dfs</a></td><td><code>trav_edge_dfs</code></td><td>6</td><td>Edge-based DFS: each edge once, in the order reached.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#trav_dfs_events">Dfs events</a></td><td><code>trav_dfs_events</code></td><td>2</td><td>Every edge together with its label (tree, forward/reverse-post, non-tree) as events.</td></tr><tr><td><a href="#cat_dfs_iterator">Dfs iterator</a></td><td><code>cat_dfs_iterator</code></td><td>1</td><td>Nodes in visiting order as an iterator; documented only.</td></tr><tr><td><a href="#trav_edge_dfs">Edge dfs</a></td><td><code>trav_edge_dfs</code></td><td>5</td><td>Edge-based DFS: each edge once, in the order reached.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

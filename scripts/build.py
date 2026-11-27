@@ -6,7 +6,7 @@
 
 Standard library only.
 """
-import csv, io, json, os, re, sys, statistics, collections, glob, html
+import csv, io, json, os, re, sys, statistics, collections, glob, html, hashlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -72,6 +72,8 @@ def load_all():
         "hosted": load_csv("benchmarks/hosted.csv") if os.path.exists(os.path.join(DATA, "benchmarks", "hosted.csv")) else [],
         "hosted_env": load_json("benchmarks/hosted-environments.json") if os.path.exists(os.path.join(DATA, "benchmarks", "hosted-environments.json")) else [],
         "reasons": load_json("reasons.json"), "fixtures": load_json("fixtures.json"),
+        "imported": load_json("imported.json") if os.path.exists(os.path.join(DATA, "imported.json")) else None,
+        "harness_export": json.load(open(os.path.join(HARNESS, "EXPORT.json"), encoding="utf-8")) if os.path.exists(os.path.join(HARNESS, "EXPORT.json")) else None,
         "bib": parse_bib(open(os.path.join(DATA, "references.bib"), encoding="utf-8").read()),
     }
     d["vocabulary"] = load_json("definitions/_vocabulary.json")["cases"]
@@ -152,6 +154,71 @@ def check_data(d):
     if len({fx["name"] for fx in d["fixtures"]}) != len(d["fixtures"]): errs.append("duplicate fixture names")
     errs += check_reasons(d)
     errs += check_definitions(d)
+    errs += check_imports(d)
+    return errs
+
+
+# Versions of the import records this build understands (data/schema/imported.schema.json,
+# harness/EXPORT.json). A record of another version fails the build until it is handled here.
+IMPORT_SCHEMAS = {1}
+HARNESS_EXPORT_SCHEMAS = {1}
+
+
+def checked_hash(rows):
+    """Number and sha256 of the checked rows of capabilities.csv: one line
+    measure,tool,state,agreeing,differing per row, sorted by (measure, tool)."""
+    lines = sorted((r["measure"], r["tool"], r["state"], str(r["comparisons_agreeing"]), str(r["comparisons_differing"]))
+                   for r in rows if r["state"].startswith("checked-"))
+    text = "".join(",".join(x) + "\n" for x in lines)
+    return len(lines), hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def tree_digest(base, skip="EXPORT.json"):
+    """sha256 over the sorted relative paths of every file under base (but skip) and the sha256 of its bytes."""
+    h = hashlib.sha256()
+    paths = []
+    for dp, _dn, fns in os.walk(base):
+        for fn in fns:
+            rel = os.path.relpath(os.path.join(dp, fn), base).replace(os.sep, "/")
+            if rel != skip: paths.append(rel)
+    for rel in sorted(paths):
+        h.update(rel.encode() + b"\0")
+        with open(os.path.join(base, rel), "rb") as f: h.update(hashlib.sha256(f.read()).digest())
+    return h.hexdigest()
+
+
+def check_imports(d):
+    """Generic checks of imported data: the import record's version is known and its hash
+    is that of the checked rows; each tool belongs to one library and each library is
+    counted once; each checked measure is linked to exactly one concept."""
+    errs = []
+    rec = d["imported"]
+    if rec is None:
+        errs.append("imported.json missing: every import writes its record")
+    else:
+        errs += validate(rec, load_json("schema/imported.schema.json"), "imported")
+        if rec.get("schema") not in IMPORT_SCHEMAS:
+            errs.append("imported.json: schema %r is not a known version %s" % (rec.get("schema"), sorted(IMPORT_SCHEMAS)))
+        else:
+            n, h = checked_hash(d["capabilities"])
+            if rec["checked_rows"] != n or rec["content_hash"] != h:
+                errs.append("imported.json: %d checked rows with hash %s.., capabilities.csv has %d with %s.. "
+                            "(a checked row was edited by hand, or an import was partial)" % (rec["checked_rows"], rec["content_hash"][:12], n, h[:12]))
+    hx_ = d.get("harness_export")
+    if hx_ is not None:
+        if hx_.get("schema") not in HARNESS_EXPORT_SCHEMAS:
+            errs.append("harness/EXPORT.json: schema %r is not a known version" % hx_.get("schema"))
+        elif hx_.get("tree_digest") != tree_digest(HARNESS):
+            errs.append("harness/EXPORT.json: tree digest does not match harness/ (a file changed after the export)")
+    lib = {t["id"]: t["library"] for t in d["tools"]}
+    for t, l in sorted(lib.items()):
+        if l not in lib: errs.append("tool %s: library %s is not a tool id" % (t, l))
+        elif lib[l] != l: errs.append("tool %s: library %s belongs to library %s (a library is its own)" % (t, l, lib[l]))
+    concept_of = collections.defaultdict(set)
+    for m in d["measures"]: concept_of[m["id"]].add(m["concept"])
+    for r in d["capabilities"]:
+        if r["state"].startswith("checked-") and len(concept_of.get(r["measure"], ())) != 1:
+            errs.append("capabilities: checked measure %s is linked to %d concepts" % (r["measure"], len(concept_of.get(r["measure"], ()))))
     return errs
 
 
@@ -468,7 +535,7 @@ def render_definition(c, entry, ms_, tid, tool_order, caps_by_m, vocab, fam_find
         rows = ""
         for m in ms_:
             if m["id"] not in entry["variants"]: continue
-            ntools = len({r["tool"] for r in caps_by_m[m["id"]]})
+            ntools = len({tid[r["tool"]]["library"] for r in caps_by_m[m["id"]]})
             rows += '<tr><td><a href="#%s">%s</a></td><td><code>%s</code></td><td>%d</td><td>%s</td></tr>' % (slug(m["id"]), hx(m["variant"]), hx(m["id"]), ntools, hx(entry["variants"][m["id"]]))
         out["variants"] = '\n<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody>%s</tbody></table></div>\n' % rows
     cases = entry.get("edge_cases", [])
@@ -670,7 +737,7 @@ Every entry that is not `checked-agrees` has a reason in `reasons.json`. `build.
         for sf, sc in subs.items():
             body += "\n## %s\n\n" % esc(sf)
             body += table(["Concept", "Measures", "Tools", "Formulas", "Definition"], [[
-                "[%s](%s.html)" % (esc(c["name"]), c["id"]), len(mem[c["id"]]), len({r["tool"] for m in mem[c["id"]] for r in caps_by_m[m["id"]]}), {"complete": "written", "partial": "partly written", "name_only": "not yet written"}[defs_of[c["id"]]["status"]] if c["id"] in defs_of else "not yet written", esc(c["definition"] if len(c["definition"]) <= 160 else c["definition"][:157].rsplit(" ", 1)[0] + "...")] for c in sc]) + "\n"
+                "[%s](%s.html)" % (esc(c["name"]), c["id"]), len(mem[c["id"]]), len({tid[r["tool"]]["library"] for m in mem[c["id"]] for r in caps_by_m[m["id"]]}), {"complete": "written", "partial": "partly written", "name_only": "not yet written"}[defs_of[c["id"]]["status"]] if c["id"] in defs_of else "not yet written", esc(c["definition"] if len(c["definition"]) <= 160 else c["definition"][:157].rsplit(" ", 1)[0] + "...")] for c in sc]) + "\n"
         files["measures/%s/index.md" % fam_slug(f)] = page({"title": yq(f), "layout": "default", "parent": "Measures", "has_children": "true", "nav_order": fi + 1, "permalink": "/measures/%s/" % fam_slug(f)}, body)
     for c in concepts:
         ms_ = mem[c["id"]]
@@ -683,7 +750,7 @@ Every entry that is not `checked-agrees` has a reason in `reasons.json`. `build.
         if dr["variants"]: body += "\n## Variants {#concept-variants}\n" + dr["variants"]
         elif len(ms_) > 1:
             body += "\n## Variants {#concept-variants}\n\n" + table(["Variant", "Measure id", "Tools"], [
-                ["[%s](#%s)" % (esc(m["variant"]), slug(m["id"])), code(m["id"]), len({r["tool"] for r in caps_by_m[m["id"]]})] for m in ms_]) + "\n"
+                ["[%s](#%s)" % (esc(m["variant"]), slug(m["id"])), code(m["id"]), len({tid[r["tool"]]["library"] for r in caps_by_m[m["id"]]})] for m in ms_]) + "\n"
         if dr["edge"]: body += "\n## Edge cases {#concept-edge-cases}\n" + dr["edge"]
         if c["references"]:
             body += "\n## References {#concept-references}\n\n" + ", ".join(cite(k, "../../") for k in c["references"]) + "\n"

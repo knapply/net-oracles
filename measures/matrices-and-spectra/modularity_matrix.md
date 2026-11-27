@@ -26,7 +26,7 @@ Modularity matrix. Entries grouped here: Gm modularity.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gm_modularity">Gm modularity</a></td><td><code>gm_modularity</code></td><td>4</td><td>Undirected form with \(k_uk_v/2m\) or directed form with \(k^{\text{out}}_uk^{\text{in}}_v/m\); weighted input replaces degrees by strengths and \(m\) by the total weight.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gm_modularity">Gm modularity</a></td><td><code>gm_modularity</code></td><td>3</td><td>Undirected form with \(k_uk_v/2m\) or directed form with \(k^{\text{out}}_uk^{\text{in}}_v/m\); weighted input replaces degrees by strengths and \(m\) by the total weight.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

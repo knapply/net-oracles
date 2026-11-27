@@ -26,7 +26,7 @@ Tree, forest and arborescence tests. Entries grouped here: Forest flags.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#nxs_forest_flags">Forest flags</a></td><td><code>nxs_forest_flags</code></td><td>3</td><td>Four yes/no flags: tree, forest, arborescence, branching.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#nxs_forest_flags">Forest flags</a></td><td><code>nxs_forest_flags</code></td><td>2</td><td>Four yes/no flags: tree, forest, arborescence, branching.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

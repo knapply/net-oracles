@@ -32,7 +32,7 @@ Sum of the distances over unordered pairs (ordered pairs in a directed network);
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#dm_index">Index</a></td><td><code>dm_index</code></td><td>3</td><td>The distance-sum indices: Wiener (unordered pairs, ordered for directed networks), Schultz, Gutman and hyper-Wiener (including the factor 1/2), the harmonic diameter, with edge lengths in the weighted forms, and the global efficiency as the mean reciprocal distance.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#dm_index">Index</a></td><td><code>dm_index</code></td><td>2</td><td>The distance-sum indices: Wiener (unordered pairs, ordered for directed networks), Schultz, Gutman and hyper-Wiener (including the factor 1/2), the harmonic diameter, with edge lengths in the weighted forms, and the global efficiency as the mean reciprocal distance.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

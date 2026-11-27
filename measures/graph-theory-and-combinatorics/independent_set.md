@@ -26,7 +26,7 @@ A random maximal independent set containing the start nodes (or one random node)
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_independent_is_set">Is independent vertex set</a></td><td><code>cat_independent_is_set</code></td><td>1</td><td>Test that a given set is independent; documented only.</td></tr><tr><td><a href="#cat_is_ivs">Is ivs</a></td><td><code>cat_is_ivs</code></td><td>1</td><td>Test for an independent vertex set; documented only.</td></tr><tr><td><a href="#mis">Mis</a></td><td><code>mis</code></td><td>4</td><td>A random maximal independent set containing the start nodes (or one random node), with its nodes in increasing order.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_independent_is_set">Is independent vertex set</a></td><td><code>cat_independent_is_set</code></td><td>1</td><td>Test that a given set is independent; documented only.</td></tr><tr><td><a href="#cat_is_ivs">Is ivs</a></td><td><code>cat_is_ivs</code></td><td>1</td><td>Test for an independent vertex set; documented only.</td></tr><tr><td><a href="#mis">Mis</a></td><td><code>mis</code></td><td>3</td><td>A random maximal independent set containing the start nodes (or one random node), with its nodes in increasing order.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

@@ -24,7 +24,7 @@ Small-world generator. Entries grouped here: Small-world generator.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_small_world">Small-world generator</a></td><td><code>gen_small_world</code></td><td>8</td><td>Ring lattice with rewiring probability \(p\) (Watts-Strogatz). Which options this function offers is not recorded (documented by name only).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_small_world">Small-world generator</a></td><td><code>gen_small_world</code></td><td>7</td><td>Ring lattice with rewiring probability \(p\) (Watts-Strogatz). Which options this function offers is not recorded (documented by name only).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

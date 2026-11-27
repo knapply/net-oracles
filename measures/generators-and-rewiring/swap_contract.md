@@ -28,7 +28,7 @@ Connectivity-preserving double edge swaps of a connected undirected network, as 
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#swap_contract">Swap contract</a></td><td><code>swap_contract</code></td><td>7</td><td>Rewired edge list and number of swaps kept, for the double swap, the connectivity-preserving swap, or the directed swap; the contract above holds for each.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#swap_contract">Swap contract</a></td><td><code>swap_contract</code></td><td>6</td><td>Rewired edge list and number of swaps kept, for the double swap, the connectivity-preserving swap, or the directed swap; the contract above holds for each.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

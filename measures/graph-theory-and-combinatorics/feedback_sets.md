@@ -26,7 +26,7 @@ Feedback arc and vertex sets. Entries grouped here: Feedback arc and vertex sets
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#feedback_sets">Feedback arc and vertex sets</a></td><td><code>feedback_sets</code></td><td>2</td><td>Feedback arc and vertex sets; documented only.</td></tr><tr><td><a href="#cat_break_cycle">Break cycles</a></td><td><code>cat_break_cycle</code></td><td>1</td><td>Cycle breaking by removing arcs; documented only.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#feedback_sets">Feedback arc and vertex sets</a></td><td><code>feedback_sets</code></td><td>1</td><td>Feedback arc and vertex sets; documented only.</td></tr><tr><td><a href="#cat_break_cycle">Break cycles</a></td><td><code>cat_break_cycle</code></td><td>1</td><td>Cycle breaking by removing arcs; documented only.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

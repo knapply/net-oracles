@@ -24,7 +24,7 @@ All shortest paths. Entries grouped here: Paths all shortest.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#paths_all_shortest">Paths all shortest</a></td><td><code>paths_all_shortest</code></td><td>5</td><td>All shortest paths between two nodes (every one, not only one representative), with unit or weighted lengths.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#paths_all_shortest">Paths all shortest</a></td><td><code>paths_all_shortest</code></td><td>4</td><td>All shortest paths between two nodes (every one, not only one representative), with unit or weighted lengths.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

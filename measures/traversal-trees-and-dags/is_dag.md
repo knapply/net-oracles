@@ -24,7 +24,7 @@ DAG test. Entries grouped here: Is dag.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#is_dag">Is dag</a></td><td><code>is_dag</code></td><td>6</td><td>The yes/no test for a directed graph.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#is_dag">Is dag</a></td><td><code>is_dag</code></td><td>5</td><td>The yes/no test for a directed graph.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

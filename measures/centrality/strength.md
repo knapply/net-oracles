@@ -26,7 +26,7 @@ Strength (weighted degree). Entries grouped here: Strength.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#strength">Strength</a></td><td><code>strength</code></td><td>7</td><td>The formulas above; the strength of a node is the weighted degree, with weights taken from the edge values.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#strength">Strength</a></td><td><code>strength</code></td><td>6</td><td>The formulas above; the strength of a node is the weighted degree, with weights taken from the edge values.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

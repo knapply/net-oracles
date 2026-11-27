@@ -26,7 +26,7 @@ All paths. Entries grouped here: All Directed Paths; Allpaths; Paths simple.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_all_directed_path">All Directed Paths</a></td><td><code>cat_all_directed_path</code></td><td>1</td><td>Documented for JGraphT as all directed paths; not recorded in detail.</td></tr><tr><td><a href="#cat_allpaths">Allpaths</a></td><td><code>cat_allpaths</code></td><td>1</td><td>Documented for UCINET as all paths; not recorded in detail.</td></tr><tr><td><a href="#paths_simple">Paths simple</a></td><td><code>paths_simple</code></td><td>6</td><td>All simple paths between two nodes (optionally up to a length cutoff), each listed once.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_all_directed_path">All Directed Paths</a></td><td><code>cat_all_directed_path</code></td><td>1</td><td>Documented for JGraphT as all directed paths; not recorded in detail.</td></tr><tr><td><a href="#cat_allpaths">Allpaths</a></td><td><code>cat_allpaths</code></td><td>1</td><td>Documented for UCINET as all paths; not recorded in detail.</td></tr><tr><td><a href="#paths_simple">Paths simple</a></td><td><code>paths_simple</code></td><td>5</td><td>All simple paths between two nodes (optionally up to a length cutoff), each listed once.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

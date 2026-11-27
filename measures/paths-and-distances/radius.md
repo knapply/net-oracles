@@ -24,7 +24,7 @@ The smallest eccentricity (NaN for a network without nodes).
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#radius">Radius</a></td><td><code>radius</code></td><td>8</td><td>The minimum of the node eccentricities (a network without nodes has none, so NaN is reported).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#radius">Radius</a></td><td><code>radius</code></td><td>6</td><td>The minimum of the node eccentricities (a network without nodes has none, so NaN is reported).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

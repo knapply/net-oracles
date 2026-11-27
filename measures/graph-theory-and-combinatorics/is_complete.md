@@ -24,7 +24,7 @@ Complete graph test. Entries grouped here: Is complete.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_complete_is">Is complete</a></td><td><code>cat_complete_is</code></td><td>2</td><td>The yes/no test; documented only.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_complete_is">Is complete</a></td><td><code>cat_complete_is</code></td><td>1</td><td>The yes/no test; documented only.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

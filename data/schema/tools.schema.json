@@ -9,6 +9,7 @@
   "required": [
    "id",
    "name",
+   "library",
    "language",
    "version_tested",
    "license",
@@ -25,6 +26,11 @@
    },
    "name": {
     "type": "string"
+   },
+   "library": {
+    "type": "string",
+    "pattern": "^[A-Za-z0-9_-]+$",
+    "description": "The implementation the tool belongs to: the id of the tool record whose own library is itself. Front ends over one implementation (an R and a Python interface to one C core, a translation of one toolbox, a parallel backend over a library's own algorithm code) share it, and every count of tools offering a measure counts libraries, so each implementation is counted once."
    },
    "language": {
     "type": [

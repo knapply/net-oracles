@@ -24,7 +24,7 @@ Spinglass communities of a connected network by simulated annealing of a Potts H
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#spinglass">Spinglass</a></td><td><code>spinglass</code></td><td>2</td><td>The communities of a connected network from simulated annealing of the Potts Hamiltonian; \(q\) bounds the number of communities.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#spinglass">Spinglass</a></td><td><code>spinglass</code></td><td>1</td><td>The communities of a connected network from simulated annealing of the Potts Hamiltonian; \(q\) bounds the number of communities.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

@@ -24,7 +24,7 @@ Bridges. Entries grouped here: Bridges.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#bridges">Bridges</a></td><td><code>bridges</code></td><td>4</td><td>The set of bridges of the undirected graph (direction ignored for a directed graph).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#bridges">Bridges</a></td><td><code>bridges</code></td><td>3</td><td>The set of bridges of the undirected graph (direction ignored for a directed graph).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

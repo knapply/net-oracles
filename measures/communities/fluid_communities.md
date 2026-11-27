@@ -24,7 +24,7 @@ Fluid communities of a connected undirected network: k groups found by density-p
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#fluid_communities">Fluid communities</a></td><td><code>fluid_communities</code></td><td>3</td><td>\(k\) groups from density-propagating sweeps of a connected undirected network (a randomized procedure: the comparison with another implementation is statistical).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#fluid_communities">Fluid communities</a></td><td><code>fluid_communities</code></td><td>2</td><td>\(k\) groups from density-propagating sweeps of a connected undirected network (a randomized procedure: the comparison with another implementation is statistical).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

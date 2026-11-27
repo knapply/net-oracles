@@ -24,7 +24,7 @@ The 16 triad counts in MAN order (Holland and Leinhardt), one value per triad ty
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#triad_census">Triad census</a></td><td><code>triad_census</code></td><td>7</td><td>The 16 counts in MAN order of the simple directed reading: each dyad is classified as tied or not in each direction, so parallel arcs count once.</td></tr><tr><td><a href="#st_triads">Triads</a></td><td><code>st_triads</code></td><td>1</td><td>The census restricted to the triples that meet a given node subset (the subset forms the subset-restricted triad census of the directed graph); parallel arcs count once.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#triad_census">Triad census</a></td><td><code>triad_census</code></td><td>6</td><td>The 16 counts in MAN order of the simple directed reading: each dyad is classified as tied or not in each direction, so parallel arcs count once.</td></tr><tr><td><a href="#st_triads">Triads</a></td><td><code>st_triads</code></td><td>1</td><td>The census restricted to the triples that meet a given node subset (the subset forms the subset-restricted triad census of the directed graph); parallel arcs count once.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

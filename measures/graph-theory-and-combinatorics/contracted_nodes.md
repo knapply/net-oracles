@@ -24,7 +24,7 @@ Node contraction. Entries grouped here: Contracted nodes.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#nxs_contracted_nodes">Contracted nodes</a></td><td><code>nxs_contracted_nodes</code></td><td>5</td><td>Contraction of two nodes, an edge, or the blocks of a partition, with or without the loops, in set order or input order of the edges.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#nxs_contracted_nodes">Contracted nodes</a></td><td><code>nxs_contracted_nodes</code></td><td>4</td><td>Contraction of two nodes, an edge, or the blocks of a partition, with or without the loops, in set order or input order of the edges.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

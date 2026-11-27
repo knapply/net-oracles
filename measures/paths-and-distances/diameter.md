@@ -26,7 +26,7 @@ Longest shortest-path distance.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#diameter">Diameter</a></td><td><code>diameter</code></td><td>11</td><td>The longest finite shortest path of the graph (direction followed or ignored, unit or weighted lengths); some tools return infinity or an overflow value when a pair is unreachable.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#diameter">Diameter</a></td><td><code>diameter</code></td><td>9</td><td>The longest finite shortest path of the graph (direction followed or ignored, unit or weighted lengths); some tools return infinity or an overflow value when a pair is unreachable.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

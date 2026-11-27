@@ -26,7 +26,7 @@ Prufer sequences. Entries grouped here: From prufer; Prufer.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#nxs_from_prufer">From prufer</a></td><td><code>nxs_from_prufer</code></td><td>4</td><td>The tree rebuilt from a sequence, edges added in the order of decoding.</td></tr><tr><td><a href="#nxs_prufer">Prufer</a></td><td><code>nxs_prufer</code></td><td>2</td><td>The encoding of a tree as its sequence.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#nxs_from_prufer">From prufer</a></td><td><code>nxs_from_prufer</code></td><td>3</td><td>The tree rebuilt from a sequence, edges added in the order of decoding.</td></tr><tr><td><a href="#nxs_prufer">Prufer</a></td><td><code>nxs_prufer</code></td><td>2</td><td>The encoding of a tree as its sequence.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

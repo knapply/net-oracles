@@ -24,7 +24,7 @@ Girth. Entries grouped here: Girth.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#girth">Girth</a></td><td><code>girth</code></td><td>3</td><td>The shortest cycle length; an acyclic graph has no finite girth.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#girth">Girth</a></td><td><code>girth</code></td><td>2</td><td>The shortest cycle length; an acyclic graph has no finite girth.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

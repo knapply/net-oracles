@@ -24,7 +24,7 @@ Minimum or maximum spanning forest of an undirected network, as input edge posit
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gb_mst_weight">Mst weight</a></td><td><code>gb_mst_weight</code></td><td>1</td><td>The total weight \(W\) (computed by Prim's algorithm on every component).</td></tr><tr><td><a href="#spanning_tree">Spanning tree</a></td><td><code>spanning_tree</code></td><td>8</td><td>The edge set of a minimum or maximum spanning forest, by input edge positions.</td></tr><tr><td><a href="#spanning_weight">Spanning weight</a></td><td><code>spanning_weight</code></td><td>5</td><td>The total weight of the minimum (or maximum) spanning forest.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gb_mst_weight">Mst weight</a></td><td><code>gb_mst_weight</code></td><td>1</td><td>The total weight \(W\) (computed by Prim's algorithm on every component).</td></tr><tr><td><a href="#spanning_tree">Spanning tree</a></td><td><code>spanning_tree</code></td><td>7</td><td>The edge set of a minimum or maximum spanning forest, by input edge positions.</td></tr><tr><td><a href="#spanning_weight">Spanning weight</a></td><td><code>spanning_weight</code></td><td>5</td><td>The total weight of the minimum (or maximum) spanning forest.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

@@ -28,7 +28,7 @@ Density. Entries grouped here: Density; Twomode / density.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#density">Density</a></td><td><code>density</code></td><td>11</td><td>The simple-graph density \(\Delta\) (distinct ties over possible dyads, with or without the loop convention); on a multigraph the edge count is that of the tool's reading.</td></tr><tr><td><a href="#twomode-density">Twomode / density</a></td><td><code>twomode:density</code></td><td>2</td><td>The two-mode form \(m/(n_1n_2)\) on the incidence matrix, for graphs with node types.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#density">Density</a></td><td><code>density</code></td><td>9</td><td>The simple-graph density \(\Delta\) (distinct ties over possible dyads, with or without the loop convention); on a multigraph the edge count is that of the tool's reading.</td></tr><tr><td><a href="#twomode-density">Twomode / density</a></td><td><code>twomode:density</code></td><td>2</td><td>The two-mode form \(m/(n_1n_2)\) on the incidence matrix, for graphs with node types.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

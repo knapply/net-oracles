@@ -32,7 +32,7 @@ Reciprocity. Entries grouped here: Reciprocity; Node reciprocity.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#reciprocity">Reciprocity</a></td><td><code>reciprocity</code></td><td>8</td><td>The graph-level reciprocity: the arc ratio \(r\) in most tools, with dyadic, ratio and correlation forms selected by an option (sna), computed on the simple directed reading.</td></tr><tr><td><a href="#nxo_node_reciprocity">Node reciprocity</a></td><td><code>nxo_node_reciprocity</code></td><td>3</td><td>The node form \(r(v)\): the share of the arcs at \(v\) that are reciprocated.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#reciprocity">Reciprocity</a></td><td><code>reciprocity</code></td><td>7</td><td>The graph-level reciprocity: the arc ratio \(r\) in most tools, with dyadic, ratio and correlation forms selected by an option (sna), computed on the simple directed reading.</td></tr><tr><td><a href="#nxo_node_reciprocity">Node reciprocity</a></td><td><code>nxo_node_reciprocity</code></td><td>3</td><td>The node form \(r(v)\): the share of the arcs at \(v\) that are reciprocated.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

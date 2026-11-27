@@ -20,7 +20,7 @@ Algebraic and combinatorial named graphs (Kneser, Paley, Kautz, De Bruijn, LCF, 
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#gen_de_bruijn">De Bruijn graph generator</a></td><td><code>gen_de_bruijn</code></td><td>2</td></tr><tr><td><a href="#gen_kautz">Kautz graph generator</a></td><td><code>gen_kautz</code></td><td>2</td></tr><tr><td><a href="#cat_kneser">Kneser graph</a></td><td><code>cat_kneser</code></td><td>1</td></tr><tr><td><a href="#gen_lcf">LCF notation graph generator</a></td><td><code>gen_lcf</code></td><td>2</td></tr><tr><td><a href="#cat_paley">Paley graph</a></td><td><code>cat_paley</code></td><td>1</td></tr><tr><td><a href="#cat_sudoku">Sudoku graph</a></td><td><code>cat_sudoku</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#gen_de_bruijn">De Bruijn graph generator</a></td><td><code>gen_de_bruijn</code></td><td>1</td></tr><tr><td><a href="#gen_kautz">Kautz graph generator</a></td><td><code>gen_kautz</code></td><td>1</td></tr><tr><td><a href="#cat_kneser">Kneser graph</a></td><td><code>cat_kneser</code></td><td>1</td></tr><tr><td><a href="#gen_lcf">LCF notation graph generator</a></td><td><code>gen_lcf</code></td><td>2</td></tr><tr><td><a href="#cat_paley">Paley graph</a></td><td><code>cat_paley</code></td><td>1</td></tr><tr><td><a href="#cat_sudoku">Sudoku graph</a></td><td><code>cat_sudoku</code></td><td>1</td></tr></tbody></table></div>
 
 ## De Bruijn graph generator {#gen_de_bruijn}
 

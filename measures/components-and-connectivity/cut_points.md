@@ -24,7 +24,7 @@ Cut points (articulation points). Entries grouped here: Cut points.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cut_points">Cut points</a></td><td><code>cut_points</code></td><td>7</td><td>The set of articulation points of the undirected graph (direction ignored).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cut_points">Cut points</a></td><td><code>cut_points</code></td><td>6</td><td>The set of articulation points of the undirected graph (direction ignored).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

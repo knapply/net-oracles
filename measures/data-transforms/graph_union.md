@@ -26,7 +26,7 @@ Graph union. Entries grouped here: Op union.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#op_union">Op union</a></td><td><code>op_union</code></td><td>5</td><td>Either the union (common nodes identified) or the disjoint union (nodes relabelled apart), and the all-graphs forms that fold several graphs; which of the two a function computes is part of its definition.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#op_union">Op union</a></td><td><code>op_union</code></td><td>4</td><td>Either the union (common nodes identified) or the disjoint union (nodes relabelled apart), and the all-graphs forms that fold several graphs; which of the two a function computes is part of its definition.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

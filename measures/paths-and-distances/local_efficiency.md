@@ -24,7 +24,7 @@ Mean over the nodes of the global efficiency of the subgraph induced by each nod
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#dm_local_efficiency">Local efficiency</a></td><td><code>dm_local_efficiency</code></td><td>3</td><td>The mean over nodes of the global efficiency of each neighbourhood subgraph; a self-loop can make a node one of its own neighbours (a convention that departs from the definition, which excludes it).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#dm_local_efficiency">Local efficiency</a></td><td><code>dm_local_efficiency</code></td><td>2</td><td>The mean over nodes of the global efficiency of each neighbourhood subgraph; a self-loop can make a node one of its own neighbours (a convention that departs from the definition, which excludes it).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

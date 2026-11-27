@@ -26,7 +26,7 @@ Walktrap communities by merging nodes whose random-walk distributions are close;
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#walktrap">Walktrap</a></td><td><code>walktrap</code></td><td>2</td><td>Walktrap communities: merging by the smallest \(\Delta\sigma\) with walk length \(t\); returns the best level, its modularity, the mergers and the modularity path.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#walktrap">Walktrap</a></td><td><code>walktrap</code></td><td>1</td><td>Walktrap communities: merging by the smallest \(\Delta\sigma\) with walk length \(t\); returns the best level, its modularity, the mergers and the modularity path.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

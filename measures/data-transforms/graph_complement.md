@@ -24,7 +24,7 @@ Graph complement. Entries grouped here: Graph complement (graph\_complement); Gr
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#graph_complement">Graph complement (graph_complement)</a></td><td><code>graph_complement</code></td><td>1</td><td>The complement operation as listed by one set of tools; same formula.</td></tr><tr><td><a href="#op_complement">Graph complement (op_complement)</a></td><td><code>op_complement</code></td><td>4</td><td>The complement operation as listed by another set of tools; same formula. The convention for self-loops (excluded above, or included for nodes without a loop) is not fixed by the definition.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#graph_complement">Graph complement (graph_complement)</a></td><td><code>graph_complement</code></td><td>1</td><td>The complement operation as listed by one set of tools; same formula.</td></tr><tr><td><a href="#op_complement">Graph complement (op_complement)</a></td><td><code>op_complement</code></td><td>3</td><td>The complement operation as listed by another set of tools; same formula. The convention for self-loops (excluded above, or included for nodes without a loop) is not fixed by the definition.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

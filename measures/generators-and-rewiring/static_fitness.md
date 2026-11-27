@@ -26,7 +26,7 @@ Static fitness and static power-law models. Entries grouped here: Static fitness
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_static_fitness">Static fitness and static power-law generators</a></td><td><code>gen_static_fitness</code></td><td>2</td><td>Fitness-weighted edge placement; with fitness \(i^{-\mu}\) it is the static power-law model.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_static_fitness">Static fitness and static power-law generators</a></td><td><code>gen_static_fitness</code></td><td>1</td><td>Fitness-weighted edge placement; with fitness \(i^{-\mu}\) it is the static power-law model.</td></tr></tbody></table></div>
 
 ## Static fitness and static power-law generators {#gen_static_fitness}
 

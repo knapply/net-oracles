@@ -24,7 +24,7 @@ Topological sort. Entries grouped here: Topological sort.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#topological_sort">Topological sort</a></td><td><code>topological_sort</code></td><td>6</td><td>One topological order; the result depends on the tie-breaking rule of the algorithm.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#topological_sort">Topological sort</a></td><td><code>topological_sort</code></td><td>5</td><td>One topological order; the result depends on the tie-breaking rule of the algorithm.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

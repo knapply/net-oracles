@@ -26,7 +26,7 @@ Transitivity of the simple undirected reading of the network: closed triples ove
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#transitivity">Transitivity</a></td><td><code>transitivity</code></td><td>13</td><td>The ratio \(3\tau/\theta\) of the simple undirected reading (direction ignored, parallel edges merged, loops dropped).</td></tr><tr><td><a href="#sna_transitivity">Weak and strong transitivity; directed and weighted clustering conventions</a></td><td><code>sna_transitivity</code></td><td>1</td><td>Documented for sna as weak and strong transitivity and clustering conventions for directed and weighted data; the definitions are not recorded in the sources.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#transitivity">Transitivity</a></td><td><code>transitivity</code></td><td>11</td><td>The ratio \(3\tau/\theta\) of the simple undirected reading (direction ignored, parallel edges merged, loops dropped).</td></tr><tr><td><a href="#sna_transitivity">Weak and strong transitivity; directed and weighted clustering conventions</a></td><td><code>sna_transitivity</code></td><td>1</td><td>Documented for sna as weak and strong transitivity and clustering conventions for directed and weighted data; the definitions are not recorded in the sources.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

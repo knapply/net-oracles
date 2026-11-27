@@ -19,5 +19,5 @@ permalink: /measures/two-mode-and-bipartite/
 
 ## Projection
 
-<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="bipartite_projection.html">Bipartite projection</a></td><td>3</td><td>7</td><td>partly written</td><td>One-mode projection of a two-mode network onto either mode, with count, Newman or product weights.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="bipartite_projection.html">Bipartite projection</a></td><td>3</td><td>6</td><td>partly written</td><td>One-mode projection of a two-mode network onto either mode, with count, Newman or product weights.</td></tr></tbody></table></div>
 {% endraw %}

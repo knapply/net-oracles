@@ -1,0 +1,14 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "imported.json",
+ "description": "The record of the last import of checked capability rows. schema is the record's version (scripts/build.py IMPORT_SCHEMAS lists those it understands); checked_rows and content_hash are the number and sha256 of the checked rows of the file, one line measure,tool,state,comparisons_agreeing,comparisons_differing per row sorted by measure then tool. The build recomputes both, so a hand edit of an imported field or a partial import fails it; curated fields (api_names, source, reported-in-docs rows) are not covered.",
+ "type": "object",
+ "additionalProperties": false,
+ "required": ["schema", "file", "checked_rows", "content_hash"],
+ "properties": {
+  "schema": {"type": "integer"},
+  "file": {"enum": ["capabilities.csv"]},
+  "checked_rows": {"type": "integer"},
+  "content_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+ }
+}

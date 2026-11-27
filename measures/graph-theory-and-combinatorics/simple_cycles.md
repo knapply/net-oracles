@@ -24,7 +24,7 @@ Every simple cycle, by Johnson's search or a bounded depth-first search.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#simple_cycles">Simple cycles</a></td><td><code>simple_cycles</code></td><td>7</td><td>Every simple cycle (or those up to a length bound), as node sequences.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#simple_cycles">Simple cycles</a></td><td><code>simple_cycles</code></td><td>6</td><td>Every simple cycle (or those up to a length bound), as node sequences.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

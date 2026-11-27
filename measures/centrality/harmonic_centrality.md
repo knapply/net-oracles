@@ -26,7 +26,7 @@ Harmonic centrality of every node: the sum of 1/d over the other nodes (0 for an
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#harmonic">Harmonic</a></td><td><code>harmonic</code></td><td>10</td><td>The formulas above, with distances out of \(v\), into \(v\) or ignoring direction, with unit or weighted lengths, raw or normalized.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#harmonic">Harmonic</a></td><td><code>harmonic</code></td><td>9</td><td>The formulas above, with distances out of \(v\), into \(v\) or ignoring direction, with unit or weighted lengths, raw or normalized.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

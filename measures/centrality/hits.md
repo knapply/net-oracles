@@ -24,7 +24,7 @@ Hub and authority scores of every node (Kleinberg 1999), with the leading singul
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#hits">Hits</a></td><td><code>hits</code></td><td>9</td><td>The singular-vector definition above, with scaling options.</td></tr><tr><td><a href="#nxp_hits">Nxp hits</a></td><td><code>nxp_hits</code></td><td>1</td><td>The alternating iteration \(a\leftarrow A^{\mathsf T}h,\ h\leftarrow Aa\) as implemented step for step in one tool, with a tolerance and an iteration limit; reports when it does not converge.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#hits">Hits</a></td><td><code>hits</code></td><td>8</td><td>The singular-vector definition above, with scaling options.</td></tr><tr><td><a href="#nxp_hits">Nxp hits</a></td><td><code>nxp_hits</code></td><td>1</td><td>The alternating iteration \(a\leftarrow A^{\mathsf T}h,\ h\leftarrow Aa\) as implemented step for step in one tool, with a tolerance and an iteration limit; reports when it does not converge.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

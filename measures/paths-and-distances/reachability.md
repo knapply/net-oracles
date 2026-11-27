@@ -26,7 +26,7 @@ Reachability. Entries grouped here: Reachability; Reachable Nodes; Reachdist.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#reachability">Reachability</a></td><td><code>reachability</code></td><td>5</td><td>The reachability relation (matrix or sets \(R(s)\)) following edge directions, ignoring them, or into the node.</td></tr><tr><td><a href="#cat_reachable">Reachable Nodes</a></td><td><code>cat_reachable</code></td><td>1</td><td>Documented for NetworKit as the reachable nodes of a source; not recorded in detail.</td></tr><tr><td><a href="#cat_reachdist">Reachdist</a></td><td><code>cat_reachdist</code></td><td>1</td><td>Documented for BCT as reachability and distance matrices; not recorded in detail.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#reachability">Reachability</a></td><td><code>reachability</code></td><td>4</td><td>The reachability relation (matrix or sets \(R(s)\)) following edge directions, ignoring them, or into the node.</td></tr><tr><td><a href="#cat_reachable">Reachable Nodes</a></td><td><code>cat_reachable</code></td><td>1</td><td>Documented for NetworKit as the reachable nodes of a source; not recorded in detail.</td></tr><tr><td><a href="#cat_reachdist">Reachdist</a></td><td><code>cat_reachdist</code></td><td>1</td><td>Documented for BCT as reachability and distance matrices; not recorded in detail.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

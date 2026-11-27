@@ -26,7 +26,7 @@ Size of the largest clique.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#clique_number">Clique number</a></td><td><code>clique_number</code></td><td>5</td><td>\(\omega(G)\): the size of the largest clique of the simple undirected reading.</td></tr><tr><td><a href="#node_clique_number">Node clique number</a></td><td><code>node_clique_number</code></td><td>1</td><td>\(\omega(v)\) for each node: the size of the largest clique that contains it.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#clique_number">Clique number</a></td><td><code>clique_number</code></td><td>4</td><td>\(\omega(G)\): the size of the largest clique of the simple undirected reading.</td></tr><tr><td><a href="#node_clique_number">Node clique number</a></td><td><code>node_clique_number</code></td><td>1</td><td>\(\omega(v)\) for each node: the size of the largest clique that contains it.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

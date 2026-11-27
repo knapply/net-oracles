@@ -24,7 +24,7 @@ Global edge connectivity: the fewest edges whose removal disconnects the network
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#connectivity">Connectivity</a></td><td><code>connectivity</code></td><td>5</td><td>The global edge connectivity \(\lambda(G)\) (the same function also returns the node connectivity \(\kappa(G)\) for the node variant).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#connectivity">Connectivity</a></td><td><code>connectivity</code></td><td>4</td><td>The global edge connectivity \(\lambda(G)\) (the same function also returns the node connectivity \(\kappa(G)\) for the node variant).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

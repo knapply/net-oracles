@@ -30,7 +30,7 @@ Power-law fit of a degree distribution. Entries grouped here: Power-law fit of a
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#power_law_fit">Power-law fit of a degree distribution</a></td><td><code>power_law_fit</code></td><td>2</td><td>Exponent and cutoff of a power law fitted to the degree distribution by the formulas above (continuous or discrete).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#power_law_fit">Power-law fit of a degree distribution</a></td><td><code>power_law_fit</code></td><td>1</td><td>Exponent and cutoff of a power law fitted to the degree distribution by the formulas above (continuous or discrete).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

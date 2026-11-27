@@ -24,7 +24,7 @@ Graph intersection. Entries grouped here: Op intersection.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#op_intersection">Op intersection</a></td><td><code>op_intersection</code></td><td>4</td><td>Intersection of the edge sets (and node sets) of the graphs; the all-graphs form intersects several graphs in turn.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#op_intersection">Op intersection</a></td><td><code>op_intersection</code></td><td>3</td><td>Intersection of the edge sets (and node sets) of the graphs; the all-graphs form intersects several graphs in turn.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

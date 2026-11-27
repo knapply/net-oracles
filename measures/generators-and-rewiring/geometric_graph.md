@@ -24,7 +24,7 @@ Random geometric graph. Entries grouped here: Random geometric graph generator.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_geometric">Random geometric graph generator</a></td><td><code>gen_geometric</code></td><td>5</td><td>Connect points within radius \(r\); the norm and the boundary (torus or not) are options not recorded. Which options this function offers is not recorded (documented by name only).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_geometric">Random geometric graph generator</a></td><td><code>gen_geometric</code></td><td>4</td><td>Connect points within radius \(r\); the norm and the boundary (torus or not) are options not recorded. Which options this function offers is not recorded (documented by name only).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

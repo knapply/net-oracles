@@ -24,7 +24,7 @@ K shortest paths. Entries grouped here: Paths k shortest.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#paths_k_shortest">Paths k shortest</a></td><td><code>paths_k_shortest</code></td><td>5</td><td>The \(k\) shortest simple paths between two nodes in order of length (the lengths are determined; ties among equal-length paths are broken by the procedure).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#paths_k_shortest">Paths k shortest</a></td><td><code>paths_k_shortest</code></td><td>4</td><td>The \(k\) shortest simple paths between two nodes in order of length (the lengths are determined; ties among equal-length paths are broken by the procedure).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

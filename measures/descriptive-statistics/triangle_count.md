@@ -24,7 +24,7 @@ Number of triangles at each node of the simple undirected reading of the network
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#nxo_triangles">Triangles</a></td><td><code>nxo_triangles</code></td><td>7</td><td>The vector of \(t_i\) for every node of the simple undirected reading (direction ignored, loops and parallel edges dropped).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#nxo_triangles">Triangles</a></td><td><code>nxo_triangles</code></td><td>6</td><td>The vector of \(t_i\) for every node of the simple undirected reading (direction ignored, loops and parallel edges dropped).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

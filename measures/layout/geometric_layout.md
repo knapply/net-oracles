@@ -20,7 +20,7 @@ Grid, random, circle and sphere layouts. Entries grouped here: Circle, tree and 
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#layout_simple">Circle, tree and two-mode (barycenter) layouts</a></td><td><code>layout_simple</code></td><td>5</td></tr><tr><td><a href="#layout_grid">Grid layout</a></td><td><code>layout_grid</code></td><td>1</td></tr><tr><td><a href="#layout_random">Random layout</a></td><td><code>layout_random</code></td><td>3</td></tr><tr><td><a href="#layout_sphere">Sphere layout</a></td><td><code>layout_sphere</code></td><td>1</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#layout_simple">Circle, tree and two-mode (barycenter) layouts</a></td><td><code>layout_simple</code></td><td>4</td></tr><tr><td><a href="#layout_grid">Grid layout</a></td><td><code>layout_grid</code></td><td>1</td></tr><tr><td><a href="#layout_random">Random layout</a></td><td><code>layout_random</code></td><td>3</td></tr><tr><td><a href="#layout_sphere">Sphere layout</a></td><td><code>layout_sphere</code></td><td>1</td></tr></tbody></table></div>
 
 ## Circle, tree and two-mode (barycenter) layouts {#layout_simple}
 

@@ -26,7 +26,7 @@ Each node's largest distance to the nodes it reaches.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#eccentricity">Eccentricity</a></td><td><code>eccentricity</code></td><td>10</td><td>The largest finite distance from each node (the reached-nodes form \(\varepsilon_R\)), with direction followed or ignored, and unit or weighted lengths.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#eccentricity">Eccentricity</a></td><td><code>eccentricity</code></td><td>8</td><td>The largest finite distance from each node (the reached-nodes form \(\varepsilon_R\)), with direction followed or ignored, and unit or weighted lengths.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

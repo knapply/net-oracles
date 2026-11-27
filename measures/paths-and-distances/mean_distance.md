@@ -24,7 +24,7 @@ Mean shortest-path distance over ordered pairs of distinct nodes joined by a pat
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#mean_distance">Mean distance</a></td><td><code>mean_distance</code></td><td>7</td><td>The mean over connected ordered pairs (unconnected pairs dropped, not counted as infinite); for undirected graphs the same as the mean over unordered pairs.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#mean_distance">Mean distance</a></td><td><code>mean_distance</code></td><td>6</td><td>The mean over connected ordered pairs (unconnected pairs dropped, not counted as infinite); for undirected graphs the same as the mean over unordered pairs.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

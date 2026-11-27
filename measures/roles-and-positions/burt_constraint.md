@@ -26,7 +26,7 @@ Burt constraint. Entries grouped here: Constraint.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#constraint">Constraint</a></td><td><code>constraint</code></td><td>5</td><td>The aggregate constraint \(C_i\) per node, from binary ties or from valued ties (strengths), with loops excluded as ties to others.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#constraint">Constraint</a></td><td><code>constraint</code></td><td>4</td><td>The aggregate constraint \(C_i\) per node, from binary ties or from valued ties (strengths), with loops excluded as ties to others.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

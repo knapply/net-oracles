@@ -24,7 +24,7 @@ Maximum flow from a set of sources to a set of sinks (Dinic), with the flow on e
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#max_flow">Max flow</a></td><td><code>max_flow</code></td><td>7</td><td>The maximum flow value and one flow on every edge (the value is determined, the edge flows are not).</td></tr><tr><td><a href="#gb_maxflow">Maxflow</a></td><td><code>gb_maxflow</code></td><td>1</td><td>The maximum flow value between two nodes on the simple graph with edge weights as capacities.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#max_flow">Max flow</a></td><td><code>max_flow</code></td><td>6</td><td>The maximum flow value and one flow on every edge (the value is determined, the edge flows are not).</td></tr><tr><td><a href="#gb_maxflow">Maxflow</a></td><td><code>gb_maxflow</code></td><td>1</td><td>The maximum flow value between two nodes on the simple graph with edge weights as capacities.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

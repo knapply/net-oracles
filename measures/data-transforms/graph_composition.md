@@ -28,7 +28,7 @@ Graph composition. Entries grouped here: Op compose.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#op_compose">Op compose</a></td><td><code>op_compose</code></td><td>3</td><td>Either of the two operations above, depending on the tool; the entries of documented-only tools are not specified further in the sources.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#op_compose">Op compose</a></td><td><code>op_compose</code></td><td>2</td><td>Either of the two operations above, depending on the tool; the entries of documented-only tools are not specified further in the sources.</td></tr></tbody></table></div>
 
 ## Op compose {#op_compose}
 

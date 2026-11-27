@@ -19,11 +19,11 @@ permalink: /measures/input-and-output/
 
 ## Edge-list and adjacency-list formats
 
-<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="text_edge_list_io.html">Edge-list and adjacency-list text formats</a></td><td>9</td><td>5</td><td>not yet written</td><td>Edge-list and adjacency-list text formats. Entries grouped here: ADJACENCY read and write; CSV read and write; EDGELIST read and write; Extra file formats:...</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="text_edge_list_io.html">Edge-list and adjacency-list text formats</a></td><td>9</td><td>4</td><td>not yet written</td><td>Edge-list and adjacency-list text formats. Entries grouped here: ADJACENCY read and write; CSV read and write; EDGELIST read and write; Extra file formats:...</td></tr></tbody></table></div>
 
 ## Graph description formats
 
-<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="graph_markup_io.html">Graph description and exchange formats</a></td><td>14</td><td>7</td><td>partly written</td><td>Graph description and exchange formats. Entries grouped here: DIMACS read and write; GEXF read and write; GML read and write; GRAPH6 read and write; GRAPHDB...</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Concept</th><th>Measures</th><th>Tools</th><th>Formulas</th><th>Definition</th></tr></thead><tbody><tr><td><a href="graph_markup_io.html">Graph description and exchange formats</a></td><td>14</td><td>6</td><td>partly written</td><td>Graph description and exchange formats. Entries grouped here: DIMACS read and write; GEXF read and write; GML read and write; GRAPH6 read and write; GRAPHDB...</td></tr></tbody></table></div>
 
 ## Matrix and spreadsheet formats
 

@@ -26,7 +26,7 @@ Line graph. Entries grouped here: Line graph.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#line_graph">Line graph</a></td><td><code>line_graph</code></td><td>6</td><td>The undirected line graph for undirected input and the directed line graph for directed input; the nodes of the result are the edges of the input.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#line_graph">Line graph</a></td><td><code>line_graph</code></td><td>5</td><td>The undirected line graph for undirected input and the directed line graph for directed input; the nodes of the result are the edges of the input.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

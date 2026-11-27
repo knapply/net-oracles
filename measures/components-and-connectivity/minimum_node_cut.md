@@ -24,7 +24,7 @@ A smallest set of nodes whose removal disconnects the network.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#min_node_cut">Min node cut</a></td><td><code>min_node_cut</code></td><td>1</td><td>A minimum \(s\)-\(t\) node cut for non-adjacent \(s,t\), in a weighted form where node capacities are given by node weights.</td></tr><tr><td><a href="#node_cut">Node cut</a></td><td><code>node_cut</code></td><td>3</td><td>A minimum node cut of the whole graph (its size is \(\kappa(G)\); the set is one of several).</td></tr><tr><td><a href="#st_node_cut">St node cut</a></td><td><code>st_node_cut</code></td><td>1</td><td>A minimum \(s\)-\(t\) node cut between node 0 and node \(n-1\); none exists when they are adjacent.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#min_node_cut">Min node cut</a></td><td><code>min_node_cut</code></td><td>1</td><td>A minimum \(s\)-\(t\) node cut for non-adjacent \(s,t\), in a weighted form where node capacities are given by node weights.</td></tr><tr><td><a href="#node_cut">Node cut</a></td><td><code>node_cut</code></td><td>2</td><td>A minimum node cut of the whole graph (its size is \(\kappa(G)\); the set is one of several).</td></tr><tr><td><a href="#st_node_cut">St node cut</a></td><td><code>st_node_cut</code></td><td>1</td><td>A minimum \(s\)-\(t\) node cut between node 0 and node \(n-1\); none exists when they are adjacent.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

@@ -24,7 +24,7 @@ G(n, p) random graph. Entries grouped here: G(n, p) random graph; Gnp.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_gnp">G(n, p) random graph</a></td><td><code>gen_gnp</code></td><td>9</td><td>Independent edges with probability \(p\) as in the formula. Which options this function offers is not recorded (documented by name only).</td></tr><tr><td><a href="#cat_gnp">Gnp</a></td><td><code>cat_gnp</code></td><td>1</td><td>Independent edges with probability \(p\) as in the formula. Which options this function offers is not recorded (documented by name only).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_gnp">G(n, p) random graph</a></td><td><code>gen_gnp</code></td><td>8</td><td>Independent edges with probability \(p\) as in the formula. Which options this function offers is not recorded (documented by name only).</td></tr><tr><td><a href="#cat_gnp">Gnp</a></td><td><code>cat_gnp</code></td><td>1</td><td>Independent edges with probability \(p\) as in the formula. Which options this function offers is not recorded (documented by name only).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

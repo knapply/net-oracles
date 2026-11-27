@@ -26,7 +26,7 @@ Every maximal clique with at least min\_size members, in lexicographic order.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_clique_detect">Clique Detect</a></td><td><code>cat_clique_detect</code></td><td>1</td><td>Documented for NetworKit as clique detection (maximal cliques); not run, options not recorded.</td></tr><tr><td><a href="#max_cliques">Max cliques</a></td><td><code>max_cliques</code></td><td>9</td><td>The set \(\mathcal M(G)\) listed in lexicographic order with an optional minimum size (maximal cliques of at least 3 members is the usual filter).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#cat_clique_detect">Clique Detect</a></td><td><code>cat_clique_detect</code></td><td>1</td><td>Documented for NetworKit as clique detection (maximal cliques); not run, options not recorded.</td></tr><tr><td><a href="#max_cliques">Max cliques</a></td><td><code>max_cliques</code></td><td>8</td><td>The set \(\mathcal M(G)\) listed in lexicographic order with an optional minimum size (maximal cliques of at least 3 members is the usual filter).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

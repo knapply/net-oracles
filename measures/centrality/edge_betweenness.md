@@ -28,7 +28,7 @@ Shortest-path betweenness of every edge (Brandes 2001 accumulation, as used by G
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#edge_betweenness">Edge betweenness</a></td><td><code>edge_betweenness</code></td><td>8</td><td>Shortest-path betweenness of edges: the formulas above for every edge, optionally with weights as lengths.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#edge_betweenness">Edge betweenness</a></td><td><code>edge_betweenness</code></td><td>7</td><td>Shortest-path betweenness of edges: the formulas above for every edge, optionally with weights as lengths.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

@@ -42,3 +42,9 @@ Families with more than about 40 concepts are split into subfamilies by the kind
 ## Anchors
 
 The anchor of a measure on its concept page is its id with every character other than letters, digits, underscore, dot and hyphen replaced by a hyphen (for example `twomode:degree` becomes `twomode-degree`). Anchors beginning with `concept-` are reserved for the page's own headings.
+
+## Libraries and import records
+
+- `tools.json[].library` names the implementation a tool belongs to: the id of the tool record whose own library is itself. Front ends over one implementation share it (the R and Python interfaces to the igraph C core, the Python translation of the Brain Connectivity Toolbox, the parallel NetworkX backend). Every count of tools that offer a measure counts libraries, so an implementation is counted once; `scripts/build.py --check` fails when a library is not a tool id or is not its own library.
+- `imported.json` is the record of the last import of checked rows into `capabilities.csv` (schema in `schema/imported.schema.json`): its version, and the number and hash of the checked rows. The build recomputes both and fails on an unknown version, a partial import or a hand edit of an imported field. `harness/EXPORT.json`, when present, records the version and tree digest of the harness, checked the same way.
+- Every checked row's measure is linked to exactly one concept.

@@ -28,7 +28,7 @@ Random walks. Entries grouped here: Random walk generation and sampling; Random 
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#random_walk_sampling">Random walk generation and sampling</a></td><td><code>random_walk_sampling</code></td><td>2</td><td>Walks used to sample nodes or edges (visit counts, subgraph samples); the sampling scheme is a property of the tool.</td></tr><tr><td><a href="#random_walk">Random walks</a></td><td><code>random_walk</code></td><td>4</td><td>Walks drawn from the simple (or biased) transition rule; the results depend on the random seed.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#random_walk_sampling">Random walk generation and sampling</a></td><td><code>random_walk_sampling</code></td><td>2</td><td>Walks used to sample nodes or edges (visit counts, subgraph samples); the sampling scheme is a property of the tool.</td></tr><tr><td><a href="#random_walk">Random walks</a></td><td><code>random_walk</code></td><td>3</td><td>Walks drawn from the simple (or biased) transition rule; the results depend on the random seed.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

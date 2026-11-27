@@ -30,7 +30,7 @@ One-mode projection of a two-mode network onto either mode, with count, Newman o
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#project">Project</a></td><td><code>project</code></td><td>6</td><td>One-mode projection onto either class with count, Newman or product weights, as in the three formulas; the projected class is chosen by the call.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#project">Project</a></td><td><code>project</code></td><td>5</td><td>One-mode projection onto either class with count, Newman or product weights, as in the three formulas; the projected class is chosen by the call.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

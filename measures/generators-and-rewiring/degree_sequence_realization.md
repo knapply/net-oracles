@@ -28,7 +28,7 @@ Deterministic degree-sequence realization. Entries grouped here: Bipartite degre
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_degree_realization">Deterministic realisation of a degree sequence</a></td><td><code>gen_degree_realization</code></td><td>3</td><td>Realization of a degree sequence; the choice of which node to connect first (the tool's method option) changes the graph and is not recorded here.</td></tr><tr><td><a href="#cat_generator_hakimi_havel">Havel Hakimi Generator</a></td><td><code>cat_generator_hakimi_havel</code></td><td>1</td><td>Realization by the Havel-Hakimi recursion above.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gen_degree_realization">Deterministic realisation of a degree sequence</a></td><td><code>gen_degree_realization</code></td><td>2</td><td>Realization of a degree sequence; the choice of which node to connect first (the tool's method option) changes the graph and is not recorded here.</td></tr><tr><td><a href="#cat_generator_hakimi_havel">Havel Hakimi Generator</a></td><td><code>cat_generator_hakimi_havel</code></td><td>1</td><td>Realization by the Havel-Hakimi recursion above.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

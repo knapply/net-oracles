@@ -24,7 +24,7 @@ Infomap. Entries grouped here: Infomap.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#infomap">Infomap</a></td><td><code>infomap</code></td><td>3</td><td>The partition of minimum map-equation codelength (in bits), found by a stochastic search from several trials; the walk may include or exclude self-links.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#infomap">Infomap</a></td><td><code>infomap</code></td><td>2</td><td>The partition of minimum map-equation codelength (in bits), found by a stochastic search from several trials; the walk may include or exclude self-links.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

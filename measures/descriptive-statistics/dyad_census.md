@@ -24,7 +24,7 @@ Dyad census. Entries grouped here: Dyad census (mutual, asymmetric, null).
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#dyad_census">Dyad census (mutual, asymmetric, null)</a></td><td><code>dyad_census</code></td><td>4</td><td>The triple \((M,A,N)\) of dyad counts on the simple directed reading; parallel arcs count once and loops are ignored.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#dyad_census">Dyad census (mutual, asymmetric, null)</a></td><td><code>dyad_census</code></td><td>3</td><td>The triple \((M,A,N)\) of dyad counts on the simple directed reading; parallel arcs count once and loops are ignored.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

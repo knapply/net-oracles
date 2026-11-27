@@ -26,7 +26,7 @@ Graph difference. Entries grouped here: Op difference.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#op_difference">Op difference</a></td><td><code>op_difference</code></td><td>5</td><td>Edges of the first graph not in the second; the symmetric difference is the same set operation applied both ways (concept graph_symmetric_difference).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#op_difference">Op difference</a></td><td><code>op_difference</code></td><td>4</td><td>Edges of the first graph not in the second; the symmetric difference is the same set operation applied both ways (concept graph_symmetric_difference).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

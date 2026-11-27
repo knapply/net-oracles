@@ -20,7 +20,7 @@ Random bipartite graph. Entries grouped here: Correlated and bipartite random gr
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#gen_correlated_bipartite">Correlated and bipartite random graph generators</a></td><td><code>gen_correlated_bipartite</code></td><td>1</td></tr><tr><td><a href="#gen_random_bipartite">Random bipartite graph generator</a></td><td><code>gen_random_bipartite</code></td><td>4</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#gen_correlated_bipartite">Correlated and bipartite random graph generators</a></td><td><code>gen_correlated_bipartite</code></td><td>1</td></tr><tr><td><a href="#gen_random_bipartite">Random bipartite graph generator</a></td><td><code>gen_random_bipartite</code></td><td>3</td></tr></tbody></table></div>
 
 ## Correlated and bipartite random graph generators {#gen_correlated_bipartite}
 

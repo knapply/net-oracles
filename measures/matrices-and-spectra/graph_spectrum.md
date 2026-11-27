@@ -24,7 +24,7 @@ Graph spectrum. Entries grouped here: Graph spectrum (eigenvalues of a graph mat
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#graph_spectrum">Graph spectrum (eigenvalues of a graph matrix)</a></td><td><code>graph_spectrum</code></td><td>3</td><td>Eigenvalues of the adjacency, Laplacian or normalized Laplacian matrix, sorted ascending or descending; which one is returned is a property of the tool and its options.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#graph_spectrum">Graph spectrum (eigenvalues of a graph matrix)</a></td><td><code>graph_spectrum</code></td><td>2</td><td>Eigenvalues of the adjacency, Laplacian or normalized Laplacian matrix, sorted ascending or descending; which one is returned is a property of the tool and its options.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

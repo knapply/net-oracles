@@ -26,7 +26,7 @@ Automorphism group, count and canonical form. Entries grouped here: Automorphism
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#automorphisms">Automorphism group, count and canonical form</a></td><td><code>automorphisms</code></td><td>2</td><td>The generators of the group, its order, its orbits and a canonical form.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#automorphisms">Automorphism group, count and canonical form</a></td><td><code>automorphisms</code></td><td>1</td><td>The generators of the group, its order, its orbits and a canonical form.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

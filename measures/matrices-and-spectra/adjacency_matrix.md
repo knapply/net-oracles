@@ -24,7 +24,7 @@ Adjacency matrix. Entries grouped here: Adjacency.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gm_adjacency">Adjacency</a></td><td><code>gm_adjacency</code></td><td>6</td><td>Dense or sparse matrix of the edge counts or weights; weights replace counts, directed edges fill one entry, undirected edges two, and an undirected loop one entry (or two under the doubling convention).</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#gm_adjacency">Adjacency</a></td><td><code>gm_adjacency</code></td><td>5</td><td>Dense or sparse matrix of the edge counts or weights; weights replace counts, directed edges fill one entry, undirected edges two, and an undirected loop one entry (or two under the doubling convention).</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 

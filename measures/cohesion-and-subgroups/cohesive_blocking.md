@@ -20,7 +20,7 @@ Cohesive blocking (Moody-White). Entries grouped here: Cohesive blocking (Moody-
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cohesive_blocking">Cohesive blocking (Moody-White)</a></td><td><code>cohesive_blocking</code></td><td>1</td></tr><tr><td><a href="#cat_blocks_cohesive">Cohesive blocks</a></td><td><code>cat_blocks_cohesive</code></td><td>2</td></tr></tbody></table></div>
+<div class="table-wrapper"><table><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th></tr></thead><tbody><tr><td><a href="#cohesive_blocking">Cohesive blocking (Moody-White)</a></td><td><code>cohesive_blocking</code></td><td>1</td></tr><tr><td><a href="#cat_blocks_cohesive">Cohesive blocks</a></td><td><code>cat_blocks_cohesive</code></td><td>1</td></tr></tbody></table></div>
 
 ## Cohesive blocking (Moody-White) {#cohesive_blocking}
 

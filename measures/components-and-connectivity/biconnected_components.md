@@ -24,7 +24,7 @@ Biconnected components. Entries grouped here: Bicomponents; Biconnected.
 
 ## Variants {#concept-variants}
 
-<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#bicomponents">Bicomponents</a></td><td><code>bicomponents</code></td><td>10</td><td>The blocks of the undirected graph as node sets (a cut point is in several blocks).</td></tr><tr><td><a href="#nxo_biconnected">Biconnected</a></td><td><code>nxo_biconnected</code></td><td>1</td><td>The blocks as lists of edges (the edge partition), listed in discovery order of the search; the partition is determined, the order is not.</td></tr></tbody></table></div>
+<div class="table-wrapper"><table class="variants"><thead><tr><th>Variant</th><th>Measure id</th><th>Tools</th><th>What changes</th></tr></thead><tbody><tr><td><a href="#bicomponents">Bicomponents</a></td><td><code>bicomponents</code></td><td>9</td><td>The blocks of the undirected graph as node sets (a cut point is in several blocks).</td></tr><tr><td><a href="#nxo_biconnected">Biconnected</a></td><td><code>nxo_biconnected</code></td><td>1</td><td>The blocks as lists of edges (the edge partition), listed in discovery order of the search; the partition is determined, the order is not.</td></tr></tbody></table></div>
 
 ## Edge cases {#concept-edge-cases}
 
