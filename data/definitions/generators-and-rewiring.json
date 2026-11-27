@@ -695,10 +695,9 @@
      "definition_gives": "Cyclic offsets of a 2-cycle coincide; whether the single edge is doubled is not fixed by the definition.",
      "tools": {
       "networkx": {
-       "status": "not_recorded",
-       "behaviour": "NetworkX 3.7 was run on the pair fixture but the comparison records no counts, so the outcome is not stated.",
-       "source": "reasons.json circulant_ring_graphs",
-       "measure": "implicit_family"
+       "status": "agrees",
+       "behaviour": "No difference from the reference value recorded on the compared inputs of this kind (pair).",
+       "source": "capabilities.csv and conventions.json (outcome agrees)"
       }
      }
     }
