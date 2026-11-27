@@ -58,7 +58,7 @@ The distribution of the tolerances used is in the [table below](#tolerance-table
 
 The tool was run, and on **every** fixture that applies to the measure and that the tool accepts, its value equals the reference value within the tolerance recorded for the measure: exactly for integers, sets and discrete labels (partitions up to relabelling), within the absolute and relative tolerances for floating-point values, by seed or by distribution for random and approximate algorithms. The tool's default behaviour is compared as it is: **no convention is mapped for this state**, no input is left out because the tool disagrees, and no tolerance is widened to make the entry agree. Inputs the tool does not accept are not comparisons (see [the inputs](#inputs)). `comparisons_agreeing` counts the agreeing comparisons (variant by fixture) and `comparisons_differing` is 0. Agreement is a statement about the listed fixtures and the tool version tested, not a proof for all graphs.
 
-Entries with this state: **538**.
+Entries with this state: **580**.
 
 ### Checked, differs by convention {#state-checked-convention}
 
@@ -66,7 +66,7 @@ Entries with this state: **538**.
 
 The tool was run and its value differs from the reference value, beyond the tolerance, on at least one fixture it accepts, and the difference is a documented convention: the tool follows a different, defensible reading of the quantity (normalization, direction, weights, self-loops, multi-edges, ties, defaults, scaling, ordering, or the way an undefined value is encoded). Conventions are mapped before comparing **only for this state**: the reference value is recomputed with the tool's convention, and where such a mapping is recorded it is compared with the tool's values on exactly the inputs where the difference occurs, with its own tolerance; a mismatch there would show that the difference is not the named convention alone. The reason states which convention differs, what each side does, the exact relation between the tool's value and the reference value where the sources give it (for example a constant factor), the inputs, and the tolerance before and after mapping. `comparisons_differing` counts the differing comparisons.
 
-Entries with this state: **129**.
+Entries with this state: **132**.
 
 ### Checked, defect {#state-checked-defect}
 
@@ -82,15 +82,15 @@ Entries with this state: **1**.
 
 The tool was run for the measure but gave no value on the compared inputs, so no comparison could be made: it raised an error, returned an undefined marker, does not support the type of input, did not finish within the time limit, or its run was declined. The reason states on which inputs and why, with the error text where the sources record it. A tool that gives no value on *some* inputs but values on others is not in this state: its entry is `checked-agrees` or `checked-convention` according to the comparisons made, and the inputs without value are listed in the reason of a `checked-convention` entry (as "No value") and in `data/conventions.json` (`no_value_on_inputs`).
 
-Entries with this state: **3**.
+Entries with this state: **0**.
 
 ### Reported in docs {#state-reported-in-docs}
 
 <a class="st st-t st-docs" href="method.html#state-reported-in-docs"><span class="g" aria-hidden="true">·</span>reported in docs</a> `reported-in-docs`
 
-The tool lists the capability in its documentation or public API, but it was **not run** for this measure, so nothing is stated about agreement. The reason says why it was not run and gives the documentation source. Three reasons occur: *not yet wired up* (1627 entries: the tool was run in this survey on other measures, but no comparison against the reference value has been set up for this one), *documented-only tool* (64 entries: the tool is documented-only in this survey, so none of its measures was run), and *commercial, closed-source software* (162 entries: UCINET is proprietary Windows software that was never run here; it is never described as checked).
+The tool lists the capability in its documentation or public API, but it was **not run** for this measure, so nothing is stated about agreement. The reason says why it was not run and gives the documentation source. Three reasons occur: *not yet wired up* (1603 entries: the tool was run in this survey on other measures, but no comparison against the reference value has been set up for this one), *documented-only tool* (64 entries: the tool is documented-only in this survey, so none of its measures was run), and *commercial, closed-source software* (162 entries: UCINET is proprietary Windows software that was never run here; it is never described as checked).
 
-Entries with this state: **1853**.
+Entries with this state: **1829**.
 
 ### Blank
 
@@ -112,5 +112,5 @@ Tolerances of the 1412 convention records, by size of the larger bound.
 
 <div class="table-wrapper"><table><thead><tr><th>Class</th><th>Records</th><th>Measures</th><th>Range used</th></tr></thead><tbody><tr><td>exact (abs 0, rel 0)</td><td>561</td><td>231</td><td>abs 0 to 0, rel 0 to 0</td></tr><tr><td>floating point, both bounds at most 1e-12</td><td>475</td><td>127</td><td>abs 0 to 1e-12, rel 1e-15 to 1e-12</td></tr><tr><td>floating point, larger bound above 1e-12 up to 1e-9</td><td>304</td><td>65</td><td>abs 1e-14 to 1e-09, rel 1e-12 to 1e-09</td></tr><tr><td>larger bound above 1e-9 up to 1e-6</td><td>24</td><td>7</td><td>abs 1e-12 to 5e-10, rel 2e-09 to 1e-07</td></tr><tr><td>larger bound above 1e-6 (statistical comparisons)</td><td>48</td><td>18</td><td>abs 1e-09 to 0.5, rel 0 to 0.1</td></tr></tbody></table></div>
 
-9 of the 1986 reasons are marked `reason_incomplete`.
+6 of the 1962 reasons are marked `reason_incomplete`.
 {% endraw %}

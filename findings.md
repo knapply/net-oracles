@@ -485,7 +485,7 @@ References: [brandes2001faster](references.html#brandes2001faster)
 
 Tool: [NetworkX](tools/networkx.html) 3.7. Kind: convention. Status: observed.
 
-**Entry:** [Implicit family](measures/generators-and-rewiring/circulant_ring_graphs.html#implicit_family) <a class="st st-t st-nov" href="method.html#state-checked-no-value"><span class="g" aria-hidden="true">∅</span>checked, no value on some inputs</a> Checked, no comparison counts recorded for this entry. [Full reason](measures/generators-and-rewiring/circulant_ring_graphs.html#why-implicit_family-networkx).
+**Entry:** [Implicit family](measures/generators-and-rewiring/circulant_ring_graphs.html#implicit_family) <a class="st st-t st-ok" href="method.html#state-checked-agrees"><span class="g" aria-hidden="true">✓</span>checked, agrees</a> Agrees with the reference value on every compared input.
 
 **Observed:** tuple labels
 
