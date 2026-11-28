@@ -1,0 +1,8 @@
+{
+ "inputs": "dd0dbeea71b866be2458c9447195f162c526fe02da5096d23d07004bcd8ad864",
+ "oracles": [
+  "networkx",
+  "pyigraph",
+  "rustworkx"
+ ]
+}

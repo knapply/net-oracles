@@ -60,6 +60,8 @@ def compute(fx, e):
         return [stress_value(fx, bool(e.get("weighted")))]
     if fn == "layout_properties":
         return [(1, 1, 1, 1)]
+    if fn == "layout_random":
+        return [(1, 1, 1, 1, 1)] if e["mode"] == "distribution" else [(1, 1, 1, 1)]
     return None
 
 
@@ -70,6 +72,9 @@ def main() -> None:
         fx = load_fixture(name)
         for variant, v in spec.items():
             if ORACLE not in v["oracles"] or not applies(v, fx):
+                continue
+            only = v["oracles"][ORACLE].get("only_on")
+            if only and name not in only:
                 continue
             values = compute(fx, v["params"])
             if values is not None:

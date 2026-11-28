@@ -208,12 +208,60 @@ def full_citation(n, directed):
     return D.pack(n, D.normalize(arcs, directed))
 
 
+def windmill(copies, size):
+    """`copies` cliques on `size` nodes sharing node 0: copy c holds node 0 and the
+    nodes 1 + c * (size - 1) .. (c + 1) * (size - 1)."""
+    edges = []
+    for c in range(copies):
+        members = [0] + [1 + c * (size - 1) + j for j in range(size - 1)]
+        edges += [(a, b) for a in members for b in members if a < b]
+    return D.pack(1 + copies * (size - 1), D.normalize(edges, False))
+
+
+def binomial_tree(order):
+    """Node v is joined to v with its lowest set bit cleared (the parent), the
+    standard bit rule: B_k is two copies of B_(k-1) with one root joined to the other."""
+    n = 1 << order
+    return D.pack(n, D.normalize([(v & (v - 1), v) for v in range(1, n)], False))
+
+
+def interval(intervals):
+    """Two intervals are joined when they share a point (closed intervals)."""
+    n = len(intervals)
+    edges = [(a, b) for a in range(n) for b in range(a + 1, n)
+             if max(intervals[a][0], intervals[b][0]) <= min(intervals[a][1], intervals[b][1])]
+    return D.pack(n, edges)
+
+
+def navigable(n, p, dim):
+    """The lattice {0..n-1}^dim in row-major order, an arc each way between nodes at
+    Manhattan distance 1..p; no long-range contacts."""
+    import itertools
+    nodes = list(itertools.product(range(n), repeat=dim))
+    arcs = [(a, b) for a, u in enumerate(nodes) for b, v in enumerate(nodes)
+            if a != b and sum(abs(x - y) for x, y in zip(u, v)) <= p]
+    return D.pack(len(nodes), D.normalize(arcs, True))
+
+
 def compute(engine):
     fn, family = engine["fn"], engine.get("family")
     if fn == "generators_ext_invalid":
         return [1 for _ in D.INVALID]
     out = []
-    if family == "barbell":
+    if family == "windmill":
+        for case in D.WINDMILL:
+            out += windmill(*case)
+    elif family == "binomial_tree":
+        for case in D.BINOMIAL_TREE:
+            out += binomial_tree(case)
+    elif family == "interval":
+        for case in D.INTERVAL:
+            assert case == sorted(set(case))
+            out += interval(case)
+    elif family == "navigable_small_world":
+        for case in D.NAVIGABLE_EXACT:
+            out += navigable(*case)
+    elif family == "barbell":
         for case in D.BARBELL:
             out += barbell(*case)
     elif family == "lollipop":

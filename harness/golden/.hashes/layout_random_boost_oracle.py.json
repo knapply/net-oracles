@@ -1,0 +1,11 @@
+{
+ "inputs": "949ce3a468af0defe2f50293adb7f6d2d0d0ad04c25816ef6005f5a043205494",
+ "oracles": [
+  "boost",
+  "networkit",
+  "networkx",
+  "pyigraph",
+  "rustworkx",
+  "scipy"
+ ]
+}

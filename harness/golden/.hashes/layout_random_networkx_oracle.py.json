@@ -1,0 +1,7 @@
+{
+ "inputs": "8dcf2e47254e545aecfadb6091f995f34230e2d1618108cc387d9a5b520800cf",
+ "oracles": [
+  "networkx",
+  "rustworkx"
+ ]
+}

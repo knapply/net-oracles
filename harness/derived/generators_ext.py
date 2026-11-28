@@ -36,6 +36,20 @@ HEXAGONAL = [(1, 1, False), (1, 2, False), (2, 2, False), (3, 2, False), (2, 3, 
 TRIANGULAR = [(1, 1, False), (1, 2, False), (2, 1, False), (2, 2, False), (3, 3, False),
               (4, 5, False), (5, 4, False), (0, 2, False), (2, 0, False),
               (3, 5, True), (4, 6, True), (5, 5, True), (3, 6, True)]
+# Windmill graphs (copies, clique size); binomial trees (order); interval
+# graphs (list of (start, end), distinct and in lexicographic order, so that
+# NetworkX's rank numbering is the input order); navigable small-world graphs
+# with no long-range contacts (side length n >= 2, short-range distance p,
+# dimension), which are deterministic.
+WINDMILL = [(2, 2), (2, 3), (3, 2), (3, 3), (3, 4), (4, 3), (5, 2), (2, 5), (6, 4), (7, 3)]
+BINOMIAL_TREE = [0, 1, 2, 3, 4, 5, 6, 8]
+INTERVAL = [[], [(0, 1)], [(1, 1)], [(0, 2), (1, 3), (2, 4)], [(0, 1), (2, 3)],
+            [(1, 5), (2, 3), (4, 8), (6, 7)], [(0.5, 1.5), (1.5, 2.5), (3.0, 3.0)],
+            [(-2, -1), (-1, 0), (0, 1)], [(0, 10), (1, 2), (3, 4), (5, 6), (7, 8)],
+            [(0, 1), (1, 2), (2, 3), (3, 4)], [(0, 0), (0, 1), (1, 1)],
+            [(1, 3), (2, 5), (4, 6), (7, 9), (8, 10), (9, 12)]]
+NAVIGABLE_EXACT = [(2, 1, 2), (3, 1, 2), (3, 2, 2), (4, 3, 2), (3, 1, 3), (4, 2, 1), (5, 1, 1),
+                   (2, 4, 2), (3, 5, 1), (4, 1, 3), (2, 2, 3)]
 PRUFER_DECODE = [[], [0], [1], [3, 3, 3], [1, 0, 4, 4], [2, 2, 0, 1, 2], [5, 5, 5, 5, 6, 6],
                  [0, 0, 0], [4, 3, 2, 1, 0, 5, 7, 7]]
 # Trees for the encoding: the trees of these Pruefer sequences (NetworkX
@@ -100,9 +114,22 @@ INVALID = [
     ("kleitman_wang", [2, 2, 0, 0, 2], "not digraphical"),
     ("gale_ryser", [2, 3, 0, 1, 1], "not bigraphical"),
     ("prufer_decode", [5], "outside"),
+    ("windmill", [1, 3], "at least two cliques"),
+    ("windmill", [0, 3], "at least two cliques"),
+    ("windmill", [2, 1], "at least two nodes"),
+    ("binomial_tree", [40], "order"),
+    ("interval", [1], "starts after it ends", [3.0, 2.0]),
+    ("interval", [1], "finite", [float("nan"), 2.0]),
+    ("interval", [2], "finite", [0.0, 1.0, 1.0, float("inf")]),
+    ("navigable_small_world", [3, 0, 1, 2], "p must be at least 1", [2.0]),
+    ("navigable_small_world", [3, 1, 1, 0], "dimension", [2.0]),
+    ("navigable_small_world", [3, 1, 1, 2], "r must be", [-1.0]),
+    ("navigable_small_world", [1000, 1, 1, 3], "too many nodes", [2.0]),
 ]
 
 FAMILIES = {
+    "windmill": WINDMILL, "binomial_tree": BINOMIAL_TREE, "interval": INTERVAL,
+    "navigable_small_world": NAVIGABLE_EXACT,
     "barbell": BARBELL, "lollipop": LOLLIPOP, "generalized_petersen": PETERSEN,
     "turan": TURAN, "lcf": LCF, "dgm": DGM, "hexagonal": HEXAGONAL, "triangular": TRIANGULAR,
 }

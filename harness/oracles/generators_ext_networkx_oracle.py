@@ -55,7 +55,23 @@ def product(op, first, second):
 def compute(engine):
     fn, family = engine["fn"], engine.get("family")
     out = []
-    if family == "barbell":
+    if family == "windmill":
+        for copies, size in D.WINDMILL:
+            out += from_graph(nx.windmill_graph(copies, size))
+    elif family == "binomial_tree":
+        for order in D.BINOMIAL_TREE:
+            out += from_graph(nx.binomial_tree(order))
+    elif family == "interval":
+        for case in D.INTERVAL:
+            g = nx.interval_graph(case)
+            ranks = {iv: i for i, iv in enumerate(sorted(case))}
+            out += D.pack(len(case), D.normalize([(ranks[a], ranks[b]) for a, b in g.edges()],
+                                                 False))
+    elif family == "navigable_small_world":
+        for n, p, dim in D.NAVIGABLE_EXACT:
+            g = nx.navigable_small_world_graph(n, p=p, q=0, r=2, dim=dim)
+            out += from_graph(g, directed=True)
+    elif family == "barbell":
         for m1, m2 in D.BARBELL:
             out += from_graph(nx.barbell_graph(m1, m2))
     elif family == "lollipop":

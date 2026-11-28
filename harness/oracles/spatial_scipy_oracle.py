@@ -189,7 +189,7 @@ def main() -> int:
                 continue
             write_values(ORACLE, name, variant, evaluate(fx, spec["params"]))
             written += 1
-    write_version(ORACLE, f"scipy {scipy.__version__} (spatial.distance, cKDTree), numpy {np.__version__}")
+    write_version(ORACLE, f"scipy {scipy.__version__}, numpy {np.__version__}")
     print(f"Wrote {written} scipy golden files for spatial.")
     return 0
 

@@ -1,5 +1,5 @@
 {
- "inputs": "24c930c0db18a2482ad64ded8bb796426ca8a1724789284e21bbb57e98f38b5e",
+ "inputs": "2e804a89248d60f6afe2612c33762606ddd733659e4a998dadea1446a8bd21fc",
  "oracles": [
   "networkx",
   "rustworkx"

@@ -1,0 +1,180 @@
+# File formats (crates/engine/src/io: edgelist.rs, dimacs.rs, graph6.rs, leda.rs,
+# mtx.rs): reading the case texts of derived/io_formats.py through the C function
+# net_read, against a plain parser written from each format's description
+# (io_formats_definition_oracle.py) and the reference tools that read the format
+# and are not GPL or LGPL: NetworkX (edge list, graph6, LEDA), NetworKit (edge
+# list, Matrix Market) and SciPy (Matrix Market). python-igraph (GPL, run as a
+# black box) covers what it offers: it reads only the DIMACS maximum-flow form
+# (io_dimacs_flow) and writes LEDA but does not read it, so io_leda_igraph reads
+# four files that its writer produced and the golden is the graph it wrote.
+# JGraphT is not run. Runners and encodings: ../bindings/io_formats.py.
+#
+# A case result is the header row (directed, nodes, edges) then one sorted row
+# (a, b, has_value, value) per edge; a and b are positions in the node order.
+# Each case is one file text and every entry runs on the fixture `pair` only.
+#
+# Conventions that differ between tools, kept to what each tool reads:
+# - Edge list: NetworkX reads node names as text and a weight only when every
+#   line has one; NetworKit numbers nodes itself, so the entry io_edgelist_int
+#   uses ids 0, 1, 2, ... in order of first mention without loops or repeated
+#   edges. The engine also reads a one-field line as an isolated node (the
+#   writer uses it) and `%` lines as comments; the cases avoid both, which no
+#   tool shares.
+# - Matrix Market: SciPy and NetworKit expand a symmetric matrix to both
+#   triangles; the engine keeps one edge per stored entry (the lower triangle),
+#   so the SciPy oracle takes the lower triangle of the expansion. NetworKit
+#   reads `symmetric` as undirected and `general` as directed, as the engine
+#   does, but not the array or skew-symmetric forms (io_mtx_coordinate leaves
+#   them out).
+# - LEDA: NetworkX keeps every edge label as text; the oracle reads it as the
+#   value when the edge type is numeric, as the engine does. NetworkX builds a
+#   simple graph, so the cases have no repeated edges.
+# - graph6: all tools give nodes 0 to n - 1 and the edges of the bit matrix.
+# - DIMACS: edge/col problems are undirected and sp, max and min problems
+#   directed; the value is the weight (sp), capacity (max) or cost (min).
+# - io_invalid: each malformed text is refused with the format's name and the
+#   words that say why (definition only; 1 per case).
+
+io_edgelist:
+  params: {fn: io_edgelist}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "a line is `source target [weight]` split on white space or commas, `#` starts a comment, nodes in order of first mention"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.parse_edgelist(lines, nodetype=str, create_using=MultiGraph or MultiDiGraph)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_edgelist_int:
+  params: {fn: io_edgelist, cases: int}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as io_edgelist, on integer ids numbered 0, 1, 2, ... in order"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.parse_edgelist(lines, nodetype=str)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkit:
+      call: "nk.graphio.EdgeListReader(' ', 0, '#', True, directed)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_dimacs:
+  params: {fn: io_dimacs}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "`p TYPE N M` then `e u v` or `a u v ...` lines, nodes 1 to N, sp weight, max capacity, min cost"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_dimacs_flow:
+  params: {fn: io_dimacs, cases: flow}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "`p max N M`, `n v s` / `n v t`, `a u v cap`; the value is the capacity"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    pyigraph:
+      call: "Graph.Read_DIMACS(file, directed=True) (edges and the capacity attribute)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_graph6:
+  params: {fn: io_graph6}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "n from the first bytes, then the upper triangle column by column, six bits per byte minus 63"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.from_graph6_bytes"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_leda:
+  params: {fn: io_leda}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "header, direction -1 or -2, n labelled nodes, m lines `source target reversal |{label}|`"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.parse_leda"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_leda_igraph:
+  params: {fn: io_leda, cases: igraph}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "header, direction -1 or -2, n labelled nodes, m lines `source target reversal |{label}|`"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.parse_leda"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    pyigraph:
+      call: "Graph.write_leda of the graph, with names and weights when it has them; the golden is that graph (igraph has no LEDA reader)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_mtx:
+  params: {fn: io_mtx}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "banner and size line, then coordinate entries or array values in column order; symmetric entries once"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    scipy:
+      call: "scipy.io.mmread, lower triangle of a symmetric matrix"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_mtx_coordinate:
+  params: {fn: io_mtx, cases: coordinate}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "as io_mtx, coordinate files without the skew-symmetric form"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    scipy:
+      call: "scipy.io.mmread, lower triangle of a symmetric matrix"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkit:
+      call: "nk.readGraph(path, nk.Format.MatrixMarket)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_invalid:
+  params: {fn: io_invalid}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "each malformed text is refused, with the format's name and the words that say why"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"

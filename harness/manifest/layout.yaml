@@ -14,6 +14,15 @@
 #   layout, for the engine's default stress layout of the largest component;
 #   it must be at most that of NetworkX's Kamada-Kawai layout (both minimise
 #   this energy).
+# layout_random_properties: (inside the box, the same call twice identical, the
+#   same coordinates on the edgeless graph of the same size, another seed
+#   different). layout_random_distribution: on 20000 nodes, x and y pass a
+#   Kolmogorov-Smirnov test against uniform, the means are within 5 standard
+#   errors, the correlation is small, the values are distinct (all 1;
+#   derived/layout_random.py states the tests for every tool). Each tool draws
+#   with its own generator, so coordinates are never compared: rustworkx,
+#   NetworkX and Boost are judged by the same statements, mapped to the unit
+#   square.
 # layout_*_properties: (finite coordinates, the same coordinates on a repeated
 #   call, the same on 3 threads, components at least the gap apart: the mean
 #   edge length for stress, 1 for the force-directed layout). The definition
@@ -101,3 +110,39 @@ layout_fr_barnes_hut_properties:
   oracles:
     definition:
       call: "all four properties hold (layout_definition_oracle.py)"
+
+layout_random_properties:
+  params: {fn: layout_random, mode: properties, low: -1.0, high: 1.0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "all four properties hold (layout_definition_oracle.py)"
+    networkx:
+      call: "nx.random_layout(G, seed) mapped to the box [-1, 1): the same four properties"
+    rustworkx:
+      call: "rustworkx.random_layout(G, seed) mapped to the box [-1, 1): the same four properties"
+    boost:
+      call: "boost::random_graph_layout over rectangle_topology(gen, -1, -1, 1, 1): the same four properties (the edges are a path on the same nodes, since the function reads only the node set)"
+
+layout_random_distribution:
+  params: {fn: layout_random, mode: distribution, low: -1.0, high: 1.0}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "a uniform layout passes all five tests (derived/layout_random.py)"
+      only_on: [pair]
+      undefined_reason: "the layout is of a fixed edgeless graph of 20000 nodes and does not use the fixture graph; one fixture carries it"
+    networkx:
+      call: "the five tests on nx.random_layout of 20000 isolated nodes"
+      only_on: [pair]
+      undefined_reason: "the layout is of a fixed edgeless graph of 20000 nodes and does not use the fixture graph; one fixture carries it"
+    rustworkx:
+      call: "the five tests on rustworkx.random_layout of 20000 isolated nodes"
+      only_on: [pair]
+      undefined_reason: "the layout is of a fixed edgeless graph of 20000 nodes and does not use the fixture graph; one fixture carries it"
+    boost:
+      call: "the five tests on boost::random_graph_layout of 20000 isolated nodes"
+      only_on: [pair]
+      undefined_reason: "the layout is of a fixed edgeless graph of 20000 nodes and does not use the fixture graph; one fixture carries it"

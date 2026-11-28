@@ -1,0 +1,7 @@
+{
+ "inputs": "882a9c50817b2d9a824deebefe6f5cfdfa8e801a73fdd0422b7275ba3b2b8605",
+ "oracles": [
+  "networkit",
+  "scipy"
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "inputs": "e87bf56d0e1a3140e237ce016afba52b28dd0494aa2c3d7304fd3d4cc07e8232",
+ "oracles": [
+  "networkx",
+  "pyigraph"
+ ]
+}

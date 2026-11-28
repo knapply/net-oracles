@@ -289,6 +289,62 @@ gen_full_citation:
       call: "every node joined to every earlier node (arcs from the later node when directed)"
       only_on: [pair]
       undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_windmill:
+  params: {fn: gen_windmill, family: windmill}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the cliques on {0} and the nodes 1 + c (k - 1) .. (c + 1)(k - 1) for each copy c, joined at node 0"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.windmill_graph(copies, size)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+cat_binomial_tree:
+  params: {fn: cat_binomial_tree, family: binomial_tree}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "node v joined to v with its lowest set bit cleared"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.binomial_tree(order)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    rustworkx:
+      call: "rustworkx.generators.binomial_tree_graph(order)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+cat_interval:
+  params: {fn: cat_interval, family: interval}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "closed intervals joined when max(starts) <= min(ends), node per interval in input order"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.interval_graph(intervals), intervals distinct and sorted so rank is input order"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+gen_navigable_small_world:
+  params: {fn: gen_navigable_small_world, family: navigable_small_world}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "an arc each way between lattice nodes at Manhattan distance 1..p, no long-range contacts (q = 0)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
+    networkx:
+      call: "nx.navigable_small_world_graph(n, p, q=0, r=2, dim)"
+      only_on: [pair]
+      undefined_reason: "the cases are fixed and do not use the fixture graph; one fixture carries them"
 gen_invalid:
   params: {fn: generators_ext_invalid}
   applies_to: any
