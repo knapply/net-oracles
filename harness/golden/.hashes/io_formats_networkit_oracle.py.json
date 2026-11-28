@@ -1,7 +1,6 @@
 {
- "inputs": "882a9c50817b2d9a824deebefe6f5cfdfa8e801a73fdd0422b7275ba3b2b8605",
+ "inputs": "9f5e4557ce953c1ddd3d2742b89c3a73d448a5a9c46e7fdaab4f6c1ee98a2413",
  "oracles": [
-  "networkit",
-  "scipy"
+  "networkit"
  ]
 }

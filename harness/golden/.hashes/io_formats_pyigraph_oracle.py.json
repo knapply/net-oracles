@@ -1,8 +1,6 @@
 {
- "inputs": "dd0dbeea71b866be2458c9447195f162c526fe02da5096d23d07004bcd8ad864",
+ "inputs": "de39c7db545c64b517e6f8a1de0de39d25d0484ef2a1127636abcd78a15022be",
  "oracles": [
-  "networkx",
-  "pyigraph",
-  "rustworkx"
+  "pyigraph"
  ]
 }

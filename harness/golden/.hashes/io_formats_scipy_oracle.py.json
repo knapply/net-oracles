@@ -1,6 +1,7 @@
 {
- "inputs": "cadf08a834aac649475b01e7d6aac6938a08e82a0da54fc4cd8017f09e0ab473",
+ "inputs": "cce04916f4fd08e030a36a0301dab9b2424054387445b27c75ddf6e6b0c0efba",
  "oracles": [
+  "cdlib",
   "scipy"
  ]
 }

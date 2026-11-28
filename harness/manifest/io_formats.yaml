@@ -1,6 +1,8 @@
 # File formats (crates/engine/src/io: edgelist.rs, dimacs.rs, graph6.rs, leda.rs,
-# mtx.rs): reading the case texts of derived/io_formats.py through the C function
-# net_read, against a plain parser written from each format's description
+# mtx.rs, and metis.rs, snap.rs, konect.rs, gtnet.rs, ncol.rs,
+# lgl.rs, adjacency.rs, csv.rs, tsplib.rs, partition.rs): reading the case texts of
+# derived/io_formats.py (and, for the later formats, io_formats_cases.py) through the
+# C function net_read, against a plain parser written from each format's description
 # (io_formats_definition_oracle.py) and the reference tools that read the format
 # and are not GPL or LGPL: NetworkX (edge list, graph6, LEDA), NetworKit (edge
 # list, Matrix Market) and SciPy (Matrix Market). python-igraph (GPL, run as a
@@ -168,6 +170,255 @@ io_mtx_coordinate:
       call: "nk.readGraph(path, nk.Format.MatrixMarket)"
       only_on: [pair]
       undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+# The later formats (cases: io_formats_cases.py). Reference tools:
+# NetworKit reads METIS, SNAP, KONECT, graph-tool binary and the partition and
+# cover files; python-igraph (GPL, black box) reads NCOL, LGL and adjacency
+# matrices; JGraphT reads CSV and the coordinate forms of TSPLIB. Differences kept
+# out of the cases, each documented in the format's module:
+# - SNAP: NetworKit reads an undirected simple graph (a repeated or reversed
+#   pair is one edge) and the engine does too; KONECT: NetworKit reads each
+#   edge once, the engine keeps repeated edges, so the cases have none, and a
+#   KONECT node is its number (position = number - 1, as in NetworKit).
+# - NCOL and LGL: igraph gives weight 1 to an edge without one once any edge has
+#   a weight and reads direction as an argument (default directed); the engine
+#   leaves such a weight missing and reads undirected unless told, so every case
+#   is all weighted or all unweighted and states its direction.
+# - Adjacency matrices: igraph reads a whole number as parallel edges; the cases
+#   ask for the weights (attribute) as the engine reads them. An asymmetric
+#   matrix is refused when undirected by both tools (io_invalid).
+# - CSV: JGraphT does not unquote quoted fields (the engine follows RFC 4180) and
+#   refuses a blank line and a one-line file, so the cases have none of these; it
+#   reads a symmetric matrix as each edge twice, so the matrix cases are directed;
+#   it reads an entry of 0 as an edge unless told the zero convention (used).
+# - TSPLIB: JGraphT reads the coordinate forms only (it reads an explicit matrix as
+#   an empty graph), so the explicit forms of the specification are checked by the
+#   definition alone (io_tsplib_explicit).
+# - Partitions and covers: NetworKit's readers number nodes from the first node
+#   given and keep the last community of a repeated node; the engine reads nodes
+#   as listed and refuses a repeat. A blank line is a missing community in the
+#   engine (the partition cases have none).
+
+io_metis:
+  params: {fn: io_metis}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "header `n m [fmt [ncon]]`, then one line per node: size and weights first, neighbours (with edge weights) after, each edge from its smaller end"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkit:
+      call: "nk.readGraph(path, nk.Format.METIS)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_snap:
+  params: {fn: io_snap}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "`#` comment lines, then `from to` pairs; nodes in order of first mention, an undirected pair once"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkit:
+      call: "nk.readGraph(path, nk.Format.SNAP)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_konect:
+  params: {fn: io_konect}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "`% sym|asym weights`, then `i j [weight [time]]`; nodes 1 to the largest number"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkit:
+      call: "nk.readGraph(path, nk.Format.KONECT)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_graphtoolbinary:
+  params: {fn: io_graphtoolbinary}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "magic, version, byte order, comment, direction, N, per node a degree and neighbours of the smallest width holding N, then the property section (none)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkit:
+      call: "nk.readGraph(path, nk.Format.GraphToolBinary)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_ncol:
+  params: {fn: io_ncol}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "`source target [weight]` per line, names split on white space, nodes in order of first mention"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    pyigraph:
+      call: "Graph.Read_Ncol(file, directed=...) (edges and the weight attribute)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_lgl:
+  params: {fn: io_lgl}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "`# name` opens a node's list, each following line is `neighbour [weight]`; nodes in order of first mention"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    pyigraph:
+      call: "Graph.Read_Lgl(file, directed=...) (edges and the weight attribute)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_adjacency:
+  params: {fn: io_adjacency}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "a square matrix of numbers, entry (i, j) an edge i to j with that weight, zero none; undirected from the upper triangle"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    pyigraph:
+      call: "Graph.Read_Adjacency(file, mode=..., attribute='weight')"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_csv:
+  params: {fn: io_csv}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "`source,target[,weight]` per line, nodes in order of first mention"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    jgrapht:
+      call: "JGraphT 1.5.2: CSVImporter(CSVFormat.EDGE_LIST) with EDGE_WEIGHTS for the weighted cases (oracles/system/io_formats_jgrapht/IoOracle.java)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_csv_adjlist:
+  params: {fn: io_csv, cases: adjlist}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "`node,neighbour,...` per line, each neighbour an edge from the first field"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    jgrapht:
+      call: "JGraphT 1.5.2: CSVImporter(CSVFormat.ADJACENCY_LIST) (oracles/system/io_formats_jgrapht/IoOracle.java)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_csv_matrix:
+  params: {fn: io_csv, cases: matrix}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "comma separated square matrix, optionally with a header row and a first column of names; a nonzero entry is an edge"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    jgrapht:
+      call: "JGraphT 1.5.2: CSVImporter(CSVFormat.MATRIX) with MATRIX_FORMAT_NODEID and MATRIX_FORMAT_ZERO_WHEN_NO_EDGE (oracles/system/io_formats_jgrapht/IoOracle.java)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_tsplib:
+  params: {fn: io_tsplib}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "TSPLIB 95 distance functions (EUC, CEIL, MAX, MAN, ATT, GEO) of the coordinates, every pair an edge"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    jgrapht:
+      call: "JGraphT 1.5.2: TSPLIBImporter on a SimpleWeightedGraph (oracles/system/io_formats_jgrapht/IoOracle.java)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_tsplib_explicit:
+  params: {fn: io_tsplib, cases: explicit}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "TSPLIB 95 EDGE_WEIGHT_FORMAT orders (full matrix and the eight triangles), ATSP as arcs"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_partition_formats:
+  params: {fn: io_partition_formats}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "line i holds the community of node i"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkit:
+      call: "nk.graphio.PartitionReader().read(path).getVector()"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_partition_formats_edgelist:
+  params: {fn: io_partition_formats, cases: edgelist}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "`node community` per line, node numbers from the first node"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkit:
+      call: "nk.graphio.EdgeListPartitionReader(first, sep).read(path).getVector()"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_partition_formats_cover:
+  params: {fn: io_partition_formats, cases: cover}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "line c lists the nodes of community c"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkit:
+      call: "nk.graphio.CoverReader().read(path, G).subsetsOf(node)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
+io_partition_formats_membership:
+  params: {fn: io_partition_formats, cases: membership}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "`node c1 c2 ...` per line, node numbers from the first node"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+    networkit:
+      call: "nk.graphio.EdgeListCoverReader(first).read(path, G).subsetsOf(node)"
+      only_on: [pair]
+      undefined_reason: "the cases are file texts and do not use the fixture graph; one fixture carries them"
+
 
 io_invalid:
   params: {fn: io_invalid}
