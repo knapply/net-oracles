@@ -1,0 +1,13 @@
+{
+ "inputs": "688be5d821c3472a865a25e733e141ce8aceb51a4d3c6db891882b0d2df0e905",
+ "oracles": [
+  "bct",
+  "boost",
+  "definition",
+  "jgrapht",
+  "nauty",
+  "published",
+  "signnet",
+  "sna"
+ ]
+}

@@ -1,6 +1,7 @@
 {
- "inputs": "3a7d5d57874011a43f277f813d6bdc84ee7f2458ea5b7a0f0fe2bc406e05cf5a",
+ "inputs": "e3836d4e4aad2596887c9492c916915c7ca99c07db9e9f27b65b581d9780bc43",
  "oracles": [
+  "definition",
   "nauty"
  ]
 }

@@ -1,0 +1,103 @@
+# Signed ties and balanced triads: positive-negative (PN) centrality
+# (Everett and Borgatti 2014) and the number of balanced triads (ergm's
+# `balance` term; Holland and Leinhardt 1970). Format: see ../README.md;
+# runners in ../bindings/signed.py.
+#
+# Signs. The engine reads the sign of each edge's weight (an unweighted
+# edge is positive). The tie of a pair is the sign of the sum of the
+# weights of its parallel edges (0: no tie); self-loops are dropped. With
+# `signs: rule` the runner and the oracles give edge (u, v) the weight -1
+# when (u + v) % 3 == 0 and +1 otherwise (0-based endpoints); with
+# `signs: weights` the fixture's own weights are read (all positive here).
+#
+# PN centrality is undefined (NaN) on a single node (the constant
+# 1 / (2n - 2) divides by zero) and when I - A / (2n - 2) is singular.
+
+pn_centrality:
+  params: {fn: pn_centrality, signs: weights, mode: out}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "(I - A / (2n - 2))^-1 1 with A = P - 2N, by exact rational elimination (signed_definition_oracle.py)"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        On one node 2n - 2 is zero: the definition has no value, and the
+        oracle writes nothing.
+    signnet:
+      call: "signnet::pn_index(g, mode = 'out') on the signed simple graph (E(g)$sign)"
+      differs_when: [directed]
+      reason: >-
+        signnet 1.1.0's pn_index on a directed graph does not solve the
+        system of Everett and Borgatti (2014, eq. 3): on the directed
+        7-cycle every value is 1 / (1 - a_i / (2n - 2)), a_i the value of
+        the node's one tie, as if the ties of the other nodes did not enter;
+        the engine and the exact rational solve of the definition oracle
+        agree. Undirected graphs match.
+      undefined_when: [one_node]
+      undefined_reason: >-
+        On one node 2n - 2 is zero: the definition has no value.
+
+pn_centrality_signed:
+  params: {fn: pn_centrality, signs: rule, mode: out}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "(I - A / (2n - 2))^-1 1 with A = P - 2N, signs by rule (signed_definition_oracle.py)"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        On one node 2n - 2 is zero: the definition has no value, and the
+        oracle writes nothing.
+    signnet:
+      call: "signnet::pn_index(g, mode = 'out') on the signed simple graph (E(g)$sign by rule)"
+      differs_when: [directed]
+      reason: >-
+        signnet 1.1.0's pn_index on a directed graph does not solve the
+        system of Everett and Borgatti (2014, eq. 3): on the directed
+        7-cycle every value is 1 / (1 - a_i / (2n - 2)), a_i the value of
+        the node's one tie, as if the ties of the other nodes did not enter;
+        the engine and the exact rational solve of the definition oracle
+        agree. Undirected graphs match.
+      undefined_when: [one_node]
+      undefined_reason: >-
+        On one node 2n - 2 is zero: the definition has no value.
+
+pn_centrality_signed_in:
+  params: {fn: pn_centrality, signs: rule, mode: in}
+  applies_to: directed
+  tolerance: {rel: 1.0e-10, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "(I - A' / (2n - 2))^-1 1 (received ties), signs by rule (signed_definition_oracle.py)"
+    signnet:
+      call: "signnet::pn_index(g, mode = 'in') on the signed simple graph (E(g)$sign by rule)"
+      differs_when: [directed]
+      reason: >-
+        signnet 1.1.0's pn_index on a directed graph does not solve the
+        system of Everett and Borgatti (2014, eq. 3): on the directed
+        7-cycle every value is 1 / (1 - a_i / (2n - 2)), a_i the value of
+        the node's one tie, as if the ties of the other nodes did not enter;
+        the engine and the exact rational solve of the definition oracle
+        agree. Undirected graphs match.
+
+balanced_triads:
+  params: {fn: balanced_triads}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "count of node triples with 1 or 3 ties (undirected) or of MAN type 102 or 300 (directed), on the simple graph (signed_definition_oracle.py)"
+    ergm/ergm_terms_stats_undirected:
+      call: "summary(nw ~ balance): line 41 of the golden files of ergm_terms_stats_undirected (ergm)"
+      lines: [40]
+      only_on: [complete6, davis_twomode, florentine, gnp_und_dense, gnp_und_sparse, karate,
+        kite, les_miserables, multi_loops_und, path10, real_weights_und, southern_women, star8,
+        two_triangles_isolate, twomode_random, twomode_weighted, uniform_weights, weighted_und]
+      undefined_reason: 'catalog check of the undirected fixtures; the directed ones are read from ergm_terms_stats_directed'
+    ergm/ergm_terms_stats_directed:
+      call: "summary(nw ~ balance): line 50 of the golden files of ergm_terms_stats_directed (ergm)"
+      lines: [49]
+      only_on: [complete5_dir, cycle7_dir, empty, gnp_dir_dense, gnp_dir_sparse, multi_loops_dir,
+        pair, real_weights_dir, weighted_dir]
+      undefined_reason: 'catalog check of the directed fixtures; the undirected ones are read from ergm_terms_stats_undirected'

@@ -1,0 +1,132 @@
+# Generalized blockmodeling with the binary approach (Doreian, Batagelj and
+# Ferligoj 2005): the criterion of a given partition (blockmodeling's
+# critFunC) and the direct search for a partition that minimizes it
+# (blockmodeling's optRandomParC; UCINET's optimization blockmodel, reported
+# in its documentation). Format: see ../README.md; runners in
+# ../bindings/blockmodels.py.
+#
+# The matrix is the fixture's 0/1 adjacency: parallel edges once, every
+# positive weight a tie, self-loops kept on the diagonal. Block types:
+# structural = {null, complete}, regular = {null, regular}, generalized =
+# {null, complete, regular, row-regular, column-regular}. Each block takes
+# the allowed type with the fewest inconsistencies; the criterion is their
+# sum. For a block of nr rows and nc columns with st ties: null st,
+# complete nr nc - st, regular (nc - pc) nr + (nr - pr) pc with pr rows and
+# pc columns holding a tie, row-regular (nr - pr) nc, column-regular
+# (nc - pc) nr. A diagonal block of a null or complete type counts its
+# diagonal apart (sd ties on it): null st - sd + min(sd, nr - sd),
+# complete nr nc - nr - (st - sd) + min(sd, nr - sd).
+#
+# The criterion entries use the partition v % 3 (clusters 1, 2, 3). The
+# search entries report the best criterion found (compare: le, the engine
+# must do at least as well). The engine runs 3000 random starts (a few
+# seconds on the largest fixture); blockmodeling runs `oracle_starts` = 30
+# (its rep, at the cap of 30 iterations of every oracle script), so the
+# engine must match or beat a search two orders of magnitude cheaper per
+# start; the definition oracle enumerates every
+# partition into exactly k non-empty clusters on fixtures of at most 12
+# nodes, so there the engine must reach the optimum.
+
+blockmodel_criterion_structural:
+  params: {fn: blockmodel_criterion, blocks: structural, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "sum over blocks of the fewest inconsistencies of a null or complete block (blockmodels_definition_oracle.py)"
+    blockmodeling:
+      call: "blockmodeling::critFunC(m, clu = v %% 3 + 1, approaches = 'bin', blocks = c('nul', 'com'))$err"
+      undefined_when: [one_node]
+      undefined_reason: The oracle script does not call blockmodeling on a network of one node.
+
+blockmodel_criterion_regular:
+  params: {fn: blockmodel_criterion, blocks: regular, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "sum over blocks of the fewest inconsistencies of a null or regular block (blockmodels_definition_oracle.py)"
+    blockmodeling:
+      call: "blockmodeling::critFunC(m, clu = v %% 3 + 1, approaches = 'bin', blocks = c('nul', 'reg'))$err"
+      undefined_when: [one_node]
+      undefined_reason: The oracle script does not call blockmodeling on a network of one node.
+
+blockmodel_criterion_generalized:
+  params: {fn: blockmodel_criterion, blocks: generalized, partition: mod3}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "sum over blocks of the fewest inconsistencies of a null, complete, regular, row-regular or column-regular block (blockmodels_definition_oracle.py)"
+    blockmodeling:
+      call: "blockmodeling::critFunC(m, clu = v %% 3 + 1, approaches = 'bin', blocks = c('nul', 'com', 'reg', 'rre', 'cre'))$err"
+      undefined_when: [one_node]
+      undefined_reason: The oracle script does not call blockmodeling on a network of one node.
+
+blockmodel_search_structural:
+  params: {fn: blockmodel_search, blocks: structural, k: 2, starts: 3000, seed: 1, oracle_starts: 30}
+  applies_to: any
+  compare: le
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the smallest criterion over every partition into 2 non-empty clusters, n <= 12 (blockmodels_definition_oracle.py)"
+      only_on: [complete5_dir, complete6, cycle7_dir, empty, kite, pair, path10, star8, two_triangles_isolate]
+      undefined_reason: >-
+        Exhaustive enumeration runs on the fixtures of 2 to 12 nodes (one
+        node cannot be split into two non-empty clusters).
+    blockmodeling:
+      call: "blockmodeling::optRandomParC(m, k = 2, rep = 30, approaches = 'bin', blocks = c('nul', 'com')): the best err"
+      undefined_when: [one_node]
+      undefined_reason: One node cannot be split into two non-empty clusters.
+
+blockmodel_search_regular:
+  params: {fn: blockmodel_search, blocks: regular, k: 2, starts: 3000, seed: 1, oracle_starts: 30}
+  applies_to: any
+  compare: le
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the smallest criterion over every partition into 2 non-empty clusters, n <= 12 (blockmodels_definition_oracle.py)"
+      only_on: [complete5_dir, complete6, cycle7_dir, empty, kite, pair, path10, star8, two_triangles_isolate]
+      undefined_reason: >-
+        Exhaustive enumeration runs on the fixtures of 2 to 12 nodes (one
+        node cannot be split into two non-empty clusters).
+    blockmodeling:
+      call: "blockmodeling::optRandomParC(m, k = 2, rep = 30, approaches = 'bin', blocks = c('nul', 'reg')): the best err"
+      undefined_when: [one_node]
+      undefined_reason: One node cannot be split into two non-empty clusters.
+
+blockmodel_search_structural_k3:
+  params: {fn: blockmodel_search, blocks: structural, k: 3, starts: 3000, seed: 1, oracle_starts: 30}
+  applies_to: any
+  compare: le
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the smallest criterion over every partition into 3 non-empty clusters, n <= 12 (blockmodels_definition_oracle.py)"
+      only_on: [complete5_dir, complete6, cycle7_dir, empty, kite, path10, star8, two_triangles_isolate]
+      undefined_reason: >-
+        Exhaustive enumeration runs on the fixtures of 3 to 12 nodes (fewer
+        than three nodes cannot form three non-empty clusters).
+    blockmodeling:
+      call: "blockmodeling::optRandomParC(m, k = 3, rep = 30, approaches = 'bin', blocks = c('nul', 'com')): the best err"
+      undefined_on: [pair, single_node]
+      undefined_reason: Fewer than three nodes cannot form three non-empty clusters.
+
+blockmodel_search_generalized_k3:
+  params: {fn: blockmodel_search, blocks: generalized, k: 3, starts: 3000, seed: 1, oracle_starts: 30}
+  applies_to: any
+  compare: le
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "the smallest criterion over every partition into 3 non-empty clusters, n <= 12 (blockmodels_definition_oracle.py)"
+      only_on: [complete5_dir, complete6, cycle7_dir, empty, kite, path10, star8, two_triangles_isolate]
+      undefined_reason: >-
+        Exhaustive enumeration runs on the fixtures of 3 to 12 nodes (fewer
+        than three nodes cannot form three non-empty clusters).
+    blockmodeling:
+      call: "blockmodeling::optRandomParC(m, k = 3, rep = 30, approaches = 'bin', blocks = c('nul', 'com', 'reg', 'rre', 'cre')): the best err"
+      undefined_on: [pair, single_node]
+      undefined_reason: Fewer than three nodes cannot form three non-empty clusters.

@@ -1,0 +1,136 @@
+# Cognitive social structures (Krackhardt 1987): consensus structures from
+# a stack of informant reports, and each informant's accuracy against the
+# consensus. sna's consensus() and hdist(); UCINET's CSS routine (reported
+# in its documentation). Format: see ../README.md; runners in
+# ../bindings/css.py.
+#
+# Reports. One informant per node (m = n). Informant k reports the simple
+# 0/1 adjacency A of the fixture (loops dropped, parallel edges once) with
+# the dyad (i, j), i != j, flipped when (i + 2 j + 3 k) % 5 == 0 (directed
+# fixtures) or (i + j + 3 k) % 5 == 0 (undirected, so every report stays
+# symmetric); diagonals are 0. Every method reads the reports as directed
+# (sna's mode "digraph"), and the diagonal is left out (diag = FALSE).
+#
+# Consensus methods: central.graph, the dyads reported by at least half of
+# the informants (Banks and Carley 1994); LAS.intersection and LAS.union,
+# the locally aggregated structures of Krackhardt (1987): i -> j when both
+# i and j report it, or either; OR.row and OR.col: i -> j as i reports it,
+# or as j reports it. A consensus file holds the n x n matrix, one row per
+# line. The accuracy file holds, per informant (one line each): the share
+# of the n (n - 1) off-diagonal dyads where the report agrees with the
+# consensus, the hit rate (reported ties among the consensus ties) and the
+# false alarm rate (reported ties among the consensus non-ties; Batchelder
+# and Romney 1988); NaN when the consensus has no ties or no non-ties.
+
+css_consensus_central:
+  params: {fn: css_accuracy, method: central_graph, part: consensus}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "dyads reported by at least half of the informants (css_definition_oracle.py)"
+    sna:
+      call: "sna::consensus(dat, mode = 'digraph', diag = FALSE, method = 'central.graph')"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        One informant reports no dyads: the oracle script does not call sna
+        on a network of one node.
+
+css_consensus_las_intersection:
+  params: {fn: css_accuracy, method: las_intersection, part: consensus}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "i -> j when informants i and j both report it (css_definition_oracle.py)"
+    sna:
+      call: "sna::consensus(dat, mode = 'digraph', diag = FALSE, method = 'LAS.intersection')"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        One informant reports no dyads: the oracle script does not call sna
+        on a network of one node.
+
+css_consensus_las_union:
+  params: {fn: css_accuracy, method: las_union, part: consensus}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "i -> j when informant i or j reports it (css_definition_oracle.py)"
+    sna:
+      call: "sna::consensus(dat, mode = 'digraph', diag = FALSE, method = 'LAS.union')"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        One informant reports no dyads: the oracle script does not call sna
+        on a network of one node.
+
+css_consensus_or_row:
+  params: {fn: css_accuracy, method: or_row, part: consensus}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "i -> j as informant i reports it (css_definition_oracle.py)"
+    sna:
+      call: "sna::consensus(dat, mode = 'digraph', diag = FALSE, method = 'OR.row')"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        One informant reports no dyads: the oracle script does not call sna
+        on a network of one node.
+
+css_consensus_or_col:
+  params: {fn: css_accuracy, method: or_col, part: consensus}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0}
+  oracles:
+    definition:
+      call: "i -> j as informant j reports it (css_definition_oracle.py)"
+    sna:
+      call: "sna::consensus(dat, mode = 'digraph', diag = FALSE, method = 'OR.col')"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        One informant reports no dyads: the oracle script does not call sna
+        on a network of one node.
+
+css_accuracy_central:
+  params: {fn: css_accuracy, method: central_graph, part: accuracy}
+  applies_to: any
+  tolerance: {rel: 1.0e-15, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "per informant: agreement, hit rate, false alarm rate against the central graph (css_definition_oracle.py)"
+    sna:
+      call: "1 - sna::hdist(dat and the consensus, diag = FALSE) / (n (n - 1)) for the agreement; hit and false alarm rates from the same stack"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        One informant reports no dyads: the oracle script does not call sna
+        on a network of one node.
+
+css_accuracy_las_intersection:
+  params: {fn: css_accuracy, method: las_intersection, part: accuracy}
+  applies_to: any
+  tolerance: {rel: 1.0e-15, abs: 1.0e-15}
+  oracles:
+    definition:
+      call: "per informant: agreement, hit rate, false alarm rate against the LAS intersection (css_definition_oracle.py)"
+    sna:
+      call: "1 - sna::hdist(dat and the consensus, diag = FALSE) / (n (n - 1)) for the agreement; hit and false alarm rates from the same stack"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        One informant reports no dyads: the oracle script does not call sna
+        on a network of one node.
+
+css_consensus_romney_batchelder:
+  params: {fn: oracle_only, method: romney_batchelder, part: consensus}
+  applies_to: any
+  tolerance: {rel: 1.0e-6, abs: 1.0e-8}
+  note: >-
+    Oracle-only: the engine has no Romney-Batchelder consensus yet
+    (maxiter capped at 30).
+  oracles:
+    sna:
+      call: "sna::consensus(dat, mode = 'digraph', diag = FALSE, method = 'romney.batchelder', maxiter = 30)"
+      undefined_when: [one_node]
+      undefined_reason: >-
+        One informant reports no dyads: the oracle script does not call sna
+        on a network of one node.

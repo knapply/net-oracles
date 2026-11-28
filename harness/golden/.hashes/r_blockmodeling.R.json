@@ -1,6 +1,8 @@
 {
- "inputs": "97ed28e931b1cee41c71b8905764955895c2b9b9a19bbe63cd97ba2d3a840056",
+ "inputs": "2b12b0d4e36349cbd360f119392f056b46a9775e3d3d5323cb3176155792a5b4",
  "oracles": [
-  "blockmodeling"
+  "blockmodeling",
+  "signnet",
+  "sna"
  ]
 }

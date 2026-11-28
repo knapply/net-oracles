@@ -1,0 +1,8 @@
+{
+ "inputs": "456fbabe0f9825ac58e66b0d3d70d749628fe964aae725e5dfe9c62cffffb7fb",
+ "oracles": [
+  "definition",
+  "nauty",
+  "published"
+ ]
+}

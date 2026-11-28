@@ -1,9 +1,10 @@
 {
- "inputs": "d0c22cab15386225994c4d4bd8a4343e6d0d9aeaa5b076a2f183724c1713b19a",
+ "inputs": "fe5fb6c47a0e790e2e8d4ea5699424a775ca1443264be04497850682a717150c",
  "oracles": [
   "bct",
   "boost",
-  "infomap",
-  "jgrapht"
+  "definition",
+  "jgrapht",
+  "signnet"
  ]
 }

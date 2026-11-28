@@ -1,8 +1,11 @@
 #!/usr/bin/env Rscript
 # oracle-entries: blockmodeling
 # Golden values from blockmodeling (`ziberna2007generalized`): block densities of
-# a given partition (funByBlocks) and structural-equivalence distances
-# (sedist), on the adjacency matrix.
+# a given partition (funByBlocks), structural-equivalence distances (sedist),
+# and binary generalized blockmodeling (`doreian2005generalized`): the
+# criterion of a partition (critFunC) and the best criterion of a search
+# from random starts (optRandomParC, seeded, at most 30 starts), on the
+# adjacency matrix. Each blockmodeling fit has a time limit of 300 seconds.
 #
 #   Rscript oracles/r_blockmodeling.R
 #
@@ -161,12 +164,24 @@ run_oracle <- function(oracle, version, compute) {
 
 # ---- end of shared plumbing ---------------------------------------------
 
+# Allowed block types of the blockmodels entries (blockmodels.yaml).
+block_types <- list(structural = c("nul", "com"), regular = c("nul", "reg"),
+                    generalized = c("nul", "com", "reg", "rre", "cre"))
+
+# A call under the per-fit time limit of 300 seconds.
+limited <- function(expr) {
+  setTimeLimit(elapsed = 300, transient = TRUE)
+  on.exit(setTimeLimit(elapsed = Inf))
+  expr
+}
+
 compute <- function(variant, spec, fx) {
   e <- spec$params
   n <- fx$n
   if (n < 2) return(NULL)
   w <- isTRUE(e$weighted)
-  m <- adjacency(fx, weighted = w, loops = isTRUE(e$loops), simple = !w)
+  blockmodel <- e$fn %in% c("blockmodel_criterion", "blockmodel_search")
+  m <- adjacency(fx, weighted = w, loops = isTRUE(e$loops) || blockmodel, simple = !w)
   switch(e$fn,
     block_density = {
       clu <- node_rule(e$partition, n) + 1
@@ -178,6 +193,22 @@ compute <- function(variant, spec, fx) {
     structural_equivalence = if (identical(e$method, "euclidean")) {
       d <- as.matrix(blockmodeling::sedist(m, method = "euclidean"))
       lapply(seq_len(nrow(d)), function(i) as.numeric(d[i, ]))
+    },
+    blockmodel_criterion = {
+      clu <- node_rule(e$partition, n) + 1
+      res <- limited(blockmodeling::critFunC(m, clu = clu, approaches = "bin",
+                                             blocks = block_types[[e$blocks]]))
+      res$err
+    },
+    blockmodel_search = {
+      k <- as.integer(e$k)
+      if (n < k) return(NULL)
+      set.seed(as.integer(e$seed))
+      utils::capture.output(res <- limited(blockmodeling::optRandomParC(
+        m, k = k, rep = as.integer(e$oracle_starts), approaches = "bin",
+        blocks = block_types[[e$blocks]])))
+      best <- tryCatch(blockmodeling::err(res), error = function(err) min(unlist(res$err)))
+      as.numeric(best)
     },
     NULL)
 }

@@ -1,8 +1,9 @@
 {
- "inputs": "534bf224bc3a91e0af9f6e2414990932c3fda360b0e7097e87b12136b7d60635",
+ "inputs": "3d5b2846bd99b44689da3e07b45d84902491c7bd795b0c2500d21ef12426d450",
  "oracles": [
   "boost",
-  "infomap",
-  "jgrapht"
+  "definition",
+  "jgrapht",
+  "signnet"
  ]
 }

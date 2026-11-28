@@ -1,0 +1,9 @@
+{
+ "inputs": "481d6b95429a1c8e353c7bc5f809a2a323c618f7dc14301b0a50355c8875ec43",
+ "oracles": [
+  "definition",
+  "nauty",
+  "published",
+  "signnet"
+ ]
+}

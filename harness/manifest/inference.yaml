@@ -1,0 +1,355 @@
+# Dyadic and node-level inference on a network: logistic regression QAP
+# (LR-QAP; sna's netlogit, UCINET's LR-QAP) and network autocorrelation
+# (sna's nacf; Moran 1950, Geary 1954). Format: see ../README.md; runners
+# in ../bindings/inference.py.
+#
+# Inputs derived from the node index (0-based v, i, j), shared by the
+# runner and every oracle: the node attribute num7 = (7 v) % 11; dyadic
+# covariates dmat = (i + 2 j) % 5 (directed fixtures), smat = (i + j) % 4
+# (undirected), adiff = |num7_i - num7_j|, each with a zero diagonal.
+#
+# LR-QAP. The response is the simple 0/1 adjacency of the fixture (loops
+# dropped, parallel edges once); the predictors are an intercept, dmat or
+# smat, and adiff. Directed fixtures use every ordered pair (sna's mode
+# "digraph"), undirected ones each pair once from the lower triangle
+# ("graph"); the diagonal is excluded. A fit file holds the coefficients,
+# their standard errors, the z-values, and (deviance, AIC, BIC); the null
+# deviance (of the intercept-only model) has its own entry, since sna
+# reports the deviance of the model with every coefficient 0 (2 N ln 2:
+# netlogit passes the intercept to glm as a column). The p-value entries hold Pr(z <= observed), Pr(z >= observed) and
+# Pr(|z| >= |observed|) per coefficient, over the permutation draws only
+# (sna's convention). sna's permutations come from R's generator and the
+# engine's from its own counter-based streams, so the Monte Carlo p-values
+# are compared within a binomial band: with 1000 draws on each side the
+# standard deviation of a difference of two estimates of one p is at most
+# sqrt(2 * 0.25 / 1000) = 0.022, and abs 0.1 is about 4.5 of them. The
+# exhaustive entry enumerates all n! relabelings on both sides and is
+# compared exactly.
+#
+# The fit is undefined where the logistic model has no finite maximum
+# likelihood estimate (every dyad tied, or none: complete5_dir, complete6,
+# empty) or no residual degrees of freedom (pair, single_node); the runner
+# writes NaN there.
+#
+# Network autocorrelation. y = num7, demeaned. Lag k uses the k-th order
+# neighbourhood: W_ij = 1 when the geodesic distance from i to j is
+# exactly k (out), from j to i (in), or in the undirected reading (total);
+# lag 0 is the identity. With S0 = sum W and z = y - mean(y):
+# covariance (1 / S0) z' W z, correlation the covariance over z'z / (n - 1)
+# (1 at lag 0; sna's convention),
+# Moran's I (n / S0) z' W z / z'z, Geary's C ((n - 1) / (2 S0))
+# sum_ij W_ij (y_i - y_j)^2 / z'z. NaN where a lag has no pairs or y is
+# constant. Lines are lags 0 to 3. The exhaustive entries hold
+# Pr(stat <= observed) and Pr(stat >= observed) per lag over all n!
+# relabelings of y (lines: lags 0 to 3, each p_le p_ge).
+
+lr_qap:
+  params: {fn: lr_qap, method: dsp, reps: 1000, seed: 1}
+  applies_to: any
+  tolerance: {rel: 2.0e-4, abs: 1.0e-8}
+  note: >-
+    rel 2e-4: glm stops when the relative change of the deviance falls
+    below 1e-8 and takes the standard errors from the working weights of
+    its last iteration, one step before the coefficients it reports; the
+    engine iterates until every Newton step is below 1e-10 relative to its
+    coefficient and takes the information at the estimate. The
+    coefficients and deviances agree to about 1e-8; the standard errors
+    and z-values differ by up to 1e-4 (gnp_dir_sparse, cycle7_dir).
+  oracles:
+    definition:
+      call: "Newton iterations on the logistic log-likelihood of the vectorized dyads, Gauss-Jordan solves (inference_definition_oracle.py)"
+      undefined_on: [complete5_dir, complete6, empty, pair, single_node]
+      undefined_reason: >-
+        No finite maximum likelihood estimate (every dyad tied, or none) or
+        no residual degrees of freedom.
+    sna:
+      call: "sna::netlogit(y, list(x1, adiff), intercept = TRUE, mode = m, diag = FALSE, nullhyp = 'qapspp', reps = 1000)"
+      undefined_on: [complete5_dir, complete6, empty, pair, single_node]
+      undefined_reason: >-
+        No finite maximum likelihood estimate (every dyad tied, or none) or
+        no residual degrees of freedom: glm diverges or netlogit errors.
+
+lr_qap_null:
+  params: {fn: lr_qap, method: dsp, reps: 0, seed: 1, part: null_deviance}
+  applies_to: any
+  tolerance: {rel: 1.0e-10, abs: 1.0e-10}
+  oracles:
+    definition:
+      call: "deviance of the intercept-only model, -2 sum (y ln p + (1 - y) ln (1 - p)) with p the share of tied dyads (inference_definition_oracle.py)"
+      undefined_on: [complete5_dir, complete6, empty, pair, single_node]
+      undefined_reason: >-
+        No finite maximum likelihood estimate (every dyad tied, or none) or
+        no residual degrees of freedom.
+
+lr_qap_p:
+  params: {fn: lr_qap, method: dsp, reps: 1000, seed: 1, part: p}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Monte Carlo on both sides with 1000 draws each: abs 0.1 is about 4.5
+    standard deviations of the difference (manifest header).
+  oracles:
+    sna:
+      call: "sna::netlogit(..., nullhyp = 'qapspp', reps = 1000): pleeq, pgreq, pgreqabs"
+      undefined_on: [complete5_dir, complete6, empty, pair, single_node]
+      undefined_reason: >-
+        No finite maximum likelihood estimate or no residual degrees of
+        freedom.
+
+lr_qap_y_p:
+  params: {fn: lr_qap, method: y, reps: 1000, seed: 1, part: p}
+  applies_to: any
+  tolerance: {rel: 0, abs: 0.1}
+  note: >-
+    Monte Carlo on both sides with 1000 draws each: abs 0.1 is about 4.5
+    standard deviations of the difference (manifest header).
+  oracles:
+    sna:
+      call: "sna::netlogit(..., nullhyp = 'qapy', reps = 1000): pleeq, pgreq, pgreqabs"
+      differs_on: [cycle7_dir, davis_twomode, florentine, gnp_dir_dense, gnp_dir_sparse,
+        gnp_und_dense, gnp_und_sparse, karate, kite, les_miserables, multi_loops_dir,
+        multi_loops_und, path10, real_weights_dir, real_weights_und, southern_women, star8,
+        two_triangles_isolate, twomode_random, twomode_weighted, uniform_weights, weighted_dir,
+        weighted_und]
+      reason: >-
+        sna 2.8's netlogit gives for nullhyp = 'qapy' exactly the p-values it
+        gives for 'qapspp' with the same seed (the golden files of
+        lr_qap_y_p and lr_qap_p are identical), so it reports no
+        Y-permutation test; the engine's Y-permutation is checked exactly
+        against the definition oracle's enumeration (lr_qap_y_exact).
+      undefined_on: [complete5_dir, complete6, empty, pair, single_node]
+      undefined_reason: >-
+        No finite maximum likelihood estimate or no residual degrees of
+        freedom.
+
+lr_qap_exact:
+  params: {fn: lr_qap, method: dsp, exhaustive: true, part: p}
+  applies_to: any
+  tolerance: {rel: 0, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "every one of the n! relabelings, double semi-partialling, z of the permuted residual column (inference_definition_oracle.py)"
+      only_on: [cycle7_dir, star8, two_triangles_isolate]
+      undefined_reason: >-
+        exhaustive enumeration of n! relabelings, run on the fixtures of at
+        most 8 nodes where the fit is defined.
+
+lr_qap_y_exact:
+  params: {fn: lr_qap, method: y, exhaustive: true, part: p}
+  applies_to: any
+  tolerance: {rel: 0, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "every one of the n! relabelings of y, z of every column (inference_definition_oracle.py)"
+      only_on: [cycle7_dir, star8, two_triangles_isolate]
+      undefined_reason: >-
+        exhaustive enumeration of n! relabelings, run on the fixtures of at
+        most 8 nodes where the fit is defined.
+
+network_autocorrelation_moran:
+  params: {fn: network_autocorrelation, kind: moran, neighborhood: out, lag_max: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Moran's I of num7 at lags 0 to 3, exact rationals (inference_definition_oracle.py)"
+    sna:
+      call: "sna::nacf(m, num7, lag.max = 3, type = 'moran', neighborhood.type = 'out', mode = mode)"
+      differs_on: [complete5_dir, complete6, empty, gnp_dir_dense, gnp_und_dense, pair, star8, two_triangles_isolate]
+      reason: >-
+        A lag with no pairs at that geodesic distance (lag 2 or 3 of a dense
+        or small network) has no value: S0 = 0. The engine and the
+        definition oracle give NaN, sna's nacf gives 0.
+      undefined_when: [one_node]
+      undefined_reason: >-
+        The oracle script does not call sna on a network of one node.
+
+network_autocorrelation_geary:
+  params: {fn: network_autocorrelation, kind: geary, neighborhood: out, lag_max: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Geary's C of num7 at lags 0 to 3, exact rationals (inference_definition_oracle.py)"
+    sna:
+      call: "sna::nacf(m, num7, lag.max = 3, type = 'geary', neighborhood.type = 'out', mode = mode)"
+      differs_on: [complete5_dir, complete6, empty, gnp_dir_dense, gnp_und_dense, pair, star8, two_triangles_isolate]
+      reason: >-
+        A lag with no pairs at that geodesic distance (lag 2 or 3 of a dense
+        or small network) has no value: S0 = 0. The engine and the
+        definition oracle give NaN, sna's nacf gives 0.
+      undefined_when: [one_node]
+      undefined_reason: >-
+        The oracle script does not call sna on a network of one node.
+
+network_autocorrelation_correlation:
+  params: {fn: network_autocorrelation, kind: correlation, neighborhood: out, lag_max: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "network autocorrelation of num7 at lags 0 to 3, exact rationals (inference_definition_oracle.py)"
+    sna:
+      call: "sna::nacf(m, num7, lag.max = 3, type = 'correlation', neighborhood.type = 'out', mode = mode)"
+      differs_on: [complete5_dir, complete6, empty, gnp_dir_dense, gnp_und_dense, pair, star8, two_triangles_isolate]
+      reason: >-
+        A lag with no pairs at that geodesic distance (lag 2 or 3 of a dense
+        or small network) has no value: S0 = 0. The engine and the
+        definition oracle give NaN, sna's nacf gives 0.
+      undefined_when: [one_node]
+      undefined_reason: >-
+        The oracle script does not call sna on a network of one node.
+
+network_autocorrelation_covariance:
+  params: {fn: network_autocorrelation, kind: covariance, neighborhood: out, lag_max: 3}
+  applies_to: any
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "network autocovariance of num7 at lags 0 to 3, exact rationals (inference_definition_oracle.py)"
+    sna:
+      call: "sna::nacf(m, num7, lag.max = 3, type = 'covariance', neighborhood.type = 'out', mode = mode)"
+      differs_on: [complete5_dir, complete6, empty, gnp_dir_dense, gnp_und_dense, pair, star8, two_triangles_isolate]
+      reason: >-
+        A lag with no pairs at that geodesic distance (lag 2 or 3 of a dense
+        or small network) has no value: S0 = 0. The engine and the
+        definition oracle give NaN, sna's nacf gives 0.
+      undefined_when: [one_node]
+      undefined_reason: >-
+        The oracle script does not call sna on a network of one node.
+
+network_autocorrelation_moran_in:
+  params: {fn: network_autocorrelation, kind: moran, neighborhood: in, lag_max: 3}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Moran's I of num7 over in-neighbourhoods, lags 0 to 3 (inference_definition_oracle.py)"
+    sna:
+      call: "sna::nacf(m, num7, lag.max = 3, type = 'moran', neighborhood.type = 'in', mode = 'digraph')"
+      differs_on: [complete5_dir, empty, gnp_dir_dense, pair]
+      reason: >-
+        A lag with no pairs at that geodesic distance (lag 2 or 3 of a dense
+        or small network) has no value: S0 = 0. The engine and the
+        definition oracle give NaN, sna's nacf gives 0.
+      undefined_when: [one_node]
+      undefined_reason: >-
+        The oracle script does not call sna on a network of one node.
+
+network_autocorrelation_geary_total:
+  params: {fn: network_autocorrelation, kind: geary, neighborhood: total, lag_max: 3}
+  applies_to: directed
+  tolerance: {rel: 1.0e-12, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Geary's C of num7 over undirected neighbourhoods, lags 0 to 3 (inference_definition_oracle.py)"
+    sna:
+      call: "sna::nacf(m, num7, lag.max = 3, type = 'geary', neighborhood.type = 'total', mode = 'digraph')"
+      differs_on: [complete5_dir, empty, gnp_dir_dense, pair]
+      reason: >-
+        A lag with no pairs at that geodesic distance (lag 2 or 3 of a dense
+        or small network) has no value: S0 = 0. The engine and the
+        definition oracle give NaN, sna's nacf gives 0.
+      undefined_when: [one_node]
+      undefined_reason: >-
+        The oracle script does not call sna on a network of one node.
+
+network_autocorrelation_moran_exact:
+  params: {fn: network_autocorrelation, kind: moran, neighborhood: out, lag_max: 3, exhaustive: true, part: p}
+  applies_to: any
+  tolerance: {rel: 0, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Pr(I <= observed), Pr(I >= observed) per lag over all n! relabelings of y (inference_definition_oracle.py)"
+      only_on: [complete5_dir, complete6, cycle7_dir, empty, pair, single_node, star8, two_triangles_isolate]
+      undefined_reason: exhaustive enumeration of n! relabelings, run on the fixtures of at most 8 nodes
+
+network_autocorrelation_geary_exact:
+  params: {fn: network_autocorrelation, kind: geary, neighborhood: out, lag_max: 3, exhaustive: true, part: p}
+  applies_to: any
+  tolerance: {rel: 0, abs: 1.0e-12}
+  oracles:
+    definition:
+      call: "Pr(C <= observed), Pr(C >= observed) per lag over all n! relabelings of y (inference_definition_oracle.py)"
+      only_on: [complete5_dir, complete6, cycle7_dir, empty, pair, single_node, star8, two_triangles_isolate]
+      undefined_reason: exhaustive enumeration of n! relabelings, run on the fixtures of at most 8 nodes
+
+# Network autocorrelation models by maximum likelihood (sna's lnam with one
+# weight matrix; Ord 1975, Doreian 1980): y = num7, X = (1, num3) with
+# num3 = (3 v) % 5, W the row-normalized simple adjacency (each row divided
+# by its sum; a row without ties stays 0), or with `weighted: true` the
+# row-normalized matrix of summed edge weights. Lag: y = rho W y + X beta +
+# e; error: y = X beta + u, u = rho W u + e. Lines: the coefficients, then
+# (rho, sigma, log-likelihood). rel 5e-4: sna maximizes the full likelihood
+# with optim's BFGS, stopping on a relative change of 1e-10 in the
+# likelihood, where the likelihood is flat in rho: the log-likelihoods
+# agree to 1e-11 and rho and beta to about 3e-4 (uniform_weights); the engine and the
+# definition oracle maximize the likelihood concentrated in rho over
+# (-1 / r, 1 / r), r the largest absolute row sum of W, which bounds its
+# spectral radius ((-1, 1) for a row-normalized W, the usual parameter
+# space of the model; Anselin 1988). Where the likelihood still rises at an
+# end of that interval the estimate is that end (to about 1e-12), while
+# sna's unconstrained search goes beyond it. Undefined where the likelihood
+# is flat in rho (no ties: empty)
+# or the model fits exactly or is not identified (pair, single_node).
+
+network_lag_model:
+  params: {fn: network_autocorrelation_model, model: lag}
+  applies_to: any
+  tolerance: {rel: 5.0e-4, abs: 1.0e-6}
+  oracles:
+    definition:
+      call: "maximum of the likelihood concentrated in rho over (-1 / r, 1 / r), dense log-determinants (inference_definition_oracle.py)"
+      undefined_on: [empty, pair, single_node]
+      undefined_reason: >-
+        The likelihood is flat in rho without ties (empty), and the model
+        fits exactly or is not identified on one or two nodes.
+    sna:
+      call: "sna::lnam(y, x = cbind(1, num3), W1 = W, control = list(maxit = 30))"
+      differs_on: [gnp_dir_dense]
+      reason: >-
+        The likelihood still rises at rho = -1, the end of the parameter
+        space of a row-normalized W; the engine stops there, sna's
+        unconstrained BFGS goes beyond it.
+      undefined_on: [complete5_dir, complete6, empty, pair, single_node]
+      undefined_reason: >-
+        The likelihood is flat in rho without ties (empty), and the model
+        fits exactly or is not identified on one or two nodes; sna's lnam gives
+        no fit on the complete graphs, where every row of a row-normalized W
+        is the same up to the diagonal and rho is not identified.
+
+network_error_model:
+  params: {fn: network_autocorrelation_model, model: error}
+  applies_to: any
+  tolerance: {rel: 5.0e-4, abs: 1.0e-6}
+  oracles:
+    definition:
+      call: "maximum of the likelihood concentrated in rho over (-1 / r, 1 / r), dense log-determinants (inference_definition_oracle.py)"
+      undefined_on: [empty, pair, single_node]
+      undefined_reason: >-
+        The likelihood is flat in rho without ties (empty), and the model
+        fits exactly or is not identified on one or two nodes.
+    sna:
+      call: "sna::lnam(y, x = cbind(1, num3), W2 = W, control = list(maxit = 30))"
+      differs_on: [gnp_dir_dense, two_triangles_isolate]
+      reason: >-
+        The likelihood still rises at an end of the parameter space
+        (-1, 1) of a row-normalized W; the engine stops there, sna's
+        unconstrained BFGS goes beyond it.
+      undefined_on: [complete5_dir, complete6, empty, pair, single_node]
+      undefined_reason: >-
+        The likelihood is flat in rho without ties (empty), and the model
+        fits exactly or is not identified on one or two nodes; sna's lnam gives
+        no fit on the complete graphs, where every row of a row-normalized W
+        is the same up to the diagonal and rho is not identified.
+
+network_lag_model_weighted:
+  params: {fn: network_autocorrelation_model, model: lag, weighted: true}
+  applies_to: any
+  requires_weights: true
+  tolerance: {rel: 5.0e-4, abs: 1.0e-6}
+  oracles:
+    definition:
+      call: "maximum of the likelihood concentrated in rho over (-1 / r, 1 / r), W of summed weights (inference_definition_oracle.py)"
+    sna:
+      call: "sna::lnam(y, x = cbind(1, num3), W1 = W) with W the row-normalized summed weights"
